@@ -61,3 +61,5 @@ prefabs.json
 .vscode/*.*
 *.js
 *.sym
+.bashrc
+*.bsdiff4

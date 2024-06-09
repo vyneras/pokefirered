@@ -68,7 +68,7 @@ endif
 
 SHELL := /bin/bash -o pipefail
 
-ROM := poke$(BUILD_NAME).gba
+ROM := poke$(BUILD_NAME)_ap.gba
 OBJ_DIR := build/$(BUILD_NAME)
 
 ELF = $(ROM:.gba=.elf)
@@ -176,7 +176,7 @@ MAKEFLAGS += --no-print-directory
 
 AUTO_GEN_TARGETS :=
 
-all: tools rom
+all: tools rom patch
 
 syms: $(SYM)
 
@@ -186,6 +186,9 @@ ifeq ($(COMPARE),1)
 endif
 
 tools: $(TOOLDIRS)
+
+patch: $(ROM)
+	bsdiff4 poke$(BUILD_NAME).gba $(ROM) base_patch_$(BUILD_NAME).bsdiff4
 
 $(TOOLDIRS):
 	@$(MAKE) -C $@
