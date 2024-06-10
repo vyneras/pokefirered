@@ -14,17 +14,15 @@ CeladonCity_Gym_EventScript_DefeatedErika::
 	famechecker FAMECHECKER_ERIKA, 1
 	clearflag FLAG_HIDE_FAME_CHECKER_ERIKA_JOURNALS
 	setflag FLAG_DEFEATED_ERIKA
-	setflag FLAG_BADGE04_GET
+Archipelago_Target_Badge_4::
+	giveitem ITEM_BADGE_4, 1, FLAG_RECEIVED_BADGE_4
 	set_gym_trainers 4
 	goto CeladonCity_Gym_EventScript_GiveTM19
 	end
 
 CeladonCity_Gym_EventScript_GiveTM19::
-	msgbox CeladonCity_Gym_Text_ExplainRainbowBadgeTakeThis
-	checkitemspace ITEM_TM19
-	goto_if_eq VAR_RESULT, FALSE, CeladonCity_Gym_EventScript_NoRoomForTM19
-	giveitem_msg CeladonCity_Gym_Text_ReceivedTM19FromErika, ITEM_TM19
-	setflag FLAG_GOT_TM19_FROM_ERIKA
+Archipelago_Target_NPC_Gift_FLAG_GOT_TM19_FROM_ERIKA::
+	giveitem ITEM_TM19, 1, FLAG_GOT_TM19_FROM_ERIKA
 	msgbox CeladonCity_Gym_Text_ExplainTM19
 	release
 	end

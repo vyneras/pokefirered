@@ -59,7 +59,8 @@ _Deparsed_XSubs.pm
 porymap.*.cfg
 prefabs.json
 .vscode/*.*
-*.js
 *.sym
 .bashrc
 *.bsdiff4
+constants.json
+notes.txt

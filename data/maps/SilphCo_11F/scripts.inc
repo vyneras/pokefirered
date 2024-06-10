@@ -17,11 +17,9 @@ SilphCo_11F_EventScript_President::
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, SilphCo_11F_EventScript_PresidentThanksMale
 	call_if_eq VAR_RESULT, FEMALE, SilphCo_11F_EventScript_PresidentThanksFemale
-	checkitemspace ITEM_MASTER_BALL
-	goto_if_eq VAR_RESULT, FALSE, SilphCo_11F_EventScript_NoRoomForMasterBall
-	giveitem_msg SilphCo_11F_Text_ObtainedMasterBallFromPresident, ITEM_MASTER_BALL, 1, MUS_OBTAIN_KEY_ITEM
+Archipelago_Target_NPC_Gift_FLAG_GOT_MASTER_BALL_FROM_SILPH::
+	giveitem ITEM_MASTER_BALL, 1, FLAG_GOT_MASTER_BALL_FROM_SILPH
 	msgbox SilphCo_11F_Text_ThatsOurSecretPrototype
-	setflag FLAG_GOT_MASTER_BALL_FROM_SILPH
 	release
 	end
 

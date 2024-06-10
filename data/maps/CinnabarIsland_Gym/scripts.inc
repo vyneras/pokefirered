@@ -63,7 +63,8 @@ CinnabarIsland_Gym_EventScript_Blaine::
 CinnabarIsland_Gym_EventScript_DefeatedBlaine::
 	famechecker FAMECHECKER_BLAINE, 1
 	setflag FLAG_DEFEATED_BLAINE
-	setflag FLAG_BADGE07_GET
+Archipelago_Target_Badge_7::
+	giveitem ITEM_BADGE_7, 1, FLAG_RECEIVED_BADGE_7
 	setrespawn SPAWN_CINNABAR_ISLAND
 	setvar VAR_MAP_SCENE_CINNABAR_ISLAND, 1
 	clearflag FLAG_HIDE_CINNABAR_BILL
@@ -72,11 +73,8 @@ CinnabarIsland_Gym_EventScript_DefeatedBlaine::
 	end
 
 CinnabarIsland_Gym_EventScript_GiveTM38::
-	msgbox CinnabarIsland_Gym_Text_ExplainVolcanoBadge
-	checkitemspace ITEM_TM38
-	goto_if_eq VAR_RESULT, FALSE, CinnabarIsland_Gym_EventScript_NoRoomForTM38
-	giveitem_msg CinnabarIsland_Gym_Text_ReceivedTM38FromBlaine, ITEM_TM38
-	setflag FLAG_GOT_TM38_FROM_BLAINE
+Archipelago_Target_NPC_Gift_FLAG_GOT_TM38_FROM_BLAINE::
+	giveitem ITEM_TM38, 1, FLAG_GOT_TM38_FROM_BLAINE
 	msgbox CinnabarIsland_Gym_Text_FireBlastIsUltimateFireMove
 	release
 	end

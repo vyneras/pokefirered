@@ -216,7 +216,8 @@ VermilionCity_Gym_EventScript_DefeatedLtSurge::
 	call_if_unset FLAG_GOT_HM05, VermilionCity_Gym_EventScript_ShowOaksAide
 	clearflag FLAG_HIDE_FAME_CHECKER_LT_SURGE_JOURNAL
 	setflag FLAG_DEFEATED_LT_SURGE
-	setflag FLAG_BADGE03_GET
+Archipelago_Target_Badge_3::
+	giveitem ITEM_BADGE_3, 1, FLAG_RECEIVED_BADGE_3
 	set_gym_trainers 3
 	goto VermilionCity_Gym_EventScript_GiveTM34
 	end
@@ -226,11 +227,8 @@ VermilionCity_Gym_EventScript_ShowOaksAide::
 	return
 
 VermilionCity_Gym_EventScript_GiveTM34::
-	msgbox VermilionCity_Gym_Text_ExplainThunderBadgeTakeThis
-	checkitemspace ITEM_TM34
-	goto_if_eq VAR_RESULT, FALSE, VermilionCity_Gym_EventScript_NoRoomForTM34
-	giveitem_msg VermilionCity_Gym_Text_ReceivedTM34FromLtSurge, ITEM_TM34
-	setflag FLAG_GOT_TM34_FROM_SURGE
+Archipelago_Target_NPC_Gift_FLAG_GOT_TM34_FROM_SURGE::
+	giveitem ITEM_TM34, 1, FLAG_GOT_TM34_FROM_SURGE
 	msgbox VermilionCity_Gym_Text_ExplainTM34
 	release
 	end

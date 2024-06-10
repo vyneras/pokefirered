@@ -99,12 +99,9 @@ Route25_SeaCottage_EventScript_BillGiveSSTicket::
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, Route25_SeaCottage_EventScript_BillThanksMale
 	call_if_eq VAR_RESULT, FEMALE, Route25_SeaCottage_EventScript_BillThanksFemale
-	checkitemspace ITEM_SS_TICKET
-	goto_if_eq VAR_RESULT, FALSE, Route25_SeaCottage_EventScript_NoRoomForSSTicket
-	giveitem_msg Route25_SeaCottage_Text_ReceivedSSTicketFromBill, ITEM_SS_TICKET, 1, MUS_OBTAIN_KEY_ITEM
+Archipelago_Target_NPC_Gift_FLAG_GOT_SS_TICKET::
+	giveitem ITEM_SS_TICKET, 1, FLAG_GOT_SS_TICKET
 	setflag FLAG_GOT_SS_TICKET_DUP
-	setflag FLAG_HIDE_NUGGET_BRIDGE_ROCKET
-	setflag FLAG_GOT_SS_TICKET
 	setflag FLAG_SYS_NOT_SOMEONES_PC
 	goto Route25_SeaCottage_EventScript_BillGoToSSAnne
 	end

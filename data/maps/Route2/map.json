@@ -94,7 +94,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route2_EventScript_ItemEther",
-      "flag": "FLAG_HIDE_ROUTE2_ETHER"
+      "flag": "FLAG_ITEM_ROUTE2_ETHER"
     },
     {
       "type": "object",
@@ -108,7 +108,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route2_EventScript_ItemParalyzeHeal",
-      "flag": "FLAG_HIDE_ROUTE2_PARALYZE_HEAL"
+      "flag": "FLAG_ITEM_ROUTE2_PARALYZE_HEAL"
     },
     {
       "type": "clone",

@@ -61,8 +61,8 @@ FiveIsland_MemorialPillar_EventScript_PlaceLemonade::
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_MALE
 	msgbox FiveIsland_MemorialPillar_Text_ThankYouPleaseTakeThis
-	giveitem ITEM_TM42
-	goto_if_eq VAR_RESULT, FALSE, FiveIsland_MemorialPillar_EventScript_NoRoomForTM42
+Archipelago_Target_NPC_Gift_FLAG_GOT_TM42_AT_MEMORIAL_PILLAR::
+	giveitem ITEM_TM42, 1, FLAG_GOT_TM42_AT_MEMORIAL_PILLAR
 	call FiveIsland_MemorialPillar_EventScript_ReceivedTM42
 	releaseall
 	end
@@ -71,7 +71,6 @@ FiveIsland_MemorialPillar_EventScript_ReceivedTM42::
 	msgbox FiveIsland_MemorialPillar_Text_BeGoodToYourMonsToo
 	applymovement LOCALID_MEMORIAL_MAN, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	setflag FLAG_GOT_TM42_AT_MEMORIAL_PILLAR
 	return
 
 FiveIsland_MemorialPillar_EventScript_NoRoomForTM42::

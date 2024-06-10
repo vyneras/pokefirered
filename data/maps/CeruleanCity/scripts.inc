@@ -61,8 +61,8 @@ CeruleanCity_EventScript_Rival::
 	call_if_eq VAR_TEMP_1, 2, CeruleanCity_EventScript_RivalStartExitRight
 	msgbox CeruleanCity_Text_OhRightLittlePresentAsFavor
 	setvar VAR_MAP_SCENE_CERULEAN_CITY_RIVAL, 1
-	setflag FLAG_GOT_FAME_CHECKER
-	giveitem ITEM_FAME_CHECKER
+Archipelago_Target_NPC_Gift_FLAG_GOT_FAME_CHECKER::
+	giveitem ITEM_FAME_CHECKER, 1, FLAG_GOT_FAME_CHECKER
 	msgbox CeruleanCity_Text_ExplainFameCheckerSmellYa
 	closemessage
 	applymovement LOCALID_RIVAL, CeruleanCity_Movement_RivalExit
@@ -183,15 +183,13 @@ CeruleanCity_EventScript_Grunt::
 
 CeruleanCity_EventScript_GruntDefeated::
 	msgbox CeruleanCity_Text_OkayIllReturnStolenTM
-	checkitemspace ITEM_TM28
-	goto_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_NoRoomForTM28
-	giveitem_msg CeruleanCity_Text_RecoveredTM28FromGrunt, ITEM_TM28
+Archipelago_Target_NPC_Gift_FLAG_GOT_TM28_FROM_ROCKET::
+	giveitem ITEM_TM28, 1, FLAG_GOT_TM28_FROM_ROCKET
 	msgbox CeruleanCity_Text_BetterGetMovingBye
 	closemessage
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_GRUNT
 	fadescreen FADE_FROM_BLACK
-	setflag FLAG_GOT_TM28_FROM_ROCKET
 	release
 	end
 

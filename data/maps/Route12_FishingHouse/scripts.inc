@@ -12,12 +12,9 @@ Route12_FishingHouse_EventScript_FishingGuruBrother::
 	end
 
 Route12_FishingHouse_EventScript_GiveSuperRod::
-	checkitemspace ITEM_SUPER_ROD
-	goto_if_eq VAR_RESULT, FALSE, Route12_FishingHouse_EventScript_NoRoomForSuperRod
-	additem ITEM_SUPER_ROD
+Archipelago_Target_NPC_Gift_FLAG_GOT_SUPER_ROD::
+	giveitem ITEM_SUPER_ROD, 1, FLAG_GOT_SUPER_ROD
 	msgbox Route12_FishingHouse_Text_TakeThisAndFish
-	msgreceiveditem Route12_FishingHouse_Text_ReceivedSuperRod, ITEM_SUPER_ROD
-	setflag FLAG_GOT_SUPER_ROD
 	msgbox Route12_FishingHouse_Text_IfYouCatchBigMagikarpShowMe
 	release
 	end

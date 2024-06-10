@@ -111,7 +111,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RocketHideout_B4F_EventScript_ItemTM49",
-      "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B4F_TM49"
+      "flag": "FLAG_ITEM_ROCKET_HIDEOUT_B4F_TM49"
     },
     {
       "type": "object",
@@ -125,7 +125,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RocketHideout_B4F_EventScript_ItemMaxEther",
-      "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B4F_MAX_ETHER"
+      "flag": "FLAG_ITEM_ROCKET_HIDEOUT_B4F_MAX_ETHER"
     },
     {
       "type": "object",
@@ -139,7 +139,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RocketHideout_B4F_EventScript_ItemCalcium",
-      "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B4F_CALCIUM"
+      "flag": "FLAG_ITEM_ROCKET_HIDEOUT_B4F_CALCIUM"
     }
   ],
   "warp_events": [

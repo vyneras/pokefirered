@@ -8,8 +8,8 @@ MtMoon_B2F_Text_MiguelDefeat::
     .string "I'll share!$"
 
 MtMoon_B2F_Text_WellEachTakeAFossil::
-    .string "We'll each take a fossil!\n"
-    .string "No being greedy!$"
+    .string "Feel free to take both fossils.\n"
+    .string "Be as greedy as you want!$"
 
 MtMoon_B2F_Text_ThenThisFossilIsMine::
     .string "All right.\n"

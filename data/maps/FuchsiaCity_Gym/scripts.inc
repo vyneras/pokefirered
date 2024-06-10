@@ -13,17 +13,15 @@ FuchsiaCity_Gym_EventScript_DefeatedKoga::
 	famechecker FAMECHECKER_KOGA, 1
 	clearflag FLAG_HIDE_FAME_CHECKER_KOGA_JOURNAL
 	setflag FLAG_DEFEATED_KOGA
-	setflag FLAG_BADGE05_GET
+Archipelago_Target_Badge_5::
+	giveitem ITEM_BADGE_5, 1, FLAG_RECEIVED_BADGE_5
 	set_gym_trainers 5
 	goto FuchsiaCity_Gym_EventScript_GiveTM06
 	end
 
 FuchsiaCity_Gym_EventScript_GiveTM06::
-	msgbox FuchsiaCity_Gym_Text_KogaExplainSoulBadge
-	checkitemspace ITEM_TM06
-	goto_if_eq VAR_RESULT, FALSE, FuchsiaCity_Gym_EventScript_NoRoomForTM06
-	giveitem_msg FuchsiaCity_Gym_Text_ReceivedTM06FromKoga, ITEM_TM06
-	setflag FLAG_GOT_TM06_FROM_KOGA
+Archipelago_Target_NPC_Gift_FLAG_GOT_TM06_FROM_KOGA::
+	giveitem ITEM_TM06, 1, FLAG_GOT_TM06_FROM_KOGA
 	msgbox FuchsiaCity_Gym_Text_KogaExplainTM06
 	release
 	end

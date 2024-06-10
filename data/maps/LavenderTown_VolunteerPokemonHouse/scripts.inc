@@ -6,10 +6,8 @@ LavenderTown_VolunteerPokemonHouse_EventScript_MrFuji::
 	faceplayer
 	goto_if_set FLAG_GOT_POKE_FLUTE, LavenderTown_VolunteerPokemonHouse_EventScript_AlreadyHavePokeFlute
 	msgbox LavenderTown_VolunteerPokemonHouse_Text_IdLikeYouToHaveThis
-	checkitemspace ITEM_POKE_FLUTE
-	goto_if_eq VAR_RESULT, FALSE, LavenderTown_VolunteerPokemonHouse_EventScript_NoRoomForPokeFlute
-	setflag FLAG_GOT_POKE_FLUTE
-	giveitem_msg LavenderTown_VolunteerPokemonHouse_Text_ReceivedPokeFluteFromMrFuji, ITEM_POKE_FLUTE, 1, MUS_OBTAIN_KEY_ITEM
+Archipelago_Target_NPC_Gift_FLAG_GOT_POKE_FLUTE::
+	giveitem ITEM_POKE_FLUTE, 1, FLAG_GOT_POKE_FLUTE
 	msgbox LavenderTown_VolunteerPokemonHouse_Text_ExplainPokeFlute
 	release
 	end

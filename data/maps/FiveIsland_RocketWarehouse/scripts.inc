@@ -62,8 +62,8 @@ FiveIsland_RocketWarehouse_EventScript_MentionGiovannisKid::
 
 FiveIsland_RocketWarehouse_EventScript_DefeatedGideon::
 	msgbox FiveIsland_RocketWarehouse_Text_GideonPostBattle
-	setflag FLAG_RECOVERED_SAPPHIRE
-	giveitem ITEM_SAPPHIRE
+Archipelago_Target_NPC_Gift_FLAG_RECOVERED_SAPPHIRE::
+	giveitem ITEM_SAPPHIRE, 1, FLAG_RECOVERED_SAPPHIRE
 	release
 	end
 

@@ -117,7 +117,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TwoIsland_EventScript_ItemRevive",
-      "flag": "FLAG_HIDE_TWO_ISLAND_REVIVE"
+      "flag": "FLAG_ITEM_TWO_ISLAND_REVIVE"
     },
     {
       "type": "object",

@@ -100,15 +100,15 @@ OneIsland_PokemonCenter_1F_EventScript_MeetCelioScene::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox OneIsland_PokemonCenter_1F_Text_CanYouDeliverThisMeteoritePlayer
-	msgreceiveditem OneIsland_PokemonCenter_1F_Text_AcceptedMeteoriteFromBill, ITEM_METEORITE, 1, MUS_OBTAIN_KEY_ITEM
-	additem ITEM_METEORITE
+Archipelago_Target_NPC_Gift_FLAG_GOT_METEORITE::
+	giveitem ITEM_METEORITE, 1, FLAG_GOT_METEORITE
 	applymovement LOCALID_CELIO, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox OneIsland_PokemonCenter_1F_Text_CelioPleaseTakeThis
-	giveitem_msg OneIsland_PokemonCenter_1F_Text_ObtainedTriPass, ITEM_TRI_PASS, 1, MUS_OBTAIN_KEY_ITEM
+Archipelago_Target_NPC_Gift_FLAG_GOT_TRI_PASS::
+	giveitem ITEM_TRI_PASS, 1, FLAG_GOT_TRI_PASS
 	msgbox OneIsland_PokemonCenter_1F_Text_PassLetsYouTravelBetweenIslands
-	call_if_ge VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 2, OneIsland_PokemonCenter_1F_EventScript_ReceiveTownMapPage
-	call_if_lt VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 2, OneIsland_PokemonCenter_1F_EventScript_ReceiveTownMap
+	call OneIsland_PokemonCenter_1F_EventScript_ReceiveTownMapPage
 	setflag FLAG_SYS_SEVII_MAP_123
 	msgbox OneIsland_PokemonCenter_1F_Text_BillCatchYouLater
 	closemessage
@@ -322,7 +322,8 @@ OneIsland_PokemonCenter_1F_EventScript_GiveRainbowPass::
 	removeitem ITEM_RUBY
 	removeitem ITEM_TRI_PASS
 	setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 5
-	additem ITEM_RAINBOW_PASS
+Archipelago_Target_NPC_Gift_FLAG_GOT_RAINBOW_PASS::
+	giveitem ITEM_RAINBOW_PASS, 1, FLAG_GOT_RAINBOW_PASS
 	setflag FLAG_SYS_SEVII_MAP_4567
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	playfanfare MUS_OBTAIN_KEY_ITEM

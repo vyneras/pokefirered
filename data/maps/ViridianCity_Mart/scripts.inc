@@ -30,7 +30,8 @@ ViridianCity_Mart_EventScript_ParcelScene::
 	waitmovement 0
 	msgbox ViridianCity_Mart_Text_TakeThisToProfOak
 	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_MART, 1
-	giveitem_msg ViridianCity_Mart_Text_ReceivedOaksParcelFromClerk, ITEM_OAKS_PARCEL, 1, MUS_OBTAIN_KEY_ITEM
+Archipelago_Target_NPC_Gift_FLAG_GOT_OAKS_PARCEL::
+	giveitem ITEM_OAKS_PARCEL, 1, FLAG_GOT_OAKS_PARCEL
 	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 5
 	releaseall
 	end

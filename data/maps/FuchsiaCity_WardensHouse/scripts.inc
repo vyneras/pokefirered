@@ -5,7 +5,7 @@ FuchsiaCity_WardensHouse_EventScript_Warden::
 	lock
 	faceplayer
 	goto_if_set FLAG_GOT_HM04, FuchsiaCity_WardensHouse_EventScript_ExplainStrength
-	goto_if_set FLAG_HIDE_SAFARI_ZONE_WEST_GOLD_TEETH, FuchsiaCity_WardensHouse_EventScript_GiveGoldTeeth
+	goto_if_set FLAG_ITEM_SAFARI_ZONE_WEST_GOLD_TEETH, FuchsiaCity_WardensHouse_EventScript_GiveGoldTeeth
 	msgbox FuchsiaCity_WardensHouse_Text_HifFuffHefifoo, MSGBOX_YESNO
 	call_if_eq VAR_RESULT, YES, FuchsiaCity_WardensHouse_EventScript_WardenYes
 	call_if_eq VAR_RESULT, NO, FuchsiaCity_WardensHouse_EventScript_WardenNo
@@ -23,8 +23,8 @@ FuchsiaCity_WardensHouse_EventScript_GiveGoldTeeth::
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, FuchsiaCity_WardensHouse_EventScript_WardenThanksMale
 	call_if_eq VAR_RESULT, FEMALE, FuchsiaCity_WardensHouse_EventScript_WardenThanksFemale
-	giveitem_msg FuchsiaCity_WardensHouse_Text_ReceivedHM04FromWarden, ITEM_HM04
-	setflag FLAG_GOT_HM04
+Archipelago_Target_NPC_Gift_FLAG_GOT_HM04::
+	giveitem ITEM_HM04, 1, FLAG_GOT_HM04
 	removeitem ITEM_GOLD_TEETH
 	release
 	end

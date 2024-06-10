@@ -178,7 +178,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route9_EventScript_ItemTM40",
-      "flag": "FLAG_HIDE_ROUTE9_TM40"
+      "flag": "FLAG_ITEM_ROUTE9_TM40"
     },
     {
       "type": "object",
@@ -192,7 +192,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route9_EventScript_ItemBurnHeal",
-      "flag": "FLAG_HIDE_ROUTE9_BURN_HEAL"
+      "flag": "FLAG_ITEM_ROUTE9_BURN_HEAL"
     }
   ],
   "warp_events": [],

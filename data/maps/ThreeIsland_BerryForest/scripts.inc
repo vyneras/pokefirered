@@ -29,12 +29,11 @@ ThreeIsland_BerryForest_EventScript_Lostelle::
 	applymovement LOCALID_LOSTELLE, Common_Movement_FacePlayer
 	waitmovement 0
 	msgbox ThreeIsland_BerryForest_Text_ThankYouHaveThis
-	giveitem ITEM_IAPAPA_BERRY
-	call_if_eq VAR_RESULT, FALSE, ThreeIsland_BerryForest_EventScript_NoRoomForBerry
+Archipelago_Target_NPC_Gift_FLAG_RESCUED_LOSTELLE::
+	giveitem ITEM_IAPAPA_BERRY, 1, FLAG_RESCUED_LOSTELLE
 	special BufferBigGuyOrBigGirlString
 	msgbox ThreeIsland_BerryForest_Text_LetsGoHome
 	closemessage
-	setflag FLAG_RESCUED_LOSTELLE
 	setflag FLAG_HIDE_LOSTELLE_IN_BERRY_FOREST
 	setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 2
 	clearflag FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE

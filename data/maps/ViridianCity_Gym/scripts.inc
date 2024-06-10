@@ -19,18 +19,16 @@ ViridianCity_Gym_EventScript_DefeatedGiovanni::
 	famechecker FAMECHECKER_GIOVANNI, 3
 	setflag FLAG_HIDE_MISC_KANTO_ROCKETS
 	setflag FLAG_DEFEATED_LEADER_GIOVANNI
-	setflag FLAG_BADGE08_GET
+Archipelago_Target_Badge_8::
+	giveitem ITEM_BADGE_8, 1, FLAG_RECEIVED_BADGE_8
 	setvar VAR_MAP_SCENE_ROUTE22, 3
 	set_gym_trainers 8
 	goto ViridianCity_Gym_EventScript_GiveTM26
 	end
 
 ViridianCity_Gym_EventScript_GiveTM26::
-	msgbox ViridianCity_Gym_Text_ExplainEarthBadgeTakeThis
-	checkitemspace ITEM_TM26
-	goto_if_eq VAR_RESULT, FALSE, ViridianCity_Gym_EventScript_NoRoomForTM26
-	giveitem_msg ViridianCity_Gym_Text_ReceivedTM26FromGiovanni, ITEM_TM26
-	setflag FLAG_GOT_TM26_FROM_GIOVANNI
+Archipelago_Target_NPC_Gift_FLAG_GOT_TM26_FROM_GIOVANNI::
+	giveitem ITEM_TM26, 1, FLAG_GOT_TM26_FROM_GIOVANNI
 	msgbox ViridianCity_Gym_Text_ExplainTM26
 	release
 	end

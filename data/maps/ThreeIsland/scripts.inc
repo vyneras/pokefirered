@@ -54,11 +54,8 @@ ThreeIsland_EventScript_GiveFullRestore::
 	applymovement LOCALID_ANTIBIKER1, Common_Movement_FacePlayer
 	waitmovement 0
 	msgbox ThreeIsland_Text_ThankYouOhYourMonGotHurt
-	checkitemspace ITEM_FULL_RESTORE
-	goto_if_eq VAR_RESULT, FALSE, ThreeIsland_EventScript_NoRoomForFullRestore
-	msgreceiveditem ThreeIsland_Text_GivenFullRestore, ITEM_FULL_RESTORE
-	additem ITEM_FULL_RESTORE
-	setflag FLAG_GOT_FULL_RESTORE_FROM_THREE_ISLAND_DEFENDER
+Archipelago_Target_NPC_Gift_FLAG_GOT_FULL_RESTORE_FROM_THREE_ISLAND_DEFENDER::
+	giveitem ITEM_FULL_RESTORE, 1, FLAG_GOT_FULL_RESTORE_FROM_THREE_ISLAND_DEFENDER
 	msgbox ThreeIsland_Text_YouveGotImpressiveMons
 	release
 	end

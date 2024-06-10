@@ -111,7 +111,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FiveIsland_RocketWarehouse_EventScript_ItemBigPearl",
-      "flag": "FLAG_HIDE_FIVE_ISLAND_ROCKET_WAREHOUSE_BIG_PEARL"
+      "flag": "FLAG_ITEM_FIVE_ISLAND_ROCKET_WAREHOUSE_BIG_PEARL"
     },
     {
       "type": "object",
@@ -125,7 +125,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FiveIsland_RocketWarehouse_EventScript_ItemTM36",
-      "flag": "FLAG_HIDE_FIVE_ISLAND_ROCKET_WAREHOUSE_TM36"
+      "flag": "FLAG_ITEM_FIVE_ISLAND_ROCKET_WAREHOUSE_TM36"
     },
     {
       "type": "object",
@@ -139,7 +139,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FiveIsland_RocketWarehouse_EventScript_ItemPearl",
-      "flag": "FLAG_HIDE_FIVE_ISLAND_ROCKET_WAREHOUSE_PEARL"
+      "flag": "FLAG_ITEM_FIVE_ISLAND_ROCKET_WAREHOUSE_PEARL"
     },
     {
       "type": "object",
@@ -153,7 +153,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FiveIsland_RocketWarehouse_EventScript_ItemUpGrade",
-      "flag": "FLAG_HIDE_FIVE_ISLAND_ROCKET_WAREHOUSE_UP_GRADE"
+      "flag": "FLAG_ITEM_FIVE_ISLAND_ROCKET_WAREHOUSE_UP_GRADE"
     }
   ],
   "warp_events": [

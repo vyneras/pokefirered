@@ -12,18 +12,16 @@ CeruleanCity_Gym_EventScript_Misty::
 CeruleanCity_Gym_EventScript_MistyDefeated::
 	famechecker FAMECHECKER_MISTY, 1
 	setflag FLAG_DEFEATED_MISTY
-	setflag FLAG_BADGE02_GET
+Archipelago_Target_Badge_2::
+	giveitem ITEM_BADGE_2, 1, FLAG_RECEIVED_BADGE_2
 	setrespawn SPAWN_CERULEAN_CITY
 	set_gym_trainers 2
 	goto CeruleanCity_Gym_EventScript_GiveTM03
 	end
 
 CeruleanCity_Gym_EventScript_GiveTM03::
-	msgbox CeruleanCity_Gym_Text_ExplainCascadeBadge
-	checkitemspace ITEM_TM03
-	goto_if_eq VAR_RESULT, FALSE, CeruleanCity_Gym_EventScript_NoRoomForTM03
-	giveitem_msg CeruleanCity_Gym_Text_ReceivedTM03FromMisty, ITEM_TM03
-	setflag FLAG_GOT_TM03_FROM_MISTY
+Archipelago_Target_NPC_Gift_FLAG_GOT_TM03_FROM_MISTY::
+	giveitem ITEM_TM03, 1, FLAG_GOT_TM03_FROM_MISTY
 	msgbox CeruleanCity_Gym_Text_ExplainTM03
 	release
 	end

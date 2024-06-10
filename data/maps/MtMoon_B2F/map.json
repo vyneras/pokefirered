@@ -125,7 +125,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MtMoon_B2F_EventScript_ItemStarPiece",
-      "flag": "FLAG_HIDE_MT_MOON_B2F_STAR_PIECE"
+      "flag": "FLAG_ITEM_MT_MOON_B2F_STAR_PIECE"
     },
     {
       "type": "object",
@@ -139,7 +139,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MtMoon_B2F_EventScript_ItemTM46",
-      "flag": "FLAG_HIDE_MT_MOON_B2F_TM46"
+      "flag": "FLAG_ITEM_MT_MOON_B2F_TM46"
     },
     {
       "type": "object",
@@ -153,7 +153,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MtMoon_B2F_EventScript_ItemRevive",
-      "flag": "FLAG_HIDE_MT_MOON_B2F_REVIVE"
+      "flag": "FLAG_ITEM_MT_MOON_B2F_REVIVE"
     },
     {
       "type": "object",
@@ -167,7 +167,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MtMoon_B2F_EventScript_ItemAntidote",
-      "flag": "FLAG_HIDE_MT_MOON_B2F_ANTIDOTE"
+      "flag": "FLAG_ITEM_MT_MOON_B2F_ANTIDOTE"
     }
   ],
   "warp_events": [

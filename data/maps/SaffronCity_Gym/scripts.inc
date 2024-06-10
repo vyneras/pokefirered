@@ -14,17 +14,15 @@ SaffronCity_Gym_EventScript_DefeatedSabrina::
 	famechecker FAMECHECKER_SABRINA, 3
 	clearflag FLAG_HIDE_SAFFRON_CITY_POKECENTER_SABRINA_JOURNALS
 	setflag FLAG_DEFEATED_SABRINA
-	setflag FLAG_BADGE06_GET
+Archipelago_Target_Badge_6::
+	giveitem ITEM_BADGE_6, 1, FLAG_RECEIVED_BADGE_6
 	set_gym_trainers 6
 	goto SaffronCity_Gym_EventScript_GiveTM04
 	end
 
 SaffronCity_Gym_EventScript_GiveTM04::
-	msgbox SaffronCity_Gym_Text_ExplainMarshBadgeTakeThis
-	checkitemspace ITEM_TM04
-	goto_if_eq VAR_RESULT, FALSE, SaffronCity_Gym_EventScript_NoRoomForTM04
-	giveitem_msg SaffronCity_Gym_Text_ReceivedTM04FromSabrina, ITEM_TM04
-	setflag FLAG_GOT_TM04_FROM_SABRINA
+Archipelago_Target_NPC_Gift_FLAG_GOT_TM04_FROM_SABRINA::
+	giveitem ITEM_TM04, 1, FLAG_GOT_TM04_FROM_SABRINA
 	msgbox SaffronCity_Gym_Text_SabrinaPostBattle
 	release
 	end

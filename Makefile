@@ -104,6 +104,7 @@ endif
 LIB += -lnosys
 endif
 
+NODE := $(shell { command -v node; } 2>/dev/null)
 SHA1 := $(shell { command -v sha1sum || command -v shasum; } 2>/dev/null) -c
 GFX := tools/gbagfx/gbagfx
 AIF := tools/aif2pcm/aif2pcm
@@ -114,6 +115,7 @@ RAMSCRGEN := tools/ramscrgen/ramscrgen
 FIX := tools/gbafix/gbafix
 MAPJSON := tools/mapjson/mapjson
 JSONPROC := tools/jsonproc/jsonproc
+EXTRACTOR := tools/extractor/extractor$(EXE)
 
 PERL := perl
 
@@ -176,7 +178,7 @@ MAKEFLAGS += --no-print-directory
 
 AUTO_GEN_TARGETS :=
 
-all: tools rom patch
+all: tools rom
 
 syms: $(SYM)
 
@@ -187,8 +189,14 @@ endif
 
 tools: $(TOOLDIRS)
 
+parse-constants:
+	$(NODE) ./tools/extractor/parseConstants.js
+
 patch: $(ROM)
 	bsdiff4 poke$(BUILD_NAME).gba $(ROM) base_patch_$(BUILD_NAME).bsdiff4
+
+extract: tools rom syms parse-constants
+	$(EXTRACTOR)
 
 $(TOOLDIRS):
 	@$(MAKE) -C $@

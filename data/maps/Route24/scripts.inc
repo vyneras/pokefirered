@@ -42,15 +42,11 @@ Route24_EventScript_RocketTrigger::
 	call_if_eq VAR_TEMP_1, 1, Route24_EventScript_RocketMotionToPlayer
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-	msgbox Route24_Text_JustEarnedFabulousPrize
-	checkitemspace ITEM_NUGGET
-	goto_if_eq VAR_RESULT, FALSE, Route24_EventScript_NoRoomForNuggetTrigger
 	call Route24_EventScript_BattleRocket
 	releaseall
 	end
 
 Route24_EventScript_BattleRocket::
-	giveitem_msg Route24_Text_ReceivedNuggetFromMysteryTrainer, ITEM_NUGGET
 	message Route24_Text_JoinTeamRocket
 	waitmessage
 	playbgm MUS_ENCOUNTER_ROCKET, 0
@@ -58,6 +54,8 @@ Route24_EventScript_BattleRocket::
 	setvar VAR_LAST_TALKED, LOCALID_ROCKET
 	trainerbattle_no_intro TRAINER_TEAM_ROCKET_GRUNT_6, Route24_Text_RocketDefeat
 	msgbox Route24_Text_YoudBecomeTopRocketLeader
+Archipelago_Target_NPC_Gift_FLAG_GOT_NUGGET_FROM_ROCKET_GRUNT::
+	giveitem ITEM_NUGGET, 1, FLAG_GOT_NUGGET_FROM_ROCKET_GRUNT
 	setvar VAR_MAP_SCENE_ROUTE24, 1
 	return
 

@@ -12,7 +12,8 @@ PewterCity_Gym_EventScript_Brock::
 PewterCity_Gym_EventScript_DefeatedBrock::
 	famechecker FAMECHECKER_BROCK, 1
 	setflag FLAG_DEFEATED_BROCK
-	setflag FLAG_BADGE01_GET
+Archipelago_Target_Badge_1::
+	giveitem ITEM_BADGE_1, 1, FLAG_RECEIVED_BADGE_1
 	setvar VAR_MAP_SCENE_PEWTER_CITY, 1
 	setflag FLAG_HIDE_PEWTER_CITY_GYM_GUIDE
 	clearflag FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
@@ -21,11 +22,8 @@ PewterCity_Gym_EventScript_DefeatedBrock::
 	end
 
 PewterCity_Gym_EventScript_GiveTM39::
-	msgbox PewterCity_Gym_Text_TakeThisWithYou
-	checkitemspace ITEM_TM39
-	goto_if_eq VAR_RESULT, FALSE, PewterCity_Gym_EventScript_NoRoomForTM39
-	giveitem_msg PewterCity_Gym_Text_ReceivedTM39FromBrock, ITEM_TM39
-	setflag FLAG_GOT_TM39_FROM_BROCK
+Archipelago_Target_NPC_Gift_FLAG_GOT_TM39_FROM_BROCK::
+	giveitem ITEM_TM39, 1, FLAG_GOT_TM39_FROM_BROCK
 	msgbox PewterCity_Gym_Text_ExplainTM39
 	release
 	end

@@ -9,8 +9,8 @@ CeruleanCity_House5_EventScript_BerryPowderMan::
 	goto_if_eq VAR_RESULT, NO, CeruleanCity_House5_EventScript_NoInterestInBerries
 	goto_if_unset FLAG_SYS_GOT_BERRY_POUCH, CeruleanCity_House5_EventScript_NoBerries
 	msgbox CeruleanCity_House1_Text_HaveJustTheThing
-	setflag FLAG_GOT_POWDER_JAR
-	giveitem ITEM_POWDER_JAR
+Archipelago_Target_NPC_Gift_FLAG_GOT_POWDER_JAR::
+	giveitem ITEM_POWDER_JAR, 1, FLAG_GOT_POWDER_JAR
 	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
 	msgbox CeruleanCity_House1_Text_GoCrushBerriesAtDirectCorner
 	release
