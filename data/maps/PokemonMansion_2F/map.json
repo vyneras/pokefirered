@@ -92,7 +92,7 @@
       "y": 14,
       "elevation": 3,
       "dest_map": "MAP_POKEMON_MANSION_1F",
-      "dest_warp_id": "3"
+      "dest_warp_id": "1"
     },
     {
       "x": 9,
@@ -106,7 +106,14 @@
       "y": 17,
       "elevation": 3,
       "dest_map": "MAP_POKEMON_MANSION_3F",
-      "dest_warp_id": "5"
+      "dest_warp_id": "6"
+    },
+    {
+      "x": 28,
+      "y": 17,
+      "elevation": 3,
+      "dest_map": "MAP_POKEMON_MANSION_3F",
+      "dest_warp_id": "7"
     }
   ],
   "coord_events": [],

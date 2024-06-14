@@ -144,21 +144,7 @@
   ],
   "warp_events": [
     {
-      "x": 24,
-      "y": 23,
-      "elevation": 3,
-      "dest_map": "MAP_CINNABAR_ISLAND",
-      "dest_warp_id": "1"
-    },
-    {
       "x": 25,
-      "y": 23,
-      "elevation": 3,
-      "dest_map": "MAP_CINNABAR_ISLAND",
-      "dest_warp_id": "1"
-    },
-    {
-      "x": 26,
       "y": 23,
       "elevation": 3,
       "dest_map": "MAP_CINNABAR_ISLAND",

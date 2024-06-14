@@ -83,7 +83,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "RocketHideout_B1F_EventScript_Grunt5",
-      "flag": "FLAG_HIDE_MISC_KANTO_ROCKETS"
+      "flag": "0"
     },
     {
       "type": "object",
@@ -120,7 +120,7 @@
       "y": 2,
       "elevation": 3,
       "dest_map": "MAP_CELADON_CITY_GAME_CORNER",
-      "dest_warp_id": "3"
+      "dest_warp_id": "1"
     },
     {
       "x": 17,
@@ -137,25 +137,11 @@
       "dest_warp_id": "2"
     },
     {
-      "x": 23,
-      "y": 25,
-      "elevation": 0,
-      "dest_map": "MAP_ROCKET_HIDEOUT_ELEVATOR",
-      "dest_warp_id": "1"
-    },
-    {
       "x": 24,
       "y": 25,
       "elevation": 0,
       "dest_map": "MAP_ROCKET_HIDEOUT_ELEVATOR",
-      "dest_warp_id": "1"
-    },
-    {
-      "x": 25,
-      "y": 25,
-      "elevation": 0,
-      "dest_map": "MAP_ROCKET_HIDEOUT_ELEVATOR",
-      "dest_warp_id": "1"
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],

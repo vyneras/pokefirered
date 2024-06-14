@@ -13,7 +13,7 @@
   "show_map_name": true,
   "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "type": "object",
@@ -64,21 +64,7 @@
       "y": 1,
       "elevation": 3,
       "dest_map": "MAP_SSANNE_EXTERIOR",
-      "dest_warp_id": "2"
-    },
-    {
-      "x": 20,
-      "y": 0,
-      "elevation": 0,
-      "dest_map": "MAP_SSANNE_EXTERIOR",
-      "dest_warp_id": "3"
-    },
-    {
-      "x": 3,
-      "y": 20,
-      "elevation": 0,
-      "dest_map": "MAP_SSANNE_KITCHEN",
-      "dest_warp_id": "0"
+      "dest_warp_id": "1"
     },
     {
       "x": 28,

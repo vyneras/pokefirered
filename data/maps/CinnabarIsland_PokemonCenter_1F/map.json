@@ -123,20 +123,6 @@
       "dest_warp_id": "3"
     },
     {
-      "x": 6,
-      "y": 8,
-      "elevation": 3,
-      "dest_map": "MAP_CINNABAR_ISLAND",
-      "dest_warp_id": "3"
-    },
-    {
-      "x": 8,
-      "y": 8,
-      "elevation": 0,
-      "dest_map": "MAP_CINNABAR_ISLAND",
-      "dest_warp_id": "3"
-    },
-    {
       "x": 1,
       "y": 6,
       "elevation": 4,

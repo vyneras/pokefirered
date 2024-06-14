@@ -32,13 +32,6 @@
   ],
   "warp_events": [
     {
-      "x": 3,
-      "y": 9,
-      "elevation": 3,
-      "dest_map": "MAP_SAFFRON_CITY",
-      "dest_warp_id": "9"
-    },
-    {
       "x": 4,
       "y": 1,
       "elevation": 3,
@@ -51,13 +44,6 @@
       "elevation": 3,
       "dest_map": "MAP_SAFFRON_CITY",
       "dest_warp_id": "9"
-    },
-    {
-      "x": 5,
-      "y": 1,
-      "elevation": 0,
-      "dest_map": "MAP_ROUTE5",
-      "dest_warp_id": "3"
     }
   ],
   "coord_events": [

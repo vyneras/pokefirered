@@ -13,7 +13,7 @@
   "show_map_name": true,
   "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "type": "object",
@@ -88,67 +88,46 @@
       "dest_warp_id": "1"
     },
     {
-      "x": 32,
-      "y": 5,
-      "elevation": 0,
-      "dest_map": "MAP_SAFARI_ZONE_NORTH",
-      "dest_warp_id": "2"
-    },
-    {
       "x": 37,
       "y": 5,
       "elevation": 3,
       "dest_map": "MAP_SAFARI_ZONE_NORTH",
-      "dest_warp_id": "3"
+      "dest_warp_id": "2"
     },
     {
       "x": 38,
       "y": 5,
       "elevation": 3,
       "dest_map": "MAP_SAFARI_ZONE_NORTH",
-      "dest_warp_id": "4"
-    },
-    {
-      "x": 39,
-      "y": 5,
-      "elevation": 0,
-      "dest_map": "MAP_SAFARI_ZONE_NORTH",
-      "dest_warp_id": "5"
+      "dest_warp_id": "3"
     },
     {
       "x": 40,
       "y": 26,
       "elevation": 3,
       "dest_map": "MAP_SAFARI_ZONE_CENTER",
-      "dest_warp_id": "6"
+      "dest_warp_id": "4"
     },
     {
       "x": 40,
       "y": 27,
       "elevation": 3,
       "dest_map": "MAP_SAFARI_ZONE_CENTER",
-      "dest_warp_id": "7"
-    },
-    {
-      "x": 40,
-      "y": 28,
-      "elevation": 0,
-      "dest_map": "MAP_SAFARI_ZONE_CENTER",
-      "dest_warp_id": "8"
+      "dest_warp_id": "5"
     },
     {
       "x": 12,
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_SAFARI_ZONE_SECRET_HOUSE",
-      "dest_warp_id": "1"
+      "dest_warp_id": "0"
     },
     {
       "x": 19,
       "y": 18,
       "elevation": 0,
       "dest_map": "MAP_SAFARI_ZONE_WEST_REST_HOUSE",
-      "dest_warp_id": "1"
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],

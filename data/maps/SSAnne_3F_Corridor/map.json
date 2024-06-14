@@ -13,7 +13,7 @@
   "show_map_name": true,
   "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "type": "object",
@@ -44,13 +44,6 @@
       "elevation": 3,
       "dest_map": "MAP_SSANNE_2F_CORRIDOR",
       "dest_warp_id": "1"
-    },
-    {
-      "x": 0,
-      "y": 5,
-      "elevation": 0,
-      "dest_map": "MAP_SSANNE_DECK",
-      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],

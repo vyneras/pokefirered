@@ -64,3 +64,4 @@ prefabs.json
 *.bsdiff4
 constants.json
 notes.txt
+extracted_data_*.json
