@@ -163,7 +163,7 @@ static void BikeTransition_TurnDirection(u8 direction)
 static void BikeTransition_MoveDirection(u8 direction)
 {
     struct ObjectEvent *playerObjEvent;
-    
+
     playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
     if (!CanBikeFaceDirectionOnRail(direction, playerObjEvent->currentMetatileBehavior))
     {
@@ -185,7 +185,7 @@ static void BikeTransition_MoveDirection(u8 direction)
         }
         else
         {
-            
+
             if (collision == COLLISION_COUNT)
                 PlayerWalkFast(direction);
             else if (PlayerIsMovingOnRockStairs(direction))
@@ -252,12 +252,19 @@ bool8 RS_IsRunningDisallowed(u8 r0)
 
 bool32 IsRunningDisallowed(u8 metatileBehavior)
 {
-    if (!gMapHeader.allowRunning)
+    if (IsRunningDisallowedByMetatile(metatileBehavior) == TRUE)
         return TRUE;
-    if (MetatileBehaviorForbidsBiking(metatileBehavior) != TRUE)
-        return FALSE;
     else
+        return FALSE;
+}
+
+static bool8 IsRunningDisallowedByMetatile(u8 tile)
+{
+    if (MetatileBehavior_IsRunningDisallowed(tile))
         return TRUE;
+    if (MetatileBehavior_IsFortreeBridge(tile) && (PlayerGetElevation() & 1) == 0)
+        return TRUE;
+    return FALSE;
 }
 
 static bool8 MetatileBehaviorForbidsBiking(u8 metatileBehavior)
