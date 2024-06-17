@@ -5,7 +5,7 @@ MtMoon_B2F_Text_MiguelIntro::
 
 MtMoon_B2F_Text_MiguelDefeat::
     .string "Okay!\n"
-    .string "I'll share!$"
+    .string "I'll let you have them!$"
 
 MtMoon_B2F_Text_WellEachTakeAFossil::
     .string "Feel free to take both fossils.\n"

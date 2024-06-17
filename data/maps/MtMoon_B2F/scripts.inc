@@ -9,6 +9,7 @@ MtMoon_B2F_MapScripts::
 MtMoon_B2F_OnTransition::
 	call_if_unset FLAG_GOT_DOME_FOSSIL, MtMoon_B2F_EventScript_ShowDomeFossil
 	call_if_unset FLAG_GOT_HELIX_FOSSIL, MtMoon_B2F_EventScript_ShowHelixFossil
+	goto_if_ne VAR_MAP_SCENE_MT_MOON_B2F, 2, MtMoon_B2F_EventScript_SetMiguelPosition
 	end
 
 MtMoon_B2F_EventScript_ShowDomeFossil::
@@ -18,6 +19,18 @@ MtMoon_B2F_EventScript_ShowDomeFossil::
 MtMoon_B2F_EventScript_ShowHelixFossil::
 	clearflag FLAG_HIDE_HELIX_FOSSIL
 	return
+
+MtMoon_B2F_EventScript_SetMiguelPosition::
+	getplayerxy VAR_0x8004, VAR_0x8005
+	goto_if_lt VAR_0x8004, 7, MtMoon_B2F_EventScript_SetMiguelLeft
+	setobjectxyperm LOCALID_MIGUEL, 13, 11
+	setvar VAR_MAP_SCENE_MT_MOON_B2F, 0
+	end
+
+MtMoon_B2F_EventScript_SetMiguelLeft::
+	setobjectxyperm LOCALID_MIGUEL, 3, 6
+	setvar VAR_MAP_SCENE_MT_MOON_B2F, 1
+	end
 
 MtMoon_B2F_EventScript_MiguelTrigger::
 	lockall
@@ -43,7 +56,7 @@ MtMoon_B2F_EventScript_BattleMiguel::
 	waitbuttonpress
 	setvar VAR_LAST_TALKED, LOCALID_MIGUEL
 	trainerbattle_no_intro TRAINER_SUPER_NERD_MIGUEL, MtMoon_B2F_Text_MiguelDefeat
-	setvar VAR_MAP_SCENE_MT_MOON_B2F, 1
+	setvar VAR_MAP_SCENE_MT_MOON_B2F, 2
 	msgbox MtMoon_B2F_Text_WellEachTakeAFossil
 	return
 
@@ -68,13 +81,6 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_DOME_FOSSIL::
 	release
 	end
 
-MtMoon_B2F_Movement_MiguelToHelixFossil::
-	walk_right
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
 MtMoon_B2F_EventScript_HelixFossil::
 	lock
 	faceplayer
@@ -84,16 +90,6 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_HELIX_FOSSIL::
 	setflag FLAG_GOT_FOSSIL_FROM_MT_MOON
 	release
 	end
-
-MtMoon_B2F_EventScript_DontTakeFossil::
-	release
-	end
-
-MtMoon_B2F_Movement_MiguelToDomeFossil::
-	walk_up
-	walk_up
-	walk_up
-	step_end
 
 MtMoon_B2F_EventScript_Grunt1::
 	trainerbattle_single TRAINER_TEAM_ROCKET_GRUNT, MtMoon_B2F_Text_Grunt1Intro, MtMoon_B2F_Text_Grunt1Defeat
