@@ -165,7 +165,26 @@
       "dest_warp_id": "3"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 25,
+      "y": 22,
+      "elevation": 1,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "SeafoamIslands_B3F_EventScript_FellDownWaterfallLeftTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 22,
+      "elevation": 1,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "SeafoamIslands_B3F_EventScript_FellDownWaterfallRightTrigger"
+    }
+  ],
   "bg_events": [
     {
       "type": "hidden_item",
