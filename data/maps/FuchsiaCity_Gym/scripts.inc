@@ -20,14 +20,10 @@ Archipelago_Target_Badge_5::
 	end
 
 FuchsiaCity_Gym_EventScript_GiveTM06::
+	msgbox FuchsiaCity_Gym_Text_KogaExplainSoulBadge
 Archipelago_Target_NPC_Gift_FLAG_GOT_TM06_FROM_KOGA::
 	giveitem ITEM_TM06, 1, FLAG_GOT_TM06_FROM_KOGA
 	msgbox FuchsiaCity_Gym_Text_KogaExplainTM06
-	release
-	end
-
-FuchsiaCity_Gym_EventScript_NoRoomForTM06::
-	msgbox FuchsiaCity_Gym_Text_MakeSpaceForThis
 	release
 	end
 

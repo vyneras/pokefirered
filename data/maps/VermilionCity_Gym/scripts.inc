@@ -227,14 +227,10 @@ VermilionCity_Gym_EventScript_ShowOaksAide::
 	return
 
 VermilionCity_Gym_EventScript_GiveTM34::
+	msgbox VermilionCity_Gym_Text_ExplainThunderBadgeTakeThis
 Archipelago_Target_NPC_Gift_FLAG_GOT_TM34_FROM_SURGE::
 	giveitem ITEM_TM34, 1, FLAG_GOT_TM34_FROM_SURGE
 	msgbox VermilionCity_Gym_Text_ExplainTM34
-	release
-	end
-
-VermilionCity_Gym_EventScript_NoRoomForTM34::
-	msgbox VermilionCity_Gym_Text_MakeRoomInYourBag
 	release
 	end
 

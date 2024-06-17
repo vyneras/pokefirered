@@ -21,14 +21,10 @@ Archipelago_Target_Badge_6::
 	end
 
 SaffronCity_Gym_EventScript_GiveTM04::
+	msgbox SaffronCity_Gym_Text_ExplainMarshBadgeTakeThis
 Archipelago_Target_NPC_Gift_FLAG_GOT_TM04_FROM_SABRINA::
 	giveitem ITEM_TM04, 1, FLAG_GOT_TM04_FROM_SABRINA
 	msgbox SaffronCity_Gym_Text_SabrinaPostBattle
-	release
-	end
-
-SaffronCity_Gym_EventScript_NoRoomForTM04::
-	msgbox SaffronCity_Gym_Text_BagFullOfOtherItems
 	release
 	end
 

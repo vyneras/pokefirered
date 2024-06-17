@@ -21,14 +21,10 @@ Archipelago_Target_Badge_4::
 	end
 
 CeladonCity_Gym_EventScript_GiveTM19::
+	msgbox CeladonCity_Gym_Text_ExplainRainbowBadgeTakeThis
 Archipelago_Target_NPC_Gift_FLAG_GOT_TM19_FROM_ERIKA::
 	giveitem ITEM_TM19, 1, FLAG_GOT_TM19_FROM_ERIKA
 	msgbox CeladonCity_Gym_Text_ExplainTM19
-	release
-	end
-
-CeladonCity_Gym_EventScript_NoRoomForTM19::
-	msgbox CeladonCity_Gym_Text_ShouldMakeRoomForThis
 	release
 	end
 

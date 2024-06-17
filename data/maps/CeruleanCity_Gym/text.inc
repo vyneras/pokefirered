@@ -22,13 +22,6 @@ CeruleanCity_Gym_Text_ExplainCascadeBadge::
     .string "open new pathways.\p"
     .string "You can also have my favorite TM.$"
 
-CeruleanCity_Gym_Text_ReceivedTM03FromMisty::
-    .string "{PLAYER} received TM03\n"
-    .string "from MISTY.$"
-
-CeruleanCity_Gym_Text_BetterMakeRoomForThis::
-    .string "You better make room for this!$"
-
 CeruleanCity_Gym_Text_MistyDefeat::
     .string "Wow!\n"
     .string "You're too much!\p"

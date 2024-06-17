@@ -27,14 +27,10 @@ Archipelago_Target_Badge_8::
 	end
 
 ViridianCity_Gym_EventScript_GiveTM26::
+	msgbox ViridianCity_Gym_Text_ExplainEarthBadgeTakeThis
 Archipelago_Target_NPC_Gift_FLAG_GOT_TM26_FROM_GIOVANNI::
 	giveitem ITEM_TM26, 1, FLAG_GOT_TM26_FROM_GIOVANNI
 	msgbox ViridianCity_Gym_Text_ExplainTM26
-	release
-	end
-
-ViridianCity_Gym_EventScript_NoRoomForTM26::
-	msgbox ViridianCity_Gym_Text_YouDoNotHaveSpace
 	release
 	end
 

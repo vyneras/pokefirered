@@ -34,19 +34,12 @@ CeladonCity_Gym_Text_ExplainRainbowBadgeTakeThis::
     .string "STRENGTH in and out of battle.\p"
     .string "Please also take this with you.$"
 
-CeladonCity_Gym_Text_ReceivedTM19FromErika::
-    .string "{PLAYER} received TM19\n"
-    .string "from ERIKA.$"
-
 CeladonCity_Gym_Text_ExplainTM19::
     .string "TM19 contains GIGA DRAIN.\p"
     .string "Half the damage it inflicts is\n"
     .string "drained to heal your POKéMON.\p"
     .string "Wouldn't you agree that it's a\n"
     .string "wonderful move?$"
-
-CeladonCity_Gym_Text_ShouldMakeRoomForThis::
-    .string "You should make room for this.$"
 
 CeladonCity_Gym_Text_KayIntro::
     .string "I should tell you about this GYM.\p"

@@ -73,14 +73,10 @@ Archipelago_Target_Badge_7::
 	end
 
 CinnabarIsland_Gym_EventScript_GiveTM38::
+	msgbox CinnabarIsland_Gym_Text_ExplainVolcanoBadge
 Archipelago_Target_NPC_Gift_FLAG_GOT_TM38_FROM_BLAINE::
 	giveitem ITEM_TM38, 1, FLAG_GOT_TM38_FROM_BLAINE
 	msgbox CinnabarIsland_Gym_Text_FireBlastIsUltimateFireMove
-	release
-	end
-
-CinnabarIsland_Gym_EventScript_NoRoomForTM38::
-	msgbox CinnabarIsland_Gym_Text_MakeSpaceForThis
 	release
 	end
 

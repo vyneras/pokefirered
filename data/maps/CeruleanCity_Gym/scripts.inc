@@ -20,14 +20,10 @@ Archipelago_Target_Badge_2::
 	end
 
 CeruleanCity_Gym_EventScript_GiveTM03::
+	msgbox CeruleanCity_Gym_Text_ExplainCascadeBadge
 Archipelago_Target_NPC_Gift_FLAG_GOT_TM03_FROM_MISTY::
 	giveitem ITEM_TM03, 1, FLAG_GOT_TM03_FROM_MISTY
 	msgbox CeruleanCity_Gym_Text_ExplainTM03
-	release
-	end
-
-CeruleanCity_Gym_EventScript_NoRoomForTM03::
-	msgbox CeruleanCity_Gym_Text_BetterMakeRoomForThis
 	release
 	end
 

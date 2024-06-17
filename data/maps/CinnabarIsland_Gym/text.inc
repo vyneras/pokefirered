@@ -24,18 +24,11 @@ CinnabarIsland_Gym_Text_ExplainVolcanoBadge::
     .string "SPECIAL stats of your POKéMON.\p"
     .string "Here, you can have this, too!$"
 
-CinnabarIsland_Gym_Text_ReceivedTM38FromBlaine::
-    .string "{PLAYER} received TM38\n"
-    .string "from BLAINE.$"
-
 CinnabarIsland_Gym_Text_BlainePostBattle::
     .string "TM38 contains FIRE BLAST.\n"
     .string "Teach it to FIRE-type POKéMON.\p"
     .string "VULPIX or CHARMELEON would be\n"
     .string "ideal for that move.$"
-
-CinnabarIsland_Gym_Text_MakeSpaceForThis::
-    .string "Make space for this, child!$"
 
 CinnabarIsland_Gym_Text_ErikIntro::
     .string "Do you know how hot POKéMON fire\n"

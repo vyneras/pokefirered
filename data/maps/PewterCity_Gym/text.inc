@@ -36,10 +36,6 @@ PewterCity_Gym_Text_TakeThisWithYou::
     .string "Wait!\n"
     .string "Take this with you.$"
 
-PewterCity_Gym_Text_ReceivedTM39FromBrock::
-    .string "{PLAYER} received TM39\n"
-    .string "from BROCK.$"
-
 PewterCity_Gym_Text_ExplainTM39::
     .string "A TM, Technical Machine, contains a\n"
     .string "technique for POKéMON.\p"
@@ -61,9 +57,6 @@ PewterCity_Gym_Text_BrockPostBattle::
     .string "So let me make a suggestion.\p"
     .string "Go to the GYM in CERULEAN and test\n"
     .string "your abilities.$"
-
-PewterCity_Gym_Text_DontHaveRoomForThis::
-    .string "You don't have room for this.$"
 
 PewterCity_Gym_Text_LiamIntro::
     .string "Stop right there, kid!\p"

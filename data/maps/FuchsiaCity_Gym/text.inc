@@ -32,18 +32,11 @@ FuchsiaCity_Gym_Text_KogaExplainSoulBadge::
     .string "Ah!\n"
     .string "Take this, too!$"
 
-FuchsiaCity_Gym_Text_ReceivedTM06FromKoga::
-    .string "{PLAYER} received TM06\n"
-    .string "from KOGA.$"
-
 FuchsiaCity_Gym_Text_KogaExplainTM06::
     .string "Sealed within that TM06 lies\n"
     .string "TOXIC!\p"
     .string "It is a secret technique dating\n"
     .string "back some four hundred years.$"
-
-FuchsiaCity_Gym_Text_MakeSpaceForThis::
-    .string "Make space for this, child!$"
 
 FuchsiaCity_Gym_Text_KaydenIntro::
     .string "Strength isn't the key for POKéMON.\n"

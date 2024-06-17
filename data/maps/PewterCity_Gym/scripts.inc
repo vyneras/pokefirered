@@ -22,14 +22,10 @@ Archipelago_Target_Badge_1::
 	end
 
 PewterCity_Gym_EventScript_GiveTM39::
+	msgbox PewterCity_Gym_Text_TakeThisWithYou
 Archipelago_Target_NPC_Gift_FLAG_GOT_TM39_FROM_BROCK::
 	giveitem ITEM_TM39, 1, FLAG_GOT_TM39_FROM_BROCK
 	msgbox PewterCity_Gym_Text_ExplainTM39
-	release
-	end
-
-PewterCity_Gym_EventScript_NoRoomForTM39::
-	msgbox PewterCity_Gym_Text_DontHaveRoomForThis
 	release
 	end
 

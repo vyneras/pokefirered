@@ -30,17 +30,10 @@ SaffronCity_Gym_Text_ExplainMarshBadgeTakeThis::
     .string "much to avoid that problem.\p"
     .string "Wait, please take this TM with you.$"
 
-SaffronCity_Gym_Text_ReceivedTM04FromSabrina::
-    .string "{PLAYER} received TM04 from\n"
-    .string "SABRINA.$"
-
 SaffronCity_Gym_Text_ExplainTM04::
     .string "TM04 is CALM MIND.\p"
     .string "It makes the POKéMON concentrate\n"
     .string "to raise both SP. ATK and SP. DEF.$"
-
-SaffronCity_Gym_Text_BagFullOfOtherItems::
-    .string "Your BAG is full of other items.$"
 
 SaffronCity_Gym_Text_AmandaIntro::
     .string "SABRINA is far younger than I,\n"
