@@ -507,7 +507,8 @@ SilphCo_11F_EventScript_Door::
 	end
 
 EventScript_TryUnlockDoor::
-	goto_if_set FLAG_ITEM_SILPH_CO_5F_CARD_KEY, EventScript_OpenDoor
+	checkitem ITEM_CARD_KEY
+	goto_if_eq VAR_RESULT, TRUE, EventScript_OpenDoor
 	goto EventScript_NeedCardKey
 	end
 

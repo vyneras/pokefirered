@@ -1,5 +1,16 @@
 Route5_SouthEntrance_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route5_SouthEntrance_OnTransition
 	.byte 0
+
+Route5_SouthEntrance_OnTransition::
+	getplayerxy VAR_0x8004, VAR_0x8005
+	goto_if_gt VAR_0x8005, 5, Route5_SouthEntrance_EnteredFromBottom
+	setvar VAR_TEMP_2, 0
+	end
+
+Route5_SouthEntrance_EnteredFromBottom::
+	setvar VAR_TEMP_2, 1
+	end
 
 Route5_SouthEntrance_EventScript_Guard::
 	msgbox Route5_SouthEntrance_Text_HiHowsItGoing, MSGBOX_NPC
@@ -27,10 +38,12 @@ Route5_SouthEntrance_EventScript_GuardTrigger::
 	textcolor NPC_TEXT_COLOR_MALE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
-	goto_if_set FLAG_GOT_TEA, Route5_SouthEntrance_EventScript_GiveTea
+	checkitem ITEM_TEA
+	goto_if_eq VAR_RESULT, TRUE, Route5_SouthEntrance_EventScript_GiveTea
 	msgbox Route5_SouthEntrance_Text_ThirstyOnGuardDuty
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Route5_SouthEntrance_Movement_BlockPlayerEntry
+	goto_if_eq VAR_TEMP_2, 1, Route5_SouthEntrance_EventScript_MovePlayerDown
+	applymovement OBJ_EVENT_ID_PLAYER, Route5_SouthEntrance_Movement_BlockPlayerEntryTop
 	waitmovement 0
 	releaseall
 	end
@@ -48,6 +61,12 @@ Route5_SouthEntrance_EventScript_GuardDrinkTea::
 	call_if_eq VAR_TEMP_1, 2, Route5_SouthEntrance_EventScript_WalkToGuardRight
 	msgbox Route5_SouthEntrance_Text_ThanksIllShareTeaWithGuards
 	setvar VAR_MAP_SCENE_ROUTE5_ROUTE6_ROUTE7_ROUTE8_GATES, 1
+	releaseall
+	end
+
+Route5_SouthEntrance_EventScript_MovePlayerDown::
+	applymovement OBJ_EVENT_ID_PLAYER, Route5_SouthEntrance_Movement_BlockPlayerEntryBottom
+	waitmovement 0
 	releaseall
 	end
 
@@ -79,6 +98,10 @@ Route5_SouthEntrance_Movement_WalkToGuardLeft::
 	walk_in_place_left
 	step_end
 
-Route5_SouthEntrance_Movement_BlockPlayerEntry::
+Route5_SouthEntrance_Movement_BlockPlayerEntryTop::
 	walk_up
+	step_end
+
+Route5_SouthEntrance_Movement_BlockPlayerEntryBottom::
+	walk_down
 	step_end

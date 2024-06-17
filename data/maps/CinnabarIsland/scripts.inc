@@ -41,7 +41,8 @@ CinnabarIsland_EventScript_ReadyObjectsReturnFromSeviiIslands::
 	return
 
 CinnabarIsland_EventScript_CheckUnlockGym::
-	goto_if_set FLAG_ITEM_POKEMON_MANSION_B1F_SECRET_KEY, CinnabarIsland_EventScript_UnlockGym
+	checkitem ITEM_SECRET_KEY
+	goto_if_eq VAR_RESULT, TRUE, CinnabarIsland_EventScript_UnlockGym
 	return
 
 CinnabarIsland_EventScript_UnlockGym::

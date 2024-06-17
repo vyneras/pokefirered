@@ -382,9 +382,9 @@ static const struct MenuAction sMultichoiceList_TradeColosseumCrush[] = {
     { gOtherText_Exit }
 };
 
-static const struct MenuAction sMultichoiceList_48[] = {
-    { gText_EmptyLinkService1 },
-    { gText_EmptyLinkService2 },
+static const struct MenuAction sMultichoiceList_HelixDome[] = {
+    { gText_HelixFossil },
+    { gText_DomeFossil },
     { gOtherText_Exit }
 };
 
@@ -472,9 +472,10 @@ static const struct MenuAction sMultichoiceList_SeagallopVermilion[] = {
     { gOtherText_Exit }
 };
 
-static const struct MenuAction sMultichoiceList_62[] = {
-    { gText_Multichoice_Empty1 },
-    { gText_Multichoice_Empty2 },
+static const struct MenuAction sMultichoiceList_HelixDomeAmber[] = {
+    { gText_HelixFossil },
+    { gText_DomeFossil },
+    { gText_OldAmber },
     { gOtherText_Exit }
 };
 
@@ -545,7 +546,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] = {
     [MULTICHOICE_ISLAND_13]                                  = MULTICHOICE(sMultichoiceList_Island13),
     [MULTICHOICE_ISLAND_12]                                  = MULTICHOICE(sMultichoiceList_Island12),
     [MULTICHOICE_TRADE_COLOSSEUM_CRUSH]                      = MULTICHOICE(sMultichoiceList_TradeColosseumCrush),
-    [MULTICHOICE_48]                                         = MULTICHOICE(sMultichoiceList_48),
+    [MULTICHOICE_HELIX_DOME]                                 = MULTICHOICE(sMultichoiceList_HelixDome),
     [MULTICHOICE_POKEJUMP_DODRIO]                            = MULTICHOICE(sMultichoiceList_PokejumpDodrio),
     [MULTICHOICE_TRADE_COLOSSEUM_2]                          = MULTICHOICE(sMultichoiceList_TradeColosseum_2),
     [MULTICHOICE_MUSHROOMS]                                  = MULTICHOICE(sMultichoiceList_Mushrooms),
@@ -559,7 +560,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] = {
     [MULTICHOICE_SEAGALLOP_V13]                              = MULTICHOICE(sMultichoiceList_SeagallopV13),
     [MULTICHOICE_SEAGALLOP_V12]                              = MULTICHOICE(sMultichoiceList_SeagallopV12),
     [MULTICHOICE_SEAGALLOP_VERMILION]                        = MULTICHOICE(sMultichoiceList_SeagallopVermilion),
-    [MULTICHOICE_62]                                         = MULTICHOICE(sMultichoiceList_62),
+    [MULTICHOICE_HELIX_DOME_AMBER]                           = MULTICHOICE(sMultichoiceList_HelixDomeAmber),
     [MULTICHOICE_JOIN_OR_LEAD]                               = MULTICHOICE(sMultichoiceList_JoinOrLead),
     [MULTICHOICE_TRAINER_TOWER_MODE]                         = MULTICHOICE(sMultichoiceList_TrainerTowerMode),
 };
@@ -1260,7 +1261,7 @@ void DrawSeagallopDestinationMenu(void)
     fontHeight = GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT);
     windowId = CreateWindowFromRect(17, top, 11, numItems * 2);
     SetStdWindowBorderStyle(windowId, FALSE);
-    
+
     // -2 excludes "Other" and "Exit", appended after the loop
     for (i = 0; i < numItems - 2; i++)
     {

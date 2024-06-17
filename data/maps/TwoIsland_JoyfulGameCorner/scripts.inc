@@ -151,7 +151,8 @@ TwoIsland_JoyfulGameCorner_EventScript_LostellesDaddy::
 	end
 
 TwoIsland_JoyfulGameCorner_EventScript_GiveDaddyMeteorite::
-	goto_if_set FLAG_NO_ROOM_FOR_JOYFUL_GAME_CORNER_MOON_STONE, TwoIsland_JoyfulGameCorner_EventScript_ReceiveMoonStone
+	checkitem ITEM_METEORITE
+	goto_if_eq VAR_RESULT, FALSE, TwoIsland_JoyfulGameCorner_EventScript_DontHaveMeteorite
 	msgbox TwoIsland_JoyfulGameCorner_Text_ThisIsForMe
 	setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 2
 	textcolor NPC_TEXT_COLOR_NEUTRAL
@@ -163,6 +164,11 @@ TwoIsland_JoyfulGameCorner_EventScript_GiveDaddyMeteorite::
 	removeitem ITEM_METEORITE
 	msgbox TwoIsland_JoyfulGameCorner_Text_OhThisIsFromBill
 	goto TwoIsland_JoyfulGameCorner_EventScript_ReceiveMoonStone
+	end
+
+TwoIsland_JoyfulGameCorner_EventScript_DontHaveMeteorite::
+	msgbox TwoIsland_JoyfulGameCorner_Text_DontHaveNeededMeteorite
+	release
 	end
 
 TwoIsland_JoyfulGameCorner_EventScript_ReceiveMoonStone::

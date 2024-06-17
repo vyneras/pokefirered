@@ -74,6 +74,11 @@ TwoIsland_JoyfulGameCorner_Text_LostelleItsOkayDaddy::
     .string "LOSTELLE: It's okay, Daddy.\n"
     .string "I got to be friends with {PLAYER}!$"
 
+TwoIsland_JoyfulGameCorner_Text_DontHaveNeededMeteorite::
+    .string "I love rare rocks and gems.\p"
+    .string "If you happen to find any I'll\n"
+    .string "give you something good in return.$"
+
 TwoIsland_JoyfulGameCorner_Text_ThisIsForMe::
     .string "Oh, what's that?\n"
     .string "You're saying that this is for me?\p"

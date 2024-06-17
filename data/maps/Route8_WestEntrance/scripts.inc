@@ -1,5 +1,16 @@
 Route8_WestEntrance_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route8_WestEntrance_OnTransition
 	.byte 0
+
+Route8_WestEntrance_OnTransition::
+	getplayerxy VAR_0x8004, VAR_0x8005
+	goto_if_lt VAR_0x8004, 6, Route8_WestEntrance_EnteredFromLeft
+	setvar VAR_TEMP_2, 0
+	end
+
+Route8_WestEntrance_EnteredFromLeft::
+	setvar VAR_TEMP_2, 1
+	end
 
 Route8_WestEntrance_EventScript_Guard::
 	msgbox Route8_WestEntrance_Text_HiHowsItGoing, MSGBOX_NPC
@@ -27,10 +38,12 @@ Route8_WestEntrance_EventScript_GuardTrigger::
 	textcolor NPC_TEXT_COLOR_MALE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	goto_if_set FLAG_GOT_TEA, Route8_WestEntrance_EventScript_GiveTea
+	checkitem ITEM_TEA
+	goto_if_eq VAR_RESULT, TRUE, Route8_WestEntrance_EventScript_GiveTea
 	msgbox Route8_WestEntrance_Text_ThirstyOnGuardDuty
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Route8_WestEntrance_Movement_BlockPlayerEntry
+	goto_if_eq VAR_TEMP_2, 1, Route8_WestEntrance_EventScript_MovePlayerLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Route8_WestEntrance_Movement_BlockPlayerEntryRight
 	waitmovement 0
 	releaseall
 	end
@@ -63,6 +76,12 @@ Route8_WestEntrance_EventScript_GuardDrinkTea::
 	releaseall
 	end
 
+Route8_WestEntrance_EventScript_MovePlayerLeft::
+	applymovement OBJ_EVENT_ID_PLAYER, Route8_WestEntrance_Movement_BlockPlayerEntryLeft
+	waitmovement 0
+	releaseall
+	end
+
 Route8_WestEntrance_EventScript_WalkToGuardTop::
 	applymovement OBJ_EVENT_ID_PLAYER, Route8_WestEntrance_Movement_WalkToGuardTop
 	waitmovement 0
@@ -91,6 +110,10 @@ Route8_WestEntrance_Movement_WalkToGuardTop::
 	walk_in_place_up
 	step_end
 
-Route8_WestEntrance_Movement_BlockPlayerEntry::
+Route8_WestEntrance_Movement_BlockPlayerEntryRight::
 	walk_right
+	step_end
+
+Route8_WestEntrance_Movement_BlockPlayerEntryLeft::
+	walk_left
 	step_end

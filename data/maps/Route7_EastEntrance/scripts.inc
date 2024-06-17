@@ -1,5 +1,16 @@
 Route7_EastEntrance_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route7_EastEntrance_OnTransition
 	.byte 0
+
+Route7_EastEntrance_OnTransition::
+	getplayerxy VAR_0x8004, VAR_0x8005
+	goto_if_gt VAR_0x8004, 6, Route7_EastEntrance_EnteredFromRight
+	setvar VAR_TEMP_2, 0
+	end
+
+Route7_EastEntrance_EnteredFromRight::
+	setvar VAR_TEMP_2, 1
+	end
 
 Route7_EastEntrance_EventScript_Guard::
 	msgbox Route7_EastEntrance_Text_HiHowsItGoing, MSGBOX_NPC
@@ -27,10 +38,12 @@ Route7_EastEntrance_EventScript_GuardTrigger::
 	textcolor NPC_TEXT_COLOR_MALE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	goto_if_set FLAG_GOT_TEA, Route7_EastEntrance_EventScript_GiveTea
+	checkitem ITEM_TEA
+	goto_if_eq VAR_RESULT, TRUE, Route7_EastEntrance_EventScript_GiveTea
 	msgbox Route7_EastEntrance_Text_ThirstyOnGuardDuty
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Route7_EastEntrance_Movement_BlockPlayerEntry
+	goto_if_eq VAR_TEMP_2, 1, Route7_EastEntrance_EventScript_MovePlayerRight
+	applymovement OBJ_EVENT_ID_PLAYER, Route7_EastEntrance_Movement_BlockPlayerEntryLeft
 	waitmovement 0
 	releaseall
 	end
@@ -48,6 +61,12 @@ Route7_EastEntrance_EventScript_GuardDrinkTea::
 	call_if_eq VAR_TEMP_1, 2, Route7_EastEntrance_WalkToGuardBottom
 	msgbox Route7_EastEntrance_Text_ThanksIllShareTeaWithGuards
 	setvar VAR_MAP_SCENE_ROUTE5_ROUTE6_ROUTE7_ROUTE8_GATES, 1
+	releaseall
+	end
+
+Route7_EastEntrance_EventScript_MovePlayerRight::
+	applymovement OBJ_EVENT_ID_PLAYER, Route7_EastEntrance_Movement_BlockPlayerEntryRight
+	waitmovement 0
 	releaseall
 	end
 
@@ -79,6 +98,10 @@ Route7_EastEntrance_Movement_WalkToGuardTop::
 	walk_in_place_up
 	step_end
 
-Route7_EastEntrance_Movement_BlockPlayerEntry::
+Route7_EastEntrance_Movement_BlockPlayerEntryLeft::
 	walk_left
+	step_end
+
+Route7_EastEntrance_Movement_BlockPlayerEntryRight::
+	walk_right
 	step_end

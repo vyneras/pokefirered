@@ -52,7 +52,7 @@
 #define MULTICHOICE_ISLAND_13                                  45
 #define MULTICHOICE_ISLAND_12                                  46
 #define MULTICHOICE_TRADE_COLOSSEUM_CRUSH                      47
-#define MULTICHOICE_48                                         48
+#define MULTICHOICE_HELIX_DOME                                 48
 #define MULTICHOICE_POKEJUMP_DODRIO                            49
 #define MULTICHOICE_TRADE_COLOSSEUM_2                          50
 #define MULTICHOICE_MUSHROOMS                                  51
@@ -66,7 +66,7 @@
 #define MULTICHOICE_SEAGALLOP_V13                              59
 #define MULTICHOICE_SEAGALLOP_V12                              60
 #define MULTICHOICE_SEAGALLOP_VERMILION                        61
-#define MULTICHOICE_62                                         62
+#define MULTICHOICE_HELIX_DOME_AMBER                           62
 #define MULTICHOICE_JOIN_OR_LEAD                               63
 #define MULTICHOICE_TRAINER_TOWER_MODE                         64
 
