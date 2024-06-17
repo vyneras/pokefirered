@@ -196,7 +196,7 @@ patch: $(ROM)
 	bsdiff4 poke$(BUILD_NAME).gba $(ROM) base_patch_$(BUILD_NAME).bsdiff4
 
 extract: tools rom syms parse-constants
-	$(EXTRACTOR)
+	$(EXTRACTOR) poke$(BUILD_NAME)_ap.sym poke$(BUILD_NAME)_ap.gba extracted_data_$(BUILD_NAME).json
 
 $(TOOLDIRS):
 	@$(MAKE) -C $@
@@ -221,7 +221,7 @@ clean-tools:
 clean: mostlyclean clean-tools
 
 tidy:
-	$(RM) $(ALL_BUILDS:%=poke%{.gba,.elf,.map})
+	$(RM) $(ALL_BUILDS:%=poke%_ap{.gba,.elf,.map})
 	$(RM) -r build
 
 include graphics_file_rules.mk
@@ -367,6 +367,14 @@ firered_modern:        ; @$(MAKE) GAME_VERSION=FIRERED MODERN=1
 firered_rev1_modern:   ; @$(MAKE) GAME_VERSION=FIRERED GAME_REVISION=1 MODERN=1
 leafgreen_modern:      ; @$(MAKE) GAME_VERSION=LEAFGREEN MODERN=1
 leafgreen_rev1_modern: ; @$(MAKE) GAME_VERSION=LEAFGREEN GAME_REVISION=1 MODERN=1
+
+extract_firered:       ; @$(MAKE) extract GAME_VERSION=FIRERED
+extract_leafgreen:     ; @$(MAKE) extract GAME_VERSION=LEAFGREEN
+extract_firered_rev1:  ; @$(MAKE) extract GAME_VERSION=FIRERED GAME_REVISION=1
+extract_leafgreen_rev1:; @$(MAKE) extract GAME_VERSION=LEAFGREEN GAME_REVISION=1
+
+patch_firered:         ; @$(MAKE) patch GAME_VERSION=FIRERED
+patch_leafgreen:       ; @$(MAKE) patch GAME_VERSION=LEAFGREEN
 
 modern: ; @$(MAKE) MODERN=1
 

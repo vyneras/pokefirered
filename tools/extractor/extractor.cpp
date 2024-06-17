@@ -16,21 +16,17 @@ using json = nlohmann::json;
 
 int main (int argc, char *argv[])
 {
-    std::filesystem::path root_dir;
+    std::filesystem::path root_dir = std::filesystem::path(".");
 
-    if (argc == 1)
+    if (argc != 4)
     {
-        root_dir = std::filesystem::path(".");
-    }
-    else if (argc == 2)
-    {
-        root_dir = std::filesystem::path(argv[1]);
-    }
-    else
-    {
-        fprintf(stderr, "Too many arguments\nUSAGE: extractor [root directory]\n");
+        fprintf(stderr, "Not eneough arguments\nUSAGE: extractor [sym fie] [rom file] [output file]\n");
         exit(1);
     }
+
+    std::string sym_file = argv[1];
+    std::string rom_file = argv[2];
+    std::string out_file = argv[3];
 
     // ------------------------------------------------------------------------
     // Getting constants
@@ -48,10 +44,10 @@ int main (int argc, char *argv[])
     // Reading symbols
     // ------------------------------------------------------------------------
     std::cout << "Reading symbols..." << std::endl;
-    std::ifstream symbol_map_file(root_dir / "pokeleafgreen_ap.sym");
+    std::ifstream symbol_map_file(root_dir / sym_file);
     if (symbol_map_file.fail())
     {
-        fprintf(stderr, "Could not find pokeleafgreen_ap.sym\n");
+        fprintf(stderr, "Could not find sym file\n");
         exit(1);
     }
     std::regex symbol_map_regex("^([0-9a-fA-F]+) [lg] [0-9a-fA-F]+ ([a-zA-Z0-9_]+)$");
@@ -105,7 +101,7 @@ int main (int argc, char *argv[])
     // Reading ROM
     // ------------------------------------------------------------------------
     std::cout << "Reading ROM..." << std::endl;
-    std::ifstream rom(root_dir / "pokeleafgreen_ap.gba", std::ios::binary);
+    std::ifstream rom(root_dir / rom_file, std::ios::binary);
     if (rom.fail())
     {
         fprintf(stderr, "Could not open rom file\n");
@@ -1075,7 +1071,7 @@ int main (int argc, char *argv[])
                 grouped_warps.push_back(warp);
             }
 
-            for (const auto warp: grouped_warps)
+            for (const auto &warp: grouped_warps)
             {
                 warps.push_back(warp);
             }
@@ -1602,7 +1598,7 @@ int main (int argc, char *argv[])
     // };
 
     std::cout << "Writing file..." << std::endl;
-    std::ofstream outfile(root_dir / "extracted_data.json");
+    std::ofstream outfile(root_dir / out_file);
     outfile << output_json.dump() << std::endl;
 }
 
