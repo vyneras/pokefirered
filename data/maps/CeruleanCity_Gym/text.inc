@@ -29,6 +29,9 @@ CeruleanCity_Gym_Text_MistyDefeat::
     .string "You can have the CASCADEBADGE to\n"
     .string "show you beat me.$"
 
+CeruleanCity_Gym_Text_ReceivedCascadeBadge::
+    .string "{PLAYER} received the CASCADE BADGE.$"
+
 CeruleanCity_Gym_Text_DianaIntro::
     .string "What? You?\n"
     .string "I'm more than good enough for you!\p"

@@ -41,10 +41,12 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange::
 
 CeladonCity_GameCorner_PrizeRoom_EventScript_Abra::
 	.ifdef FIRERED
+Archipelago_Target_Prize_Pokemon_1::
 	setvar VAR_TEMP_1, SPECIES_ABRA
 	setvar VAR_TEMP_2, 180
 	.else
 	.ifdef LEAFGREEN
+Archipelago_Target_Prize_Pokemon_1::
 	setvar VAR_TEMP_1, SPECIES_ABRA
 	setvar VAR_TEMP_2, 120
 	.endif
@@ -54,10 +56,12 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_Abra::
 
 CeladonCity_GameCorner_PrizeRoom_EventScript_Clefairy::
 	.ifdef FIRERED
+Archipelago_Target_Prize_Pokemon_2::
 	setvar VAR_TEMP_1, SPECIES_CLEFAIRY
 	setvar VAR_TEMP_2, 500
 	.else
 	.ifdef LEAFGREEN
+Archipelago_Target_Prize_Pokemon_2::
 	setvar VAR_TEMP_1, SPECIES_CLEFAIRY
 	setvar VAR_TEMP_2, 750
 	.endif
@@ -67,10 +71,12 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_Clefairy::
 
 CeladonCity_GameCorner_PrizeRoom_EventScript_DratiniPinsir::
 	.ifdef FIRERED
+Archipelago_Target_Prize_Pokemon_3::
 	setvar VAR_TEMP_1, SPECIES_DRATINI
 	setvar VAR_TEMP_2, 2800
 	.else
 	.ifdef LEAFGREEN
+Archipelago_Target_Prize_Pokemon_3::
 	setvar VAR_TEMP_1, SPECIES_PINSIR
 	setvar VAR_TEMP_2, 2500
 	.endif
@@ -80,10 +86,12 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_DratiniPinsir::
 
 CeladonCity_GameCorner_PrizeRoom_EventScript_ScytherDratini::
 	.ifdef FIRERED
+Archipelago_Target_Prize_Pokemon_4::
 	setvar VAR_TEMP_1, SPECIES_SCYTHER
 	setvar VAR_TEMP_2, 5500
 	.else
 	.ifdef LEAFGREEN
+Archipelago_Target_Prize_Pokemon_4::
 	setvar VAR_TEMP_1, SPECIES_DRATINI
 	setvar VAR_TEMP_2, 4600
 	.endif
@@ -93,10 +101,12 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_ScytherDratini::
 
 CeladonCity_GameCorner_PrizeRoom_EventScript_Porygon::
 	.ifdef FIRERED
+Archipelago_Target_Prize_Pokemon_5::
 	setvar VAR_TEMP_1, SPECIES_PORYGON
 	setvar VAR_TEMP_2, 9999
 	.else
 	.ifdef LEAFGREEN
+Archipelago_Target_Prize_Pokemon_5::
 	setvar VAR_TEMP_1, SPECIES_PORYGON
 	setvar VAR_TEMP_2, 6500
 	.endif

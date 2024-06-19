@@ -31,12 +31,8 @@ ViridianCity_EventScript_SetOldManBlockingRoad::
 	return
 
 ViridianCity_EventScript_TryUnlockGym::
-	goto_if_unset FLAG_BADGE02_GET, EventScript_Return
-	goto_if_unset FLAG_BADGE03_GET, EventScript_Return
-	goto_if_unset FLAG_BADGE04_GET, EventScript_Return
-	goto_if_unset FLAG_BADGE05_GET, EventScript_Return
-	goto_if_unset FLAG_BADGE06_GET, EventScript_Return
-	goto_if_unset FLAG_BADGE07_GET, EventScript_Return
+  specialvar VAR_RESULT, ArchipelagoSpecial_CanChallengeGiovanni
+  goto_if_eq VAR_RESULT, FALSE, EventScript_Return
 	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 1
 	return
 
@@ -129,22 +125,6 @@ ViridianCity_EventScript_TutorialStart::
 	release
 	end
 
-@ Unused
-ViridianCity_EventScript_WatchToLearnBasics::
-	msgbox ViridianCity_Text_WatchThatToLearnBasics
-	release
-	end
-
-@ Unused. Starts battle after the post battle text, which is odd.
-ViridianCity_EventScript_TutorialUnused::
-	msgbox ViridianCity_Text_ThatWasEducationalTakeThis
-	goto_if_questlog EventScript_ReleaseEnd
-	special QuestLog_CutRecording
-	special StartOldManTutorialBattle
-	waitstate
-	release
-	end
-
 ViridianCity_EventScript_TutorialNotReady::
 	msgbox ViridianCity_Text_ThisIsPrivateProperty
 	closemessage
@@ -226,15 +206,10 @@ ViridianCity_EventScript_TutorialTriggerRight::
 	end
 
 ViridianCity_EventScript_DoTutorialBattle::
-	msgbox ViridianCity_Text_ShowYouHowToCatchMons
+	msgbox ViridianCity_Text_TakeThis
 	closemessage
 	goto_if_questlog EventScript_ReleaseEnd
 	special QuestLog_CutRecording
-	special StartOldManTutorialBattle
-	waitstate
-	lock
-	faceplayer
-	msgbox ViridianCity_Text_ThatWasEducationalTakeThis
 	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2
 Archipelago_Target_NPC_Gift_FLAG_GOT_TEACHY_TV::
 	giveitem ITEM_TEACHY_TV, 1, FLAG_GOT_TEACHY_TV

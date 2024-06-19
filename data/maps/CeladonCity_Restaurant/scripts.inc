@@ -13,13 +13,9 @@ CeladonCity_Restaurant_EventScript_CoinCaseMan::
 	lock
 	faceplayer
 	goto_if_set FLAG_GOT_COIN_CASE, CeladonCity_Restaurant_EventScript_AlreadyGotCoinCase
+	msgbox CeladonCity_Restaurant_Text_TakeThisImBusted
 Archipelago_Target_NPC_Gift_FLAG_GOT_COIN_CASE::
 	giveitem ITEM_COIN_CASE, 1, FLAG_GOT_COIN_CASE
-	release
-	end
-
-CeladonCity_Restaurant_EventScript_NoRoomForCoinCase::
-	msgbox CeladonCity_Restaurant_Text_MakeRoomForThis
 	release
 	end
 

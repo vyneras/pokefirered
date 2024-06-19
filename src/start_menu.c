@@ -664,7 +664,7 @@ static void CloseSaveStatsWindow_(void)
 
 static void SetSaveDialogDelayTo60Frames(void)
 {
-    sSaveDialogDelay = 60;
+    sSaveDialogDelay = 20;
 }
 
 static bool8 SaveDialog_Wait60FramesOrAButtonHeld(void)

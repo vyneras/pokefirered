@@ -1,3 +1,5 @@
+.set LOCAL_ID_GUARD, 1
+
 Route22_NorthEntrance_MapScripts::
 	.byte 0
 

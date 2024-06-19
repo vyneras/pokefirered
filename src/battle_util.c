@@ -412,7 +412,7 @@ bool8 AreAllMovesUnusable(void)
         gSelectionBattleScripts[gActiveBattler] = BattleScript_NoMovesLeft;
         if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
             gBattleBufferB[gActiveBattler][3] = GetBattlerAtPosition((BATTLE_OPPOSITE(GetBattlerPosition(gActiveBattler))) | (Random() & 2));
-        else 
+        else
             gBattleBufferB[gActiveBattler][3] = GetBattlerAtPosition(BATTLE_OPPOSITE(GetBattlerPosition(gActiveBattler)));
     }
     else
@@ -497,7 +497,7 @@ u8 DoFieldEndTurnEffects(void)
             }
             {
                 u8 *var = &gBattleStruct->turnCountersTracker;
-                
+
                 ++*var;
                 gBattleStruct->turnSideTracker = 0;
             }
@@ -3249,4 +3249,14 @@ u8 IsMonDisobedient(void)
             return 1;
         }
     }
+}
+
+bool8 IsMonValidBattler(struct Pokemon *mon)
+{
+    return !(
+        GetMonData(mon, MON_DATA_HP) == 0 ||
+        GetMonData(mon, MON_DATA_SPECIES) == SPECIES_NONE ||
+        GetMonData(mon, MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG ||
+        GetMonData(mon, MON_DATA_IS_EGG)
+    );
 }

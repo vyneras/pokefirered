@@ -87,6 +87,8 @@ gStdScripts::
 	.4byte Std_ReceivedItem         @ STD_RECEIVED_ITEM
 gStdScriptsEnd::
 
+	.include "data/scripts/archipelago.inc"
+
 	.include "data/maps/BattleColosseum_2P/scripts.inc"
 	.include "data/maps/TradeCenter/scripts.inc"
 	.include "data/maps/RecordCorner/scripts.inc"
@@ -1010,6 +1012,10 @@ Text_MoveCanOnlyBeLearnedOnce::
 	.string "This move can be learned only\n"
 	.string "once. Is that okay?$"
 
+Text_GenericNotEnoughMons:
+	.string "If you want to battle,\n"
+	.string "bring two POKéMON with you.$"
+
 EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_OAK_IN_HIS_LAB
 	setflag FLAG_HIDE_OAK_IN_PALLET_TOWN
@@ -1322,6 +1328,10 @@ EventScript_NoMoreRoomForPokemon::
 	msgbox Text_NoMoreRoomForPokemon
 	release
 	end
+
+EventScript_PlayGymBadgeFanfare::
+	playfanfare MUS_OBTAIN_BADGE
+	return
 
 	.include "data/text/braille.inc"
 	.include "data/scripts/trainers.inc"

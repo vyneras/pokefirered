@@ -12,10 +12,6 @@ CeladonCity_DepartmentStore_Roof_Text_YayFreshWaterHaveThis::
     .string "Thank you!\n"
     .string "You can have this from me!$"
 
-Text_ReceivedItemFromLittleGirl::
-    .string "{PLAYER} received a {STR_VAR_2}\n"
-    .string "from the little girl.$"
-
 CeladonCity_DepartmentStore_Roof_Text_ExplainTM16::
     .string "TM16 contains LIGHT SCREEN.\p"
     .string "It's a move that weakens the power\n"
@@ -42,9 +38,6 @@ CeladonCity_DepartmentStore_Roof_Text_ExplainTM33::
     .string "TM33 contains REFLECT.\p"
     .string "It's a move that weakens the power\n"
     .string "of physical attacks by your foe.$"
-
-CeladonCity_DepartmentStore_Roof_Text_DontHaveSpaceForThis::
-    .string "You don't have space for this!$"
 
 CeladonCity_DepartmentStore_Roof_Text_ImNotThirstyAfterAll::
     .string "No, thank you!\n"

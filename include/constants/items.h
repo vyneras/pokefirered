@@ -113,7 +113,7 @@
 #define ITEM_STAR_PIECE 109
 #define ITEM_NUGGET 110
 #define ITEM_HEART_SCALE 111
-#define ITEM_070 112
+#define ITEM_ARCHIPELAGO_PROGRESSION 112
 #define ITEM_071 113
 #define ITEM_072 114
 #define ITEM_073 115
@@ -462,6 +462,7 @@
 #define SUPER_ROD 2
 
 // Check if the item is one that can be used on a Pokemon.
-#define IS_POKEMON_ITEM(item) ((item) >= ITEM_POTION && (item) <= MAX_BERRY_INDEX)
+#define ITEM_IS_CONVERTED_TRADE_EVO_ITEM(item) ((item) == ITEM_KINGS_ROCK || (item) == ITEM_DEEP_SEA_TOOTH || (item) == ITEM_DEEP_SEA_SCALE || (item) == ITEM_METAL_COAT || (item) == ITEM_DRAGON_SCALE || (item) == ITEM_UP_GRADE)
+#define IS_POKEMON_ITEM(item) (((item) >= ITEM_POTION && (item) <= MAX_BERRY_INDEX) || ITEM_IS_CONVERTED_TRADE_EVO_ITEM(item))
 
 #endif  // GUARD_CONSTANTS_ITEMS_H

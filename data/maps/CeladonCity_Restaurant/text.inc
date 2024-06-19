@@ -24,13 +24,6 @@ CeladonCity_Restaurant_Text_TakeThisImBusted::
     .string "Here!\n"
     .string "I won't be needing this anymore!$"
 
-CeladonCity_Restaurant_Text_ReceivedCoinCaseFromMan::
-    .string "{PLAYER} received a COIN CASE\n"
-    .string "from the man.$"
-
-CeladonCity_Restaurant_Text_MakeRoomForThis::
-    .string "Make room for this!$"
-
 CeladonCity_Restaurant_Text_ThoughtIdWinItBack::
     .string "I always thought I was going to\n"
     .string "win it back…$"

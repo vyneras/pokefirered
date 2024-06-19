@@ -1236,6 +1236,7 @@ extern const u8 EventScript_Waterfall[];
 extern const u8 EventScript_CantUseWaterfall[];
 extern const u8 EventScript_VsSeekerChargingDone[];
 extern const u8 EventScript_FieldPoison[];
+extern const u8 EventScript_FieldWhiteOut[];
 extern const u8 EventScript_EggHatch[];
 extern const u8 EventScript_DoFallWarp[];
 
@@ -1260,5 +1261,9 @@ extern const u8 TradeCenter_EventScript_Chair0[];
 extern const u8 TradeCenter_EventScript_Chair1[];
 extern const u8 TradeCenter_ConfirmLeaveRoom[];
 extern const u8 TradeCenter_TerminateLink[];
+
+extern const u8 ArchipelagoScript_ReceiveReward[];
+extern const u8 ArchipelagoScript_ReceiveRemoteItem[];
+extern const u8 ArchipelagoScript_ReceiveRemoteItemSilent[];
 
 #endif //GUARD_EVENT_SCRIPTS_H

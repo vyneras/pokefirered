@@ -32,6 +32,9 @@ PewterCity_Gym_Text_BrockDefeat::
     .string "Of course, a POKéMON must know the\n"
     .string "move FLASH to use it.$"
 
+PewterCity_Gym_Text_ReceivedBoulderBadge::
+    .string "{PLAYER} received the BOULDER BADGE.$"
+
 PewterCity_Gym_Text_TakeThisWithYou::
     .string "Wait!\n"
     .string "Take this with you.$"

@@ -1,5 +1,7 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
+#include "item.h"
 #include "quest_log.h"
 #include "list_menu.h"
 #include "diploma.h"
@@ -529,7 +531,7 @@ u16 GetPartyMonSpecies(void)
 bool8 IsMonOTNameNotPlayers(void)
 {
     GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_OT_NAME, gStringVar1);
-    
+
     if (!StringCompare(gSaveBlock2Ptr->playerName, gStringVar1))
         return FALSE;
     else
@@ -775,36 +777,36 @@ static const u8 sFloorNameWidthPadding[] = {
 
 static const u16 sElevatorWindowMetatilesGoingUp[][3] = {
     {
-        METATILE_SilphCo_ElevatorWindow_Top0, 
-        METATILE_SilphCo_ElevatorWindow_Top1, 
+        METATILE_SilphCo_ElevatorWindow_Top0,
+        METATILE_SilphCo_ElevatorWindow_Top1,
         METATILE_SilphCo_ElevatorWindow_Top2
     },
     {
-        METATILE_SilphCo_ElevatorWindow_Mid0, 
-        METATILE_SilphCo_ElevatorWindow_Mid1, 
+        METATILE_SilphCo_ElevatorWindow_Mid0,
+        METATILE_SilphCo_ElevatorWindow_Mid1,
         METATILE_SilphCo_ElevatorWindow_Mid2
     },
     {
-        METATILE_SilphCo_ElevatorWindow_Bottom0, 
-        METATILE_SilphCo_ElevatorWindow_Bottom1, 
+        METATILE_SilphCo_ElevatorWindow_Bottom0,
+        METATILE_SilphCo_ElevatorWindow_Bottom1,
         METATILE_SilphCo_ElevatorWindow_Bottom2
     }
 };
 
 static const u16 sElevatorWindowMetatilesGoingDown[][3] = {
     {
-        METATILE_SilphCo_ElevatorWindow_Top0, 
-        METATILE_SilphCo_ElevatorWindow_Top2, 
+        METATILE_SilphCo_ElevatorWindow_Top0,
+        METATILE_SilphCo_ElevatorWindow_Top2,
         METATILE_SilphCo_ElevatorWindow_Top1
     },
     {
-        METATILE_SilphCo_ElevatorWindow_Mid0, 
-        METATILE_SilphCo_ElevatorWindow_Mid2, 
+        METATILE_SilphCo_ElevatorWindow_Mid0,
+        METATILE_SilphCo_ElevatorWindow_Mid2,
         METATILE_SilphCo_ElevatorWindow_Mid1
     },
     {
-        METATILE_SilphCo_ElevatorWindow_Bottom0, 
-        METATILE_SilphCo_ElevatorWindow_Bottom2, 
+        METATILE_SilphCo_ElevatorWindow_Bottom0,
+        METATILE_SilphCo_ElevatorWindow_Bottom2,
         METATILE_SilphCo_ElevatorWindow_Bottom1
     }
 };
@@ -1168,7 +1170,7 @@ void ListMenu(void)
 
     if (QL_AvoidDisplay(QL_DestroyAbortedDisplay) == TRUE)
         return;
-        
+
     taskId = CreateTask(Task_CreateScriptListMenu, 8);
     task = &gTasks[taskId];
     switch (gSpecialVar_0x8004)
@@ -1255,7 +1257,7 @@ void ListMenu(void)
 }
 
 static const u8 *const sListMenuLabels[][12] = {
-    [LISTMENU_BADGES] = 
+    [LISTMENU_BADGES] =
     {
         gText_BoulderBadge,
         gText_CascadeBadge,
@@ -1266,8 +1268,8 @@ static const u8 *const sListMenuLabels[][12] = {
         gText_VolcanoBadge,
         gText_EarthBadge,
         gOtherText_Exit,
-    }, 
-    [LISTMENU_SILPHCO_FLOORS] = 
+    },
+    [LISTMENU_SILPHCO_FLOORS] =
     {
         gText_11F,
         gText_10F,
@@ -1281,14 +1283,14 @@ static const u8 *const sListMenuLabels[][12] = {
         gText_2F,
         gText_1F,
         gOtherText_Exit,
-    }, 
+    },
     [LISTMENU_ROCKET_HIDEOUT_FLOORS] = // Unncessary, MULTICHOICE_ROCKET_HIDEOUT_ELEVATOR is used instead
     {
         gText_B1F,
         gText_B2F,
         gText_B4F,
         gOtherText_Exit,
-    }, 
+    },
     [LISTMENU_DEPT_STORE_FLOORS] = // Unncessary, MULTICHOICE_DEPT_STORE_ELEVATOR is used instead
     {
         gText_5F,
@@ -1297,15 +1299,15 @@ static const u8 *const sListMenuLabels[][12] = {
         gText_2F,
         gText_1F,
         gOtherText_Exit,
-    }, 
+    },
     [LISTMENU_WIRELESS_LECTURE_HEADERS] = // Unnecessary, MULTICHOICE_LINKED_DIRECT_UNION is used instead
     {
         gText_LinkedGamePlay,
         gText_DirectCorner,
         gText_UnionRoom,
         gOtherText_Quit,
-    }, 
-    [LISTMENU_BERRY_POWDER] = 
+    },
+    [LISTMENU_BERRY_POWDER] =
     {
         gText_Energypowder_50,
         gText_EnergyRoot_80,
@@ -1319,7 +1321,7 @@ static const u8 *const sListMenuLabels[][12] = {
         gText_HpUp_1000,
         gText_PpUp_3000,
         gOtherText_Exit,
-    }, 
+    },
     [LISTMENU_TRAINER_TOWER_FLOORS] = // Unnecessary, MULTICHOICE_ROOFTOP_B1F is used instead
     {
         gText_Rooftop,
@@ -2498,7 +2500,7 @@ bool8 PlayerPartyContainsSpeciesWithPlayerID(void)
     u8 i;
     for (i = 0; i < playerCount; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == gSpecialVar_0x8004 
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == gSpecialVar_0x8004
             && GetPlayerTrainerId() == GetMonData(&gPlayerParty[i], MON_DATA_OT_ID, NULL))
             return TRUE;
     }
@@ -2552,4 +2554,266 @@ static void Task_WingFlapSound(u8 taskId)
     }
     if (data[0] == gSpecialVar_0x8004 - 1)
         DestroyTask(taskId);
+}
+
+// Archipelago
+u8 ArchipelagoSpecial_GetFreeFlyLocation(void)
+{
+    return gArchipelagoOptions.freeFlyLocation;
+}
+
+bool8 ArchipelagoSpecial_IsItemBadge(void)
+{
+    return gSpecialVar_0x8014 >= ITEM_BADGE_1 && gSpecialVar_0x8014 <= ITEM_BADGE_8;
+}
+
+bool8 ArchipelagoSpecial_ShouldHandle(void)
+{
+    return gSpecialVar_0x8014 == ITEM_ARCHIPELAGO_PROGRESSION ||
+        ArchipelagoSpecial_IsItemBadge();
+}
+
+u16 ArchipelagoSpecial_GetObjectScriptFlag(void)
+{
+    u8 i;
+
+    for (i = 0; i < gMapHeader.events->objectEventCount; i++)
+    {
+        if (gSaveBlock1Ptr->objectEventTemplates[i].localId == gSpecialVar_LastTalked)
+            return gSaveBlock1Ptr->objectEventTemplates[i].flagId;
+    }
+    return 0;
+}
+
+u16 ArchipelagoSpecial_PopReward(void)
+{
+    u16 reward = gRewardQueue[0].itemId;
+    u16 locationId = gRewardQueue[0].locationId;
+    u8 i;
+
+    for (i = 0; i < REWARD_QUEUE_SIZE - 1; ++i)
+    {
+        gRewardQueue[i].itemId = gRewardQueue[i + 1].itemId;
+        gRewardQueue[i].locationId = gRewardQueue[i + 1].locationId;
+    }
+    gRewardQueue[REWARD_QUEUE_SIZE - 1].itemId = ITEM_NONE;
+    gRewardQueue[REWARD_QUEUE_SIZE - 1].locationId = 0;
+
+    gSpecialVar_0x8003 = locationId;
+    return reward;
+}
+
+u16 ArchipelagoSpecial_ConsumeReceivedItem(void)
+{
+    gSaveBlock1Ptr->archipelagoLastReceivedItemIndex = gArchipelagoReceivedItem.itemIndex;
+    gArchipelagoReceivedItem.isFilled = FALSE;
+    return gArchipelagoReceivedItem.itemId;
+}
+
+bool8 ArchipelagoSpecial_CanLeavePewterCity(void)
+{
+    if (gArchipelagoOptions.route3Requirement == 1)
+    {
+        return FlagGet(FLAG_DEFEATED_BROCK);
+    }
+    else if (gArchipelagoOptions.route3Requirement == 2)
+    {
+        return FlagGet(FLAG_DEFEATED_BROCK) ||
+               FlagGet(FLAG_DEFEATED_MISTY) ||
+               FlagGet(FLAG_DEFEATED_LT_SURGE) ||
+               FlagGet(FLAG_DEFEATED_ERIKA) ||
+               FlagGet(FLAG_DEFEATED_KOGA) ||
+               FlagGet(FLAG_DEFEATED_SABRINA) ||
+               FlagGet(FLAG_DEFEATED_BLAINE) ||
+               FlagGet(FLAG_DEFEATED_LEADER_GIOVANNI);
+    }
+    else if (gArchipelagoOptions.route3Requirement == 3)
+    {
+        return FlagGet(FLAG_BADGE01_GET);
+    }
+    else if (gArchipelagoOptions.route3Requirement == 4)
+    {
+        return FlagGet(FLAG_BADGE01_GET) ||
+               FlagGet(FLAG_BADGE02_GET) ||
+               FlagGet(FLAG_BADGE03_GET) ||
+               FlagGet(FLAG_BADGE04_GET) ||
+               FlagGet(FLAG_BADGE05_GET) ||
+               FlagGet(FLAG_BADGE06_GET) ||
+               FlagGet(FLAG_BADGE07_GET) ||
+               FlagGet(FLAG_BADGE08_GET);
+    }
+
+    return TRUE;
+}
+
+bool8 ArchipelagoSpecial_CanChallengeGiovanni(void)
+{
+    if (gArchipelagoOptions.giovanniRequiresGyms)
+    {
+        u8 gymCount = 0;
+        gymCount += FlagGet(FLAG_DEFEATED_BROCK)           ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_MISTY)           ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_LT_SURGE)        ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_ERIKA)           ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_KOGA)            ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_SABRINA)         ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_BLAINE)          ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_LEADER_GIOVANNI) ? 1 : 0;
+
+        return gymCount >= gArchipelagoOptions.giovanniRequiredCount;
+    }
+    else
+    {
+        u8 gymCount = 0;
+        gymCount += FlagGet(FLAG_BADGE01_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE02_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE03_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE04_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE05_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE06_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE07_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE08_GET) ? 1 : 0;
+
+        return gymCount >= gArchipelagoOptions.giovanniRequiredCount;
+    }
+}
+
+bool8 ArchipelagoSpecial_CanPassRoute22Gate(void)
+{
+    if (gArchipelagoOptions.route22GateRequiresGyms)
+    {
+        u8 gymCount = 0;
+        gymCount += FlagGet(FLAG_DEFEATED_BROCK)           ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_MISTY)           ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_LT_SURGE)        ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_ERIKA)           ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_KOGA)            ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_SABRINA)         ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_BLAINE)          ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_LEADER_GIOVANNI) ? 1 : 0;
+
+        return gymCount >= gArchipelagoOptions.route22GateRequiredCount;
+    }
+    else
+    {
+        u8 gymCount = 0;
+        gymCount += FlagGet(FLAG_BADGE01_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE02_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE03_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE04_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE05_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE06_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE07_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE08_GET) ? 1 : 0;
+
+        return gymCount >= gArchipelagoOptions.route22GateRequiredCount;
+    }
+}
+
+bool8 ArchipelagoSpecial_CanPassRoute23Guard(void)
+{
+    if (gArchipelagoOptions.route23GuardRequiresGyms)
+    {
+        u8 gymCount = 0;
+        gymCount += FlagGet(FLAG_DEFEATED_BROCK)           ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_MISTY)           ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_LT_SURGE)        ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_ERIKA)           ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_KOGA)            ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_SABRINA)         ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_BLAINE)          ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_LEADER_GIOVANNI) ? 1 : 0;
+
+        return gymCount >= gArchipelagoOptions.route23GuardRequiredCount;
+    }
+    else
+    {
+        u8 gymCount = 0;
+        gymCount += FlagGet(FLAG_BADGE01_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE02_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE03_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE04_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE05_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE06_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE07_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE08_GET) ? 1 : 0;
+
+        return gymCount >= gArchipelagoOptions.route23GuardRequiredCount;
+    }
+}
+
+bool8 ArchipelagoSpecial_CanChallengeEliteFour(void)
+{
+    if (gArchipelagoOptions.eliteFourRequiresGyms)
+    {
+        u8 gymCount = 0;
+        gymCount += FlagGet(FLAG_DEFEATED_BROCK)           ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_MISTY)           ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_LT_SURGE)        ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_ERIKA)           ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_KOGA)            ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_SABRINA)         ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_BLAINE)          ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_LEADER_GIOVANNI) ? 1 : 0;
+
+        return gymCount >= gArchipelagoOptions.eliteFourRequiredCount;
+    }
+    else
+    {
+        u8 gymCount = 0;
+        gymCount += FlagGet(FLAG_BADGE01_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE02_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE03_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE04_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE05_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE06_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE07_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE08_GET) ? 1 : 0;
+
+        return gymCount >= gArchipelagoOptions.eliteFourRequiredCount;
+    }
+}
+
+bool8 ArchipelagoSpecial_CanEnterCeruleanCave(void)
+{
+    if(gArchipelagoOptions.ceruleanCaveRequirement == 0)
+    {
+        return FlagGet(FLAG_SYS_GAME_CLEAR) && FlagGet(FLAG_SYS_CAN_LINK_WITH_RS);
+    }
+    else if (gArchipelagoOptions.ceruleanCaveRequirement == 1)
+    {
+        return FlagGet(FLAG_SYS_GAME_CLEAR);
+    }
+    else if (gArchipelagoOptions.ceruleanCaveRequirement == 2)
+    {
+        return FlagGet(FLAG_SYS_CAN_LINK_WITH_RS);
+    }
+    else if (gArchipelagoOptions.ceruleanCaveRequirement == 3)
+    {
+        u8 gymCount = 0;
+        gymCount += FlagGet(FLAG_DEFEATED_BROCK)           ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_MISTY)           ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_LT_SURGE)        ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_ERIKA)           ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_KOGA)            ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_SABRINA)         ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_BLAINE)          ? 1 : 0;
+        gymCount += FlagGet(FLAG_DEFEATED_LEADER_GIOVANNI) ? 1 : 0;
+
+        return gymCount >= gArchipelagoOptions.ceruleanCaveRequiredCount;
+    }
+    else
+    {
+        u8 gymCount = 0;
+        gymCount += FlagGet(FLAG_BADGE01_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE02_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE03_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE04_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE05_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE06_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE07_GET) ? 1 : 0;
+        gymCount += FlagGet(FLAG_BADGE08_GET) ? 1 : 0;
+
+        return gymCount >= gArchipelagoOptions.ceruleanCaveRequiredCount;
+    }
 }

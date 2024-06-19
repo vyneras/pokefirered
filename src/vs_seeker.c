@@ -642,7 +642,7 @@ void VsSeekerResetObjectMovementAfterChargeComplete(void)
     for (i = 0; i < gMapHeader.events->objectEventCount; i++)
     {
         if ((templates[i].objUnion.normal.trainerType == TRAINER_TYPE_NORMAL
-          || templates[i].objUnion.normal.trainerType == TRAINER_TYPE_BURIED) 
+          || templates[i].objUnion.normal.trainerType == TRAINER_TYPE_BURIED)
          && (templates[i].objUnion.normal.movementType == MOVEMENT_TYPE_RAISE_HAND_AND_STOP
           || templates[i].objUnion.normal.movementType == MOVEMENT_TYPE_RAISE_HAND_AND_JUMP
           || templates[i].objUnion.normal.movementType == MOVEMENT_TYPE_RAISE_HAND_AND_SWIM))
@@ -944,7 +944,7 @@ void ClearRematchStateByTrainerId(void)
 
         for (i = 0; i < gMapHeader.events->objectEventCount; i++)
         {
-            if ((objectEventTemplates[i].objUnion.normal.trainerType == TRAINER_TYPE_NORMAL 
+            if ((objectEventTemplates[i].objUnion.normal.trainerType == TRAINER_TYPE_NORMAL
               || objectEventTemplates[i].objUnion.normal.trainerType == TRAINER_TYPE_BURIED)
               && vsSeekerDataIdx == LookupVsSeekerOpponentInArray(sRematches, GetTrainerFlagFromScript(objectEventTemplates[i].script)))
             {
@@ -1079,6 +1079,7 @@ int GetRematchTrainerId(u16 trainerId)
 
 u8 IsTrainerReadyForRematch(void)
 {
+    return FALSE;
     return IsTrainerReadyForRematchInternal(sRematches, gTrainerBattleOpponent_A);
 }
 

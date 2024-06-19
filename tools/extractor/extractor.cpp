@@ -65,22 +65,21 @@ int main (int argc, char *argv[])
 
     std::map<std::string, uint32_t> misc_ram_addresses = {
         { "CB2_Overworld", symbol_map["CB2_Overworld"] },
-        //{ "gArchipelagoReceivedItem", symbol_map["gArchipelagoReceivedItem"] },
+        { "gArchipelagoReceivedItem", symbol_map["gArchipelagoReceivedItem"] },
         { "gMain", symbol_map["gMain"] },
         { "gSaveBlock1Ptr", symbol_map["gSaveBlock1Ptr"] },
         { "gSaveBlock2Ptr", symbol_map["gSaveBlock2Ptr"] },
-        //{ "gArchipelagoDeathLinkQueued", symbol_map["gArchipelagoDeathLinkQueued"] },
+        { "gArchipelagoDeathLinkQueued", symbol_map["gArchipelagoDeathLinkQueued"] },
         { "gPlayerParty", symbol_map["gPlayerParty"] },
         { "gEnemyParty", symbol_map["gEnemyParty"] },
-        //{ "sMostRecentWildEncounter", symbol_map["sMostRecentWildEncounter"] },
     };
 
     std::map<std::string, uint32_t> misc_rom_addresses = {
-        //{ "gArchipelagoOptions", symbol_map["gArchipelagoOptions"] - ROM_START },
-        //{ "gArchipelagoPlayerNames", symbol_map["gArchipelagoPlayerNames"] - ROM_START },
-        //{ "gArchipelagoItemNames", symbol_map["gArchipelagoItemNames"] - ROM_START },
-        //{ "gArchipelagoNameTable", symbol_map["gArchipelagoNameTable"] - ROM_START },
-        //{ "gArchipelagoInfo", symbol_map["gArchipelagoInfo"] - ROM_START },
+        { "gArchipelagoOptions", symbol_map["gArchipelagoOptions"] - ROM_START },
+        { "gArchipelagoPlayerNames", symbol_map["gArchipelagoPlayerNames"] - ROM_START },
+        { "gArchipelagoItemNames", symbol_map["gArchipelagoItemNames"] - ROM_START },
+        { "gArchipelagoNameTable", symbol_map["gArchipelagoNameTable"] - ROM_START },
+        { "gArchipelagoInfo", symbol_map["gArchipelagoInfo"] - ROM_START },
         { "gBattleMoves", symbol_map["gBattleMoves"] - ROM_START },
         { "gLevelUpLearnsets", symbol_map["gLevelUpLearnsets"] - ROM_START },
         { "gNewGamePCItems", symbol_map["gNewGamePCItems"] - ROM_START },
@@ -90,8 +89,6 @@ int main (int argc, char *argv[])
         { "gTrainers", symbol_map["gTrainers"] - ROM_START },
         { "sTMHMMoves", symbol_map["sTMHMMoves"] - ROM_START },
         { "gEvolutionTable", symbol_map["gEvolutionTable"] - ROM_START },
-        //{ "gRandomizedSoundTable", symbol_map["gRandomizedSoundTable"] - ROM_START },
-        //{ "gRandomizedBerryTreeItems", symbol_map["gRandomizedBerryTreeItems"] - ROM_START },
         { "sTutorMoves", symbol_map["sTutorMoves"] - ROM_START },
         { "sTutorLearnsets", symbol_map["sTutorLearnsets"] - ROM_START },
         { "sFanfares", symbol_map["sFanfares"] - ROM_START },
@@ -121,33 +118,6 @@ int main (int argc, char *argv[])
             npc_gifts.push_back(item);
         }
     }
-
-    // Berry Trees
-    // std::regex berry_regex("(ORAN|PECHA|CHERI|LEPPA|PINAP|CHESTO|KELPSY|BLUK|NANAB|WEPEAR|RAWST|RAZZ|PERSIM|SITRUS|HONDEW|POMEG|ASPEAR|GREPA|QUALOT|LIECHI)");
-    // std::vector<std::shared_ptr<LocationInfo>> berry_trees;
-    // for (json::iterator it = constants_json.begin(); it != constants_json.end(); ++it)
-    // {
-    //     if (it.key().substr(0, 11) == "BERRY_TREE_")
-    //     {
-    //         uint8_t id = (uint8_t)(it.value());
-    //         std::shared_ptr<LocationInfo> item(new LocationInfo());
-    //         item->name = "BERRY_TREE_" + std::string(id < 10 ? "0" : "") + std::to_string(id);
-    //         item->flag = uint16_t(constants_json["FLAG_BERRY_TREES_START"]) + (id - 1);
-    //         item->address = symbol_map["gRandomizedBerryTreeItems"] + (id * 2) - ROM_START;
-
-    //         std::smatch m;
-    //         if (std::regex_search(it.key(), m, berry_regex))
-    //         {
-    //             item->default_item = constants_json["ITEM_" + m[1].str() + "_BERRY"];
-    //         }
-    //         else
-    //         {
-    //             item->default_item = constants_json["ITEM_SITRUS_BERRY"];
-    //         }
-
-    //         berry_trees.push_back(item);
-    //     }
-    // }
 
     // Pokedex Entries
     // std::vector<std::shared_ptr<LocationInfo>> dex_rewards;
@@ -978,8 +948,8 @@ int main (int argc, char *argv[])
             //    [!]:              If the warp expects to lead to a destination which does
             //                      not lead back to it, add a ! to the end
             //
-            // Example:   MAP_LAVARIDGE_TOWN_HOUSE:0,1/MAP_LAVARIDGE_TOWN:4
-            // Example 2: MAP_AQUA_HIDEOUT_B1F:14/MAP_AQUA_HIDEOUT_B1F:12!
+            // Example:   MAP_VIRIDIAN_FOREST:0,1,2/MAP_ROUTE2_VIRIDIAN_FOREST_SOUTH_ENTRANCE:1
+            // Example 2: MAP_SEAFOAM_ISLANDS_B2F:9/MAP_SEAFOAM_ISLANDS_B3F:5!
             //
             // Note: A warp must have its destination set as another warp event.
             // However, that does not guarantee that the destination warp event
@@ -1213,9 +1183,9 @@ int main (int argc, char *argv[])
     }
 
     // Reading static encounters
-    // std::vector<std::shared_ptr<MiscPokemonInfo>> misc_pokemon;
-    // for (auto const& [symbol, address] : symbol_map)
-    // {
+    std::vector<std::shared_ptr<MiscPokemonInfo>> misc_pokemon;
+    for (auto const& [symbol, address] : symbol_map)
+    {
     //     if (symbol.substr(0, 36) == "Archipelago_Target_Static_Encounter_")
     //     {
     //         std::shared_ptr<MiscPokemonInfo> static_encounter(new MiscPokemonInfo());
@@ -1226,16 +1196,26 @@ int main (int argc, char *argv[])
     //         rom.read((char*)&(static_encounter->species), 2);
     //         misc_pokemon.push_back(static_encounter);
     //     }
-    //     else if (symbol == "Archipelago_Target_Special_Gift_Castform")
-    //     {
-    //         std::shared_ptr<MiscPokemonInfo> castform_gift(new MiscPokemonInfo());
+        if (symbol == "Archipelago_Target_Special_Gift_Eevee")
+        {
+            std::shared_ptr<MiscPokemonInfo> eevee_gift(new MiscPokemonInfo());
 
-    //         castform_gift->name = "Castform Gift";
-    //         castform_gift->address = address + 3 - ROM_START;
-    //         rom.seekg(castform_gift->address, rom.beg);
-    //         rom.read((char*)&(castform_gift->species), 2);
-    //         misc_pokemon.push_back(castform_gift);
-    //     }
+            eevee_gift->name = "MISC_POKEMON_EEVEE_GIFT";
+            eevee_gift->address = address + 3 - ROM_START;
+            rom.seekg(eevee_gift->address, rom.beg);
+            rom.read((char*)&(eevee_gift->species), 2);
+            misc_pokemon.push_back(eevee_gift);
+        }
+        else if (symbol.substr(0, 33) == "Archipelago_Target_Prize_Pokemon_")
+        {
+            std::shared_ptr<MiscPokemonInfo> prize_pokemon(new MiscPokemonInfo());
+
+            prize_pokemon->name = "MISC_POKEMON_CELADON_PRIZE_" + symbol.substr(33);
+            prize_pokemon->address = address + 3 - ROM_START;
+            rom.seekg(prize_pokemon->address, rom.beg);
+            rom.read((char*)&(prize_pokemon->species), 2);
+            misc_pokemon.push_back(prize_pokemon);
+        }
     //     else if (symbol == "Archipelago_Target_Special_Gift_Wynaut_Egg")
     //     {
     //         std::shared_ptr<MiscPokemonInfo> wynaut_egg_gift(new MiscPokemonInfo());
@@ -1246,7 +1226,7 @@ int main (int argc, char *argv[])
     //         rom.read((char*)&(wynaut_egg_gift->species), 2);
     //         misc_pokemon.push_back(wynaut_egg_gift);
     //     }
-    // }
+    }
 
     // Reading legendary encounters
     // std::vector<std::shared_ptr<LegendaryEncounterInfo>> legendary_encounters;
@@ -1464,11 +1444,11 @@ int main (int argc, char *argv[])
         maps_json[map_tuple.first] = map_tuple.second->to_json();
     }
 
-    // json misc_pokemon_json = json::array();
-    // for (const auto& mon: misc_pokemon)
-    // {
-    //     misc_pokemon_json.push_back(mon->to_json());
-    // }
+    json misc_pokemon_json;
+    for (const auto& mon: misc_pokemon)
+    {
+        misc_pokemon_json[mon->name] = mon->to_json();
+    }
 
     // json legendary_encounters_json = json::array();
     // for (const auto& legendary_encounter: legendary_encounters)
@@ -1548,7 +1528,7 @@ int main (int argc, char *argv[])
         { "_rom_name", rom_name },
         { "maps", maps_json },
         //{ "legendary_encounters", legendary_encounters_json },
-        //{ "misc_pokemon", misc_pokemon_json },
+        { "misc_pokemon", misc_pokemon_json },
         { "misc_ram_addresses", misc_ram_addresses },
         { "misc_rom_addresses", misc_rom_addresses },
         { "locations", locations_json },

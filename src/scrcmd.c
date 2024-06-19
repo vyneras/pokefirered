@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
 #include "script.h"
 #include "mystery_event_script.h"
 #include "event_data.h"
@@ -1315,6 +1316,8 @@ static bool8 WaitForAorBPress(void)
         return TRUE;
     if (JOY_NEW(B_BUTTON))
         return TRUE;
+    if (gArchipelagoOptions.advanceTextWithHoldA && JOY_HELD_RAW(A_BUTTON))
+        return TRUE;
 
     if (ScriptContext_NextCommandEndsScript(sQuestLogScriptContextPtr) == TRUE)
     {
@@ -2247,5 +2250,48 @@ bool8 ScrCmd_setmonmetlocation(struct ScriptContext * ctx)
 
     if (partyIndex < PARTY_SIZE)
         SetMonData(&gPlayerParty[partyIndex], MON_DATA_MET_LOCATION, &location);
+    return FALSE;
+}
+
+u8 ScrCmd_bufferapitemstrings(struct ScriptContext *ctx)
+{
+    u16 i;
+    u16 itemNameOffset;
+    u8 playerNameId;
+
+    u8 stringVarIndexA = ScriptReadByte(ctx);
+    u8 stringVarIndexB = ScriptReadByte(ctx);
+    u16 locationId = VarGet(ScriptReadHalfword(ctx));
+
+    for (i = 0; i < NAME_TABLE_BUFFER_SIZE / 5; ++i)
+    {
+        if ((gArchipelagoNameTable[(i * 5) + 0] | (gArchipelagoNameTable[(i * 5) + 1] << 8)) == locationId)
+        {
+            playerNameId = gArchipelagoNameTable[(i * 5) + 4];
+            if (playerNameId == 0)
+            {
+                gSpecialVar_Result = 2; // Self item
+                return FALSE;
+            }
+
+            itemNameOffset = gArchipelagoNameTable[(i * 5) + 2] | (gArchipelagoNameTable[(i * 5) + 3] << 8);
+            StringCopy(sScriptStringVars[stringVarIndexA], gArchipelagoPlayerNames + (playerNameId * 17));
+            StringCopy(sScriptStringVars[stringVarIndexB], gArchipelagoItemNames + itemNameOffset);
+            gSpecialVar_Result = 1; // Foreign item
+            return FALSE;
+        }
+        else if ((gArchipelagoNameTable[(i * 5) + 0] | (gArchipelagoNameTable[(i * 5) + 1] << 8)) > locationId)
+        {
+            break;
+        }
+    }
+
+    gSpecialVar_Result = 0; // Unknown, display "ARCHIPELAGO_ITEM"
+    return FALSE;
+}
+
+bool8 ScrCmd_setflagvar(struct ScriptContext *ctx)
+{
+    FlagSet(VarGet(ScriptReadHalfword(ctx)));
     return FALSE;
 }

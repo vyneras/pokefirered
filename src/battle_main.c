@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
 #include "battle.h"
 #include "battle_anim.h"
 #include "battle_ai_script_commands.h"
@@ -1888,7 +1889,7 @@ static void SpriteCB_MoveWildMonToRight(struct Sprite *sprite)
 {
     if ((gIntroSlideFlags & 1) == 0)
     {
-        sprite->x2 += 2;
+        sprite->x2 += 4;
         if (sprite->x2 == 0)
         {
             sprite->callback = SpriteCB_WildMonShowHealthbox;
@@ -2853,9 +2854,25 @@ static void TryDoEventsBeforeFirstTurn(void)
 {
     s32 i, j;
     u8 effect = 0;
+    struct Pokemon *party_mon;
 
     if (gBattleControllerExecFlags)
         return;
+
+    // Set invalid mons as absent
+    if (!(gBattleTypeFlags & BATTLE_TYPE_SAFARI))
+    {
+        for (i = 0; i < gBattlersCount; i++)
+        {
+            if (GetBattlerSide(i) == B_SIDE_PLAYER)
+                party_mon = &gPlayerParty[gBattlerPartyIndexes[i]];
+            else
+                party_mon = &gEnemyParty[gBattlerPartyIndexes[i]];
+
+            if (gBattleMons[i].hp == 0 || gBattleMons[i].species == SPECIES_NONE || GetMonData(party_mon, MON_DATA_IS_EGG))
+                gAbsentBattlerFlags |= gBitTable[i];
+        }
+    }
 
     if (gBattleStruct->switchInAbilitiesCounter == 0)
     {

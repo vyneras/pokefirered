@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
 #include "random.h"
 #include "overworld.h"
 #include "constants/maps.h"
@@ -127,6 +128,7 @@ void NewGameInitData(void)
     ResetFameChecker();
     SetMoney(&gSaveBlock1Ptr->money, 3000);
     ResetGameStats();
+    SetGameStat(GAME_STAT_WHITED_OUT, 100);
     ClearPlayerLinkBattleRecords();
     InitHeracrossSizeRecord();
     InitMagikarpSizeRecord();
@@ -149,6 +151,19 @@ void NewGameInitData(void)
     RunScriptImmediately(EventScript_ResetAllMapFlags);
     StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
     ResetTrainerTowerResults();
+
+    if (gArchipelagoOptions.betterShopsEnabled) FlagSet(FLAG_BETTER_SHOPS_ENABLED);
+
+    if (gArchipelagoOptions.openViridianCity) VarSet(VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1);
+
+    if (gArchipelagoOptions.startingBadges & (1 << 0)) FlagSet(FLAG_BADGE01_GET);
+    if (gArchipelagoOptions.startingBadges & (1 << 1)) FlagSet(FLAG_BADGE02_GET);
+    if (gArchipelagoOptions.startingBadges & (1 << 2)) FlagSet(FLAG_BADGE03_GET);
+    if (gArchipelagoOptions.startingBadges & (1 << 3)) FlagSet(FLAG_BADGE04_GET);
+    if (gArchipelagoOptions.startingBadges & (1 << 4)) FlagSet(FLAG_BADGE05_GET);
+    if (gArchipelagoOptions.startingBadges & (1 << 5)) FlagSet(FLAG_BADGE06_GET);
+    if (gArchipelagoOptions.startingBadges & (1 << 6)) FlagSet(FLAG_BADGE07_GET);
+    if (gArchipelagoOptions.startingBadges & (1 << 7)) FlagSet(FLAG_BADGE08_GET);
 }
 
 static void ResetMiniGamesResults(void)

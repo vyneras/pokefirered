@@ -452,4 +452,19 @@ gSpecials::
 	def_special UpdateLoreleiDollCollection
 	def_special LoopWingFlapSound
 	def_special CreateEnemyEventMon
+
+	def_special ArchipelagoSpecial_GetFreeFlyLocation
+	def_special ArchipelagoSpecial_ShouldHandle
+	def_special ArchipelagoSpecial_IsItemBadge
+	def_special ArchipelagoSpecial_GetObjectScriptFlag
+	def_special ArchipelagoSpecial_PopReward
+	def_special ArchipelagoSpecial_ConsumeReceivedItem
+	def_special ArchipelagoSpecial_CanLeavePewterCity
+	def_special ArchipelagoSpecial_CanChallengeGiovanni
+	def_special ArchipelagoSpecial_CanPassRoute22Gate
+	def_special ArchipelagoSpecial_CanPassRoute23Guard
+	def_special ArchipelagoSpecial_CanChallengeEliteFour
+	def_special ArchipelagoSpecial_CanEnterCeruleanCave
+	def_special ArchipelagoSpecial_CheckReusableTms
+	def_special ArchipelagoSpecial_CanUseHmOutsideBattle
 gSpecialsEnd::

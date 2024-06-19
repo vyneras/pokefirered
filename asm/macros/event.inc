@@ -687,49 +687,15 @@
 	.endm
 
 	@ Configures the arguments for a trainer battle, then jumps to the appropriate script in scripts/trainer_battle.inc
-	.macro trainerbattle type:req, trainer:req, local_id:req, pointer1:req, pointer2, pointer3, pointer4
+	.macro trainerbattle type:req, trainer:req, local_id:req, intro_text:req, lose_text:req, not_enough_pkmn_text:req, event_script:req
 		.byte 0x5c
 		.byte \type
 		.2byte \trainer
 		.2byte \local_id
-		.if \type == TRAINER_BATTLE_SINGLE
-			.4byte \pointer1 @ text
-			.4byte \pointer2 @ text
-		.elseif \type == TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC
-			.4byte \pointer1 @ text
-			.4byte \pointer2 @ text
-			.4byte \pointer3 @ event script
-		.elseif \type == TRAINER_BATTLE_CONTINUE_SCRIPT
-			.4byte \pointer1 @ text
-			.4byte \pointer2 @ text
-			.4byte \pointer3 @ event script
-		.elseif \type == TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT
-			.4byte \pointer1 @ text
-		.elseif \type == TRAINER_BATTLE_DOUBLE
-			.4byte \pointer1 @ text
-			.4byte \pointer2 @ text
-			.4byte \pointer3 @ text
-		.elseif \type == TRAINER_BATTLE_REMATCH
-			.4byte \pointer1 @ text
-			.4byte \pointer2 @ text
-		.elseif \type == TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE
-			.4byte \pointer1 @ text
-			.4byte \pointer2 @ text
-			.4byte \pointer3 @ text
-			.4byte \pointer4 @ event script
-		.elseif \type == TRAINER_BATTLE_REMATCH_DOUBLE
-			.4byte \pointer1 @ text
-			.4byte \pointer2 @ text
-			.4byte \pointer3 @ text
-		.elseif \type == TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC
-			.4byte \pointer1 @ text
-			.4byte \pointer2 @ text
-			.4byte \pointer3 @ text
-			.4byte \pointer4 @ event script
-		.elseif \type == TRAINER_BATTLE_EARLY_RIVAL
-			.4byte \pointer1 @ text
-			.4byte \pointer2 @ text
-		.endif
+		.4byte \intro_text
+		.4byte \lose_text
+		.4byte \not_enough_pkmn_text
+		.4byte \event_script
 	.endm
 
 	NO_MUSIC = FALSE
@@ -738,11 +704,11 @@
 	@ When used with an event script, you can also pass in an optional flag to disable music
 	.macro trainerbattle_single trainer:req, intro_text:req, lose_text:req, event_script=FALSE, music=TRUE
 	.if \event_script == FALSE
-	trainerbattle TRAINER_BATTLE_SINGLE, \trainer, 0, \intro_text, \lose_text
+	trainerbattle TRAINER_BATTLE_SINGLE, \trainer, 0, \intro_text, \lose_text, Text_GenericNotEnoughMons, 0
 	.elseif \music == TRUE
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, \trainer, 0, \intro_text, \lose_text, \event_script
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, \trainer, 0, \intro_text, \lose_text, Text_GenericNotEnoughMons, \event_script
 	.else
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, \trainer, 0, \intro_text, \lose_text, \event_script
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, \trainer, 0, \intro_text, \lose_text, Text_GenericNotEnoughMons, \event_script
 	.endif
 	.endm
 
@@ -750,7 +716,7 @@
 	@ and an optional event script. When used with an event script you can pass in an optional flag to disable music
 	.macro trainerbattle_double trainer:req, intro_text:req, lose_text:req, not_enough_pkmn_text:req, event_script=FALSE, music=TRUE
 	.if \event_script == FALSE
-	trainerbattle TRAINER_BATTLE_DOUBLE, \trainer, 0, \intro_text, \lose_text, \not_enough_pkmn_text
+	trainerbattle TRAINER_BATTLE_DOUBLE, \trainer, 0, \intro_text, \lose_text, \not_enough_pkmn_text, 0
 	.elseif \music == TRUE
 	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE, \trainer, 0, \intro_text, \lose_text, \not_enough_pkmn_text, \event_script
 	.else
@@ -760,22 +726,22 @@
 
 	@ Starts a rematch battle, takes a trainer, intro text and loss text
 	.macro trainerbattle_rematch trainer:req, intro_text:req, lose_text:req
-	trainerbattle TRAINER_BATTLE_REMATCH, \trainer, 0, \intro_text, \lose_text
+	trainerbattle TRAINER_BATTLE_REMATCH, \trainer, 0, \intro_text, \lose_text, Text_GenericNotEnoughMons, 0
 	.endm
 
 	@ Starts a rematch double battle. Takes a trainer, intro text, loss text, and text for when you have too few pokemon
 	.macro trainerbattle_rematch_double trainer:req, intro_text:req, lose_text:req, not_enough_pkmn_text:req
-	trainerbattle TRAINER_BATTLE_REMATCH_DOUBLE, \trainer, 0, \intro_text, \lose_text, \not_enough_pkmn_text
+	trainerbattle TRAINER_BATTLE_REMATCH_DOUBLE, \trainer, 0, \intro_text, \lose_text, \not_enough_pkmn_text, 0
 	.endm
 
 	@ Starts a trainer battle, skipping intro text. Takes a trainer and loss text
 	.macro trainerbattle_no_intro trainer:req, lose_text:req
-	trainerbattle TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT, \trainer, 0, \lose_text
+	trainerbattle TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT, \trainer, 0, 0, \lose_text, Text_GenericNotEnoughMons, 0
 	.endm
 
 	@ Starts a trainer battle with victory text if the player loses. If flags is nonzero, the player will be healed after battle (and its assumed to be the tutorial battle)
 	.macro trainerbattle_earlyrival trainer:req, flags:req, defeat_text:req, victory_text:req
-	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, \trainer, \flags, \defeat_text, \victory_text
+	trainerbattle TRAINER_BATTLE_EARLY_RIVAL, \trainer, \flags, \defeat_text, \victory_text, Text_GenericNotEnoughMons, 0
 	.endm
 
 	@ Starts a trainer battle using the battle information stored in RAM (usually by the scripts in trainer_battle.inc, which
@@ -1633,6 +1599,19 @@
 	.2byte \quantity
 	.endm
 
+  @ Writes the archipelago player's name and item being recevied to the specified buffers.
+	.macro bufferapitemstrings stringVarIdA:req, stringVarIdB:req, flag:req
+	.byte 0xe3
+	stringvar \stringVarIdA
+	stringvar \stringVarIdB
+	.2byte \flag
+	.endm
+
+  @ Sets flag stored in a var to TRUE.
+	.macro setflagvar var:req
+	.byte 0xe4
+	.2byte \var
+	.endm
 
 @ Supplementary
 

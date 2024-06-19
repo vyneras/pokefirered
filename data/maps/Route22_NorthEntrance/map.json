@@ -52,7 +52,7 @@
       "x": 7,
       "y": 2,
       "elevation": 3,
-      "var": "VAR_MAP_SCENE_ROUTE23",
+      "var": "VAR_MAP_SCENE_ROUTE_22_NORTH_ENTRANCE",
       "var_value": "0",
       "script": "Route22_NorthEntrance_EventScript_BoulderBadgeGuardTrigger"
     }

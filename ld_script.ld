@@ -181,6 +181,7 @@ SECTIONS {
         src/battle_anim_utility_funcs.o(.text);
         src/battle_intro.o(.text);
         src/bike.o(.text);
+        src/archipelago.o(.text);
         src/easy_chat.o(.text);
         src/mon_markings.o(.text);
         src/mail.o(.text);
@@ -492,6 +493,7 @@ SECTIONS {
         src/battle_anim_utility_funcs.o(.rodata);
         src/battle_intro.o(.rodata);
         src/bike.o(.rodata);
+        src/archipelago.o(.rodata);
         src/easy_chat.o(.rodata);
         src/mon_markings.o(.rodata);
         src/mail.o(.rodata);

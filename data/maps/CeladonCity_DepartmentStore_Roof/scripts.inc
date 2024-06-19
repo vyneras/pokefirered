@@ -113,42 +113,33 @@ CeladonCity_DepartmentStore_Roof_EventScript_AskGiveAllDrinks::
 
 CeladonCity_DepartmentStore_Roof_EventScript_GiveFreshWater::
 	setvar VAR_0x8008, ITEM_FRESH_WATER
-	setvar VAR_0x8009, ITEM_TM16
 	goto_if_set FLAG_GOT_TM16_FROM_THIRSTY_GIRL, CeladonCity_DepartmentStore_Roof_EventScript_NotThirstyAfterAll
 	msgbox CeladonCity_DepartmentStore_Roof_Text_YayFreshWaterHaveThis
+Archipelago_Target_NPC_Gift_FLAG_GOT_TM16_FROM_THIRSTY_GIRL::
+	giveitem ITEM_TM16, 1, FLAG_GOT_TM16_FROM_THIRSTY_GIRL
 	goto CeladonCity_DepartmentStore_Roof_EventScript_GiveDrink
 	end
 
 CeladonCity_DepartmentStore_Roof_EventScript_GiveSodaPop::
 	setvar VAR_0x8008, ITEM_SODA_POP
-	setvar VAR_0x8009, ITEM_TM20
 	goto_if_set FLAG_GOT_TM20_FROM_THIRSTY_GIRL, CeladonCity_DepartmentStore_Roof_EventScript_NotThirstyAfterAll
 	msgbox CeladonCity_DepartmentStore_Roof_Text_YaySodaPopHaveThis
+Archipelago_Target_NPC_Gift_FLAG_GOT_TM20_FROM_THIRSTY_GIRL::
+	giveitem ITEM_TM20, 1, FLAG_GOT_TM20_FROM_THIRSTY_GIRL
 	goto CeladonCity_DepartmentStore_Roof_EventScript_GiveDrink
 	end
 
 CeladonCity_DepartmentStore_Roof_EventScript_GiveLemonade::
 	setvar VAR_0x8008, ITEM_LEMONADE
-	setvar VAR_0x8009, ITEM_TM33
 	goto_if_set FLAG_GOT_TM33_FROM_THIRSTY_GIRL, CeladonCity_DepartmentStore_Roof_EventScript_NotThirstyAfterAll
 	msgbox CeladonCity_DepartmentStore_Roof_Text_YayLemonadeHaveThis
+Archipelago_Target_NPC_Gift_FLAG_GOT_TM33_FROM_THIRSTY_GIRL::
+	giveitem ITEM_TM33, 1, ITEM_TM33
 	goto CeladonCity_DepartmentStore_Roof_EventScript_GiveDrink
 	end
 
 CeladonCity_DepartmentStore_Roof_EventScript_GiveDrink::
-	bufferitemname STR_VAR_1, VAR_0x8008
-	bufferitemname STR_VAR_2, VAR_0x8009
 	removeitem VAR_0x8008
-	checkitemspace VAR_0x8009
-	goto_if_eq VAR_RESULT, FALSE, CeladonCity_DepartmentStore_Roof_EventScript_NoRoomForReward
-	additem VAR_0x8009
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	playfanfare MUS_LEVEL_UP
-	message Text_ReceivedItemFromLittleGirl
-	waitmessage
-	waitfanfare
-	putitemaway VAR_0x8009
-	call EventScript_RestorePrevTextColor
 	call_if_eq VAR_0x8008, ITEM_FRESH_WATER, CeladonCity_DepartmentStore_Roof_EventScript_ExplainTM16
 	call_if_eq VAR_0x8008, ITEM_SODA_POP, CeladonCity_DepartmentStore_Roof_EventScript_ExplainTM20
 	call_if_eq VAR_0x8008, ITEM_LEMONADE, CeladonCity_DepartmentStore_Roof_EventScript_ExplainTM33
@@ -169,11 +160,6 @@ CeladonCity_DepartmentStore_Roof_EventScript_ExplainTM33::
 	setflag FLAG_GOT_TM33_FROM_THIRSTY_GIRL
 	msgbox CeladonCity_DepartmentStore_Roof_Text_ExplainTM33
 	return
-
-CeladonCity_DepartmentStore_Roof_EventScript_NoRoomForReward::
-	msgbox CeladonCity_DepartmentStore_Roof_Text_DontHaveSpaceForThis
-	release
-	end
 
 CeladonCity_DepartmentStore_Roof_EventScript_DontGiveDrink::
 	release

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "archipelago.h"
 #include "battle_setup.h"
 #include "event_object_movement.h"
 #include "field_effect.h"
@@ -88,6 +89,12 @@ static const TrainerSeeFunc sTrainerSeeFuncList2[] = {
 bool8 CheckForTrainersWantingBattle(void)
 {
     u8 i;
+
+    if (gArchipelagoOptions.areTrainersBlind)
+    {
+        return FALSE;
+    }
+
     if (QL_IsTrainerSightDisabled() == TRUE)
         return FALSE;
 

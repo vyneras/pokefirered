@@ -10,9 +10,15 @@ VictoryRoad_2F_EventScript_DoubleEdgeTutor::
 	setvar VAR_0x8005, MOVETUTOR_DOUBLE_EDGE
 	call EventScript_ChooseMoveTutorMon
 	goto_if_eq VAR_RESULT, FALSE, EventScript_DoubleEdgeDeclined
+	specialvar VAR_RESULT, ArchipelagoSpecial_CheckReusableTms
+	call_if_eq VAR_RESULT, FALSE, EventScript_SetDoubleEdgeFlag
 	setflag FLAG_TUTOR_DOUBLE_EDGE
 	goto EventScript_DoubleEdgeTaught
 	end
+
+EventScript_SetDoubleEdgeFlag::
+	setflag FLAG_TUTOR_DOUBLE_EDGE
+	return
 
 EventScript_DoubleEdgeDeclined::
 	msgbox Text_DoubleEdgeDeclined
@@ -36,9 +42,14 @@ EventScript_ThunderWaveTutor::
 	setvar VAR_0x8005, MOVETUTOR_THUNDER_WAVE
 	call EventScript_ChooseMoveTutorMon
 	goto_if_eq VAR_RESULT, FALSE, EventScript_ThunderWaveDeclined
-	setflag FLAG_TUTOR_THUNDER_WAVE
+	specialvar VAR_RESULT, ArchipelagoSpecial_CheckReusableTms
+	call_if_eq VAR_RESULT, FALSE, EventScript_SetThunderWaveFlag
 	goto EventScript_ThunderWaveTaught
 	end
+
+EventScript_SetThunderWaveFlag::
+	setflag FLAG_TUTOR_THUNDER_WAVE
+	return
 
 EventScript_ThunderWaveDeclined::
 	msgbox Text_ThunderWaveDeclined
@@ -62,9 +73,14 @@ RockTunnel_B1F_EventScript_RockSlideTutor::
 	setvar VAR_0x8005, MOVETUTOR_ROCK_SLIDE
 	call EventScript_ChooseMoveTutorMon
 	goto_if_eq VAR_RESULT, FALSE, EventScript_RockSlideDeclined
-	setflag FLAG_TUTOR_ROCK_SLIDE
+	specialvar VAR_RESULT, ArchipelagoSpecial_CheckReusableTms
+	call_if_eq VAR_RESULT, FALSE, EventScript_SetRockSlideFlag
 	goto EventScript_RockSlideTaught
 	end
+
+EventScript_SetRockSlideFlag::
+	setflag FLAG_TUTOR_ROCK_SLIDE
+	return
 
 EventScript_RockSlideDeclined::
 	msgbox Text_RockSlideDeclined
@@ -88,9 +104,14 @@ MtEmber_Exterior_EventScript_ExplosionTutor::
 	setvar VAR_0x8005, MOVETUTOR_EXPLOSION
 	call EventScript_ChooseMoveTutorMon
 	goto_if_eq VAR_RESULT, FALSE, EventScript_ExplosionDeclined
-	setflag FLAG_TUTOR_EXPLOSION
+	specialvar VAR_RESULT, ArchipelagoSpecial_CheckReusableTms
+	call_if_eq VAR_RESULT, FALSE, EventScript_SetExplosionFlag
 	goto EventScript_ExplosionTaught
 	end
+
+EventScript_SetExplosionFlag::
+	setflag FLAG_TUTOR_EXPLOSION
+	return
 
 EventScript_ExplosionDeclined::
 	msgbox Text_ExplosionDeclined
@@ -114,9 +135,14 @@ Route4_EventScript_MegaPunchTutor::
 	setvar VAR_0x8005, MOVETUTOR_MEGA_PUNCH
 	call EventScript_ChooseMoveTutorMon
 	goto_if_eq VAR_RESULT, FALSE, EventScript_MegaPunchDeclined
-	setflag FLAG_TUTOR_MEGA_PUNCH
+	specialvar VAR_RESULT, ArchipelagoSpecial_CheckReusableTms
+	call_if_eq VAR_RESULT, FALSE, EventScript_SetMegaPunchFlag
 	goto EventScript_MegaPunchTaught
 	end
+
+EventScript_SetMegaPunchFlag::
+	setflag FLAG_TUTOR_MEGA_PUNCH
+	return
 
 EventScript_MegaPunchDeclined::
 	msgbox Text_MegaPunchDeclined
@@ -140,9 +166,14 @@ Route4_EventScript_MegaKickTutor::
 	setvar VAR_0x8005, MOVETUTOR_MEGA_KICK
 	call EventScript_ChooseMoveTutorMon
 	goto_if_eq VAR_RESULT, FALSE, EventScript_MegaKickDeclined
-	setflag FLAG_TUTOR_MEGA_KICK
+	specialvar VAR_RESULT, ArchipelagoSpecial_CheckReusableTms
+	call_if_eq VAR_RESULT, FALSE, EventScript_SetMegaKickFlag
 	goto EventScript_MegaKickTaught
 	end
+
+EventScript_SetMegaKickFlag::
+	setflag FLAG_TUTOR_MEGA_KICK
+	return
 
 EventScript_MegaKickDeclined::
 	msgbox Text_MegaKickDeclined
@@ -166,9 +197,14 @@ EventScript_DreamEaterTutor::
 	setvar VAR_0x8005, MOVETUTOR_DREAM_EATER
 	call EventScript_ChooseMoveTutorMon
 	goto_if_eq VAR_RESULT, FALSE, EventScript_DreamEaterDeclined
-	setflag FLAG_TUTOR_DREAM_EATER
+	specialvar VAR_RESULT, ArchipelagoSpecial_CheckReusableTms
+	call_if_eq VAR_RESULT, FALSE, EventScript_SetDreamEaterFlag
 	goto EventScript_DreamEaterTaught
 	end
+
+EventScript_SetDreamEaterFlag::
+	setflag FLAG_TUTOR_DREAM_EATER
+	return
 
 EventScript_DreamEaterDeclined::
 	msgbox Text_DreamEaterDeclined
@@ -192,9 +228,14 @@ EventScript_SoftboiledTutor::
 	setvar VAR_0x8005, MOVETUTOR_SOFT_BOILED
 	call EventScript_ChooseMoveTutorMon
 	goto_if_eq VAR_RESULT, FALSE, EventScript_SoftboiledDeclined
-	setflag FLAG_TUTOR_SOFT_BOILED
+	specialvar VAR_RESULT, ArchipelagoSpecial_CheckReusableTms
+	call_if_eq VAR_RESULT, FALSE, EventScript_SetSoftBoiledFlag
 	goto EventScript_SoftboiledTaught
 	end
+
+EventScript_SetSoftBoiledFlag::
+	setflag FLAG_TUTOR_SOFT_BOILED
+	return
 
 EventScript_SoftboiledDeclined::
 	msgbox Text_SoftboiledDeclined
@@ -218,9 +259,14 @@ FuchsiaCity_EventScript_SubstituteTutor::
 	setvar VAR_0x8005, MOVETUTOR_SUBSTITUTE
 	call EventScript_ChooseMoveTutorMon
 	goto_if_eq VAR_RESULT, FALSE, EventScript_SubstituteDeclined
-	setflag FLAG_TUTOR_SUBSTITUTE
+	specialvar VAR_RESULT, ArchipelagoSpecial_CheckReusableTms
+	call_if_eq VAR_RESULT, FALSE, EventScript_SetSubstituteFlag
 	goto EventScript_SubstituteTaught
 	end
+
+EventScript_SetSubstituteFlag::
+	setflag FLAG_TUTOR_SUBSTITUTE
+	return
 
 EventScript_SubstituteDeclined::
 	msgbox Text_SubstituteDeclined
@@ -244,9 +290,14 @@ SevenIsland_EventScript_SwordsDanceTutor::
 	setvar VAR_0x8005, MOVETUTOR_SWORDS_DANCE
 	call EventScript_ChooseMoveTutorMon
 	goto_if_eq VAR_RESULT, FALSE, EventScript_SwordsDanceDeclined
-	setflag FLAG_TUTOR_SWORDS_DANCE
+	specialvar VAR_RESULT, ArchipelagoSpecial_CheckReusableTms
+	call_if_eq VAR_RESULT, FALSE, EventScript_SetSwordsDanceFlag
 	goto EventScript_SwordsDanceTaught
 	end
+
+EventScript_SetSwordsDanceFlag::
+	setflag FLAG_TUTOR_SWORDS_DANCE
+	return
 
 EventScript_SwordsDanceDeclined::
 	msgbox Text_SwordsDanceDeclined
@@ -270,9 +321,14 @@ PewterCity_Museum_1F_EventScript_SeismicTossTutor::
 	setvar VAR_0x8005, MOVETUTOR_SEISMIC_TOSS
 	call EventScript_ChooseMoveTutorMon
 	goto_if_eq VAR_RESULT, FALSE, EventScript_SeismicTossDeclined
-	setflag FLAG_TUTOR_SEISMIC_TOSS
+	specialvar VAR_RESULT, ArchipelagoSpecial_CheckReusableTms
+	call_if_eq VAR_RESULT, FALSE, EventScript_SetSeismicTossFlag
 	goto EventScript_SeismicTossTaught
 	end
+
+EventScript_SetSeismicTossFlag::
+	setflag FLAG_TUTOR_SEISMIC_TOSS
+	return
 
 EventScript_SeismicTossDeclined::
 	msgbox Text_SeismicTossDeclined
@@ -296,9 +352,14 @@ EventScript_CounterTutor::
 	setvar VAR_0x8005, MOVETUTOR_COUNTER
 	call EventScript_ChooseMoveTutorMon
 	goto_if_eq VAR_RESULT, FALSE, EventScript_CounterDeclined
-	setflag FLAG_TUTOR_COUNTER
+	specialvar VAR_RESULT, ArchipelagoSpecial_CheckReusableTms
+	call_if_eq VAR_RESULT, FALSE, EventScript_SetCounterFlag
 	goto EventScript_CounterTaught
 	end
+
+EventScript_SetCounterFlag::
+	setflag FLAG_TUTOR_COUNTER
+	return
 
 EventScript_CounterDeclined::
 	msgbox Text_CounterDeclined
@@ -322,9 +383,14 @@ EventScript_MetronomeTutor::
 	setvar VAR_0x8005, MOVETUTOR_METRONOME
 	call EventScript_ChooseMoveTutorMon
 	goto_if_eq VAR_RESULT, FALSE, EventScript_MetronomeDeclined
-	setflag FLAG_TUTOR_METRONOME
+	specialvar VAR_RESULT, ArchipelagoSpecial_CheckReusableTms
+	call_if_eq VAR_RESULT, FALSE, EventScript_SetMetronomeFlag
 	goto EventScript_MetronomeTaught
 	end
+
+EventScript_SetMetronomeFlag::
+	setflag FLAG_TUTOR_METRONOME
+	return
 
 EventScript_MetronomeDeclined::
 	msgbox Text_MetronomeDeclined
@@ -349,9 +415,14 @@ EventScript_MimicTutor::
 	faceplayer
 	goto_if_eq VAR_RESULT, 0, EventScript_MimicDeclined
 	removeitem ITEM_POKE_DOLL
-	setflag FLAG_TUTOR_MIMIC
+	specialvar VAR_RESULT, ArchipelagoSpecial_CheckReusableTms
+	call_if_eq VAR_RESULT, FALSE, EventScript_SetMimicFlag
 	goto EventScript_MimicTaught
 	end
+
+EventScript_SetMimicFlag::
+	setflag FLAG_TUTOR_MIMIC
+	return
 
 EventScript_MimicDeclined::
 	msgbox Text_MimicDeclined
@@ -385,9 +456,14 @@ FourIsland_House1_EventScript_BodySlamTutor::
 	setvar VAR_0x8005, MOVETUTOR_BODY_SLAM
 	call EventScript_ChooseMoveTutorMon
 	goto_if_eq VAR_RESULT, FALSE, EventScript_BodySlamDeclined
-	setflag FLAG_TUTOR_BODY_SLAM
+	specialvar VAR_RESULT, ArchipelagoSpecial_CheckReusableTms
+	call_if_eq VAR_RESULT, FALSE, EventScript_SetBodySlamFlag
 	goto EventScript_BodySlamTaught
 	end
+
+EventScript_SetBodySlamFlag::
+	setflag FLAG_TUTOR_BODY_SLAM
+	return
 
 EventScript_BodySlamDeclined::
 	msgbox Text_BodySlamDeclined

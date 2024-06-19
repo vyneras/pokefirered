@@ -82,5 +82,6 @@ u8 GetPartyIdFromBattlePartyId(u8 battlePartyId);
 void ShowPartyMenuToShowcaseMultiBattleParty(void);
 void ChooseMonForDaycare(void);
 void ChoosePartyMonByMenuType(u8 menuType);
+bool8 CanUseHmOutsideBattle(u8 fieldMove);
 
 #endif // GUARD_PARTY_MENU_H

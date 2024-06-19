@@ -1591,7 +1591,7 @@ void BufferStringBattle(u16 stringId)
     case STRINGID_INTROSENDOUT: // poke first send-out
         if (GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER)
         {
-            if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+            if (IsMonValidBattler(&gPlayerParty[gBattlerPartyIndexes[BATTLE_PARTNER(gActiveBattler)]]) && (gBattleTypeFlags & BATTLE_TYPE_DOUBLE))
             {
                 if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
                     stringPtr = sText_LinkPartnerSentOutPkmnGoPkmn;
@@ -2707,11 +2707,11 @@ static const struct BattleWindowText sTextOnWindowsInfo_Normal[] = {
     }
 };
 
-static const u8 sNpcTextColorToFont[] = 
+static const u8 sNpcTextColorToFont[] =
 {
-    [NPC_TEXT_COLOR_MALE]    = FONT_MALE, 
-    [NPC_TEXT_COLOR_FEMALE]  = FONT_FEMALE, 
-    [NPC_TEXT_COLOR_MON]     = FONT_NORMAL, 
+    [NPC_TEXT_COLOR_MALE]    = FONT_MALE,
+    [NPC_TEXT_COLOR_FEMALE]  = FONT_FEMALE,
+    [NPC_TEXT_COLOR_MON]     = FONT_NORMAL,
     [NPC_TEXT_COLOR_NEUTRAL] = FONT_NORMAL,
 };
 

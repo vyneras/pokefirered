@@ -57,6 +57,8 @@
 #define UNITS_METRIC
 #endif // ENGLISH
 
+#define BUGFIX
+
 // Crashes may occur due to section reordering in the modern build,
 // so we force BUGFIX here.
 #if MODERN

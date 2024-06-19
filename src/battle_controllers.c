@@ -348,6 +348,14 @@ static void SetBattlePartyIds(void)
                             break;
                         }
                     }
+
+                    // If a valid second usable mon was found, it will be set and break out of the loop
+                    // Otherwise, fall to here and set the index for the second mon to something invalid
+                    // (i.e. any slot except the one containing the only valid mon in the party, in this case 0 or 1)
+                    if (gBattlerPartyIndexes[i - 2] == 0)
+                        gBattlerPartyIndexes[i] = 1;
+                    else
+                        gBattlerPartyIndexes[i] = 0;
                 }
             }
         }

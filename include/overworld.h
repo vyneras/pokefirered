@@ -59,6 +59,7 @@ extern u8 gFieldLinkPlayerCount;
 extern u8 gLocalLinkPlayerId;
 
 void IncrementGameStat(u8 index);
+void DecrementGameStat(u8 index);
 
 void SetObjEventTemplateCoords(u8, s16, s16);
 void SetObjEventTemplateMovementType(u8, u8);

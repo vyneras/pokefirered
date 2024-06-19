@@ -815,7 +815,8 @@ struct SaveBlock1
     /*0x3D44*/ u8 unused_3D44[16];
     /*0x3D54*/ u32 towerChallengeId;
     /*0x3D58*/ struct TrainerTower trainerTower[NUM_TOWER_CHALLENGE_TYPES];
-}; // size: 0x3D88
+    /*0x3D88*/ u16 archipelagoLastReceivedItemIndex;
+}; // size: 0x3D8A
 
 struct MapPosition
 {

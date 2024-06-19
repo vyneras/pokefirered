@@ -1737,13 +1737,13 @@ static bool8 Fishing4(struct Task *task)
     task->tStep++;
     task->tFrameCounter = 0;
     task->tNumDots = 0;
-    randVal = Random();
-    randVal %= 10;
-    task->tDotsRequired = randVal + 1;
-    if (task->tRoundsPlayed == 0)
-        task->tDotsRequired = randVal + 4;
-    if (task->tDotsRequired >= 10)
-        task->tDotsRequired = 10;
+    // randVal = Random();
+    // randVal %= 10;
+    // task->tDotsRequired = randVal + 1;
+    // if (task->tRoundsPlayed == 0)
+    //     task->tDotsRequired = randVal + 4;
+    // if (task->tDotsRequired >= 10)
+    //     task->tDotsRequired = 10;
     return TRUE;
 }
 
@@ -1782,7 +1782,7 @@ static bool8 Fishing6(struct Task *task)
     task->tStep++;
     bite = FALSE;
 
-    if (!DoesCurrentMapHaveFishingMons() || Random() & 1)
+    if (!DoesCurrentMapHaveFishingMons())
     {
         task->tStep = FISHING_NO_BITE;
     }
@@ -1826,6 +1826,8 @@ static bool8 Fishing9(struct Task *task)
 
     AlignFishingAnimationFrames(&gSprites[gPlayerAvatar.spriteId]);
     task->tStep++;
+    return FALSE; // Skip check, fishing succeeds after 1 round
+
     if (task->tRoundsPlayed < task->tMinRoundsRequired)
     {
         task->tStep = FISHING_START_ROUND;

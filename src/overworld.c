@@ -371,6 +371,20 @@ void IncrementGameStat(u8 statId)
     SetGameStat(statId, statVal);
 }
 
+void DecrementGameStat(u8 index)
+{
+    if (index < NUM_USED_GAME_STATS)
+    {
+        u32 statVal = GetGameStat(index);
+        if (statVal > 0)
+            statVal--;
+        else
+            statVal = 0;
+
+        SetGameStat(index, statVal);
+    }
+}
+
 u32 GetGameStat(u8 statId)
 {
     if (statId >= NUM_USED_GAME_STATS)
@@ -1278,7 +1292,7 @@ static const int sUnusedData[] = {
       44
 };
 
-const struct Coords32 gDirectionToVectors[] = 
+const struct Coords32 gDirectionToVectors[] =
 {
     [DIR_NONE]      = { 0,  0},
     [DIR_SOUTH]     = { 0,  1},
@@ -1536,6 +1550,7 @@ void CB2_WhiteOut(void)
 
     if (++gMain.state >= 120)
     {
+        IncrementGameStat(GAME_STAT_WHITED_OUT);
         FieldClearVBlankHBlankCallbacks();
         StopMapMusic();
         ResetSafariZoneFlag_();

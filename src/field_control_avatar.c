@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
 #include "bike.h"
 #include "coord_event_weather.h"
 #include "daycare.h"
@@ -17,6 +18,7 @@
 #include "wonder_news.h"
 #include "metatile_behavior.h"
 #include "overworld.h"
+#include "party_menu.h"
 #include "renewable_hidden_items.h"
 #include "quest_log.h"
 #include "safari_zone.h"
@@ -28,8 +30,12 @@
 #include "constants/songs.h"
 #include "constants/event_bg.h"
 #include "constants/event_objects.h"
+#include "constants/items.h"
 #include "constants/maps.h"
 #include "constants/metatile_behaviors.h"
+
+static EWRAM_DATA u8 sPreviouslyHeldDirections;
+static EWRAM_DATA u8 sLastPressedDirection;
 
 #define SIGNPOST_POKECENTER 0
 #define SIGNPOST_POKEMART 1
@@ -96,6 +102,7 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
     u8 runningState = gPlayerAvatar.runningState;
     u8 tileTransitionState = gPlayerAvatar.tileTransitionState;
     bool8 forcedMove = MetatileBehavior_IsForcedMovementTile(GetPlayerCurMetatileBehavior());
+    u8 heldDirections = 0;
 
     if (!ScriptContext_IsEnabled() && IsQuestLogInputDpad() == TRUE)
     {
@@ -145,13 +152,34 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
     if (!QL_IS_PLAYBACK_STATE)
     {
         if (heldKeys & DPAD_UP)
-            input->dpadDirection = DIR_NORTH;
-        else if (heldKeys & DPAD_DOWN)
-            input->dpadDirection = DIR_SOUTH;
-        else if (heldKeys & DPAD_LEFT)
-            input->dpadDirection = DIR_WEST;
-        else if (heldKeys & DPAD_RIGHT)
-            input->dpadDirection = DIR_EAST;
+            heldDirections |= (1 << DIR_NORTH);
+        if (heldKeys & DPAD_DOWN)
+            heldDirections |= (1 << DIR_SOUTH);
+        if (heldKeys & DPAD_LEFT)
+            heldDirections |= (1 << DIR_WEST);
+        if (heldKeys & DPAD_RIGHT)
+            heldDirections |= (1 << DIR_EAST);
+
+        if (heldDirections == 0)
+            input->dpadDirection = DIR_NONE;
+        else if (heldDirections == sPreviouslyHeldDirections)
+            input->dpadDirection = sLastPressedDirection;
+        else
+        {
+            u8 newDirections = heldDirections & (~sPreviouslyHeldDirections);
+            u8 i = 0;
+
+            if (newDirections == 0)
+                newDirections = heldDirections;
+
+            while(((newDirections >> i) & 1) == 0)
+                ++i;
+
+            input->dpadDirection = i;
+            sLastPressedDirection = i;
+        }
+
+        sPreviouslyHeldDirections = heldDirections;
     }
 }
 
@@ -293,6 +321,18 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     {
         gFieldInputRecord.pressedSelectButton = TRUE;
         return TRUE;
+    }
+
+    if (gPlayerAvatar.tileTransitionState == T_NOT_MOVING || gPlayerAvatar.tileTransitionState == T_TILE_CENTER)
+    {
+        if (Archipelago_CheckDeathLinkQueued() == TRUE)
+            return TRUE;
+
+        if (Archipelago_CheckQueuedRewards() == TRUE)
+            return TRUE;
+
+        if (Archipelago_CheckReceivedItem() == TRUE)
+            return TRUE;
     }
 
     return FALSE;
@@ -602,12 +642,12 @@ static const u8 *GetInteractedWaterScript(struct MapPosition *unused1, u8 metati
 {
     if (MetatileBehavior_IsFastWater(metatileBehavior) == TRUE && PartyHasMonWithSurf() == TRUE)
         return EventScript_CurrentTooFast;
-    if (FlagGet(FLAG_BADGE05_GET) == TRUE && PartyHasMonWithSurf() == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE)
+    if (CanUseHmOutsideBattle(FIELD_MOVE_SURF) == TRUE && PartyHasMonWithSurf() == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE)
         return EventScript_UseSurf;
 
     if (MetatileBehavior_IsWaterfall(metatileBehavior) == TRUE)
     {
-        if (FlagGet(FLAG_BADGE07_GET) == TRUE && IsPlayerSurfingNorth() == TRUE)
+        if (CanUseHmOutsideBattle(FIELD_MOVE_WATERFALL) && IsPlayerSurfingNorth() == TRUE)
             return EventScript_Waterfall;
         else
             return EventScript_CantUseWaterfall;
@@ -1179,4 +1219,53 @@ int SetCableClubWarp(void)
     MapGridGetMetatileBehaviorAt(position.x, position.y);  // unnecessary
     SetupWarp(&gMapHeader, GetWarpEventAtMapPosition(&gMapHeader, &position), &position);
     return 0;
+}
+
+bool8 Archipelago_CheckQueuedRewards()
+{
+    if (gRewardQueue[0].itemId != ITEM_NONE)
+    {
+        ScriptContext_SetupScript(ArchipelagoScript_ReceiveReward);
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 Archipelago_CheckReceivedItem()
+{
+    if (gArchipelagoReceivedItem.isFilled == TRUE) {
+        if (
+            (gArchipelagoOptions.receivedItemMessageFilter == 0) ||
+            (gArchipelagoOptions.receivedItemMessageFilter == 1 && gArchipelagoReceivedItem.isProgression) ||
+            (gArchipelagoReceivedItem.itemId >= ITEM_BADGE_1 && gArchipelagoReceivedItem.itemId <= ITEM_BADGE_8)
+        )
+            ScriptContext_SetupScript(ArchipelagoScript_ReceiveRemoteItem);
+        else
+            ScriptContext_SetupScript(ArchipelagoScript_ReceiveRemoteItemSilent);
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 Archipelago_CheckDeathLinkQueued()
+{
+    u8 i;
+    bool8 hasUsableMon = FALSE;
+
+    for (i = 0; i < PARTY_SIZE; ++i)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES))
+        {
+            hasUsableMon = TRUE;
+            break;
+        }
+    }
+
+    if (hasUsableMon && gArchipelagoDeathLinkQueued == TRUE) {
+        ScriptContext_SetupScript(EventScript_FieldWhiteOut);
+        gArchipelagoDeathLinkQueued = FALSE;
+        DecrementGameStat(GAME_STAT_WHITED_OUT);  // Prevent incoming deaths from triggering outgoing deaths
+        return TRUE;
+    }
+    return FALSE;
 }

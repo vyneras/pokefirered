@@ -125,8 +125,9 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_STAR_PIECE]     = {gItemIcon_StarPiece, gItemIconPalette_Star},
     [ITEM_NUGGET]         = {gItemIcon_Nugget, gItemIconPalette_Nugget},
     [ITEM_HEART_SCALE]    = {gItemIcon_HeartScale, gItemIconPalette_HeartScale},
+    // Archipelago Items
+    [ITEM_ARCHIPELAGO_PROGRESSION] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     // ????????
-    [ITEM_070]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_071]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_072]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_073]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
