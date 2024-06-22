@@ -84,12 +84,12 @@ static const u16 sDexAreas_Sevii1[][2] = {
 	{ MAPSEC_KINDLE_ROAD,    DEX_AREA_KINDLE_ROAD },
 	{ MAPSEC_TREASURE_BEACH, DEX_AREA_TREASURE_BEACH },
 	{ MAPSEC_ONE_ISLAND,     DEX_AREA_ONE_ISLAND },
-	{ MAPSEC_MT_EMBER,       DEX_AREA_MT_EMBER }    
+	{ MAPSEC_MT_EMBER,       DEX_AREA_MT_EMBER }
 };
 
 static const u16 sDexAreas_Sevii2[][2] = {
 	{ MAPSEC_CAPE_BRINK, DEX_AREA_CAPE_BRINK },
-	{ MAPSEC_TWO_ISLAND, DEX_AREA_TWO_ISLAND }    
+	{ MAPSEC_TWO_ISLAND, DEX_AREA_TWO_ISLAND }
 };
 
 static const u16 sDexAreas_Sevii3[][2] = {
@@ -97,12 +97,12 @@ static const u16 sDexAreas_Sevii3[][2] = {
 	{ MAPSEC_THREE_ISLE_PORT, DEX_AREA_THREE_ISLE_PATH },
 	{ MAPSEC_THREE_ISLAND,    DEX_AREA_THREE_ISLAND },
 	{ MAPSEC_BERRY_FOREST,    DEX_AREA_BERRY_FOREST },
-	{ MAPSEC_THREE_ISLE_PATH, DEX_AREA_THREE_ISLE_PATH }    
+	{ MAPSEC_THREE_ISLE_PATH, DEX_AREA_THREE_ISLE_PATH }
 };
 
 static const u16 sDexAreas_Sevii4[][2] = {
 	{ MAPSEC_FOUR_ISLAND,  DEX_AREA_FOUR_ISLAND },
-	{ MAPSEC_ICEFALL_CAVE, DEX_AREA_ICEFALL_CAVE }    
+	{ MAPSEC_ICEFALL_CAVE, DEX_AREA_ICEFALL_CAVE }
 };
 
 static const u16 sDexAreas_Sevii5[][2] = {
@@ -112,7 +112,7 @@ static const u16 sDexAreas_Sevii5[][2] = {
 	{ MAPSEC_MEMORIAL_PILLAR,  DEX_AREA_MEMORIAL_PILLAR },
 	{ MAPSEC_FIVE_ISLAND,      DEX_AREA_FIVE_ISLAND },
 	{ MAPSEC_ROCKET_WAREHOUSE, DEX_AREA_FIVE_ISLE_MEADOW },
-	{ MAPSEC_LOST_CAVE,        DEX_AREA_LOST_CAVE }    
+	{ MAPSEC_LOST_CAVE,        DEX_AREA_LOST_CAVE }
 };
 
 static const u16 sDexAreas_Sevii6[][2] = {
@@ -122,7 +122,7 @@ static const u16 sDexAreas_Sevii6[][2] = {
 	{ MAPSEC_RUIN_VALLEY,    DEX_AREA_RUIN_VALLEY },
 	{ MAPSEC_DOTTED_HOLE,    DEX_AREA_DOTTED_HOLE },
 	{ MAPSEC_PATTERN_BUSH,   DEX_AREA_PATTERN_BUSH },
-	{ MAPSEC_ALTERING_CAVE,  DEX_AREA_ALTERING_CAVE }    
+	{ MAPSEC_ALTERING_CAVE,  DEX_AREA_ALTERING_CAVE }
 };
 
 static const u16 sDexAreas_Sevii7[][2] = {
@@ -136,7 +136,7 @@ static const u16 sDexAreas_Sevii7[][2] = {
 	{ MAPSEC_DILFORD_CHAMBER, DEX_AREA_TANOBY_CHAMBER },
 	{ MAPSEC_SCUFIB_CHAMBER,  DEX_AREA_TANOBY_CHAMBER },
 	{ MAPSEC_RIXY_CHAMBER,    DEX_AREA_TANOBY_CHAMBER },
-	{ MAPSEC_VIAPOIS_CHAMBER, DEX_AREA_TANOBY_CHAMBER }    
+	{ MAPSEC_VIAPOIS_CHAMBER, DEX_AREA_TANOBY_CHAMBER }
 };
 
 static const struct
@@ -178,7 +178,7 @@ s32 GetSpeciesPokedexAreaMarkers(u16 species, struct Subsprite * subsprites)
 
     seviiAreas = GetUnlockedSeviiAreas();
     alteringCaveCount = 0;
-    alteringCaveNum = VarGet(VAR_ALTERING_CAVE_WILD_SET);
+    alteringCaveNum = 0;
     if (alteringCaveNum >= NUM_ALTERING_CAVE_TABLES)
         alteringCaveNum = 0;
     for (i = 0, areaCount = 0; gWildMonHeaders[i].mapGroup != MAP_GROUP(UNDEFINED); i++)
