@@ -56,11 +56,6 @@ FuchsiaCity_EventScript_WardensHomeSign::
 	msgbox FuchsiaCity_Text_WardensHomeSign, MSGBOX_SIGN
 	end
 
-@ Unused
-FuchsiaCity_EventScript_SafariZoneOfficeSign::
-	msgbox FuchsiaCity_Text_SafariZoneOfficeSign, MSGBOX_SIGN
-	end
-
 FuchsiaCity_EventScript_GymSign::
 	lockall
 	famechecker FAMECHECKER_KOGA, 0

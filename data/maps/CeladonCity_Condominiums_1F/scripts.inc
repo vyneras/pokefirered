@@ -8,7 +8,6 @@ CeladonCity_Condominiums_1F_EventScript_TeaWoman::
 	msgbox CeladonCity_Condominiums_1F_Text_TryThisDrinkInstead
 Archipelago_Target_NPC_Gift_FLAG_GOT_TEA::
 	giveitem ITEM_TEA, 1, FLAG_GOT_TEA
-	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
 	msgbox CeladonCity_Condominiums_1F_Text_NothingBeatsThirstLikeTea
 	release
 	end

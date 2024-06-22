@@ -115,11 +115,6 @@ SilphCo_11F_Movement_PlayerFaceGiovanni::
 	walk_in_place_faster_right
 	step_end
 
-@ Unused
-SilphCo_11F_EventScript_Monitor::
-	msgbox SilphCo_11F_Text_MonitorHasMonsOnIt, MSGBOX_SIGN
-	end
-
 SilphCo_11F_EventScript_FloorSign::
 	msgbox SilphCo_11F_Text_FloorSign, MSGBOX_SIGN
 	end

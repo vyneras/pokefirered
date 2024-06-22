@@ -3617,7 +3617,7 @@
       "secondaryId": 0
     },
     {
-      "english": "BADGE 1",
+      "english": "BOULDER BADGE",
       "itemId": "ITEM_BADGE_1",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3633,7 +3633,7 @@
       "secondaryId": 0
     },
     {
-      "english": "BADGE 2",
+      "english": "CASCADE BADGE",
       "itemId": "ITEM_BADGE_2",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3649,7 +3649,7 @@
       "secondaryId": 0
     },
     {
-      "english": "BADGE 3",
+      "english": "THUNDER BADGE",
       "itemId": "ITEM_BADGE_3",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3665,7 +3665,7 @@
       "secondaryId": 0
     },
     {
-      "english": "BADGE 4",
+      "english": "RAINBOW BADGE",
       "itemId": "ITEM_BADGE_4",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3681,7 +3681,7 @@
       "secondaryId": 0
     },
     {
-      "english": "BADGE 5",
+      "english": "SOUL BADGE",
       "itemId": "ITEM_BADGE_5",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3697,7 +3697,7 @@
       "secondaryId": 0
     },
     {
-      "english": "BADGE 6",
+      "english": "MARSH BADGE",
       "itemId": "ITEM_BADGE_6",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3713,7 +3713,7 @@
       "secondaryId": 0
     },
     {
-      "english": "BADGE 7",
+      "english": "VOLCANO BADGE",
       "itemId": "ITEM_BADGE_7",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3729,7 +3729,7 @@
       "secondaryId": 0
     },
     {
-      "english": "BADGE 8",
+      "english": "EARTH BADGE",
       "itemId": "ITEM_BADGE_8",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",

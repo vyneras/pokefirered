@@ -7,5 +7,5 @@ TwoIsland_Harbor_EventScript_Sailor::
 	message Text_WhereDoYouWantToSail
 	waitmessage
 	setvar VAR_0x8004, SEAGALLOP_TWO_ISLAND
-	goto EventScript_ChooseDestFromTwoIsland
+	goto EventScript_SeviiDestinationsPage1
 	end

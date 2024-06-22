@@ -12,11 +12,6 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_HM03::
 	release
 	end
 
-SafariZone_SecretHouse_EventScript_NoRoomForHM03::
-	msgbox SafariZone_SecretHouse_Text_DontHaveRoomForPrize
-	release
-	end
-
 SafariZone_SecretHouse_EventScript_ExplainSurf::
 	msgbox SafariZone_SecretHouse_Text_ExplainSurf
 	release

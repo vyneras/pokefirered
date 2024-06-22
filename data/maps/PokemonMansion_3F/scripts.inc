@@ -17,15 +17,15 @@ PokemonMansion_3F_EventScript_Statue::
 	end
 
 PokemonMansion_3F_EventScript_DiaryFeb6th::
-	msgbox PokemonMansion_1F_Text_MewGaveBirthToMewtwo, MSGBOX_SIGN
+	msgbox PokemonMansion_3F_Text_MewGaveBirthToMewtwo, MSGBOX_SIGN
 	end
 
 PokemonMansion_3F_EventScript_Simon::
-	trainerbattle_single TRAINER_BURGLAR_SIMON, PokemonMansion_1F_Text_SimonIntro, PokemonMansion_1F_Text_SimonDefeat
-	msgbox PokemonMansion_1F_Text_SimonPostBattle, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_BURGLAR_SIMON, PokemonMansion_3F_Text_SimonIntro, PokemonMansion_3F_Text_SimonDefeat
+	msgbox PokemonMansion_3F_Text_SimonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 PokemonMansion_3F_EventScript_Braydon::
-	trainerbattle_single TRAINER_SCIENTIST_BRAYDON, PokemonMansion_1F_Text_BraydonIntro, PokemonMansion_1F_Text_BraydonDefeat
-	msgbox PokemonMansion_1F_Text_BraydonPostBattle, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_SCIENTIST_BRAYDON, PokemonMansion_3F_Text_BraydonIntro, PokemonMansion_3F_Text_BraydonDefeat
+	msgbox PokemonMansion_3F_Text_BraydonPostBattle, MSGBOX_AUTOCLOSE
 	end

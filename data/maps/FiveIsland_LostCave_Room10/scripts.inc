@@ -28,19 +28,22 @@ FiveIsland_LostCave_Room10_EventScript_FindSelphyScene::
 	msgbox FiveIsland_LostCave_Room10_Text_SelphyIntro
 	goto_if_questlog FiveIsland_LostCave_Room10_EventScript_SelphyQuestLog
 	trainerbattle_no_intro TRAINER_LADY_SELPHY, FiveIsland_LostCave_Room10_Text_SelphyDefeat
-	msgbox FiveIsland_LostCave_Room10_Text_MayIAskYouToTakeMeHome
+	msgbox FiveIsland_LostCave_Room10_Text_GoingToHeadHome
 	closemessage
 	call FiveIsland_LostCave_Room10_EventScript_SetSelphyFound
-	warp MAP_FIVE_ISLAND_RESORT_GORGEOUS, 39, 10
-	waitstate
+	applymovement OBJ_EVENT_ID_PLAYER, FiveIsland_LostCave_Room10_Movement_PlayerMoveAside
+	waitmovement 0
+	applymovement LOCALID_SELPHY, FiveIsland_LostCave_Room10_Movement_SelphyLeave
+	waitmovement 0
+  playse SE_EXIT
+	removeobject LOCALID_SELPHY
 	releaseall
 	end
 
 FiveIsland_LostCave_Room10_EventScript_SetSelphyFound::
 	setflag FLAG_HIDE_LOST_CAVE_SELPHY
-	clearflag FLAG_HIDE_RESORT_GORGEOUS_SELPHY
+	clearflag FLAG_HIDE_RESORT_GORGEOUS_INSIDE_SELPHY
 	setvar VAR_MAP_SCENE_FIVE_ISLAND_LOST_CAVE_ROOM10, 1
-	setvar VAR_MAP_SCENE_FIVE_ISLAND_RESORT_GORGEOUS, 1
 	return
 
 FiveIsland_LostCave_Room10_EventScript_SelphyQuestLog::
@@ -62,4 +65,14 @@ FiveIsland_LostCave_Room10_Movement_SelphyWander::
 FiveIsland_LostCave_Room10_Movement_SelphyApproach::
 	walk_down
 	walk_down
+	step_end
+
+FiveIsland_LostCave_Room10_Movement_SelphyLeave::
+	walk_down
+	delay_8
+	set_invisible
+	step_end
+
+FiveIsland_LostCave_Room10_Movement_PlayerMoveAside::
+	walk_left
 	step_end

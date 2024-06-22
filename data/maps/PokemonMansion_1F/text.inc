@@ -1,3 +1,13 @@
+PokemonMansion_Text_PressSecretSwitch::
+    .string "A secret switch!\p"
+    .string "Press it?$"
+
+PokemonMansion_Text_WhoWouldnt::
+    .string "Who wouldn't?$"
+
+PokemonMansion_Text_NotQuiteYet::
+    .string "Not quite yet!$"
+
 PokemonMansion_1F_Text_TedIntro::
     .string "Who are you?\n"
     .string "There shouldn't be anyone here.$"

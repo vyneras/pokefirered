@@ -1,5 +1,14 @@
 ThreeIsland_House1_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, ThreeIsland_House1_OnTransition
 	.byte 0
+
+ThreeIsland_House1_OnTransition::
+	call_if_set FLAG_SEVII_DETOUR_FINISHED, ThreeIsland_House1_EventScript_SetLostelleInHouse
+	end
+
+ThreeIsland_House1_EventScript_SetLostelleInHouse::
+	clearflag FLAG_HIDE_LOSTELLE_IN_HER_HOME
+	return
 
 ThreeIsland_House1_EventScript_Lostelle::
 	lock

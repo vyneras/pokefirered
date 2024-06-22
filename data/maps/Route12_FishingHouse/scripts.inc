@@ -19,11 +19,6 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_SUPER_ROD::
 	release
 	end
 
-Route12_FishingHouse_EventScript_NoRoomForSuperRod::
-	msgbox Route12_FishingHouse_Text_NoRoomForGift
-	release
-	end
-
 Route12_FishingHouse_EventScript_CheckMagikarpRecord::
 	goto_if_questlog EventScript_ReleaseEnd
 	special QuestLog_CutRecording

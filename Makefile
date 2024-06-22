@@ -375,6 +375,8 @@ extract_leafgreen_rev1:; @$(MAKE) extract GAME_VERSION=LEAFGREEN GAME_REVISION=1
 
 patch_firered:         ; @$(MAKE) patch GAME_VERSION=FIRERED
 patch_leafgreen:       ; @$(MAKE) patch GAME_VERSION=LEAFGREEN
+patch_firered_rev1:     ; @$(MAKE) patch GAME_VERSION=FIRERED GAME_REVISION=1
+patch_leafgreen_rev1:   ; @$(MAKE) patch GAME_VERSION=LEAFGREEN GAME_REVISION=1
 
 modern: ; @$(MAKE) MODERN=1
 

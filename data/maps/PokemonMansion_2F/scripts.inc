@@ -17,14 +17,14 @@ PokemonMansion_2F_EventScript_Statue::
 	end
 
 PokemonMansion_2F_EventScript_DiaryJuly5th::
-	msgbox PokemonMansion_1F_Text_NewMonDiscoveredInGuyanaJungle, MSGBOX_SIGN
+	msgbox PokemonMansion_2F_Text_NewMonDiscoveredInGuyanaJungle, MSGBOX_SIGN
 	end
 
 PokemonMansion_2F_EventScript_DiaryJuly10th::
-	msgbox PokemonMansion_1F_Text_ChristenedDiscoveredMonMew, MSGBOX_SIGN
+	msgbox PokemonMansion_2F_Text_ChristenedDiscoveredMonMew, MSGBOX_SIGN
 	end
 
 PokemonMansion_2F_EventScript_Arnie::
-	trainerbattle_single TRAINER_BURGLAR_ARNIE, PokemonMansion_1F_Text_ArnieIntro, PokemonMansion_1F_Text_ArnieDefeat
-	msgbox PokemonMansion_1F_Text_ArniePostBattle, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_BURGLAR_ARNIE, PokemonMansion_2F_Text_ArnieIntro, PokemonMansion_2F_Text_ArnieDefeat
+	msgbox PokemonMansion_2F_Text_ArniePostBattle, MSGBOX_AUTOCLOSE
 	end

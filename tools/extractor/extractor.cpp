@@ -28,6 +28,8 @@ int main (int argc, char *argv[])
     std::string rom_file = argv[2];
     std::string out_file = argv[3];
 
+    std::cout << rom_file.substr(0, 11) << std::endl;
+
     // ------------------------------------------------------------------------
     // Getting constants
     // ------------------------------------------------------------------------
@@ -92,6 +94,7 @@ int main (int argc, char *argv[])
         { "sTutorMoves", symbol_map["sTutorMoves"] - ROM_START },
         { "sTutorLearnsets", symbol_map["sTutorLearnsets"] - ROM_START },
         { "sFanfares", symbol_map["sFanfares"] - ROM_START },
+        { "sInGameTrades", symbol_map["sInGameTrades"] - ROM_START}
     };
 
     // ------------------------------------------------------------------------
@@ -1120,6 +1123,10 @@ int main (int argc, char *argv[])
 
         std::string base_symbol = map_json["base_label"];
 
+        // Check that the encounter table is for the game we are extracting
+        if ((base_symbol.find("_LeafGreen") != std::string::npos && rom_file.substr(0, 11) == "pokefirered") ||
+            (base_symbol.find("_FireRed") != std::string::npos && rom_file.substr(0, 11) == "pokeleafgreen")) continue;
+
         map->land_encounters.ram_address = symbol_map[base_symbol + "_LandMons"];
         map->land_encounters.address = map->land_encounters.ram_address - ROM_START;
         map->water_encounters.ram_address = symbol_map[base_symbol + "_WaterMons"];
@@ -1182,73 +1189,188 @@ int main (int argc, char *argv[])
         }
     }
 
-    // Reading static encounters
-    std::vector<std::shared_ptr<MiscPokemonInfo>> misc_pokemon;
+    // Reading starters
+    std::vector<std::shared_ptr<GiftPokemonInfo>> starter_pokemon;
     for (auto const& [symbol, address] : symbol_map)
     {
-    //     if (symbol.substr(0, 36) == "Archipelago_Target_Static_Encounter_")
-    //     {
-    //         std::shared_ptr<MiscPokemonInfo> static_encounter(new MiscPokemonInfo());
-
-    //         static_encounter->name = symbol.substr(36);
-    //         static_encounter->address = address + 1 - ROM_START;
-    //         rom.seekg(static_encounter->address, rom.beg);
-    //         rom.read((char*)&(static_encounter->species), 2);
-    //         misc_pokemon.push_back(static_encounter);
-    //     }
-        if (symbol == "Archipelago_Target_Special_Gift_Eevee")
+        if (symbol.substr(0, 34) == "Archipelago_Target_Starter_Player_")
         {
-            std::shared_ptr<MiscPokemonInfo> eevee_gift(new MiscPokemonInfo());
+            std::shared_ptr<GiftPokemonInfo> player_starter(new GiftPokemonInfo());
 
-            eevee_gift->name = "MISC_POKEMON_EEVEE_GIFT";
-            eevee_gift->address = address + 3 - ROM_START;
-            rom.seekg(eevee_gift->address, rom.beg);
-            rom.read((char*)&(eevee_gift->species), 2);
-            misc_pokemon.push_back(eevee_gift);
+            player_starter-> name = "PLAYER_STARTER_POKEMON_" + symbol.substr(34);
+            player_starter->address = address + 3 - ROM_START;
+            rom.seekg(player_starter->address, rom.beg);
+            rom.read((char*)&(player_starter->species), 2);
+            starter_pokemon.push_back(player_starter);
+        }
+        else if (symbol.substr(0, 33) == "Archipelago_Target_Starter_Rival_")
+        {
+            std::shared_ptr<GiftPokemonInfo> rival_starter(new GiftPokemonInfo());
+
+            rival_starter-> name = "RIVAL_STARTER_POKEMON_" + symbol.substr(33);
+            rival_starter->address = address + 3 - ROM_START;
+            rom.seekg(rival_starter->address, rom.beg);
+            rom.read((char*)&(rival_starter->species), 2);
+            starter_pokemon.push_back(rival_starter);
+        }
+    }
+
+    // Reading gift pokemon
+    std::vector<std::shared_ptr<GiftPokemonInfo>> gift_pokemon;
+    for (auto const& [symbol, address] : symbol_map)
+    {
+        if (symbol.substr(0, 32) == "Archipelago_Target_Special_Gift_")
+        {
+            std::shared_ptr<GiftPokemonInfo> special_gift_pokemon(new GiftPokemonInfo());
+
+            special_gift_pokemon->name = "GIFT_POKEMON_" + symbol.substr(32);
+            special_gift_pokemon->address = address + 3 - ROM_START;
+            rom.seekg(special_gift_pokemon->address, rom.beg);
+            rom.read((char*)&(special_gift_pokemon->species), 2);
+            gift_pokemon.push_back(special_gift_pokemon);
         }
         else if (symbol.substr(0, 33) == "Archipelago_Target_Prize_Pokemon_")
         {
-            std::shared_ptr<MiscPokemonInfo> prize_pokemon(new MiscPokemonInfo());
+            std::shared_ptr<GiftPokemonInfo> prize_pokemon(new GiftPokemonInfo());
 
-            prize_pokemon->name = "MISC_POKEMON_CELADON_PRIZE_" + symbol.substr(33);
+            prize_pokemon->name = "CELADON_PRIZE_POKEMON_" + symbol.substr(33);
             prize_pokemon->address = address + 3 - ROM_START;
             rom.seekg(prize_pokemon->address, rom.beg);
             rom.read((char*)&(prize_pokemon->species), 2);
-            misc_pokemon.push_back(prize_pokemon);
+            gift_pokemon.push_back(prize_pokemon);
         }
-    //     else if (symbol == "Archipelago_Target_Special_Gift_Wynaut_Egg")
-    //     {
-    //         std::shared_ptr<MiscPokemonInfo> wynaut_egg_gift(new MiscPokemonInfo());
+        else if (symbol.substr(0, 36) == "Archipelago_Target_Special_Egg_Gift_")
+        {
+            std::shared_ptr<GiftPokemonInfo> egg_pokemon(new GiftPokemonInfo());
 
-    //         wynaut_egg_gift->name = "Wynaut Egg Gift";
-    //         wynaut_egg_gift->address = address + 1 - ROM_START;
-    //         rom.seekg(wynaut_egg_gift->address, rom.beg);
-    //         rom.read((char*)&(wynaut_egg_gift->species), 2);
-    //         misc_pokemon.push_back(wynaut_egg_gift);
-    //     }
+            egg_pokemon->name = "EGG_POKEMON_" + symbol.substr(36);
+            egg_pokemon->address = address + 1 - ROM_START;
+            rom.seekg(egg_pokemon->address, rom.beg);
+            rom.read((char*)&(egg_pokemon->species), 2);
+            gift_pokemon.push_back(egg_pokemon);
+        }
+    }
+
+    // Reading trade pokemon
+    std::vector<std::shared_ptr<GiftPokemonInfo>> trade_pokemon;
+
+    std::shared_ptr<GiftPokemonInfo> mr_mime_trade(new GiftPokemonInfo());
+
+    mr_mime_trade->name = "TRADE_POKEMON_MR_MIME";
+    mr_mime_trade->address = misc_rom_addresses["sInGameTrades"] + 12;
+    rom.seekg(mr_mime_trade->address, rom.beg);
+    rom.read((char*)&(mr_mime_trade->species), 2);
+    trade_pokemon.push_back(mr_mime_trade);
+
+    std::shared_ptr<GiftPokemonInfo> jynx_trade(new GiftPokemonInfo());
+
+    jynx_trade->name = "TRADE_POKEMON_JYNX";
+    jynx_trade->address = misc_rom_addresses["sInGameTrades"] + 72;
+    rom.seekg(jynx_trade->address, rom.beg);
+    rom.read((char*)&(jynx_trade->species), 2);
+    trade_pokemon.push_back(jynx_trade);
+
+    std::shared_ptr<GiftPokemonInfo> nidoran_trade(new GiftPokemonInfo());
+
+    nidoran_trade->name = "TRADE_POKEMON_NIDORAN";
+    nidoran_trade->address = misc_rom_addresses["sInGameTrades"] + 132;
+    rom.seekg(nidoran_trade->address, rom.beg);
+    rom.read((char*)&(nidoran_trade->species), 2);
+    trade_pokemon.push_back(nidoran_trade);
+
+    std::shared_ptr<GiftPokemonInfo> farfetchd_trade(new GiftPokemonInfo());
+
+    farfetchd_trade->name = "TRADE_POKEMON_FARFETCHD";
+    farfetchd_trade->address = misc_rom_addresses["sInGameTrades"] + 192;
+    rom.seekg(farfetchd_trade->address, rom.beg);
+    rom.read((char*)&(farfetchd_trade->species), 2);
+    trade_pokemon.push_back(farfetchd_trade);
+
+    std::shared_ptr<GiftPokemonInfo> nidorinoa_trade(new GiftPokemonInfo());
+
+    nidorinoa_trade->name = "TRADE_POKEMON_NIDORINOA";
+    nidorinoa_trade->address = misc_rom_addresses["sInGameTrades"] + 252;
+    rom.seekg(nidorinoa_trade->address, rom.beg);
+    rom.read((char*)&(nidorinoa_trade->species), 2);
+    trade_pokemon.push_back(nidorinoa_trade);
+
+    std::shared_ptr<GiftPokemonInfo> lickitung_trade(new GiftPokemonInfo());
+
+    lickitung_trade->name = "TRADE_POKEMON_LICKITUNG";
+    lickitung_trade->address = misc_rom_addresses["sInGameTrades"] + 312;
+    rom.seekg(lickitung_trade->address, rom.beg);
+    rom.read((char*)&(lickitung_trade->species), 2);
+    trade_pokemon.push_back(lickitung_trade);
+
+    std::shared_ptr<GiftPokemonInfo> electrode_trade(new GiftPokemonInfo());
+
+    electrode_trade->name = "TRADE_POKEMON_ELECTRODE";
+    electrode_trade->address = misc_rom_addresses["sInGameTrades"] + 372;
+    rom.seekg(electrode_trade->address, rom.beg);
+    rom.read((char*)&(electrode_trade->species), 2);
+    trade_pokemon.push_back(electrode_trade);
+
+    std::shared_ptr<GiftPokemonInfo> tangela_trade(new GiftPokemonInfo());
+
+    tangela_trade->name = "TRADE_POKEMON_TANGELA";
+    tangela_trade->address = misc_rom_addresses["sInGameTrades"] + 432;
+    rom.seekg(tangela_trade->address, rom.beg);
+    rom.read((char*)&(tangela_trade->species), 2);
+    trade_pokemon.push_back(tangela_trade);
+
+    std::shared_ptr<GiftPokemonInfo> seel_trade(new GiftPokemonInfo());
+
+    seel_trade->name = "TRADE_POKEMON_SEEL";
+    seel_trade->address = misc_rom_addresses["sInGameTrades"] + 492;
+    rom.seekg(seel_trade->address, rom.beg);
+    rom.read((char*)&(seel_trade->species), 2);
+    trade_pokemon.push_back(seel_trade);
+
+    // Reading static encounters
+    std::vector<std::shared_ptr<StaticPokemonInfo>> static_pokemon;
+    for (auto const& [symbol, address] : symbol_map)
+    {
+        if (symbol.substr(0, 36) == "Archipelago_Target_Static_Encounter_")
+        {
+            std::shared_ptr<StaticPokemonInfo> static_encounter(new StaticPokemonInfo());
+
+            static_encounter->name = "STATIC_POKEMON_" + symbol.substr(36);
+            static_encounter->address = address + 1 - ROM_START;
+            rom.seekg(static_encounter->address, rom.beg);
+            rom.read((char*)&(static_encounter->species), 2);
+            rom.read((char*)&(static_encounter->level), 1);
+            static_pokemon.push_back(static_encounter);
+        }
     }
 
     // Reading legendary encounters
-    // std::vector<std::shared_ptr<LegendaryEncounterInfo>> legendary_encounters;
-    // for (auto const& [symbol, address] : symbol_map)
-    // {
-    //     if (symbol.substr(0, 39) == "Archipelago_Target_Legendary_Encounter_")
-    //     {
-    //         std::shared_ptr<LegendaryEncounterInfo> legendary_encounter(new LegendaryEncounterInfo());
+    std::vector<std::shared_ptr<StaticPokemonInfo>> legendary_pokemon;
+    for (auto const& [symbol, address] : symbol_map)
+    {
+        if (symbol.substr(0, 39) == "Archipelago_Target_Legendary_Encounter_")
+        {
+            std::shared_ptr<StaticPokemonInfo> legendary_encounter(new StaticPokemonInfo());
 
-    //         legendary_encounter->name = symbol.substr(39);
-    //         legendary_encounter->address = address + 1 - ROM_START;
-    //         rom.seekg(legendary_encounter->address, rom.beg);
-    //         rom.read((char*)&(legendary_encounter->species), 2);
-    //         rom.read((char*)&(legendary_encounter->level), 1);
-    //         legendary_encounter->defeat_flag = constants_json["FLAG_DEFEATED_" + legendary_encounter->name];
-    //         if (constants_json.contains("FLAG_CAUGHT_" + legendary_encounter->name))
-    //         {
-    //             legendary_encounter->catch_flag = constants_json["FLAG_CAUGHT_" + legendary_encounter->name];
-    //         }
-    //         legendary_encounters.push_back(legendary_encounter);
-    //     }
-    // }
+            legendary_encounter->name = "LEGENDARY_POKEMON_" + symbol.substr(39);
+            legendary_encounter->address = address + 1 - ROM_START;
+            rom.seekg(legendary_encounter->address, rom.beg);
+            rom.read((char*)&(legendary_encounter->species), 2);
+            rom.read((char*)&(legendary_encounter->level), 1);
+            legendary_pokemon.push_back(legendary_encounter);
+        }
+        else if (symbol.substr(0, 35) == "Archipelago_Target_Event_Encounter_")
+        {
+            std::shared_ptr<StaticPokemonInfo> legendary_encounter(new StaticPokemonInfo());
+
+            legendary_encounter->name = "LEGENDARY_POKEMON_" + symbol.substr(35);
+            legendary_encounter->address = address + 3 - ROM_START;
+            rom.seekg(legendary_encounter->address, rom.beg);
+            rom.read((char*)&(legendary_encounter->species), 2);
+            rom.seekg(legendary_encounter->address + 5, rom.beg);
+            rom.read((char*)&(legendary_encounter->level), 1);
+            legendary_pokemon.push_back(legendary_encounter);
+        }
+    }
 
     // Reading species info
     std::vector<std::shared_ptr<SpeciesInfo>> all_species;
@@ -1359,12 +1481,6 @@ int main (int argc, char *argv[])
                 case 1:
                     evolution.method = FRIENDSHIP;
                     break;
-                // case 2:
-                //     evolution.method = FRIENDSHIP_DAY;
-                //     break;
-                // case 3:
-                //     evolution.method = FRIENDSHIP_NIGHT;
-                //     break;
                 case 4:
                     evolution.method = LEVEL;
                     break;
@@ -1444,17 +1560,35 @@ int main (int argc, char *argv[])
         maps_json[map_tuple.first] = map_tuple.second->to_json();
     }
 
-    json misc_pokemon_json;
-    for (const auto& mon: misc_pokemon)
+    json starter_pokemon_json;
+    for (const auto& mon: starter_pokemon)
     {
-        misc_pokemon_json[mon->name] = mon->to_json();
+        starter_pokemon_json[mon->name] = mon->to_json();
     }
 
-    // json legendary_encounters_json = json::array();
-    // for (const auto& legendary_encounter: legendary_encounters)
-    // {
-    //     legendary_encounters_json.push_back(legendary_encounter->to_json());
-    // }
+    json gift_pokemon_json;
+    for (const auto& mon: gift_pokemon)
+    {
+        gift_pokemon_json[mon->name] = mon->to_json();
+    }
+
+    json trade_pokemon_json;
+    for (const auto& mon: trade_pokemon)
+    {
+        trade_pokemon_json[mon->name] = mon->to_json();
+    }
+
+    json static_pokemon_json;
+    for (const auto& mon: static_pokemon)
+    {
+        static_pokemon_json[mon->name] = mon->to_json();
+    }
+
+    json legendary_pokemon_json;
+    for (const auto& mon: legendary_pokemon)
+    {
+        legendary_pokemon_json[mon->name] = mon->to_json();
+    }
 
     json species_json = json::array();
     for (const auto& species: all_species)
@@ -1478,10 +1612,6 @@ int main (int argc, char *argv[])
     //     locations_json[location->name] = location->to_json();
     // }
     // for (const auto& location: trainer_rewards)
-    // {
-    //     locations_json[location->name] = location->to_json();
-    // }
-    // for (const auto& location: berry_trees)
     // {
     //     locations_json[location->name] = location->to_json();
     // }
@@ -1527,8 +1657,11 @@ int main (int argc, char *argv[])
         { "_comment", "DO NOT MODIFY. This file was auto-generated. Your changes will likely be overwritten." },
         { "_rom_name", rom_name },
         { "maps", maps_json },
-        //{ "legendary_encounters", legendary_encounters_json },
-        { "misc_pokemon", misc_pokemon_json },
+        { "starter_pokemon", starter_pokemon_json },
+        { "gift_pokemon", gift_pokemon_json },
+        { "trade_pokemon", trade_pokemon_json},
+        { "static_pokemon", static_pokemon_json },
+        { "legendary_pokemon", legendary_pokemon_json },
         { "misc_ram_addresses", misc_ram_addresses },
         { "misc_rom_addresses", misc_rom_addresses },
         { "locations", locations_json },
@@ -1538,44 +1671,6 @@ int main (int argc, char *argv[])
         { "tmhm_moves", tmhm_moves },
         { "constants", constants_json },
     };
-
-
-    // output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_1_ORANGE_MAIL"]["address"] = {
-    //     output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_1_ORANGE_MAIL"]["address"],
-    //     symbol_map["Archipelago_Target_Missed_Item_Trick_House_1"] + 3 - ROM_START
-    // };
-    // output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_2_HARBOR_MAIL"]["address"] = {
-    //     output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_2_HARBOR_MAIL"]["address"],
-    //     symbol_map["Archipelago_Target_Missed_Item_Trick_House_2"] + 3 - ROM_START
-    // };
-    // output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_2_WAVE_MAIL"]["address"] = {
-    //     output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_2_WAVE_MAIL"]["address"],
-    //     symbol_map["Archipelago_Target_Missed_Item_Trick_House_3"] + 3 - ROM_START
-    // };
-    // output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_3_SHADOW_MAIL"]["address"] = {
-    //     output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_3_SHADOW_MAIL"]["address"],
-    //     symbol_map["Archipelago_Target_Missed_Item_Trick_House_4"] + 3 - ROM_START
-    // };
-    // output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_3_WOOD_MAIL"]["address"] = {
-    //     output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_3_WOOD_MAIL"]["address"],
-    //     symbol_map["Archipelago_Target_Missed_Item_Trick_House_5"] + 3 - ROM_START
-    // };
-    // output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_4_MECH_MAIL"]["address"] = {
-    //     output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_4_MECH_MAIL"]["address"],
-    //     symbol_map["Archipelago_Target_Missed_Item_Trick_House_6"] + 3 - ROM_START
-    // };
-    // output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_6_GLITTER_MAIL"]["address"] = {
-    //     output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_6_GLITTER_MAIL"]["address"],
-    //     symbol_map["Archipelago_Target_Missed_Item_Trick_House_7"] + 3 - ROM_START
-    // };
-    // output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_7_TROPIC_MAIL"]["address"] = {
-    //     output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_7_TROPIC_MAIL"]["address"],
-    //     symbol_map["Archipelago_Target_Missed_Item_Trick_House_8"] + 3 - ROM_START
-    // };
-    // output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_8_BEAD_MAIL"]["address"] = {
-    //     output_json["locations"]["ITEM_TRICK_HOUSE_PUZZLE_8_BEAD_MAIL"]["address"],
-    //     symbol_map["Archipelago_Target_Missed_Item_Trick_House_9"] + 3 - ROM_START
-    // };
 
     std::cout << "Writing file..." << std::endl;
     std::ofstream outfile(root_dir / out_file);
@@ -1733,22 +1828,20 @@ json EncounterTableInfo::to_json ()
     };
 }
 
-json LegendaryEncounterInfo::to_json ()
+json StaticPokemonInfo::to_json ()
 {
     return {
         { "species", this->species },
-        { "level", this->level },
         { "address", this->address },
-        { "defeat_flag", this->defeat_flag },
-        { "catch_flag", this->catch_flag }
+        { "level", this->level }
     };
 }
 
-json MiscPokemonInfo::to_json ()
+json GiftPokemonInfo::to_json ()
 {
     return {
         { "species", this->species },
-        { "address", this->address },
+        { "address", this->address }
     };
 }
 

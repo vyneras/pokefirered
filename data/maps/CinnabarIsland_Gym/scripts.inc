@@ -66,8 +66,7 @@ CinnabarIsland_Gym_EventScript_DefeatedBlaine::
 Archipelago_Target_Badge_7::
 	giveitem ITEM_BADGE_7, 1, FLAG_RECEIVED_BADGE_7
 	setrespawn SPAWN_CINNABAR_ISLAND
-	setvar VAR_MAP_SCENE_CINNABAR_ISLAND, 1
-	clearflag FLAG_HIDE_CINNABAR_BILL
+	clearflag FLAG_HIDE_CINNABAR_POKECENTER_BILL
 	set_gym_trainers 7
 	goto CinnabarIsland_Gym_EventScript_GiveTM38
 	end

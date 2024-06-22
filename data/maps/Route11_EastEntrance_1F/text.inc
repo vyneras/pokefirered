@@ -1,8 +1,3 @@
-@ Unclear where this is originally from
-Route11_EastEntrance_1F_Text_BagIsFull::
-    .string "{PLAYER}{KUN}の　バッグ\n"
-    .string "いっぱい　みたい　だね$"
-
 Route11_EastEntrance_1F_Text_ManInLavenderRatesNames::
     .string "Don't you think it's hard to think\n"
     .string "up good names for POKéMON?\p"

@@ -1599,17 +1599,17 @@
 	.2byte \quantity
 	.endm
 
-  @ Writes the archipelago player's name and item being recevied to the specified buffers.
+	@ Writes the archipelago player's name and item being recevied to the specified buffers.
 	.macro bufferapitemstrings stringVarIdA:req, stringVarIdB:req, flag:req
-	.byte 0xe3
+	.byte 0xd5
 	stringvar \stringVarIdA
 	stringvar \stringVarIdB
 	.2byte \flag
 	.endm
 
-  @ Sets flag stored in a var to TRUE.
+	@ Sets flag stored in a var to TRUE.
 	.macro setflagvar var:req
-	.byte 0xe4
+	.byte 0xd6
 	.2byte \var
 	.endm
 

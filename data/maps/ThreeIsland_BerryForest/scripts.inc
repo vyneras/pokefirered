@@ -23,6 +23,7 @@ ThreeIsland_BerryForest_EventScript_Lostelle::
 	waitse
 	playmoncry SPECIES_HYPNO, CRY_MODE_ENCOUNTER
 	waitmoncry
+Archipelago_Target_Static_Encounter_HYPNO::
 	setwildbattle SPECIES_HYPNO, 30
 	dowildbattle
 	special QuestLog_CutRecording
@@ -33,18 +34,15 @@ Archipelago_Target_NPC_Gift_FLAG_RESCUED_LOSTELLE::
 	giveitem ITEM_IAPAPA_BERRY, 1, FLAG_RESCUED_LOSTELLE
 	special BufferBigGuyOrBigGirlString
 	msgbox ThreeIsland_BerryForest_Text_LetsGoHome
+	fadescreen FADE_TO_BLACK
 	closemessage
-	setflag FLAG_HIDE_LOSTELLE_IN_BERRY_FOREST
-	setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 2
+	removeobject LOCALID_LOSTELLE
+	setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 1
 	clearflag FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE
-	warp MAP_TWO_ISLAND_JOYFUL_GAME_CORNER, 6, 6
+	fadescreen FADE_FROM_BLACK
 	waitstate
 	release
 	end
-
-ThreeIsland_BerryForest_EventScript_NoRoomForBerry::
-	msgbox ThreeIsland_BerryForest_Text_BerryPouchIsFull
-	return
 
 ThreeIsland_BerryForest_Movement_LostelleLookAround::
 	walk_in_place_faster_left

@@ -111,7 +111,7 @@
 #define FLAG_HIDE_CELADON_ROCKETS                          0x05F
 #define FLAG_HIDE_DOJO_HITMONLEE_BALL                      0x060
 #define FLAG_HIDE_DOJO_HITMONCHAN_BALL                     0x061
-#define FLAG_HIDE_CINNABAR_BILL                            0x062
+#define FLAG_0x062                                         0x062
 #define FLAG_HIDE_UNION_ROOM_PLAYER_1                      0x063
 #define FLAG_HIDE_UNION_ROOM_PLAYER_2                      0x064
 #define FLAG_HIDE_UNION_ROOM_PLAYER_3                      0x065
@@ -120,16 +120,16 @@
 #define FLAG_HIDE_UNION_ROOM_PLAYER_6                      0x068
 #define FLAG_HIDE_UNION_ROOM_PLAYER_7                      0x069
 #define FLAG_HIDE_UNION_ROOM_PLAYER_8                      0x06A
-#define FLAG_HIDE_CINNABAR_SEAGALLOP                       0x06B
+#define FLAG_0x06B                                         0x06B
 #define FLAG_HIDE_SAFFRON_FAN_CLUB_BLACKBELT               0x06C
 #define FLAG_HIDE_SAFFRON_FAN_CLUB_ROCKER                  0x06D
 #define FLAG_HIDE_SAFFRON_FAN_CLUB_WOMAN                   0x06E
 #define FLAG_HIDE_SAFFRON_FAN_CLUB_BEAUTY                  0x06F
 #define FLAG_HIDE_MG_DELIVERYMEN                           0x070
-#define FLAG_HIDE_ONE_ISLAND_BILL                          0x071
+#define FLAG_0x071                                         0x071
 #define FLAG_HIDE_ONE_ISLAND_POKECENTER_BILL               0x072
 #define FLAG_HIDE_ONE_ISLAND_POKECENTER_CELIO              0x073
-#define FLAG_HIDE_TWO_ISLAND_GAME_CORNER_BIKER             0x074
+#define FLAG_0x074                                         0x074
 #define FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE          0x075
 #define FLAG_HIDE_LOSTELLE_IN_HER_HOME                     0x076
 #define FLAG_0x077                                         0x077
@@ -161,7 +161,7 @@
 #define FLAG_HIDE_THREE_ISLAND_LONE_BIKER                  0x091
 #define FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY            0x092
 #define FLAG_HIDE_LOST_CAVE_SELPHY                         0x093
-#define FLAG_HIDE_RESORT_GORGEOUS_SELPHY                   0x094
+#define FLAG_0x094                                         0x094
 #define FLAG_HIDE_RESORT_GORGEOUS_INSIDE_SELPHY            0x095
 #define FLAG_HIDE_SELPHYS_BUTLER                           0x096
 #define FLAG_HIDE_FOUR_ISLAND_RIVAL                        0x097
@@ -581,7 +581,7 @@
 #define FLAG_0x22F               0x22F
 
 // Story flags
-#define STORY_FLAGS_START 0x230
+#define STORY_FLAGS_START                                0x230
 #define FLAG_GOT_POTION_ON_ROUTE_1                       0x230
 #define FLAG_GOT_TM34_FROM_SURGE                         0x231
 #define FLAG_GOT_FOSSIL_FROM_MT_MOON                     0x232
@@ -632,7 +632,7 @@
 #define FLAG_GOT_OAKS_PARCEL                             0x25F
 #define FLAG_GOT_METEORITE                               0x260
 #define FLAG_GOT_RAINBOW_PASS                            0x261
-#define FLAG_0x262                                       0x262
+#define FLAG_DELIVERED_OAKS_PARCEL                       0x262
 #define FLAG_GOT_EEVEE                                   0x263
 #define FLAG_FOUND_BOTH_VERMILION_GYM_SWITCHES           0x264
 #define FLAG_CINNABAR_GYM_QUIZ_1                         0x265
@@ -653,7 +653,7 @@
 #define FLAG_DID_ESPHERE_TRADE                           0x274
 #define FLAG_DID_TANGENY_TRADE                           0x275
 #define FLAG_DID_SEELOR_TRADE                            0x276
-#define FLAG_0x277                                       0x277
+#define FLAG_DEFEATED_ROUTE22_RIVAL                      0x277
 #define FLAG_GOT_HITMON_FROM_DOJO                        0x278
 #define FLAG_0x279                                       0x279
 #define FLAG_SILPH_2F_DOOR_1                             0x27A
@@ -751,7 +751,7 @@
 #define FLAG_TALKED_TO_LORELEI_AFTER_WAREHOUSE           0x2D4
 #define FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE               0x2D5
 #define FLAG_UNLOCKED_ROCKET_WAREHOUSE                   0x2D6
-#define FLAG_NO_ROOM_FOR_TM42_AT_MEMORIAL_PILLAR         0x2D7
+#define FLAG_0x2D7                                       0x2D7
 #define FLAG_LEARNED_YES_NAH_CHANSEY                     0x2D8
 #define FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1       0x2D9
 #define FLAG_GOT_TOGEPI_EGG                              0x2DA

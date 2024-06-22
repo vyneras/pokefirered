@@ -9,6 +9,8 @@
 #include "event_data.h"
 #include "field_fadetransition.h"
 #include "field_weather.h"
+#include "item.h"
+#include "constants/items.h"
 #include "constants/songs.h"
 #include "constants/maps.h"
 #include "constants/seagallop.h"
@@ -69,7 +71,6 @@ static const s8 sSeag[][4] = {
     [SEAGALLOP_FIVE_ISLAND]     = {MAP(FIVE_ISLAND_HARBOR),  0x08, 0x05},
     [SEAGALLOP_SIX_ISLAND]      = {MAP(SIX_ISLAND_HARBOR),   0x08, 0x05},
     [SEAGALLOP_SEVEN_ISLAND]    = {MAP(SEVEN_ISLAND_HARBOR), 0x08, 0x05},
-    [SEAGALLOP_CINNABAR_ISLAND] = {MAP(CINNABAR_ISLAND),     0x15, 0x07},
     [SEAGALLOP_NAVEL_ROCK]      = {MAP(NAVEL_ROCK_HARBOR),   0x08, 0x05},
     [SEAGALLOP_BIRTH_ISLAND]    = {MAP(BIRTH_ISLAND_HARBOR), 0x08, 0x05}
 };
@@ -93,7 +94,6 @@ static const u16 sTravelDirectionMatrix[] = {
     [SEAGALLOP_FIVE_ISLAND]     = 0x4c0, // 10011000000
     [SEAGALLOP_SIX_ISLAND]      = 0x400, // 10000000000
     [SEAGALLOP_SEVEN_ISLAND]    = 0x440, // 10001000000
-    [SEAGALLOP_CINNABAR_ISLAND] = 0x7ff, // 11111111111
     [SEAGALLOP_NAVEL_ROCK]      = 0x6e0, // 11011100000
     [SEAGALLOP_BIRTH_ISLAND]    = 0x000  // 00000000000
 };
@@ -458,9 +458,6 @@ u8 GetSeagallopNumber(void)
     originId = gSpecialVar_0x8004;
     destId = gSpecialVar_0x8006;
 
-    if (originId == SEAGALLOP_CINNABAR_ISLAND || destId == SEAGALLOP_CINNABAR_ISLAND)
-        return 1;
-
     if (originId == SEAGALLOP_VERMILION_CITY || destId == SEAGALLOP_VERMILION_CITY)
         return 7;
 
@@ -470,33 +467,38 @@ u8 GetSeagallopNumber(void)
     if (originId == SEAGALLOP_BIRTH_ISLAND || destId == SEAGALLOP_BIRTH_ISLAND)
         return 12;
 
-    if ((originId == SEAGALLOP_ONE_ISLAND 
-      || originId == SEAGALLOP_TWO_ISLAND 
-      || originId == SEAGALLOP_THREE_ISLAND) 
-      && (destId == SEAGALLOP_ONE_ISLAND 
-       || destId == SEAGALLOP_TWO_ISLAND 
+    if ((originId == SEAGALLOP_ONE_ISLAND
+      || originId == SEAGALLOP_TWO_ISLAND
+      || originId == SEAGALLOP_THREE_ISLAND)
+      && (destId == SEAGALLOP_ONE_ISLAND
+       || destId == SEAGALLOP_TWO_ISLAND
        || destId == SEAGALLOP_THREE_ISLAND))
         return 2;
 
-    if ((originId == SEAGALLOP_FOUR_ISLAND 
-      || originId == SEAGALLOP_FIVE_ISLAND) 
-      && (destId == SEAGALLOP_FOUR_ISLAND 
+    if ((originId == SEAGALLOP_FOUR_ISLAND
+      || originId == SEAGALLOP_FIVE_ISLAND)
+      && (destId == SEAGALLOP_FOUR_ISLAND
        || destId == SEAGALLOP_FIVE_ISLAND))
         return 3;
 
-    if ((originId == SEAGALLOP_SIX_ISLAND 
-      || originId == SEAGALLOP_SEVEN_ISLAND) 
-      && (destId == SEAGALLOP_SIX_ISLAND 
+    if ((originId == SEAGALLOP_SIX_ISLAND
+      || originId == SEAGALLOP_SEVEN_ISLAND)
+      && (destId == SEAGALLOP_SIX_ISLAND
        || destId == SEAGALLOP_SEVEN_ISLAND))
         return 5;
 
     return 6;
 }
 
+bool8 HasSeagallopPass(void)
+{
+  return CheckBagHasItem(ITEM_TRI_PASS, 1) || CheckBagHasItem(ITEM_RAINBOW_PASS, 1);
+}
+
 bool8 IsPlayerLeftOfVermilionSailor(void)
 {
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(VERMILION_CITY) 
-       && gSaveBlock1Ptr->location.mapNum == MAP_NUM(VERMILION_CITY) 
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(VERMILION_CITY)
+       && gSaveBlock1Ptr->location.mapNum == MAP_NUM(VERMILION_CITY)
        && gSaveBlock1Ptr->pos.x < 24)
         return TRUE;
 

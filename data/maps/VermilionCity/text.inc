@@ -7,11 +7,6 @@ VermilionCity_Text_DidYouSeeSSAnneInHarbor::
     .string "Did you see the S.S. ANNE moored\n"
     .string "in the harbor?$"
 
-VermilionCity_Text_SSAnneHasDepartedForYear::
-    .string "So, the S.S. ANNE has departed?\p"
-    .string "She'll be back in VERMILION about\n"
-    .string "this time next year.$"
-
 VermilionCity_Text_BuildingOnThisLand::
     .string "I'm putting up a building on this\n"
     .string "plot of land. I own it all.\p"
@@ -71,35 +66,10 @@ VermilionCity_Text_DontHaveNeededSSTicket::
     .string "{FONT_MALE}Sorry!\p"
     .string "You need a ticket to get aboard.$"
 
-VermilionCity_Text_TheShipSetSail::
-    .string "The ship set sail.$"
-
-VermilionCity_Text_BoardSeagallopTriPass::
-    .string "Ah, you have a TRI-PASS.\p"
-    .string "Would you like to board\n"
-    .string "a SEAGALLOP ferry?$"
-
 VermilionCity_Text_Seagallop7Departing::
     .string "Okay, everything's in order.\p"
     .string "SEAGALLOP HI-SPEED 7 will be\n"
     .string "departing immediately.$"
-
-VermilionCity_Text_BoardSeagallopRainbowPass::
-    .string "Ah, you have a RAINBOW PASS.\p"
-    .string "Would you like to board\n"
-    .string "a SEAGALLOP ferry?$"
-
-VermilionCity_Text_OhMysticTicketTakeYouToNavelRock::
-    .string "Oh! That's a MYSTICTICKET!\n"
-    .string "Now that is rare.\p"
-    .string "We'll be happy to take you to\n"
-    .string "NAVEL ROCK anytime.$"
-
-VermilionCity_Text_OhAuroraTicketTakeYouToBirthIsland::
-    .string "Oh! That's an AURORATICKET!\n"
-    .string "Now that is rare.\p"
-    .string "We'll be happy to take you to\n"
-    .string "BIRTH ISLAND anytime.$"
 
 VermilionCity_Text_BoardSeagallopFerry::
     .string "Would you like to board\n"

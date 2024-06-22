@@ -46,7 +46,6 @@ RocketHideout_B4F_EventScript_SilphScope::
 	removeobject LOCALID_SILPH_SCOPE
 Archipelago_Target_NPC_Gift_FLAG_GOT_SILPH_SCOPE::
 	giveitem ITEM_SILPH_SCOPE, 1, FLAG_GOT_SILPH_SCOPE
-	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
 	release
 	end
 
@@ -69,7 +68,6 @@ RocketHideout_B4F_EventScript_LiftKey::
 	removeobject LOCALID_LIFT_KEY
 Archipelago_Target_NPC_Gift_FLAG_CAN_USE_ROCKET_HIDEOUT_LIFT::
 	giveitem ITEM_LIFT_KEY, 1, FLAG_CAN_USE_ROCKET_HIDEOUT_LIFT
-	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
 	release
 	end
 

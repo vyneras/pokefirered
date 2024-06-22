@@ -1,14 +1,6 @@
-Route24_Text_JustEarnedFabulousPrize::
+Route24_Text_BeatContestTrainers::
     .string "Congratulations! You beat our\n"
     .string "five contest TRAINERS!\p"
-    .string "You just earned a fabulous prize!$"
-
-Route24_Text_ReceivedNuggetFromMysteryTrainer::
-    .string "{PLAYER} received a NUGGET\n"
-    .string "from the mystery TRAINER!$"
-
-Route24_Text_YouDontHaveAnyRoom::
-    .string "You don't have any room!$"
 
 Route24_Text_JoinTeamRocket::
     .string "By the way, how would you like to\n"
@@ -32,6 +24,10 @@ Route24_Text_YoudBecomeTopRocketLeader::
     .string "a top leader in TEAM ROCKET.\p"
     .string "Come on, think of the opportunity!\n"
     .string "Don't let this chance go to waste.$"
+
+Route24_Text_HereTakeThis::
+    .string "Here, I'll give you this.\n"
+    .string "Think of it as an incentive.$"
 
 Route24_Text_ShaneIntro::
     .string "I saw your feat from the grass!$"

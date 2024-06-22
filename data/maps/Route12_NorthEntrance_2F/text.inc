@@ -21,9 +21,6 @@ Route12_NorthEntrance_2F_Text_ExplainTM27::
     .string "it will return your love by working\l"
     .string "its hardest in battle.$"
 
-Route12_NorthEntrance_2F_Text_DontHaveRoomForThis::
-    .string "You don't have room for this.$"
-
 Route12_NorthEntrance_2F_Text_TheresManFishing::
     .string "Let's see what the binoculars have\n"
     .string "to show…\p"

@@ -1,7 +1,21 @@
 .set LOCALID_RIVAL, 1
 
 Route22_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route22_OnTransition
 	.byte 0
+
+Route22_OnTransition::
+	goto_if_set FLAG_DEFEATED_ROUTE22_RIVAL, Route22_SetRivalDefeated
+	goto_if_set FLAG_DELIVERED_OAKS_PARCEL, Route22_SetEarlyRival
+	end
+
+Route22_SetRivalDefeated::
+	setvar VAR_MAP_SCENE_ROUTE22, 4
+
+Route22_SetEarlyRival::
+	goto_if_ge VAR_MAP_SCENE_ROUTE22, 2, EventScript_ReleaseEnd
+	setvar VAR_MAP_SCENE_ROUTE22, 1
+	end
 
 Route22_EventScript_EarlyRivalTriggerTop::
 	lockall
@@ -45,6 +59,7 @@ Route22_EventScript_EarlyRival::
 	fadedefaultbgm
 	removeobject LOCALID_RIVAL
 	setvar VAR_MAP_SCENE_ROUTE22, 2
+	setflag FLAG_DEFEATED_ROUTE22_RIVAL
 	releaseall
 	end
 
@@ -80,16 +95,6 @@ Route22_EventScript_EarlyRivalExitBottom::
 	applymovement LOCALID_RIVAL, Route22_Movement_EarlyRivalExitBottom
 	waitmovement 0
 	return
-
-Route22_Movement_UnusedRivalExit:: @ 8
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
 
 Route22_Movement_EarlyRivalExit::
 	walk_down
@@ -195,6 +200,7 @@ Route22_EventScript_LateRival::
 	fadedefaultbgm
 	removeobject LOCALID_RIVAL
 	setvar VAR_MAP_SCENE_ROUTE22, 4
+	setflag FLAG_DEFEATED_ROUTE22_RIVAL
 	releaseall
 	end
 

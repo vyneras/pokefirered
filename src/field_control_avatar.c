@@ -13,6 +13,7 @@
 #include "field_player_avatar.h"
 #include "field_poison.h"
 #include "field_specials.h"
+#include "item.h"
 #include "item_menu.h"
 #include "link.h"
 #include "wonder_news.h"
@@ -536,6 +537,8 @@ static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *position
     case 6:
     case BG_EVENT_HIDDEN_ITEM:
         if (GetHiddenItemAttr(bgEvent->bgUnion.hiddenItem, HIDDEN_ITEM_UNDERFOOT) == TRUE)
+            return NULL;
+        else if(gArchipelagoOptions.itemfinderRequired && !CheckBagHasItem(ITEM_ITEMFINDER, 1))
             return NULL;
         gSpecialVar_0x8005 = GetHiddenItemAttr(bgEvent->bgUnion.hiddenItem, HIDDEN_ITEM_ITEM);
         gSpecialVar_0x8004 = GetHiddenItemAttr(bgEvent->bgUnion.hiddenItem, HIDDEN_ITEM_FLAG);

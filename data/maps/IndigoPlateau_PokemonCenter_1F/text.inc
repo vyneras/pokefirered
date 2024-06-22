@@ -14,13 +14,29 @@ IndigoPlateau_PokemonCenter_1F_Text_FaceEliteFourGoodLuck::
     .string "If you win, a door opens to the\n"
     .string "next TRAINER. Good luck!$"
 
-IndigoPlateau_PokemonCenter_1F_Text_LoreleiIsAbsentClosedForTimeBeing::
-    .string "I am so sorry, but you've wasted\n"
-    .string "your time coming here.\p"
-    .string "LORELEI of the ELITE FOUR is\n"
-    .string "absent, you see.\p"
-    .string "As a result, the POKéMON LEAGUE is\n"
-    .string "closed for the time being.$"
+IndigoPlateau_PokemonCenter_1F_Text_NeedXBadges::
+    .string "I am so sorry, but I can't let\n"
+    .string "you through here yet.\p"
+    .string "You need to have {STR_VAR_1} BADGES\n"
+    .string "in order to face the ELITE FOUR.$"
+
+IndigoPlateau_PokemonCenter_1F_Text_NeedBadge::
+    .string "I am so sorry, but I can't let\n"
+    .string "you through here yet.\p"
+    .string "You need to have {STR_VAR_1} BADGE\n"
+    .string "in order to face the ELITE FOUR.$"
+
+IndigoPlateau_PokemonCenter_1F_Text_NeedXGyms::
+    .string "I am so sorry, but I can't let\n"
+    .string "you through here yet.\p"
+    .string "You need to beat {STR_VAR_1} GYMS\n"
+    .string "in order to face the ELITE FOUR.$"
+
+IndigoPlateau_PokemonCenter_1F_Text_NeedGym::
+    .string "I am so sorry, but I can't let\n"
+    .string "you through here yet.\p"
+    .string "You need to beat {STR_VAR_1} GYM\n"
+    .string "in order to face the ELITE FOUR.$"
 
 IndigoPlateau_PokemonCenter_1F_Text_AgathaWhuppedUs::
     .string "AGATHA's GHOST-type POKéMON are\n"

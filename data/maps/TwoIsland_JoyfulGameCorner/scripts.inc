@@ -17,11 +17,11 @@ TwoIsland_JoyfulGameCorner_EventScript_SetLostelleReturnedPos::
 	setobjectxyperm LOCALID_DADDY, 6, 2
 	setobjectmovementtype LOCALID_DADDY, MOVEMENT_TYPE_FACE_DOWN
 	setobjectmovementtype LOCALID_LOSTELLE, MOVEMENT_TYPE_LOOK_AROUND
-	setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 4
+	setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 3
 	return
 
 TwoIsland_JoyfulGameCorner_OnWarp::
-	map_script_2 VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 2, TwoIsland_JoyfulGameCorner_EventScript_TurnPlayerNorth
+	map_script_2 VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 1, TwoIsland_JoyfulGameCorner_EventScript_TurnPlayerNorth
 	map_script_2 VAR_CABLE_CLUB_STATE, USING_MINIGAME, EventScript_CheckTurnAttendant
 	.2byte 0
 
@@ -30,13 +30,14 @@ TwoIsland_JoyfulGameCorner_EventScript_TurnPlayerNorth::
 	end
 
 TwoIsland_JoyfulGameCorner_OnFrame::
-	map_script_2 VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 0, TwoIsland_JoyfulGameCorner_EventScript_HelpFindLostelleScene
-	map_script_2 VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 2, TwoIsland_JoyfulGameCorner_EventScript_FoundLostelleScene
+	map_script_2 VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 1, TwoIsland_JoyfulGameCorner_EventScript_FoundLostelleScene
 	map_script_2 VAR_CABLE_CLUB_STATE, USING_MINIGAME, CableClub_EventScript_ExitMinigameRoom
 	.2byte 0
 
 TwoIsland_JoyfulGameCorner_EventScript_FoundLostelleScene::
 	lockall
+	applymovement OBJ_EVENT_ID_PLAYER, TwoIsland_JoyfulGameCorner_Movement_PlayerToLostelle
+	waitmovement 0
 	textcolor NPC_TEXT_COLOR_MALE
 	msgbox TwoIsland_JoyfulGameCorner_Text_YouRescuedLostelle
 	textcolor NPC_TEXT_COLOR_FEMALE
@@ -45,90 +46,20 @@ TwoIsland_JoyfulGameCorner_EventScript_FoundLostelleScene::
 	closemessage
 	applymovement LOCALID_LOSTELLE, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 3
+	setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 2
 	releaseall
 	end
 
-TwoIsland_JoyfulGameCorner_EventScript_HelpFindLostelleScene::
-	lockall
-	textcolor NPC_TEXT_COLOR_MALE
-	applymovement LOCALID_DADDY, TwoIsland_JoyfulGameCorner_Movement_DaddyPacing
-	waitmovement 0
-	msgbox TwoIsland_JoyfulGameCorner_Text_WhereHasLostelleGottenTo
-	closemessage
-	applymovement LOCALID_DADDY, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	playse SE_PIN
-	applymovement LOCALID_DADDY, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_DADDY, Common_Movement_Delay48
-	waitmovement 0
-	applymovement LOCALID_DADDY, TwoIsland_JoyfulGameCorner_Movement_DaddyApproachPlayer
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	msgbox TwoIsland_JoyfulGameCorner_Text_PleaseHelpFindLostelle
-	closemessage
-	playse SE_RS_DOOR
-	waitse
-	applymovement OBJ_EVENT_ID_PLAYER, TwoIsland_JoyfulGameCorner_Movement_PlayerFaceDaddy
-	waitmovement 0
-	playbgm MUS_ENCOUNTER_BOY, 0
-	addobject LOCALID_BIKER
-	applymovement LOCALID_BIKER, TwoIsland_JoyfulGameCorner_Movement_BikerLookAround
-	waitmovement 0
-	msgbox TwoIsland_JoyfulGameCorner_Text_IsThisOnlyThreeIsland
-	applymovement LOCALID_BIKER, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	msgbox TwoIsland_JoyfulGameCorner_Text_ThisIsTwoIslandMoveIt
-	msgbox TwoIsland_JoyfulGameCorner_Text_TheseIslandsAreConfusing
-	closemessage
-	applymovement LOCALID_BIKER, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	playse SE_EXIT
-	removeobject LOCALID_BIKER
-	fadedefaultbgm
-	delay 60
-	msgbox TwoIsland_JoyfulGameCorner_Text_PunkScuffedUpMyFloor
-	clearflag FLAG_HIDE_THREE_ISLAND_LONE_BIKER
-	setvar VAR_MAP_SCENE_THREE_ISLAND, 2
-	setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 1
-	releaseall
-	end
-
-TwoIsland_JoyfulGameCorner_Movement_DaddyPacing::
-	walk_left
+TwoIsland_JoyfulGameCorner_Movement_PlayerToLostelle::
 	walk_right
-	walk_right
-	delay_8
-	walk_in_place_faster_up
-	delay_16
-	step_end
-
-TwoIsland_JoyfulGameCorner_Movement_DaddyApproachPlayer::
-	walk_down
-	walk_down
-	walk_down
-	walk_in_place_faster_left
-	step_end
-
-TwoIsland_JoyfulGameCorner_Movement_PlayerFaceDaddy::
-	walk_left
-	walk_in_place_faster_right
-	step_end
-
-TwoIsland_JoyfulGameCorner_Movement_BikerLookAround::
-	walk_in_place_faster_left
-	delay_8
-	walk_in_place_faster_right
-	delay_8
-	walk_in_place_faster_up
+	walk_up
+	walk_up
 	step_end
 
 TwoIsland_JoyfulGameCorner_EventScript_InfoMan::
 	lock
 	faceplayer
-	goto_if_eq VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 4, JoyfulGameCorner_EventScript_InfoMan2
+	goto_if_eq VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 3, JoyfulGameCorner_EventScript_InfoMan2
 	goto_if_set FLAG_RESCUED_LOSTELLE, TwoIsland_JoyfulGameCorner_EventScript_GetGamesGoingSoon
 	msgbox TwoIsland_JoyfulGameCorner_Text_NotRunningAnyGamesToday
 	release
@@ -143,9 +74,9 @@ TwoIsland_JoyfulGameCorner_EventScript_GetGamesGoingSoon::
 TwoIsland_JoyfulGameCorner_EventScript_LostellesDaddy::
 	lock
 	faceplayer
-	goto_if_eq VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 4, JoyfulGameCorner_EventScript_MinigameAttendant
+	goto_if_eq VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 3, JoyfulGameCorner_EventScript_MinigameAttendant
 	goto_if_set FLAG_GOT_MOON_STONE_FROM_JOYFUL_GAME_CORNER, TwoIsland_JoyfulGameCorner_EventScript_GetGameCornerRunning
-	goto_if_eq VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 3, TwoIsland_JoyfulGameCorner_EventScript_GiveDaddyMeteorite
+	goto_if_eq VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 2, TwoIsland_JoyfulGameCorner_EventScript_GiveDaddyMeteorite
 	msgbox TwoIsland_JoyfulGameCorner_Text_PleaseGoToThreeIsland
 	release
 	end
@@ -154,7 +85,8 @@ TwoIsland_JoyfulGameCorner_EventScript_GiveDaddyMeteorite::
 	checkitem ITEM_METEORITE
 	goto_if_eq VAR_RESULT, FALSE, TwoIsland_JoyfulGameCorner_EventScript_DontHaveMeteorite
 	msgbox TwoIsland_JoyfulGameCorner_Text_ThisIsForMe
-	setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 2
+	setflag FLAG_SEVII_DETOUR_FINISHED
+	setvar VAR_MAP_SCENE_MT_EMBER_EXTERIOR, 1
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	playfanfare MUS_OBTAIN_TMHM
 	message TwoIsland_JoyfulGameCorner_Text_HandedMeteoriteToLostellesDaddy
@@ -179,12 +111,6 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_MOON_STONE_FROM_JOYFUL_GAME_CORNER::
 
 TwoIsland_JoyfulGameCorner_EventScript_GetGameCornerRunning::
 	msgbox TwoIsland_JoyfulGameCorner_Text_IllGetGameCornerRunning
-	release
-	end
-
-TwoIsland_JoyfulGameCorner_EventScript_NoRoomForMoonStone::
-	setflag FLAG_NO_ROOM_FOR_JOYFUL_GAME_CORNER_MOON_STONE
-	msgbox TwoIsland_JoyfulGameCorner_Text_NotGoingToFitInBag
 	release
 	end
 

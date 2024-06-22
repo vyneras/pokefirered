@@ -9,20 +9,21 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .reusableTms = FALSE,
     .guaranteedCatch = FALSE,
 
-    .areTrainersBlind = FALSE,
+    .areTrainersBlind = TRUE,
     .expMultiplierNumerator = 100,
     .expMultiplierDenominator = 100,
 
     .openViridianCity = FALSE,
     .route3Requirement = 0,
+    .saveBillRequired = TRUE,
     .giovanniRequiresGyms = FALSE,
     .giovanniRequiredCount = 7,
     .route22GateRequiresGyms = FALSE,
     .route22GateRequiredCount = 7,
     .route23GuardRequiresGyms = FALSE,
     .route23GuardRequiredCount = 7,
-    .eliteFourRequiresGyms = FALSE,
-    .eliteFourRequiredCount = 8,
+    .eliteFourRequiresGyms = TRUE,
+    .eliteFourRequiredCount = 1,
     .ceruleanCaveRequirement = 0,
     .ceruleanCaveRequiredCount = 8,
 
@@ -38,7 +39,17 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
         [6] = 1 << 6,
         [7] = 1 << 7,
     }, // Field move order. See src/party_menu.c
-    .freeFlyLocation = 0
+    .freeFlyLocation = 0,
+
+    .itemfinderRequired = FALSE,
+
+    .oaksAideRequiredCounts = {
+        [0] = 10, // Route 2
+        [1] = 20, // Route 10
+        [2] = 30, // Route 11
+        [3] = 40, // Route 16
+        [4] = 50 // Route 15
+    }
 };
 
 EWRAM_DATA struct ArchipelagoReceivedItem gArchipelagoReceivedItem = {0};

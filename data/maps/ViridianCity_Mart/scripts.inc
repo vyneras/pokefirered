@@ -32,7 +32,6 @@ ViridianCity_Mart_EventScript_ParcelScene::
 	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_MART, 1
 Archipelago_Target_NPC_Gift_FLAG_GOT_OAKS_PARCEL::
 	giveitem ITEM_OAKS_PARCEL, 1, FLAG_GOT_OAKS_PARCEL
-	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 5
 	releaseall
 	end
 
@@ -55,10 +54,10 @@ ViridianCity_Mart_Movement_FacePlayer::
 ViridianCity_Mart_EventScript_Clerk::
 	lock
 	faceplayer
-	goto_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_MART, 1, ViridianCity_Mart_EventScript_SayHiToOak
 	goto_if_questlog EventScript_ReleaseEnd
 	message Text_MayIHelpYou
 	waitmessage
+	goto_if_set FLAG_BETTER_SHOPS_ENABLED, Poke_Mart_EventScript_BetterItems
 	pokemart ViridianCity_Mart_Items
 	msgbox Text_PleaseComeAgain
 	release
@@ -71,11 +70,6 @@ ViridianCity_Mart_Items::
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_NONE
-	release
-	end
-
-ViridianCity_Mart_EventScript_SayHiToOak::
-	msgbox ViridianCity_Mart_Text_SayHiToOakForMe
 	release
 	end
 

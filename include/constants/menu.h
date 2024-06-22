@@ -61,14 +61,16 @@
 #define MULTICHOICE_SEVII_NAVEL                                54
 #define MULTICHOICE_SEVII_BIRTH                                55
 #define MULTICHOICE_SEVII_NAVEL_BIRTH                          56
-#define MULTICHOICE_SEAGALLOP_123                              57
-#define MULTICHOICE_SEAGALLOP_V23                              58
-#define MULTICHOICE_SEAGALLOP_V13                              59
-#define MULTICHOICE_SEAGALLOP_V12                              60
-#define MULTICHOICE_SEAGALLOP_VERMILION                        61
-#define MULTICHOICE_HELIX_DOME_AMBER                           62
-#define MULTICHOICE_JOIN_OR_LEAD                               63
-#define MULTICHOICE_TRAINER_TOWER_MODE                         64
+#define MULTICHOICE_NAVEL                                      57
+#define MULTICHOICE_BIRTH                                      58
+#define MULTICHOICE_NAVEL_BIRTH                                59
+#define MULTICHOICE_SEAGALLOP_V23                              60
+#define MULTICHOICE_SEAGALLOP_V13                              61
+#define MULTICHOICE_SEAGALLOP_V12                              62
+#define MULTICHOICE_SEAGALLOP_VERMILION                        63
+#define MULTICHOICE_HELIX_DOME_AMBER                           64
+#define MULTICHOICE_JOIN_OR_LEAD                               65
+#define MULTICHOICE_TRAINER_TOWER_MODE                         66
 
 #define MULTICHOICE_NONE                                      255
 

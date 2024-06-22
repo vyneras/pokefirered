@@ -21,23 +21,26 @@ struct ArchipelagoOptions
 
   /* 0x0A */ bool8 openViridianCity;
   /* 0x0B */ u8 route3Requirement; // 0 = Open, 1 = Defeat Brock, 2 = Defeat Any Gym Leader, 3 = Boulder Badge, 4 = Any Badge
-  /* 0x0C */ bool8 giovanniRequiresGyms;
-  /* 0xD */ u8 giovanniRequiredCount;
-  /* 0x0E */ bool8 route22GateRequiresGyms;
-  /* 0x0F */ u8 route22GateRequiredCount;
-  /* 0x10 */ bool8 route23GuardRequiresGyms;
-  /* 0x11 */ u8 route23GuardRequiredCount;
-  /* 0x12 */ bool8 eliteFourRequiresGyms;
-  /* 0x13 */ u8 eliteFourRequiredCount;
-  /* 0x14 */ u8 ceruleanCaveRequirement; // 0 = Vanilla, 1 = Become Champion, 2 = Restore Network Center, 3 = Gyms, 4 = Badges
-  /* 0x15 */ u8 ceruleanCaveRequiredCount;
+  /* 0x0C */ bool8 saveBillRequired;
+  /* 0x0D */ bool8 giovanniRequiresGyms;
+  /* 0x0E */ u8 giovanniRequiredCount;
+  /* 0x0F */ bool8 route22GateRequiresGyms;
+  /* 0x10 */ u8 route22GateRequiredCount;
+  /* 0x11 */ bool8 route23GuardRequiresGyms;
+  /* 0x12 */ u8 route23GuardRequiredCount;
+  /* 0x13 */ bool8 eliteFourRequiresGyms;
+  /* 0x14 */ u8 eliteFourRequiredCount;
+  /* 0x15 */ u8 ceruleanCaveRequirement; // 0 = Vanilla, 1 = Become Champion, 2 = Restore Network Center, 3 = Badges, 4 = Gyms
+  /* 0x16 */ u8 ceruleanCaveRequiredCount;
 
-  /* 0x16 */ u8 startingBadges;
-  /* 0x17 */ u32 hmTotalBadgeRequirements;
-  /* 0x1B */ u8 hmSpecificBadgeRequirements[8];
-  /* 0x23 */ u8 freeFlyLocation;
+  /* 0x17 */ u8 startingBadges;
+  /* 0x18 */ u32 hmTotalBadgeRequirements;
+  /* 0x1C */ u8 hmSpecificBadgeRequirements[8];
+  /* 0x24 */ u8 freeFlyLocation;
 
-  /* 0x24 */ bool8 itemfinderRequired;
+  /* 0x25 */ bool8 itemfinderRequired;
+
+  /* 0x26 */ u8 oaksAideRequiredCounts[5];
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem

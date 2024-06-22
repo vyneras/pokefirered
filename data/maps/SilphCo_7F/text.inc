@@ -25,12 +25,6 @@ SilphCo_7F_Text_RocketBossWentToBoardroom::
     .string "Is our PRESIDENT okay?\n"
     .string "I'm worried.$"
 
-SilphCo_7F_Text_OhNo::
-    .string "あ‥　もう　もてないぞ$"
-
-SilphCo_7F_Text_SavedAtLast::
-    .string "たすかったよ　ありがと！$"
-
 SilphCo_7F_Text_RocketsAfterMasterBall::
     .string "TEAM ROCKET was after the MASTER\n"
     .string "BALL, which catches any POKéMON.$"

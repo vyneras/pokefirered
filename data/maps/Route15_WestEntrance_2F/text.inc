@@ -16,10 +16,6 @@ Route15_WestEntrance_2F_Text_GreatHereYouGo::
     .string "Congratulations!\n"
     .string "Here you go!$"
 
-Route15_WestEntrance_2F_Text_ReceivedItemFromAide::
-    .string "{PLAYER} received the {STR_VAR_2}\n"
-    .string "from the AIDE.$"
-
 Route15_WestEntrance_2F_Text_ExplainExpShare::
     .string "EXP. SHARE is an item to be held\n"
     .string "by a POKéMON.\p"

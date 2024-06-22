@@ -38,13 +38,7 @@ ThreeIsland_DunsparceTunnel_EventScript_ProspectorStruckGold::
 	msgbox ThreeIsland_DunsparceTunnel_Text_StruckGoldThisIsForYou
 Archipelago_Target_NPC_Gift_FLAG_GOT_NUGGET_FROM_DUNSPARCE_TUNNEL::
 	giveitem ITEM_NUGGET, 1, FLAG_GOT_NUGGET_FROM_DUNSPARCE_TUNNEL
-	goto_if_eq VAR_RESULT, FALSE, ThreeIsland_DunsparceTunnel_EventScript_NoRoomForNugget
 	goto ThreeIsland_DunsparceTunnel_EventScript_ProspectorAlreadyGaveNugget
-	end
-
-ThreeIsland_DunsparceTunnel_EventScript_NoRoomForNugget::
-	msgbox ThreeIsland_DunsparceTunnel_Text_WhoopsBagCrammedFull
-	release
 	end
 
 ThreeIsland_DunsparceTunnel_EventScript_ProspectorAlreadyGaveNugget::

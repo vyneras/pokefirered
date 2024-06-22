@@ -17,11 +17,6 @@ LavenderTown_VolunteerPokemonHouse_EventScript_AlreadyHavePokeFlute::
 	release
 	end
 
-LavenderTown_VolunteerPokemonHouse_EventScript_NoRoomForPokeFlute::
-	msgbox LavenderTown_VolunteerPokemonHouse_Text_MustMakeRoomForThis
-	release
-	end
-
 LavenderTown_VolunteerPokemonHouse_EventScript_LittleGirl::
 	lock
 	faceplayer

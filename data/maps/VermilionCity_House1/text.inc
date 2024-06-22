@@ -9,10 +9,6 @@ VermilionCity_House1_Text_TakeThisAndFish::
     .string "I think we can be friends.\p"
     .string "Take this and fish, young friend!$"
 
-VermilionCity_House1_Text_ReceivedOldRodFromFishingGuru::
-    .string "{PLAYER} received an OLD ROD from\n"
-    .string "the FISHING GURU.$"
-
 VermilionCity_House1_Text_FishingIsAWayOfLife::
     .string "Fishing is a way of life!\n"
     .string "It is like the finest poetry.\p"
@@ -26,9 +22,4 @@ VermilionCity_House1_Text_OhThatsSoDisappointing::
 VermilionCity_House1_Text_HowAreTheFishBiting::
     .string "Hello there, {PLAYER}!\p"
     .string "How are the fish biting?$"
-
-VermilionCity_House1_Text_NoRoomForNiceGift::
-    .string "Oh, no!\p"
-    .string "I had a nice gift for you, but you\n"
-    .string "have no room for it!$"
 

@@ -2610,6 +2610,11 @@ u16 ArchipelagoSpecial_ConsumeReceivedItem(void)
     return gArchipelagoReceivedItem.itemId;
 }
 
+u8 ArchipelagoSpecial_GetPewterCityRequirement(void)
+{
+    return gArchipelagoOptions.route3Requirement;
+}
+
 bool8 ArchipelagoSpecial_CanLeavePewterCity(void)
 {
     if (gArchipelagoOptions.route3Requirement == 1)
@@ -2646,6 +2651,26 @@ bool8 ArchipelagoSpecial_CanLeavePewterCity(void)
     return TRUE;
 }
 
+bool8 ArchipelagoSpecial_CanLeaveCeruleanCity(void)
+{
+    if (gArchipelagoOptions.saveBillRequired)
+    {
+        return FlagGet(FLAG_GOT_SS_TICKET);
+    }
+
+    return TRUE;
+}
+
+bool8 ArchipelagoSpecial_GiovanniRequiresGyms(void)
+{
+  return gArchipelagoOptions.giovanniRequiresGyms;
+}
+
+u8 ArchipelagoSpecial_GetGiovanniRequiredCount(void)
+{
+    return gArchipelagoOptions.giovanniRequiredCount;
+}
+
 bool8 ArchipelagoSpecial_CanChallengeGiovanni(void)
 {
     if (gArchipelagoOptions.giovanniRequiresGyms)
@@ -2676,6 +2701,16 @@ bool8 ArchipelagoSpecial_CanChallengeGiovanni(void)
 
         return gymCount >= gArchipelagoOptions.giovanniRequiredCount;
     }
+}
+
+bool8 ArchipelagoSpecial_Route22RequiresGyms(void)
+{
+  return gArchipelagoOptions.route22GateRequiresGyms;
+}
+
+u8 ArchipelagoSpecial_GetRoute22RequiredCount(void)
+{
+    return gArchipelagoOptions.route22GateRequiredCount;
 }
 
 bool8 ArchipelagoSpecial_CanPassRoute22Gate(void)
@@ -2710,6 +2745,16 @@ bool8 ArchipelagoSpecial_CanPassRoute22Gate(void)
     }
 }
 
+bool8 ArchipelagoSpecial_Route23RequiresGyms(void)
+{
+  return gArchipelagoOptions.route23GuardRequiresGyms;
+}
+
+u8 ArchipelagoSpecial_GetRoute23RequiredCount(void)
+{
+    return gArchipelagoOptions.route23GuardRequiredCount;
+}
+
 bool8 ArchipelagoSpecial_CanPassRoute23Guard(void)
 {
     if (gArchipelagoOptions.route23GuardRequiresGyms)
@@ -2742,6 +2787,16 @@ bool8 ArchipelagoSpecial_CanPassRoute23Guard(void)
     }
 }
 
+bool8 ArchipelagoSpecial_EliteFourRequiresGyms(void)
+{
+  return gArchipelagoOptions.eliteFourRequiresGyms;
+}
+
+u8 ArchipelagoSpecial_GetEliteFourRequiredCount(void)
+{
+    return gArchipelagoOptions.eliteFourRequiredCount;
+}
+
 bool8 ArchipelagoSpecial_CanChallengeEliteFour(void)
 {
     if (gArchipelagoOptions.eliteFourRequiresGyms)
@@ -2772,6 +2827,16 @@ bool8 ArchipelagoSpecial_CanChallengeEliteFour(void)
 
         return gymCount >= gArchipelagoOptions.eliteFourRequiredCount;
     }
+}
+
+u8 ArchipelagoSpecial_GetCeruleanCaveRequirement(void)
+{
+  return gArchipelagoOptions.ceruleanCaveRequirement;
+}
+
+u8 ArchipelagoSpecial_GetCeruleanCaveRequiredCount(void)
+{
+    return gArchipelagoOptions.ceruleanCaveRequiredCount;
 }
 
 bool8 ArchipelagoSpecial_CanEnterCeruleanCave(void)
@@ -2816,4 +2881,9 @@ bool8 ArchipelagoSpecial_CanEnterCeruleanCave(void)
 
         return gymCount >= gArchipelagoOptions.ceruleanCaveRequiredCount;
     }
+}
+
+u8 ArchipelagoSpecial_GetProfessorOaksAideCount(void)
+{
+    return gArchipelagoOptions.oaksAideRequiredCounts[gSpecialVar_0x8003];
 }

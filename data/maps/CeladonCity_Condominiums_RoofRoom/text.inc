@@ -7,11 +7,8 @@ CeladonCity_Condominiums_RoofRoom_Text_TheresNothingIDontKnow::
     .string "enjoy trading POKéMON!$"
 
 CeladonCity_Condominiums_RoofRoom_Text_ObtainedAnEevee::
-    .string "{PLAYER} obtained an EEVEE!$"
-
-CeladonCity_Condominiums_RoofRoom_Text_BoxIsFull::
-    .string "ポケモンが　いっぱいだ\n"
-    .string "ボックスを　かえて　きなさい$"
+    .string "{PLAYER} obtained the POKéMON\n"
+    .string "{STR_VAR_1}!$"
 
 CeladonCity_Condominiums_RoofRoom_Text_WirelessAdapterLecture::
     .string "POKéMON Lecture\p"

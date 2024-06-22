@@ -23,8 +23,3 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_GOOD_ROD::
 	msgbox FuchsiaCity_House2_Text_GoodRodCanCatchBetterMons
 	release
 	end
-
-FuchsiaCity_House2_EventScript_NoRoomForGoodRod::
-	msgbox FuchsiaCity_House2_Text_YouHaveNoRoomForGift
-	release
-	end

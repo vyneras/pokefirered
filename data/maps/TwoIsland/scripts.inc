@@ -9,7 +9,6 @@ TwoIsland_OnTransition::
 	end
 
 TwoIsland_EventScript_SetShopState::
-	goto_if_set FLAG_SYS_CAN_LINK_WITH_RS, TwoIsland_EventScript_SetShopStateAfterHoennLink
 	goto_if_set FLAG_SYS_GAME_CLEAR, TwoIsland_EventScript_SetShopStateAfterChampion
 	goto_if_set FLAG_RESCUED_LOSTELLE, TwoIsland_EventScript_SetShopStateAfterLostelleRescue
 	goto TwoIsland_EventScript_SetShopStateDefault
@@ -23,6 +22,7 @@ TwoIsland_EventScript_SetShopStateAfterHoennLink::
 	end
 
 TwoIsland_EventScript_SetShopStateAfterChampion::
+	goto_if_set FLAG_SYS_CAN_LINK_WITH_RS, TwoIsland_EventScript_SetShopStateAfterHoennLink
 	goto_if_unset FLAG_TWO_ISLAND_SHOP_INTRODUCED, TwoIsland_EventScript_SetShopInitial
 	goto_if_unset FLAG_RESCUED_LOSTELLE, TwoIsland_EventScript_SetShopInitial
 	goto_if_unset FLAG_TWO_ISLAND_SHOP_EXPANDED_1, TwoIsland_EventScript_SetShopExpanded1
@@ -130,8 +130,8 @@ TwoIsland_EventScript_ShopExpanded1::
 
 	.align 2
 TwoIsland_Items_ShopExpanded1::
-	.2byte ITEM_ULTRA_BALL
 	.2byte ITEM_GREAT_BALL
+	.2byte ITEM_ULTRA_BALL
 	.2byte ITEM_SODA_POP
 	.2byte ITEM_FRESH_WATER
 	.2byte ITEM_NONE
@@ -146,8 +146,8 @@ TwoIsland_EventScript_ShopExpanded2::
 
 	.align 2
 TwoIsland_Items_ShopExpanded2::
-	.2byte ITEM_ULTRA_BALL
 	.2byte ITEM_GREAT_BALL
+	.2byte ITEM_ULTRA_BALL
 	.2byte ITEM_LEMONADE
 	.2byte ITEM_SODA_POP
 	.2byte ITEM_FRESH_WATER
@@ -165,8 +165,8 @@ TwoIsland_EventScript_ShopExpanded3::
 	.align 2
 TwoIsland_Items_ShopExpanded3::
 	.2byte ITEM_ULTRA_BALL
-	.2byte ITEM_REPEAT_BALL
 	.2byte ITEM_TIMER_BALL
+	.2byte ITEM_REPEAT_BALL
 	.2byte ITEM_LEMONADE
 	.2byte ITEM_SODA_POP
 	.2byte ITEM_FRESH_WATER

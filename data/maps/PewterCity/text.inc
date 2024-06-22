@@ -1,25 +1,3 @@
-Text_DreamEaterTeach::
-    .string "Yawn!\n"
-    .string "I must have dozed off in the sun.\p"
-    .string "I had this weird dream about\n"
-    .string "a DROWZEE eating my dream.\p"
-    .string "And…\n"
-    .string "I learned how to eat dreams…\p"
-    .string "Oogh, this is too spooky!\p"
-    .string "Let me teach it to a POKéMON so\n"
-    .string "I can forget about it!$"
-
-Text_DreamEaterDeclined::
-    .string "…Snore…$"
-
-Text_DreamEaterWhichMon::
-    .string "Which POKéMON wants to learn\n"
-    .string "DREAM EATER?$"
-
-Text_DreamEaterTaught::
-    .string "…ZZZ…\n"
-    .string "I…can't eat…anymore…$"
-
 PewterCity_Text_ClefairyCameFromMoon::
     .string "CLEFAIRY came from the moon.\n"
     .string "That's what the rumor is.\p"
@@ -62,14 +40,30 @@ PewterCity_Text_SprayingRepelToKeepWildMonsOut::
     .string "I'm spraying REPEL to keep wild\n"
     .string "POKéMON out of my garden!$"
 
-PewterCity_Text_BrocksLookingForChallengersFollowMe::
+PewterCity_Text_BrocksLookingForChallengers::
     .string "You're a TRAINER, right?\p"
     .string "BROCK's looking for new\n"
-    .string "challengers. Follow me!$"
+    .string "challengers.$"
 
 PewterCity_Text_GoTakeOnBrock::
     .string "If you have the right stuff,\n"
     .string "go take on BROCK!$"
+
+PewterCity_Text_NeedToBeatBrock::
+    .string "Hey, you can't go this way until\n"
+    .string "you've beaten the PEWTER GYM.$"
+
+PewterCity_Text_NeedToBeatAnyGym::
+    .string "Hey, you can't go this way until\n"
+    .string "you've beaten one of the GYMS.$"
+
+PewterCity_Text_NeedToHaveBoulderBadge::
+    .string "Hey, you can't go this way until\n"
+    .string "you've got the BOULDER BADGE.$"
+
+PewterCity_Text_NeedToHaveAnyBadge::
+    .string "Hey, you can't go this way until\n"
+    .string "you've got one of the BADGES.$"
 
 PewterCity_Text_TrainerTipsEarningEXP::
     .string "TRAINER TIPS\p"
@@ -94,28 +88,6 @@ PewterCity_Text_GymSign::
 PewterCity_Text_CitySign::
     .string "PEWTER CITY\n"
     .string "A Stone Gray City$"
-
-@ The below 3 JP texts are unused. Possibly a cut NPC meant to give the player the Berry Pouch
-PewterCity_Text_DefeatedBrockYouCanHaveTreasure::
-    .string "あッれー！\n"
-    .string "その　ジムバッジ‥‥\l"
-    .string "すげえな　タケシに　かったのかよ！\p"
-    .string "かんどう　したから\n"
-    .string "おれの　たからもの　やるよ！$"
-
-PewterCity_Text_BerriesInsideUseCarefully::
-    .string "なかには　きのみが　はいってるぜ\p"
-    .string "やくに　たつ　きのみも\n"
-    .string "はいって　いるから\l"
-    .string "だいじに　つかって　くれよ！$"
-
-PewterCity_Text_MonsWillUseHeldBerriesOnTheirOwn::
-    .string "ポケモンに　きのみを\n"
-    .string "もたせて　おけば\l"
-    .string "たたかっている　ときに\l"
-    .string "かってに　つかって　くれるんだ\p"
-    .string "キズぐすり　とか　どくけし　より\n"
-    .string "てがるで　べんり　だろ？$"
 
 PewterCity_Text_OhPlayer::
     .string "Oh, {PLAYER}{KUN}!$"

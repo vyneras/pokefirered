@@ -2253,7 +2253,7 @@ bool8 ScrCmd_setmonmetlocation(struct ScriptContext * ctx)
     return FALSE;
 }
 
-u8 ScrCmd_bufferapitemstrings(struct ScriptContext *ctx)
+bool8 ScrCmd_bufferapitemstrings(struct ScriptContext *ctx)
 {
     u16 i;
     u16 itemNameOffset;

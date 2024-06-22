@@ -6,7 +6,6 @@ FiveIsland_MemorialPillar_MapScripts::
 FiveIsland_MemorialPillar_EventScript_MemorialMan::
 	lock
 	goto_if_set FLAG_GOT_TM42_AT_MEMORIAL_PILLAR, FiveIsland_MemorialPillar_EventScript_AlreadyGotTM42
-	goto_if_set FLAG_NO_ROOM_FOR_TM42_AT_MEMORIAL_PILLAR, FiveIsland_MemorialPillar_EventScript_ReturnedForTM42
 	msgbox FiveIsland_MemorialPillar_Text_ScrubScrub
 	closemessage
 	applymovement LOCALID_MEMORIAL_MAN, Common_Movement_FacePlayer
@@ -24,20 +23,11 @@ FiveIsland_MemorialPillar_EventScript_AlreadyGotTM42::
 	release
 	end
 
-FiveIsland_MemorialPillar_EventScript_ReturnedForTM42::
-	msgbox FiveIsland_MemorialPillar_Text_StillHaveThingAsMyThanks
-	giveitem ITEM_TM42
-	goto_if_eq VAR_RESULT, FALSE, FiveIsland_MemorialPillar_EventScript_NoRoomForTM42
-	call FiveIsland_MemorialPillar_EventScript_ReceivedTM42
-	release
-	end
-
 FiveIsland_MemorialPillar_EventScript_Memorial::
 	goto_if_questlog EventScript_ReleaseEnd
 	special QuestLog_CutRecording
 	lockall
 	goto_if_set FLAG_GOT_TM42_AT_MEMORIAL_PILLAR, FiveIsland_MemorialPillar_EventScript_MemorialLemonadeAlreadyPlaced
-	goto_if_set FLAG_NO_ROOM_FOR_TM42_AT_MEMORIAL_PILLAR, FiveIsland_MemorialPillar_EventScript_MemorialLemonadeAlreadyPlaced
 	msgbox FiveIsland_MemorialPillar_Text_HereLiesTectonixLemonadeOffering
 	checkitem ITEM_LEMONADE
 	goto_if_eq VAR_RESULT, TRUE, FiveIsland_MemorialPillar_EventScript_AskPlaceLemonade
@@ -72,12 +62,6 @@ FiveIsland_MemorialPillar_EventScript_ReceivedTM42::
 	applymovement LOCALID_MEMORIAL_MAN, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	return
-
-FiveIsland_MemorialPillar_EventScript_NoRoomForTM42::
-	setflag FLAG_NO_ROOM_FOR_TM42_AT_MEMORIAL_PILLAR
-	msgbox FiveIsland_MemorialPillar_Text_DontHaveRoomForIt
-	releaseall
-	end
 
 FiveIsland_MemorialPillar_EventScript_MemorialLemonadeAlreadyPlaced::
 	msgbox FiveIsland_MemorialPillar_Text_HereLiesTectonix

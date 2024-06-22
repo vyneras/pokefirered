@@ -11,10 +11,6 @@ MtMoon_B2F_Text_WellEachTakeAFossil::
     .string "Feel free to take both fossils.\n"
     .string "Be as greedy as you want!$"
 
-MtMoon_B2F_Text_ThenThisFossilIsMine::
-    .string "All right.\n"
-    .string "Then this fossil is mine!$"
-
 MtMoon_B2F_Text_LabOnCinnabarRegeneratesFossils::
     .string "Far away, on CINNABAR ISLAND,\n"
     .string "there's a POKéMON LAB.\p"
@@ -69,16 +65,4 @@ MtMoon_B2F_Text_Grunt4Defeat::
 MtMoon_B2F_Text_Grunt4PostBattle::
     .string "POKéMON lived here long before\n"
     .string "people came.$"
-
-MtMoon_B2F_Text_YouWantDomeFossil::
-    .string "Do you want the DOME FOSSIL?$"
-
-MtMoon_B2F_Text_YouWantHelixFossil::
-    .string "Do you want the HELIX FOSSIL?$"
-
-MtMoon_B2F_Text_ObtainedHelixFossil::
-    .string "Obtained the HELIX FOSSIL!$"
-
-MtMoon_B2F_Text_ObtainedDomeFossil::
-    .string "Obtained the DOME FOSSIL!$"
 

@@ -88,6 +88,7 @@ gStdScripts::
 gStdScriptsEnd::
 
 	.include "data/scripts/archipelago.inc"
+	.include "data/scripts/poke_mart.inc"
 
 	.include "data/maps/BattleColosseum_2P/scripts.inc"
 	.include "data/maps/TradeCenter/scripts.inc"
@@ -597,7 +598,6 @@ gStdScriptsEnd::
 	.include "data/maps/PokemonTower_6F/text.inc"
 	.include "data/maps/PokemonTower_7F/text.inc"
 	.include "data/maps/MtEmber_Exterior/text.inc"
-	.include "data/maps/MtEmber_RubyPath_B3F/text.inc"
 	.include "data/maps/ThreeIsland_BerryForest/text.inc"
 	.include "data/maps/FourIsland_IcefallCave_Back/text.inc"
 	.include "data/maps/FiveIsland_RocketWarehouse/text.inc"
@@ -934,7 +934,7 @@ Text_GiveNicknameToThisMon::
 	.string "this {STR_VAR_1}?$"
 
 	.include "data/text/itemfinder.inc"
-	.include "data/text/route23.inc"
+	.include "data/text/badge_guard.inc"
 	.include "data/text/aide.inc"
 	.include "data/text/ingame_trade.inc"
 
@@ -962,28 +962,6 @@ Text_VoiceRangOutDontRunAway::
 	.string "Someone's voice rang out,\n"
 	.string "“Don't run away!”$"
 
-@ Uncear what the below unused JP texts were for
-Text_IdLikeToSeeRequest::
-	.string "えっとー\n"
-	.string "{STR_VAR_2}が　みてみたいなー\p"
-	.string "それも　{STR_VAR_1}{STR_VAR_3}\n"
-	.string "{STR_VAR_2}が　みてみたいなー$"
-
-Text_ThankYouForShowingMe::
-	.string "わぁー　すごい！\n"
-	.string "{STR_VAR_1}{STR_VAR_3}{STR_VAR_2}だー！\p"
-	.string "ありがとー\n"
-	.string "また　よろしくねー！$"
-
-Text_ThatsNotRight::
-	.string "それっ　ちがうよー！$"
-
-Text_ISee::
-	.string "そっか‥$"
-
-Text_TheDoorIsClosed::
-	.string "ドアは　しまっている‥$"
-
 Text_TheDoorIsOpen::
 	.string "The door is open…$"
 
@@ -993,10 +971,6 @@ Text_TheDoorIsOpen::
 
 Text_MonFlewAway::
 	.string "The {STR_VAR_1} flew away!$"
-
-Text_TheresBedLetsRest::
-	.string "ベッドが　ある‥‥\n"
-	.string "やすんでいこう$"
 
 Text_FoundTMHMContainsMove::
 	.string "{PLAYER} found a {STR_VAR_2}!\n"
@@ -1032,8 +1006,6 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_OAK_IN_CHAMP_ROOM
 	setflag FLAG_HIDE_CREDITS_RIVAL
 	setflag FLAG_HIDE_CREDITS_OAK
-	setflag FLAG_HIDE_CINNABAR_BILL
-	setflag FLAG_HIDE_CINNABAR_SEAGALLOP
 	setflag FLAG_HIDE_CINNABAR_POKECENTER_BILL
 	setflag FLAG_HIDE_LORELEI_IN_HER_HOUSE
 	setflag FLAG_HIDE_SAFFRON_FAN_CLUB_BLACKBELT
@@ -1041,15 +1013,12 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_SAFFRON_FAN_CLUB_WOMAN
 	setflag FLAG_HIDE_SAFFRON_FAN_CLUB_BEAUTY
 	setflag FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE
-	setflag FLAG_HIDE_TWO_ISLAND_GAME_CORNER_BIKER
 	setflag FLAG_HIDE_TWO_ISLAND_WOMAN
 	setflag FLAG_HIDE_TWO_ISLAND_BEAUTY
 	setflag FLAG_HIDE_TWO_ISLAND_SUPER_NERD
 	setflag FLAG_HIDE_LOSTELLE_IN_HER_HOME
-	setflag FLAG_HIDE_THREE_ISLAND_LONE_BIKER
 	setflag FLAG_HIDE_FOUR_ISLAND_RIVAL
 	setflag FLAG_HIDE_DOTTED_HOLE_SCIENTIST
-	setflag FLAG_HIDE_RESORT_GORGEOUS_SELPHY
 	setflag FLAG_HIDE_RESORT_GORGEOUS_INSIDE_SELPHY
 	setflag FLAG_HIDE_SELPHYS_BUTLER
 	setflag FLAG_HIDE_DEOXYS
@@ -1161,8 +1130,6 @@ EventScript_SetEnteringCyclingRoad::
 	releaseall
 	end
 
-	.include "data/scripts/route23.inc"
-
 EventScript_GetElevatorFloor::
 	special GetElevatorFloor
 	return
@@ -1257,7 +1224,6 @@ VermilionCity_PokemonCenter_1F_EventScript_VSSeekerWoman::
 	msgbox VermilionCity_PokemonCenter_1F_Text_UrgeToBattleSomeoneAgain
 Archipelago_Target_NPC_Gift_FLAG_GOT_VS_SEEKER::
 	giveitem ITEM_VS_SEEKER, 1, FLAG_GOT_VS_SEEKER
-	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
 	msgbox VermilionCity_PokemonCenter_1F_Text_UseDeviceForRematches
 	release
 	end
@@ -1335,12 +1301,6 @@ EventScript_PlayGymBadgeFanfare::
 
 	.include "data/text/braille.inc"
 	.include "data/scripts/trainers.inc"
-
-@ Test message!
-@ Welcome to the world of Pokémon!
-Text_TestMsg::
-	.string "テストよう　メッセージです！\n"
-	.string "ポケモンの　せかいへ　ようこそ！$"
 
 	.include "data/scripts/fame_checker.inc"
 	.include "data/text/fame_checker.inc"

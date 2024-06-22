@@ -28,10 +28,6 @@ ThreeIsland_BerryForest_Text_LetsGoHome::
     .string "Okay!\n"
     .string "Let's go home!$"
 
-ThreeIsland_BerryForest_Text_BerryPouchIsFull::
-    .string "Your BERRY POUCH is full.\n"
-    .string "I guess you don't want this.$"
-
 ThreeIsland_BerryForest_Text_WelcomeToBerryForest::
     .string "Welcome to the BERRY FOREST\p"
     .string "Be friendly and share BERRIES with\n"

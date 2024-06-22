@@ -123,19 +123,17 @@ class EncounterTableInfo {
         nlohmann::json to_json ();
 };
 
-class LegendaryEncounterInfo {
+class StaticPokemonInfo {
     public:
         std::string name;
         uint32_t address;
         uint16_t species;
         uint8_t level;
-        uint16_t defeat_flag;
-        uint16_t catch_flag;
 
         nlohmann::json to_json ();
 };
 
-class MiscPokemonInfo {
+class GiftPokemonInfo {
     public:
         std::string name;
         uint32_t address;

@@ -14,13 +14,8 @@ ThreeIsland_MapScripts::
 
 ThreeIsland_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_THREE_ISLAND
-	call_if_set FLAG_RESCUED_LOSTELLE, ThreeIsland_EventScript_HideAntiBikers
-	call_if_eq VAR_MAP_SCENE_THREE_ISLAND, 4, ThreeIsland_EventScript_SetAntiBikersMovementAfterBikers
+	call_if_eq VAR_MAP_SCENE_THREE_ISLAND, 2, ThreeIsland_EventScript_SetAntiBikersMovementAfterBikers
 	end
-
-ThreeIsland_EventScript_HideAntiBikers::
-	setflag FLAG_HIDE_THREE_ISLAND_ANTIBIKERS
-	return
 
 ThreeIsland_EventScript_SetAntiBikersMovementAfterBikers::
 	setobjectmovementtype LOCALID_ANTIBIKER1, MOVEMENT_TYPE_LOOK_AROUND
@@ -37,7 +32,7 @@ ThreeIsland_EventScript_Biker::
 ThreeIsland_EventScript_AntiBiker1::
 	lock
 	goto_if_set FLAG_GOT_FULL_RESTORE_FROM_THREE_ISLAND_DEFENDER, ThreeIsland_EventScript_AntiBiker1GotFullRestore
-	goto_if_eq VAR_MAP_SCENE_THREE_ISLAND, 4, ThreeIsland_EventScript_GiveFullRestore
+	goto_if_eq VAR_MAP_SCENE_THREE_ISLAND, 2, ThreeIsland_EventScript_GiveFullRestore
 	setvar VAR_TEMP_1, 0
 	call ThreeIsland_EventScript_BikerArgumentScene
 	release
@@ -96,12 +91,6 @@ ThreeIsland_EventScript_PlayerFaceUp::
 	waitmovement 0
 	return
 
-@ Unused
-ThreeIsland_EventScript_PlayerFaceDown::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	return
-
 ThreeIsland_EventScript_PlayerFaceLeft::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
@@ -126,7 +115,7 @@ ThreeIsland_EventScript_PlayerFaceAntiBiker::
 
 ThreeIsland_EventScript_AntiBiker2::
 	lock
-	goto_if_eq VAR_MAP_SCENE_THREE_ISLAND, 4, ThreeIsland_EventScript_AntiBiker2BikersGone
+	goto_if_eq VAR_MAP_SCENE_THREE_ISLAND, 2, ThreeIsland_EventScript_AntiBiker2BikersGone
 	setvar VAR_TEMP_1, 1
 	call ThreeIsland_EventScript_BikerArgumentScene
 	release
@@ -157,7 +146,7 @@ ThreeIsland_EventScript_BikerBossIntroTrigger::
 	applymovement LOCALID_ANTIBIKER1, ThreeIsland_Movement_SpeakRight
 	waitmovement 0
 	msgbox ThreeIsland_Text_YouCowardsToughInPack
-	setvar VAR_MAP_SCENE_THREE_ISLAND, 3
+	setvar VAR_MAP_SCENE_THREE_ISLAND, 1
 	releaseall
 	end
 
@@ -264,7 +253,7 @@ ThreeIsland_EventScript_BattleBikersScene::
 	removeobject LOCALID_BIKER5
 	removeobject LOCALID_BIKER6
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_MAP_SCENE_THREE_ISLAND, 4
+	setvar VAR_MAP_SCENE_THREE_ISLAND, 2
 	releaseall
 	end
 

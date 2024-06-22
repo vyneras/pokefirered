@@ -1,10 +1,5 @@
-.set LOCALID_CASCADE_BADGE_GUARD, 1
-.set LOCALID_THUNDER_BADGE_GUARD, 2
-.set LOCALID_RAINBOW_BADGE_GUARD, 3
-.set LOCALID_SOUL_BADGE_GUARD,    4
-.set LOCALID_MARSH_BADGE_GUARD,   5
-.set LOCALID_VOLCANO_BADGE_GUARD, 6
 .set LOCALID_EARTH_BADGE_GUARD,   7
+.set REQUIRED_BADGES_GYMS, VAR_TEMP_1
 
 Route23_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route23_OnTransition
@@ -17,118 +12,85 @@ Route23_OnTransition::
 	setvar VAR_MAP_SCENE_VICTORY_ROAD_2F_BOULDER1, 0
 	setvar VAR_MAP_SCENE_VICTORY_ROAD_2F_BOULDER2, 0
 	setvar VAR_MAP_SCENE_VICTORY_ROAD_3F, 0
+	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetRoute23RequiredCount
 	end
 
-Route23_EventScript_CascadeBadgeGuard::
+Route23_EventScript_LastGuard::
 	lock
 	faceplayer
-	setvar VAR_TEMP_1, 2
-	bufferstdstring STR_VAR_1, STDSTRING_CASCADE_BADGE
-	goto Route23_EventScript_BadgeGuard
+	setvar VAR_TEMP_2, 0
+	goto Route23_EventScript_LastGuardCheckBadgesGyms
 	end
 
-Route23_EventScript_ThunderBadgeGuard::
+Route23_EventScript_LastGuardTrigger::
+	lockall
+	applymovement LOCALID_EARTH_BADGE_GUARD, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	setvar VAR_TEMP_2, 1
+	goto Route23_EventScript_LastGuardCheckBadgesGyms
+	end
+
+Route23_EventScript_LastGuardCheckBadgesGyms::
+	textcolor NPC_TEXT_COLOR_MALE
+	specialvar VAR_RESULT, ArchipelagoSpecial_CanPassRoute23Guard
+	goto_if_eq VAR_RESULT, FALSE, Route23_EventScript_LastGuardCantPass
+	setvar VAR_MAP_SCENE_ROUTE23, 1
+	specialvar VAR_RESULT, ArchipelagoSpecial_Route23RequiresGyms
+	goto_if_eq VAR_RESULT, TRUE, Route23_EventScript_LastGuardEnoughGyms
+	msgbox Text_OhThatsEnoughBadgesGoRightAhead
+	release
+	end
+
+Route23_EventScript_LastGuardEnoughGyms::
+	msgbox Text_OhThatsEnoughGymsGoRightAhead
+	release
+	end
+
+Route23_EventScript_LastGuardCantPass::
+	buffernumberstring STR_VAR_1, REQUIRED_BADGES_GYMS
+	specialvar VAR_RESULT, ArchipelagoSpecial_Route23RequiresGyms
+	goto_if_eq VAR_RESULT, TRUE, Route23_EventScript_LastGuardCantPassGyms
+	goto_if_eq REQUIRED_BADGES_GYMS, 1, Route23_EventScript_LastGuardCantPassNoBadge
+	msgbox Text_OnlyPassWithXBadges
+	call_if_eq VAR_TEMP_2, 1, Route23_EventScript_ForcePlayerDown
+	release
+	end
+
+Route23_EventScript_LastGuardCantPassNoBadge::
+	msgbox Text_OnlyPassWithBadge
+	call_if_eq VAR_TEMP_2, 1, Route23_EventScript_ForcePlayerDown
+	release
+	end
+
+Route23_EventScript_LastGuardCantPassGyms::
+	goto_if_eq REQUIRED_BADGES_GYMS, 1, Route23_EventScript_LastGuardCantPassNoGym
+	msgbox Text_OnlyPassWithXGyms
+	call_if_eq VAR_TEMP_2, 1, Route23_EventScript_ForcePlayerDown
+	release
+	end
+
+Route23_EventScript_LastGuardCantPassNoGym::
+	msgbox Text_OnlyPassWithGym
+	call_if_eq VAR_TEMP_2, 1, Route23_EventScript_ForcePlayerDown
+	release
+	end
+
+Route23_EventScript_ForcePlayerDown::
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Route23_Movement_ForcePlayerDown
+	waitmovement 0
+	return
+
+Route23_Movement_ForcePlayerDown::
+	walk_down
+	step_end
+
+Route23_EventScript_Guard::
 	lock
 	faceplayer
-	setvar VAR_TEMP_1, 3
-	bufferstdstring STR_VAR_1, STDSTRING_THUNDER_BADGE
-	goto Route23_EventScript_BadgeGuard
-	end
-
-Route23_EventScript_RainbowBadgeGuard::
-	lock
-	faceplayer
-	setvar VAR_TEMP_1, 4
-	bufferstdstring STR_VAR_1, STDSTRING_RAINBOW_BADGE
-	goto Route23_EventScript_BadgeGuard
-	end
-
-Route23_EventScript_SoulBadgeGuard::
-	lock
-	faceplayer
-	setvar VAR_TEMP_1, 5
-	bufferstdstring STR_VAR_1, STDSTRING_SOUL_BADGE
-	goto Route23_EventScript_BadgeGuard
-	end
-
-Route23_EventScript_MarshBadgeGuard::
-	lock
-	faceplayer
-	setvar VAR_TEMP_1, 6
-	bufferstdstring STR_VAR_1, STDSTRING_MARSH_BADGE
-	goto Route23_EventScript_BadgeGuard
-	end
-
-Route23_EventScript_VolcanoBadgeGuard::
-	lock
-	faceplayer
-	setvar VAR_TEMP_1, 7
-	bufferstdstring STR_VAR_1, STDSTRING_VOLCANO_BADGE
-	goto Route23_EventScript_BadgeGuard
-	end
-
-Route23_EventScript_EarthBadgeGuard::
-	lock
-	faceplayer
-	setvar VAR_TEMP_1, 8
-	bufferstdstring STR_VAR_1, STDSTRING_EARTH_BADGE
-	goto Route23_EventScript_BadgeGuard
-	end
-
-Route23_EventScript_CascadeBadgeGuardTrigger::
-	lockall
-	setvar VAR_TEMP_1, 2
-	setvar VAR_0x8009, LOCALID_CASCADE_BADGE_GUARD
-	bufferstdstring STR_VAR_1, STDSTRING_CASCADE_BADGE
-	goto Route23_EventScript_BadgeGuardTrigger
-	end
-
-Route23_EventScript_ThunderBadgeGuardTrigger::
-	lockall
-	setvar VAR_TEMP_1, 3
-	setvar VAR_0x8009, LOCALID_THUNDER_BADGE_GUARD
-	bufferstdstring STR_VAR_1, STDSTRING_THUNDER_BADGE
-	goto Route23_EventScript_BadgeGuardTrigger
-	end
-
-Route23_EventScript_RainbowBadgeGuardTrigger::
-	lockall
-	setvar VAR_TEMP_1, 4
-	setvar VAR_0x8009, LOCALID_RAINBOW_BADGE_GUARD
-	bufferstdstring STR_VAR_1, STDSTRING_RAINBOW_BADGE
-	goto Route23_EventScript_BadgeGuardTrigger
-	end
-
-Route23_EventScript_SoulBadgeGuardTrigger::
-	lockall
-	setvar VAR_TEMP_1, 5
-	setvar VAR_0x8009, LOCALID_SOUL_BADGE_GUARD
-	bufferstdstring STR_VAR_1, STDSTRING_SOUL_BADGE
-	goto Route23_EventScript_BadgeGuardTrigger
-	end
-
-Route23_EventScript_MarshBadgeGuardTrigger::
-	lockall
-	setvar VAR_TEMP_1, 6
-	setvar VAR_0x8009, LOCALID_MARSH_BADGE_GUARD
-	bufferstdstring STR_VAR_1, STDSTRING_MARSH_BADGE
-	goto Route23_EventScript_BadgeGuardTrigger
-	end
-
-Route23_EventScript_VolcanoBadgeGuardTrigger::
-	lockall
-	setvar VAR_TEMP_1, 7
-	setvar VAR_0x8009, LOCALID_VOLCANO_BADGE_GUARD
-	bufferstdstring STR_VAR_1, STDSTRING_VOLCANO_BADGE
-	goto Route23_EventScript_BadgeGuardTrigger
-	end
-
-Route23_EventScript_EarthBadgeGuardTrigger::
-	lockall
-	setvar VAR_TEMP_1, 8
-	setvar VAR_0x8009, LOCALID_EARTH_BADGE_GUARD
-	bufferstdstring STR_VAR_1, STDSTRING_EARTH_BADGE
-	goto Route23_EventScript_BadgeGuardTrigger
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox Text_GoodLuckWithEliteFour
+	release
 	end
 
 Route23_EventScript_VictoryRoadGateSign::

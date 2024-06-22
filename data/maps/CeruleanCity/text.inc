@@ -71,10 +71,6 @@ CeruleanCity_Text_BetterGetMovingBye::
     .string "I better get moving!\n"
     .string "Bye!$"
 
-CeruleanCity_Text_MakeRoomForThisCantRun::
-    .string "Make room for this!\n"
-    .string "I can't run until I give it to you!$"
-
 CeruleanCity_Text_TrainerLifeIsToughIsntIt::
     .string "You're a TRAINER, too?\p"
     .string "Collecting, battling…\n"
@@ -152,12 +148,33 @@ CeruleanCity_Text_ThisIsCeruleanCave::
     .string "Horribly strong POKéMON live inside\n"
     .string "there.\p"
     .string "It takes a very special TRAINER to\n"
-    .string "be allowed inside there.\p"
-    .string "You'd have to be strong enough to\n"
-    .string "become the POKéMON LEAGUE\l"
-    .string "CHAMPION for starters.\p"
-    .string "And, you would have to have\n"
-    .string "made a great achievement.$"
+    .string "be allowed inside there.$"
+
+CeruleanCity_Text_BecomeChampAndFixNetwork::
+    .string "You need to become the\n"
+    .string "POKéMON LEAGUE CHAMPION.\p"
+    .string "And, you need to fix the\n"
+    .string "POKéMON NETWORK MACHINE.$"
+
+CeruleanCity_Text_BecomeChamp::
+    .string "You need to become the\n"
+    .string "POKéMON LEAGUE CHAMPION.$"
+
+CeruleanCity_Text_FixNetwork::
+    .string "You need to fix the\n"
+    .string "POKéMON NETWORK MACHINE.$"
+
+CeruleanCity_Text_Badges::
+    .string "You need to have {STR_VAR_1} BADGES.$"
+
+CeruleanCity_Text_Badge::
+    .string "You need to have {STR_VAR_1} BADGE.$"
+
+CeruleanCity_Text_Gyms::
+    .string "You need to beat {STR_VAR_1} GYMS.$"
+
+CeruleanCity_Text_Gym::
+    .string "You need to beat {STR_VAR_1} GYM.$"
 
 CeruleanCity_Text_CitySign::
     .string "CERULEAN CITY\n"

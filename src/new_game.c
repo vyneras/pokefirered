@@ -151,10 +151,13 @@ void NewGameInitData(void)
     RunScriptImmediately(EventScript_ResetAllMapFlags);
     StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
     ResetTrainerTowerResults();
+    FlagSet(FLAG_SYS_SEVII_MAP_123);
+    FlagSet(FLAG_SYS_SEVII_MAP_4567);
 
     if (gArchipelagoOptions.betterShopsEnabled) FlagSet(FLAG_BETTER_SHOPS_ENABLED);
 
     if (gArchipelagoOptions.openViridianCity) VarSet(VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1);
+    if (gArchipelagoOptions.route3Requirement == 0) VarSet(VAR_MAP_SCENE_PEWTER_CITY, 1);
 
     if (gArchipelagoOptions.startingBadges & (1 << 0)) FlagSet(FLAG_BADGE01_GET);
     if (gArchipelagoOptions.startingBadges & (1 << 1)) FlagSet(FLAG_BADGE02_GET);

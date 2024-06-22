@@ -1,3 +1,4 @@
+.set LOCALID_MR_FUJI, 1
 .set LOCALID_GRUNT1, 2
 .set LOCALID_GRUNT2, 3
 .set LOCALID_GRUNT3, 4
@@ -14,10 +15,43 @@ PokemonTower_7F_EventScript_MrFuji::
 	setflag FLAG_RESCUED_MR_FUJI
 	msgbox PokemonTower_7F_Text_MrFujiThankYouFollowMe
 	closemessage
-	warp MAP_LAVENDER_TOWN_VOLUNTEER_POKEMON_HOUSE, 4, 7
-	waitstate
+	specialvar VAR_RESULT, GetPlayerFacingDirection
+	goto_if_eq VAR_RESULT, DIR_NORTH, PokemonTower_7F_EventScript_MrFujiLeaveRight
+	applymovement LOCALID_MR_FUJI, PokemonTower_7F_Movement_LeaveDown
+	waitmovement 0
+	goto PokemonTower_7F_EventScript_RemoveMrFuji
+	end
+
+PokemonTower_7F_EventScript_MrFujiLeaveRight::
+	applymovement LOCALID_MR_FUJI, PokemonTower_7F_Movement_LeaveRight
+	waitmovement 0
+	goto PokemonTower_7F_EventScript_RemoveMrFuji
+	end
+
+PokemonTower_7F_EventScript_RemoveMrFuji::
+	removeobject LOCALID_MR_FUJI
 	release
 	end
+
+PokemonTower_7F_Movement_LeaveDown::
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+PokemonTower_7F_Movement_LeaveRight::
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
 
 PokemonTower_7F_EventScript_Grunt1::
 	trainerbattle_single TRAINER_TEAM_ROCKET_GRUNT_19, PokemonTower_7F_Text_Grunt1Intro, PokemonTower_7F_Text_Grunt1Defeat, PokemonTower_7F_EventScript_DefeatedGrunt1

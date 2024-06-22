@@ -1,9 +1,9 @@
 Text_ObtainedTheX::
-	.string "{PLAYER} received one {STR_VAR_1}!$"
+	.string "{PLAYER} received one {STR_VAR_2}!$"
 
 Text_ObtainedTheTMHM::
-	.string "{PLAYER} received one {STR_VAR_1}\n"
-	.string "{STR_VAR_2}!$"
+	.string "{PLAYER} received one {STR_VAR_2}!\n"
+	.string "It contains {STR_VAR_1}.$"
 
 Text_BagIsFull::
 	.string "The BAG is full…$"

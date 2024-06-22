@@ -163,10 +163,6 @@ FourIsland_PokemonDayCare_Movement_RetrieveMon::
 	walk_slower_down
 	step_end
 
-@ Unused. Possibly a commented script, or a typo end added to the above Movement script
-FourIsland_PokemonDayCare_EventScript_UnusedEnd::
-	end
-
 FourIsland_PokemonDayCare_TwoMonsInDaycare::
 	msgbox DayCare_Text_GoodToSeeYou
 	setvar VAR_0x8004, 0
@@ -175,18 +171,6 @@ FourIsland_PokemonDayCare_TwoMonsInDaycare::
 	call FourIsland_PokemonDayCare_DisplayLevelsGained
 	msgbox DayCare_Text_TakeYourMonBack, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, FourIsland_PokemonDayCare_TryRetrieveMon
-	msgbox DayCare_Text_ComeAgain
-	release
-	end
-
-@ Unused
-FourIsland_PokemonDayCare_EventScript_UnusedRetrieveMon::
-	special ShowDaycareLevelMenu
-	waitstate
-	goto_if_eq VAR_RESULT, 2, FourIsland_PokemonDayCare_ComeAgain
-	copyvar VAR_0x8004, VAR_RESULT
-	specialvar VAR_RESULT, TakePokemonFromDaycare
-	msgbox DayCare_Text_HeresYourMon
 	msgbox DayCare_Text_ComeAgain
 	release
 	end

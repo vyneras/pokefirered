@@ -43,12 +43,6 @@ CeruleanCity_BikeShop_EventScript_AlreadyGotBicycle::
 	release
 	end
 
-@ Unused
-CeruleanCity_BikeShop_EventScript_NoRoomForBicycle::
-	msgbox CeruleanCity_BikeShop_Text_MakeRoomForBicycle
-	release
-	end
-
 CeruleanCity_BikeShop_EventScript_Woman::
 	msgbox CeruleanCity_BikeShop_Text_CityBikeGoodEnoughForMe, MSGBOX_NPC
 	end

@@ -22,9 +22,11 @@ SaffronCity_Dojo_EventScript_TriggerMasterBattleRight::
 SaffronCity_Dojo_EventScript_HitmonleeBall::
 	lock
 	faceplayer
-	goto_if_set FLAG_GOT_HITMON_FROM_DOJO, SaffronCity_Dojo_EventScript_AlreadyGotHitmon
-	showmonpic SPECIES_HITMONLEE, 10, 3
+  goto_if_set FLAG_GOT_HITMON_FROM_DOJO, SaffronCity_Dojo_EventScript_AlreadyGotHitmon
+Archipelago_Target_Special_Gift_HITMONLEE::
 	setvar VAR_TEMP_1, SPECIES_HITMONLEE
+	bufferspeciesname STR_VAR_1, VAR_TEMP_1
+	showmonpic SPECIES_HITMONLEE, 10, 3
 	applymovement LOCALID_KARATE_MASTER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_MALE
@@ -35,17 +37,14 @@ SaffronCity_Dojo_EventScript_HitmonleeBall::
 	release
 	end
 
-SaffronCity_Dojo_EventScript_AlreadyGotHitmon::
-	msgbox SaffronCity_Dojo_Text_BetterNotGetGreedy
-	release
-	end
-
 SaffronCity_Dojo_EventScript_HitmonchanBall::
 	lock
 	faceplayer
-	goto_if_set FLAG_GOT_HITMON_FROM_DOJO, SaffronCity_Dojo_EventScript_AlreadyGotHitmon
-	showmonpic SPECIES_HITMONCHAN, 10, 3
+  goto_if_set FLAG_GOT_HITMON_FROM_DOJO, SaffronCity_Dojo_EventScript_AlreadyGotHitmon
+Archipelago_Target_Special_Gift_HITMONCHAN::
 	setvar VAR_TEMP_1, SPECIES_HITMONCHAN
+	bufferspeciesname STR_VAR_1, VAR_TEMP_1
+	showmonpic SPECIES_HITMONCHAN, 10, 3
 	applymovement LOCALID_KARATE_MASTER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_MALE
@@ -53,6 +52,11 @@ SaffronCity_Dojo_EventScript_HitmonchanBall::
 	call EventScript_RestorePrevTextColor
 	goto_if_eq VAR_RESULT, YES, SaffronCity_Dojo_EventScript_GiveHitmon
 	hidemonpic
+	release
+	end
+
+SaffronCity_Dojo_EventScript_AlreadyGotHitmon::
+	msgbox SaffronCity_Dojo_Text_BetterNotGetGreedy
 	release
 	end
 
@@ -67,7 +71,6 @@ SaffronCity_Dojo_EventScript_GiveHitmon::
 
 SaffronCity_Dojo_EventScript_ReceivedHitmonParty::
 	removeobject VAR_LAST_TALKED
-	bufferspeciesname STR_VAR_1, VAR_TEMP_1
 	playfanfare MUS_LEVEL_UP
 	message SaffronCity_Dojo_Text_ReceivedMonFromKarateMaster
 	waitmessage
@@ -82,7 +85,6 @@ SaffronCity_Dojo_EventScript_ReceivedHitmonParty::
 
 SaffronCity_Dojo_EventScript_ReceivedHitmonPC::
 	removeobject VAR_LAST_TALKED
-	bufferspeciesname STR_VAR_1, VAR_TEMP_1
 	playfanfare MUS_LEVEL_UP
 	message SaffronCity_Dojo_Text_ReceivedMonFromKarateMaster
 	waitmessage

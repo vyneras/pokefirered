@@ -156,6 +156,7 @@ SeafoamIslands_B4F_EventScript_Articuno::
 	special QuestLog_CutRecording
 	lock
 	faceplayer
+Archipelago_Target_Legendary_Encounter_ARTICUNO::
 	setwildbattle SPECIES_ARTICUNO, 50
 	waitse
 	playmoncry SPECIES_ARTICUNO, CRY_MODE_ENCOUNTER

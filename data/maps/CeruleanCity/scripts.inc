@@ -4,6 +4,8 @@
 .set LOCALID_LASS,      6
 .set LOCALID_RIVAL,     8
 .set LOCALID_WOMAN,     11
+.set LOCALID_CAVE_GUARD, 12
+.set REQUIRED_BADGES_GYMS, VAR_TEMP_2
 
 CeruleanCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, CeruleanCity_OnTransition
@@ -11,13 +13,21 @@ CeruleanCity_MapScripts::
 
 CeruleanCity_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_CERULEAN_CITY
-	call_if_unset FLAG_GOT_SS_TICKET, CeruleanCity_EventScript_BlockExits
+	specialvar VAR_RESULT, ArchipelagoSpecial_CanLeaveCeruleanCity
+	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_BlockExits
+	specialvar VAR_RESULT, ArchipelagoSpecial_CanEnterCeruleanCave
+	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_RemoveGuard
+	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetCeruleanCaveRequiredCount
 	end
 
 CeruleanCity_EventScript_BlockExits::
 	setobjectxyperm LOCALID_POLICEMAN, 30, 12
 	setobjectxyperm LOCALID_SLOWBRO, 26, 31
 	setobjectxyperm LOCALID_LASS, 27, 31
+	return
+
+CeruleanCity_EventScript_RemoveGuard::
+	clearflag FLAG_HIDE_CERULEAN_CAVE_GUARD
 	return
 
 CeruleanCity_EventScript_RivalTriggerLeft::
@@ -193,12 +203,6 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_TM28_FROM_ROCKET::
 	release
 	end
 
-CeruleanCity_EventScript_NoRoomForTM28::
-	textcolor NPC_TEXT_COLOR_MALE
-	msgbox CeruleanCity_Text_MakeRoomForThisCantRun
-	release
-	end
-
 CeruleanCity_EventScript_GruntTriggerTop::
 	lockall
 	setvar VAR_TEMP_1, 0
@@ -260,7 +264,69 @@ CeruleanCity_EventScript_Youngster::
 	end
 
 CeruleanCity_EventScript_CeruleanCaveGuard::
-	msgbox CeruleanCity_Text_ThisIsCeruleanCave, MSGBOX_NPC
+	lock
+	faceplayer
+	msgbox CeruleanCity_Text_ThisIsCeruleanCave
+	specialvar VAR_RESULT, ArchipelagoSpecial_GetCeruleanCaveRequirement
+	switch VAR_RESULT
+	case 0, CeruleanCity_EventScript_CeruleanCaveGuardChampAndNetwork
+	case 1, CeruleanCity_EventScript_CeruleanCaveGuardChamp
+	case 2, CeruleanCity_EventScript_CeruleanCaveGuardNetwork
+	case 3, CeruleanCity_EventScript_CeruleanCaveGuardBadges
+	case 4, CeruleanCity_EventScript_CeruleanCaveGuardGyms
+	end
+
+CeruleanCity_EventScript_CeruleanCaveGuardChampAndNetwork::
+	msgbox CeruleanCity_Text_BecomeChampAndFixNetwork
+	applymovement LOCALID_CAVE_GUARD, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+CeruleanCity_EventScript_CeruleanCaveGuardChamp::
+	msgbox CeruleanCity_Text_BecomeChamp
+	applymovement LOCALID_CAVE_GUARD, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+CeruleanCity_EventScript_CeruleanCaveGuardNetwork::
+	msgbox CeruleanCity_Text_FixNetwork
+	applymovement LOCALID_CAVE_GUARD, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+CeruleanCity_EventScript_CeruleanCaveGuardBadges::
+	buffernumberstring STR_VAR_1, REQUIRED_BADGES_GYMS
+	goto_if_eq REQUIRED_BADGES_GYMS, 1, CeruleanCity_EventScript_CeruleanCaveGuardBadge
+	msgbox CeruleanCity_Text_Badges
+	applymovement LOCALID_CAVE_GUARD, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+CeruleanCity_EventScript_CeruleanCaveGuardBadge::
+	msgbox CeruleanCity_Text_Badge
+	applymovement LOCALID_CAVE_GUARD, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+CeruleanCity_EventScript_CeruleanCaveGuardGyms::
+	buffernumberstring STR_VAR_1, REQUIRED_BADGES_GYMS
+	goto_if_eq REQUIRED_BADGES_GYMS, 1, CeruleanCity_EventScript_CeruleanCaveGuardGym
+	msgbox CeruleanCity_Text_Gyms
+	applymovement LOCALID_CAVE_GUARD, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+CeruleanCity_EventScript_CeruleanCaveGuardGym::
+	msgbox CeruleanCity_Text_Gym
+	applymovement LOCALID_CAVE_GUARD, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
 	end
 
 CeruleanCity_EventScript_Woman::

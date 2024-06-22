@@ -26,7 +26,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route22_NorthEntrance_EventScript_BoulderBadgeGuard",
+      "script": "Route22_NorthEntrance_EventScript_Guard",
       "flag": "0"
     }
   ],
@@ -52,9 +52,9 @@
       "x": 7,
       "y": 2,
       "elevation": 3,
-      "var": "VAR_MAP_SCENE_ROUTE_22_NORTH_ENTRANCE",
+      "var": "VAR_MAP_SCENE_ROUTE22_NORTH_ENTRANCE",
       "var_value": "0",
-      "script": "Route22_NorthEntrance_EventScript_BoulderBadgeGuardTrigger"
+      "script": "Route22_NorthEntrance_EventScript_GuardTrigger"
     }
   ],
   "bg_events": []

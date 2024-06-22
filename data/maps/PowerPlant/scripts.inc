@@ -37,6 +37,7 @@ PowerPlant_EventScript_Zapdos::
 	special QuestLog_CutRecording
 	lock
 	faceplayer
+Archipelago_Target_Legendary_Encounter_ZAPDOS::
 	setwildbattle SPECIES_ZAPDOS, 50
 	waitse
 	playmoncry SPECIES_ZAPDOS, CRY_MODE_ENCOUNTER
@@ -72,6 +73,7 @@ PowerPlant_EventScript_Electrode1::
 	goto_if_questlog EventScript_ReleaseEnd
 	lock
 	faceplayer
+Archipelago_Target_Static_Encounter_ELECTRODE_1::
 	setwildbattle SPECIES_ELECTRODE, 34
 	waitse
 	playmoncry SPECIES_ELECTRODE, CRY_MODE_ENCOUNTER
@@ -98,6 +100,7 @@ PowerPlant_EventScript_Electrode2::
 	goto_if_questlog EventScript_ReleaseEnd
 	lock
 	faceplayer
+Archipelago_Target_Static_Encounter_ELECTRODE_2::
 	setwildbattle SPECIES_ELECTRODE, 34
 	waitse
 	playmoncry SPECIES_ELECTRODE, CRY_MODE_ENCOUNTER

@@ -30,6 +30,7 @@ FiveIsland_WaterLabyrinth_EventScript_TryGiveEgg::
 	getpartysize
 	goto_if_eq VAR_RESULT, PARTY_SIZE, FiveIsland_WaterLabyrinth_EventScript_NoRoomForEgg
 	setflag FLAG_GOT_TOGEPI_EGG
+Archipelago_Target_Special_Egg_Gift_TOGEPI::
 	giveegg SPECIES_TOGEPI
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	playfanfare MUS_LEVEL_UP

@@ -12,11 +12,6 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_TM29_FROM_MR_PSYCHIC::
 	release
 	end
 
-SaffronCity_MrPsychicsHouse_EventScript_NoRoomForTM29::
-	msgbox SaffronCity_MrPsychicsHouse_Text_YouveNoRoom
-	release
-	end
-
 SaffronCity_MrPsychicsHouse_EventScript_AlreadyGotTM29::
 	msgbox SaffronCity_MrPsychicsHouse_Text_ExplainTM29
 	release

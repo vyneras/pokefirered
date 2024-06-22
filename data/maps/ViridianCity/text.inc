@@ -1,12 +1,46 @@
+Text_DreamEaterTeach::
+    .string "Yawn!\n"
+    .string "I must have dozed off in the sun.\p"
+    .string "I had this weird dream about\n"
+    .string "a DROWZEE eating my dream.\p"
+    .string "And…\n"
+    .string "I learned how to eat dreams…\p"
+    .string "Oogh, this is too spooky!\p"
+    .string "Let me teach it to a POKéMON so\n"
+    .string "I can forget about it!$"
+
+Text_DreamEaterDeclined::
+    .string "…Snore…$"
+
+Text_DreamEaterWhichMon::
+    .string "Which POKéMON wants to learn\n"
+    .string "DREAM EATER?$"
+
+Text_DreamEaterTaught::
+    .string "…ZZZ…\n"
+    .string "I…can't eat…anymore…$"
+
 ViridianCity_Text_CanCarryMonsAnywhere::
     .string "Those POKé BALLS at your waist!\n"
     .string "You have POKéMON, don't you?\p"
     .string "It's great that you can carry and\n"
     .string "use POKéMON anytime, anywhere.$"
 
-ViridianCity_Text_GymClosedWonderWhoLeaderIs::
-    .string "This POKéMON GYM is always closed.\p"
-    .string "I wonder who the LEADER is?$"
+ViridianCity_Text_OnlyOpenWithXBadges::
+    .string "The GYM is closed. You need to\n"
+    .string "have {STR_VAR_1} BADGES for it to open.$"
+
+ViridianCity_Text_OnlyOpenWithBadge::
+    .string "The GYM is closed. You need to\n"
+    .string "have {STR_VAR_1} BADGE for it to open.$"
+
+ViridianCity_Text_OnlyOpenWithXGyms::
+    .string "The GYM is closed. You need to\n"
+    .string "beat {STR_VAR_1} GYMS for it to open.$"
+
+ViridianCity_Text_OnlyOpenWithGym::
+    .string "The GYM is closed. You need to\n"
+    .string "beat {STR_VAR_1} GYM for it to open.$"
 
 ViridianCity_Text_ViridiansGymLeaderReturned::
     .string "VIRIDIAN GYM's LEADER returned!$"

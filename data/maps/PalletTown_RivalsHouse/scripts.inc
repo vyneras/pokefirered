@@ -18,17 +18,22 @@ PalletTown_RivalsHouse_EventScript_MoveDaisyToTable::
 	return
 
 PalletTown_RivalsHouse_EventScript_AlreadyReceivedTownMap::
+	call_if_set FLAG_SYS_GAME_CLEAR, PalletTown_RivalsHouse_EventScript_DaisyWillGroomMons
 	setvar RECEIVED_TOWN_MAP, TRUE
+	return
+
+PalletTown_RivalsHouse_EventScript_DaisyWillGroomMons::
+	setvar VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 3
 	return
 
 PalletTown_RivalsHouse_EventScript_Daisy::
 	lock
 	faceplayer
 	famechecker FAMECHECKER_DAISY, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
-	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 1, PalletTown_RivalsHouse_EventScript_GiveTownMap
-	goto_if_set FLAG_SYS_GAME_CLEAR, PalletTown_RivalsHouse_EventScript_GroomMon
+	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 3, PalletTown_RivalsHouse_EventScript_GroomMon
 	goto_if_eq RECEIVED_TOWN_MAP, TRUE, PalletTown_RivalsHouse_EventScript_PleaseGiveMonsRest
 	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 2, PalletTown_RivalsHouse_EventScript_ExplainTownMap
+	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 1, PalletTown_RivalsHouse_EventScript_GiveTownMap
 	goto_if_ge VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 1, PalletTown_RivalsHouse_EventScript_HeardBattledRival
 	msgbox PalletTown_RivalsHouse_Text_HiBrothersAtLab
 	closemessage
@@ -144,11 +149,6 @@ PalletTown_RivalsHouse_EventScript_GiveTownMap::
 	delay 12
 Archipelago_Target_NPC_Gift_FLAG_GOT_TOWN_MAP::
 	giveitem ITEM_TOWN_MAP, 1, FLAG_GOT_TOWN_MAP
-	release
-	end
-
-PalletTown_RivalsHouse_EventScript_NoRoomForTownMap::
-	msgbox PalletTown_RivalsHouse_Text_DontHaveSpaceForThis
 	release
 	end
 

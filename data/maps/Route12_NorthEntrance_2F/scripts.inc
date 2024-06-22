@@ -30,11 +30,6 @@ Route12_NorthEntrance_2F_EventScript_TakeTMFemale::
 	msgbox Route12_NorthEntrance_2F_Text_TakeTMDontNeedAnymoreFemale
 	return
 
-Route12_NorthEntrance_2F_EventScript_NoRoomForTM27::
-	msgbox Route12_NorthEntrance_2F_Text_DontHaveRoomForThis
-	release
-	end
-
 Route12_NorthEntrance_2F_EventScript_ExplainTM27::
 	msgbox Route12_NorthEntrance_2F_Text_ExplainTM27
 	release

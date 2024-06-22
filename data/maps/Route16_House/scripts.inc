@@ -12,11 +12,6 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_HM02::
 	release
 	end
 
-Route16_House_EventScript_NoRoomForHM02::
-	msgbox Route16_House_Text_DontHaveAnyRoomForThis
-	release
-	end
-
 Route16_House_EventScript_AlreadyGotHM02::
 	msgbox Route16_House_Text_ExplainHM02
 	release

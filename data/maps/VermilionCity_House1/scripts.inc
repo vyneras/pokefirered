@@ -23,8 +23,3 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_OLD_ROD::
 	msgbox VermilionCity_House1_Text_FishingIsAWayOfLife
 	release
 	end
-
-VermilionCity_House1_EventScript_NoRoomForOldRod::
-	msgbox VermilionCity_House1_Text_NoRoomForNiceGift
-	release
-	end

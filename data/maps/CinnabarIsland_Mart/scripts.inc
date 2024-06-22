@@ -15,6 +15,7 @@ CinnabarIsland_Mart_EventScript_Clerk::
 	faceplayer
 	message Text_MayIHelpYou
 	waitmessage
+	goto_if_set FLAG_BETTER_SHOPS_ENABLED, Poke_Mart_EventScript_BetterItems
 	pokemart CinnabarIsland_Mart_Items
 	msgbox Text_PleaseComeAgain
 	release
@@ -22,8 +23,8 @@ CinnabarIsland_Mart_EventScript_Clerk::
 
 	.align 2
 CinnabarIsland_Mart_Items::
-	.2byte ITEM_ULTRA_BALL
 	.2byte ITEM_GREAT_BALL
+	.2byte ITEM_ULTRA_BALL
 	.2byte ITEM_HYPER_POTION
 	.2byte ITEM_REVIVE
 	.2byte ITEM_FULL_HEAL

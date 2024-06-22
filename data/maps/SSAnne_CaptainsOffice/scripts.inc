@@ -20,16 +20,6 @@ SSAnne_CaptainsOffice_EventScript_Captain::
 Archipelago_Target_NPC_Gift_FLAG_GOT_HM01::
 	giveitem ITEM_HM01, 1, FLAG_GOT_HM01
 	msgbox SSAnne_CaptainsOffice_Text_ExplainCut
-	setvar VAR_MAP_SCENE_VERMILION_CITY, 1
-	release
-	end
-
-@ Unused
-SSAnne_CaptainsOffice_EventScript_NoRoomForCut::
-	msgbox SSAnne_CaptainsOffice_Text_YouHaveNoRoomForThis
-	closemessage
-	applymovement LOCALID_CAPTAIN, Common_Movement_FaceOriginalDirection
-	waitmovement 0
 	release
 	end
 

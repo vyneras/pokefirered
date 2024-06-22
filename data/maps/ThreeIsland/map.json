@@ -281,7 +281,7 @@
       "y": 27,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_THREE_ISLAND",
-      "var_value": "2",
+      "var_value": "0",
       "script": "ThreeIsland_EventScript_BikerBossIntroTrigger"
     },
     {
@@ -290,7 +290,7 @@
       "y": 27,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_THREE_ISLAND",
-      "var_value": "2",
+      "var_value": "0",
       "script": "ThreeIsland_EventScript_BikerBossIntroTrigger"
     },
     {
@@ -299,7 +299,7 @@
       "y": 27,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_THREE_ISLAND",
-      "var_value": "2",
+      "var_value": "0",
       "script": "ThreeIsland_EventScript_BikerBossIntroTrigger"
     },
     {
@@ -308,7 +308,7 @@
       "y": 27,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_THREE_ISLAND",
-      "var_value": "2",
+      "var_value": "0",
       "script": "ThreeIsland_EventScript_BikerBossIntroTrigger"
     },
     {
@@ -317,7 +317,7 @@
       "y": 26,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_THREE_ISLAND",
-      "var_value": "3",
+      "var_value": "1",
       "script": "ThreeIsland_EventScript_BattleBikersTriggerLeft"
     },
     {
@@ -326,7 +326,7 @@
       "y": 26,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_THREE_ISLAND",
-      "var_value": "3",
+      "var_value": "1",
       "script": "ThreeIsland_EventScript_BattleBikersTriggerMidLeft"
     },
     {
@@ -335,7 +335,7 @@
       "y": 26,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_THREE_ISLAND",
-      "var_value": "3",
+      "var_value": "1",
       "script": "ThreeIsland_EventScript_BattleBikersTriggerMid"
     },
     {
@@ -344,7 +344,7 @@
       "y": 27,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_THREE_ISLAND",
-      "var_value": "2",
+      "var_value": "0",
       "script": "ThreeIsland_EventScript_BikerBossIntroTrigger"
     },
     {
@@ -353,7 +353,7 @@
       "y": 26,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_THREE_ISLAND",
-      "var_value": "3",
+      "var_value": "1",
       "script": "ThreeIsland_EventScript_BattleBikersTriggerMidRight"
     },
     {
@@ -362,7 +362,7 @@
       "y": 26,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_THREE_ISLAND",
-      "var_value": "3",
+      "var_value": "1",
       "script": "ThreeIsland_EventScript_BattleBikersTriggerRight"
     }
   ],

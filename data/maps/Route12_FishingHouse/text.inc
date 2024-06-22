@@ -10,10 +10,6 @@ Route12_FishingHouse_Text_TakeThisAndFish::
     .string "I think we can be friends.\p"
     .string "Take this and fish, young friend!$"
 
-Route12_FishingHouse_Text_ReceivedSuperRod::
-    .string "{PLAYER} received a SUPER ROD from\n"
-    .string "the FISHING GURU's brother.$"
-
 Route12_FishingHouse_Text_IfYouCatchBigMagikarpShowMe::
     .string "Fishing is a way of life!\n"
     .string "It is like the finest poetry.\p"

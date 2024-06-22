@@ -34,6 +34,7 @@ CeruleanCave_B1F_EventScript_Mewtwo::
 	delay 20
 	playbgm MUS_ENCOUNTER_GYM_LEADER, 0
 	waitbuttonpress
+Archipelago_Target_Legendary_Encounter_MEWTWO::
 	setwildbattle SPECIES_MEWTWO, 70
 	setflag FLAG_SYS_SPECIAL_WILD_BATTLE
 	special StartLegendaryBattle

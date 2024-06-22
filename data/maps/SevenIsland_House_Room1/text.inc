@@ -49,10 +49,6 @@ SevenIsland_House_Room1_Text_DontHoldAnythingBack::
     .string "All right.\n"
     .string "Don't hold anything back!$"
 
-@ Unused
-SevenIsland_House_Room1_Text_StrVar1_1::
-    .string "{STR_VAR_1}$"
-
 SevenIsland_House_Room2_Text_MatchEndedUpDraw::
     .string "The match ended up a draw.$"
 
@@ -62,10 +58,6 @@ SevenIsland_House_Room1_Text_DrawWasIt::
     .string "a worthy spectacle.\p"
     .string "I'd say it was a wonderful battle\n"
     .string "with a real sense of depth!$"
-
-@ Unused
-SevenIsland_House_Room1_Text_StrVar1_2::
-    .string "{STR_VAR_1}$"
 
 SevenIsland_House_Room1_Text_AstoundingBattle::
     .string "Bravo!\p"
@@ -78,10 +70,6 @@ SevenIsland_House_Room1_Text_AstoundingBattle::
     .string "The clash of power upon power!\p"
     .string "Yes!\n"
     .string "It was sheer magnificence!$"
-
-@ Unused
-SevenIsland_House_Room1_Text_StrVar1_3::
-    .string "{STR_VAR_1}$"
 
 SevenIsland_House_Room1_Text_FeelYourDisappointment::
     .string "Too bad!\n"

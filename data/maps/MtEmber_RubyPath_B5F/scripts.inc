@@ -1,3 +1,5 @@
+.set LOCALID_RUBY, 1
+
 MtEmber_RubyPath_B5F_MapScripts::
 	.byte 0
 
@@ -14,4 +16,13 @@ MtEmber_RubyPath_B5F_EventScript_BrailleMessage::
 	braillemessage Braille_Text_UsePower
 	waitbuttonpress
 	releaseall
+	end
+
+MtEmber_RubyPath_B5F_EventScript_Ruby::
+	lock
+	faceplayer
+	removeobject LOCALID_RUBY
+Archipelago_Target_NPC_Gift_FLAG_GOT_RUBY::
+	giveitem ITEM_RUBY, 1, FLAG_GOT_RUBY
+	release
 	end

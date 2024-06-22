@@ -6,11 +6,10 @@ FiveIsland_LostCave_Room10_Text_SelphyDefeat::
     .string "Oh… I was afraid that you meant to\n"
     .string "harm me.$"
 
-FiveIsland_LostCave_Room10_Text_MayIAskYouToTakeMeHome::
-    .string "I am so glad that you happened\n"
-    .string "here.\p"
-    .string "I grew rather bored of walking,\n"
-    .string "and I am feeling fatigued.\p"
-    .string "May I ask you to take me home\n"
-    .string "from here?$"
+FiveIsland_LostCave_Room10_Text_GoingToHeadHome::
+    .string "I apologize for being so\n"
+    .string "frantic at first.\p"
+    .string "Honestly, I've grown bored of\n"
+    .string "walking around this cave.\p"
+    .string "I'm going to head home now.$"
 

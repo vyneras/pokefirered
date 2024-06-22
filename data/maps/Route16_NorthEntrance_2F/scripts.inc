@@ -1,7 +1,13 @@
-.equ REQUIRED_CAUGHT_MONS, 40
+.set REQUIRED_CAUGHT_MONS, VAR_TEMP_1
 
 Route16_NorthEntrance_2F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route16_NorthEntrance_2F_OnTransition
 	.byte 0
+
+Route16_NorthEntrance_2F_OnTransition::
+	setvar VAR_0x8003, 3
+	specialvar REQUIRED_CAUGHT_MONS, ArchipelagoSpecial_GetProfessorOaksAideCount
+	end
 
 Route16_NorthEntrance_2F_EventScript_LittleBoy::
 	msgbox Route16_NorthEntrance_2F_Text_OnBikeRideWithGirlfriend, MSGBOX_NPC

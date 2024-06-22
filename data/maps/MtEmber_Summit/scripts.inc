@@ -26,6 +26,7 @@ MtEmber_Summit_EventScript_Moltres::
 	special QuestLog_CutRecording
 	lock
 	faceplayer
+Archipelago_Target_Legendary_Encounter_MOLTRES::
 	setwildbattle SPECIES_MOLTRES, 50
 	waitse
 	playmoncry SPECIES_MOLTRES, CRY_MODE_ENCOUNTER

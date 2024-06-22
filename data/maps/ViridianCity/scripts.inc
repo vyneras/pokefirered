@@ -1,6 +1,7 @@
 .set LOCALID_OLD_MAN,      3
 .set LOCALID_TUTORIAL_MAN, 4
 .set LOCALID_WOMAN,        5
+.set REQUIRED_BADGES_GYMS, VAR_TEMP_1
 
 ViridianCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, ViridianCity_OnTransition
@@ -8,15 +9,21 @@ ViridianCity_MapScripts::
 
 ViridianCity_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_VIRIDIAN_CITY
-	call_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 0, ViridianCity_EventScript_SetOldManBlockingRoad
-	call_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1, ViridianCity_EventScript_SetOldManStandingByRoad
-	call_if_ge VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2, ViridianCity_EventScript_SetOldManNormal
 	call_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 0, ViridianCity_EventScript_TryUnlockGym
+	call_if_ge VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2, ViridianCity_EventScript_SetOldManNormal
+	call_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1, ViridianCity_EventScript_SetOldManStandingByRoad
+	call_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 0, ViridianCity_EventScript_SetOldManBlockingRoad
+	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetGiovanniRequiredCount
 	end
 
 ViridianCity_EventScript_SetOldManNormal::
 	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_OLD_MAN_1
 	return
+
+ViridianCity_EventScript_OldManNotBlockingRoad::
+	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1
+	call ViridianCity_EventScript_SetOldManStandingByRoad
+	end
 
 ViridianCity_EventScript_SetOldManStandingByRoad::
 	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_OLD_MAN_1
@@ -25,6 +32,7 @@ ViridianCity_EventScript_SetOldManStandingByRoad::
 	return
 
 ViridianCity_EventScript_SetOldManBlockingRoad::
+	goto_if_set FLAG_DELIVERED_OAKS_PARCEL, ViridianCity_EventScript_OldManNotBlockingRoad
 	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_OLD_MAN_LYING_DOWN
 	setobjectxyperm LOCALID_TUTORIAL_MAN, 21, 11
 	setobjectmovementtype LOCALID_TUTORIAL_MAN, MOVEMENT_TYPE_FACE_DOWN
@@ -81,16 +89,45 @@ ViridianCity_EventScript_Boy::
 ViridianCity_EventScript_OldMan::
 	lock
 	faceplayer
-	goto_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 1, ViridianCity_EventScript_OldManGymLeaderReturned
-	msgbox ViridianCity_Text_GymClosedWonderWhoLeaderIs
+	goto_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 0, ViridianCity_EventScript_OldManGymClosed
+	msgbox ViridianCity_Text_ViridiansGymLeaderReturned
+	release
+	end
+
+ViridianCity_EventScript_OldManGymClosed::
+	buffernumberstring STR_VAR_1, REQUIRED_BADGES_GYMS
+	specialvar VAR_RESULT, ArchipelagoSpecial_GiovanniRequiresGyms
+	goto_if_eq VAR_RESULT, TRUE, ViridianCity_EventScript_OldManGymClosedGyms
+	goto_if_eq REQUIRED_BADGES_GYMS, 1, ViridianCity_EventScript_OldManGymClosedNoBadge
+	msgbox ViridianCity_Text_OnlyOpenWithXBadges
 	closemessage
 	applymovement LOCALID_OLD_MAN, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
 
-ViridianCity_EventScript_OldManGymLeaderReturned::
-	msgbox ViridianCity_Text_ViridiansGymLeaderReturned
+ViridianCity_EventScript_OldManGymClosedNoBadge::
+	msgbox ViridianCity_Text_OnlyOpenWithBadge
+	closemessage
+	applymovement LOCALID_OLD_MAN, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+ViridianCity_EventScript_OldManGymClosedGyms::
+	goto_if_eq REQUIRED_BADGES_GYMS, 1, ViridianCity_EventScript_OldManGymClosedNoGym
+	msgbox ViridianCity_Text_OnlyOpenWithXGyms
+	closemessage
+	applymovement LOCALID_OLD_MAN, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+ViridianCity_EventScript_OldManGymClosedNoGym::
+	msgbox ViridianCity_Text_OnlyOpenWithGym
+	closemessage
+	applymovement LOCALID_OLD_MAN, Common_Movement_FaceOriginalDirection
+	waitmovement 0
 	release
 	end
 

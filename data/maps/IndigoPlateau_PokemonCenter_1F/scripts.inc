@@ -1,4 +1,5 @@
 .set LOCALID_DOOR_GUARD, 4
+.set REQUIRED_BADGES_GYMS, VAR_TEMP_2
 
 IndigoPlateau_PokemonCenter_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, IndigoPlateau_PokemonCenter_1F_OnTransition
@@ -7,32 +8,54 @@ IndigoPlateau_PokemonCenter_1F_MapScripts::
 
 IndigoPlateau_PokemonCenter_1F_OnTransition::
 	setrespawn SPAWN_INDIGO_PLATEAU
-	specialvar VAR_RESULT, IsNationalPokedexEnabled
-	call_if_eq VAR_RESULT, TRUE, IndigoPlateau_PokemonCenter_1F_EventScript_CheckBlockDoor
+	specialvar VAR_RESULT, ArchipelagoSpecial_CanChallengeEliteFour
+	call_if_eq VAR_RESULT, FALSE, IndigoPlateau_PokemonCenter_1F_EventScript_BlockDoor
+	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetEliteFourRequiredCount
 	end
 
-IndigoPlateau_PokemonCenter_1F_EventScript_CheckBlockDoor::
-	goto_if_set FLAG_SYS_CAN_LINK_WITH_RS, EventScript_Return
+IndigoPlateau_PokemonCenter_1F_EventScript_BlockDoor::
 	setobjectxyperm LOCALID_DOOR_GUARD, 4, 2
+	setvar VAR_TEMP_1, 0
 	return
 
 IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuard::
 	lock
 	faceplayer
-	specialvar VAR_RESULT, IsNationalPokedexEnabled
-	goto_if_eq VAR_RESULT, TRUE, IndigoPlateau_PokemonCenter_1F_EventScript_CheckSeviiIslandComplete
+	specialvar VAR_RESULT, ArchipelagoSpecial_CanChallengeEliteFour
+	goto_if_eq VAR_RESULT, FALSE, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardCantFaceEliteFour
 	msgbox IndigoPlateau_PokemonCenter_1F_Text_FaceEliteFourGoodLuck
+	call_if_eq VAR_TEMP_1, 0, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardMove
 	release
 	end
 
-IndigoPlateau_PokemonCenter_1F_EventScript_CheckSeviiIslandComplete::
-	goto_if_set FLAG_SYS_CAN_LINK_WITH_RS, IndigoPlateau_PokemonCenter_1F_EventScript_SeviiIslandComplete
-	msgbox IndigoPlateau_PokemonCenter_1F_Text_LoreleiIsAbsentClosedForTimeBeing
+IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardMove::
+	closemessage
+	applymovement LOCALID_DOOR_GUARD, IndigoPlateau_PokemonCenter_1F_Movement_DoorGuardMovesAside
+	waitmovement 0
+	return
+
+IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardCantFaceEliteFour::
+	buffernumberstring STR_VAR_1, REQUIRED_BADGES_GYMS
+	specialvar VAR_RESULT, ArchipelagoSpecial_EliteFourRequiresGyms
+	goto_if_eq VAR_RESULT, TRUE, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardCantFaceEliteFourGyms
+	goto_if_eq REQUIRED_BADGES_GYMS, 1, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardCantFaceEliteFourNoBadge
+	msgbox IndigoPlateau_PokemonCenter_1F_Text_NeedXBadges
 	release
 	end
 
-IndigoPlateau_PokemonCenter_1F_EventScript_SeviiIslandComplete::
-	msgbox IndigoPlateau_PokemonCenter_1F_Text_FaceEliteFourGoodLuck
+IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardCantFaceEliteFourNoBadge::
+	msgbox IndigoPlateau_PokemonCenter_1F_Text_NeedBadge
+	release
+	end
+
+IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardCantFaceEliteFourGyms::
+	goto_if_eq REQUIRED_BADGES_GYMS, 1, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardCantFaceEliteFourNoGyms
+	msgbox IndigoPlateau_PokemonCenter_1F_Text_NeedXGyms
+	release
+	end
+
+IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardCantFaceEliteFourNoGyms::
+	msgbox IndigoPlateau_PokemonCenter_1F_Text_NeedGym
 	release
 	end
 
@@ -46,6 +69,7 @@ IndigoPlateau_PokemonCenter_1F_EventScript_Clerk::
 	faceplayer
 	message Text_MayIHelpYou
 	waitmessage
+	goto_if_set FLAG_BETTER_SHOPS_ENABLED, Poke_Mart_EventScript_BetterItems
 	pokemart IndigoPlateau_PokemonCenter_1F_Items
 	msgbox Text_PleaseComeAgain
 	release
@@ -53,10 +77,10 @@ IndigoPlateau_PokemonCenter_1F_EventScript_Clerk::
 
 	.align 2
 IndigoPlateau_PokemonCenter_1F_Items::
-	.2byte ITEM_ULTRA_BALL
 	.2byte ITEM_GREAT_BALL
-	.2byte ITEM_FULL_RESTORE
+	.2byte ITEM_ULTRA_BALL
 	.2byte ITEM_MAX_POTION
+	.2byte ITEM_FULL_RESTORE
 	.2byte ITEM_REVIVE
 	.2byte ITEM_FULL_HEAL
 	.2byte ITEM_MAX_REPEL
@@ -70,3 +94,8 @@ IndigoPlateau_PokemonCenter_1F_EventScript_Nurse::
 	call EventScript_PkmnCenterNurse
 	release
 	end
+
+IndigoPlateau_PokemonCenter_1F_Movement_DoorGuardMovesAside::
+	walk_right
+	walk_down
+	step_end

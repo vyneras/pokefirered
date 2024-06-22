@@ -1,7 +1,13 @@
-.equ REQUIRED_SEEN_MONS, 10
+.set REQUIRED_CAUGHT_MONS, VAR_TEMP_1
 
 Route2_EastBuilding_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route2_EastBuilding_OnTransition
 	.byte 0
+
+Route2_EastBuilding_OnTransition::
+	setvar VAR_0x8003, 0
+	specialvar REQUIRED_CAUGHT_MONS, ArchipelagoSpecial_GetProfessorOaksAideCount
+	end
 
 Route2_EastBuilding_EventScript_Aide::
 	lock
@@ -14,7 +20,7 @@ Route2_EastBuilding_EventScript_Aide::
 	specialvar VAR_RESULT, GetPokedexCount
 	buffernumberstring STR_VAR_3, VAR_0x8006
 	call Route2_EastBuilding_EventScript_GetAideRequestInfo
-	goto_if_lt VAR_0x8006, REQUIRED_SEEN_MONS, Aide_EventScript_HaventCaughtEnough
+	goto_if_lt VAR_0x8006, REQUIRED_CAUGHT_MONS, Aide_EventScript_HaventCaughtEnough
 	msgbox Route2_EastBuilding_Text_GreatHereYouGo
 Archipelago_Target_NPC_Gift_FLAG_GOT_HM05::
 	giveitem ITEM_HM05, 1, FLAG_GOT_HM05
@@ -28,7 +34,7 @@ Route2_EastBuilding_EventScript_AlreadyGotHM05::
 	end
 
 Route2_EastBuilding_EventScript_GetAideRequestInfo::
-	buffernumberstring STR_VAR_1, REQUIRED_SEEN_MONS
+	buffernumberstring STR_VAR_1, REQUIRED_CAUGHT_MONS
 	bufferitemname STR_VAR_2, ITEM_HM05
 	return
 

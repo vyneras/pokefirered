@@ -10,6 +10,8 @@
 #include "strings.h"
 #include "field_effect.h"
 #include "event_scripts.h"
+#include "item.h"
+#include "constants/items.h"
 #include "constants/songs.h"
 #include "constants/seagallop.h"
 #include "constants/menu.h"
@@ -440,10 +442,19 @@ static const struct MenuAction sMultichoiceList_SeviiNavelBirth[] = {
     { gOtherText_Exit }
 };
 
-static const struct MenuAction sMultichoiceList_Seagallop123[] = {
-    { gText_OneIsland },
-    { gText_TwoIsland },
-    { gText_ThreeIsland },
+static const struct MenuAction sMultichoiceList_Navel[] = {
+    { gText_NavelRock },
+    { gOtherText_Exit }
+};
+
+static const struct MenuAction sMultichoiceList_Birth[] = {
+    { gText_BirthIsland },
+    { gOtherText_Exit }
+};
+
+static const struct MenuAction sMultichoiceList_Navel_Birth[] = {
+    { gText_NavelRock },
+    { gText_BirthIsland },
     { gOtherText_Exit }
 };
 
@@ -556,7 +567,9 @@ static const struct MultichoiceListStruct sMultichoiceLists[] = {
     [MULTICHOICE_SEVII_NAVEL]                                = MULTICHOICE(sMultichoiceList_SeviiNavel),
     [MULTICHOICE_SEVII_BIRTH]                                = MULTICHOICE(sMultichoiceList_SeviiBirth),
     [MULTICHOICE_SEVII_NAVEL_BIRTH]                          = MULTICHOICE(sMultichoiceList_SeviiNavelBirth),
-    [MULTICHOICE_SEAGALLOP_123]                              = MULTICHOICE(sMultichoiceList_Seagallop123),
+    [MULTICHOICE_NAVEL]                                      = MULTICHOICE(sMultichoiceList_Navel),
+    [MULTICHOICE_BIRTH]                                      = MULTICHOICE(sMultichoiceList_Birth),
+    [MULTICHOICE_NAVEL_BIRTH]                                = MULTICHOICE(sMultichoiceList_Navel_Birth),
     [MULTICHOICE_SEAGALLOP_V23]                              = MULTICHOICE(sMultichoiceList_SeagallopV23),
     [MULTICHOICE_SEAGALLOP_V13]                              = MULTICHOICE(sMultichoiceList_SeagallopV13),
     [MULTICHOICE_SEAGALLOP_V12]                              = MULTICHOICE(sMultichoiceList_SeagallopV12),
@@ -665,8 +678,10 @@ static const u8 *const sSeagallopDestStrings[] = {
     [SEAGALLOP_FOUR_ISLAND]    = gText_FourIsland,
     [SEAGALLOP_FIVE_ISLAND]    = gText_FiveIsland,
     [SEAGALLOP_SIX_ISLAND]     = gText_SixIsland,
-    [SEAGALLOP_SEVEN_ISLAND]   = gText_SevenIsland,
+    [SEAGALLOP_SEVEN_ISLAND]   = gText_SevenIsland
 };
+
+EWRAM_DATA u8 gSeagallopOptions[6] = {SCR_MENU_CANCEL};
 
 static u16 GetStringTilesWide(const u8 *str)
 {
@@ -1230,108 +1245,131 @@ void QL_DestroyAbortedDisplay(void)
 void DrawSeagallopDestinationMenu(void)
 {
     // 8004 = Starting location
-    // 8005 = Page (0: Verm, One, Two, Three, Four, Other, Exit; 1: Four, Five, Six, Seven, Other, Exit)
-    u8 destinationId;
+    // 8005 = Page
+    u8 destinationIndex;
     u8 top;
-    u8 numItems;
+    u8 numItemsTotal;
+    u8 numItemsDestinations;
+    u8 numItemsPage;
     u8 cursorWidth;
     u8 fontHeight;
     u8 windowId;
     u8 i;
+    bool8 needOtherOption;
+    u8 seagallopDestinations[] = {-1, -1, -1, -1, -1, -1, -1};
     gSpecialVar_Result = SCR_MENU_UNSET;
 
     if (QL_AvoidDisplay(QL_DestroyAbortedDisplay) == TRUE)
         return;
 
+    // Sets the destinations that are available and returns how many there are
+    numItemsTotal = 0;
+
+    if (gSpecialVar_0x8004 != SEAGALLOP_VERMILION_CITY)
+    {
+        seagallopDestinations[numItemsTotal++] = SEAGALLOP_VERMILION_CITY;
+    }
+
+    if (CheckBagHasItem(ITEM_TRI_PASS, 1))
+    {
+        if (gSpecialVar_0x8004 != SEAGALLOP_ONE_ISLAND)
+        {
+            seagallopDestinations[numItemsTotal++] = SEAGALLOP_ONE_ISLAND;
+        }
+
+        if (gSpecialVar_0x8004 != SEAGALLOP_TWO_ISLAND)
+        {
+            seagallopDestinations[numItemsTotal++] = SEAGALLOP_TWO_ISLAND;
+        }
+
+        if (gSpecialVar_0x8004 != SEAGALLOP_THREE_ISLAND)
+        {
+            seagallopDestinations[numItemsTotal++] = SEAGALLOP_THREE_ISLAND;
+        }
+    }
+
+    if (CheckBagHasItem(ITEM_RAINBOW_PASS, 1))
+    {
+        if (gSpecialVar_0x8004 != SEAGALLOP_FOUR_ISLAND)
+        {
+            seagallopDestinations[numItemsTotal++] = SEAGALLOP_FOUR_ISLAND;
+        }
+
+        if (gSpecialVar_0x8004 != SEAGALLOP_FIVE_ISLAND)
+        {
+            seagallopDestinations[numItemsTotal++] = SEAGALLOP_FIVE_ISLAND;
+        }
+
+        if (gSpecialVar_0x8004 != SEAGALLOP_SIX_ISLAND)
+        {
+            seagallopDestinations[numItemsTotal++] = SEAGALLOP_SIX_ISLAND;
+        }
+
+        if (gSpecialVar_0x8004 != SEAGALLOP_SEVEN_ISLAND)
+        {
+            seagallopDestinations[numItemsTotal++] = SEAGALLOP_SEVEN_ISLAND;
+        }
+    }
+
+    // The max items that can be in the list is 6 and we must always have an EXIT
+    // option. So if we have more than 5 other options we need to add another page
+    // and can only display 4 items on the first page
+    needOtherOption = numItemsTotal > 5;
+
     if (gSpecialVar_0x8005 == 1)
     {
-        if (gSpecialVar_0x8004 < SEAGALLOP_FIVE_ISLAND)
-            destinationId = SEAGALLOP_FIVE_ISLAND;
-        else
-            destinationId = SEAGALLOP_FOUR_ISLAND;
-        numItems = 5;
-        top = 2;
+        numItemsDestinations = numItemsTotal - 4;
+        destinationIndex = 4;
     }
     else
     {
-        destinationId = SEAGALLOP_VERMILION_CITY;
-        numItems = 6;
-        top = 0;
+        numItemsDestinations = needOtherOption ? 4 : numItemsTotal;
+        destinationIndex = 0;
     }
+
+    // Calculate top of option box
+    numItemsPage = needOtherOption ? numItemsDestinations + 2 : numItemsDestinations + 1;
+    top = 12;
+    top -= numItemsPage * 2;
+
     cursorWidth = GetMenuCursorDimensionByFont(FONT_NORMAL, 0);
     fontHeight = GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT);
-    windowId = CreateWindowFromRect(17, top, 11, numItems * 2);
+    windowId = CreateWindowFromRect(17, top, 11, numItemsPage * 2);
     SetStdWindowBorderStyle(windowId, FALSE);
 
-    // -2 excludes "Other" and "Exit", appended after the loop
-    for (i = 0; i < numItems - 2; i++)
+    for (i = 0; i < numItemsDestinations; i++)
     {
-        if (destinationId != gSpecialVar_0x8004)
-            AddTextPrinterParameterized(windowId, FONT_NORMAL, sSeagallopDestStrings[destinationId], cursorWidth, i * 16 + 2, TEXT_SKIP_DRAW, NULL);
-        else
-            i--;
-        destinationId++;
+        u8 destinationId = seagallopDestinations[destinationIndex];
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, sSeagallopDestStrings[destinationId], cursorWidth, i * 16 + 2, TEXT_SKIP_DRAW, NULL);
+        gSeagallopOptions[i] = destinationId;
+        destinationIndex++;
 
-        // Wrap around
-        if (destinationId == SEAGALLOP_SEVEN_ISLAND + 1)
-            destinationId = SEAGALLOP_VERMILION_CITY;
+        // Wrap around if we go out of bounds of the destinations array.
+        // The wrapped-around index should never need to be used though
+        if (destinationIndex > 6)
+        {
+            destinationIndex = 0;
+        }
     }
-    AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_Other, cursorWidth, i * 16 + 2, TEXT_SKIP_DRAW, NULL);
-    i++;
+
+    if (needOtherOption)
+    {
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_Other, cursorWidth, i * 16 + 2, TEXT_SKIP_DRAW, NULL);
+        gSeagallopOptions[i] = SEAGALLOP_MORE;
+        i++;
+    }
+
     AddTextPrinterParameterized(windowId, FONT_NORMAL, gOtherText_Exit, cursorWidth, i * 16 + 2, TEXT_SKIP_DRAW, NULL);
-    Menu_InitCursor(windowId, FONT_NORMAL, 0, 2, 16, numItems, 0);
-    CreateMCMenuInputHandlerTask(FALSE, numItems, windowId, MULTICHOICE_NONE);
+    gSeagallopOptions[i] = SCR_MENU_CANCEL;
+    Menu_InitCursor(windowId, FONT_NORMAL, 0, 2, 16, numItemsPage, 0);
+    CreateMCMenuInputHandlerTask(FALSE, numItemsPage, windowId, MULTICHOICE_NONE);
     ScheduleBgCopyTilemapToVram(0);
 }
 
 u16 GetSelectedSeagallopDestination(void)
 {
-    // 8004 = Starting location
-    // 8005 = Page (0: Verm, One, Two, Three, Four, Other, Exit; 1: Four, Five, Six, Seven, Other, Exit)
     if (gSpecialVar_Result == SCR_MENU_CANCEL)
         return SCR_MENU_CANCEL;
-    if (gSpecialVar_0x8005 == 1)
-    {
-        if (gSpecialVar_Result == 3)
-        {
-            return SEAGALLOP_MORE;
-        }
-        else if (gSpecialVar_Result == 4)
-        {
-            return SCR_MENU_CANCEL;
-        }
-        else if (gSpecialVar_Result == 0)
-        {
-            if (gSpecialVar_0x8004 > SEAGALLOP_FOUR_ISLAND)
-                return SEAGALLOP_FOUR_ISLAND;
-            else
-                return SEAGALLOP_FIVE_ISLAND;
-        }
-        else if (gSpecialVar_Result == 1)
-        {
-            if (gSpecialVar_0x8004 > SEAGALLOP_FIVE_ISLAND)
-                return SEAGALLOP_FIVE_ISLAND;
-            else
-                return SEAGALLOP_SIX_ISLAND;
-        }
-        else if (gSpecialVar_Result == 2)
-        {
-            if (gSpecialVar_0x8004 > SEAGALLOP_SIX_ISLAND)
-                return SEAGALLOP_SIX_ISLAND;
-            else
-                return SEAGALLOP_SEVEN_ISLAND;
-        }
-    }
-    else
-    {
-        if (gSpecialVar_Result == 4)
-            return SEAGALLOP_MORE;
-        else if (gSpecialVar_Result == 5)
-            return SCR_MENU_CANCEL;
-        else if (gSpecialVar_Result >= gSpecialVar_0x8004)
-            return gSpecialVar_Result + 1;
-        else
-            return gSpecialVar_Result;
-    }
-    return SEAGALLOP_VERMILION_CITY;
+
+    return gSeagallopOptions[gSpecialVar_Result];
 }

@@ -16,10 +16,6 @@ Route11_EastEntrance_2F_Text_GreatHereYouGo::
     .string "Congratulations!\n"
     .string "Here you go!$"
 
-Route11_EastEntrance_2F_Text_ReceivedItemfinderFromAide::
-    .string "{PLAYER} received the {STR_VAR_2}\n"
-    .string "from the AIDE.$"
-
 Route11_EastEntrance_2F_Text_ExplainItemfinder::
     .string "There are items on the ground that\n"
     .string "may be hidden from view.\p"

@@ -32,12 +32,6 @@ CinnabarIsland_PokemonLab_ExperimentRoom_Text_NoIsTooBad::
     .string "No!\n"
     .string "Is too bad!$"
 
-@ Unused
-CinnabarIsland_PokemonLab_ExperimentRoom_Text_TakesTimeGoForWalkJP::
-    .string "ちょっと　じかん　かかるよ！\p"
-    .string "そこらへんを　すこし\n"
-    .string "ブラブラ　してくると　よろしー！$"
-
 CinnabarIsland_PokemonLab_ExperimentRoom_Text_FossilMonBackToLife::
     .string "You late.\n"
     .string "Where were you?\p"
@@ -48,10 +42,6 @@ CinnabarIsland_PokemonLab_ExperimentRoom_Text_ReceivedMonFromDoctor::
     .string "{PLAYER} received the {STR_VAR_1}\n"
     .string "from the doctor.$"
 
-@ Unused
-CinnabarIsland_PokemonLab_ExperimentRoom_Text_NoRoomForPokemon::
-    .string "ポケモン　いっぱいで　もてないね！$"
-
 CinnabarIsland_PokemonLab_ExperimentRoom_Text_ThatFossilIsOfMonMakeItLiveAgain::
     .string "Oh!\n"
     .string "That is {STR_VAR_2}, it is!\p"
@@ -60,7 +50,6 @@ CinnabarIsland_PokemonLab_ExperimentRoom_Text_ThatFossilIsOfMonMakeItLiveAgain::
     .string "My Resurrection Machine will make\n"
     .string "that POKéMON live again!$"
 
-@ TODO: Resolve text dump error below?
 CinnabarIsland_PokemonLab_ExperimentRoom_Text_HandedFossilToWeirdDoctor::
     .string "So!\n"
     .string "You hurry and give me that!\p"

@@ -59,6 +59,7 @@ NavelRock_Summit_EventScript_HoOh::
 	applymovement LOCALID_HO_OH, Movement_HoOhApproach
 	waitmovement 0
 	special RemoveCameraObject
+Archipelago_Target_Event_Encounter_HO_OH::
 	seteventmon SPECIES_HO_OH, 70
 	setflag FLAG_SYS_SPECIAL_WILD_BATTLE
 	special StartLegendaryBattle

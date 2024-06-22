@@ -19,6 +19,7 @@ LavenderTown_Mart_EventScript_Clerk::
 	faceplayer
 	message Text_MayIHelpYou
 	waitmessage
+	goto_if_set FLAG_BETTER_SHOPS_ENABLED, Poke_Mart_EventScript_BetterItems
 	pokemart LavenderTown_Mart_Items
 	msgbox Text_PleaseComeAgain
 	release

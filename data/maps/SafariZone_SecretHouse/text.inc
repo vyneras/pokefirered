@@ -22,7 +22,3 @@ SafariZone_SecretHouse_Text_ExplainSurf::
     .string "You're super lucky for winning this\n"
     .string "fabulous prize!$"
 
-SafariZone_SecretHouse_Text_DontHaveRoomForPrize::
-    .string "You don't have room for this\n"
-    .string "fabulous prize!$"
-
