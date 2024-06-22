@@ -42,6 +42,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .freeFlyLocation = 0,
 
     .itemfinderRequired = FALSE,
+    .reccuringHiddenItems = FALSE,
 
     .oaksAideRequiredCounts = {
         [0] = 10, // Route 2

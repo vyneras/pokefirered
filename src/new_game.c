@@ -146,13 +146,14 @@ void NewGameInitData(void)
     UnionRoomChat_InitializeRegisteredTexts();
     ResetMiniGamesResults();
     ClearMysteryGift();
-    SetAllRenewableItemFlags();
     WarpToPlayersRoom();
     RunScriptImmediately(EventScript_ResetAllMapFlags);
     StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
     ResetTrainerTowerResults();
     FlagSet(FLAG_SYS_SEVII_MAP_123);
     FlagSet(FLAG_SYS_SEVII_MAP_4567);
+
+    if (!gArchipelagoOptions.reccuringHiddenItems) SetAllRenewableItemFlags();
 
     if (gArchipelagoOptions.betterShopsEnabled) FlagSet(FLAG_BETTER_SHOPS_ENABLED);
 

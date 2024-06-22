@@ -39,8 +39,9 @@ struct ArchipelagoOptions
   /* 0x24 */ u8 freeFlyLocation;
 
   /* 0x25 */ bool8 itemfinderRequired;
+  /* 0x26 */ bool8 reccuringHiddenItems;
 
-  /* 0x26 */ u8 oaksAideRequiredCounts[5];
+  /* 0x27 */ u8 oaksAideRequiredCounts[5];
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem

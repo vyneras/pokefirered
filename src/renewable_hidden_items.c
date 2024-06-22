@@ -1,4 +1,5 @@
 #include "global.h"
+#include "archipelago.h"
 #include "event_data.h"
 #include "random.h"
 #include "constants/maps.h"
@@ -567,6 +568,11 @@ void TryRegenerateRenewableHiddenItems(void)
 {
     u8 i;
     u8 found_map = 0xFF;
+
+    // If we have shuffled recurring hidden items, do not regenrate them
+    if (gArchipelagoOptions.reccuringHiddenItems)
+        return;
+
     for (i = 0; i < ARRAY_COUNT(sRenewableHiddenItems); i++)
     {
         if (sRenewableHiddenItems[i].mapGroup == gSaveBlock1Ptr->location.mapGroup
