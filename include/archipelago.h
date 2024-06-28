@@ -10,7 +10,7 @@
 struct ArchipelagoOptions
 {
   /* 0x00 */ bool8 advanceTextWithHoldA;
-  /* 0x01 */ u8 receivedItemMessageFilter; // 0 = Show All; 1 = Show Progression Only; 2 = Show None
+  /* 0x01 */ u8 receivedItemMessageFilter; // 0 = Show All, 1 = Show Progression Only, 2 = Show None
   /* 0x02 */ bool8 betterShopsEnabled;
   /* 0x03 */ bool8 reusableTms;
   /* 0x04 */ bool8 guaranteedCatch;
@@ -34,14 +34,12 @@ struct ArchipelagoOptions
   /* 0x16 */ u8 ceruleanCaveRequiredCount;
 
   /* 0x17 */ u8 startingBadges;
-  /* 0x18 */ u32 hmTotalBadgeRequirements;
-  /* 0x1C */ u8 hmSpecificBadgeRequirements[8];
-  /* 0x24 */ u8 freeFlyLocation;
+  /* 0x18 */ u8 freeFlyLocation;
 
-  /* 0x25 */ bool8 itemfinderRequired;
-  /* 0x26 */ bool8 reccuringHiddenItems;
+  /* 0x19 */ bool8 itemfinderRequired;
+  /* 0x1A */ bool8 reccuringHiddenItems;
 
-  /* 0x27 */ u8 oaksAideRequiredCounts[5];
+  /* 0x1B */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem
@@ -66,13 +64,7 @@ extern const u8 gArchipelagoPlayerNames[];
 extern const u8 gArchipelagoItemNames[];
 extern const u8 gArchipelagoNameTable[];
 
-struct ArchipelagoInfo
-{
-    u8 auth[16];
-};
-
 extern const struct ArchipelagoOptions gArchipelagoOptions;
-extern const struct ArchipelagoInfo gArchipelagoInfo;
 extern bool8 gArchipelagoDeathLinkQueued;
 
 bool8 ArchipelagoSpecial_CanUseHmOutsideBattle(void);

@@ -1035,7 +1035,98 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_FAME_CHECKER_KOGA_JOURNAL
 	setflag FLAG_HIDE_FAME_CHECKER_LT_SURGE_JOURNAL
 	setflag FLAG_HIDE_SAFFRON_CITY_POKECENTER_SABRINA_JOURNALS
+	setflag FLAG_HIDE_VICTORY_ROAD_2F_BOULDER
 	setvar VAR_MASSAGE_COOLDOWN_STEP_COUNTER, 500
+	end
+
+EventScript_SetFreeFlyLocation::
+	specialvar VAR_RESULT, ArchipelagoSpecial_GetFreeFlyLocation
+	switch VAR_RESULT
+	case 0, EventScript_SetFreeFlyLocationPallet
+	case 1, EventScript_SetFreeFlyLocationViridian
+	case 2, EventScript_SetFreeFlyLocationPewter
+	case 3, EventScript_SetFreeFlyLocationCerulean
+	case 4, EventScript_SetFreeFlyLocationVermilion
+	case 5, EventScript_SetFreeFlyLocationLavender
+	case 6, EventScript_SetFreeFlyLocationCeladon
+	case 7, EventScript_SetFreeFlyLocationFuchsia
+	case 8, EventScript_SetFreeFlyLocationSaffron
+	case 9, EventScript_SetFreeFlyLocationCinnabar
+	case 10, EventScript_SetFreeFlyLocationOneIsland
+	case 11, EventScript_SetFreeFlyLocationTwoIsland
+	case 12, EventScript_SetFreeFlyLocationThreeIsland
+	case 13, EventScript_SetFreeFlyLocationFourIsland
+	case 14, EventScript_SetFreeFlyLocationFiveIsland
+	case 15, EventScript_SetFreeFlyLocationSixIsland
+	case 16, EventScript_SetFreeFlyLocationSevenIsland
+	end
+
+EventScript_SetFreeFlyLocationPallet::
+	setworldmapflag FLAG_WORLD_MAP_PALLET_TOWN
+	end
+
+EventScript_SetFreeFlyLocationViridian::
+	setworldmapflag FLAG_WORLD_MAP_VIRIDIAN_CITY
+	end
+
+EventScript_SetFreeFlyLocationPewter::
+	setworldmapflag FLAG_WORLD_MAP_PEWTER_CITY
+	end
+
+EventScript_SetFreeFlyLocationCerulean::
+	setworldmapflag FLAG_WORLD_MAP_CERULEAN_CITY
+	end
+
+EventScript_SetFreeFlyLocationVermilion::
+	setworldmapflag FLAG_WORLD_MAP_VERMILION_CITY
+	end
+
+EventScript_SetFreeFlyLocationLavender::
+	setworldmapflag FLAG_WORLD_MAP_LAVENDER_TOWN
+	end
+
+EventScript_SetFreeFlyLocationCeladon::
+	setworldmapflag FLAG_WORLD_MAP_CELADON_CITY
+	end
+
+EventScript_SetFreeFlyLocationFuchsia::
+	setworldmapflag FLAG_WORLD_MAP_FUCHSIA_CITY
+	end
+
+EventScript_SetFreeFlyLocationSaffron::
+	setworldmapflag FLAG_WORLD_MAP_SAFFRON_CITY
+	end
+
+EventScript_SetFreeFlyLocationCinnabar::
+	setworldmapflag FLAG_WORLD_MAP_CINNABAR_ISLAND
+	end
+
+EventScript_SetFreeFlyLocationOneIsland::
+	setworldmapflag FLAG_WORLD_MAP_ONE_ISLAND
+	end
+
+EventScript_SetFreeFlyLocationTwoIsland::
+	setworldmapflag FLAG_WORLD_MAP_TWO_ISLAND
+	end
+
+EventScript_SetFreeFlyLocationThreeIsland::
+	setworldmapflag FLAG_WORLD_MAP_THREE_ISLAND
+	end
+
+EventScript_SetFreeFlyLocationFourIsland::
+	setworldmapflag FLAG_WORLD_MAP_FOUR_ISLAND
+	end
+
+EventScript_SetFreeFlyLocationFiveIsland::
+	setworldmapflag FLAG_WORLD_MAP_FIVE_ISLAND
+	end
+
+EventScript_SetFreeFlyLocationSixIsland::
+	setworldmapflag FLAG_WORLD_MAP_SIX_ISLAND
+	end
+
+EventScript_SetFreeFlyLocationSevenIsland::
+	setworldmapflag FLAG_WORLD_MAP_SEVEN_ISLAND
 	end
 
 	.include "data/scripts/hall_of_fame.inc"

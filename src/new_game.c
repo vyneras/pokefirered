@@ -148,6 +148,7 @@ void NewGameInitData(void)
     ClearMysteryGift();
     WarpToPlayersRoom();
     RunScriptImmediately(EventScript_ResetAllMapFlags);
+    RunScriptImmediately(EventScript_SetFreeFlyLocation);
     StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
     ResetTrainerTowerResults();
     FlagSet(FLAG_SYS_SEVII_MAP_123);

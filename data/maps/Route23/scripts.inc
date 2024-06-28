@@ -6,12 +6,6 @@ Route23_MapScripts::
 	.byte 0
 
 Route23_OnTransition::
-	clearflag FLAG_HIDE_VICTORY_ROAD_3F_BOULDER
-	setflag FLAG_HIDE_VICTORY_ROAD_2F_BOULDER
-	setvar VAR_MAP_SCENE_VICTORY_ROAD_1F, 0
-	setvar VAR_MAP_SCENE_VICTORY_ROAD_2F_BOULDER1, 0
-	setvar VAR_MAP_SCENE_VICTORY_ROAD_2F_BOULDER2, 0
-	setvar VAR_MAP_SCENE_VICTORY_ROAD_3F, 0
 	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetRoute23RequiredCount
 	end
 

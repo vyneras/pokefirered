@@ -81,7 +81,6 @@ int main (int argc, char *argv[])
         { "gArchipelagoPlayerNames", symbol_map["gArchipelagoPlayerNames"] - ROM_START },
         { "gArchipelagoItemNames", symbol_map["gArchipelagoItemNames"] - ROM_START },
         { "gArchipelagoNameTable", symbol_map["gArchipelagoNameTable"] - ROM_START },
-        { "gArchipelagoInfo", symbol_map["gArchipelagoInfo"] - ROM_START },
         { "gBattleMoves", symbol_map["gBattleMoves"] - ROM_START },
         { "gLevelUpLearnsets", symbol_map["gLevelUpLearnsets"] - ROM_START },
         { "gNewGamePCItems", symbol_map["gNewGamePCItems"] - ROM_START },
@@ -1118,8 +1117,22 @@ int main (int argc, char *argv[])
         // Altering Cave is the only map with multiple encounter tables.
         // It is supposed to switch between them based on a value set by an unreleased event.
         // The only vanilla table is the first one, with all Zubats.
-        if (map->name == "MAP_SIX_ISLAND_ALTERING_CAVE" &&
-				    (map_json["base_label"] != "sSixIslandAlteringCave_FireRed" || map_json["base_label"] != "sSixIslandAlteringCave_LeafGreen")) continue;
+        if (map->name == "MAP_SIX_ISLAND_ALTERING_CAVE")
+        {
+            bool first_encounter_table = false;
+
+            if(map_json["base_label"] == "sSixIslandAlteringCave_FireRed")
+            {
+                first_encounter_table = true;
+            }
+            else if(map_json["base_label"] == "sSixIslandAlteringCave_LeafGreen")
+            {
+                first_encounter_table = true;
+            }
+
+            if(!first_encounter_table)
+                continue;
+        }
 
         std::string base_symbol = map_json["base_label"];
 
