@@ -56,6 +56,11 @@ struct ArchipelagoReward
     u16 locationId;  // The flag id that gave this item
 };
 
+struct ArchipelagoInfo
+{
+    u8 auth[16];
+};
+
 #define REWARD_QUEUE_SIZE 10
 extern struct ArchipelagoReceivedItem gArchipelagoReceivedItem;
 extern struct ArchipelagoReward gRewardQueue[REWARD_QUEUE_SIZE];
@@ -65,6 +70,7 @@ extern const u8 gArchipelagoItemNames[];
 extern const u8 gArchipelagoNameTable[];
 
 extern const struct ArchipelagoOptions gArchipelagoOptions;
+extern const struct ArchipelagoInfo gArchipelagoInfo;
 extern bool8 gArchipelagoDeathLinkQueued;
 
 bool8 ArchipelagoSpecial_CanUseHmOutsideBattle(void);

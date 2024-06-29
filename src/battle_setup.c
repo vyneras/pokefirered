@@ -923,7 +923,9 @@ static void CB2_EndTrainerBattle(void)
     {
         if (IsPlayerDefeated(gBattleOutcome) == TRUE)
         {
-            gSpecialVar_Result = TRUE;
+            // As far as I can tell setting this does nothing and it causes a
+            // strange issue where it thinks an AP item has been received
+            //gSpecialVar_Result = TRUE;
             if (sRivalBattleFlags & RIVAL_BATTLE_HEAL_AFTER)
             {
                 HealPlayerParty();
@@ -939,7 +941,9 @@ static void CB2_EndTrainerBattle(void)
         }
         else
         {
-            gSpecialVar_Result = FALSE;
+            // As far as I can tell setting this does nothing and it causes a
+            // strange issue where it thinks an AP item has been received
+            //gSpecialVar_Result = FALSE;
             SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
             SetBattledTrainerFlag();
             QuestLogEvents_HandleEndTrainerBattle();

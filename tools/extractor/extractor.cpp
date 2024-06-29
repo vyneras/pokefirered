@@ -81,6 +81,7 @@ int main (int argc, char *argv[])
         { "gArchipelagoPlayerNames", symbol_map["gArchipelagoPlayerNames"] - ROM_START },
         { "gArchipelagoItemNames", symbol_map["gArchipelagoItemNames"] - ROM_START },
         { "gArchipelagoNameTable", symbol_map["gArchipelagoNameTable"] - ROM_START },
+        { "gArchipelagoInfo", symbol_map["gArchipelagoInfo"] - ROM_START },
         { "gBattleMoves", symbol_map["gBattleMoves"] - ROM_START },
         { "gLevelUpLearnsets", symbol_map["gLevelUpLearnsets"] - ROM_START },
         { "gNewGamePCItems", symbol_map["gNewGamePCItems"] - ROM_START },

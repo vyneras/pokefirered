@@ -50,6 +50,10 @@ const u8 gArchipelagoPlayerNames[PLAYER_NAME_BUFFER_SIZE] = {0};
 const u8 gArchipelagoItemNames[ITEM_NAME_BUFFER_SIZE] = {0};
 const u8 gArchipelagoNameTable[NAME_TABLE_BUFFER_SIZE] = {0};
 
+const struct ArchipelagoInfo gArchipelagoInfo = {
+    .auth = {0},
+};
+
 EWRAM_DATA bool8 gArchipelagoDeathLinkQueued = FALSE;
 
 bool8 ArchipelagoSpecial_CheckReusableTms(void)
