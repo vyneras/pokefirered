@@ -3250,13 +3250,3 @@ u8 IsMonDisobedient(void)
         }
     }
 }
-
-bool8 IsMonValidBattler(struct Pokemon *mon)
-{
-    return !(
-        GetMonData(mon, MON_DATA_HP) == 0 ||
-        GetMonData(mon, MON_DATA_SPECIES) == SPECIES_NONE ||
-        GetMonData(mon, MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG ||
-        GetMonData(mon, MON_DATA_IS_EGG)
-    );
-}

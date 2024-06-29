@@ -986,10 +986,6 @@ Text_MoveCanOnlyBeLearnedOnce::
 	.string "This move can be learned only\n"
 	.string "once. Is that okay?$"
 
-Text_GenericNotEnoughMons:
-	.string "If you want to battle,\n"
-	.string "bring two POKéMON with you.$"
-
 EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_OAK_IN_HIS_LAB
 	setflag FLAG_HIDE_OAK_IN_PALLET_TOWN
