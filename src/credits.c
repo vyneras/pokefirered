@@ -71,7 +71,9 @@ enum CreditsClosingText
 
 enum CreditsString
 {
-    CREDITS_STRING_DIRECTOR = 0,
+    CREDITS_STRING_ARCHIPELAGO_MOD = 0,
+    CREDITS_STRING_ARCHIPELAGO_SPECIAL_THANKS,
+    CREDITS_STRING_DIRECTOR,
     CREDITS_STRING_ART_DIRECTOR_BATTLE_DIRECTOR,
     CREDITS_STRING_PROGRAM_LEADER_PLANNING_LEADER_GRAPHIC_DESIGN_LEADER,
     CREDITS_STRING_PROGRAMMERS,
@@ -382,10 +384,11 @@ static const struct CompressedGraphicsHeader sCopyrightOrTheEndGfxHeaders[] = {
 
 static const struct CreditsScrcmd sCreditsScript[] = {
     CREDITS_MAPNEXT(ROUTE23, 16),
+    CREDITS_PRINT(ARCHIPELAGO_MOD, 300),
+    CREDITS_PRINT(ARCHIPELAGO_SPECIAL_THANKS, 300),
     CREDITS_PRINT(DIRECTOR, 300),
     CREDITS_PRINT(ART_DIRECTOR_BATTLE_DIRECTOR, 300),
     CREDITS_PRINT(PROGRAM_LEADER_PLANNING_LEADER_GRAPHIC_DESIGN_LEADER, 300),
-    CREDITS_PRINT(DUMMY, 60),
     CREDITS_MAPNEXT(VIRIDIAN_CITY, 0),
     CREDITS_PRINT(PROGRAMMERS, 211),
     CREDITS_PRINT(SYSTEM_PROGRAMMERS, 211),
@@ -569,7 +572,7 @@ static const struct SpriteTemplate sGroundSpriteTemplate_Static = {
 };
 
 static const struct CreditsOverworldCmd sOverworldCmd_Route23[] = {
-    CREDITSOVWLDLOADMAP(ROUTE23, 11, 107, 1),
+    CREDITSOVWLDLOADMAP(ROUTE23, 11, 87, 1),
     CREDITSOVWLDSCROLL(0, 1, 0x0500), // Scroll down
     CREDITSOVWLDEND
 };
@@ -663,6 +666,8 @@ static const struct CreditsOverworldCmd *const sOverworldMapScenes[] = {
 };
 
 static const struct CreditsTextHeader sCreditsTexts[] = {
+    { gCreditsString_Archipelago_Mod, gCreditsString_Vyneras, FALSE },
+    { gCreditsString_Archipelago_Special_Thanks, gCreditsString_Zunawe_pret, FALSE },
     { gCreditsString_Director, gCreditsString_Junichi_Masuda, FALSE },
     { gCreditsString_Art_Director_Battle_Director, gCreditsString_Ken_Sugimori_Shigeki_Morimoto, FALSE },
     { gCreditsString_Program_Leader_Planning_Leader_Graphic_Design_Leader, gCreditsString_Tetsuya_Watanabe_Koji_Nishino_Takao_Unno, FALSE },
@@ -862,7 +867,6 @@ static s32 RollCredits(void)
         {
             sCreditsMgr->timer--;
             return 0;
-            
         }
         sCreditsMgr->timer = 360;
         AddTextPrinterParameterized4(sCreditsMgr->windowId, FONT_NORMAL_COPY_1, 0x08, 0x29, 1, 2, sTextColor_Header, 0, TITLE_TEXT);

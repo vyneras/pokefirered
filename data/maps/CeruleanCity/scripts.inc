@@ -27,7 +27,7 @@ CeruleanCity_EventScript_BlockExits::
 	return
 
 CeruleanCity_EventScript_RemoveGuard::
-	clearflag FLAG_HIDE_CERULEAN_CAVE_GUARD
+	setflag FLAG_HIDE_CERULEAN_CAVE_GUARD
 	return
 
 CeruleanCity_EventScript_RivalTriggerLeft::
@@ -52,7 +52,6 @@ CeruleanCity_EventScript_RivalTriggerRight::
 
 CeruleanCity_EventScript_Rival::
 	textcolor NPC_TEXT_COLOR_MALE
-	setvar VAR_MAP_SCENE_ROUTE22, 2
 	playbgm MUS_ENCOUNTER_RIVAL, 0
 	addobject LOCALID_RIVAL
 	applymovement LOCALID_RIVAL, CeruleanCity_Movement_RivalEnter
