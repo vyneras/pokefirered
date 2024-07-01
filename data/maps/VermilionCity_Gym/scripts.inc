@@ -164,13 +164,7 @@ VermilionCity_Gym_EventScript_FoundSwitchOne::
 
 VermilionCity_Gym_EventScript_TrySwitchTwo::
 	goto_if_eq SWITCH2_ID, TRASH_CAN_ID, VermilionCity_Gym_EventScript_FoundSwitchTwo
-	msgbox VermilionCity_Gym_Text_OnlyTrashLocksWereReset
-	clearflag FOUND_FIRST_SWITCH
-	special SetVermilionTrashCans
-	copyvar VAR_TEMP_0, SWITCH1_ID
-	copyvar VAR_TEMP_1, SWITCH2_ID
-	call VermilionCity_Gym_EventScript_SetBeamsOn
-	special DrawWholeMapView
+	msgbox VermilionCity_Gym_Text_NopeOnlyTrashHere
 	releaseall
 	end
 

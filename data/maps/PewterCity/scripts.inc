@@ -389,7 +389,7 @@ PewterCity_EventScript_AideGiveRunningShoes::
 	closemessage
 	removeobject LOCALID_AIDE
 	setflag FLAG_SYS_B_DASH
-	setvar VAR_MAP_SCENE_PEWTER_CITY, 2
+	setvar VAR_MAP_SCENE_PEWTER_CITY, 3
 	return
 
 PewterCity_EventScript_AideNoticePlayer::

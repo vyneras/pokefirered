@@ -40,7 +40,6 @@ Archipelago_Target_NPC_Gift_FLAG_RESCUED_LOSTELLE::
 	setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 1
 	clearflag FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE
 	fadescreen FADE_FROM_BLACK
-	waitstate
 	release
 	end
 
