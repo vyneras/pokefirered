@@ -1,6 +1,7 @@
 #include "global.h"
 #include "gflib.h"
 #include "shop.h"
+#include "event_data.h"
 #include "menu.h"
 #include "data.h"
 #include "graphics.h"
@@ -982,6 +983,9 @@ static void BuyMenuTryMakePurchase(u8 taskId)
     PutWindowTilemap(4);
     if (AddBagItem(tItemId, tItemCount) == TRUE)
     {
+        if(tItemId == ITEM_LEMONADE)
+            FlagSet(FLAG_PURCHASED_LEMONADE);
+
         BuyMenuDisplayMessage(taskId, gText_HereYouGoThankYou, BuyMenuSubtractMoney);
         DebugFunc_PrintPurchaseDetails(taskId);
         RecordItemTransaction(tItemId, tItemCount, QL_EVENT_BOUGHT_ITEM - QL_EVENT_USED_POKEMART);

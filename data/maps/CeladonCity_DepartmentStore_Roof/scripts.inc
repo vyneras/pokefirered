@@ -229,6 +229,7 @@ CeladonCity_DepartmentStore_Roof_EventScript_RemoveMoneySodaPop::
 	return
 
 CeladonCity_DepartmentStore_Roof_EventScript_RemoveMoneyLemonade::
+	setflag FLAG_PURCHASED_LEMONADE
 	removemoney 350
 	return
 
