@@ -324,7 +324,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         return TRUE;
     }
 
-    if (gPlayerAvatar.tileTransitionState == T_NOT_MOVING || gPlayerAvatar.tileTransitionState == T_TILE_CENTER)
+    if ((gPlayerAvatar.tileTransitionState == T_NOT_MOVING || gPlayerAvatar.tileTransitionState == T_TILE_CENTER) && !(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_FORCED))
     {
         if (Archipelago_CheckDeathLinkQueued() == TRUE)
             return TRUE;
