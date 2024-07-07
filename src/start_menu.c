@@ -87,6 +87,7 @@ static bool8 StartMenuOptionCallback(void);
 static bool8 StartMenuExitCallback(void);
 static bool8 StartMenuSafariZoneRetireCallback(void);
 static bool8 StartMenuLinkPlayerCallback(void);
+static bool8 StartMenuGoHomeCallback(void);
 static bool8 StartCB_Save1(void);
 static bool8 StartCB_Save2(void);
 static void StartMenu_PrepareForSave(void);
@@ -119,9 +120,10 @@ static const struct MenuAction sStartMenuActionTable[] = {
     { gText_MenuPlayer, {.u8_void = StartMenuPlayerCallback} },
     { gText_MenuSave, {.u8_void = StartMenuSaveCallback} },
     { gText_MenuOption, {.u8_void = StartMenuOptionCallback} },
-    { gText_MenuExit, {.u8_void = StartMenuExitCallback} },
+    { gText_MenuGoHome, {.u8_void = StartMenuGoHomeCallback } },
     { gText_MenuRetire, {.u8_void = StartMenuSafariZoneRetireCallback} },
-    { gText_MenuPlayer, {.u8_void = StartMenuLinkPlayerCallback} }
+    { gText_MenuPlayer, {.u8_void = StartMenuLinkPlayerCallback} },
+
 };
 
 static const struct WindowTemplate sSafariZoneStatsWindowTemplate = {
@@ -141,7 +143,7 @@ static const u8 *const sStartMenuDescPointers[] = {
     gStartMenuDesc_Player,
     gStartMenuDesc_Save,
     gStartMenuDesc_Option,
-    gStartMenuDesc_Exit,
+    gStartMenuDesc_GoHome,
     gStartMenuDesc_Retire,
     gStartMenuDesc_Player
 };
@@ -256,8 +258,8 @@ static void DrawSafariZoneStatsWindow(void)
     sSafariZoneStatsWindowId = AddWindow(&sSafariZoneStatsWindowTemplate);
     PutWindowTilemap(sSafariZoneStatsWindowId);
     DrawStdWindowFrame(sSafariZoneStatsWindowId, FALSE);
-    ConvertIntToDecimalStringN(gStringVar1, gSafariZoneStepCounter, STR_CONV_MODE_RIGHT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar2, 600, STR_CONV_MODE_RIGHT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar1, gSafariZoneStepCounter, STR_CONV_MODE_RIGHT_ALIGN, 5);
+    ConvertIntToDecimalStringN(gStringVar2, 60000, STR_CONV_MODE_RIGHT_ALIGN, 5);
     ConvertIntToDecimalStringN(gStringVar3, gNumSafariBalls, STR_CONV_MODE_RIGHT_ALIGN, 2);
     StringExpandPlaceholders(gStringVar4, gText_MenuSafariStats);
     AddTextPrinterParameterized(sSafariZoneStatsWindowId, FONT_NORMAL, gStringVar4, 4, 3, 0xFF, NULL);
@@ -447,6 +449,7 @@ static void StartMenu_FadeScreenIfLeavingOverworld(void)
 {
     if (sStartMenuCallback != StartMenuSaveCallback
      && sStartMenuCallback != StartMenuExitCallback
+     && sStartMenuCallback != StartMenuGoHomeCallback
      && sStartMenuCallback != StartMenuSafariZoneRetireCallback)
     {
         StopPokemonLeagueLightingEffectTask();
@@ -539,6 +542,15 @@ static bool8 StartMenuExitCallback(void)
     DestroySafariZoneStatsWindow();
     DestroyHelpMessageWindow_();
     CloseStartMenu();
+    return TRUE;
+}
+
+static bool8 StartMenuGoHomeCallback(void)
+{
+    DestroyHelpMessageWindow_();
+    CloseStartMenu();
+    RunScriptImmediately(ArchipelagoScript_GoHome);
+    Overworld_ResetStateAfterGoHome();
     return TRUE;
 }
 

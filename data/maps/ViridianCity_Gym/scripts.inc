@@ -17,7 +17,6 @@ ViridianCity_Gym_EventScript_Giovanni::
 
 ViridianCity_Gym_EventScript_DefeatedGiovanni::
 	famechecker FAMECHECKER_GIOVANNI, 3
-	setflag FLAG_HIDE_MISC_KANTO_ROCKETS
 	setflag FLAG_DEFEATED_LEADER_GIOVANNI
 Archipelago_Target_Badge_8::
 	giveitem ITEM_BADGE_8, 1, FLAG_RECEIVED_BADGE_8

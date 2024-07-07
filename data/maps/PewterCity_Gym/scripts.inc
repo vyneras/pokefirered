@@ -14,7 +14,6 @@ PewterCity_Gym_EventScript_DefeatedBrock::
 	setflag FLAG_DEFEATED_BROCK
 Archipelago_Target_Badge_1::
 	giveitem ITEM_BADGE_1, 1, FLAG_RECEIVED_BADGE_1
-	setflag FLAG_HIDE_PEWTER_CITY_GYM_GUIDE
 	clearflag FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
 	set_gym_trainers 1
 	goto PewterCity_Gym_EventScript_GiveTM39

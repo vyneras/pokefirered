@@ -877,13 +877,13 @@ static void Intro_WaitForShinyAnimAndHealthbox(void)
 
     if (!IsDoubleBattle() || (IsDoubleBattle() && (gBattleTypeFlags & BATTLE_TYPE_MULTI)))
     {
-        if (gSprites[gHealthboxSpriteIds[gActiveBattler]].callback == SpriteCallbackDummy
-         && gSprites[gHealthboxSpriteIds[BATTLE_PARTNER(gActiveBattler)]].callback == SpriteCallbackDummy)
+        if (gSprites[gHealthboxSpriteIds[gActiveBattler]].callback == SpriteCallbackDummy)
             var = TRUE;
     }
     else
     {
-        if (gSprites[gHealthboxSpriteIds[gActiveBattler]].callback == SpriteCallbackDummy)
+        if (gSprites[gHealthboxSpriteIds[gActiveBattler]].callback == SpriteCallbackDummy
+         && gSprites[gHealthboxSpriteIds[gActiveBattler ^ BIT_FLANK]].callback == SpriteCallbackDummy)
             var = TRUE;
     }
     if (IsCryPlayingOrClearCrySongs())
@@ -2514,7 +2514,7 @@ static void PlayerHandleExpUpdate(void)
     }
     else
     {
-        u16 expPointsToGive;
+        s16 expPointsToGive;
         u8 taskId;
 
         LoadBattleBarGfx(1);

@@ -1139,7 +1139,7 @@ int main (int argc, char *argv[])
 
         // Check that the encounter table is for the game we are extracting
         if ((base_symbol.find("_LeafGreen") != std::string::npos && rom_file.substr(0, 11) == "pokefirered") ||
-            (base_symbol.find("_FireRed") != std::string::npos && rom_file.substr(0, 11) == "pokeleafgreen")) continue;
+            (base_symbol.find("_FireRed") != std::string::npos && rom_file.substr(0, 13) == "pokeleafgreen")) continue;
 
         map->land_encounters.ram_address = symbol_map[base_symbol + "_LandMons"];
         map->land_encounters.address = map->land_encounters.ram_address - ROM_START;

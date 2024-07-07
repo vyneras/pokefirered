@@ -9,8 +9,8 @@ PewterCity_MapScripts::
 PewterCity_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_PEWTER_CITY
 	setvar VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F, 0
-	call_if_eq VAR_MAP_SCENE_PEWTER_CITY, 0, PewterCity_EventScript_CheckIfCanLeaveCity
-	call_if_set FLAG_DEFEATED_BROCK, PewterCity_EventScript_CheckRunningShoesGuyTrigger
+	call_if_eq VAR_MAP_SCENE_PEWTER_CITY_GYM_GUIDE, 0, PewterCity_EventScript_CheckIfCanLeaveCity
+	call_if_set FLAG_DEFEATED_BROCK, PewterCity_EventScript_SetRunningShoesGuyTrigger
 	end
 
 PewterCity_EventScript_CheckIfCanLeaveCity::
@@ -19,15 +19,12 @@ PewterCity_EventScript_CheckIfCanLeaveCity::
 	return
 
 PewterCity_EventScript_SetCanLeaveCity::
-	setvar VAR_MAP_SCENE_PEWTER_CITY, 1
-	return
-
-PewterCity_EventScript_CheckRunningShoesGuyTrigger::
-	call_if_eq VAR_MAP_SCENE_PEWTER_CITY, 1, PewterCity_EventScript_SetRunningShoesGuyTrigger
+	setvar VAR_MAP_SCENE_PEWTER_CITY_GYM_GUIDE, 1
+	setflag FLAG_HIDE_PEWTER_CITY_GYM_GUIDE
 	return
 
 PewterCity_EventScript_SetRunningShoesGuyTrigger::
-	setvar VAR_MAP_SCENE_PEWTER_CITY, 2
+	setvar VAR_MAP_SCENE_PEWTER_CITY_OAKS_AIDE, 1
 	return
 
 PewterCity_EventScript_GymGuide::
@@ -55,6 +52,8 @@ PewterCity_EventScript_GymGuideTriggerBottom::
 
 PewterCity_EventScript_GymGuideTrigger::
 	applymovement LOCALID_GYM_GUIDE Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_GYM_GUIDE Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
@@ -389,7 +388,7 @@ PewterCity_EventScript_AideGiveRunningShoes::
 	closemessage
 	removeobject LOCALID_AIDE
 	setflag FLAG_SYS_B_DASH
-	setvar VAR_MAP_SCENE_PEWTER_CITY, 3
+	setvar VAR_MAP_SCENE_PEWTER_CITY_OAKS_AIDE, 2
 	return
 
 PewterCity_EventScript_AideNoticePlayer::

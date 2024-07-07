@@ -27,7 +27,7 @@ Route4_PokemonCenter_1F_EventScript_MagikarpSalesman::
 Archipelago_Target_Special_Gift_MAGIKARP::
 	setvar VAR_TEMP_1, SPECIES_MAGIKARP
 	showmoneybox 0, 0
-  bufferspeciesname STR_VAR_1, VAR_TEMP_1
+	bufferspeciesname STR_VAR_1, VAR_TEMP_1
 	checkplayergender
 	goto_if_eq VAR_RESULT, MALE, Route4_PokemonCenter_1F_EventScript_AskBuyMagikarpMale
 	goto_if_eq VAR_RESULT, FEMALE, Route4_PokemonCenter_1F_EventScript_AskBuyMagikarpFemale
@@ -103,7 +103,7 @@ Route4_PokemonCenter_1F_EventScript_PayForMagikarp::
 	removemoney MAGIKARP_PRICE
 	updatemoneybox
 	playfanfare MUS_LEVEL_UP
-  bufferspeciesname STR_VAR_1, VAR_TEMP_1
+	bufferspeciesname STR_VAR_1, VAR_TEMP_1
 	message Route4_PokemonCenter_1F_Text_PaidOutrageouslyForMagikarp
 	waitmessage
 	waitfanfare
