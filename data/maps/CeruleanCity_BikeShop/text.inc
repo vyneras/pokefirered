@@ -1,8 +1,8 @@
 CeruleanCity_BikeShop_Text_WelcomeToBikeShop::
     .string "Hi!\n"
     .string "Welcome to our BIKE SHOP.\p"
-    .string "Have we got just the BIKE for\n"
-    .string "you!$"
+    .string "Have we got just the\n"
+    .string "{STR_VAR_1} for you!$"
 
 CeruleanCity_BikeShop_Text_SorryYouCantAffordIt::
     .string "Sorry!\n"

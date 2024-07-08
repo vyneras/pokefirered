@@ -28,8 +28,6 @@ int main (int argc, char *argv[])
     std::string rom_file = argv[2];
     std::string out_file = argv[3];
 
-    std::cout << rom_file.substr(0, 11) << std::endl;
-
     // ------------------------------------------------------------------------
     // Getting constants
     // ------------------------------------------------------------------------

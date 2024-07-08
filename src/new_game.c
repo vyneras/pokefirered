@@ -159,7 +159,6 @@ void NewGameInitData(void)
     if (gArchipelagoOptions.betterShopsEnabled) FlagSet(FLAG_BETTER_SHOPS_ENABLED);
 
     if (gArchipelagoOptions.openViridianCity) VarSet(VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1);
-    if (gArchipelagoOptions.route3Requirement == 0) VarSet(VAR_MAP_SCENE_PEWTER_CITY_GYM_GUIDE, 1);
 
     if (gArchipelagoOptions.startingBadges & (1 << 0)) FlagSet(FLAG_BADGE01_GET);
     if (gArchipelagoOptions.startingBadges & (1 << 1)) FlagSet(FLAG_BADGE02_GET);

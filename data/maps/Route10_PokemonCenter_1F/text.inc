@@ -21,7 +21,7 @@ Route10_PokemonCenter_1F_Text_GiveEverstoneIfCaught20Mons::
     .string "on {STR_VAR_1} species, I'm supposed to\l"
     .string "give you a reward from PROF. OAK.\p"
     .string "He entrusted me with this\n"
-    .string "EVERSTONE.\p"
+    .string "{STR_VAR_2}.\p"
     .string "So, {PLAYER}, let me ask you.\p"
     .string "Have you gathered data on at least\n"
     .string "{STR_VAR_1} kinds of POKéMON?$"

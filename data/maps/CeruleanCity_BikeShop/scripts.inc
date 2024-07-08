@@ -4,10 +4,13 @@ CeruleanCity_BikeShop_MapScripts::
 CeruleanCity_BikeShop_EventScript_Clerk::
 	lock
 	faceplayer
+Archipelago_Target_NPC_Gift_FLAG_GOT_BICYCLE::
+	setvar VAR_TEMP_1, ITEM_BICYCLE
 	goto_if_set FLAG_GOT_BICYCLE, CeruleanCity_BikeShop_EventScript_AlreadyGotBicycle
 	checkitem ITEM_BIKE_VOUCHER
 	goto_if_eq VAR_RESULT, TRUE, CeruleanCity_BikeShop_EventScript_ExchangeBikeVoucher
 	showmoneybox 0, 0
+	bufferitemname STR_VAR_1, VAR_TEMP_1
 	message CeruleanCity_BikeShop_Text_WelcomeToBikeShop
 	waitmessage
 	multichoice 11, 0, MULTICHOICE_BIKE_SHOP, FALSE
@@ -31,8 +34,7 @@ CeruleanCity_BikeShop_EventScript_ClerkGoodbye::
 
 CeruleanCity_BikeShop_EventScript_ExchangeBikeVoucher::
 	msgbox CeruleanCity_BikeShop_Text_OhBikeVoucherHereYouGo
-Archipelago_Target_NPC_Gift_FLAG_GOT_BICYCLE::
-	giveitem ITEM_BICYCLE, 1, FLAG_GOT_BICYCLE
+	giveitem VAR_TEMP_1, 1, FLAG_GOT_BICYCLE
 	removeitem ITEM_BIKE_VOUCHER
 	msgbox CeruleanCity_BikeShop_Text_ThankYouComeAgain
 	release

@@ -62,18 +62,19 @@ Route11_EastEntrance_2F_EventScript_AlreadyTraded::
 Route11_EastEntrance_2F_EventScript_Aide::
 	lock
 	faceplayer
+Archipelago_Target_NPC_Gift_FLAG_GOT_ITEMFINDER::
+	setvar VAR_TEMP_2, ITEM_ITEMFINDER
 	call Route11_EastEntrance_2F_EventScript_GetAideRequestInfo
 	goto_if_set FLAG_GOT_ITEMFINDER, Route11_EastEntrance_2F_EventScript_AlreadyGotItemfinder
 	msgbox Route11_EastEntrance_2F_Text_GiveItemfinderIfCaught30, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Aide_EventScript_DeclineCheckMons
-	setvar VAR_0x8004, 0
+	setvar VAR_0x8004, 1
 	specialvar VAR_RESULT, GetPokedexCount
 	buffernumberstring STR_VAR_3, VAR_0x8006
 	call Route11_EastEntrance_2F_EventScript_GetAideRequestInfo
 	goto_if_lt VAR_0x8006, REQUIRED_CAUGHT_MONS, Aide_EventScript_HaventCaughtEnough
 	msgbox Route11_EastEntrance_2F_Text_GreatHereYouGo
-Archipelago_Target_NPC_Gift_FLAG_GOT_ITEMFINDER::
-	giveitem ITEM_ITEMFINDER, 1, FLAG_GOT_ITEMFINDER
+	giveitem VAR_TEMP_2, 1, FLAG_GOT_ITEMFINDER
 	msgbox Route11_EastEntrance_2F_Text_ExplainItemfinder
 	release
 	end
@@ -85,5 +86,5 @@ Route11_EastEntrance_2F_EventScript_AlreadyGotItemfinder::
 
 Route11_EastEntrance_2F_EventScript_GetAideRequestInfo::
 	buffernumberstring STR_VAR_1, REQUIRED_CAUGHT_MONS
-	bufferitemname STR_VAR_2, ITEM_ITEMFINDER
+	bufferitemname STR_VAR_2, VAR_TEMP_2
 	return

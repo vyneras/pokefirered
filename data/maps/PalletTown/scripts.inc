@@ -53,7 +53,7 @@ PalletTown_EventScript_OakGivesTickets::
 Archipelago_Target_NPC_Gift_FLAG_RECEIVED_MYSTIC_TICKET::
 	giveitem ITEM_MYSTIC_TICKET, 1, FLAG_RECEIVED_MYSTIC_TICKET
 Archipelago_Target_NPC_Gift_FLAG_RECEIVED_AURORA_TICKET::
-	giveitem ITEM_AURORA_TICKET, 1,
+	giveitem ITEM_AURORA_TICKET, 1, FLAG_RECEIVED_AURORA_TICKET
 	msgbox PalletTown_Text_OakIllBeInLab
 	closemessage
 	applymovement LOCALID_PROF_OAK, PalletTown_Movement_OakExit

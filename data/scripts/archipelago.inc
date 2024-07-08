@@ -169,6 +169,5 @@ ArchipelagoScript_ReceiveEarthBadge::
 
 ArchipelagoScript_GoHome::
 	warpteleport MAP_PALLET_TOWN, 6, 8
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	goto EventScript_ResetEliteFourEnd
 	end

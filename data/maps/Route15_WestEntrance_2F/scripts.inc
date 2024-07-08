@@ -28,18 +28,19 @@ Route15_WestEntrance_2F_EventScript_RightBinoculars::
 Route15_WestEntrance_2F_EventScript_Aide::
 	lock
 	faceplayer
+Archipelago_Target_NPC_Gift_FLAG_GOT_EXP_SHARE_FROM_OAKS_AIDE::
+	setvar VAR_TEMP_2, ITEM_EXP_SHARE
 	call Route15_WestEntrance_2F_EventScript_GetAideRequestInfo
 	goto_if_set FLAG_GOT_EXP_SHARE_FROM_OAKS_AIDE, Route15_WestEntrance_2F_EventScript_AlreadyGotExpShare
 	msgbox Route15_WestEntrance_2F_Text_GiveItemIfCaughtEnough, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Aide_EventScript_DeclineCheckMons
-	setvar VAR_0x8004, 0
+	setvar VAR_0x8004, 1
 	specialvar VAR_RESULT, GetPokedexCount
 	buffernumberstring STR_VAR_3, VAR_0x8006
 	call Route15_WestEntrance_2F_EventScript_GetAideRequestInfo
 	goto_if_lt VAR_0x8006, REQUIRED_CAUGHT_MONS, Aide_EventScript_HaventCaughtEnough
 	msgbox Route15_WestEntrance_2F_Text_GreatHereYouGo
-Archipelago_Target_NPC_Gift_FLAG_GOT_EXP_SHARE_FROM_OAKS_AIDE::
-	giveitem ITEM_EXP_SHARE, 1, FLAG_GOT_EXP_SHARE_FROM_OAKS_AIDE
+	giveitem VAR_TEMP_2, 1, FLAG_GOT_EXP_SHARE_FROM_OAKS_AIDE
 	msgbox Route15_WestEntrance_2F_Text_ExplainExpShare
 	release
 	end
@@ -51,5 +52,5 @@ Route15_WestEntrance_2F_EventScript_AlreadyGotExpShare::
 
 Route15_WestEntrance_2F_EventScript_GetAideRequestInfo::
 	buffernumberstring STR_VAR_1, REQUIRED_CAUGHT_MONS
-	bufferitemname STR_VAR_2, ITEM_EXP_SHARE
+	bufferitemname STR_VAR_2, VAR_TEMP_2
 	return

@@ -10,7 +10,7 @@ PewterCity_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_PEWTER_CITY
 	setvar VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F, 0
 	call_if_eq VAR_MAP_SCENE_PEWTER_CITY_GYM_GUIDE, 0, PewterCity_EventScript_CheckIfCanLeaveCity
-	call_if_set FLAG_DEFEATED_BROCK, PewterCity_EventScript_SetRunningShoesGuyTrigger
+	call_if_set FLAG_DEFEATED_BROCK, PewterCity_EventScript_CheckRunningShoesGuyTrigger
 	end
 
 PewterCity_EventScript_CheckIfCanLeaveCity::
@@ -21,6 +21,10 @@ PewterCity_EventScript_CheckIfCanLeaveCity::
 PewterCity_EventScript_SetCanLeaveCity::
 	setvar VAR_MAP_SCENE_PEWTER_CITY_GYM_GUIDE, 1
 	setflag FLAG_HIDE_PEWTER_CITY_GYM_GUIDE
+	return
+
+PewterCity_EventScript_CheckRunningShoesGuyTrigger::
+	call_if_lt VAR_MAP_SCENE_PEWTER_CITY_OAKS_AIDE, 1, PewterCity_EventScript_SetRunningShoesGuyTrigger
 	return
 
 PewterCity_EventScript_SetRunningShoesGuyTrigger::

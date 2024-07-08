@@ -34,18 +34,19 @@ Route10_PokemonCenter_1F_EventScript_Youngster::
 Route10_PokemonCenter_1F_EventScript_Aide::
 	lock
 	faceplayer
+Archipelago_Target_NPC_Gift_FLAG_GOT_EVERSTONE_FROM_OAKS_AIDE::
+	setvar VAR_TEMP_2, ITEM_EVERSTONE
 	call Route10_PokemonCenter_1F_EventScript_GetAideRequestInfo
 	goto_if_set FLAG_GOT_EVERSTONE_FROM_OAKS_AIDE, Route10_PokemonCenter_1F_EventScript_AlreadyGotEverstone
 	msgbox Route10_PokemonCenter_1F_Text_GiveEverstoneIfCaught20Mons, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Aide_EventScript_DeclineCheckMons
-	setvar VAR_0x8004, 0
+	setvar VAR_0x8004, 1
 	specialvar VAR_RESULT, GetPokedexCount
 	buffernumberstring STR_VAR_3, VAR_0x8006
 	call Route10_PokemonCenter_1F_EventScript_GetAideRequestInfo
 	goto_if_lt VAR_0x8006, REQUIRED_CAUGHT_MONS, Aide_EventScript_HaventCaughtEnough
 	msgbox Route10_PokemonCenter_1F_Text_GreatHereYouGo
-Archipelago_Target_NPC_Gift_FLAG_GOT_EVERSTONE_FROM_OAKS_AIDE::
-	giveitem ITEM_EVERSTONE, 1, FLAG_GOT_EVERSTONE_FROM_OAKS_AIDE
+	giveitem VAR_TEMP_2, 1, FLAG_GOT_EVERSTONE_FROM_OAKS_AIDE
 	msgbox Route10_PokemonCenter_1F_Text_ExplainEverstone
 	release
 	end
@@ -57,5 +58,5 @@ Route10_PokemonCenter_1F_EventScript_AlreadyGotEverstone::
 
 Route10_PokemonCenter_1F_EventScript_GetAideRequestInfo::
 	buffernumberstring STR_VAR_1, REQUIRED_CAUGHT_MONS
-	bufferitemname STR_VAR_2, ITEM_EVERSTONE
+	bufferitemname STR_VAR_2, VAR_TEMP_2
 	return
