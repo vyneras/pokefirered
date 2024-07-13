@@ -133,10 +133,11 @@ class StaticPokemonInfo {
         nlohmann::json to_json ();
 };
 
-class GiftPokemonInfo {
+class StarterPokemonInfo {
     public:
         std::string name;
-        uint32_t address;
+        uint32_t player_address;
+        uint32_t rival_address;
         uint16_t species;
 
         nlohmann::json to_json ();

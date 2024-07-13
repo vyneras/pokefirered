@@ -83,8 +83,8 @@ BirthIsland_Exterior_EventScript_Deoxys::
 	delay 40
 	waitmoncry
 	setvar VAR_LAST_TALKED, LOCALID_DEOXYS
-Archipelago_Target_Event_Encounter_DEOXYS::
-	seteventmon SPECIES_DEOXYS, 30
+Archipelago_Target_Legendary_Encounter_DEOXYS::
+	setwildbattle SPECIES_DEOXYS, 30
 	setflag FLAG_SYS_SPECIAL_WILD_BATTLE
 	special StartLegendaryBattle
 	waitstate

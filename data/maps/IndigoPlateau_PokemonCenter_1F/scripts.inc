@@ -1,4 +1,5 @@
 .set LOCALID_DOOR_GUARD, 4
+.set GUARD_SHOULD_MOVE, VAR_TEMP_1
 .set REQUIRED_BADGES_GYMS, VAR_TEMP_2
 
 IndigoPlateau_PokemonCenter_1F_MapScripts::
@@ -8,6 +9,7 @@ IndigoPlateau_PokemonCenter_1F_MapScripts::
 
 IndigoPlateau_PokemonCenter_1F_OnTransition::
 	setrespawn SPAWN_INDIGO_PLATEAU
+	setvar GUARD_SHOULD_MOVE, 0
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanChallengeEliteFour
 	call_if_eq VAR_RESULT, FALSE, IndigoPlateau_PokemonCenter_1F_EventScript_BlockDoor
 	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetEliteFourRequiredCount
@@ -15,7 +17,7 @@ IndigoPlateau_PokemonCenter_1F_OnTransition::
 
 IndigoPlateau_PokemonCenter_1F_EventScript_BlockDoor::
 	setobjectxyperm LOCALID_DOOR_GUARD, 4, 2
-	setvar VAR_TEMP_1, 0
+	setvar GUARD_SHOULD_MOVE, 1
 	return
 
 IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuard::
@@ -24,7 +26,7 @@ IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuard::
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanChallengeEliteFour
 	goto_if_eq VAR_RESULT, FALSE, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardCantFaceEliteFour
 	msgbox IndigoPlateau_PokemonCenter_1F_Text_FaceEliteFourGoodLuck
-	call_if_eq VAR_TEMP_1, 0, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardMove
+	call_if_eq GUARD_SHOULD_MOVE, 1, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardMove
 	release
 	end
 
@@ -32,6 +34,7 @@ IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardMove::
 	closemessage
 	applymovement LOCALID_DOOR_GUARD, IndigoPlateau_PokemonCenter_1F_Movement_DoorGuardMovesAside
 	waitmovement 0
+	setvar GUARD_SHOULD_MOVE, 0
 	return
 
 IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardCantFaceEliteFour::
