@@ -2689,17 +2689,17 @@ bool8 ArchipelagoSpecial_CanChallengeGiovanni(void)
     }
     else
     {
-        u8 gymCount = 0;
-        gymCount += FlagGet(FLAG_BADGE01_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE02_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE03_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE04_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE05_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE06_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE07_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE08_GET) ? 1 : 0;
+        u8 badgeCount = 0;
+        badgeCount += FlagGet(FLAG_BADGE01_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE02_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE03_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE04_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE05_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE06_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE07_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE08_GET) ? 1 : 0;
 
-        return gymCount >= gArchipelagoOptions.giovanniRequiredCount;
+        return badgeCount >= gArchipelagoOptions.giovanniRequiredCount;
     }
 }
 
@@ -2731,17 +2731,17 @@ bool8 ArchipelagoSpecial_CanPassRoute22Gate(void)
     }
     else
     {
-        u8 gymCount = 0;
-        gymCount += FlagGet(FLAG_BADGE01_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE02_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE03_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE04_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE05_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE06_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE07_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE08_GET) ? 1 : 0;
+        u8 badgeCount = 0;
+        badgeCount += FlagGet(FLAG_BADGE01_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE02_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE03_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE04_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE05_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE06_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE07_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE08_GET) ? 1 : 0;
 
-        return gymCount >= gArchipelagoOptions.route22GateRequiredCount;
+        return badgeCount >= gArchipelagoOptions.route22GateRequiredCount;
     }
 }
 
@@ -2773,17 +2773,17 @@ bool8 ArchipelagoSpecial_CanPassRoute23Guard(void)
     }
     else
     {
-        u8 gymCount = 0;
-        gymCount += FlagGet(FLAG_BADGE01_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE02_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE03_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE04_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE05_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE06_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE07_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE08_GET) ? 1 : 0;
+        u8 badgeCount = 0;
+        badgeCount += FlagGet(FLAG_BADGE01_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE02_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE03_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE04_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE05_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE06_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE07_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE08_GET) ? 1 : 0;
 
-        return gymCount >= gArchipelagoOptions.route23GuardRequiredCount;
+        return badgeCount >= gArchipelagoOptions.route23GuardRequiredCount;
     }
 }
 
@@ -2815,17 +2815,17 @@ bool8 ArchipelagoSpecial_CanChallengeEliteFour(void)
     }
     else
     {
-        u8 gymCount = 0;
-        gymCount += FlagGet(FLAG_BADGE01_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE02_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE03_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE04_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE05_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE06_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE07_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE08_GET) ? 1 : 0;
+        u8 badgeCount = 0;
+        badgeCount += FlagGet(FLAG_BADGE01_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE02_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE03_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE04_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE05_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE06_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE07_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE08_GET) ? 1 : 0;
 
-        return gymCount >= gArchipelagoOptions.eliteFourRequiredCount;
+        return badgeCount >= gArchipelagoOptions.eliteFourRequiredCount;
     }
 }
 
@@ -2855,6 +2855,20 @@ bool8 ArchipelagoSpecial_CanEnterCeruleanCave(void)
     }
     else if (gArchipelagoOptions.ceruleanCaveRequirement == 3)
     {
+        u8 badgeCount = 0;
+        badgeCount += FlagGet(FLAG_BADGE01_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE02_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE03_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE04_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE05_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE06_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE07_GET) ? 1 : 0;
+        badgeCount += FlagGet(FLAG_BADGE08_GET) ? 1 : 0;
+
+        return badgeCount >= gArchipelagoOptions.ceruleanCaveRequiredCount;
+    }
+    else
+    {
         u8 gymCount = 0;
         gymCount += FlagGet(FLAG_DEFEATED_BROCK)           ? 1 : 0;
         gymCount += FlagGet(FLAG_DEFEATED_MISTY)           ? 1 : 0;
@@ -2864,20 +2878,6 @@ bool8 ArchipelagoSpecial_CanEnterCeruleanCave(void)
         gymCount += FlagGet(FLAG_DEFEATED_SABRINA)         ? 1 : 0;
         gymCount += FlagGet(FLAG_DEFEATED_BLAINE)          ? 1 : 0;
         gymCount += FlagGet(FLAG_DEFEATED_LEADER_GIOVANNI) ? 1 : 0;
-
-        return gymCount >= gArchipelagoOptions.ceruleanCaveRequiredCount;
-    }
-    else
-    {
-        u8 gymCount = 0;
-        gymCount += FlagGet(FLAG_BADGE01_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE02_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE03_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE04_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE05_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE06_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE07_GET) ? 1 : 0;
-        gymCount += FlagGet(FLAG_BADGE08_GET) ? 1 : 0;
 
         return gymCount >= gArchipelagoOptions.ceruleanCaveRequiredCount;
     }
