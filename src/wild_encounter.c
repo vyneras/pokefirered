@@ -228,16 +228,7 @@ static void GenerateWildMon(u16 species, u8 level, u8 slot)
     u32 personality;
     s8 chamber;
     ZeroEnemyPartyMons();
-    if (species != SPECIES_UNOWN)
-    {
-        CreateMonWithNature(&gEnemyParty[0], species, level, USE_RANDOM_IVS, Random() % NUM_NATURES);
-    }
-    else
-    {
-        chamber = gSaveBlock1Ptr->location.mapNum - MAP_NUM(SEVEN_ISLAND_TANOBY_RUINS_MONEAN_CHAMBER);
-        personality = GenerateUnownPersonalityByLetter(sUnownLetterSlots[chamber][slot]);
-        CreateMon(&gEnemyParty[0], species, level, USE_RANDOM_IVS, TRUE, personality, FALSE, 0);
-    }
+    CreateMonWithNature(&gEnemyParty[0], species, level, USE_RANDOM_IVS, Random() % NUM_NATURES);
 }
 
 static u32 GenerateUnownPersonalityByLetter(u8 letter)
