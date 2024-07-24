@@ -101,8 +101,6 @@ class TrainerInfo {
         TrainerPokemonInfoType pokemon_data_type;
         uint32_t address;
         uint32_t party_address;
-        uint32_t battle_script_address;
-        uint8_t battle_type;
 
         nlohmann::json to_json ();
 };

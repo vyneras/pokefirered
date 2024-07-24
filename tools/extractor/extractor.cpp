@@ -152,19 +152,9 @@ int main (int argc, char *argv[])
         }
     }
 
-    // Trainer battle scripts
-    std::map<uint16_t, uint32_t> trainer_battle_scripts;
-    // for (auto const& [symbol, address] : symbol_map)
-    // {
-    //     if (symbol.substr(0, 26) == "Archipelago_Target_TRAINER")
-    //     {
-    //         trainer_battle_scripts[constants_json[symbol.substr(19)]] = address;
-    //     }
-    // }
-
     // Reading trainers
     std::vector<std::shared_ptr<TrainerInfo>> trainers;
-    for (size_t i = 0; i < constants_json["TRAINERS_COUNT"]; ++i)
+    for (size_t i = 0; i < constants_json["NUM_TRAINERS"]; ++i)
     {
         std::shared_ptr<TrainerInfo> trainer(new TrainerInfo());
 
@@ -181,14 +171,6 @@ int main (int argc, char *argv[])
         rom.seekg(trainer->address + 0x24, rom.beg);
         rom.read((char*)&(trainer->party_address), 4);
         trainer->party_address -= ROM_START;
-
-        auto battle_script_address = trainer_battle_scripts.find(i);
-        if (battle_script_address != trainer_battle_scripts.end())
-        {
-            trainer->battle_script_address = battle_script_address->second - ROM_START;
-            rom.seekg(trainer->battle_script_address + 1, rom.beg);
-            rom.read((char*)&(trainer->battle_type), 1);
-        }
 
         switch (party_flags)
         {
@@ -1996,8 +1978,6 @@ json TrainerInfo::to_json ()
     return {
         { "address", this->address },
         { "party_address", this->party_address },
-        { "script_address", this->battle_script_address },
-        { "battle_type", this->battle_type },
         { "party", party_json },
         { "data_type", pokemon_data_type_string },
     };
