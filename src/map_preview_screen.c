@@ -456,9 +456,9 @@ u16 MapPreview_CreateMapNameWindow(u8 mapsec)
     color[0] = TEXT_COLOR_WHITE; // Access violation
     color[1] = TEXT_COLOR_RED; // Access violation
     color[2] = TEXT_COLOR_LIGHT_GRAY; // Access violation
-    GetMapName(gStringVar4, mapsec, 0);
-    xctr = 104 - GetStringWidth(FONT_NORMAL, gStringVar4, 0);
-    AddTextPrinterParameterized4(windowId, FONT_NORMAL, xctr / 2, 2, 0, 0, color/* Access violation */, -1, gStringVar4);
+    GetMapName(gStringVar5, mapsec, 0);
+    xctr = 104 - GetStringWidth(FONT_NORMAL, gStringVar5, 0);
+    AddTextPrinterParameterized4(windowId, FONT_NORMAL, xctr / 2, 2, 0, 0, color/* Access violation */, -1, gStringVar5);
     return windowId;
 }
 

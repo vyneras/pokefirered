@@ -69,8 +69,8 @@ static void Task_SoftboiledRestoreHealth(u8 taskId)
 static void Task_DisplayHPRestoredMessage(u8 taskId)
 {
     GetMonNickname(&gPlayerParty[gPartyMenu.slotId2], gStringVar1);
-    StringExpandPlaceholders(gStringVar4, gText_PkmnHPRestoredByVar2);
-    DisplayPartyMenuMessage(gStringVar4, FALSE);
+    StringExpandPlaceholders(gStringVar5, gText_PkmnHPRestoredByVar2);
+    DisplayPartyMenuMessage(gStringVar5, FALSE);
     ScheduleBgCopyTilemapToVram(2);
     gTasks[taskId].func = Task_FinishSoftboiled;
 }

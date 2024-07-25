@@ -1053,14 +1053,14 @@ const u8 *GetTrainerALoseText(void)
 {
     const u8 *string = sTrainerADefeatSpeech;
 
-    StringExpandPlaceholders(gStringVar4, ReturnEmptyStringIfNull(string));
-    return gStringVar4;
+    StringExpandPlaceholders(gStringVar5, ReturnEmptyStringIfNull(string));
+    return gStringVar5;
 }
 
 const u8 *GetTrainerWonSpeech(void)
 {
-    StringExpandPlaceholders(gStringVar4, ReturnEmptyStringIfNull(sTrainerVictorySpeech));
-    return gStringVar4;
+    StringExpandPlaceholders(gStringVar5, ReturnEmptyStringIfNull(sTrainerVictorySpeech));
+    return gStringVar5;
 }
 
 static const u8 *GetTrainerCantBattleSpeech(void)

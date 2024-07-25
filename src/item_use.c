@@ -181,11 +181,11 @@ static void Task_WaitFadeIn_CallItemUseOnFieldCB(u8 taskId)
 
 static void DisplayItemMessageInCurrentContext(u8 taskId, bool8 inField, u8 fontId, const u8 *str)
 {
-    StringExpandPlaceholders(gStringVar4, str);
+    StringExpandPlaceholders(gStringVar5, str);
     if (inField == FALSE)
-        DisplayItemMessageInBag(taskId, fontId, gStringVar4, Task_ReturnToBagFromContextMenu);
+        DisplayItemMessageInBag(taskId, fontId, gStringVar5, Task_ReturnToBagFromContextMenu);
     else
-        DisplayItemMessageOnField(taskId, fontId, gStringVar4, Task_ItemUse_CloseMessageBoxAndReturnToField);
+        DisplayItemMessageOnField(taskId, fontId, gStringVar5, Task_ItemUse_CloseMessageBoxAndReturnToField);
 }
 
 static void PrintNotTheTimeToUseThat(u8 taskId, bool8 inField)
@@ -337,23 +337,23 @@ void ItemUseOutOfBattle_Itemfinder(u8 taskId)
 void FieldUseFunc_CoinCase(u8 taskId)
 {
     ConvertIntToDecimalStringN(gStringVar1, GetCoins(), STR_CONV_MODE_LEFT_ALIGN, 4);
-    StringExpandPlaceholders(gStringVar4, gText_CoinCase);
+    StringExpandPlaceholders(gStringVar5, gText_CoinCase);
     ItemUse_SetQuestLogEvent(QL_EVENT_USED_ITEM, NULL, gSpecialVar_ItemId, 0xFFFF);
     if (gTasks[taskId].data[3] == 0)
-        DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar4, Task_ReturnToBagFromContextMenu);
+        DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar5, Task_ReturnToBagFromContextMenu);
     else
-        DisplayItemMessageOnField(taskId, FONT_NORMAL, gStringVar4, Task_ItemUse_CloseMessageBoxAndReturnToField);
+        DisplayItemMessageOnField(taskId, FONT_NORMAL, gStringVar5, Task_ItemUse_CloseMessageBoxAndReturnToField);
 }
 
 void FieldUseFunc_PowderJar(u8 taskId)
 {
     ConvertIntToDecimalStringN(gStringVar1, GetBerryPowder(), STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringExpandPlaceholders(gStringVar4, gText_PowderQty);
+    StringExpandPlaceholders(gStringVar5, gText_PowderQty);
     ItemUse_SetQuestLogEvent(QL_EVENT_USED_ITEM, NULL, gSpecialVar_ItemId, 0xFFFF);
     if (gTasks[taskId].data[3] == 0)
-        DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar4, Task_ReturnToBagFromContextMenu);
+        DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar5, Task_ReturnToBagFromContextMenu);
     else
-        DisplayItemMessageOnField(taskId, FONT_NORMAL, gStringVar4, Task_ItemUse_CloseMessageBoxAndReturnToField);
+        DisplayItemMessageOnField(taskId, FONT_NORMAL, gStringVar5, Task_ItemUse_CloseMessageBoxAndReturnToField);
 }
 
 void FieldUseFunc_PokeFlute(u8 taskId)
@@ -567,7 +567,7 @@ static void Task_UseRepel(u8 taskId)
         VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(gSpecialVar_ItemId));
         VarSet(VAR_REPEL_LAST_USED, gSpecialVar_ItemId);
         RemoveUsedItem();
-        DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar4, Task_ReturnToBagFromContextMenu);
+        DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar5, Task_ReturnToBagFromContextMenu);
     }
 }
 
@@ -577,7 +577,7 @@ static void RemoveUsedItem(void)
     Pocket_CalculateNItemsAndMaxShowed(ItemId_GetPocket(gSpecialVar_ItemId));
     PocketCalculateInitialCursorPosAndItemsAbove(ItemId_GetPocket(gSpecialVar_ItemId));
     CopyItemName(gSpecialVar_ItemId, gStringVar2);
-    StringExpandPlaceholders(gStringVar4, gText_PlayerUsedVar2);
+    StringExpandPlaceholders(gStringVar5, gText_PlayerUsedVar2);
 }
 
 void FieldUseFunc_BlackWhiteFlute(u8 taskId)
@@ -588,7 +588,7 @@ void FieldUseFunc_BlackWhiteFlute(u8 taskId)
         FlagSet(FLAG_SYS_WHITE_FLUTE_ACTIVE);
         FlagClear(FLAG_SYS_BLACK_FLUTE_ACTIVE);
         CopyItemName(gSpecialVar_ItemId, gStringVar2);
-        StringExpandPlaceholders(gStringVar4, gText_UsedVar2WildLured);
+        StringExpandPlaceholders(gStringVar5, gText_UsedVar2WildLured);
         gTasks[taskId].func = Task_UsedBlackWhiteFlute;
         gTasks[taskId].data[8] = 0;
     }
@@ -597,7 +597,7 @@ void FieldUseFunc_BlackWhiteFlute(u8 taskId)
         FlagSet(FLAG_SYS_BLACK_FLUTE_ACTIVE);
         FlagClear(FLAG_SYS_WHITE_FLUTE_ACTIVE);
         CopyItemName(gSpecialVar_ItemId, gStringVar2);
-        StringExpandPlaceholders(gStringVar4, gText_UsedVar2WildRepelled);
+        StringExpandPlaceholders(gStringVar5, gText_UsedVar2WildRepelled);
         gTasks[taskId].func = Task_UsedBlackWhiteFlute;
         gTasks[taskId].data[8] = 0;
     }
@@ -608,7 +608,7 @@ static void Task_UsedBlackWhiteFlute(u8 taskId)
     if (++gTasks[taskId].data[8] > 7)
     {
         PlaySE(SE_GLASS_FLUTE);
-        DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar4, Task_ReturnToBagFromContextMenu);
+        DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar5, Task_ReturnToBagFromContextMenu);
     }
 }
 
@@ -637,7 +637,7 @@ static void ItemUseOnFieldCB_EscapeRope(u8 taskId)
     Overworld_ResetStateAfterDigEscRope();
     RemoveUsedItem();
     gTasks[taskId].data[0] = 0;
-    DisplayItemMessageOnField(taskId, FONT_NORMAL, gStringVar4, Task_UseDigEscapeRopeOnField);
+    DisplayItemMessageOnField(taskId, FONT_NORMAL, gStringVar5, Task_UseDigEscapeRopeOnField);
 }
 
 void Task_UseDigEscapeRopeOnField(u8 taskId)
@@ -825,7 +825,7 @@ void BattleUseFunc_PokeDoll(u8 taskId)
     {
         RemoveUsedItem();
         ItemUse_SetQuestLogEvent(QL_EVENT_USED_ITEM, 0, gSpecialVar_ItemId, 0xFFFF);
-        DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar4, ItemMenu_StartFadeToExitCallback);
+        DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar5, ItemMenu_StartFadeToExitCallback);
     }
     else
         PrintNotTheTimeToUseThat(taskId, 0);
@@ -904,8 +904,8 @@ void FieldUseFunc_OakStopsYou(u8 taskId)
 {
     if (GetPocketByItemId(gSpecialVar_ItemId) == POCKET_BERRY_POUCH)
     {
-        StringExpandPlaceholders(gStringVar4, gText_OakForbidsUseOfItemHere);
-        DisplayItemMessageInBerryPouch(taskId, FONT_MALE, gStringVar4, Task_BerryPouch_DestroyDialogueWindowAndRefreshListMenu);
+        StringExpandPlaceholders(gStringVar5, gText_OakForbidsUseOfItemHere);
+        DisplayItemMessageInBerryPouch(taskId, FONT_MALE, gStringVar5, Task_BerryPouch_DestroyDialogueWindowAndRefreshListMenu);
     }
     else
         PrintNotTheTimeToUseThat(taskId, gTasks[taskId].data[3]);

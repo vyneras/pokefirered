@@ -52,8 +52,8 @@ bool8 RemoveCoins(u16 toSub)
 static void PrintCoinsString_Parameterized(u8 windowId, u32 coinAmount, u8 x, u8 y, u8 speed)
 {
     ConvertIntToDecimalStringN(gStringVar1, coinAmount, STR_CONV_MODE_RIGHT_ALIGN, 4);
-    StringExpandPlaceholders(gStringVar4, gText_Coins);
-    AddTextPrinterParameterized(windowId, FONT_SMALL, gStringVar4, x, y, speed, NULL);
+    StringExpandPlaceholders(gStringVar5, gText_Coins);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, gStringVar5, x, y, speed, NULL);
 }
 
 // Unused
@@ -70,10 +70,10 @@ void PrintCoinsString(u32 coinAmount)
     int width;
 
     ConvertIntToDecimalStringN(gStringVar1, coinAmount, STR_CONV_MODE_RIGHT_ALIGN, 4);
-    StringExpandPlaceholders(gStringVar4, gText_Coins);
-    width = GetStringWidth(FONT_SMALL, gStringVar4, 0);
+    StringExpandPlaceholders(gStringVar5, gText_Coins);
+    width = GetStringWidth(FONT_SMALL, gStringVar5, 0);
     windowId = sCoinsWindowId;
-    AddTextPrinterParameterized(windowId, FONT_SMALL, gStringVar4, 64 - width, 0xC, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, gStringVar5, 64 - width, 0xC, 0, NULL);
 }
 
 void ShowCoinsWindow(u32 coinAmount, u8 x, u8 y)

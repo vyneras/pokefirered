@@ -86,7 +86,8 @@ static void Task_WingFlapSound(u8 taskId);
 static u8 *const sStringVarPtrs[] = {
     gStringVar1,
     gStringVar2,
-    gStringVar3
+    gStringVar3,
+    gStringVar4
 };
 
 void ShowDiploma(void)
@@ -121,7 +122,7 @@ u8 GetPlayerAvatarBike(void)
 
 void ShowFieldMessageStringVar4(void)
 {
-    ShowFieldMessage(gStringVar4);
+    ShowFieldMessage(gStringVar5);
 }
 
 void GetPlayerXY(void)

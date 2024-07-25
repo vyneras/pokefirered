@@ -90,7 +90,7 @@ static bool8 ForceShowFieldAutoScrollMessage(const u8 *str)
 
 // Unused
 // Same as ShowFieldMessage, but instead of accepting a string argument,
-// it just prints whatever that's already in gStringVar4
+// it just prints whatever that's already in gStringVar5
 static bool8 ShowFieldMessageFromBuffer(void)
 {
     if (sMessageBoxType != FIELD_MESSAGE_BOX_HIDDEN)
@@ -102,7 +102,7 @@ static bool8 ShowFieldMessageFromBuffer(void)
 
 static void ExpandStringAndStartDrawFieldMessageBox(const u8 *str)
 {
-    StringExpandPlaceholders(gStringVar4, str);
+    StringExpandPlaceholders(gStringVar5, str);
     AddTextPrinterDiffStyle(TRUE);
     CreateTask_DrawFieldMessageBox();
 }

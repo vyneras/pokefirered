@@ -4,7 +4,7 @@
 	special CallTrainerTowerFunc
 	.endm
 
-	@ Buffers the opponents battle speech to gStringVar4. speech is any TRAINER_TOWER_TEXT_*.
+	@ Buffers the opponents battle speech to gStringVar5. speech is any TRAINER_TOWER_TEXT_*.
 	.macro ttower_getspeech speech:req, trainer=0xFF
 	setvar VAR_0x8004, TRAINER_TOWER_FUNC_GET_SPEECH
 	setvar VAR_0x8005, \speech

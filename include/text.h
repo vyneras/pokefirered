@@ -142,6 +142,7 @@ extern u8 gStringVar1[];
 extern u8 gStringVar2[];
 extern u8 gStringVar3[];
 extern u8 gStringVar4[];
+extern u8 gStringVar5[];
 
 extern const u8 gKeypadIconTiles[];
 

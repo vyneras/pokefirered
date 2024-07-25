@@ -10,15 +10,25 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_BICYCLE::
 	checkitem ITEM_BIKE_VOUCHER
 	goto_if_eq VAR_RESULT, TRUE, CeruleanCity_BikeShop_EventScript_ExchangeBikeVoucher
 	showmoneybox 0, 0
-	bufferitemname STR_VAR_1, VAR_TEMP_1
-	message CeruleanCity_BikeShop_Text_WelcomeToBikeShop
-	waitmessage
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, FLAG_GOT_BICYCLE
+	call_if_eq VAR_RESULT, 0, CeruleanCity_BikeShop_EventScript_WelcomeToBikeShopItem
+	call_if_eq VAR_RESULT, 1, CeruleanCity_BikeShop_EventScript_WelcomeToBikeShopPlayerItem
+	call_if_eq VAR_RESULT, 2, CeruleanCity_BikeShop_EventScript_WelcomeToBikeShopItem
 	multichoice 11, 0, MULTICHOICE_BIKE_SHOP, FALSE
 	switch VAR_RESULT
 	case 0, CeruleanCity_BikeShop_EventScript_TryPurchaseBicycle
 	case 1, CeruleanCity_BikeShop_EventScript_ClerkGoodbye
 	case 127, CeruleanCity_BikeShop_EventScript_ClerkGoodbye
 	end
+
+CeruleanCity_BikeShop_EventScript_WelcomeToBikeShopItem::
+	bufferitemname STR_VAR_3, VAR_TEMP_1
+	msgbox CeruleanCity_BikeShop_Text_WelcomeToBikeShopItem
+	return
+
+CeruleanCity_BikeShop_EventScript_WelcomeToBikeShopPlayerItem::
+	msgbox CeruleanCity_BikeShop_Text_WelcomeToBikeShopPlayerItem
+	return
 
 @ The Bicycle price / players money is never actually checked
 CeruleanCity_BikeShop_EventScript_TryPurchaseBicycle::

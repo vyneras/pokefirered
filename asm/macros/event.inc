@@ -1021,7 +1021,7 @@
 	.2byte \move
 	.endm
 
-	@ Converts STR_VAR_1, STR_VAR_2, or STR_VAR_3 to its corresponding index into sScriptStringVars (0, 1, or 2).
+	@ Converts STR_VAR_1, STR_VAR_2, STR_VAR_3, or STR_VAR_4 to its corresponding index into sScriptStringVars (0, 1, or 2).
 	@ If given anything else it will output it directly.
 	@ Note: Because the STR_VAR_# arguments given to this macro are not part of a processed string they are not
 	@       replaced with their charmap values, they are just passed as the literal characters "STR_VAR_#".
@@ -1032,6 +1032,8 @@
 		.byte 1
 	.elseif \id == STR_VAR_3
 		.byte 2
+  .elseif \id == STR_VAR_4
+		.byte 3
 	.else
 		.byte \id
 	.endif
@@ -1480,7 +1482,7 @@
 	.4byte \text
 	.endm
 
-	@ Expands the given text at the pointer (- the relative address set by setvaddress) into gStringVar4
+	@ Expands the given text at the pointer (- the relative address set by setvaddress) into gStringVar5
 	.macro vbuffermessage text:req
 	.byte 0xbe
 	.4byte \text

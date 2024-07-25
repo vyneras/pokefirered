@@ -45,7 +45,7 @@ static bool32 CheckCompatibility(u16 a1, u32 a2, u16 a3, u32 a4)
 
 static void SetIncompatible(void)
 {
-    StringExpandPlaceholders(gStringVar4, gText_MysteryGiftCantBeUsed);
+    StringExpandPlaceholders(gStringVar5, gText_MysteryGiftCantBeUsed);
     SetMysteryEventScriptStatus(3);
 }
 
@@ -138,7 +138,7 @@ bool8 MEScrCmd_setmsg(struct ScriptContext *ctx)
     u8 value = ScriptReadByte(ctx);
     u8 *str = (u8 *)(ScriptReadWord(ctx) - ctx->data[1] + ctx->data[0]);
     if (value == 0xFF || value == ctx->data[2])
-        StringExpandPlaceholders(gStringVar4, str);
+        StringExpandPlaceholders(gStringVar5, str);
     return FALSE;
 }
 
@@ -161,17 +161,17 @@ bool8 MEScrCmd_setenigmaberry(struct ScriptContext *ctx)
 
     if (!haveBerry)
     {
-        str = gStringVar4;
+        str = gStringVar5;
         message = gText_MysteryGiftBerry;
     }
     else if (StringCompare(gStringVar1, gStringVar2))
     {
-        str = gStringVar4;
+        str = gStringVar5;
         message = gText_MysteryGiftBerryTransform;
     }
     else
     {
-        str = gStringVar4;
+        str = gStringVar5;
         message = gText_MysteryGiftBerryObtained;
     }
 
@@ -192,7 +192,7 @@ bool8 MEScrCmd_giveribbon(struct ScriptContext *ctx)
     u8 index = ScriptReadByte(ctx);
     u8 ribbonId = ScriptReadByte(ctx);
     GiveGiftRibbonToParty(index, ribbonId);
-    StringExpandPlaceholders(gStringVar4, gText_MysteryGiftSpecialRibbon);
+    StringExpandPlaceholders(gStringVar5, gText_MysteryGiftSpecialRibbon);
     ctx->data[2] = 2;
     return FALSE;
 }
@@ -211,7 +211,7 @@ bool8 MEScrCmd_initramscript(struct ScriptContext *ctx)
 bool8 MEScrCmd_givenationaldex(struct ScriptContext *ctx)
 {
     EnableNationalPokedex();
-    StringExpandPlaceholders(gStringVar4, gText_MysteryGiftNationalDex);
+    StringExpandPlaceholders(gStringVar5, gText_MysteryGiftNationalDex);
     ctx->data[2] = 2;
     return FALSE;
 }
@@ -219,7 +219,7 @@ bool8 MEScrCmd_givenationaldex(struct ScriptContext *ctx)
 bool8 MEScrCmd_addrareword(struct ScriptContext *ctx)
 {
     EnableRareWord(ScriptReadByte(ctx));
-    StringExpandPlaceholders(gStringVar4, gText_MysteryGiftRareWord);
+    StringExpandPlaceholders(gStringVar5, gText_MysteryGiftRareWord);
     ctx->data[2] = 2;
     return FALSE;
 }
@@ -251,7 +251,7 @@ bool8 MEScrCmd_givepokemon(struct ScriptContext *ctx)
 
     if (gPlayerPartyCount == PARTY_SIZE)
     {
-        StringExpandPlaceholders(gStringVar4, gText_MysteryGiftFullParty);
+        StringExpandPlaceholders(gStringVar5, gText_MysteryGiftFullParty);
         ctx->data[2] = 3;
     }
     else
@@ -271,7 +271,7 @@ bool8 MEScrCmd_givepokemon(struct ScriptContext *ctx)
             GiveMailToMon2(&gPlayerParty[5], &mail);
         CompactPartySlots();
         CalculatePlayerPartyCount();
-        StringExpandPlaceholders(gStringVar4, gText_MysteryGiftSentOver);
+        StringExpandPlaceholders(gStringVar5, gText_MysteryGiftSentOver);
         ctx->data[2] = 2;
     }
 
@@ -283,7 +283,7 @@ bool8 MEScrCmd_addtrainer(struct ScriptContext *ctx)
     u32 data = ScriptReadWord(ctx) - ctx->data[1] + ctx->data[0];
     memcpy(&gSaveBlock2Ptr->battleTower.ereaderTrainer, (void *)data, sizeof(struct BattleTowerEReaderTrainer));
     ValidateEReaderTrainer();
-    StringExpandPlaceholders(gStringVar4, gText_MysteryGiftNewTrainer);
+    StringExpandPlaceholders(gStringVar5, gText_MysteryGiftNewTrainer);
     ctx->data[2] = 2;
     return FALSE;
 }

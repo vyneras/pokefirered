@@ -311,8 +311,8 @@ void ShowEasyChatMessage(void)
         return;
     }
 
-    ConvertEasyChatWordsToString(gStringVar4, easyChatWords, columns, rows);
-    ShowFieldAutoScrollMessage(gStringVar4);
+    ConvertEasyChatWordsToString(gStringVar5, easyChatWords, columns, rows);
+    ShowFieldAutoScrollMessage(gStringVar5);
 }
 
 void BufferRandomHobbyOrLifestyleString(void)

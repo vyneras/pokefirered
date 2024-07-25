@@ -117,13 +117,13 @@ TrainerTower_EventScript_DoSingleBattle:
 	applymovement LOCALID_TRAINER_SINGLES, TrainerTower_Movement_SingleTrainerApproach
 	waitmovement 0
 	ttower_getspeech TRAINER_TOWER_TEXT_INTRO, 0
-	msgbox gStringVar4
+	msgbox gStringVar5
 	closemessage
 	goto TrainerTower_EventScript_DoBattle
 
 TrainerTower_EventScript_DoDoubleBattle::
 	ttower_getspeech TRAINER_TOWER_TEXT_INTRO, VAR_TEMP_3
-	msgbox gStringVar4
+	msgbox gStringVar5
 	setvar VAR_0x8004, TRAINER_TOWER_FUNC_GET_SPEECH
 	setvar VAR_0x8005, TRAINER_TOWER_TEXT_INTRO
 	addvar VAR_TEMP_3, 1
@@ -132,7 +132,7 @@ TrainerTower_EventScript_DoDoubleBattle::
 TrainerTower_EventScript_DoSecondTrainerIntro:
 	copyvar VAR_0x8006, VAR_TEMP_3
 	special CallTrainerTowerFunc
-	msgbox gStringVar4
+	msgbox gStringVar5
 	closemessage
 	goto TrainerTower_EventScript_DoBattle
 
@@ -172,7 +172,7 @@ TrainerTower_EventScript_DoKnockoutBattle3::
 	waitmovement 0
 TrainerTower_EventScript_DoKnockoutBattleIntro:
 	ttower_getspeech TRAINER_TOWER_TEXT_INTRO, VAR_TEMP_1
-	msgbox gStringVar4
+	msgbox gStringVar5
 	closemessage
 TrainerTower_EventScript_DoBattle:
 	ttower_dobattle
@@ -261,7 +261,7 @@ TrainerTower_EventScript_DoPostBattleText:
 	ttower_getspeech TRAINER_TOWER_TEXT_AFTER
 	lock
 	faceplayer
-	msgbox gStringVar4
+	msgbox gStringVar5
 	release
 	return
 

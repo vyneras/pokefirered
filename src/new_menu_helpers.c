@@ -31,7 +31,7 @@ static const u8 sTextSpeedFrameDelays[] =
     [OPTIONS_TEXT_SPEED_FAST] = 1
 };
 
-static const struct WindowTemplate sStandardTextBox_WindowTemplates[] = 
+static const struct WindowTemplate sStandardTextBox_WindowTemplates[] =
 {
     {
         .bg = 0,
@@ -45,7 +45,7 @@ static const struct WindowTemplate sStandardTextBox_WindowTemplates[] =
     DUMMY_WIN_TEMPLATE
 };
 
-static const struct WindowTemplate sYesNo_WindowTemplate = 
+static const struct WindowTemplate sYesNo_WindowTemplate =
 {
     .bg = 0,
     .tilemapLeft = 21,
@@ -56,7 +56,7 @@ static const struct WindowTemplate sYesNo_WindowTemplate =
     .baseBlock = 0x125,
 };
 
-static const struct FontInfo gFontInfos[] = 
+static const struct FontInfo gFontInfos[] =
 {
     [FONT_SMALL] = {
         .fontFunction = FontFunc_Small,
@@ -140,7 +140,7 @@ static const struct FontInfo gFontInfos[] =
     }
 };
 
-static const u8 gMenuCursorDimensions[][2] = 
+static const u8 gMenuCursorDimensions[][2] =
 {
     [FONT_SMALL]         = { 8,  13 },
     [FONT_NORMAL_COPY_1] = { 8,  14 },
@@ -326,7 +326,7 @@ static u16 CopyDecompressedTileDataToVram(u8 bgId, const void *src, u16 size, u1
     {
     case 1:
         break;
-    case 0:        
+    case 0:
     default:
         return LoadBgTiles(bgId, src, size, offset);
     }
@@ -425,26 +425,26 @@ void AddTextPrinterDiffStyle(bool8 allowSkippingDelayWithButtonPress)
     u8 color;
     void *nptr = NULL;
 
-    gTextFlags.canABSpeedUpPrint = allowSkippingDelayWithButtonPress;    
+    gTextFlags.canABSpeedUpPrint = allowSkippingDelayWithButtonPress;
     color = ContextNpcGetTextColor();
     if (color == NPC_TEXT_COLOR_MALE)
-        AddTextPrinterParameterized2(0, FONT_MALE, gStringVar4, GetTextSpeedSetting(), nptr, TEXT_COLOR_BLUE, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+        AddTextPrinterParameterized2(0, FONT_MALE, gStringVar5, GetTextSpeedSetting(), nptr, TEXT_COLOR_BLUE, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
     else if (color == NPC_TEXT_COLOR_FEMALE)
-        AddTextPrinterParameterized2(0, FONT_FEMALE, gStringVar4, GetTextSpeedSetting(), nptr, TEXT_COLOR_RED, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+        AddTextPrinterParameterized2(0, FONT_FEMALE, gStringVar5, GetTextSpeedSetting(), nptr, TEXT_COLOR_RED, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
     else // NPC_TEXT_COLOR_MON / NPC_TEXT_COLOR_NEUTRAL
-        AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetTextSpeedSetting(), nptr, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+        AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar5, GetTextSpeedSetting(), nptr, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
 }
 
 void AddTextPrinterForMessage(bool8 allowSkippingDelayWithButtonPress)
 {
     gTextFlags.canABSpeedUpPrint = allowSkippingDelayWithButtonPress;
-    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetTextSpeedSetting(), NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar5, GetTextSpeedSetting(), NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
 }
 
 void AddTextPrinterWithCustomSpeedForMessage(bool8 allowSkippingDelayWithButtonPress, u8 speed)
 {
     gTextFlags.canABSpeedUpPrint = allowSkippingDelayWithButtonPress;
-    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, speed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar5, speed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
 }
 
 void LoadStdWindowFrameGfx(void)

@@ -74,10 +74,11 @@ static const struct BgTemplate sBgTemplates[2] = {
     }
 };
 
-static u8 *const sStringVars[3] = {
+static u8 *const sStringVars[4] = {
     gStringVar1,
     gStringVar2,
-    gStringVar3
+    gStringVar3,
+    gStringVar4
 };
 
 void ShowBattleRecords(void)
@@ -485,8 +486,8 @@ static void PrintTotalRecord(struct LinkBattleRecords * records)
         *strvar = 0xFF;
     }
 
-    StringExpandPlaceholders(gStringVar4, gString_BattleRecords_TotalRecord);
-    AddTextPrinterParameterized4(0, FONT_NORMAL, 12, 24, 0, 2, sTextColor, 0, gStringVar4);
+    StringExpandPlaceholders(gStringVar5, gString_BattleRecords_TotalRecord);
+    AddTextPrinterParameterized4(0, FONT_NORMAL, 12, 24, 0, 2, sTextColor, 0, gStringVar5);
 }
 
 static void PrintOpponentBattleRecord(struct LinkBattleRecord * record, u8 y)
@@ -544,9 +545,9 @@ static void PrintBattleRecords(void)
     s32 i;
 
     FillWindowPixelRect(0, PIXEL_FILL(0), 0, 0, 0xD8, 0x90);
-    StringExpandPlaceholders(gStringVar4, gString_BattleRecords_PlayersBattleResults);
-    left = 0xD0 - GetStringWidth(FONT_NORMAL, gStringVar4, -1);
-    AddTextPrinterParameterized4(0, FONT_NORMAL, left / 2, 4, 0, 2, sTextColor, 0, gStringVar4);
+    StringExpandPlaceholders(gStringVar5, gString_BattleRecords_PlayersBattleResults);
+    left = 0xD0 - GetStringWidth(FONT_NORMAL, gStringVar5, -1);
+    AddTextPrinterParameterized4(0, FONT_NORMAL, left / 2, 4, 0, 2, sTextColor, 0, gStringVar5);
     PrintTotalRecord(&gSaveBlock2Ptr->linkBattleRecords);
     AddTextPrinterParameterized4(0, FONT_NORMAL, 0x54, 0x30, 0, 2, sTextColor, 0, gString_BattleRecords_ColumnHeaders);
     for (i = 0; i < LINK_B_RECORDS_COUNT; i++)

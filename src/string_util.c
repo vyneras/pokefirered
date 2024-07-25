@@ -4,7 +4,8 @@
 EWRAM_DATA u8 gStringVar1[32] = {};
 EWRAM_DATA u8 gStringVar2[20] = {};
 EWRAM_DATA u8 gStringVar3[20] = {};
-EWRAM_DATA u8 gStringVar4[1000] = {};
+EWRAM_DATA u8 gStringVar4[20] = {};
+EWRAM_DATA u8 gStringVar5[1000] = {};
 EWRAM_DATA u8 gUnknownStringVar[16] = {0};
 
 static const u8 sDigits[] = __("0123456789ABCDEF");
@@ -379,6 +380,11 @@ static u8 *ExpandPlaceholder_StringVar3(void)
     return gStringVar3;
 }
 
+static u8 *ExpandPlaceholder_StringVar4(void)
+{
+    return gStringVar4;
+}
+
 static u8 *ExpandPlaceholder_KunChan(void)
 {
     if (gSaveBlock2Ptr->playerGender == MALE)
@@ -476,6 +482,7 @@ u8 *GetExpandedPlaceholder(u32 id)
         [PLACEHOLDER_ID_STRING_VAR_1] = ExpandPlaceholder_StringVar1,
         [PLACEHOLDER_ID_STRING_VAR_2] = ExpandPlaceholder_StringVar2,
         [PLACEHOLDER_ID_STRING_VAR_3] = ExpandPlaceholder_StringVar3,
+        [PLACEHOLDER_ID_STRING_VAR_4] = ExpandPlaceholder_StringVar4,
         [PLACEHOLDER_ID_KUN]          = ExpandPlaceholder_KunChan,
         [PLACEHOLDER_ID_RIVAL]        = ExpandPlaceholder_RivalName,
         [PLACEHOLDER_ID_VERSION]      = ExpandPlaceholder_Version,

@@ -122,9 +122,12 @@ struct Trainer
     /*0x04*/ u8 trainerName[12];
     /*0x10*/ u16 items[MAX_TRAINER_ITEMS];
     /*0x18*/ bool8 doubleBattle;
+    /*0x19*/ // u8 padding[3]
     /*0x1C*/ u32 aiFlags;
     /*0x20*/ u8 partySize;
+    /*0x21*/ // u8 padding[3]
     /*0x24*/ const union TrainerMonPtr party;
+    // sizeof: 0x28
 };
 
 extern const struct Trainer gTrainers[];

@@ -1592,6 +1592,7 @@ u8 *const sScriptStringVars[] =
     gStringVar1,
     gStringVar2,
     gStringVar3,
+    gStringVar4
 };
 
 bool8 ScrCmd_bufferspeciesname(struct ScriptContext * ctx)
@@ -1709,7 +1710,7 @@ bool8 ScrCmd_vbuffermessage(struct ScriptContext * ctx)
 {
     const u8 *ptr = (u8 *)(ScriptReadWord(ctx) - sAddressOffset);
 
-    StringExpandPlaceholders(gStringVar4, ptr);
+    StringExpandPlaceholders(gStringVar5, ptr);
     return FALSE;
 }
 

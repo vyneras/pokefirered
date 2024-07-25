@@ -840,12 +840,12 @@ static void Task_HofPC_DrawSpritesPrintText(u8 taskId)
     BlendPalettes(0xFFFF0000, 0xC, HALL_OF_FAME_BG_PAL);
 
     ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].data[1], STR_CONV_MODE_LEFT_ALIGN, 3);
-    StringExpandPlaceholders(gStringVar4, gText_HOFNumber);
+    StringExpandPlaceholders(gStringVar5, gText_HOFNumber);
 
     if (gTasks[taskId].data[0] <= 0)
-        TopBarWindowPrintTwoStrings(gStringVar4, gText_UPDOWNPick_ABUTTONBBUTTONCancel, 0, 0, TRUE);
+        TopBarWindowPrintTwoStrings(gStringVar5, gText_UPDOWNPick_ABUTTONBBUTTONCancel, 0, 0, TRUE);
     else
-        TopBarWindowPrintTwoStrings(gStringVar4, gText_UPDOWNPick_ABUTTONNext_BBUTTONBack, 0, 0, TRUE);
+        TopBarWindowPrintTwoStrings(gStringVar5, gText_UPDOWNPick_ABUTTONNext_BBUTTONBack, 0, 0, TRUE);
 
     gTasks[taskId].func = Task_HofPC_PrintMonInfo;
 }
@@ -1082,7 +1082,7 @@ static void HallOfFame_PrintPlayerInfo(u8 unused1, u8 unused2)
     u8 text[20];
     u16 trainerId;
     s32 textWidth = sWindowTemplate.width * 8 - 6;
-    
+
     FillWindowPixelBuffer(1, PIXEL_FILL(1));
     PutWindowTilemap(1);
     DrawStdFrameWithCustomTileAndPalette(1, FALSE, 0x21D, 13);

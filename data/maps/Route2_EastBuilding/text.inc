@@ -1,18 +1,6 @@
-Route2_EastBuilding_Text_GiveHM05IfSeen10Mons::
-    .string "Hi! Remember me?\n"
-    .string "I'm one of PROF. OAK's AIDES.\p"
-    .string "If your POKéDEX has complete data\n"
-    .string "on {STR_VAR_1} species, I'm supposed to\l"
-    .string "give you a reward.\p"
-    .string "PROF. OAK entrusted me with this\n"
-    .string "{STR_VAR_2} for you.\p"
-    .string "So, {PLAYER}, let me ask you.\p"
-    .string "Have you gathered data on at least\n"
-    .string "{STR_VAR_1} kinds of POKéMON?$"
-
 Route2_EastBuilding_Text_GreatHereYouGo::
     .string "Great! You have caught or owned\n"
-    .string "{STR_VAR_3} kinds of POKéMON!\p"
+    .string "{STR_VAR_4} kinds of POKéMON!\p"
     .string "Congratulations!\n"
     .string "Here you go!$"
 

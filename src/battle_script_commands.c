@@ -5822,9 +5822,9 @@ static void DrawLevelUpBannerText(void)
 
     monLevel = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL);
     monGender = GetMonGender(&gPlayerParty[gBattleStruct->expGetterMonId]);
-    GetMonNickname(&gPlayerParty[gBattleStruct->expGetterMonId], gStringVar4);
+    GetMonNickname(&gPlayerParty[gBattleStruct->expGetterMonId], gStringVar5);
 
-    printerTemplate.currentChar = gStringVar4;
+    printerTemplate.currentChar = gStringVar5;
     printerTemplate.windowId = B_WIN_LEVEL_UP_BANNER;
     printerTemplate.fontId = FONT_SMALL;
     printerTemplate.x = 32;
@@ -5840,8 +5840,8 @@ static void DrawLevelUpBannerText(void)
 
     AddTextPrinter(&printerTemplate, TEXT_SKIP_DRAW, NULL);
 
-    txtPtr = gStringVar4;
-    gStringVar4[0] = CHAR_EXTRA_SYMBOL;
+    txtPtr = gStringVar5;
+    gStringVar5[0] = CHAR_EXTRA_SYMBOL;
     *++txtPtr = CHAR_LV_2;
     *++txtPtr = 0;
     txtPtr2 = txtPtr + 1;

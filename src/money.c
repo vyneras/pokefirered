@@ -78,13 +78,13 @@ void PrintMoneyAmountInMoneyBox(u8 windowId, int amount, u8 speed)
     ConvertIntToDecimalStringN(gStringVar1, amount, STR_CONV_MODE_LEFT_ALIGN, 6);
 
     strLength = 6 - StringLength(gStringVar1);
-    txtPtr = gStringVar4;
+    txtPtr = gStringVar5;
 
     while (strLength-- != 0)
         *(txtPtr++) = 0;
 
     StringExpandPlaceholders(txtPtr, gText_PokedollarVar1);
-    AddTextPrinterParameterized(windowId, FONT_SMALL, gStringVar4, 64 - GetStringWidth(FONT_SMALL, gStringVar4, 0), 0xC, speed, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, gStringVar5, 64 - GetStringWidth(FONT_SMALL, gStringVar5, 0), 0xC, speed, NULL);
 }
 
 void PrintMoneyAmount(u8 windowId, u8 x, u8 y, int amount, u8 speed)
@@ -95,13 +95,13 @@ void PrintMoneyAmount(u8 windowId, u8 x, u8 y, int amount, u8 speed)
     ConvertIntToDecimalStringN(gStringVar1, amount, STR_CONV_MODE_LEFT_ALIGN, 6);
 
     strLength = 6 - StringLength(gStringVar1);
-    txtPtr = gStringVar4;
+    txtPtr = gStringVar5;
 
     while (strLength-- != 0)
         *(txtPtr++) = 0;
 
     StringExpandPlaceholders(txtPtr, gText_PokedollarVar1);
-    AddTextPrinterParameterized(windowId, FONT_SMALL, gStringVar4, x, y, speed, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, gStringVar5, x, y, speed, NULL);
 }
 
 void PrintMoneyAmountInMoneyBoxWithBorder(u8 windowId, u16 tileStart, u8 paletteNum, int amount)

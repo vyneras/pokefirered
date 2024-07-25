@@ -653,7 +653,7 @@ static void BufferTowerOpponentSpeech(void)
     u16 trainerId = gSpecialVar_0x8006;
     u8 facilityClass;
     u8 challengeType = CURR_FLOOR.challengeType;
-    
+
     if (challengeType != CHALLENGE_TYPE_DOUBLE)
         facilityClass = CURR_FLOOR.trainers[trainerId].facilityClass;
     else
@@ -663,18 +663,18 @@ static void BufferTowerOpponentSpeech(void)
     {
     case TRAINER_TOWER_TEXT_INTRO:
         TrainerTowerGetOpponentTextColor(challengeType, facilityClass);
-        TT_ConvertEasyChatMessageToString(CURR_FLOOR.trainers[trainerId].speechBefore, gStringVar4);
+        TT_ConvertEasyChatMessageToString(CURR_FLOOR.trainers[trainerId].speechBefore, gStringVar5);
         break;
     case TRAINER_TOWER_TEXT_PLAYER_LOST:
         TrainerTowerGetOpponentTextColor(challengeType, facilityClass);
-        TT_ConvertEasyChatMessageToString(CURR_FLOOR.trainers[trainerId].speechWin, gStringVar4);
+        TT_ConvertEasyChatMessageToString(CURR_FLOOR.trainers[trainerId].speechWin, gStringVar5);
         break;
     case TRAINER_TOWER_TEXT_PLAYER_WON:
         TrainerTowerGetOpponentTextColor(challengeType, facilityClass);
-        TT_ConvertEasyChatMessageToString(CURR_FLOOR.trainers[trainerId].speechLose, gStringVar4);
+        TT_ConvertEasyChatMessageToString(CURR_FLOOR.trainers[trainerId].speechLose, gStringVar5);
         break;
     case TRAINER_TOWER_TEXT_AFTER:
-        TT_ConvertEasyChatMessageToString(CURR_FLOOR.trainers[trainerId].speechAfter, gStringVar4);
+        TT_ConvertEasyChatMessageToString(CURR_FLOOR.trainers[trainerId].speechAfter, gStringVar5);
         break;
     }
 }
@@ -759,7 +759,7 @@ static void TrainerTowerAddFloorCleared(void)
 static void GetFloorAlreadyCleared(void)
 {
     u16 mapLayoutId = gMapHeader.mapLayoutId;
-    if (mapLayoutId - LAYOUT_TRAINER_TOWER_1F == TRAINER_TOWER.floorsCleared 
+    if (mapLayoutId - LAYOUT_TRAINER_TOWER_1F == TRAINER_TOWER.floorsCleared
      && mapLayoutId - LAYOUT_TRAINER_TOWER_LOBBY <= CURR_FLOOR.floorIdx)
         gSpecialVar_Result = FALSE;
     else
@@ -911,9 +911,9 @@ static void ShowResultsBoard(void)
     {
         PRINT_TOWER_TIME(GetTrainerTowerRecordTime(&TRAINER_TOWER.bestTime));
 
-        StringExpandPlaceholders(gStringVar4, gText_XMinYZSec);
+        StringExpandPlaceholders(gStringVar5, gText_XMinYZSec);
         AddTextPrinterParameterized(windowId, FONT_NORMAL, gTrainerTowerChallengeTypeTexts[i - 1], 24, 36 + 20 * i, TEXT_SKIP_DRAW, NULL);
-        AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar4, 96, 46 + 20 * i, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar5, 96, 46 + 20 * i, TEXT_SKIP_DRAW, NULL);
     }
 
     PutWindowTilemap(windowId);
@@ -1064,9 +1064,9 @@ void PrintTrainerTowerRecords(void)
     for (i = 0; i < NUM_TOWER_CHALLENGE_TYPES; i++)
     {
         PRINT_TOWER_TIME(GetTrainerTowerRecordTime(&gSaveBlock1Ptr->trainerTower[i].bestTime));
-        StringExpandPlaceholders(gStringVar4, gText_XMinYZSec);
+        StringExpandPlaceholders(gStringVar5, gText_XMinYZSec);
         AddTextPrinterParameterized3(windowId, FONT_NORMAL, 0x18, 0x24 + 0x14 * i, sTextColors, 0, gTrainerTowerChallengeTypeTexts[i]);
-        AddTextPrinterParameterized3(windowId, FONT_NORMAL, 0x60, 0x24 + 0x14 * i, sTextColors, 0, gStringVar4);
+        AddTextPrinterParameterized3(windowId, FONT_NORMAL, 0x60, 0x24 + 0x14 * i, sTextColors, 0, gStringVar5);
     }
 
     PutWindowTilemap(windowId);

@@ -677,24 +677,24 @@ static void InitTMCaseListMenuItems(void)
 
 static void GetTMNumberAndMoveString(u8 * dest, u16 itemId)
 {
-    StringCopy(gStringVar4, gText_FontSmall);
+    StringCopy(gStringVar5, gText_FontSmall);
     if (itemId >= ITEM_HM01)
     {
-        StringAppend(gStringVar4, sText_ClearTo18);
-        StringAppend(gStringVar4, gText_NumberClear01);
+        StringAppend(gStringVar5, sText_ClearTo18);
+        StringAppend(gStringVar5, gText_NumberClear01);
         ConvertIntToDecimalStringN(gStringVar1, itemId - ITEM_HM01 + 1, STR_CONV_MODE_LEADING_ZEROS, 1);
-        StringAppend(gStringVar4, gStringVar1);
+        StringAppend(gStringVar5, gStringVar1);
     }
     else
     {
-        StringAppend(gStringVar4, gText_NumberClear01);
+        StringAppend(gStringVar5, gText_NumberClear01);
         ConvertIntToDecimalStringN(gStringVar1, itemId - ITEM_TM01 + 1, STR_CONV_MODE_LEADING_ZEROS, 2);
-        StringAppend(gStringVar4, gStringVar1);
+        StringAppend(gStringVar5, gStringVar1);
     }
-    StringAppend(gStringVar4, sText_SingleSpace);
-    StringAppend(gStringVar4, gText_FontNormal);
-    StringAppend(gStringVar4, gMoveNames[ItemIdToBattleMoveId(itemId)]);
-    StringCopy(dest, gStringVar4);
+    StringAppend(gStringVar5, sText_SingleSpace);
+    StringAppend(gStringVar5, gText_FontNormal);
+    StringAppend(gStringVar5, gMoveNames[ItemIdToBattleMoveId(itemId)]);
+    StringCopy(dest, gStringVar5);
 }
 
 static void List_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list)
@@ -722,8 +722,8 @@ static void List_ItemPrintFunc(u8 windowId, u32 itemIndex, u8 y)
         if (!IS_HM(BagGetItemIdByPocketPosition(POCKET_TM_CASE, itemIndex)))
         {
             ConvertIntToDecimalStringN(gStringVar1, BagGetQuantityByPocketPosition(POCKET_TM_CASE, itemIndex), STR_CONV_MODE_RIGHT_ALIGN, 3);
-            StringExpandPlaceholders(gStringVar4, gText_TimesStrVar1);
-            TMCase_Print(windowId, FONT_SMALL, gStringVar4, 126, y, 0, 0, TEXT_SKIP_DRAW, COLOR_DARK);
+            StringExpandPlaceholders(gStringVar5, gText_TimesStrVar1);
+            TMCase_Print(windowId, FONT_SMALL, gStringVar5, 126, y, 0, 0, TEXT_SKIP_DRAW, COLOR_DARK);
         }
         else
         {
@@ -944,7 +944,7 @@ static void ReturnToList(u8 taskId)
 static void Task_SelectedTMHM_Field(u8 taskId)
 {
     u8 * strbuf;
-    
+
     // Create context window
     TMCase_SetWindowBorder2(WIN_SELECTED_MSG);
     if (!MenuHelpers_IsLinkActive() && InUnionRoom() != TRUE)
@@ -974,7 +974,7 @@ static void Task_SelectedTMHM_Field(u8 taskId)
                                   sTMCaseDynamicResources->menuActionIndices);
 
     Menu_InitCursor(sTMCaseDynamicResources->contextMenuWindowId, FONT_NORMAL, 0, 2, GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) + 2, sTMCaseDynamicResources->numMenuActions, 0);
-    
+
     // Print label text next to the context window
     strbuf = Alloc(256);
     GetTMNumberAndMoveString(strbuf, gSpecialVar_ItemId);
@@ -1075,8 +1075,8 @@ static void PrintError_ThereIsNoPokemon(u8 taskId)
 static void PrintError_ItemCantBeHeld(u8 taskId)
 {
     CopyItemName(gSpecialVar_ItemId, gStringVar1);
-    StringExpandPlaceholders(gStringVar4, gText_ItemCantBeHeld);
-    PrintMessageWithFollowupTask(taskId, FONT_NORMAL, gStringVar4, Task_WaitButtonAfterErrorPrint);
+    StringExpandPlaceholders(gStringVar5, gText_ItemCantBeHeld);
+    PrintMessageWithFollowupTask(taskId, FONT_NORMAL, gStringVar5, Task_WaitButtonAfterErrorPrint);
 }
 
 static void Task_WaitButtonAfterErrorPrint(u8 taskId)
@@ -1162,8 +1162,8 @@ static void Task_SelectedTMHM_Sell(u8 taskId)
     {
         // Can't sell TM/HMs with no price (by default this is just the HMs)
         CopyItemName(gSpecialVar_ItemId, gStringVar1);
-        StringExpandPlaceholders(gStringVar4, gText_OhNoICantBuyThat);
-        PrintMessageWithFollowupTask(taskId, GetDialogBoxFontId(), gStringVar4, CloseMessageAndReturnToList);
+        StringExpandPlaceholders(gStringVar5, gText_OhNoICantBuyThat);
+        PrintMessageWithFollowupTask(taskId, GetDialogBoxFontId(), gStringVar5, CloseMessageAndReturnToList);
     }
     else
     {
@@ -1178,8 +1178,8 @@ static void Task_SelectedTMHM_Sell(u8 taskId)
             if (tQuantityOwned > 99)
                 tQuantityOwned = 99;
             CopyItemName(gSpecialVar_ItemId, gStringVar1);
-            StringExpandPlaceholders(gStringVar4, gText_HowManyWouldYouLikeToSell);
-            PrintMessageWithFollowupTask(taskId, GetDialogBoxFontId(), gStringVar4, Task_InitQuantitySelectUI);
+            StringExpandPlaceholders(gStringVar5, gText_HowManyWouldYouLikeToSell);
+            PrintMessageWithFollowupTask(taskId, GetDialogBoxFontId(), gStringVar5, Task_InitQuantitySelectUI);
         }
     }
 }
@@ -1189,8 +1189,8 @@ static void Task_AskConfirmSaleWithAmount(u8 taskId)
     s16 * data = gTasks[taskId].data;
 
     ConvertIntToDecimalStringN(gStringVar3, ItemId_GetPrice(BagGetItemIdByPocketPosition(POCKET_TM_CASE, tSelection)) / 2 * tQuantitySelected, STR_CONV_MODE_LEFT_ALIGN, 6);
-    StringExpandPlaceholders(gStringVar4, gText_ICanPayThisMuch_WouldThatBeOkay);
-    PrintMessageWithFollowupTask(taskId, GetDialogBoxFontId(), gStringVar4, Task_PlaceYesNoBox);
+    StringExpandPlaceholders(gStringVar5, gText_ICanPayThisMuch_WouldThatBeOkay);
+    PrintMessageWithFollowupTask(taskId, GetDialogBoxFontId(), gStringVar5, Task_PlaceYesNoBox);
 }
 
 static void Task_PlaceYesNoBox(u8 taskId)
@@ -1221,8 +1221,8 @@ static void Task_InitQuantitySelectUI(u8 taskId)
 
     TMCase_SetWindowBorder1(WIN_SELL_QUANTITY);
     ConvertIntToDecimalStringN(gStringVar1, 1, STR_CONV_MODE_LEADING_ZEROS, 2);
-    StringExpandPlaceholders(gStringVar4, gText_TimesStrVar1);
-    TMCase_Print(WIN_SELL_QUANTITY, FONT_SMALL, gStringVar4, 4, 10, 1, 0, 0, COLOR_DARK);
+    StringExpandPlaceholders(gStringVar5, gText_TimesStrVar1);
+    TMCase_Print(WIN_SELL_QUANTITY, FONT_SMALL, gStringVar5, 4, 10, 1, 0, 0, COLOR_DARK);
     SellTM_PrintQuantityAndSalePrice(1, ItemId_GetPrice(BagGetItemIdByPocketPosition(POCKET_TM_CASE, tSelection)) / 2 * tQuantitySelected);
     PrintPlayersMoney();
     CreateQuantityScrollArrows();
@@ -1235,8 +1235,8 @@ static void SellTM_PrintQuantityAndSalePrice(s16 quantity, s32 amount)
 {
     FillWindowPixelBuffer(WIN_SELL_QUANTITY, 0x11);
     ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEADING_ZEROS, 2);
-    StringExpandPlaceholders(gStringVar4, gText_TimesStrVar1);
-    TMCase_Print(WIN_SELL_QUANTITY, FONT_SMALL, gStringVar4, 4, 10, 1, 0, 0, COLOR_DARK);
+    StringExpandPlaceholders(gStringVar5, gText_TimesStrVar1);
+    TMCase_Print(WIN_SELL_QUANTITY, FONT_SMALL, gStringVar5, 4, 10, 1, 0, 0, COLOR_DARK);
     PrintMoneyAmount(WIN_SELL_QUANTITY, 0x38, 0x0A, amount, 0);
 }
 
@@ -1282,8 +1282,8 @@ static void Task_PrintSaleConfirmedText(u8 taskId)
     ScheduleBgCopyTilemapToVram(0);
     CopyItemName(gSpecialVar_ItemId, gStringVar1);
     ConvertIntToDecimalStringN(gStringVar3, ItemId_GetPrice(BagGetItemIdByPocketPosition(POCKET_TM_CASE, tSelection)) / 2 * tQuantitySelected, STR_CONV_MODE_LEFT_ALIGN, 6);
-    StringExpandPlaceholders(gStringVar4, gText_TurnedOverItemsWorthYen);
-    PrintMessageWithFollowupTask(taskId, FONT_NORMAL, gStringVar4, Task_DoSaleOfTMs);
+    StringExpandPlaceholders(gStringVar5, gText_TurnedOverItemsWorthYen);
+    PrintMessageWithFollowupTask(taskId, FONT_NORMAL, gStringVar5, Task_DoSaleOfTMs);
 }
 
 static void Task_DoSaleOfTMs(u8 taskId)

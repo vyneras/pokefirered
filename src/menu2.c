@@ -497,14 +497,14 @@ void Menu_PrintFormatIntlPlayerName(u8 windowId, const u8 * src, u16 x, u16 y)
     for (i = 0; gSaveBlock2Ptr->playerName[i] != EOS; i++)
         ;
 
-    StringExpandPlaceholders(gStringVar4, src);
+    StringExpandPlaceholders(gStringVar5, src);
     if (i != 5)
     {
-        AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar4, x, y, 0xFF, NULL);
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar5, x, y, 0xFF, NULL);
     }
     else
     {
-        AddTextPrinterParameterized5(windowId, FONT_NORMAL, gStringVar4, x, y, 0xFF, NULL, 0, 0);
+        AddTextPrinterParameterized5(windowId, FONT_NORMAL, gStringVar5, x, y, 0xFF, NULL, 0, 0);
     }
 }
 

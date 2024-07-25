@@ -740,10 +740,10 @@ static void DisplaySentToPCMessage(void)
     if (FlagGet(FLAG_SYS_NOT_SOMEONES_PC))
         stringToDisplay++;
 
-    StringExpandPlaceholders(gStringVar4, sTransferredToPCMessages[stringToDisplay]);
+    StringExpandPlaceholders(gStringVar5, sTransferredToPCMessages[stringToDisplay]);
     DrawDialogueFrame(0, FALSE);
     gTextFlags.canABSpeedUpPrint = TRUE;
-    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetTextSpeedSetting(), NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar5, GetTextSpeedSetting(), NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
     CopyWindowToVram(0, COPYWIN_FULL);
 }
 

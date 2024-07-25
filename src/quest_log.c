@@ -510,16 +510,16 @@ void DrawPreviouslyOnQuestHeader(u8 sceneNum)
         FillWindowPixelRect(sWindowIds[i], 15, 0, 0, sWindowTemplates[i].width * 8, sWindowTemplates[i].height * 8);
     }
 
-    StringExpandPlaceholders(gStringVar4, gText_QuestLog_PreviouslyOnYourQuest);
+    StringExpandPlaceholders(gStringVar5, gText_QuestLog_PreviouslyOnYourQuest);
 
     // Scene numbers count from 4 to 0, 0 being where the player saved
     if (sceneNum != 0)
     {
         ConvertIntToDecimalStringN(gStringVar1, sceneNum, STR_CONV_MODE_LEFT_ALIGN, 1);
-        StringAppend(gStringVar4, gStringVar1);
+        StringAppend(gStringVar5, gStringVar1);
     }
 
-    AddTextPrinterParameterized4(sWindowIds[WIN_TOP_BAR], FONT_NORMAL, 2, 2, 1, 2, sTextColors, 0, gStringVar4);
+    AddTextPrinterParameterized4(sWindowIds[WIN_TOP_BAR], FONT_NORMAL, 2, 2, 1, 2, sTextColors, 0, gStringVar5);
     PutWindowTilemap(sWindowIds[WIN_TOP_BAR]);
     PutWindowTilemap(sWindowIds[WIN_BOTTOM_BAR]);
     CopyWindowToVram(sWindowIds[WIN_TOP_BAR], COPYWIN_GFX);
@@ -955,9 +955,9 @@ static u8 GetQuestLogTextDisplayDuration(void)
     u16 i;
     u16 count = 0;
 
-    for (i = 0; i < 0x400 && gStringVar4[i] != EOS; i++)
+    for (i = 0; i < 0x400 && gStringVar5[i] != EOS; i++)
     {
-        if (gStringVar4[i] != CHAR_NEWLINE)
+        if (gStringVar5[i] != CHAR_NEWLINE)
             count++;
     }
 
@@ -1019,15 +1019,15 @@ static void DrawSceneDescription(void)
     u16 i;
     u8 numLines = 0;
 
-    for (i = 0; i < 0x100 && gStringVar4[i] != EOS; i++)
+    for (i = 0; i < 0x100 && gStringVar5[i] != EOS; i++)
     {
-        if (gStringVar4[i] == CHAR_NEWLINE)
+        if (gStringVar5[i] == CHAR_NEWLINE)
             numLines++;
     }
 
     PutWindowTilemap(sWindowIds[WIN_DESCRIPTION]);
     CopyDescriptionWindowTiles(sWindowIds[WIN_DESCRIPTION]);
-    AddTextPrinterParameterized4(sWindowIds[WIN_DESCRIPTION], FONT_NORMAL, 2, sQuestLogTextLineYCoords[numLines], 1, 0, sTextColors, 0, gStringVar4);
+    AddTextPrinterParameterized4(sWindowIds[WIN_DESCRIPTION], FONT_NORMAL, 2, sQuestLogTextLineYCoords[numLines], 1, 0, sTextColors, 0, gStringVar5);
     ScheduleBgCopyTilemapToVram(0);
 }
 
@@ -1140,7 +1140,7 @@ static void Task_QuestLogScene_SavedGame(u8 taskId)
         if (sPlaybackControl.endMode != END_MODE_FINISH)
         {
             GetMapNameGeneric(gStringVar1, gMapHeader.regionMapSectionId);
-            StringExpandPlaceholders(gStringVar4, gText_QuestLog_SavedGameAtLocation);
+            StringExpandPlaceholders(gStringVar5, gText_QuestLog_SavedGameAtLocation);
             DrawSceneDescription();
         }
         task->data[0] = 0;

@@ -1039,8 +1039,8 @@ static void CreatePCMenuWindow(void)
         AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_BillSPc, cursorWidth, 2 , TEXT_SKIP_DRAW, NULL);
     else
         AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_SomeoneSPc, cursorWidth, 2 , TEXT_SKIP_DRAW, NULL);
-    StringExpandPlaceholders(gStringVar4, gText_SPc);
-    Menu_PrintFormatIntlPlayerName(windowId, gStringVar4, cursorWidth, 18);
+    StringExpandPlaceholders(gStringVar5, gText_SPc);
+    Menu_PrintFormatIntlPlayerName(windowId, gStringVar5, cursorWidth, 18);
     Menu_InitCursor(windowId, FONT_NORMAL, 0, 2, 16, numItems, 0);
     CreateMCMenuInputHandlerTask(FALSE, numItems, windowId, MULTICHOICE_NONE);
     ScheduleBgCopyTilemapToVram(0);

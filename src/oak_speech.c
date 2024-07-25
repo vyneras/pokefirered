@@ -1123,10 +1123,10 @@ static void Task_OakSpeech_Init(u8 taskId)
 
 #define OakSpeechPrintMessage(str, speed) ({                                                                                                                 \
     DrawDialogueFrame(WIN_INTRO_TEXTBOX, FALSE);                                                                                                             \
-    if (str != gStringVar4)                                                                                                                                  \
+    if (str != gStringVar5)                                                                                                                                  \
     {                                                                                                                                                        \
-        StringExpandPlaceholders(gStringVar4, str);                                                                                                          \
-        AddTextPrinterParameterized2(WIN_INTRO_TEXTBOX, FONT_MALE, gStringVar4, speed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY); \
+        StringExpandPlaceholders(gStringVar5, str);                                                                                                          \
+        AddTextPrinterParameterized2(WIN_INTRO_TEXTBOX, FONT_MALE, gStringVar5, speed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY); \
     }                                                                                                                                                        \
     else                                                                                                                                                     \
     {                                                                                                                                                        \
@@ -1465,10 +1465,10 @@ static void Task_OakSpeech_ConfirmName(u8 taskId)
         if (tNameNotConfirmed == TRUE)
         {
             if (sOakSpeechResources->hasPlayerBeenNamed == FALSE)
-                StringExpandPlaceholders(gStringVar4, gOakSpeech_Text_SoYourNameIsPlayer);
+                StringExpandPlaceholders(gStringVar5, gOakSpeech_Text_SoYourNameIsPlayer);
             else
-                StringExpandPlaceholders(gStringVar4, gOakSpeech_Text_ConfirmRivalName);
-            OakSpeechPrintMessage(gStringVar4, sOakSpeechResources->textSpeed);
+                StringExpandPlaceholders(gStringVar5, gOakSpeech_Text_ConfirmRivalName);
+            OakSpeechPrintMessage(gStringVar5, sOakSpeechResources->textSpeed);
             tNameNotConfirmed = FALSE;
             tTimer = 25;
         }
@@ -1503,8 +1503,8 @@ static void Task_OakSpeech_HandleConfirmNameInput(u8 taskId)
         }
         else
         {
-            StringExpandPlaceholders(gStringVar4, gOakSpeech_Text_RememberRivalsName);
-            OakSpeechPrintMessage(gStringVar4, sOakSpeechResources->textSpeed);
+            StringExpandPlaceholders(gStringVar5, gOakSpeech_Text_RememberRivalsName);
+            OakSpeechPrintMessage(gStringVar5, sOakSpeechResources->textSpeed);
             gTasks[taskId].func = Task_OakSpeech_FadeOutRivalPic;
         }
         break;
@@ -1595,8 +1595,8 @@ static void Task_OakSpeech_LetsGo(u8 taskId)
 {
     if (gTasks[taskId].tTrainerPicFadeState != 0)
     {
-        StringExpandPlaceholders(gStringVar4, gOakSpeech_Text_LetsGo);
-        OakSpeechPrintMessage(gStringVar4, sOakSpeechResources->textSpeed);
+        StringExpandPlaceholders(gStringVar5, gOakSpeech_Text_LetsGo);
+        OakSpeechPrintMessage(gStringVar5, sOakSpeechResources->textSpeed);
         gTasks[taskId].tTimer = 30;
         gTasks[taskId].func = Task_OakSpeech_FadeOutBGM;
     }

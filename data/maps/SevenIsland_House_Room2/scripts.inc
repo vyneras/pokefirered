@@ -16,7 +16,7 @@ SevenIsland_House_Room2_EventScript_BattleVisitingTrainer::
 	applymovement OBJ_EVENT_ID_PLAYER, SevenIsland_House_Room2_Movement_PlayerEnterRoom
 	waitmovement 0
 	special BufferEReaderTrainerGreeting
-	msgbox gStringVar4
+	msgbox gStringVar5
 	closemessage
 	setvar VAR_0x8004, 2
 	setvar VAR_0x8005, 0

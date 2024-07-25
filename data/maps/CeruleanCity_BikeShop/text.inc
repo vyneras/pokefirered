@@ -1,8 +1,14 @@
-CeruleanCity_BikeShop_Text_WelcomeToBikeShop::
+CeruleanCity_BikeShop_Text_WelcomeToBikeShopItem::
     .string "Hi!\n"
     .string "Welcome to our BIKE SHOP.\p"
-    .string "Have we got just the\n"
-    .string "{STR_VAR_1} for you!$"
+    .string "We've got this\n"
+    .string "{STR_VAR_3} for you!$"
+
+CeruleanCity_BikeShop_Text_WelcomeToBikeShopPlayerItem::
+    .string "Hi!\n"
+    .string "Welcome to our BIKE SHOP.\p"
+    .string "We've got {STR_VAR_2}'s\n"
+    .string "{STR_VAR_3}!$"
 
 CeruleanCity_BikeShop_Text_SorryYouCantAffordIt::
     .string "Sorry!\n"

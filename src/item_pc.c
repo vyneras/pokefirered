@@ -551,8 +551,8 @@ static void ItemPc_ItemPrintFunc(u8 windowId, u32 itemId, u8 y)
     {
         u16 quantity = ItemPc_GetItemQuantityBySlotId(itemId);
         ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_RIGHT_ALIGN, 3);
-        StringExpandPlaceholders(gStringVar4, gText_TimesStrVar1);
-        ItemPc_AddTextPrinterParameterized(windowId, FONT_SMALL, gStringVar4, 110, y, 0, 0, 0xFF, 1);
+        StringExpandPlaceholders(gStringVar5, gText_TimesStrVar1);
+        ItemPc_AddTextPrinterParameterized(windowId, FONT_SMALL, gStringVar5, 110, y, 0, 0, 0xFF, 1);
     }
 }
 
@@ -771,9 +771,9 @@ static void ItemPc_MoveItemModeInit(u8 taskId, s16 pos)
     data[1] = pos;
     sStateDataPtr->moveModeOrigPos = pos;
     StringCopy(gStringVar1, ItemId_GetName(ItemPc_GetItemIdBySlotId(data[1])));
-    StringExpandPlaceholders(gStringVar4, gOtherText_WhereShouldTheStrVar1BePlaced);
+    StringExpandPlaceholders(gStringVar5, gOtherText_WhereShouldTheStrVar1BePlaced);
     FillWindowPixelBuffer(1, 0x00);
-    ItemPc_AddTextPrinterParameterized(1, FONT_NORMAL, gStringVar4, 0, 3, 2, 3, 0, 0);
+    ItemPc_AddTextPrinterParameterized(1, FONT_NORMAL, gStringVar5, 0, 3, 2, 3, 0, 0);
     UpdateSwapLinePos(-32, ListMenuGetYCoordForPrintingArrowCursor(data[0]));
     SetSwapLineInvisibility(FALSE);
     ItemPc_PrintOrRemoveCursor(data[0], 2);
@@ -842,8 +842,8 @@ static void Task_ItemPcSubmenuInit(u8 taskId)
     PrintTextArray(4, FONT_NORMAL, 8, 2, GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) + 2, 3, sItemPcSubmenuOptions);
     Menu_InitCursor(4, FONT_NORMAL, 0, 2, GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) + 2, 3, 0);
     CopyItemName(ItemPc_GetItemIdBySlotId(data[1]), gStringVar1);
-    StringExpandPlaceholders(gStringVar4, gText_Var1IsSelected);
-    ItemPc_AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar4, 0, 2, 1, 0, 0, 1);
+    StringExpandPlaceholders(gStringVar5, gText_Var1IsSelected);
+    ItemPc_AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar5, 0, 2, 1, 0, 0, 1);
     ScheduleBgCopyTilemapToVram(0);
     gTasks[taskId].func = Task_ItemPcSubmenuRun;
 }
@@ -899,9 +899,9 @@ static void ItemPc_DoWithdraw(u8 taskId)
         ItemUse_SetQuestLogEvent(QL_EVENT_WITHDREW_ITEM_PC, NULL, itemId, 0xFFFF);
         CopyItemName(itemId, gStringVar1);
         ConvertIntToDecimalStringN(gStringVar2, data[8], STR_CONV_MODE_LEFT_ALIGN, 3);
-        StringExpandPlaceholders(gStringVar4, gText_WithdrewQuantItem);
+        StringExpandPlaceholders(gStringVar5, gText_WithdrewQuantItem);
         windowId = ItemPc_GetOrCreateSubwindow(2);
-        AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar4, 0, 2, 0, NULL);
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar5, 0, 2, 0, NULL);
         gTasks[taskId].func = Task_ItemPcWaitButtonAndFinishWithdrawMultiple;
     }
     else
@@ -956,12 +956,12 @@ static void ItemPc_WithdrawMultipleInitWindow(u16 slotId)
     u16 itemId = ItemPc_GetItemIdBySlotId(slotId);
 
     CopyItemName(itemId, gStringVar1);
-    StringExpandPlaceholders(gStringVar4, gText_WithdrawHowMany);
-    AddTextPrinterParameterized(ItemPc_GetOrCreateSubwindow(1), FONT_NORMAL, gStringVar4, 0, 2, 0, NULL);
+    StringExpandPlaceholders(gStringVar5, gText_WithdrawHowMany);
+    AddTextPrinterParameterized(ItemPc_GetOrCreateSubwindow(1), FONT_NORMAL, gStringVar5, 0, 2, 0, NULL);
     ConvertIntToDecimalStringN(gStringVar1, 1, STR_CONV_MODE_LEADING_ZEROS, 3);
-    StringExpandPlaceholders(gStringVar4, gText_TimesStrVar1);
+    StringExpandPlaceholders(gStringVar5, gText_TimesStrVar1);
     ItemPc_SetBorderStyleOnWindow(3);
-    ItemPc_AddTextPrinterParameterized(3, FONT_SMALL, gStringVar4, 8, 10, 1, 0, 0, 1);
+    ItemPc_AddTextPrinterParameterized(3, FONT_SMALL, gStringVar5, 8, 10, 1, 0, 0, 1);
     ScheduleBgCopyTilemapToVram(0);
 }
 
@@ -969,8 +969,8 @@ static void UpdateWithdrawQuantityDisplay(s16 quantity)
 {
     FillWindowPixelRect(3, PIXEL_FILL(1), 10, 10, 28, 12);
     ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEADING_ZEROS, 3);
-    StringExpandPlaceholders(gStringVar4, gText_TimesStrVar1);
-    ItemPc_AddTextPrinterParameterized(3, FONT_SMALL, gStringVar4, 8, 10, 1, 0, 0, 1);
+    StringExpandPlaceholders(gStringVar5, gText_TimesStrVar1);
+    ItemPc_AddTextPrinterParameterized(3, FONT_SMALL, gStringVar5, 8, 10, 1, 0, 0, 1);
 }
 
 static void Task_ItemPcHandleWithdrawMultiple(u8 taskId)

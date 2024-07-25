@@ -832,17 +832,17 @@ static void BufferBattleTowerTrainerMessage(const u16 *greeting)
     s32 i;
     if (EC_DoesEasyChatStringFitOnLine(greeting, 3, 2, 18))
     {
-        ConvertEasyChatWordsToString(gStringVar4, greeting, 2, 3);
+        ConvertEasyChatWordsToString(gStringVar5, greeting, 2, 3);
         i = 0;
-        while (gStringVar4[i++] != CHAR_NEWLINE)
+        while (gStringVar5[i++] != CHAR_NEWLINE)
             ;
-        while (gStringVar4[i] != CHAR_NEWLINE)
+        while (gStringVar5[i] != CHAR_NEWLINE)
             i++;
-        gStringVar4[i] = CHAR_PROMPT_SCROLL;
+        gStringVar5[i] = CHAR_PROMPT_SCROLL;
     }
     else
     {
-        ConvertEasyChatWordsToString(gStringVar4, greeting, 3, 2);
+        ConvertEasyChatWordsToString(gStringVar5, greeting, 3, 2);
     }
 }
 
@@ -1406,7 +1406,7 @@ void BufferEReaderTrainerGreeting(void)
 static void PrintEReaderTrainerFarewellMessage(void)
 {
     if (gBattleOutcome == B_OUTCOME_DREW)
-        gStringVar4[0] = EOS;
+        gStringVar5[0] = EOS;
     else if (gBattleOutcome == B_OUTCOME_WON)
         BufferBattleTowerTrainerMessage(gSaveBlock2Ptr->battleTower.ereaderTrainer.farewellPlayerWon);
     else

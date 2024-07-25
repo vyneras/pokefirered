@@ -1351,7 +1351,7 @@ void SetDaycareCompatibilityString(void)
     if (relationshipScore == PARENTS_MAX_COMPATIBILITY)
         whichString = 0;
 
-    StringCopy(gStringVar4, sCompatibilityMessages[whichString]);
+    StringCopy(gStringVar5, sCompatibilityMessages[whichString]);
 }
 
 bool8 NameHasGenderSymbol(const u8 *name, u8 genderRatio)
@@ -1924,8 +1924,8 @@ static void CB2_EggHatch_1(void)
         break;
     case 5:
         DayCare_GetMonNickname(&gPlayerParty[sEggHatchData->eggPartyID], gStringVar1);
-        StringExpandPlaceholders(gStringVar4, gText_HatchedFromEgg);
-        EggHatchPrintMessage(sEggHatchData->windowId, gStringVar4, 0, 3, 0xFF);
+        StringExpandPlaceholders(gStringVar5, gText_HatchedFromEgg);
+        EggHatchPrintMessage(sEggHatchData->windowId, gStringVar5, 0, 3, 0xFF);
         PlayFanfare(MUS_EVOLVED);
         sEggHatchData->CB2_state++;
         PutWindowTilemap(sEggHatchData->windowId);
@@ -1941,8 +1941,8 @@ static void CB2_EggHatch_1(void)
         break;
     case 8:
         DayCare_GetMonNickname(&gPlayerParty[sEggHatchData->eggPartyID], gStringVar1);
-        StringExpandPlaceholders(gStringVar4, gText_NickHatchPrompt);
-        EggHatchPrintMessage(sEggHatchData->windowId, gStringVar4, 0, 2, 1);
+        StringExpandPlaceholders(gStringVar5, gText_NickHatchPrompt);
+        EggHatchPrintMessage(sEggHatchData->windowId, gStringVar5, 0, 2, 1);
         sEggHatchData->CB2_state++;
         break;
     case 9:

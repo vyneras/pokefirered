@@ -304,11 +304,11 @@ static void Task_WirelessCommunicationScreen(u8 taskId)
             FillWindowPixelBuffer(2, PIXEL_FILL(0));
             for (i = 0; i < NUM_GROUPTYPES; i++)
             {
-                ConvertIntToDecimalStringN(gStringVar4, sStatusScreen->groupCounts[i], STR_CONV_MODE_RIGHT_ALIGN, 2);
+                ConvertIntToDecimalStringN(gStringVar5, sStatusScreen->groupCounts[i], STR_CONV_MODE_RIGHT_ALIGN, 2);
                 if (i != GROUPTYPE_TOTAL)
-                    WCSS_AddTextPrinterParameterized(2, FONT_NORMAL_COPY_2, gStringVar4, 4, 30 * i + 10, COLOR_NORMAL);
+                    WCSS_AddTextPrinterParameterized(2, FONT_NORMAL_COPY_2, gStringVar5, 4, 30 * i + 10, COLOR_NORMAL);
                 else
-                    WCSS_AddTextPrinterParameterized(2, FONT_NORMAL_COPY_2, gStringVar4, 4, 100, COLOR_TOTAL);
+                    WCSS_AddTextPrinterParameterized(2, FONT_NORMAL_COPY_2, gStringVar5, 4, 100, COLOR_TOTAL);
             }
             PutWindowTilemap(2);
             CopyWindowToVram(2, COPYWIN_FULL);
@@ -445,7 +445,7 @@ static bool32 UpdateCommunicationCounts(u32 * groupCounts, u32 * prevGroupCounts
 
     memcpy(groupCounts,     groupCountBuffer, sizeof(groupCountBuffer));
     memcpy(prevGroupCounts, groupCountBuffer, sizeof(groupCountBuffer));
-    
+
     groupCounts[GROUPTYPE_TOTAL] = groupCounts[GROUPTYPE_TRADE]
                                  + groupCounts[GROUPTYPE_BATTLE]
                                  + groupCounts[GROUPTYPE_UNION]

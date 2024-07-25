@@ -12,23 +12,9 @@ Route10_PokemonCenter_1F_Text_HeardGhostsHauntLavender::
     .string "I heard that ghosts haunt\n"
     .string "LAVENDER TOWN.$"
 
-Route10_PokemonCenter_1F_Text_GiveEverstoneIfCaught20Mons::
-    .string "Oh… {PLAYER}!\n"
-    .string "I've been looking for you!\p"
-    .string "It's me, one of the ever-present\n"
-    .string "AIDES to PROF. OAK.\p"
-    .string "If your POKéDEX has complete data\n"
-    .string "on {STR_VAR_1} species, I'm supposed to\l"
-    .string "give you a reward from PROF. OAK.\p"
-    .string "He entrusted me with this\n"
-    .string "{STR_VAR_2}.\p"
-    .string "So, {PLAYER}, let me ask you.\p"
-    .string "Have you gathered data on at least\n"
-    .string "{STR_VAR_1} kinds of POKéMON?$"
-
 Route10_PokemonCenter_1F_Text_GreatHereYouGo::
     .string "Great! You have caught or owned\n"
-    .string "{STR_VAR_3} kinds of POKéMON!\p"
+    .string "{STR_VAR_4} kinds of POKéMON!\p"
     .string "Congratulations!\n"
     .string "Here you go!$"
 

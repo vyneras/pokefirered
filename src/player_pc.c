@@ -529,8 +529,8 @@ static void Task_PrintWhatToDoWithSelectedMail(u8 taskId)
     {
         ConvertInternationalString(gStringVar1, LANGUAGE_JAPANESE);
     }
-    StringExpandPlaceholders(gStringVar4, gText_WhatWouldYouLikeToDoWithPlayersMail);
-    DisplayItemMessageOnField(taskId, FONT_NORMAL, gStringVar4, Task_DrawMailSubmenu);
+    StringExpandPlaceholders(gStringVar5, gText_WhatWouldYouLikeToDoWithPlayersMail);
+    DisplayItemMessageOnField(taskId, FONT_NORMAL, gStringVar5, Task_DrawMailSubmenu);
 }
 
 static void Task_DestroyMailboxPcViewAndCancel(u8 taskId)

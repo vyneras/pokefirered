@@ -2111,8 +2111,8 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
             case B_TXT_TRAINER1_LOSE_TEXT: // trainerA lose text
                 if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_TOWER)
                 {
-                    GetTrainerTowerOpponentLoseText(gStringVar4, 0);
-                    toCpy = gStringVar4;
+                    GetTrainerTowerOpponentLoseText(gStringVar5, 0);
+                    toCpy = gStringVar5;
                 }
                 else
                 {
@@ -2122,8 +2122,8 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
             case B_TXT_TRAINER1_WIN_TEXT: // trainerA win text
                 if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_TOWER)
                 {
-                    GetTrainerTowerOpponentWinText(gStringVar4, 0);
-                    toCpy = gStringVar4;
+                    GetTrainerTowerOpponentWinText(gStringVar5, 0);
+                    toCpy = gStringVar5;
                 }
                 else
                 {
@@ -2131,12 +2131,12 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                 }
                 break;
             case B_TXT_TRAINER2_LOSE_TEXT:
-                GetTrainerTowerOpponentLoseText(gStringVar4, 1);
-                toCpy = gStringVar4;
+                GetTrainerTowerOpponentLoseText(gStringVar5, 1);
+                toCpy = gStringVar5;
                 break;
             case B_TXT_TRAINER2_WIN_TEXT:
-                GetTrainerTowerOpponentWinText(gStringVar4, 1);
-                toCpy = gStringVar4;
+                GetTrainerTowerOpponentWinText(gStringVar5, 1);
+                toCpy = gStringVar5;
                 break;
             case B_TXT_26: // ?
                 HANDLE_NICKNAME_STRING_CASE(gBattleScripting.battler, *(&gBattleStruct->scriptPartyIdx))
