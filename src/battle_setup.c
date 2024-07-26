@@ -323,7 +323,6 @@ void StartMarowakBattle(void)
     if (CheckBagHasItem(ITEM_SILPH_SCOPE, 1))
     {
         gBattleTypeFlags = BATTLE_TYPE_GHOST | BATTLE_TYPE_GHOST_UNVEILED;
-        CreateMonWithGenderNatureLetter(gEnemyParty, SPECIES_MAROWAK, 30, 31, MON_FEMALE, NATURE_SERIOUS, 0);
     }
     else
     {

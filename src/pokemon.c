@@ -1617,16 +1617,16 @@ static const u8 sStatsToRaise[] =
 // 0-99, 100-199, 200+
 static const s8 sFriendshipEventDeltas[][3] =
 {
-    [FRIENDSHIP_EVENT_GROW_LEVEL]           = { 5,  3,  2 },
-    [FRIENDSHIP_EVENT_VITAMIN]              = { 5,  3,  2 },
-    [FRIENDSHIP_EVENT_BATTLE_ITEM]          = { 1,  1,  0 },
-    [FRIENDSHIP_EVENT_LEAGUE_BATTLE]        = { 3,  2,  1 },
-    [FRIENDSHIP_EVENT_LEARN_TMHM]           = { 1,  1,  0 },
-    [FRIENDSHIP_EVENT_WALKING]              = { 1,  1,  1 },
-    [FRIENDSHIP_EVENT_MASSAGE]              = { 3,  3,  3 },
-    [FRIENDSHIP_EVENT_FAINT_SMALL]          = {-1, -1, -1 },
-    [FRIENDSHIP_EVENT_FAINT_OUTSIDE_BATTLE] = {-5, -5, -10 },
-    [FRIENDSHIP_EVENT_FAINT_LARGE]          = {-5, -5, -10 },
+    [FRIENDSHIP_EVENT_GROW_LEVEL]           = { 25,  15,  10 },
+    [FRIENDSHIP_EVENT_VITAMIN]              = { 25,  15,  10 },
+    [FRIENDSHIP_EVENT_BATTLE_ITEM]          = {  5,   5,   0 },
+    [FRIENDSHIP_EVENT_LEAGUE_BATTLE]        = { 15,  10,   5 },
+    [FRIENDSHIP_EVENT_LEARN_TMHM]           = {  5,   5,   0 },
+    [FRIENDSHIP_EVENT_WALKING]              = {  5,   5,   5 },
+    [FRIENDSHIP_EVENT_MASSAGE]              = { 15,  15,  15 },
+    [FRIENDSHIP_EVENT_FAINT_SMALL]          = {  0,   0,   0 },
+    [FRIENDSHIP_EVENT_FAINT_OUTSIDE_BATTLE] = {  0,   0,   0 },
+    [FRIENDSHIP_EVENT_FAINT_LARGE]          = {  0,   0,   0 },
 };
 
 #define HM_MOVES_END 0xFFFF
@@ -5483,9 +5483,9 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
         if (delta > 0)
         {
             if (GetMonData(mon, MON_DATA_POKEBALL, NULL) == ITEM_LUXURY_BALL)
-                friendship++;
+                friendship += 5;
             if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == GetCurrentRegionMapSectionId())
-                friendship++;
+                friendship += 5;
         }
 
         if (friendship < 0)
