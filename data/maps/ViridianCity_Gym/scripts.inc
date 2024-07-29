@@ -20,7 +20,6 @@ ViridianCity_Gym_EventScript_DefeatedGiovanni::
 	setflag FLAG_DEFEATED_LEADER_GIOVANNI
 Archipelago_Target_Badge_8::
 	giveitem ITEM_BADGE_8, 1, FLAG_RECEIVED_BADGE_8
-	setvar VAR_MAP_SCENE_ROUTE22, 3
 	set_gym_trainers 8
 	goto ViridianCity_Gym_EventScript_GiveTM26
 	end

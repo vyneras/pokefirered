@@ -72,14 +72,21 @@ SilphCo_11F_EventScript_BattleGiovanni::
 	closemessage
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_GIOVANNI
-	removeobject LOCALID_GRUNT1
-	removeobject LOCALID_GRUNT2
+	call SilphCo_11F_EventScript_TryHideSilphRockets
 	fadescreen FADE_FROM_BLACK
 	setvar VAR_MAP_SCENE_SILPH_CO_11F, 1
 	setflag FLAG_HIDE_SAFFRON_ROCKETS
 	clearflag FLAG_HIDE_SAFFRON_CIVILIANS
 	releaseall
 	end
+
+SilphCo_11F_EventScript_TryHideSilphRockets::
+	specialvar VAR_RESULT, ArchipelagoSpecial_IsTrainersanity
+	goto_if_eq VAR_RESULT, TRUE, EventScript_Return
+  removeobject LOCALID_GRUNT1
+  removeobject LOCALID_GRUNT2
+	setflag FLAG_HIDE_SILPH_ROCKETS
+  return
 
 SilphCo_11F_EventScript_GiovanniApproachLeft::
 	applymovement LOCALID_GIOVANNI, SilphCo_11F_Movement_GiovanniApproachLeft

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "archipelago.h"
 #include "task.h"
 #include "help_system.h"
 #include "overworld.h"
@@ -177,6 +178,7 @@ static const struct TrainerBattleParameter sContinueScriptDoubleBattleParams[] =
     {&sTrainerBattleEndScript,      TRAINER_PARAM_LOAD_SCRIPT_RET_ADDR},
 };
 
+static const u16 sTrainerRewards[NUM_TRAINERS] = {0};
 
 #define tState data[0]
 #define tTransition data[1]
@@ -867,6 +869,20 @@ u16 Script_HasTrainerBeenFought(void)
 
 void SetBattledTrainerFlag(void)
 {
+    u8 i;
+
+    if (sTrainerRewards[gTrainerBattleOpponent_A] != ITEM_NONE)
+    {
+        for (i = 0; i < REWARD_QUEUE_SIZE; i++)
+        {
+            if (gRewardQueue[i].itemId == ITEM_NONE)
+            {
+                gRewardQueue[i].itemId = sTrainerRewards[gTrainerBattleOpponent_A];
+                gRewardQueue[i].locationId = GetTrainerAFlag();
+            }
+        }
+    }
+
     FlagSet(GetTrainerAFlag());
 }
 

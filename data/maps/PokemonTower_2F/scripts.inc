@@ -33,6 +33,9 @@ PokemonTower_2F_EventScript_Rival::
 	call_if_eq VAR_STARTER_MON, 2, PokemonTower_2F_EventScript_RivalSquirtle
 	call_if_eq VAR_STARTER_MON, 1, PokemonTower_2F_EventScript_RivalBulbasaur
 	call_if_eq VAR_STARTER_MON, 0, PokemonTower_2F_EventScript_RivalCharmander
+	settrainerflag TRAINER_RIVAL_POKEMON_TOWER_BULBASAUR
+	settrainerflag TRAINER_RIVAL_POKEMON_TOWER_CHARMANDER
+	settrainerflag TRAINER_RIVAL_POKEMON_TOWER_SQUIRTLE
 	msgbox PokemonTower_2F_Text_RivalPostBattle
 	closemessage
 	playbgm MUS_RIVAL_EXIT, 0

@@ -35,11 +35,17 @@ RocketHideout_B4F_EventScript_Giovanni::
 	addobject LOCALID_SILPH_SCOPE
 	clearflag FLAG_HIDE_SILPH_SCOPE
 	setflag FLAG_HIDE_CELADON_ROCKETS
-	setflag FLAG_HIDE_MISC_KANTO_ROCKETS
+	call RocketHideout_B4F_EventScript_TryHideMiscKantoRockets
 	famechecker FAMECHECKER_GIOVANNI, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
 	fadescreen FADE_FROM_BLACK
 	release
 	end
+
+RocketHideout_B4F_EventScript_TryHideMiscKantoRockets::
+	specialvar VAR_RESULT, ArchipelagoSpecial_IsTrainersanity
+	goto_if_eq VAR_RESULT, TRUE, EventScript_Return
+	setflag FLAG_HIDE_MISC_KANTO_ROCKETS
+  return
 
 RocketHideout_B4F_EventScript_SilphScope::
 	lock

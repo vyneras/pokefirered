@@ -316,6 +316,9 @@ PalletTown_ProfessorOaksLab_Movement_RivalApproachForBattleBulbasaurRight::
 	step_end
 
 PalletTown_ProfessorOaksLab_EventScript_EndRivalBattle::
+	settrainerflag TRAINER_RIVAL_OAKS_LAB_BULBASAUR
+	settrainerflag TRAINER_RIVAL_OAKS_LAB_CHARMANDER
+	settrainerflag TRAINER_RIVAL_OAKS_LAB_SQUIRTLE
 	special HealPlayerParty
 	msgbox PalletTown_ProfessorOaksLab_Text_RivalGoToughenMyMon
 	closemessage
@@ -612,7 +615,7 @@ PalletTown_ProfessorOaksLab_Movement_OakWalkToDeskSouth::
 	step_end
 
 PalletTown_ProfessorOaksLab_EventScript_RatePokedexOrTryGiveBalls::
-	goto_if_set FLAG_DEFEATED_ROUTE22_RIVAL, PalletTown_ProfessorOaksLab_EventScript_GivePlayerSecondPokeballs
+	goto_if_set FLAG_DEFEATED_ROUTE22_EARLY_RIVAL, PalletTown_ProfessorOaksLab_EventScript_GivePlayerSecondPokeballs
 	goto PalletTown_ProfessorOaksLab_EventScript_RatePokedex
 	end
 

@@ -93,15 +93,15 @@ static const struct GFRomHeader sGFRomHeader = {
     .language = GAME_LANGUAGE,
 #ifdef FIRERED
     #if REVISION == 0
-        .gameName = "pokemon red version / AP",
+        .gameName = "pokemon red version AP",
     #else
-        .gameName = "pokemon red version / AP Rev 1",
+        .gameName = "pokemon red version AP Rev 1",
     #endif
 #else
     #if REVISION == 0
-        .gameName = "pokemon green version / AP",
+        .gameName = "pokemon green version AP",
     #else
-        .gameName = "pokemon green version / AP Rev 1",
+        .gameName = "pokemon green version AP Rev 1",
     #endif
 #endif
     .monFrontPics = gMonFrontPicTable,

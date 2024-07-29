@@ -40,7 +40,9 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
         [2] = 30, // Route 11
         [3] = 40, // Route 16
         [4] = 50 // Route 15
-    }
+    },
+
+    .isTrainersanity = FALSE
 };
 
 EWRAM_DATA struct ArchipelagoReceivedItem gArchipelagoReceivedItem = {0};

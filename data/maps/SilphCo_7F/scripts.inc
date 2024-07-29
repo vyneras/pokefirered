@@ -48,6 +48,9 @@ SilphCo_7F_EventScript_RivalScene::
 	call_if_eq VAR_STARTER_MON, 2, SilphCo_7F_EventScript_RivalSquirtle
 	call_if_eq VAR_STARTER_MON, 1, SilphCo_7F_EventScript_RivalBulbasaur
 	call_if_eq VAR_STARTER_MON, 0, SilphCo_7F_EventScript_RivalCharmander
+	settrainerflag TRAINER_RIVAL_SILPH_BULBASAUR
+	settrainerflag TRAINER_RIVAL_SILPH_CHARMANDER
+	settrainerflag TRAINER_RIVAL_SILPH_SQUIRTLE
 	msgbox SilphCo_7F_Text_RivalPostBattle
 	closemessage
 	playbgm MUS_RIVAL_EXIT, 0
@@ -123,6 +126,7 @@ SilphCo_7F_EventScript_LaprasGuy::
 Archipelago_Target_Special_Gift_LAPRAS::
 	setvar VAR_TEMP_1, SPECIES_LAPRAS
   bufferspeciesname STR_VAR_1, VAR_TEMP_1
+Archipelago_Target_Level_Special_Gift_LAPRAS::
 	givemon VAR_TEMP_1, 25
 	goto_if_eq VAR_RESULT, 0, SilphCo_7F_EventScript_ReceiveLaprasParty
 	goto_if_eq VAR_RESULT, 1, SilphCo_7F_EventScript_ReceiveLaprasPC

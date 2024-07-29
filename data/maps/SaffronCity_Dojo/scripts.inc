@@ -62,6 +62,8 @@ SaffronCity_Dojo_EventScript_AlreadyGotHitmon::
 
 SaffronCity_Dojo_EventScript_GiveHitmon::
 	hidemonpic
+Archipelago_Target_Level_Special_Gift_HITMONLEE::
+Archipelago_Target_Level_Special_Gift_HITMONCHAN::
 	givemon VAR_TEMP_1, 25
 	goto_if_eq VAR_RESULT, 0, SaffronCity_Dojo_EventScript_ReceivedHitmonParty
 	goto_if_eq VAR_RESULT, 1, SaffronCity_Dojo_EventScript_ReceivedHitmonPC

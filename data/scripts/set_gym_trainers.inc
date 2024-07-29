@@ -1,4 +1,6 @@
 EventScript_SetGymTrainers::
+	specialvar VAR_RESULT, ArchipelagoSpecial_IsTrainersanity
+	goto_if_eq VAR_RESULT, TRUE, EventScript_Return
 	switch VAR_0x8008
 	case 1, EventScript_SetPewterGymTrainers
 	case 2, EventScript_SetCeruleanGymTrainers

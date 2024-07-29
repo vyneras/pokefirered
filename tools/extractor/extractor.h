@@ -1,6 +1,7 @@
 #ifndef EXTRACTOR_H
 #define EXTRACTOR_H
 
+#include <map>
 #include <string>
 #include <vector>
 
@@ -14,7 +15,7 @@ class LocationInfo {
     public:
         std::string name;
         uint16_t flag;
-        uint32_t address;
+        std::map<std::string, uint32_t> address;
         uint16_t default_item;
 
         nlohmann::json to_json ();
@@ -37,7 +38,7 @@ class WarpInfo {
 
 class LearnsetInfo {
     public:
-        uint32_t address;
+        std::map<std::string, uint32_t> address;
         std::vector<std::tuple<uint8_t, uint16_t>> moves;
 
         nlohmann::json to_json ();
@@ -65,8 +66,8 @@ class EvolutionInfo {
 
 class SpeciesInfo {
     public:
-        uint32_t address;
-        uint32_t evolutions_address;
+        std::map<std::string, uint32_t> address;
+        std::map<std::string, uint32_t> evolutions_address;
         uint16_t id;
         uint8_t base_stats[6];
         uint8_t catch_rate;
@@ -97,26 +98,30 @@ class TrainerPokemonInfo {
 
 class TrainerInfo {
     public:
+        std::string name;
         std::vector<TrainerPokemonInfo> party;
         TrainerPokemonInfoType pokemon_data_type;
-        uint32_t address;
-        uint32_t party_address;
+        std::map<std::string, uint32_t> address;
+        std::map<std::string, uint32_t> party_address;
 
         nlohmann::json to_json ();
 };
 
 struct EncounterSlotInfo {
-    uint16_t default_species;
-    uint8_t min_level;
-    uint8_t max_level;
+    public:
+        uint16_t default_species;
+        uint8_t min_level;
+        uint8_t max_level;
+
+        nlohmann::json to_json ();
 };
 
 class EncounterTableInfo {
     public:
-        uint32_t ram_address;
-        uint32_t address;
+        std::map<std::string, uint32_t> ram_address;
+        std::map<std::string, uint32_t> address;
         bool exists;
-        std::vector<std::shared_ptr<EncounterSlotInfo>> encounter_slots;
+        std::map<std::string, std::shared_ptr<std::vector<std::shared_ptr<EncounterSlotInfo>>>> encounter_slots;
 
         nlohmann::json to_json ();
 };
@@ -124,9 +129,10 @@ class EncounterTableInfo {
 class StaticPokemonInfo {
     public:
         std::string name;
-        uint32_t address;
-        uint16_t species;
-        uint8_t level;
+        std::map<std::string, uint32_t> address;
+        std::map<std::string, uint16_t> species;
+        std::map<std::string, uint8_t> level;
+        std::map<std::string, uint32_t> level_address;
 
         nlohmann::json to_json ();
 };
@@ -134,8 +140,8 @@ class StaticPokemonInfo {
 class StarterPokemonInfo {
     public:
         std::string name;
-        uint32_t player_address;
-        uint32_t rival_address;
+        std::map<std::string, uint32_t> player_address;
+        std::map<std::string, uint32_t> rival_address;
         uint16_t species;
 
         nlohmann::json to_json ();
@@ -144,8 +150,8 @@ class StarterPokemonInfo {
 class MapInfo {
     public:
         std::string name;
-        uint32_t warp_table_address;
-        uint32_t header_address;
+        std::map<std::string, uint32_t> warp_table_address;
+        std::map<std::string, uint32_t> header_address;
         EncounterTableInfo land_encounters;
         EncounterTableInfo water_encounters;
         EncounterTableInfo fishing_encounters;

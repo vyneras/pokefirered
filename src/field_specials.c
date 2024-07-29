@@ -2592,7 +2592,7 @@ u16 ArchipelagoSpecial_PopReward(void)
     u16 locationId = gRewardQueue[0].locationId;
     u8 i;
 
-    for (i = 0; i < REWARD_QUEUE_SIZE - 1; ++i)
+    for (i = 0; i < REWARD_QUEUE_SIZE - 1; i++)
     {
         gRewardQueue[i].itemId = gRewardQueue[i + 1].itemId;
         gRewardQueue[i].locationId = gRewardQueue[i + 1].locationId;
@@ -2887,4 +2887,9 @@ bool8 ArchipelagoSpecial_CanEnterCeruleanCave(void)
 u8 ArchipelagoSpecial_GetProfessorOaksAideCount(void)
 {
     return gArchipelagoOptions.oaksAideRequiredCounts[gSpecialVar_0x8003];
+}
+
+bool8 ArchipelagoSpecial_IsTrainersanity(void)
+{
+    return gArchipelagoOptions.isTrainersanity;
 }

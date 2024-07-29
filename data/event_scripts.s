@@ -1041,20 +1041,23 @@ EventScript_SetFreeFlyLocation::
 	case 0, EventScript_SetFreeFlyLocationPallet
 	case 1, EventScript_SetFreeFlyLocationViridian
 	case 2, EventScript_SetFreeFlyLocationPewter
-	case 3, EventScript_SetFreeFlyLocationCerulean
-	case 4, EventScript_SetFreeFlyLocationVermilion
-	case 5, EventScript_SetFreeFlyLocationLavender
-	case 6, EventScript_SetFreeFlyLocationCeladon
-	case 7, EventScript_SetFreeFlyLocationFuchsia
-	case 8, EventScript_SetFreeFlyLocationSaffron
-	case 9, EventScript_SetFreeFlyLocationCinnabar
-	case 10, EventScript_SetFreeFlyLocationOneIsland
-	case 11, EventScript_SetFreeFlyLocationTwoIsland
-	case 12, EventScript_SetFreeFlyLocationThreeIsland
-	case 13, EventScript_SetFreeFlyLocationFourIsland
-	case 14, EventScript_SetFreeFlyLocationFiveIsland
-	case 15, EventScript_SetFreeFlyLocationSixIsland
-	case 16, EventScript_SetFreeFlyLocationSevenIsland
+	case 3, EventScript_SetFreeFlyLocationRoute4
+	case 4, EventScript_SetFreeFlyLocationCerulean
+	case 5, EventScript_SetFreeFlyLocationVermilion
+	case 6, EventScript_SetFreeFlyLocationRoute10
+	case 7, EventScript_SetFreeFlyLocationLavender
+	case 8, EventScript_SetFreeFlyLocationCeladon
+	case 9, EventScript_SetFreeFlyLocationFuchsia
+	case 10, EventScript_SetFreeFlyLocationSaffron
+	case 11, EventScript_SetFreeFlyLocationCinnabar
+	case 12, EventScript_SetFreeFlyLocationIndigo
+	case 13, EventScript_SetFreeFlyLocationOneIsland
+	case 14, EventScript_SetFreeFlyLocationTwoIsland
+	case 15, EventScript_SetFreeFlyLocationThreeIsland
+	case 16, EventScript_SetFreeFlyLocationFourIsland
+	case 17, EventScript_SetFreeFlyLocationFiveIsland
+	case 18, EventScript_SetFreeFlyLocationSixIsland
+	case 19, EventScript_SetFreeFlyLocationSevenIsland
 	end
 
 EventScript_SetFreeFlyLocationPallet::
@@ -1069,12 +1072,20 @@ EventScript_SetFreeFlyLocationPewter::
 	setworldmapflag FLAG_WORLD_MAP_PEWTER_CITY
 	end
 
+EventScript_SetFreeFlyLocationRoute4::
+	setworldmapflag FLAG_WORLD_MAP_ROUTE4_POKEMON_CENTER_1F
+	end
+
 EventScript_SetFreeFlyLocationCerulean::
 	setworldmapflag FLAG_WORLD_MAP_CERULEAN_CITY
 	end
 
 EventScript_SetFreeFlyLocationVermilion::
 	setworldmapflag FLAG_WORLD_MAP_VERMILION_CITY
+	end
+
+EventScript_SetFreeFlyLocationRoute10::
+	setworldmapflag FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F
 	end
 
 EventScript_SetFreeFlyLocationLavender::
@@ -1095,6 +1106,10 @@ EventScript_SetFreeFlyLocationSaffron::
 
 EventScript_SetFreeFlyLocationCinnabar::
 	setworldmapflag FLAG_WORLD_MAP_CINNABAR_ISLAND
+	end
+
+EventScript_SetFreeFlyLocationIndigo::
+	setworldmapflag FLAG_WORLD_MAP_INDIGO_PLATEAU_EXTERIOR
 	end
 
 EventScript_SetFreeFlyLocationOneIsland::

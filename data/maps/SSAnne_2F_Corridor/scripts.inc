@@ -39,6 +39,9 @@ SSAnne_2F_Corridor_EventScript_RivalTrigger::
 	call_if_eq VAR_STARTER_MON, 2, SSAnne_2F_Corridor_EventScript_RivalSquirtle
 	call_if_eq VAR_STARTER_MON, 1, SSAnne_2F_Corridor_EventScript_RivalBulbasaur
 	call_if_eq VAR_STARTER_MON, 0, SSAnne_2F_Corridor_EventScript_RivalCharmander
+	settrainerflag TRAINER_RIVAL_SS_ANNE_BULBASAUR
+	settrainerflag TRAINER_RIVAL_SS_ANNE_CHARMANDER
+	settrainerflag TRAINER_RIVAL_SS_ANNE_SQUIRTLE
 	msgbox SSAnne_2F_Corridor_Text_RivalPostBattle
 	closemessage
 	delay 10

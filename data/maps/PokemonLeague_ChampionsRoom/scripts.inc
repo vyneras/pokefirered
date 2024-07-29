@@ -105,6 +105,9 @@ PokemonLeague_ChampionsRoom_EventScript_Battle::
 	call_if_eq VAR_STARTER_MON, 2, PokemonLeague_ChampionsRoom_EventScript_BattleSquirtle
 	call_if_eq VAR_STARTER_MON, 1, PokemonLeague_ChampionsRoom_EventScript_BattleBulbasaur
 	call_if_eq VAR_STARTER_MON, 0, PokemonLeague_ChampionsRoom_EventScript_BattleCharmander
+	settrainerflag TRAINER_CHAMPION_FIRST_BULBASAUR
+	settrainerflag TRAINER_CHAMPION_FIRST_CHARMANDER
+	settrainerflag TRAINER_CHAMPION_FIRST_SQUIRTLE
 	return
 
 PokemonLeague_ChampionsRoom_EventScript_Rematch::

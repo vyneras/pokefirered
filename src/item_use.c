@@ -299,6 +299,9 @@ static bool8 CanFish(void)
     s16 x, y;
     u16 behavior;
 
+    if(!FlagGet(FLAG_SYS_POKEMON_GET))
+        return;
+
     GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
     behavior = MapGridGetMetatileBehaviorAt(x, y);
 

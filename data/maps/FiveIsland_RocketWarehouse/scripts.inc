@@ -87,6 +87,15 @@ FiveIsland_RocketWarehouse_EventScript_DefeatedAdmin2::
 	call_if_le PLAYER_X_POS, 24, FiveIsland_RocketWarehouse_EventScript_PlayerFaceAdmin2
 	msgbox FiveIsland_RocketWarehouse_Text_Admin2PostBattle
 	closemessage
+	call FiveIsland_RocketWarehouse_EventScript_TryHideFiveIslandRockets
+	setvar VAR_MAP_SCENE_ROCKET_WAREHOUSE, 1
+	setflag FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE
+	release
+	end
+
+FiveIsland_RocketWarehouse_EventScript_TryHideFiveIslandRockets::
+	specialvar VAR_RESULT, ArchipelagoSpecial_IsTrainersanity
+	goto_if_eq VAR_RESULT, TRUE, EventScript_Return
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_GRUNT2
 	removeobject LOCALID_GRUNT3
@@ -94,10 +103,7 @@ FiveIsland_RocketWarehouse_EventScript_DefeatedAdmin2::
 	removeobject LOCALID_ADMIN1
 	setflag FLAG_HIDE_FIVE_ISLAND_ROCKETS
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_MAP_SCENE_ROCKET_WAREHOUSE, 1
-	setflag FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE
-	release
-	end
+	return
 
 FiveIsland_RocketWarehouse_EventScript_PlayerFaceAdmin2::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight

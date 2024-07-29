@@ -5,17 +5,18 @@ Route22_MapScripts::
 	.byte 0
 
 Route22_OnTransition::
-	goto_if_set FLAG_DEFEATED_ROUTE22_RIVAL, Route22_SetRivalDefeated
+	goto_if_set FLAG_DEFEATED_ROUTE22_EARLY_RIVAL, Route22_SetLateRival
 	goto_if_set FLAG_DELIVERED_OAKS_PARCEL, Route22_SetEarlyRival
 	end
-
-Route22_SetRivalDefeated::
-	setvar VAR_MAP_SCENE_ROUTE22, 4
 
 Route22_SetEarlyRival::
 	goto_if_ge VAR_MAP_SCENE_ROUTE22, 2, EventScript_ReleaseEnd
 	setvar VAR_MAP_SCENE_ROUTE22, 1
 	end
+
+Route22_SetLateRival::
+	goto_if_unset FLAG_DEFEATED_LEADER_GIOVANNI, EventScript_ReleaseEnd
+	setvar VAR_MAP_SCENE_ROUTE22, 3
 
 Route22_EventScript_EarlyRivalTriggerTop::
 	lockall
@@ -49,6 +50,9 @@ Route22_EventScript_EarlyRival::
 	call_if_eq VAR_STARTER_MON, 2, Route22_EventScript_EarlyRivalSquirtle
 	call_if_eq VAR_STARTER_MON, 1, Route22_EventScript_EarlyRivalBulbasaur
 	call_if_eq VAR_STARTER_MON, 0, Route22_EventScript_EarlyRivalCharmander
+	settrainerflag TRAINER_RIVAL_ROUTE22_EARLY_BULBASAUR
+	settrainerflag TRAINER_RIVAL_ROUTE22_EARLY_CHARMANDER
+	settrainerflag TRAINER_RIVAL_ROUTE22_EARLY_SQUIRTLE
 	msgbox Route22_Text_EarlyRivalPostBattle
 	closemessage
 	delay 10
@@ -59,7 +63,7 @@ Route22_EventScript_EarlyRival::
 	fadedefaultbgm
 	removeobject LOCALID_RIVAL
 	setvar VAR_MAP_SCENE_ROUTE22, 2
-	setflag FLAG_DEFEATED_ROUTE22_RIVAL
+	setflag FLAG_DEFEATED_ROUTE22_EARLY_RIVAL
 	releaseall
 	end
 
@@ -191,6 +195,9 @@ Route22_EventScript_LateRival::
 	call_if_eq VAR_STARTER_MON, 2, Route22_EventScript_LateRivalSquirtle
 	call_if_eq VAR_STARTER_MON, 1, Route22_EventScript_LateRivalBulbasaur
 	call_if_eq VAR_STARTER_MON, 0, Route22_EventScript_LateRivalCharmander
+	settrainerflag TRAINER_RIVAL_ROUTE22_LATE_BULBASAUR
+	settrainerflag TRAINER_RIVAL_ROUTE22_LATE_CHARMANDER
+	settrainerflag TRAINER_RIVAL_ROUTE22_LATE_SQUIRTLE
 	msgbox Route22_Text_LateRivalPostBattle
 	closemessage
 	delay 10
@@ -200,7 +207,6 @@ Route22_EventScript_LateRival::
 	fadedefaultbgm
 	removeobject LOCALID_RIVAL
 	setvar VAR_MAP_SCENE_ROUTE22, 4
-	setflag FLAG_DEFEATED_ROUTE22_RIVAL
 	releaseall
 	end
 

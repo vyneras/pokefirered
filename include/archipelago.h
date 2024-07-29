@@ -40,6 +40,8 @@ struct ArchipelagoOptions
   /* 0x1A */ bool8 reccuringHiddenItems;
 
   /* 0x1B */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
+
+  /* 0x20 */ bool8 isTrainersanity;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem

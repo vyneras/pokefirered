@@ -48,6 +48,7 @@ Route4_PokemonCenter_1F_EventScript_TryBuyMagikarp::
 	checkmoney MAGIKARP_PRICE
 	goto_if_eq VAR_RESULT, FALSE, Route4_PokemonCenter_1F_EventScript_NotEnoughMoney
 	textcolor NPC_TEXT_COLOR_NEUTRAL
+Archipelago_Target_Level_Special_Gift_MAGIKARP::
 	givemon VAR_TEMP_1, 5
 	goto_if_eq VAR_RESULT, 0, Route4_PokemonCenter_1F_EventScript_BuyMagikarpParty
 	goto_if_eq VAR_RESULT, 1, Route4_PokemonCenter_1F_EventScript_BuyMagikarpPC

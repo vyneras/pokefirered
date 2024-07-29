@@ -61,6 +61,9 @@ CeruleanCity_EventScript_Rival::
 	call_if_eq VAR_STARTER_MON, 2, CeruleanCity_EventScript_RivalSquirtle
 	call_if_eq VAR_STARTER_MON, 1, CeruleanCity_EventScript_RivalBulbasaur
 	call_if_eq VAR_STARTER_MON, 0, CeruleanCity_EventScript_RivalCharmander
+	settrainerflag TRAINER_RIVAL_CERULEAN_BULBASAUR
+	settrainerflag TRAINER_RIVAL_CERULEAN_CHARMANDER
+	settrainerflag TRAINER_RIVAL_CERULEAN_SQUIRTLE
 	famechecker FAMECHECKER_BILL, 0
 	msgbox CeruleanCity_Text_RivalPostBattle
 	closemessage

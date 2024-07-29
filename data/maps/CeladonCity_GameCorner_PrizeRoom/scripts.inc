@@ -132,9 +132,11 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon::
 
 CeladonCity_GameCorner_PrizeRoom_EventScript_GiveAbra::
 	.ifdef FIRERED
+Archipelago_Target_Level_Prize_Pokemon_1::
 	givemon VAR_TEMP_1, 9
 	.else
 	.ifdef LEAFGREEN
+Archipelago_Target_Level_Prize_Pokemon_1::
 	givemon VAR_TEMP_1, 7
 	.endif
 	.endif
@@ -143,9 +145,11 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_GiveAbra::
 
 CeladonCity_GameCorner_PrizeRoom_EventScript_GiveClefairy::
 	.ifdef FIRERED
+Archipelago_Target_Level_Prize_Pokemon_2::
 	givemon VAR_TEMP_1, 8
 	.else
 	.ifdef LEAFGREEN
+Archipelago_Target_Level_Prize_Pokemon_2::
 	givemon VAR_TEMP_1, 12
 	.endif
 	.endif
@@ -154,9 +158,11 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_GiveClefairy::
 
 CeladonCity_GameCorner_PrizeRoom_EventScript_GiveDratini::
 	.ifdef FIRERED
+Archipelago_Target_Level_Prize_Pokemon_3::
 	givemon VAR_TEMP_1, 18
 	.else
 	.ifdef LEAFGREEN
+Archipelago_Target_Level_Prize_Pokemon_4::
 	givemon VAR_TEMP_1, 24
 	.endif
 	.endif
@@ -164,15 +170,20 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_GiveDratini::
 	end
 
 CeladonCity_GameCorner_PrizeRoom_EventScript_GiveScyther::
+	.ifdef FIRERED
+Archipelago_Target_Level_Prize_Pokemon_4::
+	.endif
 	givemon VAR_TEMP_1, 25
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_CheckReceivedMon
 	end
 
 CeladonCity_GameCorner_PrizeRoom_EventScript_GivePorygon::
 	.ifdef FIRERED
+Archipelago_Target_Level_Prize_Pokemon_5::
 	givemon VAR_TEMP_1, 26
 	.else
 	.ifdef LEAFGREEN
+Archipelago_Target_Level_Prize_Pokemon_5::
 	givemon VAR_TEMP_1, 18
 	.endif
 	.endif
@@ -180,6 +191,9 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_GivePorygon::
 	end
 
 CeladonCity_GameCorner_PrizeRoom_EventScript_GivePinsir::
+	.ifdef LEAFGREEN
+Archipelago_Target_Level_Prize_Pokemon_3::
+	.endif
 	givemon VAR_TEMP_1, 18
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_CheckReceivedMon
 	end

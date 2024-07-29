@@ -13,6 +13,7 @@ CeladonCity_Condominiums_RoofRoom_EventScript_EeveeBall::
 Archipelago_Target_Special_Gift_EEVEE::
 	setvar VAR_TEMP_1, SPECIES_EEVEE
   bufferspeciesname STR_VAR_1, VAR_TEMP_1
+Archipelago_Target_Level_Special_Gift_EEVEE::
 	givemon VAR_TEMP_1, 25
 	goto_if_eq VAR_RESULT, 0, CeladonCity_Condominiums_RoofRoom_EventScript_GetEeveeParty
 	goto_if_eq VAR_RESULT, 1, CeladonCity_Condominiums_RoofRoom_EventScript_GetEeveePC
