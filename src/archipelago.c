@@ -39,10 +39,20 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
         [1] = 20, // Route 10
         [2] = 30, // Route 11
         [3] = 40, // Route 16
-        [4] = 50 // Route 15
+        [4] = 50  // Route 15
     },
 
-    .isTrainersanity = FALSE
+    .isTrainersanity = FALSE,
+
+    .removeBadgeRequirement = {
+      [0] = FALSE, // Flash
+      [1] = FALSE, // Cut
+      [2] = FALSE, // Fly
+      [3] = FALSE, // Strength
+      [4] = FALSE, // Surf
+      [5] = FALSE, // Rock Smash
+      [6] = FALSE  // Waterfall
+    }
 };
 
 EWRAM_DATA struct ArchipelagoReceivedItem gArchipelagoReceivedItem = {0};
@@ -67,31 +77,31 @@ bool8 CanUseHmOutsideBattle(u8 fieldMove)
 {
     if(fieldMove == FIELD_MOVE_FLASH)
     {
-      return FlagGet(FLAG_BADGE01_GET);
+      return FlagGet(FLAG_BADGE01_GET) || gArchipelagoOptions.removeBadgeRequirement[FIELD_MOVE_FLASH];
     }
     else if(fieldMove == FIELD_MOVE_CUT)
     {
-      return FlagGet(FLAG_BADGE02_GET);
+      return FlagGet(FLAG_BADGE02_GET) || gArchipelagoOptions.removeBadgeRequirement[FIELD_MOVE_CUT];
     }
     else if(fieldMove == FIELD_MOVE_FLY)
     {
-      return FlagGet(FLAG_BADGE03_GET);
+      return FlagGet(FLAG_BADGE03_GET) || gArchipelagoOptions.removeBadgeRequirement[FIELD_MOVE_FLY];
     }
     else if(fieldMove == FIELD_MOVE_STRENGTH)
     {
-      return FlagGet(FLAG_BADGE04_GET);
+      return FlagGet(FLAG_BADGE04_GET) || gArchipelagoOptions.removeBadgeRequirement[FIELD_MOVE_STRENGTH];
     }
     else if(fieldMove == FIELD_MOVE_SURF)
     {
-      return FlagGet(FLAG_BADGE05_GET);
+      return FlagGet(FLAG_BADGE05_GET) || gArchipelagoOptions.removeBadgeRequirement[FIELD_MOVE_SURF];
     }
     else if(fieldMove == FIELD_MOVE_ROCK_SMASH)
     {
-      return FlagGet(FLAG_BADGE06_GET);
+      return FlagGet(FLAG_BADGE06_GET) || gArchipelagoOptions.removeBadgeRequirement[FIELD_MOVE_ROCK_SMASH];
     }
     else if(fieldMove == FIELD_MOVE_WATERFALL)
     {
-      return FlagGet(FLAG_BADGE07_GET);
+      return FlagGet(FLAG_BADGE07_GET) || gArchipelagoOptions.removeBadgeRequirement[FIELD_MOVE_WATERFALL];
     }
 
     return FALSE;
