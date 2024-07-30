@@ -1901,7 +1901,7 @@ static u16 GetTutorMove(u8 tutor)
     case TUTOR_MOVE_HYDRO_CANNON:
         return MOVE_HYDRO_CANNON;
     default:
-        return sTutorMoves[tutor];
+        return gTutorMoves[tutor];
     }
 }
 

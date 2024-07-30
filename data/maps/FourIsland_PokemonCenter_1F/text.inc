@@ -2,11 +2,11 @@
 Text_BodySlamTeach::
     .string "Ready?\n"
     .string "Boing!\p"
-    .string "We're having a BODY SLAM match\n"
+    .string "We're having a {STR_VAR_1} match\n"
     .string "to see who wimps out first.\p"
     .string "If you were to join us, you'd be\n"
     .string "squashed like a bug, though…\p"
-    .string "How about I teach BODY SLAM to\n"
+    .string "How about I teach {STR_VAR_1} to\n"
     .string "a POKéMON of yours instead?$"
 
 Text_BodySlamDeclined::
@@ -15,7 +15,7 @@ Text_BodySlamDeclined::
 
 Text_BodySlamWhichMon::
     .string "Which POKéMON wants to learn how\n"
-    .string "to BODY SLAM?$"
+    .string "to {STR_VAR_1}?$"
 
 Text_BodySlamTaught::
     .string "Boioing!$"

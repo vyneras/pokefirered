@@ -433,7 +433,7 @@ int main (int argc, char *argv[])
             { "gTrainers", symbol_map["gTrainers"] - ROM_START },
             { "sTMHMMoves", symbol_map["sTMHMMoves"] - ROM_START },
             { "gEvolutionTable", symbol_map["gEvolutionTable"] - ROM_START },
-            { "sTutorMoves", symbol_map["sTutorMoves"] - ROM_START },
+            { "gTutorMoves", symbol_map["gTutorMoves"] - ROM_START },
             { "sTutorLearnsets", symbol_map["sTutorLearnsets"] - ROM_START },
             { "sFanfares", symbol_map["sFanfares"] - ROM_START },
             { "sInGameTrades", symbol_map["sInGameTrades"] - ROM_START}

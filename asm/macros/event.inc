@@ -1649,6 +1649,13 @@
 	.2byte \var
 	.endm
 
+	@ Writes the name of the move a tutor teaches to the specified buffer.
+	.macro buffertutormovename stringVarId:req, tutorId:req
+	.byte 0xd7
+	stringvar \stringVarId
+	.byte \tutorId
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req

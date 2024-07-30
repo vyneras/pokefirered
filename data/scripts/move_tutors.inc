@@ -1,6 +1,7 @@
 VictoryRoad_2F_EventScript_DoubleEdgeTutor::
 	lock
 	faceplayer
+	buffertutormovename STR_VAR_1, MOVETUTOR_DOUBLE_EDGE
 	goto_if_set FLAG_TUTOR_DOUBLE_EDGE, EventScript_DoubleEdgeTaught
 	msgbox Text_DoubleEdgeTeach, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_DoubleEdgeDeclined
@@ -33,6 +34,7 @@ EventScript_DoubleEdgeTaught::
 EventScript_ThunderWaveTutor::
 	lock
 	faceplayer
+	buffertutormovename STR_VAR_1, MOVETUTOR_THUNDER_WAVE
 	goto_if_set FLAG_TUTOR_THUNDER_WAVE, EventScript_ThunderWaveTaught
 	msgbox Text_ThunderWaveTeach, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_ThunderWaveDeclined
@@ -64,6 +66,7 @@ EventScript_ThunderWaveTaught::
 RockTunnel_B1F_EventScript_RockSlideTutor::
 	lock
 	faceplayer
+	buffertutormovename STR_VAR_1, MOVETUTOR_ROCK_SLIDE
 	goto_if_set FLAG_TUTOR_ROCK_SLIDE, EventScript_RockSlideTaught
 	msgbox Text_RockSlideTeach, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_RockSlideDeclined
@@ -95,6 +98,7 @@ EventScript_RockSlideTaught::
 MtEmber_Exterior_EventScript_ExplosionTutor::
 	lock
 	faceplayer
+	buffertutormovename STR_VAR_1, MOVETUTOR_EXPLOSION
 	goto_if_set FLAG_TUTOR_EXPLOSION, EventScript_ExplosionTaught
 	msgbox Text_ExplosionTeach, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_ExplosionDeclined
@@ -126,6 +130,7 @@ EventScript_ExplosionTaught::
 Route4_EventScript_MegaPunchTutor::
 	lock
 	faceplayer
+	buffertutormovename STR_VAR_1, MOVETUTOR_MEGA_PUNCH
 	goto_if_set FLAG_TUTOR_MEGA_PUNCH, EventScript_MegaPunchTaught
 	msgbox Text_MegaPunchTeach, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_MegaPunchDeclined
@@ -157,6 +162,7 @@ EventScript_MegaPunchTaught::
 Route4_EventScript_MegaKickTutor::
 	lock
 	faceplayer
+	buffertutormovename STR_VAR_1, MOVETUTOR_MEGA_KICK
 	goto_if_set FLAG_TUTOR_MEGA_KICK, EventScript_MegaKickTaught
 	msgbox Text_MegaKickTeach, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_MegaKickDeclined
@@ -188,6 +194,7 @@ EventScript_MegaKickTaught::
 EventScript_DreamEaterTutor::
 	lock
 	faceplayer
+	buffertutormovename STR_VAR_1, MOVETUTOR_DREAM_EATER
 	goto_if_set FLAG_TUTOR_DREAM_EATER, EventScript_DreamEaterTaught
 	msgbox Text_DreamEaterTeach, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_DreamEaterDeclined
@@ -219,6 +226,7 @@ EventScript_DreamEaterTaught::
 EventScript_SoftboiledTutor::
 	lock
 	faceplayer
+	buffertutormovename STR_VAR_1, MOVETUTOR_SOFT_BOILED
 	goto_if_set FLAG_TUTOR_SOFT_BOILED, EventScript_SoftboiledTaught
 	msgbox Text_SoftboiledTeach, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_SoftboiledDeclined
@@ -250,6 +258,7 @@ EventScript_SoftboiledTaught::
 FuchsiaCity_EventScript_SubstituteTutor::
 	lock
 	faceplayer
+	buffertutormovename STR_VAR_1, MOVETUTOR_SUBSTITUTE
 	goto_if_set FLAG_TUTOR_SUBSTITUTE, EventScript_SubstituteTaught
 	msgbox Text_SubstituteTeach, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_SubstituteDeclined
@@ -281,6 +290,7 @@ EventScript_SubstituteTaught::
 SevenIsland_EventScript_SwordsDanceTutor::
 	lock
 	faceplayer
+	buffertutormovename STR_VAR_1, MOVETUTOR_SWORDS_DANCE
 	goto_if_set FLAG_TUTOR_SWORDS_DANCE, EventScript_SwordsDanceTaught
 	msgbox Text_SwordsDanceTeach, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_SwordsDanceDeclined
@@ -312,6 +322,7 @@ EventScript_SwordsDanceTaught::
 PewterCity_Museum_1F_EventScript_SeismicTossTutor::
 	lock
 	faceplayer
+	buffertutormovename STR_VAR_1, MOVETUTOR_SEISMIC_TOSS
 	goto_if_set FLAG_TUTOR_SEISMIC_TOSS, EventScript_SeismicTossTaught
 	msgbox Text_SeismicTossTeach, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_SeismicTossDeclined
@@ -343,6 +354,7 @@ EventScript_SeismicTossTaught::
 EventScript_CounterTutor::
 	lock
 	faceplayer
+	buffertutormovename STR_VAR_1, MOVETUTOR_COUNTER
 	goto_if_set FLAG_TUTOR_COUNTER, EventScript_CounterTaught
 	msgbox Text_CounterTeach, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_CounterDeclined
@@ -374,6 +386,7 @@ EventScript_CounterTaught::
 EventScript_MetronomeTutor::
 	lock
 	faceplayer
+	buffertutormovename STR_VAR_1, MOVETUTOR_METRONOME
 	goto_if_set FLAG_TUTOR_METRONOME, EventScript_MetronomeTaught
 	msgbox Text_MetronomeTeach, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_MetronomeDeclined
@@ -403,6 +416,7 @@ EventScript_MetronomeTaught::
 	end
 
 EventScript_MimicTutor::
+	buffertutormovename STR_VAR_1, MOVETUTOR_MIMIC
 	goto_if_set FLAG_TUTOR_MIMIC, EventScript_MimicTaught
 	msgbox Text_MimicTeach, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_MimicDeclined
@@ -447,6 +461,7 @@ EventScript_MimicTaughtFemale::
 FourIsland_House1_EventScript_BodySlamTutor::
 	lock
 	faceplayer
+	buffertutormovename STR_VAR_1, MOVETUTOR_BODY_SLAM
 	goto_if_set FLAG_TUTOR_BODY_SLAM, EventScript_BodySlamTaught
 	msgbox Text_BodySlamTeach, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_BodySlamDeclined
