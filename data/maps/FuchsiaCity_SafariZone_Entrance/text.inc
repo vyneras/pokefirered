@@ -1,6 +1,11 @@
 FuchsiaCity_SafariZone_Entrance_Text_WelcomeToSafariZone::
     .string "Welcome to the SAFARI ZONE!$"
 
+FuchsiaCity_SafariZone_Entrance_Text_NoPass::
+    .string "Do you have a SAFARI PASS?\p"
+    .string "I'm sorry, but we can't let you\n"
+    .string "play without one.$"
+
 FuchsiaCity_SafariZone_Entrance_Text_PlaySafariGameFor500::
     .string "For just ¥500, you can play the\n"
     .string "SAFARI GAME.\p"

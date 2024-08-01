@@ -2,7 +2,21 @@ FuchsiaCity_SafariZone_Office_MapScripts::
 	.byte 0
 
 FuchsiaCity_SafariZone_Office_EventScript_Worker1::
-	msgbox FuchsiaCity_SafariZone_Office_Text_NicknamedWardenSlowpoke, MSGBOX_NPC
+	lock
+	faceplayer
+	specialvar VAR_RESULT, ArchipelagoSpecial_ExtraKeyItems
+	goto_if_eq VAR_RESULT, FALSE, FuchsiaCity_SafariZone_Office_EventScript_Worker1GavePass
+	goto_if_set FLAG_GOT_SAFARI_PASS, FuchsiaCity_SafariZone_Office_EventScript_Worker1GavePass
+	msgbox FuchsiaCity_SafariZone_Office_Text_WantToPlay
+Archipelago_Target_NPC_Gift_FLAG_GOT_SAFARI_PASS::
+	giveitem ITEM_SAFARI_PASS, 1, FLAG_GOT_SAFARI_PASS
+	msgbox FuchsiaCity_SafariZone_Office_Text_TakeThatToSafariZone
+	release
+	end
+
+FuchsiaCity_SafariZone_Office_EventScript_Worker1GavePass::
+	msgbox FuchsiaCity_SafariZone_Office_Text_NicknamedWardenSlowpoke
+	release
 	end
 
 FuchsiaCity_SafariZone_Office_EventScript_Worker2::

@@ -123,6 +123,15 @@ CeladonCity_GameCorner_Text_SwitchBehindPosterPushIt::
     .string "A switch behind the poster!?\n"
     .string "Let's push it!$"
 
+CeladonCity_GameCorner_Text_NoHideoutKey::
+    .string "Hey!\p"
+    .string "A switch behind the poster!?\n"
+    .string "Looks like you need a key for it.$"
+
+CeladonCity_GameCorner_Text_SwitchBehindPosterKey::
+    .string "You inserted the key and pushed\n"
+    .string "the switch!$"
+
 CeladonCity_GameCorner_Text_CoinCaseIsRequired::
     .string "A COIN CASE is required…$"
 

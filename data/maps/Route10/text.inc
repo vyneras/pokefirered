@@ -84,3 +84,20 @@ Route10_Text_RockTunnel::
 Route10_Text_PowerPlant::
     .string "POWER PLANT$"
 
+Route10_Text_NoMachinePart::
+    .string "Please help! Someone stole a\n"
+    .string "part from one of the generators.\p"
+    .string "I need that part if I'm ever\n"
+    .string "going to restore this place.$"
+
+Route10_Text_FoundMachinePart::
+    .string "Oh! You found the missing part.$"
+
+Route10_Text_GiveMachinePart::
+    .string "{PLAYER} handed the MACHINE PART\n"
+    .string "to the SCIENTIST.$"
+
+Route10_Text_GetBackToWork::
+    .string "Now I can get back to repairing\l"
+    .string "this place.$"
+

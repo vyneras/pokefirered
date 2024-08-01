@@ -42,8 +42,9 @@ struct ArchipelagoOptions
   /* 0x1B */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
 
   /* 0x20 */ bool8 isTrainersanity;
+  /* 0x21 */ bool8 extraKeyItems;
 
-  /* 0x21 */ bool8 removeBadgeRequirement[7]; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
+  /* 0x22 */ bool8 removeBadgeRequirement[7]; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem

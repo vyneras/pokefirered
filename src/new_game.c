@@ -168,6 +168,8 @@ void NewGameInitData(void)
     if (gArchipelagoOptions.startingBadges & (1 << 5)) FlagSet(FLAG_BADGE06_GET);
     if (gArchipelagoOptions.startingBadges & (1 << 6)) FlagSet(FLAG_BADGE07_GET);
     if (gArchipelagoOptions.startingBadges & (1 << 7)) FlagSet(FLAG_BADGE08_GET);
+
+    if (!gArchipelagoOptions.extraKeyItems) RunScriptImmediately(EventScript_SetExtraKeyItemFlags);
 }
 
 static void ResetMiniGamesResults(void)

@@ -25,3 +25,30 @@ CinnabarIsland_Text_GymSign::
     .string "LEADER: BLAINE\l"
     .string "The Hotheaded Quiz Master!$"
 
+CinnabarIsland_Text_NoLetter::
+    .string "No one is allowed in without\n"
+    .string "first getting permission from the\l"
+    .string "POKéMON LAB.\p"
+    .string "A number of people have been\n"
+    .string "breaking in to loot the place.$"
+
+CinnabarIsland_Text_FoundLetter::
+    .string "No one is allowed in without\n"
+    .string "first getting permission from the\l"
+    .string "POKéMON LAB.$"
+
+CinnabarIsland_Text_GiveLetter::
+    .string "{PLAYER} handed the LETTER\n"
+    .string "to the POLICEMAN.$"
+
+CinnabarIsland_Text_YouCanHeadIn::
+    .string "Oh! A letter of entry from the\n"
+    .string "POKéMON LAB.\p"
+    .string "Just be careful, this place has\n"
+    .string "long since been abandoned.$"
+
+CinnabarIsland_Text_BeCareful::
+    .string "Feel free to look around as much\n"
+    .string "as you would like.\p"
+    .string "Just be careful, this place has\n"
+    .string "long since been abandoned.$"

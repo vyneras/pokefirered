@@ -111,7 +111,7 @@
 #define FLAG_HIDE_CELADON_ROCKETS                          0x05F
 #define FLAG_HIDE_DOJO_HITMONLEE_BALL                      0x060
 #define FLAG_HIDE_DOJO_HITMONCHAN_BALL                     0x061
-#define FLAG_0x062                                         0x062
+#define FLAG_HIDE_ROUTE_10_SCIENTIST                       0x062
 #define FLAG_HIDE_UNION_ROOM_PLAYER_1                      0x063
 #define FLAG_HIDE_UNION_ROOM_PLAYER_2                      0x064
 #define FLAG_HIDE_UNION_ROOM_PLAYER_3                      0x065
@@ -120,7 +120,7 @@
 #define FLAG_HIDE_UNION_ROOM_PLAYER_6                      0x068
 #define FLAG_HIDE_UNION_ROOM_PLAYER_7                      0x069
 #define FLAG_HIDE_UNION_ROOM_PLAYER_8                      0x06A
-#define FLAG_0x06B                                         0x06B
+#define FLAG_HIDE_CINNABAR_ISLAND_POILCEMAN                0x06B
 #define FLAG_HIDE_SAFFRON_FAN_CLUB_BLACKBELT               0x06C
 #define FLAG_HIDE_SAFFRON_FAN_CLUB_ROCKER                  0x06D
 #define FLAG_HIDE_SAFFRON_FAN_CLUB_WOMAN                   0x06E
@@ -439,7 +439,7 @@
 #define FLAG_ITEM_POKEMON_MANSION_3F_IRON                       0x1A3
 #define FLAG_ITEM_POKEMON_MANSION_B1F_TM14                      0x1A4
 #define FLAG_ITEM_POKEMON_MANSION_B1F_FULL_RESTORE              0x1A5
-#define FLAG_0x1A6                                              0x1A6
+#define FLAG_ITEM_CELADON_CITY_HOUSE_HIDEOUT_KEY          0x1A6
 #define FLAG_ITEM_POKEMON_MANSION_B1F_TM22                      0x1A7
 #define FLAG_ITEM_POKEMON_MANSION_B1F_SECRET_KEY                0x1A8
 #define FLAG_ITEM_VICTORY_ROAD_1F_RARE_CANDY                    0x1A9
@@ -676,8 +676,8 @@
 #define FLAG_SILPH_9F_DOOR_4                             0x28B
 #define FLAG_SILPH_10F_DOOR                              0x28C
 #define FLAG_SILPH_11F_DOOR                              0x28D
-#define FLAG_0x28E                                       0x28E
-#define FLAG_0x28F                                       0x28F
+#define FLAG_SHOWED_LETTER                               0x28E
+#define FLAG_GOT_SAFARI_PASS                             0x28F
 #define FLAG_MET_STICKER_MAN                             0x290
 #define FLAG_PALLET_LADY_NOT_BLOCKING_SIGN               0x291
 #define FLAG_GOT_VS_SEEKER                               0x292
@@ -687,7 +687,7 @@
 #define FLAG_GOT_TM16_FROM_THIRSTY_GIRL                  0x296
 #define FLAG_GOT_TM03_FROM_MISTY                         0x297
 #define FLAG_GOT_TM26_FROM_GIOVANNI                      0x298
-#define FLAG_0x299                                       0x299
+#define FLAG_GOT_LETTER                                  0x299
 #define FLAG_GOT_TM04_FROM_SABRINA                       0x29A
 #define FLAG_GOT_FAME_CHECKER                            0x29B
 #define FLAG_GOT_RECORD_SETTING_MAGIKARP                 0x29C
@@ -1069,7 +1069,7 @@
 #define FLAG_HIDDEN_ITEM_VICTORY_ROAD_1F_ULTRA_BALL                        (FLAG_HIDDEN_ITEMS_START +  37)
 #define FLAG_HIDDEN_ITEM_VICTORY_ROAD_1F_FULL_RESTORE                      (FLAG_HIDDEN_ITEMS_START +  38)
 #define FLAG_HIDDEN_ITEM_CERULEAN_CAVE_1F_ULTRA_BALL                       (FLAG_HIDDEN_ITEMS_START +  39)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x28                                       (FLAG_HIDDEN_ITEMS_START +  40)
+#define FLAG_HIDDEN_ITEM_CERULEAN_CITY_GYM_MACHINE_PART                    (FLAG_HIDDEN_ITEMS_START +  40)
 #define FLAG_HIDDEN_ITEM_ROUTE11_ESCAPE_ROPE                               (FLAG_HIDDEN_ITEMS_START +  41)
 #define FLAG_HIDDEN_ITEM_ROUTE12_HYPER_POTION                              (FLAG_HIDDEN_ITEMS_START +  42)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x2B                                       (FLAG_HIDDEN_ITEMS_START +  43)

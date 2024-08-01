@@ -6,7 +6,20 @@ CinnabarIsland_PokemonLab_ResearchRoom_EventScript_MetronomeTutor::
 	end
 
 CinnabarIsland_PokemonLab_ResearchRoom_EventScript_Scientist::
-	msgbox CinnabarIsland_PokemonLab_ResearchRoom_Text_EeveeCanEvolveIntroThreeMons, MSGBOX_NPC
+	lock
+	faceplayer
+	specialvar VAR_RESULT, ArchipelagoSpecial_ExtraKeyItems
+	goto_if_eq VAR_RESULT, FALSE, CinnabarIsland_PokemonLab_ResearchRoom_EventScriptScientistGaveLetter
+	goto_if_set FLAG_GOT_LETTER, CinnabarIsland_PokemonLab_ResearchRoom_EventScriptScientistGaveLetter
+	msgbox CinnabarIsland_PokemonLab_ResearchRoom_Text_TakeThisLetter
+Archipelago_Target_NPC_Gift_FLAG_GOT_LETTER::
+	giveitem ITEM_LETTER, 1, FLAG_GOT_LETTER
+	release
+	end
+
+CinnabarIsland_PokemonLab_ResearchRoom_EventScriptScientistGaveLetter::
+	msgbox CinnabarIsland_PokemonLab_ResearchRoom_Text_EeveeCanEvolveIntroThreeMons
+	release
 	end
 
 CinnabarIsland_PokemonLab_ResearchRoom_EventScript_Computer::

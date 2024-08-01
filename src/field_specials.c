@@ -2893,3 +2893,8 @@ bool8 ArchipelagoSpecial_IsTrainersanity(void)
 {
     return gArchipelagoOptions.isTrainersanity;
 }
+
+bool8 ArchipelagoSpecial_ExtraKeyItems(void)
+{
+    return gArchipelagoOptions.extraKeyItems;
+}

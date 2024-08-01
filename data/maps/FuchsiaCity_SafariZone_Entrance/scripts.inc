@@ -102,11 +102,26 @@ FuchsiaCity_SafariZone_Entrance_EventScript_AskEnterSafariZone::
 	msgbox FuchsiaCity_SafariZone_Entrance_Text_WelcomeToSafariZone
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
+	specialvar VAR_RESULT, ArchipelagoSpecial_ExtraKeyItems
+	call_if_eq VAR_RESULT, TRUE, FuchsiaCity_SafariZone_Entrance_EventScript_CheckForPass
 	showmoneybox 0, 0
 	msgbox FuchsiaCity_SafariZone_Entrance_Text_PlaySafariGameFor500, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, FuchsiaCity_SafariZone_Entrance_EventScript_TryEnterSafariZone
 	msgbox FuchsiaCity_SafariZone_Entrance_Text_OkayPleaseComeAgain
 	goto FuchsiaCity_SafariZone_Entrance_EventScript_ForcePlayerBack
+	end
+
+FuchsiaCity_SafariZone_Entrance_EventScript_CheckForPass::
+	checkitem ITEM_SAFARI_PASS
+	goto_if_eq VAR_RESULT, FALSE, FuchsiaCity_SafariZone_Entrance_EventScript_NoPass
+	return
+
+FuchsiaCity_SafariZone_Entrance_EventScript_NoPass::
+	msgbox FuchsiaCity_SafariZone_Entrance_Text_NoPass
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, FuchsiaCity_SafariZone_Entrance_Movement_ForceBack
+	waitmovement 0
+	releaseall
 	end
 
 FuchsiaCity_SafariZone_Entrance_EventScript_TryEnterSafariZone::

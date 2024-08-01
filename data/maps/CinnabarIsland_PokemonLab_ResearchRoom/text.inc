@@ -1,3 +1,13 @@
+CinnabarIsland_PokemonLab_ResearchRoom_Text_TakeThisLetter::
+    .string "Would you be willing to help me\n"
+    .string "with my research?\p"
+    .string "I would like you to head to the\n"
+    .string "POKéMON MANSION north of here and\l"
+    .string "bring back any documents you find.\p"
+    .string "Show this to the POLICEMAN\n"
+    .string "guarding the entrance and he\l"
+    .string "will let you in.$"
+
 CinnabarIsland_PokemonLab_ResearchRoom_Text_EeveeCanEvolveIntroThreeMons::
     .string "EEVEE can evolve into one of three\n"
     .string "kinds of POKéMON.$"

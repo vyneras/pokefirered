@@ -1035,6 +1035,13 @@ EventScript_ResetAllMapFlags::
 	setvar VAR_MASSAGE_COOLDOWN_STEP_COUNTER, 500
 	end
 
+EventScript_SetExtraKeyItemFlags::
+	setflag FLAG_HIDE_ROUTE_10_SCIENTIST
+	setflag FLAG_HIDE_CINNABAR_ISLAND_POILCEMAN
+	setflag FLAG_ITEM_CELADON_CITY_HOUSE_HIDEOUT_KEY
+	setflag FLAG_HIDDEN_ITEM_CERULEAN_CITY_GYM_MACHINE_PART
+	end
+
 EventScript_SetFreeFlyLocation::
 	specialvar VAR_RESULT, ArchipelagoSpecial_GetFreeFlyLocation
 	switch VAR_RESULT

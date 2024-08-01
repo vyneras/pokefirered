@@ -1,3 +1,12 @@
+FuchsiaCity_SafariZone_Office_Text_WantToPlay::
+    .string "Do you want to play the game at\n"
+    .string "the SAFARI ZONE?\p"
+    .string "You'll need this to enter.$"
+
+FuchsiaCity_SafariZone_Office_Text_TakeThatToSafariZone::
+    .string "Show that pass to the receptionist\n"
+    .string "at the SAFARI ZONE ENTRANCE.$"
+
 FuchsiaCity_SafariZone_Office_Text_NicknamedWardenSlowpoke::
     .string "We nicknamed the WARDEN\n"
     .string "“SLOWPOKE.”\p"

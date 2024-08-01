@@ -482,4 +482,5 @@ gSpecials::
 	def_special ArchipelagoSpecial_CanUseHmOutsideBattle
 	def_special ArchipelagoSpecial_GetProfessorOaksAideCount
 	def_special ArchipelagoSpecial_IsTrainersanity
+	def_special ArchipelagoSpecial_ExtraKeyItems
 gSpecialsEnd::

@@ -1,3 +1,5 @@
+.set LOCALID_POLICEMAN, 3
+
 CinnabarIsland_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, CinnabarIsland_OnTransition
 	.byte 0
@@ -5,6 +7,8 @@ CinnabarIsland_MapScripts::
 CinnabarIsland_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_CINNABAR_ISLAND
 	call CinnabarIsland_EventScript_CheckUnlockGym
+	specialvar VAR_RESULT ArchipelagoSpecial_ExtraKeyItems
+	call_if_eq VAR_RESULT, TRUE, CinnabarIsland_EventScript_CheckBlockMansion
 	end
 
 CinnabarIsland_EventScript_CheckUnlockGym::
@@ -14,6 +18,14 @@ CinnabarIsland_EventScript_CheckUnlockGym::
 
 CinnabarIsland_EventScript_UnlockGym::
 	setvar VAR_TEMP_1, 1
+	return
+
+CinnabarIsland_EventScript_CheckBlockMansion::
+	call_if_unset FLAG_SHOWED_LETTER, CinnabarIsland_EventScript_BlockMansion
+	return
+
+CinnabarIsland_EventScript_BlockMansion::
+	setobjectxyperm LOCALID_POLICEMAN, 8, 4
 	return
 
 @ Triggered when VAR_TEMP_1 is 0
@@ -64,3 +76,53 @@ CinnabarIsland_EventScript_GymSign::
 	msgbox CinnabarIsland_Text_GymSign
 	releaseall
 	end
+
+CinnabarIsland_EventScript_Policeman::
+	lock
+	faceplayer
+	goto_if_set FLAG_SHOWED_LETTER, CinnabarIsland_EventScript_PolicemanBeCareful
+	checkitem ITEM_LETTER
+	goto_if_eq VAR_RESULT, TRUE, CinnabarIsland_EventScript_PolicemanFoundLetter
+	msgbox CinnabarIsland_Text_NoLetter
+	release
+	end
+
+CinnabarIsland_EventScript_PolicemanFoundLetter::
+	removeitem ITEM_LETTER
+	setflag FLAG_SHOWED_LETTER
+	msgbox CinnabarIsland_Text_FoundLetter
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	playfanfare MUS_OBTAIN_TMHM
+	message CinnabarIsland_Text_GiveLetter
+	waitmessage
+	waitfanfare
+	call EventScript_RestorePrevTextColor
+	closemessage
+	msgbox CinnabarIsland_Text_YouCanHeadIn
+	closemessage
+	call_if_eq VAR_FACING, DIR_EAST, CinnabarIsland_EventScript_PolicemanMoveEast
+	applymovement LOCALID_POLICEMAN, CinnabarIsland_Movement_PolicemanMoveWest
+	waitmovement 0
+	release
+	end
+
+CinnabarIsland_EventScript_PolicemanMoveEast::
+	applymovement LOCALID_POLICEMAN, CinnabarIsland_Movement_PolicemanMoveEast
+	waitmovement 0
+	release
+	end
+
+CinnabarIsland_EventScript_PolicemanBeCareful::
+	msgbox CinnabarIsland_Text_BeCareful
+	release
+	end
+
+CinnabarIsland_Movement_PolicemanMoveWest::
+	walk_left
+	face_down
+	step_end
+
+CinnabarIsland_Movement_PolicemanMoveEast::
+	walk_right
+	face_down
+	step_end

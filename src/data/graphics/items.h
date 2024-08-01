@@ -661,6 +661,7 @@ const u32 gItemIconPalette_CardKey[] = INCBIN_U32("graphics/items/icon_palettes/
 
 const u32 gItemIcon_LiftKey[] = INCBIN_U32("graphics/items/icons/lift_key.4bpp.lz");
 const u32 gItemIconPalette_Key[] = INCBIN_U32("graphics/items/icon_palettes/key.gbapal.lz");
+const u32 gItemIconPalette_HideoutKey[] = INCBIN_U32("graphics/items/icon_palettes/hideout_key.gbapal.lz");
 
 const u32 gItemIcon_HelixFossil[] = INCBIN_U32("graphics/items/icons/helix_fossil.4bpp.lz");
 const u32 gItemIconPalette_KantoFossil[] = INCBIN_U32("graphics/items/icon_palettes/kanto_fossil.gbapal.lz");
@@ -701,6 +702,7 @@ const u32 gItemIconPalette_Tea[] = INCBIN_U32("graphics/items/icon_palettes/tea.
 
 const u32 gItemIcon_MysticTicket[] = INCBIN_U32("graphics/items/icons/mystic_ticket.4bpp.lz");
 const u32 gItemIconPalette_MysticTicket[] = INCBIN_U32("graphics/items/icon_palettes/mystic_ticket.gbapal.lz");
+const u32 gItemIconPalette_SafariPass[] = INCBIN_U32("graphics/items/icon_palettes/safari_pass.gbapal.lz");
 
 const u32 gItemIcon_AuroraTicket[] = INCBIN_U32("graphics/items/icons/aurora_ticket.4bpp.lz");
 const u32 gItemIconPalette_AuroraTicket[] = INCBIN_U32("graphics/items/icon_palettes/aurora_ticket.gbapal.lz");

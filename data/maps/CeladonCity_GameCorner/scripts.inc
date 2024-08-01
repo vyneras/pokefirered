@@ -412,7 +412,22 @@ CeladonCity_GameCorner_EventScript_SlotMachineNoCoinCase::
 
 CeladonCity_GameCorner_EventScript_Poster::
 	lockall
+	specialvar VAR_RESULT, ArchipelagoSpecial_ExtraKeyItems
+	goto_if_eq VAR_RESULT, TRUE, CeladonCity_GameCorner_EventScript_NeedHideoutKey
 	msgbox CeladonCity_GameCorner_Text_SwitchBehindPosterPushIt
+	call_if_unset FLAG_OPENED_ROCKET_HIDEOUT, CeladonCity_GameCorner_EventScript_OpenRocketHideout
+	releaseall
+	end
+
+CeladonCity_GameCorner_EventScript_NeedHideoutKey::
+	checkitem ITEM_HIDEOUT_KEY
+	call_if_eq VAR_RESULT, TRUE, CeladonCity_GameCorner_EventScript_HasHideoutKey
+	msgbox CeladonCity_GameCorner_Text_NoHideoutKey
+	releaseall
+	end
+
+CeladonCity_GameCorner_EventScript_HasHideoutKey::
+	msgbox CeladonCity_GameCorner_Text_SwitchBehindPosterKey
 	call_if_unset FLAG_OPENED_ROCKET_HIDEOUT, CeladonCity_GameCorner_EventScript_OpenRocketHideout
 	releaseall
 	end
@@ -429,25 +444,25 @@ CeladonCity_GameCorner_EventScript_OpenRocketHideout::
 	return
 
 CeladonCity_GameCorner_EventScript_RocketGrunt::
-	trainerbattle_single TRAINER_TEAM_ROCKET_GRUNT_7, CeladonCity_GameCorner_Text_GruntIntro, CeladonCity_GameCorner_Text_GruntDefeat, CeladonCity_GameCorner_Text_DefeatedGrunt
+	trainerbattle_single TRAINER_TEAM_ROCKET_GRUNT_7, CeladonCity_GameCorner_Text_GruntIntro, CeladonCity_GameCorner_Text_GruntDefeat, CeladonCity_GameCorner_EventScript_DefeatedGrunt
 	msgbox CeladonCity_GameCorner_Text_GruntPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-CeladonCity_GameCorner_Text_DefeatedGrunt::
+CeladonCity_GameCorner_EventScript_DefeatedGrunt::
 	msgbox CeladonCity_GameCorner_Text_GruntPostBattle
 	closemessage
-	call_if_eq VAR_FACING, DIR_WEST, CeladonCity_GameCorner_Text_GruntExitWest
-	call_if_ne VAR_FACING, DIR_WEST, CeladonCity_GameCorner_Text_GruntExit
+	call_if_eq VAR_FACING, DIR_WEST, CeladonCity_GameCorner_EventScript_GruntExitWest
+	call_if_ne VAR_FACING, DIR_WEST, CeladonCity_GameCorner_EventScript_GruntExit
 	removeobject LOCALID_GRUNT
 	release
 	end
 
-CeladonCity_GameCorner_Text_GruntExitWest::
+CeladonCity_GameCorner_EventScript_GruntExitWest::
 	applymovement LOCALID_GRUNT, CeladonCity_GameCorner_Movement_GruntExitWest
 	waitmovement 0
 	return
 
-CeladonCity_GameCorner_Text_GruntExit::
+CeladonCity_GameCorner_EventScript_GruntExit::
 	applymovement LOCALID_GRUNT, CeladonCity_GameCorner_Movement_GruntExit
 	waitmovement 0
 	return
