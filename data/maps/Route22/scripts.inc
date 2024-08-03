@@ -17,6 +17,7 @@ Route22_SetEarlyRival::
 Route22_SetLateRival::
 	goto_if_unset FLAG_DEFEATED_LEADER_GIOVANNI, EventScript_ReleaseEnd
 	setvar VAR_MAP_SCENE_ROUTE22, 3
+	end
 
 Route22_EventScript_EarlyRivalTriggerTop::
 	lockall

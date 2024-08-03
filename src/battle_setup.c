@@ -879,6 +879,7 @@ void SetBattledTrainerFlag(void)
             {
                 gRewardQueue[i].itemId = sTrainerRewards[gTrainerBattleOpponent_A];
                 gRewardQueue[i].locationId = GetTrainerAFlag();
+                break;
             }
         }
     }
