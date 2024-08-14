@@ -13,7 +13,6 @@ ViridianCity_OnTransition::
 	call_if_ge VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2, ViridianCity_EventScript_SetOldManNormal
 	call_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1, ViridianCity_EventScript_SetOldManStandingByRoad
 	call_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 0, ViridianCity_EventScript_SetOldManBlockingRoad
-	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetGiovanniRequiredCount
 	end
 
 ViridianCity_EventScript_SetOldManNormal::
@@ -95,6 +94,7 @@ ViridianCity_EventScript_OldMan::
 	end
 
 ViridianCity_EventScript_OldManGymClosed::
+	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetGiovanniRequiredCount
 	buffernumberstring STR_VAR_1, REQUIRED_BADGES_GYMS
 	specialvar VAR_RESULT, ArchipelagoSpecial_GiovanniRequiresGyms
 	goto_if_eq VAR_RESULT, TRUE, ViridianCity_EventScript_OldManGymClosedGyms

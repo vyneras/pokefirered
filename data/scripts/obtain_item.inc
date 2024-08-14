@@ -31,7 +31,7 @@ EventScript_ObtainItemMessage::
 	bufferitemnameplural STR_VAR_2, ITEM_ID, AMOUNT
 	checkitemtype ITEM_ID
 	call EventScript_BufferPocketNameTryFanfare
-	copyvar ITEM_ID, ITEM_ID_2  @ The switch in EventScript_BufferPocketNameAndTryFanfare clobbers VAR_0x8000
+	copyvar ITEM_ID, ITEM_ID_2  @ The switch in EventScript_BufferPocketNameTryFanfare clobbers VAR_0x8000
 	call EventScript_ObtainedItem
 	return
 

@@ -17,7 +17,6 @@ CeruleanCity_OnTransition::
 	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_BlockExits
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanEnterCeruleanCave
 	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_RemoveGuard
-	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetCeruleanCaveRequiredCount
 	end
 
 CeruleanCity_EventScript_BlockExits::
@@ -300,6 +299,7 @@ CeruleanCity_EventScript_CeruleanCaveGuardNetwork::
 	end
 
 CeruleanCity_EventScript_CeruleanCaveGuardBadges::
+	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetCeruleanCaveRequiredCount
 	buffernumberstring STR_VAR_1, REQUIRED_BADGES_GYMS
 	goto_if_eq REQUIRED_BADGES_GYMS, 1, CeruleanCity_EventScript_CeruleanCaveGuardBadge
 	msgbox CeruleanCity_Text_Badges
@@ -316,6 +316,7 @@ CeruleanCity_EventScript_CeruleanCaveGuardBadge::
 	end
 
 CeruleanCity_EventScript_CeruleanCaveGuardGyms::
+	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetCeruleanCaveRequiredCount
 	buffernumberstring STR_VAR_1, REQUIRED_BADGES_GYMS
 	goto_if_eq REQUIRED_BADGES_GYMS, 1, CeruleanCity_EventScript_CeruleanCaveGuardGym
 	msgbox CeruleanCity_Text_Gyms

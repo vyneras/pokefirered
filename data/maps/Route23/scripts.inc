@@ -2,12 +2,7 @@
 .set REQUIRED_BADGES_GYMS, VAR_TEMP_1
 
 Route23_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, Route23_OnTransition
 	.byte 0
-
-Route23_OnTransition::
-	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetRoute23RequiredCount
-	end
 
 Route23_EventScript_LastGuard::
 	lock
@@ -41,6 +36,7 @@ Route23_EventScript_LastGuardEnoughGyms::
 	end
 
 Route23_EventScript_LastGuardCantPass::
+	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetRoute23RequiredCount
 	buffernumberstring STR_VAR_1, REQUIRED_BADGES_GYMS
 	specialvar VAR_RESULT, ArchipelagoSpecial_Route23RequiresGyms
 	goto_if_eq VAR_RESULT, TRUE, Route23_EventScript_LastGuardCantPassGyms

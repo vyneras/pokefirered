@@ -12,7 +12,6 @@ IndigoPlateau_PokemonCenter_1F_OnTransition::
 	setvar GUARD_SHOULD_MOVE, 0
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanChallengeEliteFour
 	call_if_eq VAR_RESULT, FALSE, IndigoPlateau_PokemonCenter_1F_EventScript_BlockDoor
-	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetEliteFourRequiredCount
 	end
 
 IndigoPlateau_PokemonCenter_1F_EventScript_BlockDoor::
@@ -38,6 +37,7 @@ IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardMove::
 	return
 
 IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardCantFaceEliteFour::
+	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetEliteFourRequiredCount
 	buffernumberstring STR_VAR_1, REQUIRED_BADGES_GYMS
 	specialvar VAR_RESULT, ArchipelagoSpecial_EliteFourRequiresGyms
 	goto_if_eq VAR_RESULT, TRUE, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardCantFaceEliteFourGyms

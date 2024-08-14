@@ -2,12 +2,7 @@
 .set REQUIRED_BADGES_GYMS, VAR_TEMP_1
 
 Route22_NorthEntrance_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, Route22_NorthEntrance_OnTransition
 	.byte 0
-
-Route22_NorthEntrance_OnTransition::
-	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetRoute22RequiredCount
-	end
 
 Route22_NorthEntrance_EventScript_Guard::
 	lock
@@ -41,6 +36,7 @@ Route22_NorthEntrance_EventScript_GuardEnoughGyms::
 	end
 
 Route22_NorthEntrance_EventScript_GuardCantPass::
+	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetRoute22RequiredCount
 	buffernumberstring STR_VAR_1, REQUIRED_BADGES_GYMS
 	specialvar VAR_RESULT, ArchipelagoSpecial_Route22RequiresGyms
 	goto_if_eq VAR_RESULT, TRUE, Route22_NorthEntrance_EventScript_GuardCantPassGyms
