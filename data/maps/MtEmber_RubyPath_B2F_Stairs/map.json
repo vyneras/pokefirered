@@ -19,20 +19,6 @@
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCK_SMASH_ROCK",
       "x": 4,
-      "y": 3,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_RockSmash",
-      "flag": "FLAG_TEMP_12"
-    },
-    {
-      "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_ROCK_SMASH_ROCK",
-      "x": 6,
       "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -41,23 +27,23 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_RockSmash",
-      "flag": "FLAG_TEMP_13"
+      "flag": "FLAG_TEMP_12"
     }
   ],
   "warp_events": [
     {
-      "x": 6,
+      "x": 4,
       "y": 1,
       "elevation": 0,
-      "dest_map": "MAP_MT_EMBER_RUBY_PATH_B1F_STAIRS",
+      "dest_map": "MAP_MT_EMBER_RUBY_PATH_B3F",
       "dest_warp_id": "1"
     },
     {
       "x": 1,
-      "y": 4,
+      "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_MT_EMBER_RUBY_PATH_1F",
-      "dest_warp_id": "2"
+      "dest_map": "MAP_MT_EMBER_RUBY_PATH_B1F_STAIRS",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],

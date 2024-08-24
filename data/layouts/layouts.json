@@ -3260,28 +3260,28 @@
       "blockdata_filepath": "data/layouts/MtEmber_RubyPath_B3F/map.bin"
     },
     {
-      "id": "LAYOUT_MT_EMBER_RUBY_PATH_B1F_STAIRS",
-      "name": "MtEmber_RubyPath_B1F_Stairs_Layout",
+      "id": "LAYOUT_MT_EMBER_RUBY_PATH_B2F_STAIRS",
+      "name": "MtEmber_RubyPath_B2F_Stairs_Layout",
       "width": 6,
       "height": 7,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_MtEmber",
-      "border_filepath": "data/layouts/MtEmber_RubyPath_B1F_Stairs/border.bin",
-      "blockdata_filepath": "data/layouts/MtEmber_RubyPath_B1F_Stairs/map.bin"
+      "border_filepath": "data/layouts/MtEmber_RubyPath_B2F_Stairs/border.bin",
+      "blockdata_filepath": "data/layouts/MtEmber_RubyPath_B2F_Stairs/map.bin"
     },
     {
-      "id": "LAYOUT_MT_EMBER_RUBY_PATH_B2F_STAIRS",
-      "name": "MtEmber_RubyPath_B2F_Stairs_Layout",
+      "id": "LAYOUT_MT_EMBER_RUBY_PATH_B1F_STAIRS",
+      "name": "MtEmber_RubyPath_B1F_Stairs_Layout",
       "width": 8,
       "height": 6,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_MtEmber",
-      "border_filepath": "data/layouts/MtEmber_RubyPath_B2F_Stairs/border.bin",
-      "blockdata_filepath": "data/layouts/MtEmber_RubyPath_B2F_Stairs/map.bin"
+      "border_filepath": "data/layouts/MtEmber_RubyPath_B1F_Stairs/border.bin",
+      "blockdata_filepath": "data/layouts/MtEmber_RubyPath_B1F_Stairs/map.bin"
     },
     {
       "id": "LAYOUT_MT_EMBER_RUBY_PATH_B5F",

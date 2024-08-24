@@ -4389,7 +4389,7 @@
           }
         },
         {
-          "map": "MAP_MT_EMBER_RUBY_PATH_B1F_STAIRS",
+          "map": "MAP_MT_EMBER_RUBY_PATH_B2F_STAIRS",
           "base_label": "sMtEmberRubyPathB1FStairs_FireRed",
           "land_mons": {
             "encounter_rate": 7,
@@ -4488,7 +4488,7 @@
           }
         },
         {
-          "map": "MAP_MT_EMBER_RUBY_PATH_B2F_STAIRS",
+          "map": "MAP_MT_EMBER_RUBY_PATH_B1F_STAIRS",
           "base_label": "sMtEmberRubyPathB2FStairs_FireRed",
           "land_mons": {
             "encounter_rate": 7,
@@ -16932,7 +16932,7 @@
           }
         },
         {
-          "map": "MAP_MT_EMBER_RUBY_PATH_B1F_STAIRS",
+          "map": "MAP_MT_EMBER_RUBY_PATH_B2F_STAIRS",
           "base_label": "sMtEmberRubyPathB1FStairs_LeafGreen",
           "land_mons": {
             "mons": [
@@ -17031,7 +17031,7 @@
           }
         },
         {
-          "map": "MAP_MT_EMBER_RUBY_PATH_B2F_STAIRS",
+          "map": "MAP_MT_EMBER_RUBY_PATH_B1F_STAIRS",
           "base_label": "sMtEmberRubyPathB2FStairs_LeafGreen",
           "land_mons": {
             "mons": [
