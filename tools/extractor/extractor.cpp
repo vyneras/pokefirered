@@ -696,9 +696,9 @@ int main (int argc, char *argv[])
                     // Note2: Some warp destinations go to the map "MAP_DYNAMIC" and
                     // have a warp id which is not a number. These edge cases are:
                     //   - The Department Store Elevator
-                                //   - The Rocket Hideout Elevator
-                                //   - The Silph Co. Elevator
-                                //   - The Trainer Tower Elevator
+                    //   - The Rocket Hideout Elevator
+                    //   - The Silph Co. Elevator
+                    //   - The Trainer Tower Elevator
                     //   - The Trade Center
                     //   - The Union Room
                     //   - The Record Corner
@@ -765,10 +765,21 @@ int main (int argc, char *argv[])
                             // Check destination map to exit early, but we're assuming that adjacent
                             // warps are always part of the same logical warp
                             if (warp->dest_map != other_warp->dest_map) continue;
+                            // Ignore the dropdowns on Seafoam Island B3F & B4F as their destinations are not adjacent
+                            if ((warp->source_map == "MAP_SEAFOAM_ISLANDS_B3F" &&
+                                 std::find(warp->source_indices.begin(), warp->source_indices.end(), 5) != warp->source_indices.end()) ||
+                                (warp->source_map == "MAP_SEAFOAM_ISLANDS_B3F" &&
+                                 std::find(warp->source_indices.begin(), warp->source_indices.end(), 6) != warp->source_indices.end()) ||
+                                (warp->source_map == "MAP_SEAFOAM_ISLANDS_B4F" &&
+                                 std::find(warp->source_indices.begin(), warp->source_indices.end(), 2) != warp->source_indices.end()) ||
+                                (warp->source_map == "MAP_SEAFOAM_ISLANDS_B4F" &&
+                                 std::find(warp->source_indices.begin(), warp->source_indices.end(), 3) != warp->source_indices.end()))
+                                 continue;
                             // Check adjacency
                             if (
                                 abs(std::get<0>(warp->source_coordinates.back()) - std::get<0>(other_warp->source_coordinates[0])) +
                                 abs(std::get<1>(warp->source_coordinates.back()) - std::get<1>(other_warp->source_coordinates[0])) > 1
+
                             ) continue;
 
                             warp->source_indices.push_back(other_warp->source_indices[0]);
