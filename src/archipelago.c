@@ -44,6 +44,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
 
     .isTrainersanity = FALSE,
     .extraKeyItems = FALSE,
+    .kantoOnly = FALSE,
 
     .removeBadgeRequirement = {
       [0] = FALSE, // Flash

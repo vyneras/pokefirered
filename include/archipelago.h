@@ -43,8 +43,9 @@ struct ArchipelagoOptions
 
   /* 0x20 */ bool8 isTrainersanity;
   /* 0x21 */ bool8 extraKeyItems;
+  /* 0x22 */ bool8 kantoOnly;
 
-  /* 0x22 */ bool8 removeBadgeRequirement[7]; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
+  /* 0x23 */ bool8 removeBadgeRequirement[7]; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem

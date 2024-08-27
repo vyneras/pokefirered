@@ -2898,3 +2898,8 @@ bool8 ArchipelagoSpecial_ExtraKeyItems(void)
 {
     return gArchipelagoOptions.extraKeyItems;
 }
+
+bool8 ArchipelagoSpecial_KantoOnly(void)
+{
+    return gArchipelagoOptions.kantoOnly;
+}
