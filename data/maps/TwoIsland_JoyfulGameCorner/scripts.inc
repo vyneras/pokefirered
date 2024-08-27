@@ -36,8 +36,6 @@ TwoIsland_JoyfulGameCorner_OnFrame::
 
 TwoIsland_JoyfulGameCorner_EventScript_FoundLostelleScene::
 	lockall
-	applymovement OBJ_EVENT_ID_PLAYER, TwoIsland_JoyfulGameCorner_Movement_PlayerToLostelle
-	waitmovement 0
 	textcolor NPC_TEXT_COLOR_MALE
 	msgbox TwoIsland_JoyfulGameCorner_Text_YouRescuedLostelle
 	textcolor NPC_TEXT_COLOR_FEMALE
@@ -49,12 +47,6 @@ TwoIsland_JoyfulGameCorner_EventScript_FoundLostelleScene::
 	setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 2
 	releaseall
 	end
-
-TwoIsland_JoyfulGameCorner_Movement_PlayerToLostelle::
-	walk_right
-	walk_up
-	walk_up
-	step_end
 
 TwoIsland_JoyfulGameCorner_EventScript_InfoMan::
 	lock

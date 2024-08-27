@@ -25,30 +25,14 @@ CinnabarIsland_PokemonCenter_1F_Text_EvolutionCanWaitForNewMoves::
     .string "Evolution can wait until new moves\n"
     .string "have been learned.$"
 
-CinnabarIsland_PokemonCenter_1F_Text_HeyIfItIsntPlayer::
-    .string "Huh?\n"
-    .string "Hey, if it isn't {PLAYER}!$"
+CinnabarIsland_PokemonCenter_1F_Text_ReadyToSailToOneIsland::
+    .string "BILL: Hey, you kept me waiting!\n"
+    .string "Ready to set sail to ONE ISLAND?$"
 
-CinnabarIsland_PokemonCenter_1F_Text_TakeThisPassToOneIsland::
-    .string "Look, it's me, BILL.\n"
-    .string "Long time no see!\p"
-    .string "I hope you're still using my\n"
-    .string "PC system.\p"
-    .string "Well, listen, since we met up here,\n"
-    .string "how about I give you this?$"
+CinnabarIsland_PokemonCenter_1F_Text_OhNotDoneYet::
+    .string "Oh, you're still not done yet?$"
 
-CinnabarIsland_PokemonCenter_1F_Text_ExplainTriPass::
-    .string "There's this little island in the far\n"
-    .string "south called ONE ISLAND.\p"
-    .string "A friend invited me, so I'm on my\n"
-    .string "way out there.\p"
-    .string "That PASS is for the ferry service\n"
-    .string "serving the SEVII ISLANDS.\p"
-    .string "It will let you travel between the\n"
-    .string "ISLANDS ONE, TWO, and THREE.$"
-
-CinnabarIsland_PokemonCenter_1F_Text_ShouldBeGoing::
-    .string "Well, I should be heading off.\p"
-    .string "Remember to come visit me on\n"
-    .string "ONE ISLAND when you have the time.$"
+CinnabarIsland_PokemonCenter_1F_Text_LetsGo::
+    .string "Well, that's it.\n"
+    .string "Let's go!$"
 

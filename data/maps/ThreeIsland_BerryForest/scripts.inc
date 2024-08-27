@@ -12,6 +12,7 @@ ThreeIsland_BerryForest_OnTransition::
 ThreeIsland_BerryForest_EventScript_Lostelle::
 	lock
 	faceplayer
+	goto_if_set FLAG_RESCUED_LOSTELLE, ThreeIsland_BerryForest_EventScript_LostelleGoToGameCorner
 	msgbox ThreeIsland_BerryForest_Text_HelpScaryPokemon
 	playse SE_PIN
 	applymovement LOCALID_LOSTELLE, Common_Movement_ExclamationMark
@@ -34,12 +35,23 @@ Archipelago_Target_NPC_Gift_FLAG_RESCUED_LOSTELLE::
 	giveitem ITEM_IAPAPA_BERRY, 1, FLAG_RESCUED_LOSTELLE
 	special BufferBigGuyOrBigGirlString
 	msgbox ThreeIsland_BerryForest_Text_LetsGoHome
-	fadescreen FADE_TO_BLACK
 	closemessage
-	removeobject LOCALID_LOSTELLE
 	setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 1
 	clearflag FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE
-	fadescreen FADE_FROM_BLACK
+	warp MAP_TWO_ISLAND_JOYFUL_GAME_CORNER, 6, 6
+	waitstate
+	release
+	end
+
+ThreeIsland_BerryForest_EventScript_LostelleGoToGameCorner::
+	msgbox ThreeIsland_BerryForest_Text_GoToGameCorner, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, ThreeIsland_BerryForest_EventScript_WarpToGameCorner
+	release
+	end
+
+ThreeIsland_BerryForest_EventScript_WarpToGameCorner::
+	warp MAP_TWO_ISLAND_JOYFUL_GAME_CORNER, 6, 6
+	waitstate
 	release
 	end
 

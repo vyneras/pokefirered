@@ -66,6 +66,13 @@ OneIsland_PokemonCenter_1F_Text_CelioPleaseTakeThis::
     .string "CELIO: {PLAYER}, if you are going\n"
     .string "to TWO ISLAND, please take this.$"
 
+OneIsland_PokemonCenter_1F_Text_PassLetsYouTravelBetweenIslands::
+    .string "It's a PASS for the ferry service\n"
+    .string "serving the local islands.\p"
+    .string "It will let you travel between the\n"
+    .string "ISLANDS ONE, TWO, and THREE.\p"
+    .string "Oh, you should have this, too.$"
+
 OneIsland_PokemonCenter_1F_Text_ReceivedExtraPageForTownMap::
     .string "{PLAYER} received an extra page\n"
     .string "for the TOWN MAP!$"

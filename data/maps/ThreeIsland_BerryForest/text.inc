@@ -28,6 +28,10 @@ ThreeIsland_BerryForest_Text_LetsGoHome::
     .string "Okay!\n"
     .string "Let's go home!$"
 
+ThreeIsland_BerryForest_Text_GoToGameCorner::
+    .string "Do you want to go to the\n"
+    .string "TWO ISLAND GAME CORNER?$"
+
 ThreeIsland_BerryForest_Text_WelcomeToBerryForest::
     .string "Welcome to the BERRY FOREST\p"
     .string "Be friendly and share BERRIES with\n"

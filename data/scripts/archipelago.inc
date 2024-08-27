@@ -168,6 +168,6 @@ ArchipelagoScript_ReceiveEarthBadge::
 	return
 
 ArchipelagoScript_GoHome::
-	warpteleport MAP_PALLET_TOWN, 6, 8
+	warp MAP_PALLET_TOWN, 6, 8
 	goto EventScript_ResetEliteFourEnd
 	end

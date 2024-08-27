@@ -4,54 +4,42 @@
 .set LOCALID_GRUNT3, 4
 
 PokemonTower_7F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, PokemonTower_7F_OnTransition
 	.byte 0
+
+PokemonTower_7F_OnTransition::
+	call_if_set FLAG_RESCUED_MR_FUJI, PokemonTower_7F_EventScript_MoveMrFuji
+	end
+
+PokemonTower_7F_EventScript_MoveMrFuji::
+	setobjectxyperm LOCALID_MR_FUJI, 11, 3
+	return
 
 PokemonTower_7F_EventScript_MrFuji::
 	lock
 	faceplayer
 	famechecker FAMECHECKER_MRFUJI, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
-	setflag FLAG_HIDE_TOWER_FUJI
+	goto_if_set FLAG_RESCUED_MR_FUJI, PokemonTower_7F_EventScript_MrFujiGoToPokemonHouse
 	clearflag FLAG_HIDE_POKEHOUSE_FUJI
 	setflag FLAG_RESCUED_MR_FUJI
 	msgbox PokemonTower_7F_Text_MrFujiThankYouFollowMe
 	closemessage
-	specialvar VAR_RESULT, GetPlayerFacingDirection
-	goto_if_eq VAR_RESULT, DIR_NORTH, PokemonTower_7F_EventScript_MrFujiLeaveRight
-	applymovement LOCALID_MR_FUJI, PokemonTower_7F_Movement_LeaveDown
-	waitmovement 0
-	goto PokemonTower_7F_EventScript_RemoveMrFuji
-	end
-
-PokemonTower_7F_EventScript_MrFujiLeaveRight::
-	applymovement LOCALID_MR_FUJI, PokemonTower_7F_Movement_LeaveRight
-	waitmovement 0
-	goto PokemonTower_7F_EventScript_RemoveMrFuji
-	end
-
-PokemonTower_7F_EventScript_RemoveMrFuji::
-	removeobject LOCALID_MR_FUJI
+	warp MAP_LAVENDER_TOWN_VOLUNTEER_POKEMON_HOUSE, 4, 7
+	waitstate
 	release
 	end
 
-PokemonTower_7F_Movement_LeaveDown::
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
+PokemonTower_7F_EventScript_MrFujiGoToPokemonHouse::
+	msgbox PokemonTower_7F_Text_MrFujiGoToPokemonHouse, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, PokemonTower_7F_EventScript_WarpToPokemonHouse
+	release
+	end
 
-PokemonTower_7F_Movement_LeaveRight::
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
+PokemonTower_7F_EventScript_WarpToPokemonHouse::
+	warp MAP_LAVENDER_TOWN_VOLUNTEER_POKEMON_HOUSE, 4, 7
+	waitstate
+	release
+	end
 
 PokemonTower_7F_EventScript_Grunt1::
 	trainerbattle_single TRAINER_TEAM_ROCKET_GRUNT_19, PokemonTower_7F_Text_Grunt1Intro, PokemonTower_7F_Text_Grunt1Defeat, PokemonTower_7F_EventScript_DefeatedGrunt1

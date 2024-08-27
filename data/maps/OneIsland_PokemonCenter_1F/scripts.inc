@@ -32,7 +32,12 @@ OneIsland_PokemonCenter_1F_OnTransition::
 	call_if_eq VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 4, OneIsland_PokemonCenter_1F_EventScript_SetCelioQuestDone
 	call_if_eq VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 1, OneIsland_PokemonCenter_1F_EventScript_CheckBillHasLeft
 	call_if_eq VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 0, OneIsland_PokemonCenter_1F_EventScript_SetBillCelioFirstMeetingPos
+	call_if_set FLAG_DEFEATED_BLAINE, OneIsland_PokemonCenter_1F_ClearCinnabarIslandBillFlag
 	end
+
+OneIsland_PokemonCenter_1F_ClearCinnabarIslandBillFlag::
+	clearflag FLAG_HIDE_CINNABAR_POKECENTER_BILL
+	return
 
 OneIsland_PokemonCenter_1F_EventScript_SetCelioQuestDone::
 	setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 5
@@ -118,6 +123,9 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_METEORITE::
 	applymovement LOCALID_CELIO, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox OneIsland_PokemonCenter_1F_Text_CelioPleaseTakeThis
+Archipelago_Target_NPC_Gift_FLAG_GOT_TRI_PASS::
+	giveitem ITEM_TRI_PASS, 1, FLAG_GOT_TRI_PASS
+	msgbox OneIsland_PokemonCenter_1F_Text_PassLetsYouTravelBetweenIslands
 	call OneIsland_PokemonCenter_1F_EventScript_ReceiveTownMapPage
 	msgbox OneIsland_PokemonCenter_1F_Text_BillCatchYouLater
 	closemessage
