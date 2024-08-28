@@ -342,6 +342,8 @@ bool8 MapHasPreviewScreen(u8 mapsec, u8 type)
 {
     u8 idx;
 
+    return FALSE;
+
     idx = GetMapPreviewScreenIdx(mapsec);
     if (idx != MPS_COUNT)
     {
