@@ -24,7 +24,7 @@ PewterCity_Gym_Text_BrockDefeat::
     .string "on you this…the official POKéMON\l"
     .string "LEAGUE BOULDERBADGE.\p"
     .string "{FONT_NORMAL}{PLAYER} received the BOULDERBADGE\n"
-    .string "from BROCK!{PAUSE_MUSIC}{PLAY_BGM}{MUS_OBTAIN_BADGE}{PAUSE 0xFE}{PAUSE 0x56}{RESUME_MUSIC}\p"
+    .string "from BROCK!\p"
     .string "{FONT_MALE}Just having the BOULDERBADGE makes\n"
     .string "your POKéMON more powerful.\p"
     .string "It also enables the use of the\n"

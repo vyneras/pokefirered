@@ -245,26 +245,28 @@
 #define ITEM_BADGE_7 232
 #define ITEM_BADGE_8 233
 
-#define ITEM_0EA 234
-#define ITEM_0EB 235
-#define ITEM_0EC 236
-#define ITEM_0ED 237
-#define ITEM_0EE 238
-#define ITEM_0EF 239
-#define ITEM_0F0 240
-#define ITEM_0F1 241
-#define ITEM_0F2 242
-#define ITEM_0F3 243
-#define ITEM_0F4 244
-#define ITEM_0F5 245
-#define ITEM_0F6 246
-#define ITEM_0F7 247
-#define ITEM_0F8 248
-#define ITEM_0F9 249
-#define ITEM_0FA 250
-#define ITEM_0FB 251
-#define ITEM_0FC 252
-#define ITEM_0FD 253
+// Fly Unlock placeholder items
+#define ITEM_FLY_PALLET 234
+#define ITEM_FLY_VIRIDIAN 235
+#define ITEM_FLY_PEWTER 236
+#define ITEM_FLY_CERULEAN 237
+#define ITEM_FLY_LAVENDER 238
+#define ITEM_FLY_VERMILION 239
+#define ITEM_FLY_CELADON 240
+#define ITEM_FLY_FUCHSIA 241
+#define ITEM_FLY_CINNABAR 242
+#define ITEM_FLY_INDIGO 243
+#define ITEM_FLY_SAFFRON 244
+#define ITEM_FLY_ONE_ISLAND 245
+#define ITEM_FLY_TWO_ISLAND 246
+#define ITEM_FLY_THREE_ISLAND 247
+#define ITEM_FLY_FOUR_ISLAND 248
+#define ITEM_FLY_FIVE_ISLAND 249
+#define ITEM_FLY_SIX_ISLAND 250
+#define ITEM_FLY_SEVEN_ISLAND 251
+#define ITEM_FLY_ROUTE4 252
+#define ITEM_FLY_ROUTE10 253
+
 #define ITEM_RED_SCARF 254
 #define ITEM_BLUE_SCARF 255
 #define ITEM_PINK_SCARF 256
@@ -447,8 +449,33 @@
 #define ITEM_POWDER_JAR 372
 #define ITEM_RUBY 373
 #define ITEM_SAPPHIRE 374
+#define ITEM_177 375
+#define ITEM_178 376
+#define ITEM_179 377
+#define ITEM_17A 378
+#define ITEM_17B 379
+#define ITEM_17C 380
+#define ITEM_17D 381
+#define ITEM_17E 382
+#define ITEM_17F 383
+#define ITEM_180 384
+#define ITEM_181 385
+#define ITEM_182 386
+#define ITEM_183 387
+#define ITEM_184 388
+#define ITEM_185 389
+#define ITEM_186 390
+#define ITEM_187 391
+#define ITEM_188 392
+#define ITEM_189 393
+#define ITEM_18A 394
+#define ITEM_18B 395
+#define ITEM_18C 396
+#define ITEM_18D 397
+#define ITEM_18E 398
+#define ITEM_18F 399
 
-#define ITEMS_COUNT 375
+#define ITEMS_COUNT 400
 
 #define ITEM_TO_BERRY(itemId)(((itemId - FIRST_BERRY_INDEX) + 1))
 #define MAIL_NONE 0xFF

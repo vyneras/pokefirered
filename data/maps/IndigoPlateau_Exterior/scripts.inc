@@ -1,23 +1,49 @@
 .equ LOCALID_RIVAL,    1
 .equ LOCALID_PROF_OAK, 2
 
+.equ GIVE_FLY_UNLOCK, VAR_TEMP_1
+
 IndigoPlateau_Exterior_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, IndigoPlateau_Exterior_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, IndigoPlateau_Exterior_OnFrame
 	.byte 0
 
 IndigoPlateau_Exterior_OnTransition::
-	setworldmapflag FLAG_WORLD_MAP_INDIGO_PLATEAU_EXTERIOR
+	call_if_eq VAR_MAP_SCENE_INDIGO_PLATEAU_EXTERIOR, 0, IndigoPlateau_Exterior_EventScript_NormalTransition
 	call_if_eq VAR_MAP_SCENE_INDIGO_PLATEAU_EXTERIOR, 1, IndigoPlateau_Exterior_EventScript_PlayCreditsMusic
 	end
+
+IndigoPlateau_Exterior_EventScript_NormalTransition::
+	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
+	call_if_eq VAR_RESULT, TRUE, IndigoPlateau_Exterior_EventScript_SetGiveFlyUnlockItem
+	call_if_eq VAR_RESULT, FALSE, IndigoPlateau_Exterior_EventScript_SetWorldMapFlag
+	return
+
+IndigoPlateau_Exterior_EventScript_SetGiveFlyUnlockItem::
+	goto_if_set FLAG_VISITED_INDIGO_PLATEAU EventScript_Return
+	setvar GIVE_FLY_UNLOCK, 1
+	return
+
+IndigoPlateau_Exterior_EventScript_SetWorldMapFlag::
+	setworldmapflag FLAG_WORLD_MAP_INDIGO_PLATEAU_EXTERIOR
+	return
 
 IndigoPlateau_Exterior_EventScript_PlayCreditsMusic::
 	playbgm MUS_CREDITS, 0
 	return
 
 IndigoPlateau_Exterior_OnFrame::
+	map_script_2 GIVE_FLY_UNLOCK, 1, IndigoPlateau_Exterior_EventScript_GiveFlyUnlockItem
 	map_script_2 VAR_MAP_SCENE_INDIGO_PLATEAU_EXTERIOR, 1, IndigoPlateau_Exterior_EventScript_Credits
 	.2byte 0
+
+IndigoPlateau_Exterior_EventScript_GiveFlyUnlockItem::
+	lockall
+Archipelago_Target_Fly_Unlock_FLAG_VISITED_INDIGO_PLATEAU::
+	giveitem ITEM_FLY_INDIGO, 1, FLAG_VISITED_INDIGO_PLATEAU
+	setvar GIVE_FLY_UNLOCK, 0
+	releaseall
+	end
 
 
 @ After beating the champion, you are warped to the main

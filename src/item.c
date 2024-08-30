@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
 #include "berry.h"
 #include "event_data.h"
 #include "item.h"
@@ -251,6 +252,9 @@ bool8 AddBagItem(u16 itemId, u16 count)
 
     if (itemId == ITEM_BERRY_POUCH)
         FlagSet(FLAG_SYS_GOT_BERRY_POUCH);
+
+    if (itemId == ITEM_TOWN_MAP)
+        SetFlyMapFlag(gArchipelagoOptions.town_free_fly_id);
 
     idx = BagPocketGetFirstEmptySlot(pocket);
     if (idx == -1)

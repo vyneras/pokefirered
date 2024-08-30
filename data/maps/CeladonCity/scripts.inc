@@ -1,12 +1,38 @@
 .set LOCALID_FAT_MAN,   2
 .set LOCALID_POLIWRATH, 3
 
+.equ GIVE_FLY_UNLOCK, VAR_TEMP_1
+
 CeladonCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, CeladonCity_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, CeladonCity_OnFrame
 	.byte 0
 
 CeladonCity_OnTransition::
+	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
+	call_if_eq VAR_RESULT, TRUE, CeladonCity_EventScript_SetGiveFlyUnlockItem
+	call_if_eq VAR_RESULT, FALSE, CeladonCity_EventScript_SetWorldMapFlag
+	end
+
+CeladonCity_EventScript_SetGiveFlyUnlockItem::
+	goto_if_set FLAG_VISITED_CELADON_CITY EventScript_Return
+	setvar GIVE_FLY_UNLOCK, 1
+	return
+
+CeladonCity_EventScript_SetWorldMapFlag::
 	setworldmapflag FLAG_WORLD_MAP_CELADON_CITY
+	return
+
+CeladonCity_OnFrame::
+	map_script_2 GIVE_FLY_UNLOCK, 1, CeladonCity_EventScript_GiveFlyUnlockItem
+	.2byte 0
+
+CeladonCity_EventScript_GiveFlyUnlockItem::
+	lockall
+Archipelago_Target_Fly_Unlock_FLAG_VISITED_CELADON_CITY::
+	giveitem ITEM_FLY_CELADON, 1, FLAG_VISITED_CELADON_CITY
+	setvar GIVE_FLY_UNLOCK, 0
+	releaseall
 	end
 
 CeladonCity_EventScript_LittleGirl::

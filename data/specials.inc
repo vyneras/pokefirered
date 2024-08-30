@@ -452,11 +452,10 @@ gSpecials::
 	def_special UpdateLoreleiDollCollection
 	def_special LoopWingFlapSound
 	def_special CreateEnemyEventMon
-  def_special HasSeagallopPass
+	def_special HasSeagallopPass
 
-	def_special ArchipelagoSpecial_GetFreeFlyLocation
 	def_special ArchipelagoSpecial_ShouldHandle
-	def_special ArchipelagoSpecial_IsItemBadge
+	def_special ArchipelagoSpecial_IsItemUnique
 	def_special ArchipelagoSpecial_GetObjectScriptFlag
 	def_special ArchipelagoSpecial_PopReward
 	def_special ArchipelagoSpecial_ConsumeReceivedItem
@@ -484,4 +483,5 @@ gSpecials::
 	def_special ArchipelagoSpecial_IsTrainersanity
 	def_special ArchipelagoSpecial_ExtraKeyItems
 	def_special ArchipelagoSpecial_KantoOnly
+	def_special ArchipelagoSpecial_FlyUnlocks
 gSpecialsEnd::

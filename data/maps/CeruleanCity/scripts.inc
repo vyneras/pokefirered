@@ -7,17 +7,31 @@
 .set LOCALID_CAVE_GUARD, 12
 .set REQUIRED_BADGES_GYMS, VAR_TEMP_2
 
+.equ GIVE_FLY_UNLOCK, VAR_TEMP_3
+
 CeruleanCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, CeruleanCity_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, CeruleanCity_OnFrame
 	.byte 0
 
 CeruleanCity_OnTransition::
-	setworldmapflag FLAG_WORLD_MAP_CERULEAN_CITY
+	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
+	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_SetGiveFlyUnlockItem
+	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_SetWorldMapFlag
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanLeaveCeruleanCity
 	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_BlockExits
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanEnterCeruleanCave
 	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_RemoveGuard
 	end
+
+CeruleanCity_EventScript_SetGiveFlyUnlockItem::
+	goto_if_set FLAG_VISITED_CERULEAN_CITY EventScript_Return
+	setvar GIVE_FLY_UNLOCK, 1
+	return
+
+CeruleanCity_EventScript_SetWorldMapFlag::
+	setworldmapflag FLAG_WORLD_MAP_CERULEAN_CITY
+	return
 
 CeruleanCity_EventScript_BlockExits::
 	setobjectxyperm LOCALID_POLICEMAN, 30, 12
@@ -28,6 +42,18 @@ CeruleanCity_EventScript_BlockExits::
 CeruleanCity_EventScript_RemoveGuard::
 	setflag FLAG_HIDE_CERULEAN_CAVE_GUARD
 	return
+
+CeruleanCity_OnFrame::
+	map_script_2 GIVE_FLY_UNLOCK, 1, CeruleanCity_EventScript_GiveFlyUnlockItem
+	.2byte 0
+
+CeruleanCity_EventScript_GiveFlyUnlockItem::
+	lockall
+Archipelago_Target_Fly_Unlock_FLAG_VISITED_CERULEAN_CITY::
+	giveitem ITEM_FLY_CERULEAN, 1, FLAG_VISITED_CERULEAN_CITY
+	setvar GIVE_FLY_UNLOCK, 0
+	releaseall
+	end
 
 CeruleanCity_EventScript_RivalTriggerLeft::
 	lockall

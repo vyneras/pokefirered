@@ -1,15 +1,29 @@
 .set LOCALID_POLICEMAN, 3
 
+.equ GIVE_FLY_UNLOCK, VAR_TEMP_2
+
 CinnabarIsland_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, CinnabarIsland_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, CinnabarIsland_OnFrame
 	.byte 0
 
 CinnabarIsland_OnTransition::
-	setworldmapflag FLAG_WORLD_MAP_CINNABAR_ISLAND
+	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
+	call_if_eq VAR_RESULT, TRUE, CinnabarIsland_EventScript_SetGiveFlyUnlockItem
+	call_if_eq VAR_RESULT, FALSE, CinnabarIsland_EventScript_SetWorldMapFlag
 	call CinnabarIsland_EventScript_CheckUnlockGym
 	specialvar VAR_RESULT ArchipelagoSpecial_ExtraKeyItems
 	call_if_eq VAR_RESULT, TRUE, CinnabarIsland_EventScript_CheckBlockMansion
 	end
+
+CinnabarIsland_EventScript_SetGiveFlyUnlockItem::
+	goto_if_set FLAG_VISITED_CINNABAR_ISLAND EventScript_Return
+	setvar GIVE_FLY_UNLOCK, 1
+	return
+
+CinnabarIsland_EventScript_SetWorldMapFlag::
+	setworldmapflag FLAG_WORLD_MAP_CINNABAR_ISLAND
+	return
 
 CinnabarIsland_EventScript_CheckUnlockGym::
 	checkitem ITEM_SECRET_KEY
@@ -27,6 +41,18 @@ CinnabarIsland_EventScript_CheckBlockMansion::
 CinnabarIsland_EventScript_BlockMansion::
 	setobjectxyperm LOCALID_POLICEMAN, 8, 4
 	return
+
+CinnabarIsland_OnFrame::
+	map_script_2 GIVE_FLY_UNLOCK, 1, CinnabarIsland_EventScript_GiveFlyUnlockItem
+	.2byte 0
+
+CinnabarIsland_EventScript_GiveFlyUnlockItem::
+	lockall
+Archipelago_Target_Fly_Unlock_FLAG_VISITED_CINNABAR_ISLAND::
+	giveitem ITEM_FLY_CINNABAR, 1, FLAG_VISITED_CINNABAR_ISLAND
+	setvar GIVE_FLY_UNLOCK, 0
+	releaseall
+	end
 
 @ Triggered when VAR_TEMP_1 is 0
 CinnabarIsland_EventScript_GymDoorLockedTrigger::

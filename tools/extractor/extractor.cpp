@@ -355,6 +355,7 @@ int main (int argc, char *argv[])
     std::map<std::string, std::map<std::string, uint32_t>> misc_ram_addresses;
     std::map<std::string, std::map<std::string, uint32_t>> misc_rom_addresses;
     std::map<std::string, std::shared_ptr<LocationInfo>> npc_gifts;
+    std::map<std::string, std::shared_ptr<LocationInfo>> fly_unlocks;
     std::map<std::string, std::shared_ptr<LocationInfo>> badges;
     std::map<std::string, std::shared_ptr<TrainerInfo>> trainers;
     std::map<std::string, std::shared_ptr<LocationInfo>> trainer_rewards;
@@ -469,6 +470,30 @@ int main (int argc, char *argv[])
                     rom.seekg(npc_gift->address[GAME_REVISION_MAP[i]], std::ios::beg);
                     rom.read((char*)&(npc_gift->default_item), 2);
                     npc_gifts[npc_gift->name] = npc_gift;
+                }
+            }
+        }
+
+        // Fly Unlocks
+        for (auto const& [symbol, address] : symbol_map)
+        {
+            if (symbol.substr(0, 30) == "Archipelago_Target_Fly_Unlock_")
+            {
+                auto fly_unlock = fly_unlocks["FLY_UNLOCK_" + symbol.substr(35)];
+
+                if (fly_unlock != nullptr)
+                {
+                    fly_unlock->address[GAME_REVISION_MAP[i]] = address + 3 - ROM_START;
+                }
+                else
+                {
+                    fly_unlock = std::make_shared<LocationInfo>();
+                    fly_unlock->name = "FLY_UNLOCK_" + symbol.substr(35);
+                    fly_unlock->flag = constants_json[symbol.substr(30)];
+                    fly_unlock->address[GAME_REVISION_MAP[i]] = address + 3 - ROM_START;
+                    rom.seekg(fly_unlock->address[GAME_REVISION_MAP[i]], std::ios::beg);
+                    rom.read((char*)&(fly_unlock->default_item), 2);
+                    fly_unlocks[fly_unlock->name] = fly_unlock;
                 }
             }
         }
@@ -1524,6 +1549,10 @@ int main (int argc, char *argv[])
 
     json locations_json;
     for (const auto& [name, location]: npc_gifts)
+    {
+        locations_json[location->name] = location->to_json();
+    }
+    for (const auto& [name, location]: fly_unlocks)
     {
         locations_json[location->name] = location->to_json();
     }

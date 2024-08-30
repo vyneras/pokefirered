@@ -2,16 +2,30 @@
 .equ LOCALID_GYM_GUIDE,    5
 .equ LOCALID_AIDE,         7
 
+.equ GIVE_FLY_UNLOCK, VAR_TEMP_2
+
 PewterCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, PewterCity_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, PewterCity_OnFrame
 	.byte 0
 
 PewterCity_OnTransition::
-	setworldmapflag FLAG_WORLD_MAP_PEWTER_CITY
+	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
+	call_if_eq VAR_RESULT, TRUE, PewterCity_EventScript_SetGiveFlyUnlockItem
+	call_if_eq VAR_RESULT, FALSE, PewterCity_EventScript_SetWorldMapFlag
 	setvar VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F, 0
 	call_if_eq VAR_MAP_SCENE_PEWTER_CITY_GYM_GUIDE, 0, PewterCity_EventScript_CheckIfCanLeaveCity
 	call_if_set FLAG_DEFEATED_BROCK, PewterCity_EventScript_CheckRunningShoesGuyTrigger
 	end
+
+PewterCity_EventScript_SetGiveFlyUnlockItem::
+	goto_if_set FLAG_VISITED_PEWTER_CITY EventScript_Return
+	setvar GIVE_FLY_UNLOCK, 1
+	return
+
+PewterCity_EventScript_SetWorldMapFlag::
+	setworldmapflag FLAG_WORLD_MAP_PEWTER_CITY
+	return
 
 PewterCity_EventScript_CheckIfCanLeaveCity::
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanLeavePewterCity
@@ -30,6 +44,18 @@ PewterCity_EventScript_CheckRunningShoesGuyTrigger::
 PewterCity_EventScript_SetRunningShoesGuyTrigger::
 	setvar VAR_MAP_SCENE_PEWTER_CITY_OAKS_AIDE, 1
 	return
+
+PewterCity_OnFrame::
+	map_script_2 GIVE_FLY_UNLOCK, 1, PewterCity_EventScript_GiveFlyUnlockItem
+	.2byte 0
+
+PewterCity_EventScript_GiveFlyUnlockItem::
+	lockall
+Archipelago_Target_Fly_Unlock_FLAG_VISITED_PEWTER_CITY::
+	giveitem ITEM_FLY_PEWTER, 1, FLAG_VISITED_PEWTER_CITY
+	setvar GIVE_FLY_UNLOCK, 0
+	releaseall
+	end
 
 PewterCity_EventScript_GymGuide::
 	lock

@@ -3,17 +3,31 @@
 .set LOCALID_WOMAN,        5
 .set REQUIRED_BADGES_GYMS, VAR_TEMP_1
 
+.equ GIVE_FLY_UNLOCK, VAR_TEMP_2
+
 ViridianCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, ViridianCity_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, ViridianCity_OnFrame
 	.byte 0
 
 ViridianCity_OnTransition::
-	setworldmapflag FLAG_WORLD_MAP_VIRIDIAN_CITY
+	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
+	call_if_eq VAR_RESULT, TRUE, ViridianCity_EventScript_SetGiveFlyUnlockItem
+	call_if_eq VAR_RESULT, FALSE, ViridianCity_EventScript_SetWorldMapFlag
 	call_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 0, ViridianCity_EventScript_TryUnlockGym
 	call_if_ge VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2, ViridianCity_EventScript_SetOldManNormal
 	call_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1, ViridianCity_EventScript_SetOldManStandingByRoad
 	call_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 0, ViridianCity_EventScript_SetOldManBlockingRoad
 	end
+
+ViridianCity_EventScript_SetGiveFlyUnlockItem::
+	goto_if_set FLAG_VISITED_VIRIDIAN_CITY EventScript_Return
+	setvar GIVE_FLY_UNLOCK, 1
+	return
+
+ViridianCity_EventScript_SetWorldMapFlag::
+	setworldmapflag FLAG_WORLD_MAP_VIRIDIAN_CITY
+	return
 
 ViridianCity_EventScript_SetOldManNormal::
 	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_OLD_MAN_1
@@ -38,10 +52,22 @@ ViridianCity_EventScript_SetOldManBlockingRoad::
 	return
 
 ViridianCity_EventScript_TryUnlockGym::
-  specialvar VAR_RESULT, ArchipelagoSpecial_CanChallengeGiovanni
-  goto_if_eq VAR_RESULT, FALSE, EventScript_Return
+	specialvar VAR_RESULT, ArchipelagoSpecial_CanChallengeGiovanni
+	goto_if_eq VAR_RESULT, FALSE, EventScript_Return
 	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 1
 	return
+
+ViridianCity_OnFrame::
+	map_script_2 GIVE_FLY_UNLOCK, 1, ViridianCity_EventScript_GiveFlyUnlockItem
+	.2byte 0
+
+ViridianCity_EventScript_GiveFlyUnlockItem::
+	lockall
+Archipelago_Target_Fly_Unlock_FLAG_VISITED_VIRIDIAN_CITY::
+	giveitem ITEM_FLY_VIRIDIAN, 1, FLAG_VISITED_VIRIDIAN_CITY
+	setvar GIVE_FLY_UNLOCK, 0
+	releaseall
+	end
 
 ViridianCity_EventScript_GymDoorLocked::
 	lockall

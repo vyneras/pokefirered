@@ -1,17 +1,43 @@
 .equ LOCALID_FERRY_SAILOR, 6
 
+.equ GIVE_FLY_UNLOCK, VAR_TEMP_1
+
 VermilionCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, VermilionCity_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, VermilionCity_OnFrame
 	.byte 0
 
 VermilionCity_OnTransition::
-	setworldmapflag FLAG_WORLD_MAP_VERMILION_CITY
+	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
+	call_if_eq VAR_RESULT, TRUE, VermilionCity_EventScript_SetGiveFlyUnlockItem
+	call_if_eq VAR_RESULT, FALSE, VermilionCity_EventScript_SetWorldMapFlag
 	call_if_set FLAG_TALKED_TO_OAKS_AIDE_IN_VERMILION, VermilionCity_EventScript_HideOaksAide
 	end
+
+VermilionCity_EventScript_SetGiveFlyUnlockItem::
+	goto_if_set FLAG_VISITED_VERMILION_CITY EventScript_Return
+	setvar GIVE_FLY_UNLOCK, 1
+	return
+
+VermilionCity_EventScript_SetWorldMapFlag::
+	setworldmapflag FLAG_WORLD_MAP_VERMILION_CITY
+	return
 
 VermilionCity_EventScript_HideOaksAide::
 	setflag FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
 	return
+
+VermilionCity_OnFrame::
+	map_script_2 GIVE_FLY_UNLOCK, 1, VermilionCity_EventScript_GiveFlyUnlockItem
+	.2byte 0
+
+VermilionCity_EventScript_GiveFlyUnlockItem::
+	lockall
+Archipelago_Target_Fly_Unlock_FLAG_VISITED_VERMILION_CITY::
+	giveitem ITEM_FLY_VERMILION, 1, FLAG_VISITED_VERMILION_CITY
+	setvar GIVE_FLY_UNLOCK, 0
+	releaseall
+	end
 
 VermilionCity_EventScript_Woman::
 	msgbox VermilionCity_Text_GrimerMultipliesInSludge, MSGBOX_NPC

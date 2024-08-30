@@ -2558,20 +2558,16 @@ static void Task_WingFlapSound(u8 taskId)
 }
 
 // Archipelago
-u8 ArchipelagoSpecial_GetFreeFlyLocation(void)
+bool8 ArchipelagoSpecial_IsItemUnique(void)
 {
-    return gArchipelagoOptions.freeFlyLocation;
-}
-
-bool8 ArchipelagoSpecial_IsItemBadge(void)
-{
-    return gSpecialVar_0x8014 >= ITEM_BADGE_1 && gSpecialVar_0x8014 <= ITEM_BADGE_8;
+    return (gSpecialVar_0x8014 >= ITEM_BADGE_1 && gSpecialVar_0x8014 <= ITEM_BADGE_8) ||
+           (gSpecialVar_0x8014 >= ITEM_FLY_PALLET && gSpecialVar_0x8014 <= ITEM_FLY_ROUTE10);
 }
 
 bool8 ArchipelagoSpecial_ShouldHandle(void)
 {
     return gSpecialVar_0x8014 == ITEM_ARCHIPELAGO_PROGRESSION ||
-        ArchipelagoSpecial_IsItemBadge();
+           ArchipelagoSpecial_IsItemUnique();
 }
 
 u16 ArchipelagoSpecial_GetObjectScriptFlag(void)
@@ -2902,4 +2898,9 @@ bool8 ArchipelagoSpecial_ExtraKeyItems(void)
 bool8 ArchipelagoSpecial_KantoOnly(void)
 {
     return gArchipelagoOptions.kantoOnly;
+}
+
+bool8 ArchipelagoSpecial_FlyUnlocks(void)
+{
+    return gArchipelagoOptions.flyUnlocks;
 }

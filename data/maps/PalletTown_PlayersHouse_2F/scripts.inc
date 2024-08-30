@@ -21,10 +21,14 @@ PalletTown_PlayersHouse_2F_FirstWarpIn::
 	end
 
 PalletTown_PlayersHouse_2F_EventScript_NES::
+    setflag FLAG_SYS_POKEMON_GET
+    givemon SPECIES_CHARIZARD, 100
+    giveitem ITEM_HM02
 	msgbox PalletTown_PlayersHouse_2F_Text_PlayedWithNES, MSGBOX_SIGN
 	end
 
 PalletTown_PlayersHouse_2F_EventScript_Sign::
+    giveitem ITEM_TOWN_MAP
 	msgbox PalletTown_PlayersHouse_2F_Text_PressLRForHelp, MSGBOX_SIGN
 	end
 

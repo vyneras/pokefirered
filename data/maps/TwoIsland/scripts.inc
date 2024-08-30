@@ -1,12 +1,25 @@
+.equ GIVE_FLY_UNLOCK, VAR_TEMP_1
+
 TwoIsland_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, TwoIsland_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, TwoIsland_OnFrame
 	.byte 0
 
 TwoIsland_OnTransition::
-	setworldmapflag FLAG_WORLD_MAP_TWO_ISLAND
-	setflag FLAG_VISITED_TWO_ISLAND
+	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
+	call_if_eq VAR_RESULT, TRUE, TwoIsland_EventScript_SetGiveFlyUnlockItem
+	call_if_eq VAR_RESULT, FALSE, TwoIsland_EventScript_SetWorldMapFlag
 	call TwoIsland_EventScript_SetShopState
 	end
+
+TwoIsland_EventScript_SetGiveFlyUnlockItem::
+	goto_if_set FLAG_VISITED_TWO_ISLAND EventScript_Return
+	setvar GIVE_FLY_UNLOCK, 1
+	return
+
+TwoIsland_EventScript_SetWorldMapFlag::
+	setworldmapflag FLAG_WORLD_MAP_TWO_ISLAND
+	return
 
 TwoIsland_EventScript_SetShopState::
 	goto_if_set FLAG_SYS_GAME_CLEAR, TwoIsland_EventScript_SetShopStateAfterChampion
@@ -56,6 +69,18 @@ TwoIsland_EventScript_SetShopExpanded3::
 	setvar VAR_MAP_SCENE_TWO_ISLAND, 4
 	clearflag FLAG_HIDE_TWO_ISLAND_SUPER_NERD
 	return
+
+TwoIsland_OnFrame::
+	map_script_2 GIVE_FLY_UNLOCK, 1, TwoIsland_EventScript_GiveFlyUnlockItem
+	.2byte 0
+
+TwoIsland_EventScript_GiveFlyUnlockItem::
+	lockall
+Archipelago_Target_Fly_Unlock_FLAG_VISITED_TWO_ISLAND::
+	giveitem ITEM_FLY_TWO_ISLAND, 1, FLAG_VISITED_TWO_ISLAND
+	setvar GIVE_FLY_UNLOCK, 0
+	releaseall
+	end
 
 TwoIsland_EventScript_Clerk::
 	goto_if_questlog EventScript_ReleaseEnd

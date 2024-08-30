@@ -1,15 +1,41 @@
 .set REQUIRED_CAUGHT_MONS, VAR_TEMP_1
 
+.equ GIVE_FLY_UNLOCK, VAR_TEMP_2
+
 Route10_PokemonCenter_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route10_PokemonCenter_1F_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route10_PokemonCenter_1F_OnFrame
 	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
 	.byte 0
 
 Route10_PokemonCenter_1F_OnTransition::
-	setworldmapflag FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F
+	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
+	call_if_eq VAR_RESULT, TRUE, Route10_PokemonCenter_1F_EventScript_SetGiveFlyUnlockItem
+	call_if_eq VAR_RESULT, FALSE, Route10_PokemonCenter_1F_EventScript_SetWorldMapFlag
 	setrespawn SPAWN_ROUTE10
 	setvar VAR_0x8003, 1
 	specialvar REQUIRED_CAUGHT_MONS, ArchipelagoSpecial_GetProfessorOaksAideCount
+	end
+
+Route10_PokemonCenter_1F_EventScript_SetGiveFlyUnlockItem::
+	goto_if_set FLAG_VISITED_ROUTE10 EventScript_Return
+	setvar GIVE_FLY_UNLOCK, 1
+	return
+
+Route10_PokemonCenter_1F_EventScript_SetWorldMapFlag::
+	setworldmapflag FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F
+	return
+
+Route10_PokemonCenter_1F_OnFrame::
+	map_script_2 GIVE_FLY_UNLOCK, 1, Route10_PokemonCenter_1F_EventScript_GiveFlyUnlockItem
+	.2byte 0
+
+Route10_PokemonCenter_1F_EventScript_GiveFlyUnlockItem::
+	lockall
+Archipelago_Target_Fly_Unlock_FLAG_VISITED_ROUTE10::
+	giveitem ITEM_FLY_ROUTE10, 1, FLAG_VISITED_ROUTE10
+	setvar GIVE_FLY_UNLOCK, 0
+	releaseall
 	end
 
 Route10_PokemonCenter_1F_EventScript_Nurse::

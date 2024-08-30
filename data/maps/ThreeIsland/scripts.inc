@@ -8,19 +8,45 @@
 .equ LOCALID_BIKER5, 8
 .equ LOCALID_BIKER6, 14
 
+.equ GIVE_FLY_UNLOCK, VAR_TEMP_2
+
 ThreeIsland_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, ThreeIsland_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, ThreeIsland_OnFrame
 	.byte 0
 
 ThreeIsland_OnTransition::
-	setworldmapflag FLAG_WORLD_MAP_THREE_ISLAND
+	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
+	call_if_eq VAR_RESULT, TRUE, ThreeIsland_EventScript_SetGiveFlyUnlockItem
+	call_if_eq VAR_RESULT, FALSE, ThreeIsland_EventScript_SetWorldMapFlag
 	call_if_eq VAR_MAP_SCENE_THREE_ISLAND, 2, ThreeIsland_EventScript_SetAntiBikersMovementAfterBikers
 	end
+
+ThreeIsland_EventScript_SetGiveFlyUnlockItem::
+	goto_if_set FLAG_VISITED_THREE_ISLAND EventScript_Return
+	setvar GIVE_FLY_UNLOCK, 1
+	return
+
+ThreeIsland_EventScript_SetWorldMapFlag::
+	setworldmapflag FLAG_WORLD_MAP_THREE_ISLAND
+	return
 
 ThreeIsland_EventScript_SetAntiBikersMovementAfterBikers::
 	setobjectmovementtype LOCALID_ANTIBIKER1, MOVEMENT_TYPE_LOOK_AROUND
 	setobjectmovementtype LOCALID_ANTIBIKER2, MOVEMENT_TYPE_LOOK_AROUND
 	return
+
+ThreeIsland_OnFrame::
+	map_script_2 GIVE_FLY_UNLOCK, 1, ThreeIsland_EventScript_GiveFlyUnlockItem
+	.2byte 0
+
+ThreeIsland_EventScript_GiveFlyUnlockItem::
+	lockall
+Archipelago_Target_Fly_Unlock_FLAG_VISITED_THREE_ISLAND::
+	giveitem ITEM_FLY_THREE_ISLAND, 1, FLAG_VISITED_THREE_ISLAND
+	setvar GIVE_FLY_UNLOCK, 0
+	releaseall
+	end
 
 ThreeIsland_EventScript_Biker::
 	lock

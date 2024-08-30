@@ -1,17 +1,43 @@
 .set LOCALID_DOOR_GUARD_GRUNT, 6
 
+.equ GIVE_FLY_UNLOCK, VAR_TEMP_1
+
 SaffronCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, SaffronCity_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SaffronCity_OnFrame
 	.byte 0
 
 SaffronCity_OnTransition::
-	setworldmapflag FLAG_WORLD_MAP_SAFFRON_CITY
+	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
+	call_if_eq VAR_RESULT, TRUE, SaffronCity_EventScript_SetGiveFlyUnlockItem
+	call_if_eq VAR_RESULT, FALSE, SaffronCity_EventScript_SetWorldMapFlag
 	call_if_unset FLAG_RESCUED_MR_FUJI, SaffronCity_EventScript_MoveDoorGuardGrunt
 	end
+
+SaffronCity_EventScript_SetGiveFlyUnlockItem::
+	goto_if_set FLAG_VISITED_SAFFRON_CITY EventScript_Return
+	setvar GIVE_FLY_UNLOCK, 1
+	return
+
+SaffronCity_EventScript_SetWorldMapFlag::
+	setworldmapflag FLAG_WORLD_MAP_SAFFRON_CITY
+	return
 
 SaffronCity_EventScript_MoveDoorGuardGrunt::
 	setobjectxyperm LOCALID_DOOR_GUARD_GRUNT, 33, 31
 	return
+
+SaffronCity_OnFrame::
+	map_script_2 GIVE_FLY_UNLOCK, 1, SaffronCity_EventScript_GiveFlyUnlockItem
+	.2byte 0
+
+SaffronCity_EventScript_GiveFlyUnlockItem::
+	lockall
+Archipelago_Target_Fly_Unlock_FLAG_VISITED_SAFFRON_CITY::
+	giveitem ITEM_FLY_SAFFRON, 1, FLAG_VISITED_SAFFRON_CITY
+	setvar GIVE_FLY_UNLOCK, 0
+	releaseall
+	end
 
 SaffronCity_EventScript_RocketGrunt1::
 	msgbox SaffronCity_Text_WhatDoYouWantGetLost, MSGBOX_NPC

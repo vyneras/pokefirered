@@ -13,7 +13,6 @@ VictoryRoad_2F_EventScript_DoubleEdgeTutor::
 	goto_if_eq VAR_RESULT, FALSE, EventScript_DoubleEdgeDeclined
 	specialvar VAR_RESULT, ArchipelagoSpecial_CheckReusableTms
 	call_if_eq VAR_RESULT, FALSE, EventScript_SetDoubleEdgeFlag
-	setflag FLAG_TUTOR_DOUBLE_EDGE
 	goto EventScript_DoubleEdgeTaught
 	end
 
@@ -22,11 +21,13 @@ EventScript_SetDoubleEdgeFlag::
 	return
 
 EventScript_DoubleEdgeDeclined::
+	buffertutormovename STR_VAR_1, MOVETUTOR_DOUBLE_EDGE
 	msgbox Text_DoubleEdgeDeclined
 	release
 	end
 
 EventScript_DoubleEdgeTaught::
+	buffertutormovename STR_VAR_1, MOVETUTOR_DOUBLE_EDGE
 	msgbox Text_DoubleEdgeTaught
 	release
 	end
@@ -54,11 +55,13 @@ EventScript_SetThunderWaveFlag::
 	return
 
 EventScript_ThunderWaveDeclined::
+	buffertutormovename STR_VAR_1, MOVETUTOR_THUNDER_WAVE
 	msgbox Text_ThunderWaveDeclined
 	release
 	end
 
 EventScript_ThunderWaveTaught::
+	buffertutormovename STR_VAR_1, MOVETUTOR_THUNDER_WAVE
 	msgbox Text_ThunderWaveTaught
 	release
 	end
@@ -86,11 +89,13 @@ EventScript_SetRockSlideFlag::
 	return
 
 EventScript_RockSlideDeclined::
+	buffertutormovename STR_VAR_1, MOVETUTOR_ROCK_SLIDE
 	msgbox Text_RockSlideDeclined
 	release
 	end
 
 EventScript_RockSlideTaught::
+	buffertutormovename STR_VAR_1, MOVETUTOR_ROCK_SLIDE
 	msgbox Text_RockSlideTaught
 	release
 	end
@@ -118,11 +123,13 @@ EventScript_SetExplosionFlag::
 	return
 
 EventScript_ExplosionDeclined::
+	buffertutormovename STR_VAR_1, MOVETUTOR_EXPLOSION
 	msgbox Text_ExplosionDeclined
 	release
 	end
 
 EventScript_ExplosionTaught::
+	buffertutormovename STR_VAR_1, MOVETUTOR_EXPLOSION
 	msgbox Text_ExplosionTaught
 	release
 	end
@@ -150,11 +157,13 @@ EventScript_SetMegaPunchFlag::
 	return
 
 EventScript_MegaPunchDeclined::
+	buffertutormovename STR_VAR_1, MOVETUTOR_MEGA_PUNCH
 	msgbox Text_MegaPunchDeclined
 	release
 	end
 
 EventScript_MegaPunchTaught::
+	buffertutormovename STR_VAR_1, MOVETUTOR_MEGA_PUNCH
 	msgbox Text_MegaPunchTaught
 	release
 	end
@@ -182,11 +191,13 @@ EventScript_SetMegaKickFlag::
 	return
 
 EventScript_MegaKickDeclined::
+	buffertutormovename STR_VAR_1, MOVETUTOR_MEGA_KICK
 	msgbox Text_MegaKickDeclined
 	release
 	end
 
 EventScript_MegaKickTaught::
+	buffertutormovename STR_VAR_1, MOVETUTOR_MEGA_KICK
 	msgbox Text_MegaKickTaught
 	release
 	end
@@ -214,11 +225,13 @@ EventScript_SetDreamEaterFlag::
 	return
 
 EventScript_DreamEaterDeclined::
+	buffertutormovename STR_VAR_1, MOVETUTOR_DREAM_EATER
 	msgbox Text_DreamEaterDeclined
 	release
 	end
 
 EventScript_DreamEaterTaught::
+	buffertutormovename STR_VAR_1, MOVETUTOR_DREAM_EATER
 	msgbox Text_DreamEaterTaught
 	release
 	end
@@ -246,11 +259,13 @@ EventScript_SetSoftBoiledFlag::
 	return
 
 EventScript_SoftboiledDeclined::
+	buffertutormovename STR_VAR_1, MOVETUTOR_SOFT_BOILED
 	msgbox Text_SoftboiledDeclined
 	release
 	end
 
 EventScript_SoftboiledTaught::
+	buffertutormovename STR_VAR_1, MOVETUTOR_SOFT_BOILED
 	msgbox Text_SoftboiledTaught
 	release
 	end
@@ -278,11 +293,13 @@ EventScript_SetSubstituteFlag::
 	return
 
 EventScript_SubstituteDeclined::
+	buffertutormovename STR_VAR_1, MOVETUTOR_SUBSTITUTE
 	msgbox Text_SubstituteDeclined
 	release
 	end
 
 EventScript_SubstituteTaught::
+	buffertutormovename STR_VAR_1, MOVETUTOR_SUBSTITUTE
 	msgbox Text_SubstituteTaught
 	release
 	end
@@ -310,11 +327,13 @@ EventScript_SetSwordsDanceFlag::
 	return
 
 EventScript_SwordsDanceDeclined::
+	buffertutormovename STR_VAR_1, MOVETUTOR_SWORDS_DANCE
 	msgbox Text_SwordsDanceDeclined
 	release
 	end
 
 EventScript_SwordsDanceTaught::
+	buffertutormovename STR_VAR_1, MOVETUTOR_SWORDS_DANCE
 	msgbox Text_SwordsDanceTaught
 	release
 	end
@@ -342,11 +361,13 @@ EventScript_SetSeismicTossFlag::
 	return
 
 EventScript_SeismicTossDeclined::
+	buffertutormovename STR_VAR_1, MOVETUTOR_SEISMIC_TOSS
 	msgbox Text_SeismicTossDeclined
 	release
 	end
 
 EventScript_SeismicTossTaught::
+	buffertutormovename STR_VAR_1, MOVETUTOR_SEISMIC_TOSS
 	msgbox Text_SeismicTossTaught
 	release
 	end
@@ -374,11 +395,13 @@ EventScript_SetCounterFlag::
 	return
 
 EventScript_CounterDeclined::
+	buffertutormovename STR_VAR_1, MOVETUTOR_COUNTER
 	msgbox Text_CounterDeclined
 	release
 	end
 
 EventScript_CounterTaught::
+	buffertutormovename STR_VAR_1, MOVETUTOR_COUNTER
 	msgbox Text_CounterTaught
 	release
 	end
@@ -406,11 +429,13 @@ EventScript_SetMetronomeFlag::
 	return
 
 EventScript_MetronomeDeclined::
+	buffertutormovename STR_VAR_1, MOVETUTOR_METRONOME
 	msgbox Text_MetronomeDeclined
 	release
 	end
 
 EventScript_MetronomeTaught::
+	buffertutormovename STR_VAR_1, MOVETUTOR_METRONOME
 	msgbox Text_MetronomeTaught
 	release
 	end
@@ -439,6 +464,7 @@ EventScript_SetMimicFlag::
 	return
 
 EventScript_MimicDeclined::
+	buffertutormovename STR_VAR_1, MOVETUTOR_MIMIC
 	msgbox Text_MimicDeclined
 	release
 	end
@@ -451,10 +477,12 @@ EventScript_MimicTaught::
 	end
 
 EventScript_MimicTaughtMale::
+	buffertutormovename STR_VAR_1, MOVETUTOR_MIMIC
 	msgbox Text_MimicTaughtMale
 	return
 
 EventScript_MimicTaughtFemale::
+	buffertutormovename STR_VAR_1, MOVETUTOR_MIMIC
 	msgbox Text_MimicTaughtFemale
 	return
 
@@ -481,11 +509,13 @@ EventScript_SetBodySlamFlag::
 	return
 
 EventScript_BodySlamDeclined::
+	buffertutormovename STR_VAR_1, MOVETUTOR_BODY_SLAM
 	msgbox Text_BodySlamDeclined
 	release
 	end
 
 EventScript_BodySlamTaught::
+	buffertutormovename STR_VAR_1, MOVETUTOR_BODY_SLAM
 	msgbox Text_BodySlamTaught
 	release
 	end

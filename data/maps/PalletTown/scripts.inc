@@ -2,6 +2,7 @@
 .equ LOCALID_PROF_OAK,  3
 
 .equ SIGN_LADY_READY, VAR_TEMP_2
+.equ GIVE_FLY_UNLOCK, VAR_TEMP_3
 
 PalletTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, PalletTown_OnTransition
@@ -9,11 +10,22 @@ PalletTown_MapScripts::
 	.byte 0
 
 PalletTown_OnTransition::
-	setworldmapflag FLAG_WORLD_MAP_PALLET_TOWN
+	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
+	call_if_eq VAR_RESULT, TRUE, PalletTown_EventScript_SetGiveFlyUnlockItem
+	call_if_eq VAR_RESULT, FALSE, PalletTown_EventScript_SetWorldMapFlag
 	call_if_set FLAG_PALLET_LADY_NOT_BLOCKING_SIGN, PalletTown_EventScript_TryReadySignLady
 	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 0, PalletTown_EventScript_SetSignLadyPos
 	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 1, PalletTown_EventScript_SetSignLadyDone
 	end
+
+PalletTown_EventScript_SetGiveFlyUnlockItem::
+	goto_if_set FLAG_VISITED_PALLET_TOWN EventScript_Return
+	setvar GIVE_FLY_UNLOCK, 1
+	return
+
+PalletTown_EventScript_SetWorldMapFlag::
+	setworldmapflag FLAG_WORLD_MAP_PALLET_TOWN
+	return
 
 PalletTown_EventScript_TryReadySignLady::
 	goto_if_unset FLAG_OPENED_START_MENU, EventScript_Return
@@ -38,8 +50,17 @@ PalletTown_EventScript_MoveSignLadyToRouteEntrance::
 	return
 
 PalletTown_OnFrame::
+	map_script_2 GIVE_FLY_UNLOCK, 1, PalletTown_EventScript_GiveFlyUnlockItem
 	map_script_2 VAR_MAP_SCENE_PALLET_TOWN_OAK, 2, PalletTown_EventScript_OakGivesTickets
 	.2byte 0
+
+PalletTown_EventScript_GiveFlyUnlockItem::
+	lockall
+Archipelago_Target_Fly_Unlock_FLAG_VISITED_PALLET_TOWN::
+	giveitem ITEM_FLY_PALLET, 1, FLAG_VISITED_PALLET_TOWN
+	setvar GIVE_FLY_UNLOCK, 0
+	releaseall
+	end
 
 PalletTown_EventScript_OakGivesTickets::
 	lockall

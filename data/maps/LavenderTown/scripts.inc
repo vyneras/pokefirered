@@ -1,9 +1,35 @@
+.equ GIVE_FLY_UNLOCK, VAR_TEMP_1
+
 LavenderTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LavenderTown_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, LavenderTown_OnFrame
 	.byte 0
 
 LavenderTown_OnTransition::
+	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
+	call_if_eq VAR_RESULT, TRUE, LavenderTown_EventScript_SetGiveFlyUnlockItem
+	call_if_eq VAR_RESULT, FALSE, LavenderTown_EventScript_SetWorldMapFlag
+	end
+
+LavenderTown_EventScript_SetGiveFlyUnlockItem::
+	goto_if_set FLAG_VISITED_LAVENDER_TOWN EventScript_Return
+	setvar GIVE_FLY_UNLOCK, 1
+	return
+
+LavenderTown_EventScript_SetWorldMapFlag::
 	setworldmapflag FLAG_WORLD_MAP_LAVENDER_TOWN
+	return
+
+LavenderTown_OnFrame::
+	map_script_2 GIVE_FLY_UNLOCK, 1, LavenderTown_EventScript_GiveFlyUnlockItem
+	.2byte 0
+
+LavenderTown_EventScript_GiveFlyUnlockItem::
+	lockall
+Archipelago_Target_Fly_Unlock_FLAG_VISITED_LAVENDER_TOWN::
+	giveitem ITEM_FLY_LAVENDER, 1, FLAG_VISITED_LAVENDER_TOWN
+	setvar GIVE_FLY_UNLOCK, 0
+	releaseall
 	end
 
 LavenderTown_EventScript_LittleGirl::

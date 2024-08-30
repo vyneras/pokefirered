@@ -1013,7 +1013,6 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_TWO_ISLAND_BEAUTY
 	setflag FLAG_HIDE_TWO_ISLAND_SUPER_NERD
 	setflag FLAG_HIDE_LOSTELLE_IN_HER_HOME
-	setflag FLAG_HIDE_FOUR_ISLAND_RIVAL
 	setflag FLAG_HIDE_DOTTED_HOLE_SCIENTIST
 	setflag FLAG_HIDE_RESORT_GORGEOUS_INSIDE_SELPHY
 	setflag FLAG_HIDE_SELPHYS_BUTLER
@@ -1040,111 +1039,6 @@ EventScript_SetExtraKeyItemFlags::
 	setflag FLAG_HIDE_CINNABAR_ISLAND_POILCEMAN
 	setflag FLAG_ITEM_CELADON_CITY_HOUSE_HIDEOUT_KEY
 	setflag FLAG_HIDDEN_ITEM_CERULEAN_CITY_GYM_MACHINE_PART
-	end
-
-EventScript_SetFreeFlyLocation::
-	specialvar VAR_RESULT, ArchipelagoSpecial_GetFreeFlyLocation
-	switch VAR_RESULT
-	case 0, EventScript_SetFreeFlyLocationPallet
-	case 1, EventScript_SetFreeFlyLocationViridian
-	case 2, EventScript_SetFreeFlyLocationPewter
-	case 3, EventScript_SetFreeFlyLocationRoute4
-	case 4, EventScript_SetFreeFlyLocationCerulean
-	case 5, EventScript_SetFreeFlyLocationVermilion
-	case 6, EventScript_SetFreeFlyLocationRoute10
-	case 7, EventScript_SetFreeFlyLocationLavender
-	case 8, EventScript_SetFreeFlyLocationCeladon
-	case 9, EventScript_SetFreeFlyLocationFuchsia
-	case 10, EventScript_SetFreeFlyLocationSaffron
-	case 11, EventScript_SetFreeFlyLocationCinnabar
-	case 12, EventScript_SetFreeFlyLocationIndigo
-	case 13, EventScript_SetFreeFlyLocationOneIsland
-	case 14, EventScript_SetFreeFlyLocationTwoIsland
-	case 15, EventScript_SetFreeFlyLocationThreeIsland
-	case 16, EventScript_SetFreeFlyLocationFourIsland
-	case 17, EventScript_SetFreeFlyLocationFiveIsland
-	case 18, EventScript_SetFreeFlyLocationSixIsland
-	case 19, EventScript_SetFreeFlyLocationSevenIsland
-	end
-
-EventScript_SetFreeFlyLocationPallet::
-	setworldmapflag FLAG_WORLD_MAP_PALLET_TOWN
-	end
-
-EventScript_SetFreeFlyLocationViridian::
-	setworldmapflag FLAG_WORLD_MAP_VIRIDIAN_CITY
-	end
-
-EventScript_SetFreeFlyLocationPewter::
-	setworldmapflag FLAG_WORLD_MAP_PEWTER_CITY
-	end
-
-EventScript_SetFreeFlyLocationRoute4::
-	setworldmapflag FLAG_WORLD_MAP_ROUTE4_POKEMON_CENTER_1F
-	end
-
-EventScript_SetFreeFlyLocationCerulean::
-	setworldmapflag FLAG_WORLD_MAP_CERULEAN_CITY
-	end
-
-EventScript_SetFreeFlyLocationVermilion::
-	setworldmapflag FLAG_WORLD_MAP_VERMILION_CITY
-	end
-
-EventScript_SetFreeFlyLocationRoute10::
-	setworldmapflag FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F
-	end
-
-EventScript_SetFreeFlyLocationLavender::
-	setworldmapflag FLAG_WORLD_MAP_LAVENDER_TOWN
-	end
-
-EventScript_SetFreeFlyLocationCeladon::
-	setworldmapflag FLAG_WORLD_MAP_CELADON_CITY
-	end
-
-EventScript_SetFreeFlyLocationFuchsia::
-	setworldmapflag FLAG_WORLD_MAP_FUCHSIA_CITY
-	end
-
-EventScript_SetFreeFlyLocationSaffron::
-	setworldmapflag FLAG_WORLD_MAP_SAFFRON_CITY
-	end
-
-EventScript_SetFreeFlyLocationCinnabar::
-	setworldmapflag FLAG_WORLD_MAP_CINNABAR_ISLAND
-	end
-
-EventScript_SetFreeFlyLocationIndigo::
-	setworldmapflag FLAG_WORLD_MAP_INDIGO_PLATEAU_EXTERIOR
-	end
-
-EventScript_SetFreeFlyLocationOneIsland::
-	setworldmapflag FLAG_WORLD_MAP_ONE_ISLAND
-	end
-
-EventScript_SetFreeFlyLocationTwoIsland::
-	setworldmapflag FLAG_WORLD_MAP_TWO_ISLAND
-	end
-
-EventScript_SetFreeFlyLocationThreeIsland::
-	setworldmapflag FLAG_WORLD_MAP_THREE_ISLAND
-	end
-
-EventScript_SetFreeFlyLocationFourIsland::
-	setworldmapflag FLAG_WORLD_MAP_FOUR_ISLAND
-	end
-
-EventScript_SetFreeFlyLocationFiveIsland::
-	setworldmapflag FLAG_WORLD_MAP_FIVE_ISLAND
-	end
-
-EventScript_SetFreeFlyLocationSixIsland::
-	setworldmapflag FLAG_WORLD_MAP_SIX_ISLAND
-	end
-
-EventScript_SetFreeFlyLocationSevenIsland::
-	setworldmapflag FLAG_WORLD_MAP_SEVEN_ISLAND
 	end
 
 	.include "data/scripts/hall_of_fame.inc"

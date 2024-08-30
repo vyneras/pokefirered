@@ -12,6 +12,7 @@
 #include "wild_encounter.h"
 #include "event_data.h"
 #include "mail_data.h"
+#include "map_preview_screen.h"
 #include "play_time.h"
 #include "money.h"
 #include "battle_records.h"
@@ -126,7 +127,7 @@ void NewGameInitData(void)
     ClearPokedexFlags();
     InitEventData();
     ResetFameChecker();
-    SetMoney(&gSaveBlock1Ptr->money, 3000);
+    SetMoney(&gSaveBlock1Ptr->money, gArchipelagoOptions.startingMoney);
     ResetGameStats();
     SetGameStat(GAME_STAT_WHITED_OUT, 100);
     ClearPlayerLinkBattleRecords();
@@ -148,11 +149,12 @@ void NewGameInitData(void)
     ClearMysteryGift();
     WarpToPlayersRoom();
     RunScriptImmediately(EventScript_ResetAllMapFlags);
-    RunScriptImmediately(EventScript_SetFreeFlyLocation);
     StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
     ResetTrainerTowerResults();
     FlagSet(FLAG_SYS_SEVII_MAP_123);
     FlagSet(FLAG_SYS_SEVII_MAP_4567);
+
+    SetFlyMapFlag(gArchipelagoOptions.free_fly_id);
 
     if (!gArchipelagoOptions.reccuringHiddenItems) SetAllRenewableItemFlags();
 
@@ -168,6 +170,27 @@ void NewGameInitData(void)
     if (gArchipelagoOptions.startingBadges & (1 << 5)) FlagSet(FLAG_BADGE06_GET);
     if (gArchipelagoOptions.startingBadges & (1 << 6)) FlagSet(FLAG_BADGE07_GET);
     if (gArchipelagoOptions.startingBadges & (1 << 7)) FlagSet(FLAG_BADGE08_GET);
+
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 0)) MapPreview_SetFlag(FLAG_WORLD_MAP_PALLET_TOWN);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 1)) MapPreview_SetFlag(FLAG_WORLD_MAP_VIRIDIAN_CITY);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 2)) MapPreview_SetFlag(FLAG_WORLD_MAP_PEWTER_CITY);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 3)) MapPreview_SetFlag(FLAG_WORLD_MAP_CERULEAN_CITY);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 4)) MapPreview_SetFlag(FLAG_WORLD_MAP_LAVENDER_TOWN);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 5)) MapPreview_SetFlag(FLAG_WORLD_MAP_VERMILION_CITY);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 6)) MapPreview_SetFlag(FLAG_WORLD_MAP_CELADON_CITY);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 7)) MapPreview_SetFlag(FLAG_WORLD_MAP_FUCHSIA_CITY);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 8)) MapPreview_SetFlag(FLAG_WORLD_MAP_CINNABAR_ISLAND);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 9)) MapPreview_SetFlag(FLAG_WORLD_MAP_INDIGO_PLATEAU_EXTERIOR);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 10)) MapPreview_SetFlag(FLAG_WORLD_MAP_SAFFRON_CITY);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 11)) MapPreview_SetFlag(FLAG_WORLD_MAP_ONE_ISLAND);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 12)) MapPreview_SetFlag(FLAG_WORLD_MAP_TWO_ISLAND);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 13)) MapPreview_SetFlag(FLAG_WORLD_MAP_THREE_ISLAND);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 14)) MapPreview_SetFlag(FLAG_WORLD_MAP_FOUR_ISLAND);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 15)) MapPreview_SetFlag(FLAG_WORLD_MAP_FIVE_ISLAND);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 16)) MapPreview_SetFlag(FLAG_WORLD_MAP_SEVEN_ISLAND);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 17)) MapPreview_SetFlag(FLAG_WORLD_MAP_SIX_ISLAND);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 18)) MapPreview_SetFlag(FLAG_WORLD_MAP_ROUTE4_POKEMON_CENTER_1F);
+    if (gArchipelagoOptions.startingFlyUnlocks & (1 << 19)) MapPreview_SetFlag(FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F);
 
     if (!gArchipelagoOptions.extraKeyItems) RunScriptImmediately(EventScript_SetExtraKeyItemFlags);
 }

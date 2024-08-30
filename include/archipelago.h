@@ -34,18 +34,23 @@ struct ArchipelagoOptions
   /* 0x16 */ u8 ceruleanCaveRequiredCount;
 
   /* 0x17 */ u8 startingBadges;
-  /* 0x18 */ u8 freeFlyLocation;
+  /* 0x18 */ u32 startingFlyUnlocks;
+  /* 0x1C */ u32 startingMoney;
 
-  /* 0x19 */ bool8 itemfinderRequired;
-  /* 0x1A */ bool8 reccuringHiddenItems;
+  /* 0x20 */ bool8 itemfinderRequired;
+  /* 0x21 */ bool8 reccuringHiddenItems;
 
-  /* 0x1B */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
+  /* 0x22 */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
 
-  /* 0x20 */ bool8 isTrainersanity;
-  /* 0x21 */ bool8 extraKeyItems;
-  /* 0x22 */ bool8 kantoOnly;
+  /* 0x27 */ bool8 isTrainersanity;
+  /* 0x28 */ bool8 extraKeyItems;
+  /* 0x29 */ bool8 kantoOnly;
+  /* 0x2A */ bool8 flyUnlocks;
 
-  /* 0x23 */ bool8 removeBadgeRequirement[7]; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
+  /* 0x2B */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
+
+  /* 0x2C */ u8 free_fly_id;
+  /* 0x2D */ u8 town_free_fly_id;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem
@@ -81,5 +86,6 @@ extern bool8 gArchipelagoDeathLinkQueued;
 
 bool8 ArchipelagoSpecial_CanUseHmOutsideBattle(void);
 bool8 CanUseHmOutsideBattle(u8 fieldMove);
+void SetFlyMapFlag(u8 id);
 
 #endif // GUARD_ARCHIPELAGO_H
