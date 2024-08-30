@@ -30,7 +30,7 @@ CeruleanCity_Gym_Text_MistyDefeat::
     .string "show you beat me.$"
 
 CeruleanCity_Gym_Text_ReceivedCascadeBadge::
-    .string "{PLAYER} received the CASCADE BADGE.$"
+    .string "{PLAYER} received the CASCADE BADGE!$"
 
 CeruleanCity_Gym_Text_DianaIntro::
     .string "What? You?\n"

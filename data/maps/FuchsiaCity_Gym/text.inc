@@ -18,7 +18,7 @@ FuchsiaCity_Gym_Text_KogaDefeat::
     .string "Take the SOULBADGE!$"
 
 FuchsiaCity_Gym_Text_ReceivedSoulBadge::
-    .string "{PLAYER} received the SOUL BADGE.$"
+    .string "{PLAYER} received the SOUL BADGE!$"
 
 FuchsiaCity_Gym_Text_KogaPostBattle::
     .string "When afflicted by TOXIC, a POKéMON\n"

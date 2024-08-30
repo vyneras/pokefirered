@@ -33,7 +33,7 @@ PewterCity_Gym_Text_BrockDefeat::
     .string "move FLASH to use it.$"
 
 PewterCity_Gym_Text_ReceivedBoulderBadge::
-    .string "{PLAYER} received the BOULDER BADGE.$"
+    .string "{PLAYER} received the BOULDER BADGE!$"
 
 PewterCity_Gym_Text_TakeThisWithYou::
     .string "Wait!\n"

@@ -33,7 +33,7 @@ VermilionCity_Gym_Text_LtSurgeDefeat::
     .string "Fine, then, take the THUNDERBADGE!$"
 
 VermilionCity_Gym_Text_ReceivedThunderBadge::
-    .string "{PLAYER} received the THUNDER BADGE.$"
+    .string "{PLAYER} received the THUNDER BADGE!$"
 
 VermilionCity_Gym_Text_TuckerIntro::
     .string "When I was in the Army, LT. SURGE\n"

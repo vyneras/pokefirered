@@ -22,7 +22,7 @@ CeladonCity_Gym_Text_ErikaDefeat::
     .string "RAINBOWBADGE.$"
 
 CeladonCity_Gym_Text_ReceivedRainbowBadge::
-    .string "{PLAYER} received the RAINBOW BADGE.$"
+    .string "{PLAYER} received the RAINBOW BADGE!$"
 
 CeladonCity_Gym_Text_ErikaPostBattle::
     .string "You are cataloging POKéMON?\n"
