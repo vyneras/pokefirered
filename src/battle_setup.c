@@ -871,15 +871,18 @@ void SetBattledTrainerFlag(void)
 {
     u8 i;
 
-    if (sTrainerRewards[gTrainerBattleOpponent_A] != ITEM_NONE)
-    {
-        for (i = 0; i < REWARD_QUEUE_SIZE; i++)
+	if (!FlagGet(GetTrainerAFlag()))
+	{
+        if (sTrainerRewards[gTrainerBattleOpponent_A] != ITEM_NONE)
         {
-            if (gRewardQueue[i].itemId == ITEM_NONE)
+            for (i = 0; i < REWARD_QUEUE_SIZE; i++)
             {
-                gRewardQueue[i].itemId = sTrainerRewards[gTrainerBattleOpponent_A];
-                gRewardQueue[i].locationId = GetTrainerAFlag();
-                break;
+                if (gRewardQueue[i].itemId == ITEM_NONE)
+                {
+                    gRewardQueue[i].itemId = sTrainerRewards[gTrainerBattleOpponent_A];
+                    gRewardQueue[i].locationId = GetTrainerAFlag();
+                    break;
+                }
             }
         }
     }
