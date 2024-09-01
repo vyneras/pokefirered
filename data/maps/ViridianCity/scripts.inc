@@ -71,6 +71,12 @@ Archipelago_Target_Fly_Unlock_FLAG_VISITED_VIRIDIAN_CITY::
 
 ViridianCity_EventScript_GymDoorLocked::
 	lockall
+	call ViridianCity_EventScript_TryUnlockGym
+	goto_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 0, ViridianCity_EventScript_GymDoorStillLocked
+	releaseall
+	end
+
+ViridianCity_EventScript_GymDoorStillLocked::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
@@ -114,6 +120,7 @@ ViridianCity_EventScript_Boy::
 ViridianCity_EventScript_OldMan::
 	lock
 	faceplayer
+	call ViridianCity_EventScript_TryUnlockGym
 	goto_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 0, ViridianCity_EventScript_OldManGymClosed
 	msgbox ViridianCity_Text_ViridiansGymLeaderReturned
 	release
