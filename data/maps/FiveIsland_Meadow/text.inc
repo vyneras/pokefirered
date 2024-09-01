@@ -1,4 +1,16 @@
-FiveIsland_Meadow_Text_EnteredPasswordAnotherNeeded::
+FiveIsland_Meadow_Text_NoPassword::
+    .string "The WAREHOUSE's door is locked.\p"
+    .string "You need to enter two passwords\n"
+    .string "to open the door.$"
+
+FiveIsland_Meadow_Text_EnteredPasswordGoldeenNeeded::
+    .string "{PLAYER} entered a password.\p"
+    .string "“Yes, nah, CHANSEY.”\p"
+    .string "… …  … …  … …\p"
+    .string "Another password is needed to\n"
+    .string "open the door…$"
+
+FiveIsland_Meadow_Text_EnteredPasswordChanseyNeeded::
     .string "{PLAYER} entered a password.\p"
     .string "“GOLDEEN need log.”\p"
     .string "… …  … …  … …\p"

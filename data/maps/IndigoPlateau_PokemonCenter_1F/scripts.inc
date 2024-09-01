@@ -10,9 +10,18 @@ IndigoPlateau_PokemonCenter_1F_MapScripts::
 IndigoPlateau_PokemonCenter_1F_OnTransition::
 	setrespawn SPAWN_INDIGO_PLATEAU
 	setvar GUARD_SHOULD_MOVE, 0
+	call_if_set FLAG_SYS_GAME_CLEAR, IndigoPlateau_PokemonCenter_1F_BlockDoorEliteFourRematch
+	call_if_unset FLAG_SYS_GAME_CLEAR, IndigoPlateau_PokemonCenter_1F_BlockDoorEliteFour
+	end
+
+IndigoPlateau_PokemonCenter_1F_BlockDoorEliteFourRematch::
+	call_if_unset FLAG_SYS_CAN_LINK_WITH_RS, IndigoPlateau_PokemonCenter_1F_EventScript_BlockDoor
+	return
+
+IndigoPlateau_PokemonCenter_1F_BlockDoorEliteFour::
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanChallengeEliteFour
 	call_if_eq VAR_RESULT, FALSE, IndigoPlateau_PokemonCenter_1F_EventScript_BlockDoor
-	end
+	return
 
 IndigoPlateau_PokemonCenter_1F_EventScript_BlockDoor::
 	setobjectxyperm LOCALID_DOOR_GUARD, 4, 2
@@ -22,8 +31,27 @@ IndigoPlateau_PokemonCenter_1F_EventScript_BlockDoor::
 IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuard::
 	lock
 	faceplayer
+	goto_if_set FLAG_SYS_GAME_CLEAR, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardEliteFourRematch
+	goto_if_unset FLAG_SYS_GAME_CLEAR, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardEliteFour
+	end
+
+IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardEliteFourRematch::
+	goto_if_unset FLAG_SYS_CAN_LINK_WITH_RS, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardLoreleiGone
+	goto IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardGoodLuck
+	end
+
+IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardLoreleiGone::
+	msgbox IndigoPlateau_PokemonCenter_1F_Text_LoreleiIsAbsentClosedForTimeBeing
+	release
+	end
+
+IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardEliteFour::
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanChallengeEliteFour
 	goto_if_eq VAR_RESULT, FALSE, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardCantFaceEliteFour
+	goto IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardGoodLuck
+	end
+
+IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardGoodLuck::
 	msgbox IndigoPlateau_PokemonCenter_1F_Text_FaceEliteFourGoodLuck
 	call_if_eq GUARD_SHOULD_MOVE, 1, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardMove
 	release

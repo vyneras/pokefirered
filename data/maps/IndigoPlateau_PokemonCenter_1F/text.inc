@@ -14,6 +14,14 @@ IndigoPlateau_PokemonCenter_1F_Text_FaceEliteFourGoodLuck::
     .string "If you win, a door opens to the\n"
     .string "next TRAINER. Good luck!$"
 
+IndigoPlateau_PokemonCenter_1F_Text_LoreleiIsAbsentClosedForTimeBeing::
+    .string "I am so sorry, but you've wasted\n"
+    .string "your time coming here.\p"
+    .string "LORELEI of the ELITE FOUR is\n"
+    .string "absent, you see.\p"
+    .string "As a result, the POKéMON LEAGUE is\n"
+    .string "closed for the time being.$"
+
 IndigoPlateau_PokemonCenter_1F_Text_NeedXBadges::
     .string "I am so sorry, but I can't let\n"
     .string "you through here yet.\p"

@@ -9,8 +9,21 @@ FiveIsland_Meadow_OnLoad::
 FiveIsland_Meadow_EventScript_WarehouseDoor::
 	lockall
 	goto_if_set FLAG_UNLOCKED_ROCKET_WAREHOUSE, FiveIsland_Meadow_EventScript_WarehouseDoorAlreadyOpen
+	goto_if_set FLAG_LEARNED_YES_NAH_CHANSEY, FiveIsland_Meadow_EventScript_CheckGoldeenPassword
+	goto_if_set FLAG_LEARNED_GOLDEEN_NEED_LOG, FiveIsland_Meadow_EventScript_CheckChanseyPassword
+	msgbox FiveIsland_Meadow_Text_NoPassword
+	releaseall
+	end
+
+FiveIsland_Meadow_EventScript_CheckGoldeenPassword::
+	goto_if_set FLAG_LEARNED_GOLDEEN_NEED_LOG, FiveIsland_Meadow_EventScript_OpenWarehouseDoor
+	msgbox FiveIsland_Meadow_Text_EnteredPasswordGoldeenNeeded
+	releaseall
+	end
+
+FiveIsland_Meadow_EventScript_CheckChanseyPassword::
 	goto_if_set FLAG_LEARNED_YES_NAH_CHANSEY, FiveIsland_Meadow_EventScript_OpenWarehouseDoor
-	msgbox FiveIsland_Meadow_Text_EnteredPasswordAnotherNeeded
+	msgbox FiveIsland_Meadow_Text_EnteredPasswordChanseyNeeded
 	releaseall
 	end
 

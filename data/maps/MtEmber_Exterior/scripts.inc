@@ -107,6 +107,7 @@ MtEmber_Exterior_EventScript_RocketPasswordScene::
 	call MtEmber_Exterior_EventScript_RocketsFaceDown
 	msgbox MtEmber_Exterior_Text_SnoopsBeenListeningIn
 	setvar VAR_MAP_SCENE_MT_EMBER_EXTERIOR, 2
+	setflag FLAG_LEARNED_GOLDEEN_NEED_LOG
 	releaseall
 	end
 

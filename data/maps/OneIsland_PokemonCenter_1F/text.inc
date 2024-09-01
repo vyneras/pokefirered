@@ -95,6 +95,31 @@ OneIsland_PokemonCenter_1F_Text_UsualPCServicesUnavailable::
     .string "The usual PC services aren't\n"
     .string "available…$"
 
+OneIsland_PokemonCenter_1F_Text_CelioCaughtMoreMonMaybeICanBeUseful::
+    .string "CELIO: {PLAYER}, how have things\n"
+    .string "been for you?\p"
+    .string "Oh, is that right?\n"
+    .string "You've caught more POKéMON.\p"
+    .string "Do you know what?\n"
+    .string "Maybe I can be useful to you.$"
+
+OneIsland_PokemonCenter_1F_Text_YoullBeTradingFromTrainersFarAway::
+    .string "I'm modifying the Network Machine\n"
+    .string "right now.\p"
+    .string "I'm changing it so it can handle\n"
+    .string "trades over long distances.\p"
+    .string "When I get finished, you'll be\n"
+    .string "trading for exotic POKéMON from\l"
+    .string "TRAINERS far away.$"
+
+OneIsland_PokemonCenter_1F_Text_NeedsSpecialGemstone::
+    .string "But, there is a slight catch.\p"
+    .string "For the link to work, the Machine\n"
+    .string "needs a special gemstone.\p"
+    .string "It's supposed to be on ONE ISLAND,\n"
+    .string "but I haven't found one yet.\p"
+    .string "Who knows where it could be.$"
+
 OneIsland_PokemonCenter_1F_Text_TryingToFindGem::
     .string "I was trying to find the gem\n"
     .string "even while I was studying.\p"
@@ -124,6 +149,25 @@ OneIsland_PokemonCenter_1F_Text_PleaseINeedYourHelp::
     .string "It… It's not anything weird.\n"
     .string "Please, I need your help.$"
 
+OneIsland_PokemonCenter_1F_Text_TeamRocketCausingTrouble::
+    .string "I've heard rumors that some\n"
+    .string "members of TEAM ROCKET have been\l"
+    .string "spotted on the SEVII ISLANDS.\p"
+    .string "I'm not sure what they are up to\n"
+    .string "but I doubt it's anything good.\p"
+    .string "{PLAYER}, please, I want you to\n"
+    .string "go investigate what they're doing.\p"
+    .string "{PLAYER}, let me give you this.$"
+
+OneIsland_PokemonCenter_1F_Text_DealtWithTeamRocket::
+    .string "CELIO: I heard that you rescued\n"
+    .string "many POKéMON from TEAM ROCKET.\p"
+    .string "Thank you for helping out the\n"
+    .string "residents of the SEVII ISLANDS.\p"
+    .string "I know you've already done so\n"
+    .string "much for me, but I have one last\l"
+    .string "favor I'd like to ask of you.$"
+
 OneIsland_PokemonCenter_1F_Text_AnotherGemstoneInSeviiIslands::
     .string "While I was studying gemstones,\n"
     .string "I discovered something important.\p"
@@ -132,8 +176,7 @@ OneIsland_PokemonCenter_1F_Text_AnotherGemstoneInSeviiIslands::
     .string "That other gemstone is supposed to\n"
     .string "be in the SEVII ISLANDS.\p"
     .string "{PLAYER}, please, I need you to go\n"
-    .string "find the other gem.\p"
-    .string "{PLAYER}, let me give you this.$"
+    .string "find the other gem.$"
 
 OneIsland_PokemonCenter_1F_Text_ObtainedExtraMapPage::
     .string "Obtained an extra page for the\n"
@@ -143,8 +186,15 @@ OneIsland_PokemonCenter_1F_Text_PassLetYouGetToAllIslands::
     .string "This is my own ferry PASS.\p"
     .string "It will let you get to all the\n"
     .string "SEVII ISLANDS.\p"
-    .string "{PLAYER}, please, I can't do\n"
-    .string "it without your help.$"
+    .string "{PLAYER}, please, I'm worried\n"
+    .string "about the what they might do.$"
+
+OneIsland_PokemonCenter_1F_Text_HaveYouFoundGem::
+    .string "Have you managed to find the\n"
+    .string "other gemstone?\p"
+    .string "Oh… That's too bad.\p"
+    .string "I'm sure it's somewhere on\n"
+    .string "the SEVII ISLANDS.$"
 
 OneIsland_PokemonCenter_1F_Text_HandedSapphireToCelio::
     .string "{PLAYER} handed the SAPPHIRE\n"
@@ -178,14 +228,6 @@ OneIsland_PokemonCenter_1F_Text_ManagedToLinkWithHoennThankYou::
     .string "{PLAYER}, I owe it all to you!\p"
     .string "Thanks to you, my dream came\n"
     .string "true…$"
-
-OneIsland_PokemonCenter_1F_Text_WishYouBestOfLuck::
-    .string "I…\n"
-    .string "I'm not crying.\p"
-    .string "That's enough about me!\p"
-    .string "{PLAYER}, you're going to keep\n"
-    .string "looking for exotic POKéMON, right?\p"
-    .string "I wish you the best of luck!$"
 
 OneIsland_PokemonCenter_1F_Text_CelioHearingRumorsAboutYou::
     .string "CELIO: Hello!\p"
