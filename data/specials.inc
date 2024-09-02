@@ -484,4 +484,6 @@ gSpecials::
 	def_special ArchipelagoSpecial_ExtraKeyItems
 	def_special ArchipelagoSpecial_KantoOnly
 	def_special ArchipelagoSpecial_FlyUnlocks
+	def_special ArchipelagoSpecial_IsFamesanity
+	def_special ArchipelagoSpecial_SetFameCheckerFlag
 gSpecialsEnd::

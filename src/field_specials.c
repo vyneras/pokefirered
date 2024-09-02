@@ -2905,3 +2905,13 @@ bool8 ArchipelagoSpecial_FlyUnlocks(void)
 {
     return gArchipelagoOptions.flyUnlocks;
 }
+
+bool8 ArchipelagoSpecial_IsFamesanity(void)
+{
+    return gArchipelagoOptions.isFamesanity;
+}
+
+bool8 ArchipelagoSpecial_SetFameCheckerFlag(void)
+{
+    return !gArchipelagoOptions.fameCheckerRequired || CheckBagHasItem(ITEM_FAME_CHECKER, 1);
+}

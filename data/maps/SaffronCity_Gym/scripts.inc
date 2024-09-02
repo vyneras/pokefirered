@@ -4,14 +4,14 @@ SaffronCity_Gym_MapScripts::
 SaffronCity_Gym_EventScript_Sabrina::
 	famechecker FAMECHECKER_SABRINA, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
 	trainerbattle_single TRAINER_LEADER_SABRINA, SaffronCity_Gym_Text_SabrinaIntro, SaffronCity_Gym_Text_SabrinaDefeat, SaffronCity_Gym_EventScript_DefeatedSabrina, NO_MUSIC
+	call SaffronCity_Gym_EventScript_SabrinaFameChecker
 	goto_if_unset FLAG_GOT_TM04_FROM_SABRINA, SaffronCity_Gym_EventScript_GiveTM04
 	msgbox SaffronCity_Gym_Text_ExplainTM04
 	release
 	end
 
 SaffronCity_Gym_EventScript_DefeatedSabrina::
-	famechecker FAMECHECKER_SABRINA, 2
-	famechecker FAMECHECKER_SABRINA, 3
+	call SaffronCity_Gym_EventScript_SabrinaFameChecker
 	clearflag FLAG_HIDE_SAFFRON_CITY_POKECENTER_SABRINA_JOURNALS
 	setflag FLAG_DEFEATED_SABRINA
 Archipelago_Target_Badge_6::
@@ -19,6 +19,11 @@ Archipelago_Target_Badge_6::
 	set_gym_trainers 6
 	goto SaffronCity_Gym_EventScript_GiveTM04
 	end
+
+SaffronCity_Gym_EventScript_SabrinaFameChecker::
+	famechecker FAMECHECKER_SABRINA, 2
+	famechecker FAMECHECKER_SABRINA, 3
+	return
 
 SaffronCity_Gym_EventScript_GiveTM04::
 	msgbox SaffronCity_Gym_Text_ExplainMarshBadgeTakeThis

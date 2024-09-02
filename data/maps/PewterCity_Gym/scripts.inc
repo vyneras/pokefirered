@@ -4,13 +4,14 @@ PewterCity_Gym_MapScripts::
 PewterCity_Gym_EventScript_Brock::
 	famechecker FAMECHECKER_BROCK, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
 	trainerbattle_single TRAINER_LEADER_BROCK, PewterCity_Gym_Text_BrockIntro, PewterCity_Gym_Text_BrockDefeat, PewterCity_Gym_EventScript_DefeatedBrock, NO_MUSIC
+	call PewterCity_Gym_EventScript_BrockFameChecker
 	goto_if_unset FLAG_GOT_TM39_FROM_BROCK, PewterCity_Gym_EventScript_GiveTM39
 	msgbox PewterCity_Gym_Text_BrockPostBattle
 	release
 	end
 
 PewterCity_Gym_EventScript_DefeatedBrock::
-	famechecker FAMECHECKER_BROCK, 1
+	call PewterCity_Gym_EventScript_BrockFameChecker
 	setflag FLAG_DEFEATED_BROCK
 Archipelago_Target_Badge_1::
 	giveitem ITEM_BADGE_1, 1, FLAG_RECEIVED_BADGE_1
@@ -18,6 +19,10 @@ Archipelago_Target_Badge_1::
 	set_gym_trainers 1
 	goto PewterCity_Gym_EventScript_GiveTM39
 	end
+
+PewterCity_Gym_EventScript_BrockFameChecker::
+	famechecker FAMECHECKER_BROCK, 1
+	return
 
 PewterCity_Gym_EventScript_GiveTM39::
 	msgbox PewterCity_Gym_Text_TakeThisWithYou

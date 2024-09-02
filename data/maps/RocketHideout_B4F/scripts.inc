@@ -23,6 +23,7 @@ RocketHideout_B4F_EventScript_Giovanni::
 	lock
 	faceplayer
 	famechecker FAMECHECKER_GIOVANNI, 0
+	goto_if_set FLAG_HIDE_CELADON_ROCKETS, RocketHideout_B4F_EventScript_GiovanniFameChecker
 	message RocketHideout_B4F_Text_GiovanniIntro
 	waitmessage
 	playbgm MUS_ENCOUNTER_ROCKET, 0
@@ -38,6 +39,11 @@ RocketHideout_B4F_EventScript_Giovanni::
 	call RocketHideout_B4F_EventScript_TryHideMiscKantoRockets
 	famechecker FAMECHECKER_GIOVANNI, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
 	fadescreen FADE_FROM_BLACK
+	release
+	end
+
+RocketHideout_B4F_EventScript_GiovanniFameChecker::
+	msgbox RocketHideout_B4F_Text_GiovanniIntroRepeat
 	release
 	end
 

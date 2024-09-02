@@ -421,6 +421,7 @@ PalletTown_ProfessorOaksLab_EventScript_RivalChoseStarter::
 PalletTown_ProfessorOaksLab_EventScript_ProfOak::
 	lock
 	faceplayer
+	call_if_set FLAG_DELIVERED_OAKS_PARCEL, PalletTown_ProfessorOaksLab_EventScript_GiveOakFameChecker
 	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 6, PalletTown_ProfessorOaksLab_EventScript_RatePokedex
 	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 5, PalletTown_ProfessorOaksLab_EventScript_RatePokedexOrTryGiveBalls
 	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 4, PalletTown_ProfessorOaksLab_EventScript_OakBattleMonForItToGrow
@@ -428,6 +429,10 @@ PalletTown_ProfessorOaksLab_EventScript_ProfOak::
 	msgbox PalletTown_ProfessorOaksLab_Text_OakWhichOneWillYouChoose
 	release
 	end
+
+PalletTown_ProfessorOaksLab_EventScript_GiveOakFameChecker::
+	famechecker FAMECHECKER_OAK, 1
+	return
 
 PalletTown_ProfessorOaksLab_EventScript_OakCanReachNextTownWithMon::
 	msgbox PalletTown_ProfessorOaksLab_Text_OakCanReachNextTownWithMon
@@ -505,7 +510,7 @@ PalletTown_ProfessorOaksLab_EventScript_ReceiveDexScene::
 Archipelago_Target_NPC_Gift_FLAG_GOT_FIRST_POKEBALLS::
 	giveitem ITEM_POKE_BALL, 1, FLAG_GOT_FIRST_POKEBALLS
 	msgbox PalletTown_ProfessorOaksLab_Text_OakExplainCatching
-	famechecker FAMECHECKER_OAK, 1
+	call PalletTown_ProfessorOaksLab_EventScript_GiveOakFameChecker
 	msgbox PalletTown_ProfessorOaksLab_Text_OakCompleteMonGuideWasMyDream
 	msgbox PalletTown_ProfessorOaksLab_Text_RivalLeaveItToMeGramps
 	call_if_eq VAR_FACING, DIR_NORTH, PalletTown_ProfessorOaksLab_EventScript_DexSceneRivalFacePlayerNorth

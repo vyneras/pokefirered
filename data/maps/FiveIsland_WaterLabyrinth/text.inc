@@ -32,6 +32,19 @@ FiveIsland_WaterLabyrinth_Text_GladIMetSomeoneLikeYou::
     .string "traveling.\p"
     .string "I'm glad I met someone like you.$"
 
+FiveIsland_WaterLabyrinth_Text_FameCheckerHintItem::
+    .string "I'd appreciate it if you could\n"
+    .string "show me a TOGEPI or TOGETIC.\p"
+    .string "If you do, you'll be rewarded\n"
+    .string "with this {STR_VAR_3}.$"
+
+FiveIsland_WaterLabyrinth_Text_FameCheckerHintPlayerItem::
+    .string "I'd appreciate it if you could\n"
+    .string "show me a TOGEPI or TOGETIC.\p"
+    .string "If you do, you'll be rewarded\n"
+    .string "with {STR_VAR_2}'s\l"
+    .string "{STR_VAR_3}.$"
+
 FiveIsland_WaterLabyrinth_Text_CuteMonRemindsMeOfDaisy::
     .string "Oh, hello.\n"
     .string "That's a cute {STR_VAR_2}.\p"

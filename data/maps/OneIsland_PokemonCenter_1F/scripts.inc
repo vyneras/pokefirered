@@ -257,25 +257,50 @@ OneIsland_PokemonCenter_1F_EventScript_Celio::
 
 OneIsland_PokemonCenter_1F_EventScript_CelioGiveBillFact::
 	msgbox OneIsland_PokemonCenter_1F_Text_CelioHearingRumorsAboutYou
+	goto_if_unset FLAG_TOLD_BILL_FACT_1, OneIsland_PokemonCenter_1F_EventScript_BillFact1
+	goto_if_unset FLAG_TOLD_BILL_FACT_2, OneIsland_PokemonCenter_1F_EventScript_BillFact2
+	goto_if_unset FLAG_TOLD_BILL_FACT_3, OneIsland_PokemonCenter_1F_EventScript_BillFact3
 	random 3
 	goto_if_eq VAR_RESULT, 0, OneIsland_PokemonCenter_1F_EventScript_BillFact1
 	goto_if_eq VAR_RESULT, 1, OneIsland_PokemonCenter_1F_EventScript_BillFact2
-	famechecker FAMECHECKER_BILL, 5
-	msgbox OneIsland_PokemonCenter_1F_Text_BillCantStomachMilk
-	release
+	goto OneIsland_PokemonCenter_1F_EventScript_BillFact3
 	end
 
 OneIsland_PokemonCenter_1F_EventScript_BillFact1::
 	famechecker FAMECHECKER_BILL, 3
+	specialvar VAR_RESULT, ArchipelagoSpecial_SetFameCheckerFlag
+	call_if_eq VAR_RESULT, TRUE, OneIsland_PokemonCenter_1F_EventScript_SetBillFact1Flag
 	msgbox OneIsland_PokemonCenter_1F_Text_BillsFirstMonWasAbra
 	release
 	end
 
+OneIsland_PokemonCenter_1F_EventScript_SetBillFact1Flag::
+	setflag FLAG_TOLD_BILL_FACT_1
+	return
+
 OneIsland_PokemonCenter_1F_EventScript_BillFact2::
 	famechecker FAMECHECKER_BILL, 4
+	specialvar VAR_RESULT, ArchipelagoSpecial_SetFameCheckerFlag
+	call_if_eq VAR_RESULT, TRUE, OneIsland_PokemonCenter_1F_EventScript_SetBillFact2Flag
 	msgbox OneIsland_PokemonCenter_1F_Text_BillsHometownInGoldenrod
 	release
 	end
+
+OneIsland_PokemonCenter_1F_EventScript_SetBillFact2Flag::
+	setflag FLAG_TOLD_BILL_FACT_2
+	return
+
+OneIsland_PokemonCenter_1F_EventScript_BillFact3::
+	famechecker FAMECHECKER_BILL, 5
+	specialvar VAR_RESULT, ArchipelagoSpecial_SetFameCheckerFlag
+	call_if_eq VAR_RESULT, TRUE, OneIsland_PokemonCenter_1F_EventScript_SetBillFact3Flag
+	msgbox OneIsland_PokemonCenter_1F_Text_BillCantStomachMilk
+	release
+	end
+
+OneIsland_PokemonCenter_1F_EventScript_SetBillFact3Flag::
+	setflag FLAG_TOLD_BILL_FACT_3
+	return
 
 OneIsland_PokemonCenter_1F_EventScript_GiveCelioSapphire::
 	textcolor NPC_TEXT_COLOR_NEUTRAL

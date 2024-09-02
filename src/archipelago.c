@@ -34,7 +34,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .startingMoney = 3000,
 
     .itemfinderRequired = FALSE,
-    .reccuringHiddenItems = FALSE,
+    .fameCheckerRequired = FALSE,
 
     .oaksAideRequiredCounts = {
         [0] = 10, // Route 2
@@ -44,10 +44,12 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
         [4] = 50  // Route 15
     },
 
+    .reccuringHiddenItems = FALSE,
     .isTrainersanity = FALSE,
     .extraKeyItems = FALSE,
     .kantoOnly = FALSE,
     .flyUnlocks = FALSE,
+    .isFamesanity = FALSE,
 
     .removeBadgeRequirement = 0,
 

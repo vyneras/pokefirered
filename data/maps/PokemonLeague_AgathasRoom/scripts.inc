@@ -47,9 +47,7 @@ PokemonLeague_AgathasRoom_EventScript_Agatha::
 	faceplayer
 	famechecker FAMECHECKER_AGATHA, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
 	goto_if_set FLAG_DEFEATED_AGATHA, PokemonLeague_AgathasRoom_EventScript_PostBattle
-	famechecker FAMECHECKER_AGATHA, 0
-	famechecker FAMECHECKER_AGATHA, 4
-	famechecker FAMECHECKER_OAK, 4
+	call PokemonLeague_AgathasRoom_EventScript_AgathaFameChecker
 	call_if_unset FLAG_SYS_GAME_CLEAR, PokemonLeague_AgathasRoom_EventScript_Intro
 	call_if_set FLAG_SYS_GAME_CLEAR, PokemonLeague_AgathasRoom_EventScript_RematchIntro
 	setflag FLAG_TEMP_3

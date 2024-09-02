@@ -766,10 +766,10 @@
 #define FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE             0x2E3
 #define FLAG_FOUGHT_DEOXYS                               0x2E4
 #define FLAG_GOT_LUXURY_BALL_FROM_RESORT_GORGEOUS_HOUSE  0x2E5
-#define FLAG_0x2E6                                       0x2E6
-#define FLAG_0x2E7                                       0x2E7
-#define FLAG_0x2E8                                       0x2E8
-#define FLAG_0x2E9                                       0x2E9
+#define FLAG_SHOWED_TOGEPI_OR_TOGETIC                    0x2E6
+#define FLAG_TOLD_BILL_FACT_1                            0x2E7
+#define FLAG_TOLD_BILL_FACT_2                            0x2E8
+#define FLAG_TOLD_BILL_FACT_3                            0x2E9
 #define FLAG_0x2EA                                       0x2EA
 #define FLAG_0x2EB                                       0x2EB
 #define FLAG_REVIVED_DOME                                0x2EC

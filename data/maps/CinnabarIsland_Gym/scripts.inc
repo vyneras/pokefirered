@@ -55,13 +55,14 @@ CinnabarIsland_Gym_OnLoadOpenDoor6::
 CinnabarIsland_Gym_EventScript_Blaine::
 	famechecker FAMECHECKER_BLAINE, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
 	trainerbattle_single TRAINER_LEADER_BLAINE, CinnabarIsland_Gym_Text_BlaineIntro, CinnabarIsland_Gym_Text_BlaineDefeat, CinnabarIsland_Gym_EventScript_DefeatedBlaine, NO_MUSIC
+	call CinnabarIsland_Gym_EventScript_BlaineFameChecker
 	goto_if_unset FLAG_GOT_TM38_FROM_BLAINE, CinnabarIsland_Gym_EventScript_GiveTM38
 	msgbox CinnabarIsland_Gym_Text_BlainePostBattle
 	release
 	end
 
 CinnabarIsland_Gym_EventScript_DefeatedBlaine::
-	famechecker FAMECHECKER_BLAINE, 1
+	call CinnabarIsland_Gym_EventScript_BlaineFameChecker
 	setflag FLAG_DEFEATED_BLAINE
 Archipelago_Target_Badge_7::
 	giveitem ITEM_BADGE_7, 1, FLAG_RECEIVED_BADGE_7
@@ -71,6 +72,10 @@ Archipelago_Target_Badge_7::
 	set_gym_trainers 7
 	goto CinnabarIsland_Gym_EventScript_GiveTM38
 	end
+
+CinnabarIsland_Gym_EventScript_BlaineFameChecker::
+	famechecker FAMECHECKER_BLAINE, 1
+	return
 
 CinnabarIsland_Gym_EventScript_ClearCinnabarBillFlag::
 	clearflag FLAG_HIDE_CINNABAR_POKECENTER_BILL
@@ -105,14 +110,19 @@ CinnabarIsland_Gym_EventScript_Quiz2CompleteTrainer::
 
 CinnabarIsland_Gym_EventScript_Derek::
 	trainerbattle_single TRAINER_SUPER_NERD_DEREK, CinnabarIsland_Gym_Text_DerekIntro, CinnabarIsland_Gym_Text_DerekDefeat, CinnabarIsland_Gym_EventScript_DefeatedDerek
-	famechecker FAMECHECKER_BLAINE, 2
+	call CinnabarIsland_Gym_EventScript_DerekFameChecker
 	msgbox CinnabarIsland_Gym_Text_DerekPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 CinnabarIsland_Gym_EventScript_DefeatedDerek::
 	call_if_unset FLAG_CINNABAR_GYM_QUIZ_4, CinnabarIsland_Gym_EventScript_Quiz4CompleteTrainer
+	call CinnabarIsland_Gym_EventScript_DerekFameChecker
 	release
 	end
+
+CinnabarIsland_Gym_EventScript_DerekFameChecker::
+	famechecker FAMECHECKER_BLAINE, 2
+	return
 
 CinnabarIsland_Gym_EventScript_Quiz4CompleteTrainer::
 	call CinnabarIsland_Gym_EventScript_Quiz4Complete

@@ -17,9 +17,15 @@ FiveIsland_WaterLabyrinth_EventScript_EggGentleman::
 
 FiveIsland_WaterLabyrinth_EventScript_MonDaisyComment::
 	famechecker FAMECHECKER_DAISY, 2
+	specialvar VAR_RESULT, ArchipelagoSpecial_SetFameCheckerFlag
+	call_if_eq VAR_RESULT, TRUE, FiveIsland_WaterLabyrinth_EventScript_SetShowedMonFlag
 	msgbox FiveIsland_WaterLabyrinth_Text_CuteMonRemindsMeOfDaisy
 	release
 	end
+
+FiveIsland_WaterLabyrinth_EventScript_SetShowedMonFlag::
+	setflag FLAG_SHOWED_TOGEPI_OR_TOGETIC
+	return
 
 FiveIsland_WaterLabyrinth_EventScript_LeadMonMaxFriendship::
 	msgbox FiveIsland_WaterLabyrinth_Text_TreatMonRightHaveThis
@@ -46,13 +52,40 @@ Archipelago_Target_Special_Egg_Gift_TOGEPI::
 FiveIsland_WaterLabyrinth_EventScript_PostEggComment::
 	bufferspeciesname STR_VAR_2, SPECIES_TOGEPI
 	setvar VAR_0x8004, SPECIES_TOGEPI
+	special SetSeenMon
 	specialvar VAR_RESULT, PlayerPartyContainsSpeciesWithPlayerID
 	goto_if_eq VAR_RESULT, TRUE, FiveIsland_WaterLabyrinth_EventScript_MonDaisyComment
 	bufferspeciesname STR_VAR_2, SPECIES_TOGETIC
 	setvar VAR_0x8004, SPECIES_TOGETIC
+	special SetSeenMon
 	specialvar VAR_RESULT, PlayerPartyContainsSpeciesWithPlayerID
 	goto_if_eq VAR_RESULT, TRUE, FiveIsland_WaterLabyrinth_EventScript_MonDaisyComment
+	specialvar VAR_RESULT, ArchipelagoSpecial_IsFamesanity
+	goto_if_eq VAR_RESULT, TRUE, FiveIsland_WaterLabyrinth_EventScript_CheckGiveFameCheckerHint
 	msgbox FiveIsland_WaterLabyrinth_Text_GladIMetSomeoneLikeYou
+	release
+	end
+
+FiveIsland_WaterLabyrinth_EventScript_CheckGiveFameCheckerHint::
+	msgbox FiveIsland_WaterLabyrinth_Text_GladIMetSomeoneLikeYou
+	goto_if_unset FLAG_SHOWED_TOGEPI_OR_TOGETIC, FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHint
+	release
+	end
+
+FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHint::
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, 10008
+	goto_if_eq VAR_RESULT, 0, FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHintItem
+	goto_if_eq VAR_RESULT, 1, FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHintPlayerItem
+	goto_if_eq VAR_RESULT, 2, FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHintItem
+	end
+
+FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHintItem::
+	msgbox FiveIsland_WaterLabyrinth_Text_FameCheckerHintItem
+	release
+	end
+
+FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHintPlayerItem::
+	msgbox FiveIsland_WaterLabyrinth_Text_FameCheckerHintPlayerItem
 	release
 	end
 

@@ -42,10 +42,18 @@ CeruleanCity_Text_ExplainFameCheckerSmellYa::
     .string "All right, this time I really am\n"
     .string "gone. Smell ya!$"
 
-@ RB translation: "Heh! You're no match for my genius!"
-CeruleanCity_Text_RivalVictory::
-    .string "なんたって！\n"
-    .string "おれは　てんさい　だからよ！$"
+CeruleanCity_Text_RivalTalkAboutBill::
+    .string "{RIVAL}: Hey, guess what?\p"
+    .string "I went to BILL's and got him to\n"
+    .string "show me his rare POKéMON.\p"
+    .string "That added a lot of pages to my\n"
+    .string "POKéDEX!\p"
+    .string "After all, BILL's world famous as a\n"
+    .string "POKéMANIAC.\p"
+    .string "He invented the POKéMON Storage\n"
+    .string "System on PC, too.\p"
+    .string "Since you're using his system,\n"
+    .string "you should go thank him.$"
 
 CeruleanCity_Text_GruntIntro::
     .string "Hey! Stay out!\n"

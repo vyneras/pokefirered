@@ -38,20 +38,22 @@ struct ArchipelagoOptions
   /* 0x1C */ u32 startingMoney;
 
   /* 0x20 */ bool8 itemfinderRequired;
-  /* 0x21 */ bool8 reccuringHiddenItems;
+  /* 0x21 */ bool8 fameCheckerRequired;
 
   /* 0x22 */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
 
-  /* 0x27 */ bool8 isTrainersanity;
-  /* 0x28 */ bool8 extraKeyItems;
-  /* 0x29 */ bool8 kantoOnly;
-  /* 0x2A */ bool8 flyUnlocks;
+  /* 0x27 */ bool8 reccuringHiddenItems;
+  /* 0x28 */ bool8 isTrainersanity;
+  /* 0x29 */ bool8 extraKeyItems;
+  /* 0x2A */ bool8 kantoOnly;
+  /* 0x2B */ bool8 flyUnlocks;
+  /* 0x2C */ bool8 isFamesanity;
 
-  /* 0x2B */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
+  /* 0x2D */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
 
-  /* 0x2C */ u8 free_fly_id;
-  /* 0x2D */ u8 town_free_fly_id;
-  /* 0x2E */ u16 resort_gorgeous_mon;
+  /* 0x2E */ u8 free_fly_id;
+  /* 0x2F */ u8 town_free_fly_id;
+  /* 0x30 */ u16 resort_gorgeous_mon;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem

@@ -21,10 +21,15 @@ CeladonCity_Condominiums_1F_EventScript_TeaWomanAfterTea::
 
 CeladonCity_Condominiums_1F_EventScript_TeaWomanMentionDaisy::
 	famechecker FAMECHECKER_DAISY, 4
-	setflag FLAG_TALKED_TO_TEA_LADY_AFTER_HOF
+	specialvar VAR_RESULT, ArchipelagoSpecial_SetFameCheckerFlag
+	call_if_eq VAR_RESULT, TRUE, CeladonCity_Condominiums_1F_EventScript_SetTalkedToTeaLadyAfterHoFFlag
 	msgbox CeladonCity_Condominiums_1F_Text_DaisyComesToBuyTea
 	release
 	end
+
+CeladonCity_Condominiums_1F_EventScript_SetTalkedToTeaLadyAfterHoFFlag::
+	setflag FLAG_TALKED_TO_TEA_LADY_AFTER_HOF
+	return
 
 CeladonCity_Condominiums_1F_EventScript_TeaWomanAfterMentionDaisy::
 	msgbox CeladonCity_Condominiums_1F_Text_MyDearMonsKeepMeCompany

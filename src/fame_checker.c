@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
 #include "constants/songs.h"
 #include "event_data.h"
 #include "event_scripts.h"
@@ -10,6 +11,7 @@
 #include "trainer_pokemon_sprites.h"
 #include "scanline_effect.h"
 #include "new_menu_helpers.h"
+#include "item.h"
 #include "item_menu.h"
 #include "list_menu.h"
 #include "task.h"
@@ -19,6 +21,7 @@
 #include "fame_checker.h"
 #include "strings.h"
 #include "constants/event_objects.h"
+#include "constants/items.h"
 
 #define SPRITETAG_SELECTOR_CURSOR 1000
 #define SPRITETAG_QUESTION_MARK 1001
@@ -141,6 +144,8 @@ static const u8 sTextColor_Green[3]  = {0, 6, 7};
 #define FAME_CHECKER_DAISY_OAK (FC_NONTRAINER_START + 1)
 #define FAME_CHECKER_BILL      (FC_NONTRAINER_START + 2)
 #define FAME_CHECKER_MR_FUJI   (FC_NONTRAINER_START + 3)
+
+static const u16 sFameCheckerRewards[NUM_FAMECHECKER_PERSONS * 6] = {0};
 
 static const u16 sTrainerIdxs[] = {
     [FAMECHECKER_OAK]      = FAME_CHECKER_PROF_OAK,
@@ -1221,11 +1226,30 @@ static void FCSetup_ResetBGCoords(void)
 
 void SetFlavorTextFlagFromSpecialVars(void)
 {
+    u8 i;
+
     if (gSpecialVar_0x8004 < NUM_FAMECHECKER_PERSONS && gSpecialVar_0x8005 < 6)
     {
-        gSaveBlock1Ptr->fameChecker[gSpecialVar_0x8004].flavorTextFlags |= (1 << gSpecialVar_0x8005);
-        gSpecialVar_0x8005 = FCPICKSTATE_SILHOUETTE;
-        UpdatePickStateFromSpecialVar8005();
+        if (!gArchipelagoOptions.fameCheckerRequired || CheckBagHasItem(ITEM_FAME_CHECKER, 1))
+        {
+            if (!((gSaveBlock1Ptr->fameChecker[gSpecialVar_0x8004].flavorTextFlags >> gSpecialVar_0x8005) & 1))
+            {
+                for (i = 0; i < REWARD_QUEUE_SIZE; i++)
+                {
+                    if (gRewardQueue[i].itemId == ITEM_NONE)
+                    {
+                        u8 rewardNum = (gSpecialVar_0x8004 * 6) + gSpecialVar_0x8005;
+                        gRewardQueue[i].itemId = sFameCheckerRewards[rewardNum];
+                        gRewardQueue[i].locationId = 10000 + rewardNum;
+                        break;
+                    }
+                }
+            }
+
+            gSaveBlock1Ptr->fameChecker[gSpecialVar_0x8004].flavorTextFlags |= (1 << gSpecialVar_0x8005);
+            gSpecialVar_0x8005 = FCPICKSTATE_SILHOUETTE;
+            UpdatePickStateFromSpecialVar8005();
+        }
     }
 }
 

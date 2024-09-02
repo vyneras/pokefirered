@@ -52,8 +52,7 @@ PokemonLeague_LoreleisRoom_EventScript_Lorelei::
 	faceplayer
 	famechecker FAMECHECKER_LORELEI, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
 	goto_if_set FLAG_DEFEATED_LORELEI, PokemonLeague_LoreleisRoom_EventScript_PostBattle
-	famechecker FAMECHECKER_LORELEI, 0
-	famechecker FAMECHECKER_LORELEI, 1
+	call PokemonLeague_LoreleisRoom_EventScript_LoreleiFameChecker
 	call_if_unset FLAG_SYS_GAME_CLEAR, PokemonLeague_LoreleisRoom_EventScript_Intro
 	call_if_set FLAG_SYS_GAME_CLEAR, PokemonLeague_LoreleisRoom_EventScript_RematchIntro
 	setflag FLAG_TEMP_3

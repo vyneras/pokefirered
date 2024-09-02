@@ -89,7 +89,7 @@ CeruleanCity_EventScript_Rival::
 	settrainerflag TRAINER_RIVAL_CERULEAN_BULBASAUR
 	settrainerflag TRAINER_RIVAL_CERULEAN_CHARMANDER
 	settrainerflag TRAINER_RIVAL_CERULEAN_SQUIRTLE
-	famechecker FAMECHECKER_BILL, 0
+	call CeruleanCity_EventScript_RivalFameChecker
 	msgbox CeruleanCity_Text_RivalPostBattle
 	closemessage
 	playbgm MUS_RIVAL_EXIT, 0
@@ -105,9 +105,28 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_FAME_CHECKER::
 	applymovement LOCALID_RIVAL, CeruleanCity_Movement_RivalExit
 	waitmovement 0
 	fadedefaultbgm
+	specialvar VAR_RESULT, ArchipelagoSpecial_IsFamesanity
+	goto_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_RivalSetPosition
 	removeobject LOCALID_RIVAL
 	releaseall
 	end
+
+CeruleanCity_EventScript_RivalTalk::
+	lock
+	faceplayer
+	call CeruleanCity_EventScript_RivalFameChecker
+	msgbox CeruleanCity_Text_RivalTalkAboutBill
+	release
+	end
+
+CeruleanCity_EventScript_RivalSetPosition::
+	setobjectxyperm LOCALID_RIVAL, 23, 20
+	releaseall
+	end
+
+CeruleanCity_EventScript_RivalFameChecker::
+	famechecker FAMECHECKER_BILL, 0
+	return
 
 CeruleanCity_EventScript_RivalSquirtle::
 	trainerbattle_no_intro TRAINER_RIVAL_CERULEAN_SQUIRTLE, CeruleanCity_Text_RivalDefeat

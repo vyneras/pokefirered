@@ -319,6 +319,25 @@ const std::set<std::string> IGNORABLE_TRAINER_REWARDS = {
     "TRAINER_YOUNG_COUPLE_GIA_JES_3"
 };
 
+const std::vector<std::string> FAMECHECKER_PEOPLE = {
+    "FAMECHECKER_OAK",
+    "FAMECHECKER_DAISY",
+    "FAMECHECKER_BROCK",
+    "FAMECHECKER_MISTY",
+    "FAMECHECKER_LTSURGE",
+    "FAMECHECKER_ERIKA",
+    "FAMECHECKER_KOGA",
+    "FAMECHECKER_SABRINA",
+    "FAMECHECKER_BLAINE",
+    "FAMECHECKER_LORELEI",
+    "FAMECHECKER_BRUNO",
+    "FAMECHECKER_AGATHA",
+    "FAMECHECKER_LANCE",
+    "FAMECHECKER_BILL",
+    "FAMECHECKER_MRFUJI",
+    "FAMECHECKER_GIOVANNI"
+};
+
 int main (int argc, char *argv[])
 {
     std::filesystem::path root_dir = std::filesystem::path(".");
@@ -350,6 +369,7 @@ int main (int argc, char *argv[])
     std::map<std::string, std::shared_ptr<LocationInfo>> npc_gifts;
     std::map<std::string, std::shared_ptr<LocationInfo>> fly_unlocks;
     std::map<std::string, std::shared_ptr<LocationInfo>> badges;
+    std::map<std::string, std::shared_ptr<LocationInfo>> famechecker_rewards;
     std::map<std::string, std::shared_ptr<TrainerInfo>> trainers;
     std::map<std::string, std::shared_ptr<LocationInfo>> trainer_rewards;
     std::map<std::string, std::shared_ptr<LocationInfo>> ball_items;
@@ -515,7 +535,33 @@ int main (int argc, char *argv[])
             }
         }
 
-        // Reading trainers
+        // Fame Checker
+        for (size_t j = 0; j < FAMECHECKER_PEOPLE.size(); j++)
+        {
+            for (size_t k = 0; k < 6; k++)
+            {
+                auto num = std::to_string(k + 1);
+                auto famechecker_reward = famechecker_rewards[FAMECHECKER_PEOPLE[j] + "_" + num];
+
+                if (famechecker_reward != nullptr)
+                {
+                    auto index = (j * 6) + k;
+                    famechecker_reward->address[GAME_REVISION_MAP[i]] = symbol_map["sFameCheckerRewards"] + (index * 2) - ROM_START;
+                }
+                else
+                {
+                    auto index = (j * 6) + k;
+                    famechecker_reward = std::make_shared<LocationInfo>();
+                    famechecker_reward->name = FAMECHECKER_PEOPLE[j] + "_" + num;
+                    famechecker_reward->flag = 10000 + index;
+                    famechecker_reward->address[GAME_REVISION_MAP[i]] = symbol_map["sFameCheckerRewards"] + (index * 2) - ROM_START;
+                    famechecker_reward->default_item = constants_json["ITEM_NONE"];
+                    famechecker_rewards[famechecker_reward->name] = famechecker_reward;
+                }
+            }
+        }
+
+        // Trainers
         for (auto const& [trainer_id, trainer_name] : trainer_names)
         {
             auto trainer = trainers[trainer_name];
@@ -1546,6 +1592,10 @@ int main (int argc, char *argv[])
         locations_json[location->name] = location->to_json();
     }
     for (const auto& [name, location]: fly_unlocks)
+    {
+        locations_json[location->name] = location->to_json();
+    }
+    for (const auto& [name, location]: famechecker_rewards)
     {
         locations_json[location->name] = location->to_json();
     }

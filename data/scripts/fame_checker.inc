@@ -8,25 +8,6 @@ ViridianCity_School_EventScript_PokemonJournal::
 	release
 	end
 
-EventScript_PokemonJournalUnused1::
-	lock
-	faceplayer
-	famechecker FAMECHECKER_DAISY, 1
-	famechecker FAMECHECKER_OAK, 4
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox PokemonJournal_Text_SpecialFeatureProfOak
-	release
-	end
-
-EventScript_PokemonJournalUnused2::
-	lock
-	faceplayer
-	famechecker FAMECHECKER_DAISY, 4
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox PokemonJournal_Text_SpecialFeatureProfOak
-	release
-	end
-
 FourIsland_PokemonCenter_1F_EventScript_PokemonJournal::
 	lockall
 	famechecker FAMECHECKER_DAISY, 5
@@ -203,22 +184,6 @@ SixIsland_Mart_EventScript_OldWoman::
 	release
 	end
 
-EventScript_LanceUnused::
-	lock
-	faceplayer
-	famechecker FAMECHECKER_LANCE, 0
-	msgbox gFameCheckerFlavorText_Lance0
-	release
-	end
-
-SaffronCity_EventScript_BattleGirlUnused::
-	lock
-	faceplayer
-	famechecker FAMECHECKER_LANCE, 1
-	msgbox SaffronCity_Text_HowCanClubNotRecognizeLance
-	release
-	end
-
 SaffronCity_EventScript_BattleGirl::
 	lock
 	faceplayer
@@ -284,3 +249,24 @@ SilphCo_8F_EventScript_Scientist::
 	msgbox SilphCo_8F_Text_ToRocketBossMonsAreTools
 	release
 	end
+
+PokemonLeague_LoreleisRoom_EventScript_LoreleiFameChecker::
+	famechecker FAMECHECKER_LORELEI, 0
+	famechecker FAMECHECKER_LORELEI, 1
+	return
+
+PokemonLeague_BrunosRoom_EventScript_BrunoFameChecker::
+	famechecker FAMECHECKER_BRUNO, 0
+	famechecker FAMECHECKER_BRUNO, 1
+	return
+
+PokemonLeague_AgathasRoom_EventScript_AgathaFameChecker::
+	famechecker FAMECHECKER_AGATHA, 0
+	famechecker FAMECHECKER_AGATHA, 4
+	famechecker FAMECHECKER_OAK, 4
+	return
+
+PokemonLeague_LancesRoom_EventScript_LanceFameChecker::
+	famechecker FAMECHECKER_LANCE, 0
+	famechecker FAMECHECKER_LANCE, 1
+	return

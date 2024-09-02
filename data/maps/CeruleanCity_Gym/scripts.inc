@@ -4,13 +4,14 @@ CeruleanCity_Gym_MapScripts::
 CeruleanCity_Gym_EventScript_Misty::
 	famechecker FAMECHECKER_MISTY, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
 	trainerbattle_single TRAINER_LEADER_MISTY, CeruleanCity_Gym_Text_MistyIntro, CeruleanCity_Gym_Text_MistyDefeat, CeruleanCity_Gym_EventScript_MistyDefeated, NO_MUSIC
+	call CeruleanCity_Gym_EventScript_MistyFameChecker
 	goto_if_unset FLAG_GOT_TM03_FROM_MISTY, CeruleanCity_Gym_EventScript_GiveTM03
 	msgbox CeruleanCity_Gym_Text_ExplainTM03
 	release
 	end
 
 CeruleanCity_Gym_EventScript_MistyDefeated::
-	famechecker FAMECHECKER_MISTY, 1
+	call CeruleanCity_Gym_EventScript_MistyFameChecker
 	setflag FLAG_DEFEATED_MISTY
 Archipelago_Target_Badge_2::
 	giveitem ITEM_BADGE_2, 1, FLAG_RECEIVED_BADGE_2
@@ -18,6 +19,10 @@ Archipelago_Target_Badge_2::
 	set_gym_trainers 2
 	goto CeruleanCity_Gym_EventScript_GiveTM03
 	end
+
+CeruleanCity_Gym_EventScript_MistyFameChecker::
+	famechecker FAMECHECKER_MISTY, 1
+	return
 
 CeruleanCity_Gym_EventScript_GiveTM03::
 	msgbox CeruleanCity_Gym_Text_ExplainCascadeBadge

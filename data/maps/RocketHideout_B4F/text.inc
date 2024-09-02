@@ -21,6 +21,13 @@ RocketHideout_B4F_Text_GiovanniPostBattle::
     .string "I shall step aside this time!\p"
     .string "I hope we meet again…$"
 
+RocketHideout_B4F_Text_GiovanniIntroRepeat::
+    .string "TEAM ROCKET captures POKéMON from\n"
+    .string "around the world.\p"
+    .string "They're important tools for keeping\n"
+    .string "our criminal enterprise going.\p"
+    .string "I am the leader, GIOVANNI!$"
+
 RocketHideout_B4F_Text_Grunt2Intro::
     .string "I know you!\n"
     .string "You ruined our plans at MT. MOON!$"

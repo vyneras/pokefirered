@@ -6,6 +6,7 @@ ViridianCity_Gym_MapScripts::
 ViridianCity_Gym_EventScript_Giovanni::
 	famechecker FAMECHECKER_GIOVANNI, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
 	trainerbattle_single TRAINER_LEADER_GIOVANNI, ViridianCity_Gym_Text_GiovanniIntro, ViridianCity_Gym_Text_GiovanniDefeat, ViridianCity_Gym_EventScript_DefeatedGiovanni, NO_MUSIC
+	famechecker FAMECHECKER_GIOVANNI, 3
 	goto_if_unset FLAG_GOT_TM26_FROM_GIOVANNI, ViridianCity_Gym_EventScript_GiveTM26
 	msgbox ViridianCity_Gym_Text_GiovanniPostBattle
 	closemessage
@@ -81,6 +82,7 @@ ViridianCity_Gym_EventScript_GymGuy::
 	end
 
 ViridianCity_Gym_EventScript_GymGuyPostVictory::
+    famechecker FAMECHECKER_GIOVANNI, 3
 	famechecker FAMECHECKER_GIOVANNI, 4
 	msgbox ViridianCity_Gym_Text_GymGuyPostVictory
 	release
