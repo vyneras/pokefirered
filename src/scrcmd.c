@@ -2269,8 +2269,6 @@ bool8 ScrCmd_bufferapitemstrings(struct ScriptContext *ctx)
         if ((gArchipelagoNameTable[(i * 5) + 0] | (gArchipelagoNameTable[(i * 5) + 1] << 8)) == locationId)
         {
             playerNameId = gArchipelagoNameTable[(i * 5) + 4];
-            itemNameOffset = gArchipelagoNameTable[(i * 5) + 2] | (gArchipelagoNameTable[(i * 5) + 3] << 8);
-            StringCopy(sScriptStringVars[stringVarIndexB], gArchipelagoItemNames + itemNameOffset);
 
             if (playerNameId == 0)
             {
@@ -2278,7 +2276,9 @@ bool8 ScrCmd_bufferapitemstrings(struct ScriptContext *ctx)
                 return FALSE;
             }
 
+            itemNameOffset = gArchipelagoNameTable[(i * 5) + 2] | (gArchipelagoNameTable[(i * 5) + 3] << 8);
             StringCopy(sScriptStringVars[stringVarIndexA], gArchipelagoPlayerNames + (playerNameId * 17));
+            StringCopy(sScriptStringVars[stringVarIndexB], gArchipelagoItemNames + itemNameOffset);
             gSpecialVar_Result = 1; // Foreign item
             return FALSE;
         }
@@ -2288,7 +2288,6 @@ bool8 ScrCmd_bufferapitemstrings(struct ScriptContext *ctx)
         }
     }
 
-	StringCopy(sScriptStringVars[stringVarIndexB], "AP ITEM");
     gSpecialVar_Result = 0; // Unknown, display "ARCHIPELAGO_ITEM"
     return FALSE;
 }

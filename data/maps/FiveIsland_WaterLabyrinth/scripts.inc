@@ -80,6 +80,7 @@ FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHint::
 	end
 
 FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHintItem::
+	bufferitemname STR_VAR_3, VAR_FAMECHECKER_DAISY_2_REWARD
 	msgbox FiveIsland_WaterLabyrinth_Text_FameCheckerHintItem
 	release
 	end
