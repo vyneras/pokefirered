@@ -4,6 +4,7 @@ Route12_FishingHouse_MapScripts::
 Route12_FishingHouse_EventScript_FishingGuruBrother::
 	lock
 	faceplayer
+	goto_if_set FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE, Route12_FishingHouse_EventScript_AlreadyShowedMagikarp
 	goto_if_set FLAG_GOT_SUPER_ROD, Route12_FishingHouse_EventScript_CheckMagikarpRecord
 	msgbox Route12_FishingHouse_Text_DoYouLikeToFish, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route12_FishingHouse_EventScript_GiveSuperRod
@@ -23,6 +24,7 @@ Route12_FishingHouse_EventScript_CheckMagikarpRecord::
 	goto_if_questlog EventScript_ReleaseEnd
 	special QuestLog_CutRecording
 	setvar VAR_0x8004, SPECIES_MAGIKARP
+	special SetSeenMon
 	specialvar VAR_RESULT, DoesPlayerPartyContainSpecies
 	goto_if_eq VAR_RESULT, FALSE, Route12_FishingHouse_EventScript_NoMagikarpInParty
 	special GetMagikarpSizeRecordInfo
@@ -40,7 +42,19 @@ Route12_FishingHouse_EventScript_CheckMagikarpRecord::
 	end
 
 Route12_FishingHouse_EventScript_NoMagikarpInParty::
-	msgbox Route12_FishingHouse_Text_TryFishingBringMeMagikarp
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE
+	goto_if_eq VAR_RESULT, 0, Route12_FishingHouse_EventScript_BringMeMagikarpItem
+	goto_if_eq VAR_RESULT, 1, Route12_FishingHouse_EventScript_BringMeMagikarpPlayerItem
+	goto_if_eq VAR_RESULT, 2, Route12_FishingHouse_EventScript_BringMeMagikarpItem
+	end
+
+Route12_FishingHouse_EventScript_BringMeMagikarpItem::
+	msgbox Route12_FishingHouse_Text_TryFishingBringMeMagikarpItem
+	release
+	end
+
+Route12_FishingHouse_EventScript_BringMeMagikarpPlayerItem::
+	msgbox Route12_FishingHouse_Text_TryFishingBringMeMagikarpPlayerItem
 	release
 	end
 
@@ -54,34 +68,33 @@ Route12_FishingHouse_EventScript_NotMagikarp::
 	end
 
 Route12_FishingHouse_EventScript_NotRecordMagikarp::
-	goto_if_unset FLAG_GOT_RECORD_SETTING_MAGIKARP, Route12_FishingHouse_EventScript_NewRecordMagikarp
+	goto_if_unset FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE, Route12_FishingHouse_EventScript_NewRecordMagikarp
 	msgbox Route12_FishingHouse_Text_HmmXInchesDoesntMeasureUp
 	release
 	end
 
 Route12_FishingHouse_EventScript_TieRecordMagikarp::
-	goto_if_unset FLAG_GOT_RECORD_SETTING_MAGIKARP, Route12_FishingHouse_EventScript_NewRecordMagikarp
+	goto_if_unset FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE, Route12_FishingHouse_EventScript_NewRecordMagikarp
 	msgbox Route12_FishingHouse_Text_HuhXInchesSameSizeAsLast
 	release
 	end
 
 Route12_FishingHouse_EventScript_NewRecordMagikarp::
-	setflag FLAG_GOT_RECORD_SETTING_MAGIKARP
 	msgbox Route12_FishingHouse_Text_WhoaXInchesTakeThis
-	giveitem ITEM_NET_BALL
-	goto_if_eq VAR_RESULT, FALSE, Route12_FishingHouse_EventScript_NoRoomForNetBall
+Archipelago_Target_NPC_Gift_FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE::
+	giveitem ITEM_NET_BALL, 1, FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE
 	msgbox Route12_FishingHouse_Text_LookForwardToGreaterRecords
 	release
 	end
 
-Route12_FishingHouse_EventScript_NoRoomForNetBall::
-	msgbox Route12_FishingHouse_Text_NoRoomForGift
+Route12_FishingHouse_EventScript_AlreadyShowedMagikarp::
+	msgbox Route12_FishingHouse_Text_LookForwardToGreaterRecords
 	release
 	end
 
 Route12_FishingHouse_EventScript_MagikarpRecordSign::
 	lockall
-	goto_if_set FLAG_GOT_RECORD_SETTING_MAGIKARP, Route12_FishingHouse_EventScript_MagikarpRecordSignRecordSet
+	goto_if_set FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE, Route12_FishingHouse_EventScript_MagikarpRecordSignRecordSet
 	msgbox Route12_FishingHouse_Text_BlankChartOfSomeSort
 	releaseall
 	end

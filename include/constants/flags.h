@@ -690,7 +690,7 @@
 #define FLAG_GOT_LETTER                                  0x299
 #define FLAG_GOT_TM04_FROM_SABRINA                       0x29A
 #define FLAG_GOT_FAME_CHECKER                            0x29B
-#define FLAG_GOT_RECORD_SETTING_MAGIKARP                 0x29C
+#define FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE     0x29C
 #define FLAG_TWO_ISLAND_SHOP_INTRODUCED                  0x29D
 #define FLAG_TWO_ISLAND_SHOP_EXPANDED_1                  0x29E
 #define FLAG_TWO_ISLAND_SHOP_EXPANDED_2                  0x29F
@@ -765,7 +765,7 @@
 #define FLAG_GOT_NUGGET_FROM_DUNSPARCE_TUNNEL            0x2E2
 #define FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE             0x2E3
 #define FLAG_FOUGHT_DEOXYS                               0x2E4
-#define FLAG_0x2E5                                       0x2E5
+#define FLAG_GOT_LUXURY_BALL_FROM_RESORT_GORGEOUS_HOUSE  0x2E5
 #define FLAG_0x2E6                                       0x2E6
 #define FLAG_0x2E7                                       0x2E7
 #define FLAG_0x2E8                                       0x2E8

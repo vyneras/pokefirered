@@ -25,7 +25,19 @@ Route12_FishingHouse_Text_OhThatsDisappointing::
     .string "Oh…\n"
     .string "That's so disappointing…$"
 
-Route12_FishingHouse_Text_TryFishingBringMeMagikarp::
+Route12_FishingHouse_Text_TryFishingBringMeMagikarpItem::
+    .string "Hello there, {PLAYER}!\n"
+    .string "Have you been fishing?\p"
+    .string "Try fishing with the SUPER ROD in\n"
+    .string "any body of water.\p"
+    .string "You'll find different POKéMON in\n"
+    .string "different places.\p"
+    .string "Oh, and don't forget to bring me\n"
+    .string "gigantic MAGIKARP.\p"
+    .string "If you do bring me one, I'll\n"
+    .string "give you this {STR_VAR_3}.$"
+
+Route12_FishingHouse_Text_TryFishingBringMeMagikarpPlayerItem::
     .string "Hello there, {PLAYER}!\n"
     .string "Have you been fishing?\p"
     .string "Try fishing with the SUPER ROD in\n"
@@ -34,6 +46,9 @@ Route12_FishingHouse_Text_TryFishingBringMeMagikarp::
     .string "different places.\p"
     .string "Oh, and don't forget to bring me\n"
     .string "gigantic MAGIKARP.$"
+    .string "If you do bring me one, I'll\n"
+    .string "give you {STR_VAR_2}'s.\l"
+    .string "{STR_VAR_3}.$"
 
 Route12_FishingHouse_Text_OhMagikarpAllowMeToSee::
     .string "Oh? {PLAYER}?\n"

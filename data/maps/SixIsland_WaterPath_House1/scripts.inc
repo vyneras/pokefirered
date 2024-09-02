@@ -6,7 +6,9 @@ SixIsland_WaterPath_House1_EventScript_Beauty::
 	faceplayer
 	goto_if_questlog EventScript_ReleaseEnd
 	special QuestLog_CutRecording
+	goto_if_set FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1, SixIsland_WaterPath_House1_EventScript_AlreadyShowedHeracross
 	setvar VAR_0x8004, SPECIES_HERACROSS
+	special SetSeenMon
 	specialvar VAR_RESULT, DoesPlayerPartyContainSpecies
 	goto_if_eq VAR_RESULT, FALSE, SixIsland_WaterPath_House1_EventScript_NoHeracrossInParty
 	special GetHeracrossSizeRecordInfo
@@ -24,7 +26,19 @@ SixIsland_WaterPath_House1_EventScript_Beauty::
 	end
 
 SixIsland_WaterPath_House1_EventScript_NoHeracrossInParty::
-	msgbox SixIsland_WaterPath_House1_Text_LoveItNeedItHeracross
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1
+	goto_if_eq VAR_RESULT, 0, SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossItem
+	goto_if_eq VAR_RESULT, 1, SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossPlayerItem
+	goto_if_eq VAR_RESULT, 2, SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossItem
+	end
+
+SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossItem::
+	msgbox SixIsland_WaterPath_House1_Text_LoveItNeedItHeracrossItem
+	release
+	end
+
+SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossPlayerItem::
+	msgbox SixIsland_WaterPath_House1_Text_LoveItNeedItHeracrossPlayerItem
 	release
 	end
 
@@ -50,16 +64,15 @@ SixIsland_WaterPath_House1_EventScript_ShownTiedHeracross::
 	end
 
 SixIsland_WaterPath_House1_EventScript_ShownBigHeracross::
-	setflag FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1
 	msgbox SixIsland_WaterPath_House1_Text_ItsXInchesDeserveReward
-	giveitem ITEM_NEST_BALL
-	goto_if_eq VAR_RESULT, FALSE, SixIsland_WaterPath_House1_EventScript_NoRoomForNestBall
+Archipelago_Target_NPC_Gift_FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1::
+	giveitem ITEM_NEST_BALL, 1, FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1
 	msgbox SixIsland_WaterPath_House1_Text_WantToSeeBiggerOne
 	release
 	end
 
-SixIsland_WaterPath_House1_EventScript_NoRoomForNestBall::
-	msgbox SixIsland_WaterPath_House1_Text_YourBagIsFull
+SixIsland_WaterPath_House1_EventScript_AlreadyShowedHeracross::
+	msgbox SixIsland_WaterPath_House1_Text_WantToSeeBiggerOne
 	release
 	end
 

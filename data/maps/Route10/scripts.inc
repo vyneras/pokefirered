@@ -12,7 +12,7 @@ Route10_EventScript_SouthRockTunnelSign::
 	end
 
 Route10_EventScript_PowerPlantSign::
-  giveitem ITEM_MACHINE_PART
+	giveitem ITEM_MACHINE_PART
 	msgbox Route10_Text_PowerPlant, MSGBOX_SIGN
 	end
 

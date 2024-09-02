@@ -1,7 +1,17 @@
-SixIsland_WaterPath_House1_Text_LoveItNeedItHeracross::
+SixIsland_WaterPath_House1_Text_LoveItNeedItHeracrossItem::
     .string "Hera, hera, HERACROSS!\n"
     .string "Big and shiny, it's the bug boss!\l"
-    .string "Love it, need it, HERACROSS!$"
+    .string "Love it, need it, HERACROSS!\p"
+    .string "If you bring me a HERACROSS, I'll\n"
+    .string "give you this {STR_VAR_3}!$"
+
+SixIsland_WaterPath_House1_Text_LoveItNeedItHeracrossPlayerItem::
+    .string "Hera, hera, HERACROSS!\n"
+    .string "Big and shiny, it's the bug boss!\l"
+    .string "Love it, need it, HERACROSS!\p"
+    .string "If you bring me a HERACROSS, I'll\n"
+    .string "give you {STR_VAR_3}'s\l"
+    .string "{STR_VAR_2}!$"
 
 SixIsland_WaterPath_House1_Text_MayIMeasureHeracross::
     .string "Eeeeek!\n"

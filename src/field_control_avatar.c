@@ -247,7 +247,6 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         WonderNews_IncrementStepCounter();
         IncrementRenewableHiddenItemStepCounter();
         RunMassageCooldownStepCounter();
-        IncrementResortGorgeousStepCounter();
         IncrementBirthIslandRockStepCount();
         if (TryStartStepBasedScript(&position, metatileBehavior, playerDirection) == TRUE)
         {

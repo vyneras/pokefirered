@@ -51,6 +51,7 @@ struct ArchipelagoOptions
 
   /* 0x2C */ u8 free_fly_id;
   /* 0x2D */ u8 town_free_fly_id;
+  /* 0x2E */ u16 resort_gorgeous_mon;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem

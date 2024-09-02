@@ -52,7 +52,8 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .removeBadgeRequirement = 0,
 
     .free_fly_id = 0,
-    .town_free_fly_id = 0
+    .town_free_fly_id = 0,
+    .resort_gorgeous_mon = 25
 };
 
 EWRAM_DATA struct ArchipelagoReceivedItem gArchipelagoReceivedItem = {0};

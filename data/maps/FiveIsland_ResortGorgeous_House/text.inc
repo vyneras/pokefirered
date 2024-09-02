@@ -1,21 +1,19 @@
-FiveIsland_ResortGorgeous_House_Text_PleaseHearMyWish::
-    .string "SELPHY: Oh?\n"
-    .string "Do I know you from somewhere?\p"
-    .string "Oh, but that doesn't matter.\p"
-    .string "I am exquisitely bored.\n"
-    .string "Please, hear my wish.$"
-
-FiveIsland_ResortGorgeous_House_Text_WishToSeeMonPlease::
+FiveIsland_ResortGorgeous_House_Text_WishToSeeMonPleaseItem::
     .string "I wish to see a POKéMON.\n"
     .string "A darling {STR_VAR_1}.\p"
     .string "I want to see one right away.\n"
-    .string "Please, make my wish come true.$"
+    .string "Please, make my wish come true.\p"
+    .string "If you do, I'll have SEBASTIAN\n"
+    .string "give you this {STR_VAR_3}.$"
 
-FiveIsland_ResortGorgeous_House_Text_OhImTiredOfWaiting::
-    .string "SELPHY: Oh, I'm tired of this.\n"
-    .string "I'm tired of waiting for you.\p"
-    .string "I'll forgive you this time, but\n"
-    .string "please don't fail me next time.$"
+FiveIsland_ResortGorgeous_House_Text_WishToSeeMonPleasePlayerItem::
+    .string "I wish to see a POKéMON.\n"
+    .string "A darling {STR_VAR_1}.\p"
+    .string "I want to see one right away.\n"
+    .string "Please, make my wish come true.\p"
+    .string "If you do, I'll have SEBASTIAN\n"
+    .string "give you {STR_VAR_2}'s\l"
+    .string "{STR_VAR_3}.$"
 
 FiveIsland_ResortGorgeous_House_Text_MonYouCaughtForMeThankYou::
     .string "SELPHY: Oh, hello, there.\p"
@@ -47,14 +45,6 @@ FiveIsland_ResortGorgeous_House_Text_ButlerPleaseAcceptThisAsHerThanks::
     .string "Butler: I sincerely thank you for\n"
     .string "pleasing Lady SELPHY.\p"
     .string "Please accept this as her thanks…$"
-
-FiveIsland_ResortGorgeous_House_Text_ButlerBagAppearsToBeFull::
-    .string "Butler: Your BAG appears to be\n"
-    .string "unfortunately full.$"
-
-FiveIsland_ResortGorgeous_House_Text_OhHowDisappointing::
-    .string "Oh…\n"
-    .string "How disappointing.$"
 
 FiveIsland_ResortGorgeous_House_Text_SelphyWishYouBestOfLuck::
     .string "SELPHY: I wish you the best of\n"

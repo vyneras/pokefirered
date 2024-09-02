@@ -153,8 +153,8 @@ void NewGameInitData(void)
     ResetTrainerTowerResults();
     FlagSet(FLAG_SYS_SEVII_MAP_123);
     FlagSet(FLAG_SYS_SEVII_MAP_4567);
-
     SetFlyMapFlag(gArchipelagoOptions.free_fly_id);
+    VarSet(VAR_RESORT_GORGEOUS_REQUESTED_MON, gArchipelagoOptions.resort_gorgeous_mon);
 
     if (!gArchipelagoOptions.reccuringHiddenItems) SetAllRenewableItemFlags();
 
