@@ -449,10 +449,13 @@
 #define ITEM_POWDER_JAR 372
 #define ITEM_RUBY 373
 #define ITEM_SAPPHIRE 374
-#define ITEM_177 375
-#define ITEM_178 376
-#define ITEM_179 377
-#define ITEM_17A 378
+
+// Coins placeholder items
+#define ITEM_COINS_10  375
+#define ITEM_COINS_20  376
+#define ITEM_COINS_40  377
+#define ITEM_COINS_100 378
+
 #define ITEM_17B 379
 #define ITEM_17C 380
 #define ITEM_17D 381

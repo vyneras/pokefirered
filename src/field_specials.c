@@ -2561,7 +2561,8 @@ static void Task_WingFlapSound(u8 taskId)
 bool8 ArchipelagoSpecial_IsItemUnique(void)
 {
     return (gSpecialVar_0x8014 >= ITEM_BADGE_1 && gSpecialVar_0x8014 <= ITEM_BADGE_8) ||
-           (gSpecialVar_0x8014 >= ITEM_FLY_PALLET && gSpecialVar_0x8014 <= ITEM_FLY_ROUTE10);
+           (gSpecialVar_0x8014 >= ITEM_FLY_PALLET && gSpecialVar_0x8014 <= ITEM_FLY_ROUTE10) ||
+           (gSpecialVar_0x8014 >= ITEM_COINS_10 && gSpecialVar_0x8014 <= ITEM_COINS_100);
 }
 
 bool8 ArchipelagoSpecial_ShouldHandle(void)

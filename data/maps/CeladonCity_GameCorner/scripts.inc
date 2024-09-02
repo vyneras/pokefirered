@@ -138,19 +138,9 @@ CeladonCity_GameCorner_EventScript_Fisher::
 	msgbox CeladonCity_GameCorner_Text_DoYouWantToPlay
 	checkitem ITEM_COIN_CASE
 	goto_if_eq VAR_RESULT, FALSE, CeladonCity_GameCorner_EventScript_GamblerNoCoinCase
-	checkcoins VAR_TEMP_1
-	goto_if_ge VAR_TEMP_1, (MAX_COINS + 1) - 10, CeladonCity_GameCorner_EventScript_FisherNoRoomForCoins
-	addcoins 10
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox CeladonCity_GameCorner_Text_Received10CoinsFromMan
-	playse SE_SHOP
-	waitse
+Archipelago_Target_NPC_Gift_FLAG_GOT_10_COINS_FROM_GAMBLER::
+	giveitem ITEM_COINS_10, 1, FLAG_GOT_10_COINS_FROM_GAMBLER
 	setflag FLAG_GOT_10_COINS_FROM_GAMBLER
-	goto CeladonCity_GameCorner_EventScript_FaceSlotMachine
-	end
-
-CeladonCity_GameCorner_EventScript_FisherNoRoomForCoins::
-	msgbox CeladonCity_GameCorner_Text_DontNeedMyCoins
 	goto CeladonCity_GameCorner_EventScript_FaceSlotMachine
 	end
 
@@ -199,19 +189,9 @@ CeladonCity_GameCorner_EventScript_Scientist::
 	msgbox CeladonCity_GameCorner_Text_WantSomeCoins
 	checkitem ITEM_COIN_CASE
 	goto_if_eq VAR_RESULT, FALSE, CeladonCity_GameCorner_EventScript_GamblerNoCoinCase
-	checkcoins VAR_TEMP_1
-	goto_if_ge VAR_TEMP_1, (MAX_COINS + 1) - 20, CeladonCity_GameCorner_EventScript_ScientistNoRoomForCoins
-	addcoins 20
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox CeladonCity_GameCorner_Text_Received20CoinsFromNiceGuy
-	playse SE_SHOP
-	waitse
+Archipelago_Target_NPC_Gift_FLAG_GOT_20_COINS_FROM_GAMBLER::
+	giveitem ITEM_COINS_20, 1, FLAG_GOT_20_COINS_FROM_GAMBLER
 	setflag FLAG_GOT_20_COINS_FROM_GAMBLER
-	goto CeladonCity_GameCorner_EventScript_FaceSlotMachine
-	end
-
-CeladonCity_GameCorner_EventScript_ScientistNoRoomForCoins::
-	msgbox CeladonCity_GameCorner_Text_YouHaveLotsOfCoins
 	goto CeladonCity_GameCorner_EventScript_FaceSlotMachine
 	end
 
@@ -227,19 +207,9 @@ CeladonCity_GameCorner_EventScript_Gentleman::
 	msgbox CeladonCity_GameCorner_Text_HereAreSomeCoinsShoo
 	checkitem ITEM_COIN_CASE
 	goto_if_eq VAR_RESULT, FALSE, CeladonCity_GameCorner_EventScript_GamblerNoCoinCase
-	checkcoins VAR_TEMP_1
-	goto_if_ge VAR_TEMP_1, (MAX_COINS + 1) - 20, CeladonCity_GameCorner_EventScript_GentlemanNoRoomForCoins
-	addcoins 20
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox CeladonCity_GameCorner_Text_Received20CoinsFromMan
-	playse SE_SHOP
-	waitse
+Archipelago_Target_NPC_Gift_FLAG_GOT_20_COINS_FROM_GAMBLER_2::
+	giveitem ITEM_COINS_20, 1, FLAG_GOT_20_COINS_FROM_GAMBLER_2
 	setflag FLAG_GOT_20_COINS_FROM_GAMBLER_2
-	goto CeladonCity_GameCorner_EventScript_FaceSlotMachine
-	end
-
-CeladonCity_GameCorner_EventScript_GentlemanNoRoomForCoins::
-	msgbox CeladonCity_GameCorner_Text_YouveGotPlentyCoins
 	goto CeladonCity_GameCorner_EventScript_FaceSlotMachine
 	end
 

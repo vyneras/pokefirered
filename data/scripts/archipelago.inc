@@ -97,6 +97,10 @@ ArchipelagoScript_HandleUniqueItem::
 	case ITEM_FLY_SEVEN_ISLAND, ArchipelagoScript_UnlockSevenIslandFly
 	case ITEM_FLY_ROUTE4, ArchipelagoScript_UnlockRoute4Fly
 	case ITEM_FLY_ROUTE10, ArchipelagoScript_UnlockRoute10Fly
+	case ITEM_COINS_10, ArchipelagoScript_Receive10Coins
+	case ITEM_COINS_20, ArchipelagoScript_Receive20Coins
+	case ITEM_COINS_40, ArchipelagoScript_Receive40Coins
+	case ITEM_COINS_100, ArchipelagoScript_Receive100Coins
 	return
 
 ArchipelagoScript_ReceiveBoulderBadge::
@@ -403,6 +407,50 @@ ArchipelagoScript_UnlockRoute10Fly::
 	msgbox Archipelago_Text_FlyToRoute10, MSGBOX_DEFAULT
 	waitfanfare
 	setworldmapflag FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F
+	copyvar VAR_TEXT_COLOR, VAR_PREV_TEXT_COLOR
+	release
+	return
+
+ArchipelagoScript_Receive10Coins::
+	call EventScript_PlayFanfareObtainedItem
+	copyvar VAR_PREV_TEXT_COLOR, VAR_TEXT_COLOR
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox Archipelago_Text_Received10Coins, MSGBOX_DEFAULT
+	waitfanfare
+	addcoins 10
+	copyvar VAR_TEXT_COLOR, VAR_PREV_TEXT_COLOR
+	release
+	return
+
+ArchipelagoScript_Receive20Coins::
+	call EventScript_PlayFanfareObtainedItem
+	copyvar VAR_PREV_TEXT_COLOR, VAR_TEXT_COLOR
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox Archipelago_Text_Received20Coins, MSGBOX_DEFAULT
+	waitfanfare
+	addcoins 20
+	copyvar VAR_TEXT_COLOR, VAR_PREV_TEXT_COLOR
+	release
+	return
+
+ArchipelagoScript_Receive40Coins::
+	call EventScript_PlayFanfareObtainedItem
+	copyvar VAR_PREV_TEXT_COLOR, VAR_TEXT_COLOR
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox Archipelago_Text_Received40Coins, MSGBOX_DEFAULT
+	waitfanfare
+	addcoins 40
+	copyvar VAR_TEXT_COLOR, VAR_PREV_TEXT_COLOR
+	release
+	return
+
+ArchipelagoScript_Receive100Coins::
+	call EventScript_PlayFanfareObtainedItem
+	copyvar VAR_PREV_TEXT_COLOR, VAR_TEXT_COLOR
+	textcolor NPC_TEXT_COLOR_NEUTRAL
+	msgbox Archipelago_Text_Received100Coins, MSGBOX_DEFAULT
+	waitfanfare
+	addcoins 100
 	copyvar VAR_TEXT_COLOR, VAR_PREV_TEXT_COLOR
 	release
 	return
