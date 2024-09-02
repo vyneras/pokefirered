@@ -49,6 +49,12 @@ PewterCity_Text_GoTakeOnBrock::
     .string "If you have the right stuff,\n"
     .string "go take on BROCK!$"
 
+PewterCity_Text_CanGoThisWay::
+    .string "Hey, you can't go this way until…\p"
+    .string "Oh! You've already done what I\n"
+    .string "was going to tell you to do.\p"
+    .string "I'll get outta your way then.$"
+
 PewterCity_Text_NeedToBeatBrock::
     .string "Hey, you can't go this way until\n"
     .string "you've beaten the PEWTER GYM.$"

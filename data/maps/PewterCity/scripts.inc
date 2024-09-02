@@ -87,6 +87,8 @@ PewterCity_EventScript_GymGuideTrigger::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
+	call PewterCity_EventScript_CheckIfCanLeaveCity
+	goto_if_eq VAR_MAP_SCENE_PEWTER_CITY_GYM_GUIDE, 1, PewterCity_EventScript_GymGuideLeave
 	textcolor NPC_TEXT_COLOR_MALE
 	specialvar VAR_RESULT, ArchipelagoSpecial_GetPewterCityRequirement
 	call_if_eq VAR_RESULT, 1, PewterCity_EventScript_GymGuideDefeatBrock
@@ -95,6 +97,15 @@ PewterCity_EventScript_GymGuideTrigger::
 	call_if_eq VAR_RESULT, 4, PewterCity_EventScript_GymGuideNeedAnyBadge
 	applymovement OBJ_EVENT_ID_PLAYER, PewterCity_Movement_PlayerWalkLeft
 	waitmovement 0
+	releaseall
+	end
+
+PewterCity_EventScript_GymGuideLeave::
+	msgbox PewterCity_Text_CanGoThisWay
+	fadescreen FADE_TO_BLACK
+	closemessage
+	removeobject LOCALID_GYM_GUIDE
+	fadescreen FADE_FROM_BLACK
 	releaseall
 	end
 
