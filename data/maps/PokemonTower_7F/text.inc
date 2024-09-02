@@ -45,8 +45,13 @@ PokemonTower_7F_Text_MrFujiThankYouFollowMe::
     .string "finally left us.\p"
     .string "I must thank you for your kind\n"
     .string "concern.\p"
-    .string "Follow me to my home, POKéMON\n"
-    .string "HOUSE, at the foot of this tower.$"
+    .string "Will you follow me to my home,\n"
+    .string "POKéMON HOUSE?$"
+
+PokemonTower_7F_Text_MrFujiStillThingsToDo::
+    .string "You want to stay a little longer?\n"
+    .string "Just let me know when you are\n"
+    .string "ready to leave.$"
 
 PokemonTower_7F_Text_MrFujiGoToPokemonHouse::
     .string "MR. FUJI: Do you want to go to\n"
