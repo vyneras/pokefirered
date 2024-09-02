@@ -150,6 +150,11 @@ CeruleanCity_Text_ThisIsCeruleanCave::
     .string "It takes a very special TRAINER to\n"
     .string "be allowed inside there.$"
 
+CeruleanCity_Text_HaveWhatItTakes::
+    .string "You look strong enough to handle\n"
+    .string "yourself.\p"
+    .string "I'll let you in.$"
+
 CeruleanCity_Text_BecomeChampAndFixNetwork::
     .string "You need to become the\n"
     .string "POKéMON LEAGUE CHAMPION.\p"

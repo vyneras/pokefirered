@@ -294,6 +294,8 @@ CeruleanCity_EventScript_CeruleanCaveGuard::
 	lock
 	faceplayer
 	msgbox CeruleanCity_Text_ThisIsCeruleanCave
+	specialvar VAR_RESULT, ArchipelagoSpecial_CanEnterCeruleanCave
+	goto_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_CeruleanCaveGuardLeave
 	specialvar VAR_RESULT, ArchipelagoSpecial_GetCeruleanCaveRequirement
 	switch VAR_RESULT
 	case 0, CeruleanCity_EventScript_CeruleanCaveGuardChampAndNetwork
@@ -301,6 +303,15 @@ CeruleanCity_EventScript_CeruleanCaveGuard::
 	case 2, CeruleanCity_EventScript_CeruleanCaveGuardNetwork
 	case 3, CeruleanCity_EventScript_CeruleanCaveGuardBadges
 	case 4, CeruleanCity_EventScript_CeruleanCaveGuardGyms
+	end
+
+CeruleanCity_EventScript_CeruleanCaveGuardLeave::
+	msgbox CeruleanCity_Text_HaveWhatItTakes
+	fadescreen FADE_TO_BLACK
+	closemessage
+	removeobject LOCALID_CAVE_GUARD
+	fadescreen FADE_FROM_BLACK
+	release
 	end
 
 CeruleanCity_EventScript_CeruleanCaveGuardChampAndNetwork::
