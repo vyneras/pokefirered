@@ -14,3 +14,7 @@ FiveIsland_Text_BeenGettingBusierAroundHere::
     .string "I haven't been catching many good\n"
     .string "fish lately, either.$"
 
+FiveIsland_Text_TakeThisPass::
+    .string "Take this pass. It will allow you\n"
+    .string "to travel to SIX ISLAND.$"
+

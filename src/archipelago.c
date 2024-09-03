@@ -53,6 +53,8 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
 
     .removeBadgeRequirement = 0,
 
+    .passesSplit = FALSE,
+
     .free_fly_id = 0,
     .town_free_fly_id = 0,
     .resort_gorgeous_mon = 25

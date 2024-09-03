@@ -129,7 +129,7 @@
 #define FLAG_HIDE_SILPH_GIOVANNI                           0x071
 #define FLAG_HIDE_ONE_ISLAND_POKECENTER_BILL               0x072
 #define FLAG_HIDE_ONE_ISLAND_POKECENTER_CELIO              0x073
-#define FLAG_0x074                                         0x074
+#define FLAG_HIDE_SPLIT_PASS_SAILORS                       0x074
 #define FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE          0x075
 #define FLAG_HIDE_LOSTELLE_IN_HER_HOME                     0x076
 #define FLAG_0x077                                         0x077
@@ -529,12 +529,12 @@
 #define FLAG_ITEM_SEVEN_ISLAND_SEVAULT_CANYON_HOUSE_LUCKY_PUNCH 0x1FD
 #define FLAG_ITEM_SILPH_CO_4F_TM41                              0x1FE
 
-// Unused?
-#define FLAG_0x1FF               0x1FF
-#define FLAG_0x200               0x200
-#define FLAG_0x201               0x201
-#define FLAG_0x202               0x202
-#define FLAG_0x203               0x203
+// More Story Flags
+#define FLAG_GOT_ONE_PASS        0x1FF
+#define FLAG_GOT_THREE_PASS      0x200
+#define FLAG_GOT_FIVE_PASS       0x201
+#define FLAG_GOT_SIX_PASS        0x202
+#define FLAG_GOT_SEVEN_PASS      0x203
 #define FLAG_0x204               0x204
 #define FLAG_0x205               0x205
 #define FLAG_0x206               0x206

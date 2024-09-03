@@ -89,20 +89,20 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_X_SPECIAL]      = {gItemIcon_BattleStatItem, gItemIconPalette_XSpecial},
     [ITEM_POKE_DOLL]      = {gItemIcon_PokeDoll, gItemIconPalette_PokeDoll},
     [ITEM_FLUFFY_TAIL]    = {gItemIcon_FluffyTail, gItemIconPalette_FluffyTail},
-    // ????????
-    [ITEM_052]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    // Split island passes
+    [ITEM_ONE_PASS]       = {gItemIcon_TriPass, gItemIconPalette_TriPass},
     // Field items
     [ITEM_SUPER_REPEL]    = {gItemIcon_Repel, gItemIconPalette_SuperRepel},
     [ITEM_MAX_REPEL]      = {gItemIcon_Repel, gItemIconPalette_MaxRepel},
     [ITEM_ESCAPE_ROPE]    = {gItemIcon_EscapeRope, gItemIconPalette_EscapeRope},
     [ITEM_REPEL]          = {gItemIcon_Repel, gItemIconPalette_Repel},
-    // ????????
-    [ITEM_057]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_058]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_059]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_05A]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_05B]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_05C]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    // Split island passes
+    [ITEM_TWO_PASS]       = {gItemIcon_TriPass, gItemIconPalette_TriPass},
+    [ITEM_THREE_PASS]     = {gItemIcon_TriPass, gItemIconPalette_TriPass},
+    [ITEM_FOUR_PASS]      = {gItemIcon_RainbowPass, gItemIconPalette_RainbowPass},
+    [ITEM_FIVE_PASS]      = {gItemIcon_RainbowPass, gItemIconPalette_RainbowPass},
+    [ITEM_SIX_PASS]       = {gItemIcon_RainbowPass, gItemIconPalette_RainbowPass},
+    [ITEM_SEVEN_PASS]     = {gItemIcon_RainbowPass, gItemIconPalette_RainbowPass},
     // Evolution stones
     [ITEM_SUN_STONE]      = {gItemIcon_SunStone, gItemIconPalette_SunStone},
     [ITEM_MOON_STONE]     = {gItemIcon_MoonStone, gItemIconPalette_MoonStone},
@@ -404,7 +404,7 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_COINS_20]       = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_COINS_40]       = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_COINS_100]      = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_17B]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_PROG_PASS]      = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_17C]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_17D]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_17E]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},

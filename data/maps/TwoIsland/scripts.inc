@@ -229,6 +229,15 @@ TwoIsland_EventScript_LittleBoy::
 	msgbox TwoIsland_Text_HaveYouTriedJumpingGame, MSGBOX_NPC
 	end
 
+TwoIsland_EventScript_Sailor2::
+	lock
+	faceplayer
+	msgbox TwoIsland_Text_TakeThisPass
+Archipelago_Target_NPC_Gift_FLAG_GOT_THREE_PASS::
+	giveitem ITEM_THREE_PASS, 1, FLAG_GOT_THREE_PASS
+	release
+	end
+
 TwoIsland_EventScript_IslandSign::
 	msgbox TwoIsland_Text_IslandSign, MSGBOX_SIGN
 	end

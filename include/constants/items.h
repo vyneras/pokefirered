@@ -83,17 +83,17 @@
 #define ITEM_X_SPECIAL 79
 #define ITEM_POKE_DOLL 80
 #define ITEM_FLUFFY_TAIL 81
-#define ITEM_052 82
+#define ITEM_ONE_PASS 82
 #define ITEM_SUPER_REPEL 83
 #define ITEM_MAX_REPEL 84
 #define ITEM_ESCAPE_ROPE 85
 #define ITEM_REPEL 86
-#define ITEM_057 87
-#define ITEM_058 88
-#define ITEM_059 89
-#define ITEM_05A 90
-#define ITEM_05B 91
-#define ITEM_05C 92
+#define ITEM_TWO_PASS 87
+#define ITEM_THREE_PASS 88
+#define ITEM_FOUR_PASS 89
+#define ITEM_FIVE_PASS 90
+#define ITEM_SIX_PASS 91
+#define ITEM_SEVEN_PASS 92
 #define ITEM_SUN_STONE 93
 #define ITEM_MOON_STONE 94
 #define ITEM_FIRE_STONE 95
@@ -451,12 +451,14 @@
 #define ITEM_SAPPHIRE 374
 
 // Coins placeholder items
-#define ITEM_COINS_10  375
-#define ITEM_COINS_20  376
-#define ITEM_COINS_40  377
+#define ITEM_COINS_10 375
+#define ITEM_COINS_20 376
+#define ITEM_COINS_40 377
 #define ITEM_COINS_100 378
 
-#define ITEM_17B 379
+// Progressive placeholder items
+#define ITEM_PROG_PASS 379
+
 #define ITEM_17C 380
 #define ITEM_17D 381
 #define ITEM_17E 382

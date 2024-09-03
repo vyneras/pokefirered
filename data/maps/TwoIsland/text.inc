@@ -84,3 +84,7 @@ TwoIsland_Text_HaveYouTriedJumpingGame::
     .string "Did you know that?\n"
     .string "Boing!$"
 
+TwoIsland_Text_TakeThisPass::
+    .string "Take this pass. It will allow you\n"
+    .string "to travel to THREE ISLAND.$"
+

@@ -12,3 +12,6 @@ SixIsland_Text_SkyAtNightIsFantastic::
     .string "When you're this far away from the\n"
     .string "city, the sky at night is fantastic.$"
 
+SixIsland_Text_TakeThisPass::
+    .string "Take this pass. It will allow you\n"
+    .string "to travel to SEVEN ISLAND.$"

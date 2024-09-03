@@ -492,7 +492,9 @@ u8 GetSeagallopNumber(void)
 
 bool8 HasSeagallopPass(void)
 {
-  return CheckBagHasItem(ITEM_TRI_PASS, 1) || CheckBagHasItem(ITEM_RAINBOW_PASS, 1);
+  return CheckBagHasItem(ITEM_TRI_PASS, 1) || CheckBagHasItem(ITEM_RAINBOW_PASS, 1) || CheckBagHasItem(ITEM_ONE_PASS, 1) ||
+         CheckBagHasItem(ITEM_TWO_PASS, 1) || CheckBagHasItem(ITEM_THREE_PASS, 1) || CheckBagHasItem(ITEM_FOUR_PASS, 1) ||
+         CheckBagHasItem(ITEM_FIVE_PASS, 1) || CheckBagHasItem(ITEM_SIX_PASS, 1) || CheckBagHasItem(ITEM_SEVEN_PASS, 1);
 }
 
 bool8 IsPlayerLeftOfVermilionSailor(void)

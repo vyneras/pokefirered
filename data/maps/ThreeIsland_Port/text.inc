@@ -24,3 +24,7 @@ ThreeIsland_Port_Text_EverythingTurnedOutForBest::
     .string "LOSTELLE was found safe.\p"
     .string "Everything turned out for the best!$"
 
+ThreeIsland_Port_Text_TakeThisPass::
+    .string "Take this pass. It will allow you\n"
+    .string "to travel to ONE ISLAND.$"
+

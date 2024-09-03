@@ -62,6 +62,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ThreeIsland_Port_EventScript_Biker2",
       "flag": "FLAG_HIDE_THREE_ISLAND_BIKERS"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_SAILOR",
+      "x": 14,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ThreeIsland_Port_EventScript_Sailor",
+      "flag": "FLAG_HIDE_SPLIT_PASS_SAILORS"
     }
   ],
   "warp_events": [

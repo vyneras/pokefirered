@@ -1270,45 +1270,46 @@ void DrawSeagallopDestinationMenu(void)
         seagallopDestinations[numItemsTotal++] = SEAGALLOP_VERMILION_CITY;
     }
 
-    if (CheckBagHasItem(ITEM_TRI_PASS, 1))
+    if ((CheckBagHasItem(ITEM_TRI_PASS, 1) || CheckBagHasItem(ITEM_ONE_PASS, 1)) &&
+        gSpecialVar_0x8004 != SEAGALLOP_ONE_ISLAND)
     {
-        if (gSpecialVar_0x8004 != SEAGALLOP_ONE_ISLAND)
-        {
-            seagallopDestinations[numItemsTotal++] = SEAGALLOP_ONE_ISLAND;
-        }
-
-        if (gSpecialVar_0x8004 != SEAGALLOP_TWO_ISLAND)
-        {
-            seagallopDestinations[numItemsTotal++] = SEAGALLOP_TWO_ISLAND;
-        }
-
-        if (gSpecialVar_0x8004 != SEAGALLOP_THREE_ISLAND)
-        {
-            seagallopDestinations[numItemsTotal++] = SEAGALLOP_THREE_ISLAND;
-        }
+        seagallopDestinations[numItemsTotal++] = SEAGALLOP_ONE_ISLAND;
     }
 
-    if (CheckBagHasItem(ITEM_RAINBOW_PASS, 1))
+    if ((CheckBagHasItem(ITEM_TRI_PASS, 1) || CheckBagHasItem(ITEM_TWO_PASS, 1)) &&
+        gSpecialVar_0x8004 != SEAGALLOP_TWO_ISLAND)
     {
-        if (gSpecialVar_0x8004 != SEAGALLOP_FOUR_ISLAND)
-        {
-            seagallopDestinations[numItemsTotal++] = SEAGALLOP_FOUR_ISLAND;
-        }
+        seagallopDestinations[numItemsTotal++] = SEAGALLOP_TWO_ISLAND;
+    }
 
-        if (gSpecialVar_0x8004 != SEAGALLOP_FIVE_ISLAND)
-        {
-            seagallopDestinations[numItemsTotal++] = SEAGALLOP_FIVE_ISLAND;
-        }
+    if ((CheckBagHasItem(ITEM_TRI_PASS, 1) || CheckBagHasItem(ITEM_THREE_PASS, 1)) &&
+        gSpecialVar_0x8004 != SEAGALLOP_THREE_ISLAND)
+    {
+        seagallopDestinations[numItemsTotal++] = SEAGALLOP_THREE_ISLAND;
+    }
 
-        if (gSpecialVar_0x8004 != SEAGALLOP_SIX_ISLAND)
-        {
-            seagallopDestinations[numItemsTotal++] = SEAGALLOP_SIX_ISLAND;
-        }
+    if ((CheckBagHasItem(ITEM_RAINBOW_PASS, 1) || CheckBagHasItem(ITEM_FOUR_PASS, 1)) &&
+        gSpecialVar_0x8004 != SEAGALLOP_FOUR_ISLAND)
+    {
+        seagallopDestinations[numItemsTotal++] = SEAGALLOP_FOUR_ISLAND;
+    }
 
-        if (gSpecialVar_0x8004 != SEAGALLOP_SEVEN_ISLAND)
-        {
-            seagallopDestinations[numItemsTotal++] = SEAGALLOP_SEVEN_ISLAND;
-        }
+    if ((CheckBagHasItem(ITEM_RAINBOW_PASS, 1) || CheckBagHasItem(ITEM_FIVE_PASS, 1)) &&
+        gSpecialVar_0x8004 != SEAGALLOP_FIVE_ISLAND)
+    {
+        seagallopDestinations[numItemsTotal++] = SEAGALLOP_FIVE_ISLAND;
+    }
+
+    if ((CheckBagHasItem(ITEM_RAINBOW_PASS, 1) || CheckBagHasItem(ITEM_SIX_PASS, 1)) &&
+        gSpecialVar_0x8004 != SEAGALLOP_SIX_ISLAND)
+    {
+        seagallopDestinations[numItemsTotal++] = SEAGALLOP_SIX_ISLAND;
+    }
+
+    if ((CheckBagHasItem(ITEM_RAINBOW_PASS, 1) || CheckBagHasItem(ITEM_SEVEN_PASS, 1)) &&
+        gSpecialVar_0x8004 != SEAGALLOP_SEVEN_ISLAND)
+    {
+        seagallopDestinations[numItemsTotal++] = SEAGALLOP_SEVEN_ISLAND;
     }
 
     // The max items that can be in the list is 6 and we must always have an EXIT

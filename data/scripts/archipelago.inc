@@ -101,6 +101,7 @@ ArchipelagoScript_HandleUniqueItem::
 	case ITEM_COINS_20, ArchipelagoScript_Receive20Coins
 	case ITEM_COINS_40, ArchipelagoScript_Receive40Coins
 	case ITEM_COINS_100, ArchipelagoScript_Receive100Coins
+	case ITEM_PROG_PASS, ArchipelagoScript_ReceiveProgressivePass
 	return
 
 ArchipelagoScript_ReceiveBoulderBadge::
@@ -453,6 +454,68 @@ ArchipelagoScript_Receive100Coins::
 	addcoins 100
 	copyvar VAR_TEXT_COLOR, VAR_PREV_TEXT_COLOR
 	release
+	return
+
+ArchipelagoScript_ReceiveProgressivePass::
+	specialvar VAR_RESULT, ArchipelagoSpecial_ArePassesSplit
+	goto_if_eq VAR_RESULT, TRUE, ArchipelagoScript_ReceiveProgressivePassSplit
+	checkitem ITEM_TRI_PASS
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveTriPass
+	checkitem ITEM_RAINBOW_PASS
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveRainbowPass
+	return
+
+ArchipelagoScript_ReceiveTriPass::
+	giveitem ITEM_TRI_PASS
+	return
+
+ArchipelagoScript_ReceiveRainbowPass::
+	giveitem ITEM_RAINBOW_PASS
+	return
+
+ArchipelagoScript_ReceiveProgressivePassSplit::
+	checkitem ITEM_ONE_PASS
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveOnePass
+	checkitem ITEM_TWO_PASS
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveTwoPass
+	checkitem ITEM_THREE_PASS
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveThreePass
+	checkitem ITEM_FOUR_PASS
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveFourPass
+	checkitem ITEM_FIVE_PASS
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveFivePass
+	checkitem ITEM_SIX_PASS
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveSixPass
+	checkitem ITEM_SEVEN_PASS
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveSevenPass
+	return
+
+ArchipelagoScript_ReceiveOnePass::
+	giveitem ITEM_ONE_PASS
+	return
+
+ArchipelagoScript_ReceiveTwoPass::
+	giveitem ITEM_TWO_PASS
+	return
+
+ArchipelagoScript_ReceiveThreePass::
+	giveitem ITEM_THREE_PASS
+	return
+
+ArchipelagoScript_ReceiveFourPass::
+	giveitem ITEM_FOUR_PASS
+	return
+
+ArchipelagoScript_ReceiveFivePass::
+	giveitem ITEM_FIVE_PASS
+	return
+
+ArchipelagoScript_ReceiveSixPass::
+	giveitem ITEM_SIX_PASS
+	return
+
+ArchipelagoScript_ReceiveSevenPass::
+	giveitem ITEM_SEVEN_PASS
 	return
 
 ArchipelagoScript_GoHome::

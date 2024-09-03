@@ -40,6 +40,15 @@ SixIsland_EventScript_Boy::
 	msgbox SixIsland_Text_SkyAtNightIsFantastic, MSGBOX_NPC
 	end
 
+SixIsland_EventScript_Sailor::
+	lock
+	faceplayer
+	msgbox SixIsland_Text_TakeThisPass
+Archipelago_Target_NPC_Gift_FLAG_GOT_SEVEN_PASS::
+	giveitem ITEM_SEVEN_PASS, 1, FLAG_GOT_SEVEN_PASS
+	release
+	end
+
 SixIsland_EventScript_IslandSign::
 	msgbox SixIsland_Text_IslandSign, MSGBOX_SIGN
 	end

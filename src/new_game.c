@@ -157,9 +157,8 @@ void NewGameInitData(void)
     VarSet(VAR_RESORT_GORGEOUS_REQUESTED_MON, gArchipelagoOptions.resort_gorgeous_mon);
 
     if (!gArchipelagoOptions.reccuringHiddenItems) SetAllRenewableItemFlags();
-
     if (gArchipelagoOptions.betterShopsEnabled) FlagSet(FLAG_BETTER_SHOPS_ENABLED);
-
+    if (!gArchipelagoOptions.passesSplit) FlagSet(FLAG_HIDE_SPLIT_PASS_SAILORS);
     if (gArchipelagoOptions.openViridianCity) VarSet(VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1);
 
     if (gArchipelagoOptions.startingBadges & (1 << 0)) FlagSet(FLAG_BADGE01_GET);

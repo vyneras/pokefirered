@@ -1693,20 +1693,13 @@ u32 GetPlayerTrainerId(void)
 u8 GetUnlockedSeviiAreas(void)
 {
     u8 result = 0;
-    if (FlagGet(FLAG_WORLD_MAP_ONE_ISLAND) == TRUE)
-        result |= 1 << 0;
-    if (FlagGet(FLAG_WORLD_MAP_TWO_ISLAND) == TRUE)
-        result |= 1 << 1;
-    if (FlagGet(FLAG_WORLD_MAP_THREE_ISLAND) == TRUE)
-        result |= 1 << 2;
-    if (FlagGet(FLAG_WORLD_MAP_FOUR_ISLAND) == TRUE)
-        result |= 1 << 3;
-    if (FlagGet(FLAG_WORLD_MAP_FIVE_ISLAND) == TRUE)
-        result |= 1 << 4;
-    if (FlagGet(FLAG_WORLD_MAP_SIX_ISLAND) == TRUE)
-        result |= 1 << 5;
-    if (FlagGet(FLAG_WORLD_MAP_SEVEN_ISLAND) == TRUE)
-        result |= 1 << 6;
+    result |= 1 << 0;
+    result |= 1 << 1;
+    result |= 1 << 2;
+    result |= 1 << 3;
+    result |= 1 << 4;
+    result |= 1 << 5;
+    result |= 1 << 6;
     return result;
 }
 
@@ -2562,7 +2555,7 @@ bool8 ArchipelagoSpecial_IsItemUnique(void)
 {
     return (gSpecialVar_0x8014 >= ITEM_BADGE_1 && gSpecialVar_0x8014 <= ITEM_BADGE_8) ||
            (gSpecialVar_0x8014 >= ITEM_FLY_PALLET && gSpecialVar_0x8014 <= ITEM_FLY_ROUTE10) ||
-           (gSpecialVar_0x8014 >= ITEM_COINS_10 && gSpecialVar_0x8014 <= ITEM_COINS_100);
+           (gSpecialVar_0x8014 >= ITEM_COINS_10 && gSpecialVar_0x8014 <= ITEM_PROG_PASS);
 }
 
 bool8 ArchipelagoSpecial_ShouldHandle(void)
@@ -2914,4 +2907,9 @@ bool8 ArchipelagoSpecial_IsFamesanity(void)
 bool8 ArchipelagoSpecial_SetFameCheckerFlag(void)
 {
     return !gArchipelagoOptions.fameCheckerRequired || CheckBagHasItem(ITEM_FAME_CHECKER, 1);
+}
+
+bool8 ArchipelagoSpecial_ArePassesSplit(void)
+{
+    return gArchipelagoOptions.passesSplit;
 }

@@ -43,3 +43,12 @@ FiveIsland_EventScript_BugCatcher::
 FiveIsland_EventScript_Fisher::
 	msgbox FiveIsland_Text_BeenGettingBusierAroundHere, MSGBOX_NPC
 	end
+
+FiveIsland_EventScript_Sailor::
+	lock
+	faceplayer
+	msgbox FiveIsland_Text_TakeThisPass
+Archipelago_Target_NPC_Gift_FLAG_GOT_SIX_PASS::
+	giveitem ITEM_SIX_PASS, 1, FLAG_GOT_SIX_PASS
+	release
+	end

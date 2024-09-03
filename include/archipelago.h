@@ -14,7 +14,6 @@ struct ArchipelagoOptions
   /* 0x02 */ bool8 betterShopsEnabled;
   /* 0x03 */ bool8 reusableTms;
   /* 0x04 */ bool8 guaranteedCatch;
-
   /* 0x05 */ bool8 areTrainersBlind;
   /* 0x06 */ u16 expMultiplierNumerator;
   /* 0x08 */ u16 expMultiplierDenominator;
@@ -51,9 +50,11 @@ struct ArchipelagoOptions
 
   /* 0x2D */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
 
-  /* 0x2E */ u8 free_fly_id;
-  /* 0x2F */ u8 town_free_fly_id;
-  /* 0x30 */ u16 resort_gorgeous_mon;
+  /* 0x2E */ bool8 passesSplit;
+
+  /* 0x2F */ u8 free_fly_id;
+  /* 0x30 */ u8 town_free_fly_id;
+  /* 0x31 */ u16 resort_gorgeous_mon;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem
