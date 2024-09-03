@@ -162,6 +162,7 @@ void NewGameInitData(void)
     if (gArchipelagoOptions.openViridianCity) VarSet(VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1);
     if (gArchipelagoOptions.modifyRoute9) FlagSet(FLAG_ROUTE_9_MODIFIED);
     if (gArchipelagoOptions.blockUndergroundTunnels) FlagSet(FLAG_BLOCK_UNDERGOUND_TUNNELS);
+    if (!gArchipelagoOptions.route12Boulders) FlagSet(FLAG_HIDE_ROUTE_12_BOULDERS);
 
     if (gArchipelagoOptions.startingBadges & (1 << 0)) FlagSet(FLAG_BADGE01_GET);
     if (gArchipelagoOptions.startingBadges & (1 << 1)) FlagSet(FLAG_BADGE02_GET);

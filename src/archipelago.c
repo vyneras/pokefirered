@@ -11,7 +11,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .reusableTms = FALSE,
     .guaranteedCatch = FALSE,
 
-    .areTrainersBlind = FALSE,
+    .areTrainersBlind = TRUE,
     .expMultiplierNumerator = 100,
     .expMultiplierDenominator = 100,
 
@@ -20,6 +20,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .saveBillRequired = TRUE,
     .modifyRoute9 = FALSE,
     .blockUndergroundTunnels = FALSE,
+    .route12Boulders = TRUE,
 
     .giovanniRequiresGyms = FALSE,
     .giovanniRequiredCount = 7,
