@@ -449,7 +449,8 @@ int main (int argc, char *argv[])
             { "gTutorMoves", symbol_map["gTutorMoves"] - ROM_START },
             { "sTutorLearnsets", symbol_map["sTutorLearnsets"] - ROM_START },
             { "sFanfares", symbol_map["sFanfares"] - ROM_START },
-            { "sInGameTrades", symbol_map["sInGameTrades"] - ROM_START}
+            { "sInGameTrades", symbol_map["sInGameTrades"] - ROM_START},
+            { "sFlashLevelToRadius", symbol_map["sFlashLevelToRadius"] - ROM_START}
         };
 
         // ------------------------------------------------------------------------

@@ -1,9 +1,6 @@
 Route4_MapScripts::
 	.byte 0
 
-Route4_EventScript_Unused::
-	end
-
 Route4_EventScript_Woman::
 	msgbox Route4_Text_TrippedOverGeodude, MSGBOX_NPC
 	end

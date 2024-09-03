@@ -21,40 +21,43 @@ struct ArchipelagoOptions
   /* 0x0A */ bool8 openViridianCity;
   /* 0x0B */ u8 route3Requirement; // 0 = Open, 1 = Defeat Brock, 2 = Defeat Any Gym Leader, 3 = Boulder Badge, 4 = Any Badge
   /* 0x0C */ bool8 saveBillRequired;
-  /* 0x0D */ bool8 giovanniRequiresGyms;
-  /* 0x0E */ u8 giovanniRequiredCount;
-  /* 0x0F */ bool8 route22GateRequiresGyms;
-  /* 0x10 */ u8 route22GateRequiredCount;
-  /* 0x11 */ bool8 route23GuardRequiresGyms;
-  /* 0x12 */ u8 route23GuardRequiredCount;
-  /* 0x13 */ bool8 eliteFourRequiresGyms;
-  /* 0x14 */ u8 eliteFourRequiredCount;
-  /* 0x15 */ u8 ceruleanCaveRequirement; // 0 = Vanilla, 1 = Become Champion, 2 = Restore Network Center, 3 = Badges, 4 = Gyms
-  /* 0x16 */ u8 ceruleanCaveRequiredCount;
+  /* 0x0D */ bool8 modifyRoute9; // Replace tree with rock
+  /* 0x0E */ bool8 blockUndergroundTunnels; // Add rocks around Undeground Tunnel Entrances
 
-  /* 0x17 */ u8 startingBadges;
-  /* 0x18 */ u32 startingFlyUnlocks;
-  /* 0x1C */ u32 startingMoney;
+  /* 0x0F */ bool8 giovanniRequiresGyms;
+  /* 0x10 */ u8 giovanniRequiredCount;
+  /* 0x11 */ bool8 route22GateRequiresGyms;
+  /* 0x12 */ u8 route22GateRequiredCount;
+  /* 0x13 */ bool8 route23GuardRequiresGyms;
+  /* 0x14 */ u8 route23GuardRequiredCount;
+  /* 0x15 */ bool8 eliteFourRequiresGyms;
+  /* 0x16 */ u8 eliteFourRequiredCount;
+  /* 0x17 */ u8 ceruleanCaveRequirement; // 0 = Vanilla, 1 = Become Champion, 2 = Restore Network Center, 3 = Badges, 4 = Gyms
+  /* 0x18 */ u8 ceruleanCaveRequiredCount;
 
-  /* 0x20 */ bool8 itemfinderRequired;
-  /* 0x21 */ bool8 fameCheckerRequired;
+  /* 0x19 */ u8 startingBadges;
+  /* 0x1A */ u32 startingFlyUnlocks;
+  /* 0x1E */ u32 startingMoney;
 
-  /* 0x22 */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
+  /* 0x22 */ bool8 itemfinderRequired;
+  /* 0x23 */ bool8 fameCheckerRequired;
 
-  /* 0x27 */ bool8 reccuringHiddenItems;
-  /* 0x28 */ bool8 isTrainersanity;
-  /* 0x29 */ bool8 extraKeyItems;
-  /* 0x2A */ bool8 kantoOnly;
-  /* 0x2B */ bool8 flyUnlocks;
-  /* 0x2C */ bool8 isFamesanity;
+  /* 0x24 */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
 
-  /* 0x2D */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
+  /* 0x29 */ bool8 reccuringHiddenItems;
+  /* 0x2A */ bool8 isTrainersanity;
+  /* 0x2B */ bool8 extraKeyItems;
+  /* 0x2C */ bool8 kantoOnly;
+  /* 0x2D */ bool8 flyUnlocks;
+  /* 0x2E */ bool8 isFamesanity;
 
-  /* 0x2E */ bool8 passesSplit;
+  /* 0x2F */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
 
-  /* 0x2F */ u8 free_fly_id;
-  /* 0x30 */ u8 town_free_fly_id;
-  /* 0x31 */ u16 resort_gorgeous_mon;
+  /* 0x30 */ bool8 passesSplit;
+
+  /* 0x31 */ u8 free_fly_id;
+  /* 0x32 */ u8 town_free_fly_id;
+  /* 0x33 */ u16 resort_gorgeous_mon;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem
