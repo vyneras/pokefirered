@@ -3,6 +3,7 @@
 
 VictoryRoad_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, VictoryRoad_2F_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, VictoryRoad_2F_OnTransition
 	.byte 0
 
 VictoryRoad_2F_OnLoad::
@@ -18,6 +19,16 @@ VictoryRoad_2F_EventScript_SetRockBarrier1::
 VictoryRoad_2F_EventScript_SetRockBarrier2::
 	setmetatile 33, 16, METATILE_Cave_RockBarrier_Top, 1
 	setmetatile 33, 17, METATILE_Cave_RockBarrier_Bottom, 1
+	return
+
+VictoryRoad_2F_OnTransition::
+	specialvar VAR_RESULT, ArchipelagoSpecial_VictoryRoadRocks
+	call_if_eq VAR_RESULT, FALSE, VictoryRoad_2F_EventScript_RemoveRocks
+	end
+
+VictoryRoad_2F_EventScript_RemoveRocks::
+	setflag FLAG_TEMP_12
+	setflag FLAG_TEMP_13
 	return
 
 VictoryRoad_2F_EventScript_FloorSwitch1::

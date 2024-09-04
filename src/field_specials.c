@@ -2944,12 +2944,17 @@ bool8 ArchipelagoSpecial_Route10Modified(void)
     return gArchipelagoOptions.modifyRoute10;
 }
 
-bool8 ArchipelagoSpecial_Route23CutTrees(void)
+bool8 ArchipelagoSpecial_Route23Trees(void)
 {
-    return gArchipelagoOptions.route23CutTrees;
+    return gArchipelagoOptions.route23Trees;
 }
 
 bool8 ArchipelagoSpecial_Route23Modified(void)
 {
     return gArchipelagoOptions.modifyRoute23;
+}
+
+bool8 ArchipelagoSpecial_VictoryRoadRocks(void)
+{
+    return gArchipelagoOptions.victoryRoadRocks;
 }

@@ -16,7 +16,13 @@ VictoryRoad_1F_EventScript_SetRockBarrier::
 
 VictoryRoad_1F_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_VICTORY_ROAD_1F
+	specialvar VAR_RESULT, ArchipelagoSpecial_VictoryRoadRocks
+	call_if_eq VAR_RESULT, FALSE, VictoryRoad_1F_EventScript_RemoveRock
 	end
+
+VictoryRoad_1F_EventScript_RemoveRock::
+	setflag FLAG_TEMP_12
+	return
 
 VictoryRoad_1F_EventScript_FloorSwitch::
 	lockall

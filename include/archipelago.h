@@ -27,8 +27,9 @@ struct ArchipelagoOptions
   /* 0x10 */ bool8 route12Boulders;
   /* 0x11 */ bool8 modifyRoute10;
   /* 0x12 */ bool8 modifyRoute23;
-  /* 0x13 */ bool8 route23CutTrees;
+  /* 0x13 */ bool8 route23Trees;
   /* 0x14 */ bool8 blockPokemonTower;
+  /* 0x15 */ bool8 victoryRoadRocks;
 
   /* 0x15 */ bool8 giovanniRequiresGyms;
   /* 0x16 */ u8 giovanniRequiredCount;

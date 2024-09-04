@@ -23,9 +23,10 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .blockUndergroundTunnels = FALSE,
     .route12Boulders = FALSE,
     .modifyRoute10 = FALSE,
-    .route23CutTrees = FALSE,
+    .route23Trees = FALSE,
     .modifyRoute23 = FALSE,
     .blockPokemonTower = FALSE,
+    .victoryRoadRocks = FALSE,
 
     .giovanniRequiresGyms = FALSE,
     .giovanniRequiredCount = 7,

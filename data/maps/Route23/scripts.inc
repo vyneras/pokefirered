@@ -8,7 +8,7 @@ Route23_MapScripts::
 Route23_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_Route23Modified
 	call_if_eq VAR_RESULT, TRUE, Route23_EventScript_SetAltLayout
-	specialvar VAR_RESULT, ArchipelagoSpecial_Route23CutTrees
+	specialvar VAR_RESULT, ArchipelagoSpecial_Route23Trees
 	call_if_eq VAR_RESULT, FALSE, Route23_EventScript_RemoveTrees
 	end
 
