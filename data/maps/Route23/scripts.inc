@@ -8,10 +8,18 @@ Route23_MapScripts::
 Route23_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_Route23Modified
 	call_if_eq VAR_RESULT, TRUE, Route23_EventScript_SetAltLayout
+	specialvar VAR_RESULT, ArchipelagoSpecial_Route23CutTrees
+	call_if_eq VAR_RESULT, FALSE, Route23_EventScript_RemoveTrees
 	end
 
 Route23_EventScript_SetAltLayout::
 	setmaplayoutindex LAYOUT_ROUTE23_ALT
+	return
+
+Route23_EventScript_RemoveTrees::
+	setflag FLAG_TEMP_12
+	setflag FLAG_TEMP_13
+	setflag FLAG_TEMP_14
 	return
 
 Route23_EventScript_LastGuard::
