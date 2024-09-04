@@ -3,7 +3,8 @@ Route8_MapScripts::
 	.byte 0
 
 Route8_OnTransition::
-	call_if_unset FLAG_BLOCK_UNDERGOUND_TUNNELS, Route8_EventScript_RemoveSmashRocks
+	specialvar VAR_RESULT, ArchipelagoSpecial_BlockTunnels
+	call_if_eq VAR_RESULT, FALSE, Route5_EventScript_RemoveSmashRocks
 	end
 
 Route8_EventScript_RemoveSmashRocks::

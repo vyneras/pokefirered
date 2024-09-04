@@ -489,6 +489,9 @@ gSpecials::
 	def_special ArchipelagoSpecial_ArePassesSplit
 	def_special ArchipelagoSpecial_UseClosestWarp
 	def_special ArchipelagoSpecial_FlashRequired
+	def_special ArchipelagoSpecial_Route2Modified
+	def_special ArchipelagoSpecial_BlockTunnels
+	def_special ArchipelagoSpecial_Route9Modified
 	def_special ArchipelagoSpecial_Route10Modified
 	def_special ArchipelagoSpecial_Route23Modified
 gSpecialsEnd::

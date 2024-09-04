@@ -3,7 +3,8 @@ Route7_MapScripts::
 	.byte 0
 
 Route7_OnTransition::
-	call_if_unset FLAG_BLOCK_UNDERGOUND_TUNNELS, Route7_EventScript_RemoveSmashRocks
+	specialvar VAR_RESULT, ArchipelagoSpecial_BlockTunnels
+	call_if_eq VAR_RESULT, FALSE, Route7_EventScript_RemoveSmashRocks
 	end
 
 Route7_EventScript_RemoveSmashRocks::

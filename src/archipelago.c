@@ -18,6 +18,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .openViridianCity = FALSE,
     .route3Requirement = 1,
     .saveBillRequired = TRUE,
+    .modifyRoute2 = FALSE,
     .modifyRoute9 = FALSE,
     .blockUndergroundTunnels = FALSE,
     .route12Boulders = FALSE,

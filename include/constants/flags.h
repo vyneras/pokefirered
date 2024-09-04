@@ -770,8 +770,8 @@
 #define FLAG_TOLD_BILL_FACT_1                            0x2E7
 #define FLAG_TOLD_BILL_FACT_2                            0x2E8
 #define FLAG_TOLD_BILL_FACT_3                            0x2E9
-#define FLAG_ROUTE_9_MODIFIED                            0x2EA
-#define FLAG_BLOCK_UNDERGOUND_TUNNELS                    0x2EB
+#define FLAG_0x2EA                                       0x2EA
+#define FLAG_0x2EB                                       0x2EB
 #define FLAG_REVIVED_DOME                                0x2EC
 #define FLAG_REVIVED_HELIX                               0x2ED
 #define FLAG_REVIVED_AMBER                               0x2EE

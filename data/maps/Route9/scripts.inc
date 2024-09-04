@@ -1,13 +1,11 @@
-.set LOCALID_TREE, 10
-.set LOCALID_ROCK, 13
-
 Route9_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route9_OnTransition
 	.byte 0
 
 Route9_OnTransition::
-	call_if_set FLAG_ROUTE_9_MODIFIED, Route9_EventScript_RemoveCutTree
-	call_if_unset FLAG_ROUTE_9_MODIFIED, Route9_EventScript_RemoveSmashRock
+	specialvar VAR_RESULT, ArchipelagoSpecial_Route2Modified
+	call_if_eq VAR_RESULT, TRUE, Route9_EventScript_RemoveCutTree
+	call_if_eq VAR_RESULT, FALSE, Route9_EventScript_RemoveSmashRock
 	end
 
 Route9_EventScript_RemoveCutTree::

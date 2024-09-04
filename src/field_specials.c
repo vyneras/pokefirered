@@ -2924,6 +2924,21 @@ bool8 ArchipelagoSpecial_FlashRequired(void)
     return gArchipelagoOptions.flashRequired;
 }
 
+bool8 ArchipelagoSpecial_Route2Modified(void)
+{
+    return gArchipelagoOptions.modifyRoute2;
+}
+
+bool8 ArchipelagoSpecial_BlockTunnels(void)
+{
+    return gArchipelagoOptions.blockUndergroundTunnels;
+}
+
+bool8 ArchipelagoSpecial_Route9Modified(void)
+{
+    return gArchipelagoOptions.modifyRoute9;
+}
+
 bool8 ArchipelagoSpecial_Route10Modified(void)
 {
     return gArchipelagoOptions.modifyRoute10;
