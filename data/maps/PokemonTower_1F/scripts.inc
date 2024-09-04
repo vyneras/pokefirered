@@ -4,6 +4,7 @@ PokemonTower_1F_MapScripts::
 
 PokemonTower_1F_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_POKEMON_TOWER_1F
+	setvar VAR_TEMP_0, 1
 	end
 
 PokemonTower_1F_EventScript_Channeler::

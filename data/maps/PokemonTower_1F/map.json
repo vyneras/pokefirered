@@ -102,6 +102,34 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 10,
+      "elevation": 3,
+      "var": "VAR_MAP_SCENE_POKEMON_TOWER_1F",
+      "var_value": "0",
+      "script": "PokemonTower_6F_EventScript_MarowakGhost"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 9,
+      "elevation": 3,
+      "var": "VAR_MAP_SCENE_POKEMON_TOWER_1F",
+      "var_value": "0",
+      "script": "PokemonTower_6F_EventScript_MarowakGhost"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 8,
+      "elevation": 3,
+      "var": "VAR_MAP_SCENE_POKEMON_TOWER_1F",
+      "var_value": "0",
+      "script": "PokemonTower_6F_EventScript_MarowakGhost"
+    }
+  ],
   "bg_events": []
 }

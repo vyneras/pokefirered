@@ -162,6 +162,7 @@ void NewGameInitData(void)
     if (gArchipelagoOptions.modifyRoute9) FlagSet(FLAG_ROUTE_9_MODIFIED);
     if (gArchipelagoOptions.blockUndergroundTunnels) FlagSet(FLAG_BLOCK_UNDERGOUND_TUNNELS);
     if (!gArchipelagoOptions.route12Boulders) FlagSet(FLAG_HIDE_ROUTE_12_BOULDERS);
+    if (!gArchipelagoOptions.blockPokemonTower) VarSet(VAR_MAP_SCENE_POKEMON_TOWER_1F, 1);
 
     if (!(gArchipelagoOptions.additionalDarkCaves & (1 << 0))) VarSet(VAR_MT_MOON_DARKNESS, 1);
     if (!(gArchipelagoOptions.additionalDarkCaves & (1 << 1))) VarSet(VAR_DIGLETTS_CAVE_DARKNESS, 1);

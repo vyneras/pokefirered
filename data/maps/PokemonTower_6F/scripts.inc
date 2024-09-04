@@ -1,5 +1,10 @@
 PokemonTower_6F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, PokemonTower_6F_OnTransition
 	.byte 0
+
+PokemonTower_6F_OnTransition::
+	setvar VAR_TEMP_0, 0
+	end
 
 PokemonTower_6F_EventScript_MarowakGhost::
 	lockall
@@ -12,8 +17,8 @@ Archipelago_Target_Static_Encounter_MAROWAK::
 	waitstate
 	special QuestLog_CutRecording
 	goto_if_eq VAR_RESULT, FALSE, PokemonTower_6F_EventScript_DefeatedMarowakGhost  @ VAR_RESULT set by CB2_EndMarowakBattle
-	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerUp
-	waitmovement 0
+	call_if_eq VAR_TEMP_0, 0, PokemonTower_6F_EventScript_ForcePlayerUp
+	call_if_eq VAR_TEMP_0, 1, PokemonTower_6F_EventScript_ForcePlayerLeft
 	releaseall
 	end
 
@@ -25,12 +30,27 @@ PokemonTower_6F_EventScript_DefeatedMarowakGhost::
 	waitbuttonpress
 	waitmoncry
 	msgbox PokemonTower_6F_Text_MothersSpiritWasCalmed
+	setvar VAR_MAP_SCENE_POKEMON_TOWER_1F, 1
 	setvar VAR_MAP_SCENE_POKEMON_TOWER_6F, 1
 	releaseall
 	end
 
+PokemonTower_6F_EventScript_ForcePlayerUp::
+	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerUp
+	waitmovement 0
+	return
+
+PokemonTower_6F_EventScript_ForcePlayerLeft::
+	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerLeft
+	waitmovement 0
+	return
+
 PokemonTower_6F_Movement_ForcePlayerUp::
 	walk_up
+	step_end
+
+PokemonTower_6F_Movement_ForcePlayerLeft::
+	walk_left
 	step_end
 
 PokemonTower_6F_EventScript_Angelica::

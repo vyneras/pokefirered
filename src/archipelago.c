@@ -23,6 +23,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .route12Boulders = FALSE,
     .modifyRoute10 = FALSE,
     .modifyRoute23 = FALSE,
+    .blockPokemonTower = FALSE,
 
     .giovanniRequiresGyms = FALSE,
     .giovanniRequiredCount = 7,
