@@ -1656,7 +1656,8 @@ static bool8 waterfall_4_wait_player_move_probably(struct Task *task, struct Obj
 {
     if (!ObjectEventClearHeldMovementIfFinished(playerObj))
         return FALSE;
-    if (MetatileBehavior_IsWaterfall(playerObj->currentMetatileBehavior))
+    if (MetatileBehavior_IsWaterfall(playerObj->currentMetatileBehavior) ||
+        MetatileBehavior_IsWaterfallTop(playerObj->currentMetatileBehavior))
     {
         task->data[0] = 3;
         return TRUE;

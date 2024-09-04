@@ -2,7 +2,17 @@
 .set REQUIRED_BADGES_GYMS, VAR_TEMP_1
 
 Route23_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route23_OnTransition
 	.byte 0
+
+Route23_OnTransition::
+	specialvar VAR_RESULT, ArchipelagoSpecial_Route23Modified
+	call_if_eq VAR_RESULT, TRUE, Route23_EventScript_SetAltLayout
+	end
+
+Route23_EventScript_SetAltLayout::
+	setmaplayoutindex LAYOUT_ROUTE23_ALT
+	return
 
 Route23_EventScript_LastGuard::
 	lock

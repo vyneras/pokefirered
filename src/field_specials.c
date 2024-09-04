@@ -2923,3 +2923,13 @@ bool8 ArchipelagoSpecial_FlashRequired(void)
 {
     return gArchipelagoOptions.flashRequired;
 }
+
+bool8 ArchipelagoSpecial_Route10Modified(void)
+{
+    return gArchipelagoOptions.modifyRoute10;
+}
+
+bool8 ArchipelagoSpecial_Route23Modified(void)
+{
+    return gArchipelagoOptions.modifyRoute23;
+}

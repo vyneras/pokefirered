@@ -1,7 +1,17 @@
 .set LOCALID_SCIENTIST, 7
 
 Route10_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route10_OnTransition
 	.byte 0
+
+Route10_OnTransition::
+	specialvar VAR_RESULT, ArchipelagoSpecial_Route10Modified
+	call_if_eq VAR_RESULT, TRUE, Route10_EventScript_SetAltLayout
+	end
+
+Route10_EventScript_SetAltLayout::
+	setmaplayoutindex LAYOUT_ROUTE10_ALT
+	return
 
 Route10_EventScript_NorthRockTunnelSign::
 	msgbox Route10_Text_RockTunnelDetourToLavender, MSGBOX_SIGN
@@ -12,7 +22,6 @@ Route10_EventScript_SouthRockTunnelSign::
 	end
 
 Route10_EventScript_PowerPlantSign::
-	giveitem ITEM_MACHINE_PART
 	msgbox Route10_Text_PowerPlant, MSGBOX_SIGN
 	end
 

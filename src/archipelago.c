@@ -20,7 +20,9 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .saveBillRequired = TRUE,
     .modifyRoute9 = FALSE,
     .blockUndergroundTunnels = FALSE,
-    .route12Boulders = TRUE,
+    .route12Boulders = FALSE,
+    .modifyRoute10 = FALSE,
+    .modifyRoute23 = FALSE,
 
     .giovanniRequiresGyms = FALSE,
     .giovanniRequiredCount = 7,

@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
 #include "bike.h"
 #include "event_data.h"
 #include "event_object_movement.h"
@@ -54,6 +55,7 @@ static bool8 ForcedMovement_PushedSouthByCurrent(void);
 static bool8 ForcedMovement_PushedNorthByCurrent(void);
 static bool8 ForcedMovement_PushedWestByCurrent(void);
 static bool8 ForcedMovement_PushedEastByCurrent(void);
+static bool8 ForcedMovement_WaterfallTop(void);
 static bool8 ForcedMovement_SlideSouth(void);
 static bool8 ForcedMovement_SlideNorth(void);
 static bool8 ForcedMovement_SlideWest(void);
@@ -244,6 +246,7 @@ static const struct {
     {MetatileBehavior_IsSlideWest, ForcedMovement_SlideWest},
     {MetatileBehavior_IsSlideEast, ForcedMovement_SlideEast},
     {MetatileBehavior_IsWaterfall, ForcedMovement_PushedSouthByCurrent},
+    {MetatileBehavior_IsWaterfallTop, ForcedMovement_WaterfallTop},
     {MetatileBehavior_IsSecretBaseJumpMat, ForcedMovement_MatJump},
     {MetatileBehavior_IsSecretBaseSpinMat, ForcedMovement_MatSpin},
     {NULL, ForcedMovement_None},
@@ -399,6 +402,15 @@ static bool8 ForcedMovement_PushedWestByCurrent(void)
 static bool8 ForcedMovement_PushedEastByCurrent(void)
 {
     return DoForcedMovement(DIR_EAST, PlayerRideWaterCurrent);
+}
+
+static bool8 ForcedMovement_WaterfallTop(void)
+{
+    if (CanUseHmOutsideBattle(FIELD_MOVE_WATERFALL)
+        && PartyHasMonWithWaterfall())
+        ForcedMovement_PushedSouthByCurrent();
+    else
+        ForcedMovement_PushedNorthByCurrent();
 }
 
 static u8 ForcedMovement_Slide(u8 direction, MovementAction movementAction)
@@ -1194,6 +1206,20 @@ bool8 PartyHasMonWithSurf(void)
             if (MonKnowsMove(&gPlayerParty[i], MOVE_SURF))
                 return TRUE;
         }
+    }
+    return FALSE;
+}
+
+bool8 PartyHasMonWithWaterfall(void)
+{
+    u8 i;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE)
+            break;
+        if (MonKnowsMove(&gPlayerParty[i], MOVE_WATERFALL))
+            return TRUE;
     }
     return FALSE;
 }

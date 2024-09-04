@@ -4398,6 +4398,30 @@
       "secondary_tileset": "gTileset_MtEmber",
       "border_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa/border.bin",
       "blockdata_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE10_ALT",
+      "name": "Route10_Layout_Alt",
+      "width": 24,
+      "height": 80,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_LavenderTown",
+      "border_filepath": "data/layouts/Route10_Alt/border.bin",
+      "blockdata_filepath": "data/layouts/Route10_Alt/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE23_ALT",
+      "name": "Route23_Layout_Alt",
+      "width": 24,
+      "height": 160,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_IndigoPlateau",
+      "border_filepath": "data/layouts/Route23_Alt/border.bin",
+      "blockdata_filepath": "data/layouts/Route23_Alt/map.bin"
     }
   ]
 }

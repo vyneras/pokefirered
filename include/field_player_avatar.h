@@ -35,6 +35,7 @@ void StartTeleportWarpOutPlayerAnim(void);
 bool32 WaitTeleportWarpOutPlayerAnim(void);
 bool32 WaitTeleportInPlayerAnim(void);
 bool8 PartyHasMonWithSurf(void);
+bool8 PartyHasMonWithWaterfall(void);
 bool8 IsPlayerSurfingNorth(void);
 u8 player_get_pos_including_state_based_drift(s16 *x, s16 *y);
 void StartPlayerAvatarVsSeekerAnim(void);

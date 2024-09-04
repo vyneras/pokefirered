@@ -305,7 +305,7 @@ static bool8 CanFish(void)
     GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
     behavior = MapGridGetMetatileBehaviorAt(x, y);
 
-    if (MetatileBehavior_IsWaterfall(behavior))
+    if (MetatileBehavior_IsWaterfall(behavior) || MetatileBehavior_IsWaterfallTop(behavior))
         return FALSE;
     if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_UNDERWATER))
         return FALSE;

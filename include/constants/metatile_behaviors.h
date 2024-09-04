@@ -15,7 +15,7 @@
 #define MB_FAST_WATER 0x11
 #define MB_DEEP_WATER 0x12
 #define MB_WATERFALL 0x13
-//
+#define MB_WATERFALL_TOP 0x14
 #define MB_OCEAN_WATER 0x15
 #define MB_PUDDLE 0x16
 #define MB_SHALLOW_WATER 0x17

@@ -7,6 +7,7 @@ static const bool8 sBehaviorSurfable[NUM_METATILE_BEHAVIORS] = {
     [MB_FAST_WATER]         = TRUE,
     [MB_DEEP_WATER]         = TRUE,
     [MB_WATERFALL]          = TRUE,
+    [MB_WATERFALL_TOP]      = TRUE,
     [MB_OCEAN_WATER]        = TRUE,
     [MB_UNUSED_WATER]       = TRUE,
     [MB_CYCLING_ROAD_WATER] = TRUE,
@@ -268,6 +269,7 @@ bool8 MetatileBehavior_IsForcedMovementTile(u8 metatileBehavior)
     if ((metatileBehavior >= MB_WALK_EAST && metatileBehavior <= MB_TRICK_HOUSE_PUZZLE_8_FLOOR)
       || (metatileBehavior >= MB_EASTWARD_CURRENT && metatileBehavior <= MB_SOUTHWARD_CURRENT)
       ||  metatileBehavior == MB_WATERFALL
+      ||  metatileBehavior == MB_WATERFALL_TOP
       ||  metatileBehavior == MB_ICE
       || (metatileBehavior >= MB_SPIN_RIGHT && metatileBehavior <= MB_SPIN_DOWN))
             return TRUE;
@@ -535,7 +537,8 @@ bool8 MetatileBehavior_IsUnusedWater(u8 metatileBehavior)
 bool8 MetatileBehavior_IsSurfableAndNotWaterfall(u8 metatileBehavior)
 {
     if (MetatileBehavior_IsSurfable(metatileBehavior)
-        && !MetatileBehavior_IsWaterfall(metatileBehavior))
+        && !MetatileBehavior_IsWaterfall(metatileBehavior)
+        && !MetatileBehavior_IsWaterfallTop(metatileBehavior))
             return TRUE;
     else
         return FALSE;
@@ -594,6 +597,14 @@ bool8 MetatileBehavior_IsHotSprings(u8 metatileBehavior)
 bool8 MetatileBehavior_IsWaterfall(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_WATERFALL)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsWaterfallTop(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_WATERFALL_TOP)
         return TRUE;
     else
         return FALSE;

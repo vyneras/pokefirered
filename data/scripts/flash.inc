@@ -10,8 +10,8 @@ EventScript_NeedFlash::
 	setvar VAR_0x8003, 0 @ FIELD_MOVE_FLASH
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanUseHmOutsideBattle
 	goto_if_eq VAR_RESULT, FALSE, EventScript_CantUseFlash
-	checkitem ITEM_HM05_FLASH
-	goto_if_eq VAR_RESULT, FALSE, EventScript_CantUseFlash
+	checkpartymove MOVE_FLASH
+	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantUseFlash
 	goto EventScript_CanUseFlash
 	end
 

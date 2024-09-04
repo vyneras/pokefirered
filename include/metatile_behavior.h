@@ -73,6 +73,7 @@ bool8 MetatileBehavior_IsSouthBlocked(u8 metatileBehavior);
 bool8 MetatileBehavior_IsShortGrass(u8 metatileBehavior);
 bool8 MetatileBehavior_IsHotSprings(u8 metatileBehavior);
 bool8 MetatileBehavior_IsWaterfall(u8 metatileBehavior);
+bool8 MetatileBehavior_IsWaterfallTop(u8 metatileBehavior);
 bool8 MetatileBehavior_IsFortreeBridge(u8 metatileBehavior);
 bool8 MetatileBehavior_IsPacifidlogLog(u8 metatileBehavior);
 bool8 MetatileBehavior_IsRegionMap(u8 metatileBehavior);
