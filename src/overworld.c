@@ -54,6 +54,9 @@
 #include "constants/songs.h"
 #include "constants/sound.h"
 
+#undef abs
+#define abs(x) ((x) < 0 ? -(x) : (x))
+
 #define PLAYER_LINK_STATE_IDLE 0x80
 #define PLAYER_LINK_STATE_BUSY 0x81
 #define PLAYER_LINK_STATE_READY 0x82
@@ -608,6 +611,40 @@ void WarpIntoMap(void)
     ApplyCurrentWarp();
     LoadCurrentMapData();
     SetPlayerCoordsFromWarp();
+}
+
+void UseClosestWarp(void)
+{
+    s8 warpEventId = -1;
+    struct WarpEvent warp;
+    u8 i;
+    u8 currentDistance = 0;
+
+    for (i = 0; i < gMapHeader.events->warpCount; i++)
+    {
+        if (warpEventId == -1)
+        {
+            warpEventId = i;
+            currentDistance = abs(gSaveBlock1Ptr->pos.x - gMapHeader.events->warps[i].x) + abs(gSaveBlock1Ptr->pos.y - gMapHeader.events->warps[i].y);
+        }
+        else
+        {
+            u8 newDistance = abs(gSaveBlock1Ptr->pos.x - gMapHeader.events->warps[i].x) + abs(gSaveBlock1Ptr->pos.y - gMapHeader.events->warps[i].y);
+            if (newDistance < currentDistance)
+            {
+                warpEventId = i;
+                currentDistance = newDistance;
+            }
+        }
+    }
+
+    if (warpEventId == -1)
+        return;
+
+    warp = gMapHeader.events->warps[warpEventId];
+    SetWarpDestination(warp.mapGroup, warp.mapNum, warp.warpId, warp.x, warp.y);
+    DoWarp();
+    ResetInitialPlayerAvatarState();
 }
 
 void SetWarpDestination(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y)

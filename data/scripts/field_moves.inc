@@ -289,3 +289,7 @@ EventScript_FailSweetScent::
 
 Text_LooksLikeNothingHere::
 	.string "Looks like there's nothing here…$"
+
+Text_NeedFlash::
+  .string "It's too dark in here, but a POKéMON\n"
+  .string "may be able to light the way.$"

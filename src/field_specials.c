@@ -2913,3 +2913,13 @@ bool8 ArchipelagoSpecial_ArePassesSplit(void)
 {
     return gArchipelagoOptions.passesSplit;
 }
+
+void ArchipelagoSpecial_UseClosestWarp(void)
+{
+    UseClosestWarp();
+}
+
+bool8 ArchipelagoSpecial_FlashRequired(void)
+{
+    return gArchipelagoOptions.flashRequired;
+}

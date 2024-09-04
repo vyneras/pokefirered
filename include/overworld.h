@@ -93,6 +93,7 @@ void ObjectEventMoveDestCoords(struct ObjectEvent *, u32, s16 *, s16 *);
 void CB2_ReturnToField(void);
 void CB2_ReturnToFieldContinueScriptPlayMapMusic(void);
 void WarpIntoMap(void);
+void UseClosestWarp(void);
 u8 GetMapTypeByGroupAndId(s8 mapGroup, s8 mapNum);
 void SetWarpDestinationToMapWarp(s8 mapGroup, s8 mapNum, s8 warpNum);
 void SetWarpDestinationToDynamicWarp(u8 unused);

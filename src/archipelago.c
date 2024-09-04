@@ -38,6 +38,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .startingMoney = 3000,
 
     .itemfinderRequired = FALSE,
+    .flashRequired = FALSE,
     .fameCheckerRequired = FALSE,
 
     .oaksAideRequiredCounts = {
@@ -56,6 +57,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .isFamesanity = FALSE,
 
     .removeBadgeRequirement = 0,
+    .additionalDarkCaves = 0,
 
     .passesSplit = FALSE,
 

@@ -487,4 +487,6 @@ gSpecials::
 	def_special ArchipelagoSpecial_IsFamesanity
 	def_special ArchipelagoSpecial_SetFameCheckerFlag
 	def_special ArchipelagoSpecial_ArePassesSplit
+	def_special ArchipelagoSpecial_UseClosestWarp
+	def_special ArchipelagoSpecial_FlashRequired
 gSpecialsEnd::

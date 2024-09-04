@@ -230,6 +230,123 @@
       "var": "VAR_MAP_SCENE_VICTORY_ROAD_3F",
       "var_value": "99",
       "script": "VictoryRoad_3F_EventScript_FloorSwitch"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 2,
+      "elevation": 0,
+      "var": "VAR_VICTORY_ROAD_DARKNESS",
+      "var_value": "0",
+      "script": "EventScript_NeedFlash"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 3,
+      "elevation": 0,
+      "var": "VAR_VICTORY_ROAD_DARKNESS",
+      "var_value": "0",
+      "script": "EventScript_NeedFlash"
+    },
+    {
+      "type": "trigger",
+      "x": 34,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_VICTORY_ROAD_DARKNESS",
+      "var_value": "0",
+      "script": "EventScript_NeedFlash"
+    },
+    {
+      "type": "trigger",
+      "x": 33,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_VICTORY_ROAD_DARKNESS",
+      "var_value": "0",
+      "script": "EventScript_NeedFlash"
+    },
+    {
+      "type": "trigger",
+      "x": 34,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_VICTORY_ROAD_DARKNESS",
+      "var_value": "0",
+      "script": "EventScript_NeedFlash"
+    },
+    {
+      "type": "trigger",
+      "x": 36,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_VICTORY_ROAD_DARKNESS",
+      "var_value": "0",
+      "script": "EventScript_NeedFlash"
+    },
+    {
+      "type": "trigger",
+      "x": 37,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_VICTORY_ROAD_DARKNESS",
+      "var_value": "0",
+      "script": "EventScript_NeedFlash"
+    },
+    {
+      "type": "trigger",
+      "x": 38,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_VICTORY_ROAD_DARKNESS",
+      "var_value": "0",
+      "script": "EventScript_NeedFlash"
+    },
+    {
+      "type": "trigger",
+      "x": 37,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_VICTORY_ROAD_DARKNESS",
+      "var_value": "0",
+      "script": "EventScript_NeedFlash"
+    },
+    {
+      "type": "trigger",
+      "x": 39,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_VICTORY_ROAD_DARKNESS",
+      "var_value": "0",
+      "script": "EventScript_NeedFlash"
+    },
+    {
+      "type": "trigger",
+      "x": 38,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_VICTORY_ROAD_DARKNESS",
+      "var_value": "0",
+      "script": "EventScript_NeedFlash"
+    },
+    {
+      "type": "trigger",
+      "x": 39,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_VICTORY_ROAD_DARKNESS",
+      "var_value": "0",
+      "script": "EventScript_NeedFlash"
+    },
+    {
+      "type": "trigger",
+      "x": 40,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_VICTORY_ROAD_DARKNESS",
+      "var_value": "0",
+      "script": "EventScript_NeedFlash"
     }
   ],
   "bg_events": []

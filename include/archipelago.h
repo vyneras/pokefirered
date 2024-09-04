@@ -41,24 +41,26 @@ struct ArchipelagoOptions
   /* 0x1F */ u32 startingMoney;
 
   /* 0x23 */ bool8 itemfinderRequired;
-  /* 0x24 */ bool8 fameCheckerRequired;
+  /* 0x24 */ bool8 flashRequired;
+  /* 0x25 */ bool8 fameCheckerRequired;
 
-  /* 0x25 */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
+  /* 0x26 */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
 
-  /* 0x2A */ bool8 reccuringHiddenItems;
-  /* 0x2B */ bool8 isTrainersanity;
-  /* 0x2C */ bool8 extraKeyItems;
-  /* 0x2D */ bool8 kantoOnly;
-  /* 0x2E */ bool8 flyUnlocks;
-  /* 0x2F */ bool8 isFamesanity;
+  /* 0x2B */ bool8 reccuringHiddenItems;
+  /* 0x2C */ bool8 isTrainersanity;
+  /* 0x2D */ bool8 extraKeyItems;
+  /* 0x2E */ bool8 kantoOnly;
+  /* 0x2F */ bool8 flyUnlocks;
+  /* 0x30 */ bool8 isFamesanity;
 
-  /* 0x30 */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
+  /* 0x31 */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
+  /* 0x32 */ u8 additionalDarkCaves; // Mt. Moon, Diglett's Cave, Victory Road
 
-  /* 0x31 */ bool8 passesSplit;
+  /* 0x33 */ bool8 passesSplit;
 
-  /* 0x32 */ u8 free_fly_id;
-  /* 0x33 */ u8 town_free_fly_id;
-  /* 0x34 */ u16 resort_gorgeous_mon;
+  /* 0x34 */ u8 free_fly_id;
+  /* 0x35 */ u8 town_free_fly_id;
+  /* 0x36 */ u16 resort_gorgeous_mon;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem
