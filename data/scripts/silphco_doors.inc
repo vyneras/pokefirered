@@ -507,7 +507,7 @@ SilphCo_11F_EventScript_Door::
 	end
 
 EventScript_TryUnlockDoor::
-	checkitem ITEM_CARD_KEY
+	specialvar VAR_RESULT, ArchipelagoSpecial_CanOpenSilphDoor
 	goto_if_eq VAR_RESULT, TRUE, EventScript_OpenDoor
 	goto EventScript_NeedCardKey
 	end

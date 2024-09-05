@@ -102,6 +102,7 @@ ArchipelagoScript_HandleUniqueItem::
 	case ITEM_COINS_40, ArchipelagoScript_Receive40Coins
 	case ITEM_COINS_100, ArchipelagoScript_Receive100Coins
 	case ITEM_PROG_PASS, ArchipelagoScript_ReceiveProgressivePass
+	case ITEM_PROG_CARD_KEY, ArchipelagoScript_ReceiveProgressiveCardKey
 	return
 
 ArchipelagoScript_ReceiveBoulderBadge::
@@ -516,6 +517,69 @@ ArchipelagoScript_ReceiveSixPass::
 
 ArchipelagoScript_ReceiveSevenPass::
 	giveitem ITEM_SEVEN_PASS
+	return
+
+ArchipelagoScript_ReceiveProgressiveCardKey::
+	checkitem ITEM_CARD_KEY_2F
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveCardKey2F
+	checkitem ITEM_CARD_KEY_3F
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveCardKey3F
+	checkitem ITEM_CARD_KEY_4F
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveCardKey4F
+	checkitem ITEM_CARD_KEY_5F
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveCardKey5F
+	checkitem ITEM_CARD_KEY_6F
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveCardKey6F
+	checkitem ITEM_CARD_KEY_7F
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveCardKey7F
+	checkitem ITEM_CARD_KEY_8F
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveCardKey8F
+	checkitem ITEM_CARD_KEY_9F
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveCardKey9F
+	checkitem ITEM_CARD_KEY_10F
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveCardKey10F
+	checkitem ITEM_CARD_KEY_11F
+	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveCardKey11F
+	return
+
+ArchipelagoScript_ReceiveCardKey2F::
+	giveitem ITEM_CARD_KEY_2F
+	return
+
+ArchipelagoScript_ReceiveCardKey3F::
+	giveitem ITEM_CARD_KEY_3F
+	return
+
+ArchipelagoScript_ReceiveCardKey4F::
+	giveitem ITEM_CARD_KEY_4F
+	return
+
+ArchipelagoScript_ReceiveCardKey5F::
+	giveitem ITEM_CARD_KEY_5F
+	return
+
+ArchipelagoScript_ReceiveCardKey6F::
+	giveitem ITEM_CARD_KEY_6F
+	return
+
+ArchipelagoScript_ReceiveCardKey7F::
+	giveitem ITEM_CARD_KEY_7F
+	return
+
+ArchipelagoScript_ReceiveCardKey8F::
+	giveitem ITEM_CARD_KEY_8F
+	return
+
+ArchipelagoScript_ReceiveCardKey9F::
+	giveitem ITEM_CARD_KEY_9F
+	return
+
+ArchipelagoScript_ReceiveCardKey10F::
+	giveitem ITEM_CARD_KEY_10F
+	return
+
+ArchipelagoScript_ReceiveCardKey11F::
+	giveitem ITEM_CARD_KEY_11F
 	return
 
 ArchipelagoScript_GoHome::

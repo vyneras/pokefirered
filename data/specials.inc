@@ -487,6 +487,7 @@ gSpecials::
 	def_special ArchipelagoSpecial_IsFamesanity
 	def_special ArchipelagoSpecial_SetFameCheckerFlag
 	def_special ArchipelagoSpecial_ArePassesSplit
+	def_special ArchipelagoSpecial_AreCardKeysSplit
 	def_special ArchipelagoSpecial_UseClosestWarp
 	def_special ArchipelagoSpecial_FlashRequired
 	def_special ArchipelagoSpecial_Route2Modified
@@ -497,4 +498,5 @@ gSpecials::
 	def_special ArchipelagoSpecial_Route23Trees
 	def_special ArchipelagoSpecial_Route23Modified
 	def_special ArchipelagoSpecial_VictoryRoadRocks
+	def_special ArchipelagoSpecial_CanOpenSilphDoor
 gSpecialsEnd::

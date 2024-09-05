@@ -809,44 +809,10 @@ gStdScriptsEnd::
 	.include "data/scripts/std_msgbox.inc"
 	.include "data/scripts/trainer_battle.inc"
 
-@ Unused
-Text_WouldYouLikeToMixRecords::
-	.string "Would you like to mix records with\n"
-	.string "other TRAINERS?$"
-
-@ Unused
-Text_WeHopeToSeeYouAgain2::
-	.string "We hope to see you again!$"
-
 	.include "data/text/pc.inc"
-
-@ Unused
-Text_WelcomeTradeCenter::
-	.string "Welcome to the POKéMON CABLE CLUB\n"
-	.string "TRADE CENTER.$"
-
-@ Unused
-Text_WelcomeColosseum::
-	.string "Welcome to the POKéMON CABLE CLUB\n"
-	.string "COLOSSEUM.$"
-
-@ Unused
-Text_WelcomeTimeCapsule::
-	.string "Welcome to the POKéMON CABLE CLUB\n"
-	.string "TIME CAPSULE.$"
 
 Text_PleaseComeAgain::
 	.string "Please come again!$"
-
-@ Unused
-Text_HavingDiscountSaleToday::
-	.string "Welcome!\p"
-	.string "We're having a discount sale today!$"
-
-@ Unused
-Text_PlayerWhatCanIDoForYou::
-	.string "{PLAYER}{KUN}, welcome!\p"
-	.string "What can I do for you?$"
 
 	.include "data/text/obtain_item.inc"
 
@@ -860,28 +826,8 @@ Text_BagItemCanBeRegistered::
 	.string "An item in the BAG can be\n"
 	.string "registered to SELECT for easy use.$"
 
-@ Unused (email from R/S Rivals computer)
-Text_TrainerSchoolEmail::
-	.string "パソコンに\n"
-	.string "ポケモン　トレーナー　こうざの\l"
-	.string "メールが　きている！\p"
-	.string "‥‥　‥‥　‥‥\p"
-	.string "ポケモンが　おぼえられる　わざは　4つ！\p"
-	.string "どんな　わざを　おぼえさせるかで\n"
-	.string "トレーナーの　じつりょくが　とわれます！\p"
-	.string "‥‥　‥‥　‥‥$"
-
 Text_PlayerBootedUpPC::
 	.string "{PLAYER} booted up the PC.$"
-
-@ Unused
-Text_LinkWasCanceled::
-	.string "つうしんは　キャンセルされました$"
-
-@ Unused
-Text_GiveNicknameToReceivedMon::
-	.string "Want to give a nickname to the\n"
-	.string "{STR_VAR_2} you received?$"
 
 gText_PkmnFainted3::
 	.string "{STR_VAR_1} fainted…\p"
@@ -905,16 +851,6 @@ Text_RestoredPkmnToFullHealth::
 	.string "full health.$"
 
 	.include "data/text/surf.inc"
-
-@ Unused, from R/S
-Text_DoorOpenedFarAway::
-	.string "どこか　とおくの　とびらが\n"
-	.string "ひらいたような　おとだ‥‥$"
-
-@ Unused, from R/S
-Text_BigHoleInTheWall::
-	.string "かべに\n"
-	.string "おおきな　あなが　あいている！$"
 
 Text_WirelessClubUndergoingAdjustments::
 	.string "I'm terribly sorry.\n"
@@ -964,6 +900,18 @@ Text_VoiceRangOutDontRunAway::
 
 Text_TheDoorIsOpen::
 	.string "The door is open…$"
+
+Text_HelpUsTakeThisCardKey::
+	.string "TEAM ROCKET's BOSS went to the\n"
+	.string "boardroom!\p"
+	.string "Hopefully this will be of use\n"
+	.string "to you.$"
+
+Text_ThanksTakeThisCardKey::
+	.string "Thank you for dealing with\n"
+	.string "TEAM ROCKET.\p"
+	.string "Take this as a sign of my\n"
+	.string "appreciation.$"
 
 	.include "data/text/pc_transfer.inc"
 	.include "data/text/white_out.inc"
@@ -1056,10 +1004,13 @@ Common_ShowEasyChatScreen::
 	.include "data/scripts/set_gym_trainers.inc"
 	.include "data/scripts/bag_full.inc"
 
-@ Unused
-EventScript_GymBadgeFanfare::
-	playfanfare MUS_OBTAIN_BADGE
-	waitfanfare
+EventScript_TakeThisCardKey::
+	call_if_eq VAR_MAP_SCENE_SILPH_CO_11F, 1, EventScript_ThanksTakeThisCardKey
+	msgbox Text_HelpUsTakeThisCardKey
+	return
+
+EventScript_ThanksTakeThisCardKey::
+	msgbox Text_ThanksTakeThisCardKey
 	return
 
 EventScript_OutOfCenterPartyHeal::
@@ -1088,16 +1039,6 @@ EventScript_ChangePokemonNickname::
 	fadescreen FADE_TO_BLACK
 	special ChangePokemonNickname
 	waitstate
-	return
-
-@ Unused
-EventScript_HandOverItem::
-	bufferitemname STR_VAR_1, VAR_0x8004
-	playfanfare MUS_OBTAIN_TMHM
-	message Text_HandedOverItem
-	waitmessage
-	waitfanfare
-	removeitem VAR_0x8004
 	return
 
 	.include "data/scripts/pokemon_league.inc"
@@ -1149,25 +1090,6 @@ EventScript_ReleaseEnd::
 	end
 
 	.include "data/scripts/pokemon_mansion.inc"
-
-@ Unused
-EventScript_DelayedLookAround::
-	lockall
-	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	delay 20
-	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	delay 20
-	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	delay 20
-	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	delay 20
-	releaseall
-	end
-
 	.include "data/scripts/silphco_doors.inc"
 	.include "data/scripts/pc_transfer.inc"
 

@@ -10,6 +10,16 @@ SilphCo_3F_OnLoad::
 SilphCo_3F_EventScript_WorkerM::
 	lock
 	faceplayer
+	specialvar VAR_RESULT, ArchipelagoSpecial_AreCardKeysSplit
+	goto_if_eq VAR_RESULT, FALSE, SilphCo_3F_EventScript_WorkerMGaveCardKey
+	goto_if_set FLAG_GOT_3F_CARD_KEY, SilphCo_3F_EventScript_WorkerMGaveCardKey
+	msgbox EventScript_TakeThisCardKey
+Archipelago_Target_NPC_Gift_FLAG_GOT_3F_CARD_KEY::
+	giveitem ITEM_CARD_KEY_3F, 1, FLAG_GOT_3F_CARD_KEY
+	release
+	end
+
+SilphCo_3F_EventScript_WorkerMGaveCardKey::
 	goto_if_ge VAR_MAP_SCENE_SILPH_CO_11F, 1, SilphCo_3F_EventScript_WorkerMRocketsGone
 	msgbox SilphCo_3F_Text_WhatAmIToDo
 	release

@@ -67,6 +67,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .additionalDarkCaves = 0,
 
     .passesSplit = FALSE,
+    .cardKeysSplit = FALSE,
 
     .free_fly_id = 0,
     .town_free_fly_id = 0,

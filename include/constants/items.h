@@ -53,16 +53,16 @@
 #define ITEM_BLUE_SHARD 49
 #define ITEM_YELLOW_SHARD 50
 #define ITEM_GREEN_SHARD 51
-#define ITEM_034 52
-#define ITEM_035 53
-#define ITEM_036 54
-#define ITEM_037 55
-#define ITEM_038 56
-#define ITEM_039 57
-#define ITEM_03A 58
-#define ITEM_03B 59
-#define ITEM_03C 60
-#define ITEM_03D 61
+#define ITEM_CARD_KEY_2F 52
+#define ITEM_CARD_KEY_3F 53
+#define ITEM_CARD_KEY_4F 54
+#define ITEM_CARD_KEY_5F 55
+#define ITEM_CARD_KEY_6F 56
+#define ITEM_CARD_KEY_7F 57
+#define ITEM_CARD_KEY_8F 58
+#define ITEM_CARD_KEY_9F 59
+#define ITEM_CARD_KEY_10F 60
+#define ITEM_CARD_KEY_11F 61
 #define ITEM_03E 62
 #define ITEM_HP_UP 63
 #define ITEM_PROTEIN 64
@@ -458,8 +458,8 @@
 
 // Progressive placeholder items
 #define ITEM_PROG_PASS 379
+#define ITEM_PROG_CARD_KEY 380
 
-#define ITEM_17C 380
 #define ITEM_17D 381
 #define ITEM_17E 382
 #define ITEM_17F 383

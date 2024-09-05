@@ -64,10 +64,11 @@ struct ArchipelagoOptions
   /* 0x39 */ u8 additionalDarkCaves; // Mt. Moon, Diglett's Cave, Victory Road
 
   /* 0x3A */ bool8 passesSplit;
+  /* 0x3B */ bool8 cardKeysSplit;
 
-  /* 0x3B */ u8 free_fly_id;
-  /* 0x3C */ u8 town_free_fly_id;
-  /* 0x3D */ u16 resort_gorgeous_mon;
+  /* 0x3C */ u8 free_fly_id;
+  /* 0x3D */ u8 town_free_fly_id;
+  /* 0x3E */ u16 resort_gorgeous_mon;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem

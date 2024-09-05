@@ -205,6 +205,16 @@ SilphCo_7F_EventScript_WorkerM2RocketsGone::
 SilphCo_7F_EventScript_WorkerF::
 	lock
 	faceplayer
+	specialvar VAR_RESULT, ArchipelagoSpecial_AreCardKeysSplit
+	goto_if_eq VAR_RESULT, FALSE, SilphCo_7F_EventScript_WorkerFGaveCardKey
+	goto_if_set FLAG_GOT_7F_CARD_KEY, SilphCo_7F_EventScript_WorkerFGaveCardKey
+	msgbox EventScript_TakeThisCardKey
+Archipelago_Target_NPC_Gift_FLAG_GOT_7F_CARD_KEY::
+	giveitem ITEM_CARD_KEY_7F, 1, FLAG_GOT_7F_CARD_KEY
+	release
+	end
+
+SilphCo_7F_EventScript_WorkerFGaveCardKey::
 	goto_if_ge VAR_MAP_SCENE_SILPH_CO_11F, 1, SilphCo_7F_EventScript_WorkerFRocketsGone
 	msgbox SilphCo_7F_Text_ReallyDangerousHere
 	release

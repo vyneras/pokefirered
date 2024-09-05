@@ -12,6 +12,16 @@ SilphCo_9F_OnLoad::
 SilphCo_9F_EventScript_HealWoman::
 	lock
 	faceplayer
+	specialvar VAR_RESULT, ArchipelagoSpecial_AreCardKeysSplit
+	goto_if_eq VAR_RESULT, FALSE, SilphCo_9F_EventScript_HealWomanGaveCardKey
+	goto_if_set FLAG_GOT_9F_CARD_KEY, SilphCo_9F_EventScript_HealWomanGaveCardKey
+	msgbox EventScript_TakeThisCardKey
+Archipelago_Target_NPC_Gift_FLAG_GOT_9F_CARD_KEY::
+	giveitem ITEM_CARD_KEY_9F, 1, FLAG_GOT_9F_CARD_KEY
+	release
+	end
+
+SilphCo_9F_EventScript_HealWomanGaveCardKey::
 	goto_if_ge VAR_MAP_SCENE_SILPH_CO_11F, 1, SilphCo_9F_EventScript_HealWomanRocketsGone
 	msgbox SilphCo_9F_Text_YouShouldTakeQuickNap
 	closemessage

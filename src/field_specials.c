@@ -2555,7 +2555,7 @@ bool8 ArchipelagoSpecial_IsItemUnique(void)
 {
     return (gSpecialVar_0x8014 >= ITEM_BADGE_1 && gSpecialVar_0x8014 <= ITEM_BADGE_8) ||
            (gSpecialVar_0x8014 >= ITEM_FLY_PALLET && gSpecialVar_0x8014 <= ITEM_FLY_ROUTE10) ||
-           (gSpecialVar_0x8014 >= ITEM_COINS_10 && gSpecialVar_0x8014 <= ITEM_PROG_PASS);
+           (gSpecialVar_0x8014 >= ITEM_COINS_10 && gSpecialVar_0x8014 <= ITEM_PROG_CARD_KEY);
 }
 
 bool8 ArchipelagoSpecial_ShouldHandle(void)
@@ -2914,6 +2914,11 @@ bool8 ArchipelagoSpecial_ArePassesSplit(void)
     return gArchipelagoOptions.passesSplit;
 }
 
+bool8 ArchipelagoSpecial_AreCardKeysSplit(void)
+{
+    return gArchipelagoOptions.cardKeysSplit;
+}
+
 void ArchipelagoSpecial_UseClosestWarp(void)
 {
     UseClosestWarp();
@@ -2962,4 +2967,44 @@ bool8 ArchipelagoSpecial_Route23Modified(void)
 bool8 ArchipelagoSpecial_VictoryRoadRocks(void)
 {
     return gArchipelagoOptions.victoryRoadRocks;
+}
+
+bool8 ArchipelagoSpecial_CanOpenSilphDoor(void)
+{
+    if (CheckBagHasItem(ITEM_CARD_KEY, 1))
+        return TRUE;
+
+    switch(gSpecialVar_0x8004)
+    {
+    case FLAG_SILPH_2F_DOOR_1:
+    case FLAG_SILPH_2F_DOOR_2:
+        return CheckBagHasItem(ITEM_CARD_KEY_2F, 1);
+    case FLAG_SILPH_3F_DOOR_1:
+    case FLAG_SILPH_3F_DOOR_2:
+        return CheckBagHasItem(ITEM_CARD_KEY_3F, 1);
+    case FLAG_SILPH_4F_DOOR_1:
+    case FLAG_SILPH_4F_DOOR_2:
+        return CheckBagHasItem(ITEM_CARD_KEY_4F, 1);
+    case FLAG_SILPH_5F_DOOR_1:
+    case FLAG_SILPH_5F_DOOR_2:
+    case FLAG_SILPH_5F_DOOR_3:
+        return CheckBagHasItem(ITEM_CARD_KEY_5F, 1);
+    case FLAG_SILPH_6F_DOOR:
+        return CheckBagHasItem(ITEM_CARD_KEY_6F, 1);
+    case FLAG_SILPH_7F_DOOR_1:
+    case FLAG_SILPH_7F_DOOR_2:
+    case FLAG_SILPH_7F_DOOR_3:
+        return CheckBagHasItem(ITEM_CARD_KEY_7F, 1);
+    case FLAG_SILPH_8F_DOOR:
+        return CheckBagHasItem(ITEM_CARD_KEY_8F, 1);
+    case FLAG_SILPH_9F_DOOR_1:
+    case FLAG_SILPH_9F_DOOR_2:
+    case FLAG_SILPH_9F_DOOR_3:
+    case FLAG_SILPH_9F_DOOR_4:
+        return CheckBagHasItem(ITEM_CARD_KEY_9F, 1);
+    case FLAG_SILPH_10F_DOOR:
+        return CheckBagHasItem(ITEM_CARD_KEY_10F, 1);
+    case FLAG_SILPH_11F_DOOR:
+        return CheckBagHasItem(ITEM_CARD_KEY_11F, 1);
+    }
 }
