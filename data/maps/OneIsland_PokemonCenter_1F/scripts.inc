@@ -62,7 +62,7 @@ OneIsland_PokemonCenter_1F_EventScript_CheckBillHasLeft::
 	return
 
 OneIsland_PokemonCenter_1F_EventScript_CheckClearedWarehouse::
-	call_if_set FLAG_RECOVERED_SAPPHIRE, OneIsland_PokemonCenter_1F_EventScript_SetCelioAskForSapphire
+	call_if_set FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE, OneIsland_PokemonCenter_1F_EventScript_SetCelioAskForSapphire
 	return
 
 OneIsland_PokemonCenter_1F_EventScript_SetBillLeft::
