@@ -254,7 +254,7 @@ bool8 AddBagItem(u16 itemId, u16 count)
         FlagSet(FLAG_SYS_GOT_BERRY_POUCH);
 
     if (itemId == ITEM_TOWN_MAP)
-        SetFlyMapFlag(gArchipelagoOptions.town_free_fly_id);
+        SetFlyMapFlag(gArchipelagoOptions.townFreeFlyId);
 
     idx = BagPocketGetFirstEmptySlot(pocket);
     if (idx == -1)

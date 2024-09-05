@@ -67,9 +67,10 @@ struct ArchipelagoOptions
   /* 0x3B */ bool8 passesSplit;
   /* 0x3C */ bool8 cardKeysSplit;
 
-  /* 0x3D */ u8 free_fly_id;
-  /* 0x3E */ u8 town_free_fly_id;
-  /* 0x3F */ u16 resort_gorgeous_mon;
+  /* 0x3D */ u8 startingLocation;
+  /* 0x3E */ u8 freeFlyId;
+  /* 0x3F */ u8 townFreeFlyId;
+  /* 0x40 */ u16 resortGorgeousMon;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem

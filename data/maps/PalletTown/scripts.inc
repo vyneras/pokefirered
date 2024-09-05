@@ -51,7 +51,6 @@ PalletTown_EventScript_MoveSignLadyToRouteEntrance::
 
 PalletTown_OnFrame::
 	map_script_2 GIVE_FLY_UNLOCK, 1, PalletTown_EventScript_GiveFlyUnlockItem
-	map_script_2 VAR_MAP_SCENE_PALLET_TOWN_OAK, 2, PalletTown_EventScript_OakGivesTickets
 	.2byte 0
 
 PalletTown_EventScript_GiveFlyUnlockItem::
@@ -59,28 +58,6 @@ PalletTown_EventScript_GiveFlyUnlockItem::
 Archipelago_Target_Fly_Unlock_FLAG_VISITED_PALLET_TOWN::
 	giveitem ITEM_FLY_PALLET, 1, FLAG_VISITED_PALLET_TOWN
 	setvar GIVE_FLY_UNLOCK, 0
-	releaseall
-	end
-
-PalletTown_EventScript_OakGivesTickets::
-	lockall
-	textcolor NPC_TEXT_COLOR_MALE
-	setobjectxyperm LOCALID_PROF_OAK, 14, 14
-	setobjectmovementtype LOCALID_PROF_OAK, MOVEMENT_TYPE_FACE_LEFT
-	addobject LOCALID_PROF_OAK
-	applymovement LOCALID_PROF_OAK, PalletTown_Movement_OakWalkToPlayersDoor
-	waitmovement 0
-	msgbox PalletTown_Text_OakLetMeGiveYouThese
-Archipelago_Target_NPC_Gift_FLAG_RECEIVED_MYSTIC_TICKET::
-	giveitem ITEM_MYSTIC_TICKET, 1, FLAG_RECEIVED_MYSTIC_TICKET
-Archipelago_Target_NPC_Gift_FLAG_RECEIVED_AURORA_TICKET::
-	giveitem ITEM_AURORA_TICKET, 1, FLAG_RECEIVED_AURORA_TICKET
-	msgbox PalletTown_Text_OakIllBeInLab
-	closemessage
-	applymovement LOCALID_PROF_OAK, PalletTown_Movement_OakExit
-	waitmovement 0
-	removeobject LOCALID_PROF_OAK
-	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 3
 	releaseall
 	end
 
@@ -398,3 +375,16 @@ PalletTown_EventScript_SignLadyStartShowSign::
 	call PalletTown_EventScript_SignLadyShowSign
 	release
 	end
+
+PalletTown_EventScript_NoEntry::
+	lockall
+	msgbox PalletTown_Text_NoEntry
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_Movement_ForcePlayerFromDoor
+	waitmovement 0
+	releaseall
+	end
+
+PalletTown_Movement_ForcePlayerFromDoor::
+	walk_down
+	step_end

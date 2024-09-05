@@ -150,10 +150,11 @@ void NewGameInitData(void)
     RunScriptImmediately(EventScript_ResetAllMapFlags);
     StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
     ResetTrainerTowerResults();
+
     FlagSet(FLAG_SYS_SEVII_MAP_123);
     FlagSet(FLAG_SYS_SEVII_MAP_4567);
-    SetFlyMapFlag(gArchipelagoOptions.free_fly_id);
-    VarSet(VAR_RESORT_GORGEOUS_REQUESTED_MON, gArchipelagoOptions.resort_gorgeous_mon);
+    SetFlyMapFlag(gArchipelagoOptions.freeFlyId);
+    VarSet(VAR_RESORT_GORGEOUS_REQUESTED_MON, gArchipelagoOptions.resortGorgeousMon);
 
     if (!gArchipelagoOptions.reccuringHiddenItems) SetAllRenewableItemFlags();
     if (gArchipelagoOptions.betterShopsEnabled) FlagSet(FLAG_BETTER_SHOPS_ENABLED);

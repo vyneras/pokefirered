@@ -583,6 +583,7 @@ ArchipelagoScript_ReceiveCardKey11F::
 	return
 
 ArchipelagoScript_GoHome::
-	warpteleport MAP_PALLET_TOWN, 6, 8
+	setvar VAR_0x8003, 0
+	special ArchipelagoSpecial_WarpToStartingLocation
 	goto EventScript_ResetEliteFourEnd
 	end

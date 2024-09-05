@@ -2,12 +2,7 @@ EventScript_SetDefeatedEliteFourFlagsVars::
 	clearflag FLAG_HIDE_POSTGAME_GOSSIPERS
 	call EventScript_ResetEliteFour
 	special Script_UpdateTrainerFanClubGameClear
-	call_if_lt VAR_MAP_SCENE_PALLET_TOWN_OAK, 3, EventScript_SetReadyGiveTicketsScene
 	call EventScript_ResetLegendaries
-	return
-
-EventScript_SetReadyGiveTicketsScene::
-	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 2
 	return
 
 EventScript_ResetLegendaries::

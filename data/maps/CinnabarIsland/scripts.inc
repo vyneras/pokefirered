@@ -70,7 +70,7 @@ CinnabarIsland_EventScript_GymDoorLocked::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, CinnabarIsland_Movement_ForcePlayerFromDoor
 	waitmovement 0
-  return
+	return
 
 CinnabarIsland_Movement_ForcePlayerFromDoor::
 	walk_down

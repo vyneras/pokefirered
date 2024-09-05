@@ -13,3 +13,7 @@ PokemonLeague_HallOfFame_Text_OakCongratulations::
     .string "Congratulations, {PLAYER}, you and\n"
     .string "your POKéMON are HALL OF FAMERS!$"
 
+PokemonLeague_HallOfFame_Text_OakGiveTickets::
+    .string "Take these as a reward for\n"
+    .string "everything you accomplished!$"
+

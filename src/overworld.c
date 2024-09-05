@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
 #include "bg_regs.h"
 #include "cable_club.h"
 #include "credits.h"
@@ -644,6 +645,17 @@ void UseClosestWarp(void)
     warp = gMapHeader.events->warps[warpEventId];
     SetWarpDestination(warp.mapGroup, warp.mapNum, warp.warpId, warp.x, warp.y);
     DoWarp();
+    ResetInitialPlayerAvatarState();
+}
+
+void WarpToStartingLocation(void)
+{
+    SetLastHealLocationWarp(gArchipelagoOptions.startingLocation);
+    SetWarpDestinationToHealLocation(gArchipelagoOptions.startingLocation);
+    if (gSpecialVar_0x8003 == 0)
+        DoTeleportWarp();
+    else
+        DoWarp();
     ResetInitialPlayerAvatarState();
 }
 

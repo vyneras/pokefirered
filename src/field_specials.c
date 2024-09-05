@@ -3013,3 +3013,13 @@ bool8 ArchipelagoSpecial_CanOpenSilphDoor(void)
         return CheckBagHasItem(ITEM_CARD_KEY_11F, 1);
     }
 }
+
+void ArchipelagoSpecial_WarpToStartingLocation(void)
+{
+    WarpToStartingLocation();
+}
+
+void ArchipelagoSpecial_SetRespawnToStartingLocation(void)
+{
+    SetLastHealLocationWarp(gArchipelagoOptions.startingLocation);
+}

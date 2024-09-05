@@ -53,3 +53,6 @@ PalletTown_Text_OakIllBeInLab::
     .string "I'll be in my lab if you need me\n"
     .string "for anything.$"
 
+PalletTown_Text_NoEntry::
+    .string "You can't enter here yet.$"
+

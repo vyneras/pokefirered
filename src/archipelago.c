@@ -3,6 +3,7 @@
 #include "map_preview_screen.h"
 #include "party_menu.h"
 #include "util.h"
+#include "constants/heal_locations.h"
 
 const struct ArchipelagoOptions gArchipelagoOptions = {
     .advanceTextWithHoldA = FALSE,
@@ -70,9 +71,10 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .passesSplit = FALSE,
     .cardKeysSplit = FALSE,
 
-    .free_fly_id = 0,
-    .town_free_fly_id = 0,
-    .resort_gorgeous_mon = 25
+    .startingLocation = SPAWN_PALLET_TOWN,
+    .freeFlyId = 0,
+    .townFreeFlyId = 0,
+    .resortGorgeousMon = 25
 };
 
 EWRAM_DATA struct ArchipelagoReceivedItem gArchipelagoReceivedItem = {0};

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "archipelago.h"
 #include "script_pokemon_util.h"
 #include "event_data.h"
 #include "credits.h"
@@ -28,7 +29,7 @@ bool8 EnterHallOfFame(void)
         SetGameStat(GAME_STAT_FIRST_HOF_PLAY_TIME, (gSaveBlock2Ptr->playTimeHours << 16) | (gSaveBlock2Ptr->playTimeMinutes << 8) | gSaveBlock2Ptr->playTimeSeconds);
     }
     SetContinueGameWarpStatus();
-    SetContinueGameWarpToHealLocation(SPAWN_PALLET_TOWN);
+    SetContinueGameWarpToHealLocation(gArchipelagoOptions.startingLocation);
     gaveAtLeastOneRibbon = FALSE;
     for (i = 0, r7 = &ribbonState; i < PARTY_SIZE; i++)
     {

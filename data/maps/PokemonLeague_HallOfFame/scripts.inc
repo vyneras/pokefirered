@@ -27,6 +27,7 @@ PokemonLeague_HallOfFame_EventScript_EnterRoom::
 	waitmovement 0
 	delay 18
 	msgbox PokemonLeague_HallOfFame_Text_OakCongratulations
+	call_if_unset FLAG_SYS_GAME_CLEAR, PokemonLeague_HallOfFame_EventScript_GiveTickets
 	closemessage
 	applymovement LOCALID_PROF_OAK, Common_Movement_WalkInPlaceFasterUp
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
@@ -37,12 +38,20 @@ PokemonLeague_HallOfFame_EventScript_EnterRoom::
 	delay 40
 	setvar VAR_TEMP_1, 1
 	call EventScript_SetDefeatedEliteFourFlagsVars
-	setrespawn SPAWN_PALLET_TOWN
+	special ArchipelagoSpecial_SetRespawnToStartingLocation
 	fadescreenspeed FADE_TO_BLACK, 24
 	special EnterHallOfFame
 	waitstate
 	releaseall
 	end
+
+PokemonLeague_HallOfFame_EventScript_GiveTickets::
+	msgbox PokemonLeague_HallOfFame_Text_OakGiveTickets
+Archipelago_Target_NPC_Gift_FLAG_RECEIVED_MYSTIC_TICKET::
+	giveitem ITEM_MYSTIC_TICKET, 1, FLAG_RECEIVED_MYSTIC_TICKET
+Archipelago_Target_NPC_Gift_FLAG_RECEIVED_AURORA_TICKET::
+	giveitem ITEM_AURORA_TICKET, 1, FLAG_RECEIVED_AURORA_TICKET
+	return
 
 PokemonLeague_HallOfFame_Movement_EnterRoom::
 	walk_up

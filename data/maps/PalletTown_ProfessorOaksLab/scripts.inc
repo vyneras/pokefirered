@@ -331,6 +331,8 @@ PalletTown_ProfessorOaksLab_EventScript_EndRivalBattle::
 	fadedefaultbgm
 	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 4
 	setflag FLAG_BEAT_RIVAL_IN_OAKS_LAB
+	setvar VAR_0x8003, 1
+	special ArchipelagoSpecial_WarpToStartingLocation
 	releaseall
 	end
 
