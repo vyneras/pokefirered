@@ -29,12 +29,3 @@ ThreeIsland_Port_EventScript_Biker2::
 	msgbox ThreeIsland_Port_Text_ForkOverMoney
 	release
 	end
-
-ThreeIsland_Port_EventScript_Sailor::
-	lock
-	faceplayer
-	msgbox ThreeIsland_Port_Text_TakeThisPass
-Archipelago_Target_NPC_Gift_FLAG_GOT_ONE_PASS::
-	giveitem ITEM_ONE_PASS, 1, FLAG_GOT_ONE_PASS
-	release
-	end

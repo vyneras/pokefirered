@@ -913,6 +913,12 @@ Text_ThanksTakeThisCardKey::
 	.string "Take this as a sign of my\n"
 	.string "appreciation.$"
 
+Text_TakeThisPass::
+	.string "You need specific passes to\n"
+	.string "travel around the SEVII ISLANDS.\p"
+	.string "Let me give you the pass\n"
+	.string "for this island.$"
+
 	.include "data/text/pc_transfer.inc"
 	.include "data/text/white_out.inc"
 	.include "data/text/poke_mart.inc"

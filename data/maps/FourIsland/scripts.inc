@@ -128,15 +128,6 @@ FourIsland_EventScript_FatMan::
 	msgbox FourIsland_Text_MadeSlushieUsingIcefallCaveIce, MSGBOX_NPC
 	end
 
-FourIsland_EventScript_Sailor::
-	lock
-	faceplayer
-	msgbox FourIsland_Text_TakeThisPass
-Archipelago_Target_NPC_Gift_FLAG_GOT_FIVE_PASS::
-	giveitem ITEM_FIVE_PASS, 1, FLAG_GOT_FIVE_PASS
-	release
-	end
-
 FourIsland_EventScript_IslandSign::
 	msgbox FourIsland_Text_IslandSign, MSGBOX_SIGN
 	end

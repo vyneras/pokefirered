@@ -157,7 +157,6 @@ void NewGameInitData(void)
 
     if (!gArchipelagoOptions.reccuringHiddenItems) SetAllRenewableItemFlags();
     if (gArchipelagoOptions.betterShopsEnabled) FlagSet(FLAG_BETTER_SHOPS_ENABLED);
-    if (!gArchipelagoOptions.passesSplit) FlagSet(FLAG_HIDE_SPLIT_PASS_SAILORS);
     if (gArchipelagoOptions.openViridianCity) VarSet(VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1);
     if (!gArchipelagoOptions.route12Boulders) FlagSet(FLAG_HIDE_ROUTE_12_BOULDERS);
     if (!gArchipelagoOptions.blockPokemonTower) VarSet(VAR_MAP_SCENE_POKEMON_TOWER_1F, 1);

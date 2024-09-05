@@ -33,7 +33,3 @@ FourIsland_Text_MadeSlushieUsingIcefallCaveIce::
 FourIsland_Text_LoreleisHouse::
     .string "LORELEI'S HOUSE$"
 
-FourIsland_Text_TakeThisPass::
-    .string "Take this pass. It will allow you\n"
-    .string "to travel to FIVE ISLAND.$"
-

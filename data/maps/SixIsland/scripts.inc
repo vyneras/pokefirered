@@ -37,15 +37,19 @@ SixIsland_EventScript_Hiker::
 	end
 
 SixIsland_EventScript_Boy::
-	msgbox SixIsland_Text_SkyAtNightIsFantastic, MSGBOX_NPC
-	end
-
-SixIsland_EventScript_Sailor::
 	lock
 	faceplayer
-	msgbox SixIsland_Text_TakeThisPass
-Archipelago_Target_NPC_Gift_FLAG_GOT_SEVEN_PASS::
-	giveitem ITEM_SEVEN_PASS, 1, FLAG_GOT_SEVEN_PASS
+	specialvar VAR_RESULT, ArchipelagoSpecial_ArePassesSplit
+	goto_if_eq VAR_RESULT, FALSE, SixIsland_EventScript_BoyGavePass
+	goto_if_set FLAG_GOT_SIX_PASS, SixIsland_EventScript_BoyGavePass
+	msgbox Text_TakeThisPass
+Archipelago_Target_NPC_Gift_FLAG_GOT_SIX_PASS::
+	giveitem ITEM_SIX_PASS, 1, FLAG_GOT_SIX_PASS
+	release
+	end
+
+SixIsland_EventScript_BoyGavePass::
+	msgbox SixIsland_Text_SkyAtNightIsFantastic
 	release
 	end
 
