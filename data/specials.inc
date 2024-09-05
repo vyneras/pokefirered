@@ -495,6 +495,7 @@ gSpecials::
 	def_special ArchipelagoSpecial_Route9Modified
 	def_special ArchipelagoSpecial_Route10Modified
 	def_special ArchipelagoSpecial_Route12Modified
+	def_special ArchipelagoSpecial_Route16Modified
 	def_special ArchipelagoSpecial_Route23Trees
 	def_special ArchipelagoSpecial_Route23Modified
 	def_special ArchipelagoSpecial_VictoryRoadRocks

@@ -2954,6 +2954,11 @@ bool8 ArchipelagoSpecial_Route12Modified(void)
     return gArchipelagoOptions.modifyRoute12;
 }
 
+bool8 ArchipelagoSpecial_Route16Modified(void)
+{
+    return gArchipelagoOptions.modifyRoute16;
+}
+
 bool8 ArchipelagoSpecial_Route23Trees(void)
 {
     return gArchipelagoOptions.route23Trees;

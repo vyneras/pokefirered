@@ -4424,6 +4424,18 @@
       "blockdata_filepath": "data/layouts/Route12_Alt/map.bin"
     },
     {
+      "id": "LAYOUT_ROUTE16_ALT",
+      "name": "Route16_Layout_Alt",
+      "width": 48,
+      "height": 20,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_CeladonCity",
+      "border_filepath": "data/layouts/Route16_Alt/border.bin",
+      "blockdata_filepath": "data/layouts/Route16_Alt/map.bin"
+    },
+    {
       "id": "LAYOUT_ROUTE23_ALT",
       "name": "Route23_Layout_Alt",
       "width": 24,

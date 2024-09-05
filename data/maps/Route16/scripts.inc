@@ -14,10 +14,21 @@ Route16_EventScript_RemoveSnorlax::
 
 Route16_OnTransition::
 	call_if_eq VAR_MAP_SCENE_ROUTE16, 1, Route16_OnTransitionCyclingRoad
+	specialvar VAR_RESULT, ArchipelagoSpecial_Route16Modified
+	call_if_eq VAR_RESULT, TRUE, Route16_EventScript_SetAltLayout
+	call_if_eq VAR_RESULT, FALSE, Route16_EventScript_RemoveRock
 	end
 
 Route16_OnTransitionCyclingRoad::
 	setflag FLAG_SYS_ON_CYCLING_ROAD
+	return
+
+Route16_EventScript_SetAltLayout::
+	setmaplayoutindex LAYOUT_ROUTE16_ALT
+	return
+
+Route16_EventScript_RemoveRock::
+	setflag FLAG_TEMP_13
 	return
 
 Route16_OnWarp::
