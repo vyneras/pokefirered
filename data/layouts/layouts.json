@@ -4412,6 +4412,18 @@
       "blockdata_filepath": "data/layouts/Route10_Alt/map.bin"
     },
     {
+      "id": "LAYOUT_ROUTE12_ALT",
+      "name": "Route12_Layout_Alt",
+      "width": 24,
+      "height": 120,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_LavenderTown",
+      "border_filepath": "data/layouts/Route12_Alt/border.bin",
+      "blockdata_filepath": "data/layouts/Route12_Alt/map.bin"
+    },
+    {
       "id": "LAYOUT_ROUTE23_ALT",
       "name": "Route23_Layout_Alt",
       "width": 24,

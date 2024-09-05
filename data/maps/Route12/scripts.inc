@@ -1,5 +1,6 @@
 Route12_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, Route12_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, Route12_OnTransition
 	.byte 0
 
 Route12_OnResume::
@@ -8,6 +9,15 @@ Route12_OnResume::
 
 Route12_EventScript_TryRemoveSnorlax::
 	removeobject VAR_LAST_TALKED
+	return
+
+Route12_OnTransition::
+	specialvar VAR_RESULT, ArchipelagoSpecial_Route12Modified
+	call_if_eq VAR_RESULT, TRUE, Route12_EventScript_SetAltLayout
+	end
+
+Route12_EventScript_SetAltLayout::
+	setmaplayoutindex LAYOUT_ROUTE12_ALT
 	return
 
 Route12_EventScript_Snorlax::
