@@ -32,7 +32,8 @@ RocketHideout_B4F_EventScript_Giovanni::
 	msgbox RocketHideout_B4F_Text_GiovanniPostBattle
 	fadescreen FADE_TO_BLACK
 	closemessage
-	removeobject LOCALID_GIOVANNI
+	specialvar VAR_RESULT, ArchipelagoSpecial_IsFamesanity
+	call_if_eq VAR_RESULT, FALSE, RocketHideout_B4F_EventScript_RemoveGiovanni
 	addobject LOCALID_SILPH_SCOPE
 	clearflag FLAG_HIDE_SILPH_SCOPE
 	setflag FLAG_HIDE_CELADON_ROCKETS
@@ -46,6 +47,10 @@ RocketHideout_B4F_EventScript_GiovanniFameChecker::
 	msgbox RocketHideout_B4F_Text_GiovanniIntroRepeat
 	release
 	end
+
+RocketHideout_B4F_EventScript_RemoveGiovanni::
+	removeobject LOCALID_GIOVANNI
+	return
 
 RocketHideout_B4F_EventScript_TryHideMiscKantoRockets::
 	specialvar VAR_RESULT, ArchipelagoSpecial_IsTrainersanity

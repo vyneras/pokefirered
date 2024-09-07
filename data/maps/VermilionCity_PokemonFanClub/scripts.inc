@@ -38,7 +38,8 @@ VermilionCity_PokemonFanClub_EventScript_NoRoomForBikeVoucher::
 VermilionCity_PokemonFanClub_EventScript_WorkerF::
 	lock
 	faceplayer
-	goto_if_set FLAG_SYS_GAME_CLEAR, VermilionCity_PokemonFanClub_EventScript_WorkerFGameClear
+	specialvar VAR_RESULT, ArchipelagoSpecial_PostGameGossip
+	goto_if_eq VAR_RESULT, TRUE, VermilionCity_PokemonFanClub_EventScript_WorkerFGameClear
 	msgbox VermilionCity_PokemonFanClub_Text_ChairmanVeryVocalAboutPokemon
 	release
 	end

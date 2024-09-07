@@ -13,6 +13,7 @@
 using json = nlohmann::json;
 
 #define ROM_START 0x8000000
+#define FAME_CHECKER_FLAG_OFFSET 10000
 
 std::map<int, std::string> GAME_VERSION_MAP = {
     {0, "firered"},
@@ -319,23 +320,23 @@ const std::set<std::string> IGNORABLE_TRAINER_REWARDS = {
     "TRAINER_YOUNG_COUPLE_GIA_JES_3"
 };
 
-const std::vector<std::string> FAMECHECKER_PEOPLE = {
-    "FAMECHECKER_OAK",
-    "FAMECHECKER_DAISY",
-    "FAMECHECKER_BROCK",
-    "FAMECHECKER_MISTY",
-    "FAMECHECKER_LTSURGE",
-    "FAMECHECKER_ERIKA",
-    "FAMECHECKER_KOGA",
-    "FAMECHECKER_SABRINA",
-    "FAMECHECKER_BLAINE",
-    "FAMECHECKER_LORELEI",
-    "FAMECHECKER_BRUNO",
-    "FAMECHECKER_AGATHA",
-    "FAMECHECKER_LANCE",
-    "FAMECHECKER_BILL",
-    "FAMECHECKER_MRFUJI",
-    "FAMECHECKER_GIOVANNI"
+const std::vector<std::string> FAME_CHECKER_PEOPLE = {
+    "FAME_CHECKER_OAK",
+    "FAME_CHECKER_DAISY",
+    "FAME_CHECKER_BROCK",
+    "FAME_CHECKER_MISTY",
+    "FAME_CHECKER_LTSURGE",
+    "FAME_CHECKER_ERIKA",
+    "FAME_CHECKER_KOGA",
+    "FAME_CHECKER_SABRINA",
+    "FAME_CHECKER_BLAINE",
+    "FAME_CHECKER_LORELEI",
+    "FAME_CHECKER_BRUNO",
+    "FAME_CHECKER_AGATHA",
+    "FAME_CHECKER_LANCE",
+    "FAME_CHECKER_BILL",
+    "FAME_CHECKER_MRFUJI",
+    "FAME_CHECKER_GIOVANNI"
 };
 
 int main (int argc, char *argv[])
@@ -433,13 +434,14 @@ int main (int argc, char *argv[])
 
         misc_rom_addresses[GAME_REVISION_MAP[i]] = {
             { "gArchipelagoOptions", symbol_map["gArchipelagoOptions"] - ROM_START },
+            { "gArchipelagoStartingItems", symbol_map["gArchipelagoStartingItems"] - ROM_START },
+            { "gArchipelagoStartingItemsCount", symbol_map["gArchipelagoStartingItemsCount"] - ROM_START },
             { "gArchipelagoPlayerNames", symbol_map["gArchipelagoPlayerNames"] - ROM_START },
             { "gArchipelagoItemNames", symbol_map["gArchipelagoItemNames"] - ROM_START },
             { "gArchipelagoNameTable", symbol_map["gArchipelagoNameTable"] - ROM_START },
             { "gArchipelagoInfo", symbol_map["gArchipelagoInfo"] - ROM_START },
             { "gBattleMoves", symbol_map["gBattleMoves"] - ROM_START },
             { "gLevelUpLearnsets", symbol_map["gLevelUpLearnsets"] - ROM_START },
-            { "gNewGamePCItems", symbol_map["gNewGamePCItems"] - ROM_START },
             { "gSpeciesInfo", symbol_map["gSpeciesInfo"] - ROM_START },
             { "sStarterSpecies", symbol_map["sStarterSpecies"] - ROM_START },
             { "sTMHMLearnsets", symbol_map["sTMHMLearnsets"] - ROM_START },
@@ -537,12 +539,12 @@ int main (int argc, char *argv[])
         }
 
         // Fame Checker
-        for (size_t j = 0; j < FAMECHECKER_PEOPLE.size(); j++)
+        for (size_t j = 0; j < FAME_CHECKER_PEOPLE.size(); j++)
         {
             for (size_t k = 0; k < 6; k++)
             {
                 auto num = std::to_string(k + 1);
-                auto famechecker_reward = famechecker_rewards[FAMECHECKER_PEOPLE[j] + "_" + num];
+                auto famechecker_reward = famechecker_rewards[FAME_CHECKER_PEOPLE[j] + "_" + num];
 
                 if (famechecker_reward != nullptr)
                 {
@@ -553,8 +555,8 @@ int main (int argc, char *argv[])
                 {
                     auto index = (j * 6) + k;
                     famechecker_reward = std::make_shared<LocationInfo>();
-                    famechecker_reward->name = FAMECHECKER_PEOPLE[j] + "_" + num;
-                    famechecker_reward->flag = 10000 + index;
+                    famechecker_reward->name = FAME_CHECKER_PEOPLE[j] + "_" + num;
+                    famechecker_reward->flag = FAME_CHECKER_FLAG_OFFSET + index;
                     famechecker_reward->address[GAME_REVISION_MAP[i]] = symbol_map["sFameCheckerRewards"] + (index * 2) - ROM_START;
                     famechecker_reward->default_item = constants_json["ITEM_NONE"];
                     famechecker_rewards[famechecker_reward->name] = famechecker_reward;

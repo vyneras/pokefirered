@@ -1039,7 +1039,8 @@ PalletTown_ProfessorOaksLab_EventScript_LastPokeBall::
 PalletTown_ProfessorOaksLab_EventScript_Aide1::
 	lock
 	faceplayer
-	goto_if_set FLAG_SYS_GAME_CLEAR, PalletTown_ProfessorOaksLab_EventScript_Aide1GameClear
+	specialvar VAR_RESULT, ArchipelagoSpecial_PostGameGossip
+	goto_if_eq VAR_RESULT, TRUE, PalletTown_ProfessorOaksLab_EventScript_Aide1GameClear
 	msgbox PalletTown_ProfessorOaksLab_Text_StudyAsOaksAide
 	release
 	end
@@ -1053,7 +1054,8 @@ PalletTown_ProfessorOaksLab_EventScript_Aide1GameClear::
 PalletTown_ProfessorOaksLab_EventScript_Aide2::
 	lock
 	faceplayer
-	goto_if_set FLAG_SYS_GAME_CLEAR, PalletTown_ProfessorOaksLab_EventScript_Aide2GameClear
+	specialvar VAR_RESULT, ArchipelagoSpecial_PostGameGossip
+	goto_if_eq VAR_RESULT, TRUE, PalletTown_ProfessorOaksLab_EventScript_Aide2GameClear
 	msgbox PalletTown_ProfessorOaksLab_Text_StudyAsOaksAide
 	release
 	end

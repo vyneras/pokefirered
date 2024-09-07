@@ -19,11 +19,13 @@ PalletTown_OnTransition::
 	end
 
 PalletTown_EventScript_SetGiveFlyUnlockItem::
+	goto_if_unset FLAG_BEAT_RIVAL_IN_OAKS_LAB, EventScript_Return
 	goto_if_set FLAG_VISITED_PALLET_TOWN EventScript_Return
 	setvar GIVE_FLY_UNLOCK, 1
 	return
 
 PalletTown_EventScript_SetWorldMapFlag::
+	goto_if_unset FLAG_BEAT_RIVAL_IN_OAKS_LAB, EventScript_Return
 	setworldmapflag FLAG_WORLD_MAP_PALLET_TOWN
 	return
 
@@ -320,10 +322,14 @@ PalletTown_EventScript_FatMan::
 
 PalletTown_EventScript_OaksLabSign::
 	lockall
-	famechecker FAMECHECKER_OAK, 0
+	call_if_set FLAG_BEAT_RIVAL_IN_OAKS_LAB, PalletTown_EventScript_OaksLabSignFameChecker
 	msgbox PalletTown_Text_OakPokemonResearchLab
 	releaseall
 	end
+
+PalletTown_EventScript_OaksLabSignFameChecker::
+	famechecker FAMECHECKER_OAK, 0
+	return
 
 PalletTown_EventScript_PlayersHouseSign::
 	msgbox PalletTown_Text_PlayersHouse, MSGBOX_SIGN

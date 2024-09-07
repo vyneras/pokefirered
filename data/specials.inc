@@ -499,6 +499,7 @@ gSpecials::
 	def_special ArchipelagoSpecial_Route23Trees
 	def_special ArchipelagoSpecial_Route23Modified
 	def_special ArchipelagoSpecial_VictoryRoadRocks
+	def_special ArchipelagoSpecial_PostGameGossip
 	def_special ArchipelagoSpecial_CanOpenSilphDoor
 	def_special ArchipelagoSpecial_WarpToStartingLocation
 	def_special ArchipelagoSpecial_SetRespawnToStartingLocation

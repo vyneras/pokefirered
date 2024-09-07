@@ -2974,6 +2974,11 @@ bool8 ArchipelagoSpecial_VictoryRoadRocks(void)
     return gArchipelagoOptions.victoryRoadRocks;
 }
 
+bool8 ArchipelagoSpecial_PostGameGossip(void)
+{
+	return FlagGet(FLAG_SYS_GAME_CLEAR) || gArchipelagoOptions.earlyFameGossip;
+}
+
 bool8 ArchipelagoSpecial_CanOpenSilphDoor(void)
 {
     if (CheckBagHasItem(ITEM_CARD_KEY, 1))

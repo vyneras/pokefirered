@@ -1,12 +1,23 @@
 .set LOCALID_GIOVANNI, 8
 
 ViridianCity_Gym_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, ViridianCity_Gym_OnTransition
 	.byte 0
+
+ViridianCity_Gym_OnTransition::
+	specialvar VAR_RESULT, ArchipelagoSpecial_IsFamesanity
+	call_if_eq VAR_RESULT, TRUE, ViridianCity_Gym_EventScript_SpawnGiovanni
+	end
+
+ViridianCity_Gym_EventScript_SpawnGiovanni::
+	clearflag FLAG_HIDE_VIRIDIAN_GIOVANNI
+	addobject LOCALID_GIOVANNI
+	return
 
 ViridianCity_Gym_EventScript_Giovanni::
 	famechecker FAMECHECKER_GIOVANNI, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
 	trainerbattle_single TRAINER_LEADER_GIOVANNI, ViridianCity_Gym_Text_GiovanniIntro, ViridianCity_Gym_Text_GiovanniDefeat, ViridianCity_Gym_EventScript_DefeatedGiovanni, NO_MUSIC
-	famechecker FAMECHECKER_GIOVANNI, 3
+	call ViridianCity_Gym_EventScript_GiovanniFameChecker
 	goto_if_unset FLAG_GOT_TM26_FROM_GIOVANNI, ViridianCity_Gym_EventScript_GiveTM26
 	msgbox ViridianCity_Gym_Text_GiovanniPostBattle
 	closemessage
@@ -17,13 +28,17 @@ ViridianCity_Gym_EventScript_Giovanni::
 	end
 
 ViridianCity_Gym_EventScript_DefeatedGiovanni::
-	famechecker FAMECHECKER_GIOVANNI, 3
+	call ViridianCity_Gym_EventScript_GiovanniFameChecker
 	setflag FLAG_DEFEATED_LEADER_GIOVANNI
 Archipelago_Target_Badge_8::
 	giveitem ITEM_BADGE_8, 1, FLAG_RECEIVED_BADGE_8
 	set_gym_trainers 8
 	goto ViridianCity_Gym_EventScript_GiveTM26
 	end
+
+ViridianCity_Gym_EventScript_GiovanniFameChecker::
+	famechecker FAMECHECKER_GIOVANNI, 3
+	return
 
 ViridianCity_Gym_EventScript_GiveTM26::
 	msgbox ViridianCity_Gym_Text_ExplainEarthBadgeTakeThis
@@ -82,7 +97,6 @@ ViridianCity_Gym_EventScript_GymGuy::
 	end
 
 ViridianCity_Gym_EventScript_GymGuyPostVictory::
-    famechecker FAMECHECKER_GIOVANNI, 3
 	famechecker FAMECHECKER_GIOVANNI, 4
 	msgbox ViridianCity_Gym_Text_GymGuyPostVictory
 	release

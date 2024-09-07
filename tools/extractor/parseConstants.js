@@ -49,7 +49,8 @@ const parseFile = async (filePath, startingDict = {}) => {
     ...await parseFile(path.join(process.cwd(), 'include', 'constants', 'species.h')),
     ...await parseFile(path.join(process.cwd(), 'include', 'constants', 'abilities.h')),
     ...await parseFile(path.join(process.cwd(), 'include', 'constants', 'moves.h')),
-    ...await parseFile(path.join(process.cwd(), 'include', 'constants', 'songs.h'))
+    ...await parseFile(path.join(process.cwd(), 'include', 'constants', 'songs.h')),
+    ...await parseFile(path.join(process.cwd(), 'include', 'constants', 'heal_locations.h'))
   }
 
   ;[

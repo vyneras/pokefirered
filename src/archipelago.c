@@ -1,9 +1,11 @@
 #include "archipelago.h"
 #include "event_data.h"
+#include "item.h"
 #include "map_preview_screen.h"
 #include "party_menu.h"
 #include "util.h"
 #include "constants/heal_locations.h"
+#include "constants/items.h"
 
 const struct ArchipelagoOptions gArchipelagoOptions = {
     .advanceTextWithHoldA = FALSE,
@@ -30,6 +32,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .route23Trees = FALSE,
     .blockPokemonTower = FALSE,
     .victoryRoadRocks = FALSE,
+    .earlyFameGossip = FALSE,
 
     .giovanniRequiresGyms = FALSE,
     .giovanniRequiredCount = 7,
@@ -43,6 +46,8 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .ceruleanCaveRequiredCount = 8,
 
     .startingBadges = 0,
+    .startingProgressiveCardKeys = 0,
+    .startingProgressivePasses = 0,
     .startingFlyUnlocks = 0,
     .startingMoney = 3000,
 
@@ -79,6 +84,9 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
 
 EWRAM_DATA struct ArchipelagoReceivedItem gArchipelagoReceivedItem = {0};
 EWRAM_DATA struct ArchipelagoReward gRewardQueue[10] = {0};
+
+const u16 gArchipelagoStartingItems[ITEMS_COUNT] = {0};
+const u16 gArchipelagoStartingItemsCount[ITEMS_COUNT] = {0};
 
 const u8 gArchipelagoPlayerNames[PLAYER_NAME_BUFFER_SIZE] = {0};
 const u8 gArchipelagoItemNames[ITEM_NAME_BUFFER_SIZE] = {0};
@@ -142,4 +150,116 @@ void SetFlyMapFlag(u8 id)
         return;
 
     MapPreview_SetFlag(flag_id);
+}
+
+bool8 IsItemUnique(u16 item)
+{
+    return (item >= ITEM_BADGE_1 && item <= ITEM_BADGE_8) ||
+           (item >= ITEM_FLY_PALLET && item <= ITEM_FLY_ROUTE10) ||
+           (item >= ITEM_COINS_10 && item <= ITEM_PROG_CARD_KEY);
+}
+
+void GiveStartingItems(void)
+{
+    u16 i;
+
+    for (i = 0; i < ITEMS_COUNT; i++)
+    {
+        u16 item = gArchipelagoStartingItems[i];
+        u16 count = gArchipelagoStartingItemsCount[i];
+        if (item != ITEM_NONE && !IsItemUnique(item) && count > 0)
+        {
+            AddBagItem(item, count);
+        }
+    }
+}
+
+void GiveStartingCardKeys(void)
+{
+    if (gArchipelagoOptions.startingProgressiveCardKeys >= 1)
+    {
+        AddBagItem(ITEM_CARD_KEY_2F, 1);
+    }
+    if (gArchipelagoOptions.startingProgressiveCardKeys >= 2)
+    {
+        AddBagItem(ITEM_CARD_KEY_3F, 1);
+    }
+    if (gArchipelagoOptions.startingProgressiveCardKeys >= 3)
+    {
+        AddBagItem(ITEM_CARD_KEY_4F, 1);
+    }
+    if (gArchipelagoOptions.startingProgressiveCardKeys >= 4)
+    {
+        AddBagItem(ITEM_CARD_KEY_5F, 1);
+    }
+    if (gArchipelagoOptions.startingProgressiveCardKeys >= 5)
+    {
+        AddBagItem(ITEM_CARD_KEY_6F, 1);
+    }
+    if (gArchipelagoOptions.startingProgressiveCardKeys >= 6)
+    {
+        AddBagItem(ITEM_CARD_KEY_7F, 1);
+    }
+    if (gArchipelagoOptions.startingProgressiveCardKeys >= 7)
+    {
+        AddBagItem(ITEM_CARD_KEY_8F, 1);
+    }
+    if (gArchipelagoOptions.startingProgressiveCardKeys >= 8)
+    {
+        AddBagItem(ITEM_CARD_KEY_9F, 1);
+    }
+    if (gArchipelagoOptions.startingProgressiveCardKeys >= 9)
+    {
+        AddBagItem(ITEM_CARD_KEY_10F, 1);
+    }
+    if (gArchipelagoOptions.startingProgressiveCardKeys >= 10)
+    {
+        AddBagItem(ITEM_CARD_KEY_11F, 1);
+    }
+}
+
+void GiveStartingPasses(void)
+{
+    if (gArchipelagoOptions.passesSplit)
+    {
+        if (gArchipelagoOptions.startingProgressivePasses >= 1)
+        {
+            AddBagItem(ITEM_ONE_PASS, 1);
+        }
+        if (gArchipelagoOptions.startingProgressivePasses >= 2)
+        {
+            AddBagItem(ITEM_TWO_PASS, 1);
+        }
+        if (gArchipelagoOptions.startingProgressivePasses >= 3)
+        {
+            AddBagItem(ITEM_THREE_PASS, 1);
+        }
+        if (gArchipelagoOptions.startingProgressivePasses >= 4)
+        {
+            AddBagItem(ITEM_FOUR_PASS, 1);
+        }
+        if (gArchipelagoOptions.startingProgressivePasses >= 5)
+        {
+            AddBagItem(ITEM_FIVE_PASS, 1);
+        }
+        if (gArchipelagoOptions.startingProgressivePasses >= 6)
+        {
+            AddBagItem(ITEM_SIX_PASS, 1);
+        }
+        if (gArchipelagoOptions.startingProgressivePasses >= 7)
+        {
+            AddBagItem(ITEM_SEVEN_PASS, 1);
+        }
+    }
+    else
+    {
+        if (gArchipelagoOptions.startingProgressivePasses >= 1)
+        {
+            AddBagItem(ITEM_TRI_PASS, 1);
+        }
+        if (gArchipelagoOptions.startingProgressivePasses >= 2)
+        {
+            AddBagItem(ITEM_RAINBOW_PASS, 1);
+        }
+    }
 }

@@ -14,7 +14,8 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_TEA::
 
 CeladonCity_Condominiums_1F_EventScript_TeaWomanAfterTea::
 	goto_if_set FLAG_TALKED_TO_TEA_LADY_AFTER_HOF, CeladonCity_Condominiums_1F_EventScript_TeaWomanAfterMentionDaisy
-	goto_if_set FLAG_SYS_GAME_CLEAR, CeladonCity_Condominiums_1F_EventScript_TeaWomanMentionDaisy
+	specialvar VAR_RESULT, ArchipelagoSpecial_PostGameGossip
+	goto_if_eq VAR_RESULT, TRUE, CeladonCity_Condominiums_1F_EventScript_TeaWomanMentionDaisy
 	msgbox CeladonCity_Condominiums_1F_Text_MyDearMonsKeepMeCompany
 	release
 	end

@@ -623,7 +623,7 @@ struct QuestLogScene
 
 struct FameCheckerSaveData
 {
-    /*3a54*/ u16 pickState:2;
+    /*3AC4*/ u16 pickState:2;
     u16 flavorTextFlags:12;
     u16 unk_0_E:2;
 };

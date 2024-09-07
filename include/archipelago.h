@@ -32,45 +32,48 @@ struct ArchipelagoOptions
   /* 0x15 */ bool8 route23Trees;
   /* 0x16 */ bool8 blockPokemonTower;
   /* 0x17 */ bool8 victoryRoadRocks;
+  /* 0x18 */ bool8 earlyFameGossip;
 
-  /* 0x18 */ bool8 giovanniRequiresGyms;
-  /* 0x19 */ u8 giovanniRequiredCount;
-  /* 0x1A */ bool8 route22GateRequiresGyms;
-  /* 0x1B */ u8 route22GateRequiredCount;
-  /* 0x1C */ bool8 route23GuardRequiresGyms;
-  /* 0x1D */ u8 route23GuardRequiredCount;
-  /* 0x1E */ bool8 eliteFourRequiresGyms;
-  /* 0x1F */ u8 eliteFourRequiredCount;
-  /* 0x20 */ u8 ceruleanCaveRequirement; // 0 = Vanilla, 1 = Become Champion, 2 = Restore Network Center, 3 = Badges, 4 = Gyms
-  /* 0x21 */ u8 ceruleanCaveRequiredCount;
+  /* 0x19 */ bool8 giovanniRequiresGyms;
+  /* 0x1A */ u8 giovanniRequiredCount;
+  /* 0x1B */ bool8 route22GateRequiresGyms;
+  /* 0x1C */ u8 route22GateRequiredCount;
+  /* 0x1D */ bool8 route23GuardRequiresGyms;
+  /* 0x1E */ u8 route23GuardRequiredCount;
+  /* 0x1F */ bool8 eliteFourRequiresGyms;
+  /* 0x20 */ u8 eliteFourRequiredCount;
+  /* 0x21 */ u8 ceruleanCaveRequirement; // 0 = Vanilla, 1 = Become Champion, 2 = Restore Network Center, 3 = Badges, 4 = Gyms
+  /* 0x22 */ u8 ceruleanCaveRequiredCount;
 
-  /* 0x22 */ u8 startingBadges;
-  /* 0x23 */ u32 startingFlyUnlocks;
-  /* 0x27 */ u32 startingMoney;
+  /* 0x23 */ u8 startingBadges;
+  /* 0x24 */ u8 startingProgressiveCardKeys;
+  /* 0x25 */ u8 startingProgressivePasses;
+  /* 0x26 */ u32 startingFlyUnlocks;
+  /* 0x2A */ u32 startingMoney;
 
-  /* 0x2B */ bool8 itemfinderRequired;
-  /* 0x2C */ bool8 flashRequired;
-  /* 0x2D */ bool8 fameCheckerRequired;
+  /* 0x2E */ bool8 itemfinderRequired;
+  /* 0x2F */ bool8 flashRequired;
+  /* 0x30 */ bool8 fameCheckerRequired;
 
-  /* 0x2E */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
+  /* 0x31 */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
 
-  /* 0x33 */ bool8 reccuringHiddenItems;
-  /* 0x34 */ bool8 isTrainersanity;
-  /* 0x35 */ bool8 extraKeyItems;
-  /* 0x36 */ bool8 kantoOnly;
-  /* 0x37 */ bool8 flyUnlocks;
-  /* 0x38 */ bool8 isFamesanity;
+  /* 0x36 */ bool8 reccuringHiddenItems;
+  /* 0x37 */ bool8 isTrainersanity;
+  /* 0x38 */ bool8 extraKeyItems;
+  /* 0x39 */ bool8 kantoOnly;
+  /* 0x3A */ bool8 flyUnlocks;
+  /* 0x3B */ bool8 isFamesanity;
 
-  /* 0x39 */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
-  /* 0x3A */ u8 additionalDarkCaves; // Mt. Moon, Diglett's Cave, Victory Road
+  /* 0x3C */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
+  /* 0x3D */ u8 additionalDarkCaves; // Mt. Moon, Diglett's Cave, Victory Road
 
-  /* 0x3B */ bool8 passesSplit;
-  /* 0x3C */ bool8 cardKeysSplit;
+  /* 0x3E */ bool8 passesSplit;
+  /* 0x3F */ bool8 cardKeysSplit;
 
-  /* 0x3D */ u8 startingLocation;
-  /* 0x3E */ u8 freeFlyId;
-  /* 0x3F */ u8 townFreeFlyId;
-  /* 0x40 */ u16 resortGorgeousMon;
+  /* 0x40 */ u8 startingLocation;
+  /* 0x41 */ u8 freeFlyId;
+  /* 0x42 */ u8 townFreeFlyId;
+  /* 0x43 */ u16 resortGorgeousMon;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem
@@ -96,6 +99,9 @@ struct ArchipelagoInfo
 extern struct ArchipelagoReceivedItem gArchipelagoReceivedItem;
 extern struct ArchipelagoReward gRewardQueue[REWARD_QUEUE_SIZE];
 
+extern const u16 gArchipelagoStartingItems[];
+extern const u16 gArchipelagoStartingItemsCount[];
+
 extern const u8 gArchipelagoPlayerNames[];
 extern const u8 gArchipelagoItemNames[];
 extern const u8 gArchipelagoNameTable[];
@@ -107,5 +113,9 @@ extern bool8 gArchipelagoDeathLinkQueued;
 bool8 ArchipelagoSpecial_CanUseHmOutsideBattle(void);
 bool8 CanUseHmOutsideBattle(u8 fieldMove);
 void SetFlyMapFlag(u8 id);
+bool8 IsItemUnique(u16 item);
+void GiveStartingItems(void);
+void GiveStartingCardKeys(void);
+void GiveStartingPasses(void);
 
 #endif // GUARD_ARCHIPELAGO_H
