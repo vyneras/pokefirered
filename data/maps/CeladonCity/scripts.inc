@@ -12,7 +12,14 @@ CeladonCity_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, CeladonCity_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, CeladonCity_EventScript_SetWorldMapFlag
+	specialvar VAR_RESULT, ArchipelagoSpecial_BlockTunnels
+	call_if_eq VAR_RESULT, FALSE, CeladonCity_EventScript_RemoveSmashRocks
 	end
+
+CeladonCity_EventScript_RemoveSmashRocks::
+	setflag FLAG_TEMP_15
+	setflag FLAG_TEMP_16
+	return
 
 CeladonCity_EventScript_SetGiveFlyUnlockItem::
 	goto_if_set FLAG_VISITED_CELADON_CITY EventScript_Return

@@ -13,7 +13,7 @@
 using json = nlohmann::json;
 
 #define ROM_START 0x8000000
-#define FAME_CHECKER_FLAG_OFFSET 10000
+#define FAME_CHECKER_FLAG_START 0x300
 
 std::map<int, std::string> GAME_VERSION_MAP = {
     {0, "firered"},
@@ -556,7 +556,7 @@ int main (int argc, char *argv[])
                     auto index = (j * 6) + k;
                     famechecker_reward = std::make_shared<LocationInfo>();
                     famechecker_reward->name = FAME_CHECKER_PEOPLE[j] + "_" + num;
-                    famechecker_reward->flag = FAME_CHECKER_FLAG_OFFSET + index;
+                    famechecker_reward->flag = FAME_CHECKER_FLAG_START + index;
                     famechecker_reward->address[GAME_REVISION_MAP[i]] = symbol_map["sFameCheckerRewards"] + (index * 2) - ROM_START;
                     famechecker_reward->default_item = constants_json["ITEM_NONE"];
                     famechecker_rewards[famechecker_reward->name] = famechecker_reward;

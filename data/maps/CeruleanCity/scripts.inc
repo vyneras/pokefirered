@@ -25,6 +25,8 @@ CeruleanCity_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_Route2Modified
 	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_RemoveCutTree
 	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_RemoveSmashRock
+	specialvar VAR_RESULT, ArchipelagoSpecial_IsFamesanity
+	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_CheckRivalSetPosition
 	end
 
 CeruleanCity_EventScript_RemoveCutTree::
@@ -52,6 +54,15 @@ CeruleanCity_EventScript_BlockExits::
 
 CeruleanCity_EventScript_RemoveGuard::
 	setflag FLAG_HIDE_CERULEAN_CAVE_GUARD
+	return
+
+CeruleanCity_EventScript_CheckRivalSetPosition::
+	call_if_set FLAG_GOT_FAME_CHECKER, CeruleanCity_EventScript_RivalSetPosition
+	return
+
+CeruleanCity_EventScript_RivalSetPosition::
+	clearflag FLAG_HIDE_CERULEAN_RIVAL
+	setobjectxyperm LOCALID_RIVAL, 23, 20
 	return
 
 CeruleanCity_OnFrame::
@@ -116,8 +127,6 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_FAME_CHECKER::
 	applymovement LOCALID_RIVAL, CeruleanCity_Movement_RivalExit
 	waitmovement 0
 	fadedefaultbgm
-	specialvar VAR_RESULT, ArchipelagoSpecial_IsFamesanity
-	goto_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_RivalSetPosition
 	removeobject LOCALID_RIVAL
 	releaseall
 	end
@@ -128,11 +137,6 @@ CeruleanCity_EventScript_RivalTalk::
 	call CeruleanCity_EventScript_RivalFameChecker
 	msgbox CeruleanCity_Text_RivalTalkAboutBill
 	release
-	end
-
-CeruleanCity_EventScript_RivalSetPosition::
-	setobjectxyperm LOCALID_RIVAL, 23, 20
-	releaseall
 	end
 
 CeruleanCity_EventScript_RivalFameChecker::
