@@ -160,7 +160,7 @@
 #define FLAG_HIDE_DOTTED_HOLE_SCIENTIST                    0x090
 #define FLAG_HIDE_THREE_ISLAND_LONE_BIKER                  0x091
 #define FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY            0x092
-#define FLAG_HIDE_LOST_CAVE_SELPHY                         0x093
+#define FLAG_0x093                                         0x093
 #define FLAG_0x094                                         0x094
 #define FLAG_HIDE_RESORT_GORGEOUS_INSIDE_SELPHY            0x095
 #define FLAG_HIDE_SELPHYS_BUTLER                           0x096
@@ -770,7 +770,7 @@
 #define FLAG_TOLD_BILL_FACT_1                            0x2E7
 #define FLAG_TOLD_BILL_FACT_2                            0x2E8
 #define FLAG_TOLD_BILL_FACT_3                            0x2E9
-#define FLAG_0x2EA                                       0x2EA
+#define FLAG_RESCUED_SELPHY                              0x2EA
 #define FLAG_0x2EB                                       0x2EB
 #define FLAG_REVIVED_DOME                                0x2EC
 #define FLAG_REVIVED_HELIX                               0x2ED
@@ -856,12 +856,12 @@
 #define FLAG_FAMECHECKER_LORELEI_4  0x339
 #define FLAG_FAMECHECKER_LORELEI_5  0x33A
 #define FLAG_FAMECHECKER_LORELEI_6  0x33B
-#define FALG_FAMECHECKER_BRUNO_1    0x33C
-#define FALG_FAMECHECKER_BRUNO_2    0x33D
-#define FALG_FAMECHECKER_BRUNO_3    0x33E
-#define FALG_FAMECHECKER_BRUNO_4    0x33F
-#define FALG_FAMECHECKER_BRUNO_5    0x340
-#define FALG_FAMECHECKER_BRUNO_6    0x341
+#define FLAG_FAMECHECKER_BRUNO_1    0x33C
+#define FLAG_FAMECHECKER_BRUNO_2    0x33D
+#define FLAG_FAMECHECKER_BRUNO_3    0x33E
+#define FLAG_FAMECHECKER_BRUNO_4    0x33F
+#define FLAG_FAMECHECKER_BRUNO_5    0x340
+#define FLAG_FAMECHECKER_BRUNO_6    0x341
 #define FLAG_FAMECHECKER_AGATHA_1   0x342
 #define FLAG_FAMECHECKER_AGATHA_2   0x343
 #define FLAG_FAMECHECKER_AGATHA_3   0x344

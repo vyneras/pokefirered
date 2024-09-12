@@ -50,6 +50,7 @@ FiveIsland_LostCave_Room10_EventScript_FindSelphyScene::
 
 FiveIsland_LostCave_Room10_EventScript_SetSelphyFound::
 	clearflag FLAG_HIDE_RESORT_GORGEOUS_INSIDE_SELPHY
+	setflag FLAG_RESCUED_SELPHY
 	setvar VAR_MAP_SCENE_FIVE_ISLAND_LOST_CAVE_ROOM10, 1
 	return
 
