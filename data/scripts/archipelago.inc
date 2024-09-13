@@ -464,14 +464,17 @@ ArchipelagoScript_ReceiveProgressivePass::
 	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveTriPass
 	checkitem ITEM_RAINBOW_PASS
 	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveRainbowPass
+	release
 	return
 
 ArchipelagoScript_ReceiveTriPass::
 	giveitem ITEM_TRI_PASS
+	release
 	return
 
 ArchipelagoScript_ReceiveRainbowPass::
 	giveitem ITEM_RAINBOW_PASS
+	release
 	return
 
 ArchipelagoScript_ReceiveProgressivePassSplit::
@@ -489,34 +492,42 @@ ArchipelagoScript_ReceiveProgressivePassSplit::
 	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveSixPass
 	checkitem ITEM_SEVEN_PASS
 	goto_if_eq VAR_RESULT, FALSE, ArchipelagoScript_ReceiveSevenPass
+	release
 	return
 
 ArchipelagoScript_ReceiveOnePass::
 	giveitem ITEM_ONE_PASS
+	release
 	return
 
 ArchipelagoScript_ReceiveTwoPass::
 	giveitem ITEM_TWO_PASS
+	release
 	return
 
 ArchipelagoScript_ReceiveThreePass::
 	giveitem ITEM_THREE_PASS
+	release
 	return
 
 ArchipelagoScript_ReceiveFourPass::
 	giveitem ITEM_FOUR_PASS
+	release
 	return
 
 ArchipelagoScript_ReceiveFivePass::
 	giveitem ITEM_FIVE_PASS
+	release
 	return
 
 ArchipelagoScript_ReceiveSixPass::
 	giveitem ITEM_SIX_PASS
+	release
 	return
 
 ArchipelagoScript_ReceiveSevenPass::
 	giveitem ITEM_SEVEN_PASS
+	release
 	return
 
 ArchipelagoScript_ReceiveProgressiveCardKey::
@@ -544,42 +555,52 @@ ArchipelagoScript_ReceiveProgressiveCardKey::
 
 ArchipelagoScript_ReceiveCardKey2F::
 	giveitem ITEM_CARD_KEY_2F
+	release
 	return
 
 ArchipelagoScript_ReceiveCardKey3F::
 	giveitem ITEM_CARD_KEY_3F
+	release
 	return
 
 ArchipelagoScript_ReceiveCardKey4F::
 	giveitem ITEM_CARD_KEY_4F
+	release
 	return
 
 ArchipelagoScript_ReceiveCardKey5F::
 	giveitem ITEM_CARD_KEY_5F
+	release
 	return
 
 ArchipelagoScript_ReceiveCardKey6F::
 	giveitem ITEM_CARD_KEY_6F
+	release
 	return
 
 ArchipelagoScript_ReceiveCardKey7F::
 	giveitem ITEM_CARD_KEY_7F
+	release
 	return
 
 ArchipelagoScript_ReceiveCardKey8F::
 	giveitem ITEM_CARD_KEY_8F
+	release
 	return
 
 ArchipelagoScript_ReceiveCardKey9F::
 	giveitem ITEM_CARD_KEY_9F
+	release
 	return
 
 ArchipelagoScript_ReceiveCardKey10F::
 	giveitem ITEM_CARD_KEY_10F
+	release
 	return
 
 ArchipelagoScript_ReceiveCardKey11F::
 	giveitem ITEM_CARD_KEY_11F
+	release
 	return
 
 ArchipelagoScript_GoHome::

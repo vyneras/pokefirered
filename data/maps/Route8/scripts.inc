@@ -4,7 +4,7 @@ Route8_MapScripts::
 
 Route8_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_BlockTunnels
-	call_if_eq VAR_RESULT, FALSE, Route5_EventScript_RemoveSmashRocks
+	call_if_eq VAR_RESULT, FALSE, Route8_EventScript_RemoveSmashRocks
 	end
 
 Route8_EventScript_RemoveSmashRocks::

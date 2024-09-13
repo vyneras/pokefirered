@@ -1239,8 +1239,7 @@ bool8 Archipelago_CheckReceivedItem()
         if (
             (gArchipelagoOptions.receivedItemMessageFilter == 0) ||
             (gArchipelagoOptions.receivedItemMessageFilter == 1 && gArchipelagoReceivedItem.isProgression) ||
-            (gArchipelagoReceivedItem.itemId >= ITEM_BADGE_1 && gArchipelagoReceivedItem.itemId <= ITEM_BADGE_8) ||
-            (gArchipelagoReceivedItem.itemId >= ITEM_FLY_PALLET && gArchipelagoReceivedItem.itemId <= ITEM_FLY_ROUTE10)
+            IsItemUnique(gArchipelagoReceivedItem.itemId)
         )
             ScriptContext_SetupScript(ArchipelagoScript_ReceiveRemoteItem);
         else

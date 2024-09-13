@@ -44,6 +44,8 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE::
 	end
 
 Route12_FishingHouse_EventScript_NoMagikarpInParty::
+	setvar VAR_0x8003, FLAG_HINT_SHOW_MAGIKARP
+	special ArchipelagoSpecial_SetHintFlag
 	bufferapitemstrings STR_VAR_2, STR_VAR_3, FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE
 	goto_if_eq VAR_RESULT, 0, Route12_FishingHouse_EventScript_BringMeMagikarpItem
 	goto_if_eq VAR_RESULT, 1, Route12_FishingHouse_EventScript_BringMeMagikarpPlayerItem

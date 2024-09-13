@@ -10,6 +10,8 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_BICYCLE::
 	checkitem ITEM_BIKE_VOUCHER
 	goto_if_eq VAR_RESULT, TRUE, CeruleanCity_BikeShop_EventScript_ExchangeBikeVoucher
 	showmoneybox 0, 0
+	setvar VAR_0x8003, FLAG_HINT_BICYCLE_SHOP
+	special ArchipelagoSpecial_SetHintFlag
 	bufferapitemstrings STR_VAR_2, STR_VAR_3, FLAG_GOT_BICYCLE
 	call_if_eq VAR_RESULT, 0, CeruleanCity_BikeShop_EventScript_WelcomeToBikeShopItem
 	call_if_eq VAR_RESULT, 1, CeruleanCity_BikeShop_EventScript_WelcomeToBikeShopPlayerItem

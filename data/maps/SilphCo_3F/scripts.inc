@@ -13,7 +13,7 @@ SilphCo_3F_EventScript_WorkerM::
 	specialvar VAR_RESULT, ArchipelagoSpecial_AreCardKeysSplit
 	goto_if_eq VAR_RESULT, FALSE, SilphCo_3F_EventScript_WorkerMGaveCardKey
 	goto_if_set FLAG_GOT_3F_CARD_KEY, SilphCo_3F_EventScript_WorkerMGaveCardKey
-	msgbox EventScript_TakeThisCardKey
+	call EventScript_TakeThisCardKey
 Archipelago_Target_NPC_Gift_FLAG_GOT_3F_CARD_KEY::
 	giveitem ITEM_CARD_KEY_3F, 1, FLAG_GOT_3F_CARD_KEY
 	release

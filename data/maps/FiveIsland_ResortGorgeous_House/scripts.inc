@@ -18,6 +18,8 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_LUXURY_BALL_FROM_RESORT_GORGEOUS_HOUSE::
 	special SetSeenMon
 	specialvar VAR_RESULT, DoesPlayerPartyContainSpecies
 	goto_if_eq VAR_RESULT, TRUE, FiveIsland_ResortGorgeous_House_EventScript_ShowRequestedMon
+	setvar VAR_0x8003, FLAG_HINT_SHOW_RESORT_GORGEOUS_MON
+	special ArchipelagoSpecial_SetHintFlag
 	bufferspeciesname STR_VAR_1, VAR_RESORT_GORGEOUS_REQUESTED_MON
 	bufferapitemstrings STR_VAR_2, STR_VAR_3, FLAG_GOT_LUXURY_BALL_FROM_RESORT_GORGEOUS_HOUSE
 	goto_if_eq VAR_RESULT, 0, FiveIsland_ResortGorgeous_House_EventScript_WishToSeeMonPleaseItem

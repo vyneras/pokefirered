@@ -1004,16 +1004,19 @@
 #define FLAG_0x3CB               0x3CB
 #define FLAG_0x3CC               0x3CC
 #define FLAG_0x3CD               0x3CD
-#define FLAG_0x3CE               0x3CE
-#define FLAG_0x3CF               0x3CF
-#define FLAG_0x3D0               0x3D0
-#define FLAG_0x3D1               0x3D1
-#define FLAG_0x3D2               0x3D2
-#define FLAG_0x3D3               0x3D3
-#define FLAG_0x3D4               0x3D4
-#define FLAG_0x3D5               0x3D5
-#define FLAG_0x3D6               0x3D6
-#define FLAG_0x3D7               0x3D7
+
+// Hints
+#define FLAG_HINT_ROUTE_2_OAKS_AIDE        0x3CE
+#define FLAG_HINT_ROUTE_10_OAKS_AIDE       0x3CF
+#define FLAG_HINT_ROUTE_11_OAKS_AIDE       0x3D0
+#define FLAG_HINT_ROUTE_16_OAKS_AIDE       0x3D1
+#define FLAG_HINT_ROUTE_15_OAKS_AIDE       0x3D2
+#define FLAG_HINT_BICYCLE_SHOP             0x3D3
+#define FLAG_HINT_SHOW_MAGIKARP            0x3D4
+#define FLAG_HINT_SHOW_HERACROSS           0x3D5
+#define FLAG_HINT_SHOW_RESORT_GORGEOUS_MON 0x3D6
+#define FLAG_HINT_SHOW_TOGEPI              0x3D7
+
 #define FLAG_MYSTERY_GIFT_DONE   0x3D8
 #define FLAG_MYSTERY_GIFT_1      0x3D9
 #define FLAG_MYSTERY_GIFT_2      0x3DA

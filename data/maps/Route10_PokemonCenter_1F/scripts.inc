@@ -70,6 +70,7 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_EVERSTONE_FROM_OAKS_AIDE::
 	specialvar VAR_RESULT, GetPokedexCount
 	buffernumberstring STR_VAR_4, VAR_0x8006
 	call Route10_PokemonCenter_1F_EventScript_GetAideRequestInfo
+	setvar VAR_0x8003, FLAG_HINT_ROUTE_10_OAKS_AIDE
 	goto_if_lt VAR_0x8006, REQUIRED_CAUGHT_MONS, Aide_EventScript_HaventCaughtEnough
 	msgbox Route10_PokemonCenter_1F_Text_GreatHereYouGo
 	giveitem VAR_TEMP_2, 1, FLAG_GOT_EVERSTONE_FROM_OAKS_AIDE

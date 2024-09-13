@@ -146,19 +146,15 @@ PokemonTower_7F_Movement_Grunt1ExitLeft::
 	step_end
 
 PokemonTower_7F_EventScript_Grunt2::
-	specialvar VAR_RESULT, ArchipelagoSpecial_IsFamesanity
-	goto_if_eq VAR_RESULT, FALSE, PokemonTower_7F_EventScript_Grunt2Battle
-	trainerbattle_single TRAINER_TEAM_ROCKET_GRUNT_20, PokemonTower_7F_Text_Grunt2Intro, PokemonTower_7F_Text_Grunt2Defeat
+	trainerbattle_single TRAINER_TEAM_ROCKET_GRUNT_20, PokemonTower_7F_Text_Grunt2Intro, PokemonTower_7F_Text_Grunt2Defeat, PokemonTower_7F_EventScript_DefeatedGrunt2
+PokemonTower_7F_EventScript_Grunt2PostBattle::
 	call PokemonTower_7F_EventScript_Grunt2FameChecker
 	msgbox PokemonTower_7F_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
 	end
 
-PokemonTower_7F_EventScript_Grunt2Battle::
-	trainerbattle_single TRAINER_TEAM_ROCKET_GRUNT_20, PokemonTower_7F_Text_Grunt2Intro, PokemonTower_7F_Text_Grunt2Defeat, PokemonTower_7F_EventScript_DefeatedGrunt2
-	msgbox PokemonTower_7F_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
-	end
-
 PokemonTower_7F_EventScript_DefeatedGrunt2::
+	specialvar VAR_RESULT, ArchipelagoSpecial_IsFamesanity
+	goto_if_eq VAR_RESULT, TRUE, PokemonTower_7F_EventScript_Grunt2PostBattle
 	call PokemonTower_7F_EventScript_Grunt2FameChecker
 	msgbox PokemonTower_7F_Text_Grunt2PostBattle
 	closemessage

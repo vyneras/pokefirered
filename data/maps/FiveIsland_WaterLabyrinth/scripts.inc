@@ -73,6 +73,8 @@ FiveIsland_WaterLabyrinth_EventScript_CheckGiveFameCheckerHint::
 	end
 
 FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHint::
+	setvar VAR_0x8003, FLAG_HINT_SHOW_TOGEPI
+	special ArchipelagoSpecial_SetHintFlag
 	bufferapitemstrings STR_VAR_2, STR_VAR_3, FLAG_FAMECHECKER_DAISY_3
 	goto_if_eq VAR_RESULT, 0, FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHintItem
 	goto_if_eq VAR_RESULT, 1, FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHintPlayerItem

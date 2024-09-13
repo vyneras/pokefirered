@@ -4,7 +4,7 @@
 #include "global.h"
 
 #define PLAYER_NAME_BUFFER_SIZE 17 * 250
-#define ITEM_NAME_BUFFER_SIZE 36 * 500
+#define ITEM_NAME_BUFFER_SIZE 36 * 1500
 #define NAME_TABLE_BUFFER_SIZE (2 + 2 + 1) * 1500 // 2 bytes for location id, 2 bytes for item name offset, 1 byte for player name id
 
 struct ArchipelagoOptions

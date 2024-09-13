@@ -14,7 +14,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .reusableTms = FALSE,
     .guaranteedCatch = FALSE,
 
-    .areTrainersBlind = TRUE,
+    .areTrainersBlind = FALSE,
     .expMultiplierNumerator = 100,
     .expMultiplierDenominator = 100,
 
