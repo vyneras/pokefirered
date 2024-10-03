@@ -3,7 +3,7 @@ Route9_MapScripts::
 	.byte 0
 
 Route9_OnTransition::
-	specialvar VAR_RESULT, ArchipelagoSpecial_Route2Modified
+	specialvar VAR_RESULT, ArchipelagoSpecial_Route9Modified
 	call_if_eq VAR_RESULT, TRUE, Route9_EventScript_RemoveCutTree
 	call_if_eq VAR_RESULT, FALSE, Route9_EventScript_RemoveSmashRock
 	end

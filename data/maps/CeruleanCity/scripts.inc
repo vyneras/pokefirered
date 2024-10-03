@@ -22,7 +22,7 @@ CeruleanCity_OnTransition::
 	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_BlockExits
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanEnterCeruleanCave
 	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_RemoveGuard
-	specialvar VAR_RESULT, ArchipelagoSpecial_Route2Modified
+	specialvar VAR_RESULT, ArchipelagoSpecial_Route9Modified
 	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_RemoveCutTree
 	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_RemoveSmashRock
 	specialvar VAR_RESULT, ArchipelagoSpecial_IsFamesanity
