@@ -1645,8 +1645,8 @@ int main (int argc, char *argv[])
     }
 
     json output_json = {
-        { "_comment", "DO NOT MODIFY. This file was auto-generated. Your changes will likely be overwritten." },
-        { "_rom_name", rom_names },
+        { "comment", "DO NOT MODIFY. This file was auto-generated. Your changes will likely be overwritten." },
+        { "rom_names", rom_names },
         { "maps", maps_json },
         { "starter_pokemon", starter_pokemon_json },
         { "misc_pokemon", misc_pokemon_json },
