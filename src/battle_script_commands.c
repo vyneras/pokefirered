@@ -3264,6 +3264,9 @@ static void Cmd_getexp(void)
                         gBattleStruct->expGetterBattlerId = 0;
                     }
 
+                    // This value ends up in an s16, so this prevents overflow leading to negative experience
+                    gBattleMoveDamage = gBattleMoveDamage > 0x7FFF ? 0x7FFF : gBattleMoveDamage;
+
                     PREPARE_MON_NICK_WITH_PREFIX_BUFFER(gBattleTextBuff1, gBattleStruct->expGetterBattlerId, gBattleStruct->expGetterMonId);
                     // buffer 'gained' or 'gained a boosted'
                     PREPARE_STRING_BUFFER(gBattleTextBuff2, i);
