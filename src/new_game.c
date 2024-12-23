@@ -118,6 +118,8 @@ void NewGameInitData(void)
     ClearBattleTower();
     ClearSav1();
     ClearMailData();
+    gSaveBlock2Ptr->progressivePassesCount = 0;
+    gSaveBlock2Ptr->progressiveCardKeyCount = 0;
     gSaveBlock2Ptr->specialSaveWarpFlags = 0;
     gSaveBlock2Ptr->gcnLinkFlags = 0;
     gSaveBlock2Ptr->unkFlag1 = TRUE;

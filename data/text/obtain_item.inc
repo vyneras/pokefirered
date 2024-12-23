@@ -1,9 +1,15 @@
-Text_ObtainedTheX::
+Text_ObtainedItem::
 	.string "{PLAYER} received one {STR_VAR_2}!$"
 
-Text_ObtainedTheTMHM::
+Text_ObtainedTMHM::
 	.string "{PLAYER} received one {STR_VAR_2}!\n"
 	.string "It contains {STR_VAR_1}.$"
+
+Text_ObtainedBadge::
+	.string "{PLAYER} received the {STR_VAR_2}!$"
+
+Text_ObtainedCoins::
+	.string "{PLAYER} received {STR_VAR_2}!$"
 
 Text_BagIsFull::
 	.string "The BAG is full…$"
@@ -12,32 +18,26 @@ Text_PutItemAway::
 	.string "{PLAYER} put the {STR_VAR_2}\n"
 	.string "in the {STR_VAR_3}.$"
 
-Text_FoundOneItem::
+Text_FoundItem::
 	.string "{PLAYER} found one {STR_VAR_2}!$"
+
+Text_FoundTMHM::
+	.string "{PLAYER} found a {STR_VAR_2}!\n"
+	.string "It contains {STR_VAR_1}.$"
+
+Text_FoundBadge::
+	.string "{PLAYER} found the {STR_VAR_2}!$"
+
+Text_FoundCoins::
+	.string "{PLAYER} found {STR_VAR_2}!$"
+
+Text_ObtainedFlyUnlock::
+	.string "{PLAYER} can now fly to\n"
+	.string "{STR_VAR_2}!$"
 
 Text_TooBadBagFull::
 	.string "Too bad!\n"
 	.string "The BAG is full…$"
-
-Text_FoundXCoins::
-	.string "{PLAYER} found\n"
-	.string "{STR_VAR_1} {STR_VAR_2}!$"
-
-Text_PutCoinsAwayInCoinCase::
-	.string "{PLAYER} put the COINS away in\n"
-	.string "the COIN CASE.$"
-
-Text_CoinCaseIsFull::
-	.string "Too bad!\n"
-	.string "The COIN CASE is full…$"
-
-Text_NothingToPutThemIn::
-	.string "Too bad!\n"
-	.string "There's nothing to put them in…$"
-
-Text_FoundXItems::
-	.string "{PLAYER} found\n"
-	.string "{STR_VAR_1} {STR_VAR_2}(s)!$"
 
 Text_ObtainedTheDecor::
 	.string "Obtained the {STR_VAR_2}!$"

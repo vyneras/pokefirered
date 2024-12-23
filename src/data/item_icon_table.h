@@ -89,14 +89,13 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_X_SPECIAL]      = {gItemIcon_BattleStatItem, gItemIconPalette_XSpecial},
     [ITEM_POKE_DOLL]      = {gItemIcon_PokeDoll, gItemIconPalette_PokeDoll},
     [ITEM_FLUFFY_TAIL]    = {gItemIcon_FluffyTail, gItemIconPalette_FluffyTail},
-    // Split island passes
-    [ITEM_ONE_PASS]       = {gItemIcon_TriPass, gItemIconPalette_TriPass},
     // Field items
     [ITEM_SUPER_REPEL]    = {gItemIcon_Repel, gItemIconPalette_SuperRepel},
     [ITEM_MAX_REPEL]      = {gItemIcon_Repel, gItemIconPalette_MaxRepel},
     [ITEM_ESCAPE_ROPE]    = {gItemIcon_EscapeRope, gItemIconPalette_EscapeRope},
     [ITEM_REPEL]          = {gItemIcon_Repel, gItemIconPalette_Repel},
     // Split island passes
+    [ITEM_ONE_PASS]       = {gItemIcon_TriPass, gItemIconPalette_TriPass},
     [ITEM_TWO_PASS]       = {gItemIcon_TriPass, gItemIconPalette_TriPass},
     [ITEM_THREE_PASS]     = {gItemIcon_TriPass, gItemIconPalette_TriPass},
     [ITEM_FOUR_PASS]      = {gItemIcon_RainbowPass, gItemIconPalette_RainbowPass},

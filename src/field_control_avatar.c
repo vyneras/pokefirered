@@ -539,10 +539,10 @@ static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *position
             return NULL;
         else if(gArchipelagoOptions.itemfinderRequired && !CheckBagHasItem(ITEM_ITEMFINDER, 1))
             return NULL;
-        gSpecialVar_0x8005 = GetHiddenItemAttr(bgEvent->bgUnion.hiddenItem, HIDDEN_ITEM_ITEM);
-        gSpecialVar_0x8004 = GetHiddenItemAttr(bgEvent->bgUnion.hiddenItem, HIDDEN_ITEM_FLAG);
-        gSpecialVar_0x8006 = GetHiddenItemAttr(bgEvent->bgUnion.hiddenItem, HIDDEN_ITEM_QUANTITY);
-        if (FlagGet(gSpecialVar_0x8004) == TRUE)
+        gSpecialVar_0x8000 = GetHiddenItemAttr(bgEvent->bgUnion.hiddenItem, HIDDEN_ITEM_ITEM);
+        gSpecialVar_0x8003 = GetHiddenItemAttr(bgEvent->bgUnion.hiddenItem, HIDDEN_ITEM_FLAG);
+        gSpecialVar_0x8001 = GetHiddenItemAttr(bgEvent->bgUnion.hiddenItem, HIDDEN_ITEM_QUANTITY);
+        if (FlagGet(gSpecialVar_0x8003) == TRUE)
             return NULL;
         gSpecialVar_Facing = direction;
         return EventScript_HiddenItemScript;
@@ -1236,11 +1236,8 @@ bool8 Archipelago_CheckQueuedRewards()
 bool8 Archipelago_CheckReceivedItem()
 {
     if (gArchipelagoReceivedItem.isFilled == TRUE) {
-        if (
-            (gArchipelagoOptions.receivedItemMessageFilter == 0) ||
-            (gArchipelagoOptions.receivedItemMessageFilter == 1 && gArchipelagoReceivedItem.isProgression) ||
-            IsItemUnique(gArchipelagoReceivedItem.itemId)
-        )
+        if ((gArchipelagoOptions.receivedItemMessageFilter == 0) ||
+            (gArchipelagoOptions.receivedItemMessageFilter == 1 && gArchipelagoReceivedItem.isProgression))
             ScriptContext_SetupScript(ArchipelagoScript_ReceiveRemoteItem);
         else
             ScriptContext_SetupScript(ArchipelagoScript_ReceiveRemoteItemSilent);

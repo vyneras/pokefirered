@@ -158,7 +158,6 @@ gSpecials::
 	def_special GetPlayerTrainerIdOnesDigit
 	def_special BufferBigGuyOrBigGirlString
 	def_special BufferSonOrDaughterString
-	def_special SetHiddenItemFlag
 	def_special NullFieldSpecial  @ Cable Car specials
 	def_special NullFieldSpecial
 	def_special Overworld_PlaySpecialMapMusic
@@ -455,7 +454,9 @@ gSpecials::
 	def_special HasSeagallopPass
 
 	def_special ArchipelagoSpecial_ShouldHandle
-	def_special ArchipelagoSpecial_IsItemUnique
+	def_special ArchipelagoSpecial_IsItemBadge
+	def_special ArchipelagoSpecial_IsItemFlyUnlock
+	def_special ArchipelagoSpecial_IsItemCoins
 	def_special ArchipelagoSpecial_GetObjectScriptFlag
 	def_special ArchipelagoSpecial_PopReward
 	def_special ArchipelagoSpecial_ConsumeReceivedItem

@@ -73,7 +73,10 @@ u16 ItemId_GetPrice(u16 itemId);
 void ClearBag(void);
 void ClearPCItemSlots(void);
 void TrySetObtainedItemQuestLogEvent(u16 itemId);
-bool8 AddBagItem(u16 itemId, u16 amount);
+bool8 AddBagItem(u16 itemId, u16 count);
+bool8 AddUniqueBagItem(u16 itemId, u16 count);
+void AddProgressivePass(u16 count);
+void AddProgressiveCardKey(u16 count);
 
 void SortPocketAndPlaceHMsFirst(struct BagPocket * pocket);
 u16 BagGetItemIdByPocketPosition(u8 pocketId, u16 itemId);

@@ -241,10 +241,10 @@ static bool8 HiddenItemIsWithinRangeOfPlayer(const struct MapEvents * events, u8
 static void SetUnderfootHiddenItem(u8 taskId, u32 hiddenItem)
 {
     s16 *data = gTasks[taskId].data;
-    gSpecialVar_0x8004 = GetHiddenItemAttr(hiddenItem, HIDDEN_ITEM_FLAG);
-    gSpecialVar_0x8005 = GetHiddenItemAttr(hiddenItem, HIDDEN_ITEM_ITEM);
-    gSpecialVar_0x8006 = 1; // Quantity. The 'HIDDEN_ITEM_QUANTITY' data is ignored for underfoot items
-    TV_PrintIntToStringVar(0, gSpecialVar_0x8005);
+    gSpecialVar_0x8003 = GetHiddenItemAttr(hiddenItem, HIDDEN_ITEM_FLAG);
+    gSpecialVar_0x8000 = GetHiddenItemAttr(hiddenItem, HIDDEN_ITEM_ITEM);
+    gSpecialVar_0x8001 = 1; // Quantity. The 'HIDDEN_ITEM_QUANTITY' data is ignored for underfoot items
+    TV_PrintIntToStringVar(0, gSpecialVar_0x8000);
     tHiddenItemFound = TRUE;
     tItemX = 0;
     tItemY = 0;

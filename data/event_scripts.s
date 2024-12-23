@@ -926,10 +926,6 @@ Text_TakeThisPass::
 Text_MonFlewAway::
 	.string "The {STR_VAR_1} flew away!$"
 
-Text_FoundTMHMContainsMove::
-	.string "{PLAYER} found a {STR_VAR_2}!\n"
-	.string "It contains {STR_VAR_1}.$"
-
 	.include "data/text/seagallop.inc"
 
 @ Call for legendary bird trio
@@ -1225,10 +1221,6 @@ EventScript_NoMoreRoomForPokemon::
 	msgbox Text_NoMoreRoomForPokemon
 	release
 	end
-
-EventScript_PlayGymBadgeFanfare::
-	playfanfare MUS_OBTAIN_BADGE
-	return
 
 	.include "data/text/braille.inc"
 	.include "data/scripts/trainers.inc"

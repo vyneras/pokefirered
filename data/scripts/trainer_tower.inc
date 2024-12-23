@@ -290,7 +290,7 @@ TrainerTower_Roof_EventScript_ReceivePrize:
 	msgbox TrainerTower_Roof_Text_ThisIsForYou
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	playfanfare MUS_LEVEL_UP
-	message Text_ObtainedTheX
+	message Text_ObtainedItem
 	waitfanfare
 	waitmessage
 	bufferstdstring STR_VAR_3, STDSTRING_ITEMS_POCKET

@@ -15,9 +15,6 @@ ViridianCity_Gym_Text_GiovanniDefeat::
     .string "You have won!\p"
     .string "As proof, here is the EARTHBADGE!$"
 
-ViridianCity_Gym_Text_ReceivedEarthBadge::
-    .string "{PLAYER} received the EARTH BADGE!$"
-
 ViridianCity_Gym_Text_GiovanniPostBattle::
     .string "Having lost in this fashion, \n"
     .string "I can't face my followers.\l"

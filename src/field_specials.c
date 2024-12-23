@@ -158,11 +158,6 @@ u8 GetBattleOutcome(void)
     return gBattleOutcome;
 }
 
-void SetHiddenItemFlag(void)
-{
-    FlagSet(gSpecialVar_0x8004);
-}
-
 u8 GetLeadMonFriendship(void)
 {
     struct Pokemon * pokemon = &gPlayerParty[GetLeadMonIndex()];
@@ -2051,10 +2046,10 @@ bool8 UsedPokemonCenterWarp(void)
 
 bool8 BufferTMHMMoveName(void)
 {
-    // 8004 = item ID
-    if (gSpecialVar_0x8004 >= ITEM_TM01 && gSpecialVar_0x8004 <= ITEM_HM08)
+    // 8000 = item ID
+    if (gSpecialVar_0x8000 >= ITEM_TM01 && gSpecialVar_0x8000 <= ITEM_HM08)
     {
-        StringCopy(gStringVar1, gMoveNames[ItemIdToBattleMoveId(gSpecialVar_0x8004)]);
+        StringCopy(gStringVar1, gMoveNames[ItemIdToBattleMoveId(gSpecialVar_0x8000)]);
         return TRUE;
     }
     else
@@ -2551,17 +2546,24 @@ static void Task_WingFlapSound(u8 taskId)
 }
 
 // Archipelago
-bool8 ArchipelagoSpecial_IsItemUnique(void)
-{
-    return (gSpecialVar_0x8014 >= ITEM_BADGE_1 && gSpecialVar_0x8014 <= ITEM_BADGE_8) ||
-           (gSpecialVar_0x8014 >= ITEM_FLY_PALLET && gSpecialVar_0x8014 <= ITEM_FLY_ROUTE10) ||
-           (gSpecialVar_0x8014 >= ITEM_COINS_10 && gSpecialVar_0x8014 <= ITEM_PROG_CARD_KEY);
-}
-
 bool8 ArchipelagoSpecial_ShouldHandle(void)
 {
-    return gSpecialVar_0x8014 == ITEM_ARCHIPELAGO_PROGRESSION ||
-           ArchipelagoSpecial_IsItemUnique();
+    return gSpecialVar_0x8000 == ITEM_ARCHIPELAGO_PROGRESSION;
+}
+
+bool8 ArchipelagoSpecial_IsItemBadge(void)
+{
+    return gSpecialVar_0x8000 >= ITEM_BADGE_1 && gSpecialVar_0x8000 <= ITEM_BADGE_8;
+}
+
+bool8 ArchipelagoSpecial_IsItemFlyUnlock(void)
+{
+    return gSpecialVar_0x8000 >= ITEM_FLY_PALLET && gSpecialVar_0x8000 <= ITEM_FLY_ROUTE10;
+}
+
+bool8 ArchipelagoSpecial_IsItemCoins(void)
+{
+    return gSpecialVar_0x8000 >= ITEM_COINS_10 && gSpecialVar_0x8000 <= ITEM_COINS_100;
 }
 
 u16 ArchipelagoSpecial_GetObjectScriptFlag(void)

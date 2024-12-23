@@ -1313,22 +1313,6 @@
       "secondaryId": 0
     },
     {
-      "english": "ONE PASS",
-      "itemId": "ITEM_ONE_PASS",
-      "price": 0,
-      "holdEffect": "HOLD_EFFECT_NONE",
-      "holdEffectParam": 0,
-      "description_english": "A pass for the ferry between\\nVERMILION CITY and ONE ISLAND.",
-      "importance": 1,
-      "registrability": 1,
-      "pocket": "POCKET_KEY_ITEMS",
-      "type": "ITEM_TYPE_BAG_MENU",
-      "fieldUseFunc": "FieldUseFunc_OakStopsYou",
-      "battleUsage": 0,
-      "battleUseFunc": "NULL",
-      "secondaryId": 0
-    },
-    {
       "english": "SUPER REPEL",
       "itemId": "ITEM_SUPER_REPEL",
       "price": 500,
@@ -1388,6 +1372,22 @@
       "pocket": "POCKET_ITEMS",
       "type": "ITEM_TYPE_BAG_MENU",
       "fieldUseFunc": "FieldUseFunc_Repel",
+      "battleUsage": 0,
+      "battleUseFunc": "NULL",
+      "secondaryId": 0
+    },
+    {
+      "english": "ONE PASS",
+      "itemId": "ITEM_ONE_PASS",
+      "price": 0,
+      "holdEffect": "HOLD_EFFECT_NONE",
+      "holdEffectParam": 0,
+      "description_english": "A pass for the ferry between\\nVERMILION CITY and ONE ISLAND.",
+      "importance": 1,
+      "registrability": 1,
+      "pocket": "POCKET_KEY_ITEMS",
+      "type": "ITEM_TYPE_BAG_MENU",
+      "fieldUseFunc": "FieldUseFunc_OakStopsYou",
       "battleUsage": 0,
       "battleUseFunc": "NULL",
       "secondaryId": 0
@@ -6059,7 +6059,7 @@
       "secondaryId": 0
     },
     {
-      "english": "COINS 10",
+      "english": "10 COINS",
       "itemId": "ITEM_COINS_10",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -6075,7 +6075,7 @@
       "secondaryId": 0
     },
     {
-      "english": "COINS 20",
+      "english": "20 COINS",
       "itemId": "ITEM_COINS_20",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -6091,7 +6091,7 @@
       "secondaryId": 0
     },
     {
-      "english": "COINS 40",
+      "english": "40 COINS",
       "itemId": "ITEM_COINS_40",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -6107,7 +6107,7 @@
       "secondaryId": 0
     },
     {
-      "english": "COINS 100",
+      "english": "100 COINS",
       "itemId": "ITEM_COINS_100",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",

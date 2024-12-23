@@ -540,6 +540,6 @@ EventScript_OpenDoor::
 	playse SE_UNLOCK
 	special DrawWholeMapView
 	waitse
-	special SetHiddenItemFlag
+	setflagvar VAR_0x8004
 	releaseall
 	end

@@ -2,10 +2,12 @@
 #include "gflib.h"
 #include "archipelago.h"
 #include "berry.h"
+#include "coins.h"
 #include "event_data.h"
 #include "item.h"
 #include "item_use.h"
 #include "load_save.h"
+#include "map_preview_screen.h"
 #include "quest_log.h"
 #include "strings.h"
 #include "constants/hold_effects.h"
@@ -15,6 +17,29 @@
 EWRAM_DATA struct BagPocket gBagPockets[NUM_BAG_POCKETS] = {};
 
 void SortAndCompactBagPocket(struct BagPocket * pocket);
+
+const u8 gFlyUnlockNames[NUM_FLY_UNLOCKS][FLY_UNLOCK_NAME_LENGTH + 1] = {
+    [ITEM_FLY_PALLET - FIRST_FLY_UNLOCK_INDEX]       = _("PALLET TOWN"),
+    [ITEM_FLY_VIRIDIAN - FIRST_FLY_UNLOCK_INDEX]     = _("VIRIDIAN CITY"),
+    [ITEM_FLY_PEWTER - FIRST_FLY_UNLOCK_INDEX]       = _("PEWTER CITY"),
+    [ITEM_FLY_CERULEAN - FIRST_FLY_UNLOCK_INDEX]     = _("CERULEAN CITY"),
+    [ITEM_FLY_LAVENDER - FIRST_FLY_UNLOCK_INDEX]     = _("LAVENDER TOWN"),
+    [ITEM_FLY_VERMILION - FIRST_FLY_UNLOCK_INDEX]    = _("VERMILION CITY"),
+    [ITEM_FLY_CELADON - FIRST_FLY_UNLOCK_INDEX]      = _("CELADON CITY"),
+    [ITEM_FLY_FUCHSIA - FIRST_FLY_UNLOCK_INDEX]      = _("FUCHSIA CITY"),
+    [ITEM_FLY_CINNABAR - FIRST_FLY_UNLOCK_INDEX]     = _("CINNABAR ISLAND"),
+    [ITEM_FLY_INDIGO - FIRST_FLY_UNLOCK_INDEX]       = _("INDIGO PLATEAU"),
+    [ITEM_FLY_SAFFRON - FIRST_FLY_UNLOCK_INDEX]      = _("SAFFRON CITY"),
+    [ITEM_FLY_ONE_ISLAND - FIRST_FLY_UNLOCK_INDEX]   = _("ONE ISLAND"),
+    [ITEM_FLY_TWO_ISLAND - FIRST_FLY_UNLOCK_INDEX]   = _("TWO ISLAND"),
+    [ITEM_FLY_THREE_ISLAND - FIRST_FLY_UNLOCK_INDEX] = _("THREE ISLAND"),
+    [ITEM_FLY_FOUR_ISLAND - FIRST_FLY_UNLOCK_INDEX]  = _("FOUR ISLAND"),
+    [ITEM_FLY_FIVE_ISLAND - FIRST_FLY_UNLOCK_INDEX]  = _("FIVE ISLAND"),
+    [ITEM_FLY_SIX_ISLAND - FIRST_FLY_UNLOCK_INDEX]   = _("SIX ISLAND"),
+    [ITEM_FLY_SEVEN_ISLAND - FIRST_FLY_UNLOCK_INDEX] = _("SEVEN ISLAND"),
+    [ITEM_FLY_ROUTE4 - FIRST_FLY_UNLOCK_INDEX]       = _("ROUTE 4"),
+    [ITEM_FLY_ROUTE10 - FIRST_FLY_UNLOCK_INDEX]      = _("ROUTE 10")
+};
 
 // Item descriptions and data
 #include "data/items.h"
@@ -205,6 +230,9 @@ bool8 AddBagItem(u16 itemId, u16 count)
     u8 pocket;
     s8 idx;
 
+    if (IsItemUnique(itemId))
+        return AddUniqueBagItem(itemId, count);
+
     if (ItemId_GetPocket(itemId) == 0)
         return FALSE;
 
@@ -263,6 +291,217 @@ bool8 AddBagItem(u16 itemId, u16 count)
     gBagPockets[pocket].itemSlots[idx].itemId = itemId;
     SetBagItemQuantity(&gBagPockets[pocket].itemSlots[idx].quantity, count);
     return TRUE;
+}
+
+bool8 AddUniqueBagItem(u16 itemId, u16 count)
+{
+    switch (itemId)
+    {
+    case ITEM_BADGE_1:
+        FlagSet(FLAG_BADGE01_GET);
+        break;
+    case ITEM_BADGE_2:
+        FlagSet(FLAG_BADGE02_GET);
+        break;
+    case ITEM_BADGE_3:
+        FlagSet(FLAG_BADGE03_GET);
+        break;
+    case ITEM_BADGE_4:
+        FlagSet(FLAG_BADGE04_GET);
+        break;
+    case ITEM_BADGE_5:
+        FlagSet(FLAG_BADGE05_GET);
+        break;
+    case ITEM_BADGE_6:
+        FlagSet(FLAG_BADGE06_GET);
+        break;
+    case ITEM_BADGE_7:
+        FlagSet(FLAG_BADGE07_GET);
+        break;
+    case ITEM_BADGE_8:
+        FlagSet(FLAG_BADGE08_GET);
+        break;
+    case ITEM_FLY_PALLET:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_PALLET_TOWN);
+        break;
+    case ITEM_FLY_VIRIDIAN:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_VIRIDIAN_CITY);
+        break;
+    case ITEM_FLY_PEWTER:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_PEWTER_CITY);
+        break;
+    case ITEM_FLY_CERULEAN:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_CERULEAN_CITY);
+        break;
+    case ITEM_FLY_LAVENDER:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_LAVENDER_TOWN);
+        break;
+    case ITEM_FLY_VERMILION:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_VERMILION_CITY);
+        break;
+    case ITEM_FLY_CELADON:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_CELADON_CITY);
+        break;
+    case ITEM_FLY_FUCHSIA:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_FUCHSIA_CITY);
+        break;
+    case ITEM_FLY_CINNABAR:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_CINNABAR_ISLAND);
+        break;
+    case ITEM_FLY_INDIGO:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_INDIGO_PLATEAU_EXTERIOR);
+        break;
+    case ITEM_FLY_SAFFRON:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_SAFFRON_CITY);
+        break;
+    case ITEM_FLY_ONE_ISLAND:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_ONE_ISLAND);
+        break;
+    case ITEM_FLY_TWO_ISLAND:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_TWO_ISLAND);
+        break;
+    case ITEM_FLY_THREE_ISLAND:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_THREE_ISLAND);
+        break;
+    case ITEM_FLY_FOUR_ISLAND:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_FOUR_ISLAND);
+        break;
+    case ITEM_FLY_FIVE_ISLAND:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_FIVE_ISLAND);
+        break;
+    case ITEM_FLY_SIX_ISLAND:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_SIX_ISLAND);
+        break;
+    case ITEM_FLY_SEVEN_ISLAND:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_SEVEN_ISLAND);
+        break;
+    case ITEM_FLY_ROUTE4:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_ROUTE4_POKEMON_CENTER_1F);
+        break;
+    case ITEM_FLY_ROUTE10:
+        MapPreview_SetFlag(FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F);
+        break;
+    case ITEM_COINS_10:
+        AddCoins(10);
+        break;
+    case ITEM_COINS_20:
+        AddCoins(20);
+        break;
+    case ITEM_COINS_40:
+        AddCoins(40);
+        break;
+    case ITEM_COINS_100:
+        AddCoins(100);
+        break;
+    case ITEM_PROG_PASS:
+        AddProgressivePass(count);
+        break;
+    case ITEM_PROG_CARD_KEY:
+        AddProgressiveCardKey(count);
+        break;
+    default:
+        break;
+    }
+
+    return TRUE;
+}
+
+void AddProgressivePass(u16 count)
+{
+    while (count > 0)
+    {
+        if (gArchipelagoOptions.passesSplit)
+        {
+            switch (gSaveBlock2Ptr->progressivePassesCount)
+            {
+            case 0:
+                AddBagItem(ITEM_ONE_PASS, 1);
+                break;
+            case 1:
+                AddBagItem(ITEM_TWO_PASS, 1);
+                break;
+            case 2:
+                AddBagItem(ITEM_THREE_PASS, 1);
+                break;
+            case 3:
+                AddBagItem(ITEM_FOUR_PASS, 1);
+                break;
+            case 4:
+                AddBagItem(ITEM_FIVE_PASS, 1);
+                break;
+            case 5:
+                AddBagItem(ITEM_SIX_PASS, 1);
+                break;
+            case 6:
+                AddBagItem(ITEM_SEVEN_PASS, 1);
+                break;
+            default:
+                return;
+            }
+        }
+        else
+        {
+            switch (gSaveBlock2Ptr->progressivePassesCount)
+            {
+            case 0:
+                AddBagItem(ITEM_TRI_PASS, 1);
+                break;
+            case 1:
+                AddBagItem(ITEM_RAINBOW_PASS, 1);
+                break;
+            default:
+                return;
+            }
+        }
+
+        gSaveBlock2Ptr->progressivePassesCount++;
+        count--;
+    }
+}
+
+void AddProgressiveCardKey(u16 count)
+{
+    while (count > 0)
+    {
+        switch (gSaveBlock2Ptr->progressiveCardKeyCount)
+        {
+        case 0:
+            AddBagItem(ITEM_CARD_KEY_2F, 1);
+            break;
+        case 1:
+            AddBagItem(ITEM_CARD_KEY_3F, 1);
+            break;
+        case 2:
+            AddBagItem(ITEM_CARD_KEY_4F, 1);
+            break;
+        case 3:
+            AddBagItem(ITEM_CARD_KEY_5F, 1);
+            break;
+        case 4:
+            AddBagItem(ITEM_CARD_KEY_6F, 1);
+            break;
+        case 5:
+            AddBagItem(ITEM_CARD_KEY_7F, 1);
+            break;
+        case 6:
+            AddBagItem(ITEM_CARD_KEY_8F, 1);
+            break;
+        case 7:
+            AddBagItem(ITEM_CARD_KEY_9F, 1);
+            break;
+        case 8:
+            AddBagItem(ITEM_CARD_KEY_10F, 1);
+            break;
+        case 9:
+            AddBagItem(ITEM_CARD_KEY_11F, 1);
+            break;
+        default:
+            return;
+        }
+
+        gSaveBlock2Ptr->progressiveCardKeyCount++;
+        count--;
+    }
 }
 
 bool8 RemoveBagItem(u16 itemId, u16 count)
@@ -613,6 +852,35 @@ u16 SanitizeItemId(u16 itemId)
 
 const u8 * ItemId_GetName(u16 itemId)
 {
+    if (itemId >= ITEM_FLY_PALLET && itemId <= ITEM_FLY_ROUTE10)
+    {
+        return gFlyUnlockNames[itemId - FIRST_FLY_UNLOCK_INDEX];
+    }
+    else if (itemId == ITEM_PROG_CARD_KEY)
+    {
+        if (gSaveBlock2Ptr->progressiveCardKeyCount < NUM_CARD_KEYS)
+        {
+            return gItems[FIRST_CARD_KEY_INDEX + gSaveBlock2Ptr->progressiveCardKeyCount].name;
+        }
+    }
+    else if (itemId == ITEM_PROG_PASS)
+    {
+        if (gArchipelagoOptions.passesSplit)
+        {
+            if (gSaveBlock2Ptr->progressivePassesCount < NUM_SPLIT_PASSES)
+            {
+                return gItems[FIRST_SPLIT_PASS_INDEX + gSaveBlock2Ptr->progressivePassesCount].name;
+            }
+        }
+        else
+        {
+            if (gSaveBlock2Ptr->progressivePassesCount < NUM_PASSES)
+            {
+                return gItems[FIRST_PASS_INDEX + gSaveBlock2Ptr->progressivePassesCount].name;
+            }
+        }
+    }
+
     return gItems[SanitizeItemId(itemId)].name;
 }
 

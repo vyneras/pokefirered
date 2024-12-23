@@ -53,6 +53,10 @@
 #define ITEM_BLUE_SHARD 49
 #define ITEM_YELLOW_SHARD 50
 #define ITEM_GREEN_SHARD 51
+
+// Split card keys
+#define FIRST_CARD_KEY_INDEX 52
+
 #define ITEM_CARD_KEY_2F 52
 #define ITEM_CARD_KEY_3F 53
 #define ITEM_CARD_KEY_4F 54
@@ -63,6 +67,7 @@
 #define ITEM_CARD_KEY_9F 59
 #define ITEM_CARD_KEY_10F 60
 #define ITEM_CARD_KEY_11F 61
+
 #define ITEM_03E 62
 #define ITEM_HP_UP 63
 #define ITEM_PROTEIN 64
@@ -83,17 +88,22 @@
 #define ITEM_X_SPECIAL 79
 #define ITEM_POKE_DOLL 80
 #define ITEM_FLUFFY_TAIL 81
-#define ITEM_ONE_PASS 82
-#define ITEM_SUPER_REPEL 83
-#define ITEM_MAX_REPEL 84
-#define ITEM_ESCAPE_ROPE 85
-#define ITEM_REPEL 86
+#define ITEM_SUPER_REPEL 82
+#define ITEM_MAX_REPEL 83
+#define ITEM_ESCAPE_ROPE 84
+#define ITEM_REPEL 85
+
+// Split passes
+#define FIRST_SPLIT_PASS_INDEX 86
+
+#define ITEM_ONE_PASS 86
 #define ITEM_TWO_PASS 87
 #define ITEM_THREE_PASS 88
 #define ITEM_FOUR_PASS 89
 #define ITEM_FIVE_PASS 90
 #define ITEM_SIX_PASS 91
 #define ITEM_SEVEN_PASS 92
+
 #define ITEM_SUN_STONE 93
 #define ITEM_MOON_STONE 94
 #define ITEM_FIRE_STONE 95
@@ -246,6 +256,8 @@
 #define ITEM_BADGE_8 233
 
 // Fly Unlock placeholder items
+#define FIRST_FLY_UNLOCK_INDEX 234
+
 #define ITEM_FLY_PALLET 234
 #define ITEM_FLY_VIRIDIAN 235
 #define ITEM_FLY_PEWTER 236
@@ -450,6 +462,8 @@
 #define ITEM_RUBY 373
 #define ITEM_SAPPHIRE 374
 
+#define FIRST_PASS_INDEX 367
+
 // Coins placeholder items
 #define ITEM_COINS_10 375
 #define ITEM_COINS_20 376
@@ -492,6 +506,12 @@
 #define OLD_ROD   0
 #define GOOD_ROD  1
 #define SUPER_ROD 2
+
+#define NUM_FLY_UNLOCKS 20
+#define FLY_UNLOCK_NAME_LENGTH 15
+#define NUM_CARD_KEYS 10
+#define NUM_PASSES 2
+#define NUM_SPLIT_PASSES 7
 
 // Check if the item is one that can be used on a Pokemon.
 #define ITEM_IS_CONVERTED_TRADE_EVO_ITEM(item) ((item) == ITEM_KINGS_ROCK || (item) == ITEM_DEEP_SEA_TOOTH || (item) == ITEM_DEEP_SEA_SCALE || (item) == ITEM_METAL_COAT || (item) == ITEM_DRAGON_SCALE || (item) == ITEM_UP_GRADE)
