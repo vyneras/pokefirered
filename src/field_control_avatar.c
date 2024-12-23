@@ -544,6 +544,10 @@ static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *position
         gSpecialVar_0x8001 = GetHiddenItemAttr(bgEvent->bgUnion.hiddenItem, HIDDEN_ITEM_QUANTITY);
         if (FlagGet(gSpecialVar_0x8003) == TRUE)
             return NULL;
+        else if (gSpecialVar_0x8003 >= FLAG_HIDDEN_ITEM_CELADON_CITY_GAME_CORNER_COINS &&
+                 gSpecialVar_0x8003 <= FLAG_HIDDEN_ITEM_CELADON_CITY_GAME_CORNER_COINS_12 &&
+                 !CheckBagHasItem(ITEM_COIN_CASE, 1))
+            return NULL;
         gSpecialVar_Facing = direction;
         return EventScript_HiddenItemScript;
     }
