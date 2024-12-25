@@ -37,6 +37,54 @@ CeladonCity_Condominiums_1F_EventScript_TeaWomanAfterMentionDaisy::
 	release
 	end
 
+CeladonCity_Condominiums_1F_EventScript_Brock::
+	lock
+	faceplayer
+	goto_if_set FLAG_GOT_RED_TEA, CeladonCity_Condominiums_1F_EventScript_BrockAfterTea
+	msgbox CeladonCity_Condominiums_1F_Text_TravelingAroundKanto
+Archipelago_Target_NPC_Gift_FLAG_GOT_RED_TEA::
+	giveitem ITEM_RED_TEA, 1, FLAG_GOT_RED_TEA
+	msgbox CeladonCity_Condominiums_1F_Text_NiceAndRelaxing
+	release
+	end
+
+CeladonCity_Condominiums_1F_EventScript_BrockAfterTea::
+	msgbox CeladonCity_Condominiums_1F_Text_JourneyGoingWell
+	release
+	end
+
+CeladonCity_Condominiums_1F_EventScript_Misty::
+	lock
+	faceplayer
+	goto_if_set FLAG_GOT_BLUE_TEA, CeladonCity_Condominiums_1F_EventScript_MistyAfterTea
+	msgbox CeladonCity_Condominiums_1F_Text_TrySomeTea
+Archipelago_Target_NPC_Gift_FLAG_GOT_BLUE_TEA::
+	giveitem ITEM_BLUE_TEA, 1, FLAG_GOT_BLUE_TEA
+	msgbox CeladonCity_Condominiums_1F_Text_HelpWithSwimming
+	release
+	end
+
+CeladonCity_Condominiums_1F_EventScript_MistyAfterTea::
+	msgbox CeladonCity_Condominiums_1F_Text_ShouldBeHeadingBack
+	release
+	end
+
+CeladonCity_Condominiums_1F_EventScript_Erika::
+	lock
+	faceplayer
+	goto_if_set FLAG_GOT_PURPLE_TEA, CeladonCity_Condominiums_1F_EventScript_ErikaAfterTea
+	msgbox CeladonCity_Condominiums_1F_Text_TakingABreak
+Archipelago_Target_NPC_Gift_FLAG_GOT_PURPLE_TEA::
+	giveitem ITEM_PURPLE_TEA, 1, FLAG_GOT_PURPLE_TEA
+	msgbox CeladonCity_Condominiums_1F_Text_SupposedlyGoodForYou
+	release
+	end
+
+CeladonCity_Condominiums_1F_EventScript_ErikaAfterTea::
+	msgbox CeladonCity_Condominiums_1F_Text_HowIsYourJourney
+	release
+	end
+
 CeladonCity_Condominiums_1F_EventScript_Meowth::
 	lock
 	faceplayer

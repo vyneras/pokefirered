@@ -16,12 +16,18 @@ PewterCity_Gym_EventScript_DefeatedBrock::
 Archipelago_Target_Badge_1::
 	giveitem ITEM_BADGE_1, 1, FLAG_RECEIVED_BADGE_1
 	clearflag FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+	specialvar VAR_RESULT, ArchipelagoSpecial_AreTeasSplit
+	call_if_eq VAR_RESULT, TRUE, PewterCity_Gym_EventScript_ShowCeladonBrock
 	set_gym_trainers 1
 	goto PewterCity_Gym_EventScript_GiveTM39
 	end
 
 PewterCity_Gym_EventScript_BrockFameChecker::
 	famechecker FAMECHECKER_BROCK, 1
+	return
+
+PewterCity_Gym_EventScript_ShowCeladonBrock::
+	clearflag FLAG_HIDE_CELADON_CONDOMINIUMS_BROCK
 	return
 
 PewterCity_Gym_EventScript_GiveTM39::

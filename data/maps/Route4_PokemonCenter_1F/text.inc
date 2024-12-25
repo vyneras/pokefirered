@@ -26,7 +26,7 @@ Route4_PokemonCenter_1F_Text_SweetieBuyMagikarpForJust500::
 
 Route4_PokemonCenter_1F_Text_PaidOutrageouslyForMagikarp::
     .string "{PLAYER} paid an outrageous ¥500\n"
-    .string "and bought the {STR_VAR_1}$"
+    .string "and bought the {STR_VAR_1}…$"
 
 Route4_PokemonCenter_1F_Text_OnlyDoingThisAsFavorToYou::
     .string "No? You say no? I'm only doing this\n"

@@ -75,6 +75,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
 
     .passesSplit = FALSE,
     .cardKeysSplit = FALSE,
+    .teasSplit = FALSE,
 
     .startingLocation = SPAWN_PALLET_TOWN,
     .freeFlyId = 0,

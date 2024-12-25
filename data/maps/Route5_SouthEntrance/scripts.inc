@@ -40,6 +40,8 @@ Route5_SouthEntrance_EventScript_GuardTrigger::
 	waitmovement 0
 	checkitem ITEM_TEA
 	goto_if_eq VAR_RESULT, TRUE, Route5_SouthEntrance_EventScript_GiveTea
+	checkitem ITEM_BLUE_TEA
+	goto_if_eq VAR_RESULT, TRUE, Route5_SouthEntrance_EventScript_GiveBlueTea
 	msgbox Route5_SouthEntrance_Text_ThirstyOnGuardDuty
 	closemessage
 	goto_if_eq VAR_TEMP_2, 1, Route5_SouthEntrance_EventScript_MovePlayerDown
@@ -50,7 +52,13 @@ Route5_SouthEntrance_EventScript_GuardTrigger::
 
 Route5_SouthEntrance_EventScript_GiveTea::
 	removeitem ITEM_TEA
-	goto Route5_SouthEntrance_EventScript_GuardDrinkTea
+	call Route5_SouthEntrance_EventScript_GuardDrinkTea
+	msgbox Route5_SouthEntrance_Text_ThanksIllShareTeaWithGuards
+	setvar VAR_MAP_SCENE_ROUTE5_GATE, 1
+	setvar VAR_MAP_SCENE_ROUTE6_GATE, 1
+	setvar VAR_MAP_SCENE_ROUTE7_GATE, 1
+	setvar VAR_MAP_SCENE_ROUTE8_GATE, 1
+	releaseall
 	end
 
 Route5_SouthEntrance_EventScript_GuardDrinkTea::
@@ -59,8 +67,13 @@ Route5_SouthEntrance_EventScript_GuardDrinkTea::
 	call_if_eq VAR_TEMP_1, 0, Route5_SouthEntrance_EventScript_WalkToGuardLeft
 	call_if_eq VAR_TEMP_1, 1, Route5_SouthEntrance_EventScript_WalkToGuardMid
 	call_if_eq VAR_TEMP_1, 2, Route5_SouthEntrance_EventScript_WalkToGuardRight
-	msgbox Route5_SouthEntrance_Text_ThanksIllShareTeaWithGuards
-	setvar VAR_MAP_SCENE_ROUTE5_ROUTE6_ROUTE7_ROUTE8_GATES, 1
+	return
+
+Route5_SouthEntrance_EventScript_GiveBlueTea::
+	removeitem ITEM_BLUE_TEA
+	call Route5_SouthEntrance_EventScript_GuardDrinkTea
+	msgbox Route5_SouthEntrance_Text_ThanksForTea
+	setvar VAR_MAP_SCENE_ROUTE5_GATE, 1
 	releaseall
 	end
 

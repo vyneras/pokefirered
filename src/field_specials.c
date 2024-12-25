@@ -2921,6 +2921,11 @@ bool8 ArchipelagoSpecial_AreCardKeysSplit(void)
     return gArchipelagoOptions.cardKeysSplit;
 }
 
+bool8 ArchipelagoSpecial_AreTeasSplit(void)
+{
+    return gArchipelagoOptions.teasSplit;
+}
+
 void ArchipelagoSpecial_UseClosestWarp(void)
 {
     UseClosestWarp();

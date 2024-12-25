@@ -699,6 +699,9 @@ const u32 gItemIconPalette_RainbowPass[] = INCBIN_U32("graphics/items/icon_palet
 
 const u32 gItemIcon_Tea[] = INCBIN_U32("graphics/items/icons/tea.4bpp.lz");
 const u32 gItemIconPalette_Tea[] = INCBIN_U32("graphics/items/icon_palettes/tea.gbapal.lz");
+const u32 gItemIconPalette_BlueTea[] = INCBIN_U32("graphics/items/icon_palettes/blue_tea.gbapal.lz");
+const u32 gItemIconPalette_RedTea[] = INCBIN_U32("graphics/items/icon_palettes/red_tea.gbapal.lz");
+const u32 gItemIconPalette_PurpleTea[] = INCBIN_U32("graphics/items/icon_palettes/purple_tea.gbapal.lz");
 
 const u32 gItemIcon_MysticTicket[] = INCBIN_U32("graphics/items/icons/mystic_ticket.4bpp.lz");
 const u32 gItemIconPalette_MysticTicket[] = INCBIN_U32("graphics/items/icon_palettes/mystic_ticket.gbapal.lz");

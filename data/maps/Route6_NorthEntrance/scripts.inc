@@ -40,6 +40,8 @@ Route6_NorthEntrance_EventScript_GuardTrigger::
 	waitmovement 0
 	checkitem ITEM_TEA
 	goto_if_eq VAR_RESULT, TRUE, Route6_NorthEntrance_EventScript_GiveTea
+	checkitem ITEM_RED_TEA
+	goto_if_eq VAR_RESULT, TRUE, Route6_NorthEntrance_EventScript_GiveRedTea
 	msgbox Route6_NorthEntrance_Text_ThirstyOnGuardDuty
 	closemessage
 	goto_if_eq VAR_TEMP_2, 1, Route6_NorthEntrance_EventScript_MovePlayerUp
@@ -50,7 +52,13 @@ Route6_NorthEntrance_EventScript_GuardTrigger::
 
 Route6_NorthEntrance_EventScript_GiveTea::
 	removeitem ITEM_TEA
-	goto Route6_NorthEntrance_EventScript_GuardDrinkTea
+	call Route6_NorthEntrance_EventScript_GuardDrinkTea
+	msgbox Route6_NorthEntrance_Text_ThanksIllShareTeaWithGuards
+	setvar VAR_MAP_SCENE_ROUTE5_GATE, 1
+	setvar VAR_MAP_SCENE_ROUTE6_GATE, 1
+	setvar VAR_MAP_SCENE_ROUTE7_GATE, 1
+	setvar VAR_MAP_SCENE_ROUTE8_GATE, 1
+	releaseall
 	end
 
 Route6_NorthEntrance_EventScript_GuardDrinkTea::
@@ -59,8 +67,13 @@ Route6_NorthEntrance_EventScript_GuardDrinkTea::
 	call_if_eq VAR_TEMP_1, 0, Route6_NorthEntrance_EventScript_WalkToGuardLeft
 	call_if_eq VAR_TEMP_1, 1, Route6_NorthEntrance_EventScript_WalkToGuardMid
 	call_if_eq VAR_TEMP_1, 2, Route6_NorthEntrance_EventScript_WalkToGuardRight
-	msgbox Route6_NorthEntrance_Text_ThanksIllShareTeaWithGuards
-	setvar VAR_MAP_SCENE_ROUTE5_ROUTE6_ROUTE7_ROUTE8_GATES, 1
+	return
+
+Route6_NorthEntrance_EventScript_GiveRedTea::
+	removeitem ITEM_RED_TEA
+	call Route6_NorthEntrance_EventScript_GuardDrinkTea
+	msgbox Route6_NorthEntrance_Text_ThanksForTea
+	setvar VAR_MAP_SCENE_ROUTE6_GATE, 1
 	releaseall
 	end
 

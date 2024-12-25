@@ -17,12 +17,18 @@ CeladonCity_Gym_EventScript_DefeatedErika::
 	setflag FLAG_DEFEATED_ERIKA
 Archipelago_Target_Badge_4::
 	giveitem ITEM_BADGE_4, 1, FLAG_RECEIVED_BADGE_4
+	specialvar VAR_RESULT, ArchipelagoSpecial_AreTeasSplit
+	call_if_eq VAR_RESULT, TRUE, CeladonCity_Gym_EventScript_ShowCeladonErika
 	set_gym_trainers 4
 	goto CeladonCity_Gym_EventScript_GiveTM19
 	end
 
 CeladonCity_Gym_EventScript_ErikaFameChecker::
 	famechecker FAMECHECKER_ERIKA, 1
+	return
+
+CeladonCity_Gym_EventScript_ShowCeladonErika::
+	clearflag FLAG_HIDE_CELADON_CONDOMINIUMS_ERIKA
 	return
 
 CeladonCity_Gym_EventScript_GiveTM19::

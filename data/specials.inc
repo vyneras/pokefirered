@@ -489,6 +489,7 @@ gSpecials::
 	def_special ArchipelagoSpecial_SetFameCheckerFlag
 	def_special ArchipelagoSpecial_ArePassesSplit
 	def_special ArchipelagoSpecial_AreCardKeysSplit
+	def_special ArchipelagoSpecial_AreTeasSplit
 	def_special ArchipelagoSpecial_UseClosestWarp
 	def_special ArchipelagoSpecial_FlashRequired
 	def_special ArchipelagoSpecial_Route2Modified

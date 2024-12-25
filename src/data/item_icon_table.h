@@ -126,11 +126,12 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_HEART_SCALE]    = {gItemIcon_HeartScale, gItemIconPalette_HeartScale},
     // Archipelago Items
     [ITEM_ARCHIPELAGO_PROGRESSION] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    // Split teas
+    [ITEM_GREEN_TEA]      = {gItemIcon_Tea, gItemIconPalette_Tea},
+    [ITEM_BLUE_TEA]       = {gItemIcon_Tea, gItemIconPalette_BlueTea},
+    [ITEM_RED_TEA]        = {gItemIcon_Tea, gItemIconPalette_RedTea},
+    [ITEM_PURPLE_TEA]     = {gItemIcon_Tea, gItemIconPalette_PurpleTea},
     // ????????
-    [ITEM_071]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_072]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_073]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_074]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_075]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_076]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_077]            = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},

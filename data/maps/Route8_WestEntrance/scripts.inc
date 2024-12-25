@@ -40,6 +40,8 @@ Route8_WestEntrance_EventScript_GuardTrigger::
 	waitmovement 0
 	checkitem ITEM_TEA
 	goto_if_eq VAR_RESULT, TRUE, Route8_WestEntrance_EventScript_GiveTea
+	checkitem ITEM_PURPLE_TEA
+	goto_if_eq VAR_RESULT, TRUE, Route8_WestEntrance_EventScript_GivePurpleTea
 	msgbox Route8_WestEntrance_Text_ThirstyOnGuardDuty
 	closemessage
 	goto_if_eq VAR_TEMP_2, 1, Route8_WestEntrance_EventScript_MovePlayerLeft
@@ -50,19 +52,13 @@ Route8_WestEntrance_EventScript_GuardTrigger::
 
 Route8_WestEntrance_EventScript_GiveTea::
 	removeitem ITEM_TEA
-	goto Route8_WestEntrance_EventScript_GuardDrinkTea
-	end
-
-@ Unused
-Route8_WestEntrance_EventScript_GiveSodaPop::
-	removeitem ITEM_SODA_POP
-	goto Route8_WestEntrance_EventScript_GuardDrinkTea
-	end
-
-@ Unused
-Route8_WestEntrance_EventScript_GiveLemonade::
-	removeitem ITEM_LEMONADE
-	goto Route8_WestEntrance_EventScript_GuardDrinkTea
+	call Route8_WestEntrance_EventScript_GuardDrinkTea
+	msgbox Route8_WestEntrance_Text_ThanksIllShareTeaWithGuards
+	setvar VAR_MAP_SCENE_ROUTE5_GATE, 1
+	setvar VAR_MAP_SCENE_ROUTE6_GATE, 1
+	setvar VAR_MAP_SCENE_ROUTE7_GATE, 1
+	setvar VAR_MAP_SCENE_ROUTE8_GATE, 1
+	releaseall
 	end
 
 Route8_WestEntrance_EventScript_GuardDrinkTea::
@@ -71,8 +67,13 @@ Route8_WestEntrance_EventScript_GuardDrinkTea::
 	call_if_eq VAR_TEMP_1, 0, Route8_WestEntrance_EventScript_WalkToGuardTop
 	call_if_eq VAR_TEMP_1, 1, Route8_WestEntrance_EventScript_WalkToGuardMid
 	call_if_eq VAR_TEMP_1, 2, Route8_WestEntrance_EventScript_WalkToGuardBottom
-	msgbox Route8_WestEntrance_Text_ThanksIllShareTeaWithGuards
-	setvar VAR_MAP_SCENE_ROUTE5_ROUTE6_ROUTE7_ROUTE8_GATES, 1
+	return
+
+Route8_WestEntrance_EventScript_GivePurpleTea::
+	removeitem ITEM_PURPLE_TEA
+	call Route8_WestEntrance_EventScript_GuardDrinkTea
+	msgbox Route8_WestEntrance_Text_ThanksForTea
+	setvar VAR_MAP_SCENE_ROUTE8_GATE, 1
 	releaseall
 	end
 

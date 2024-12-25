@@ -16,12 +16,18 @@ CeruleanCity_Gym_EventScript_MistyDefeated::
 Archipelago_Target_Badge_2::
 	giveitem ITEM_BADGE_2, 1, FLAG_RECEIVED_BADGE_2
 	setrespawn SPAWN_CERULEAN_CITY
+	specialvar VAR_RESULT, ArchipelagoSpecial_AreTeasSplit
+	call_if_eq VAR_RESULT, TRUE, CeruleanCity_Gym_EventScript_ShowCeladonMisty
 	set_gym_trainers 2
 	goto CeruleanCity_Gym_EventScript_GiveTM03
 	end
 
 CeruleanCity_Gym_EventScript_MistyFameChecker::
 	famechecker FAMECHECKER_MISTY, 1
+	return
+
+CeruleanCity_Gym_EventScript_ShowCeladonMisty::
+	clearflag FLAG_HIDE_CELADON_CONDOMINIUMS_MISTY
 	return
 
 CeruleanCity_Gym_EventScript_GiveTM03::

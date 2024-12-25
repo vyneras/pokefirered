@@ -21,6 +21,18 @@ Route5_SouthEntrance_Text_ThanksIllShareTeaWithGuards::
     .string "I'll share this TEA with the other\n"
     .string "guards!$"
 
+Route5_SouthEntrance_Text_ThanksForTea::
+    .string "Huh? I can have this drink?\n"
+    .string "Gee, thanks!\l"
+    .string "… …\l"
+    .string "Glug, glug…\l"
+    .string "… …\l"
+    .string "Gulp…\l"
+    .string "If you want to go to SAFFRON\l"
+    .string "CITY…\l"
+    .string "… …\l"
+    .string "You can go on through.$"
+
 Route5_SouthEntrance_Text_HiHowsItGoing::
     .string "Hi, how's it going?$"
 
