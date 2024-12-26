@@ -100,3 +100,8 @@ EventScript_SailToSevenIsland::
 	setvar VAR_0x8006, SEAGALLOP_SEVEN_ISLAND
 	goto EventScript_SailToDest
 	end
+
+EventScript_CantSail::
+	msgbox Text_CantSail, MSGBOX_NPC
+	release
+	end

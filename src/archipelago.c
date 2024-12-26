@@ -33,6 +33,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .blockPokemonTower = FALSE,
     .victoryRoadRocks = FALSE,
     .earlyFameGossip = FALSE,
+    .blockVermilionSailing = FALSE,
 
     .giovanniRequiresGyms = FALSE,
     .giovanniRequiredCount = 7,

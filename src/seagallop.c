@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
 #include "scanline_effect.h"
 #include "trainer_pokemon_sprites.h"
 #include "text_window.h"
@@ -492,9 +493,24 @@ u8 GetSeagallopNumber(void)
 
 bool8 HasSeagallopPass(void)
 {
-  return CheckBagHasItem(ITEM_TRI_PASS, 1) || CheckBagHasItem(ITEM_RAINBOW_PASS, 1) || CheckBagHasItem(ITEM_ONE_PASS, 1) ||
-         CheckBagHasItem(ITEM_TWO_PASS, 1) || CheckBagHasItem(ITEM_THREE_PASS, 1) || CheckBagHasItem(ITEM_FOUR_PASS, 1) ||
-         CheckBagHasItem(ITEM_FIVE_PASS, 1) || CheckBagHasItem(ITEM_SIX_PASS, 1) || CheckBagHasItem(ITEM_SEVEN_PASS, 1);
+    u16 originId;
+
+    originId = gSpecialVar_0x8004;
+
+    if (originId == SEAGALLOP_NAVEL_ROCK ||
+        originId == SEAGALLOP_BIRTH_ISLAND)
+        {
+            return CheckBagHasItem(ITEM_SS_TICKET, 1) || !gArchipelagoOptions.blockVermilionSailing;
+        }
+
+    return (originId != SEAGALLOP_VERMILION_CITY && (CheckBagHasItem(ITEM_SS_TICKET, 1) || !gArchipelagoOptions.blockVermilionSailing)) ||
+           (originId != SEAGALLOP_ONE_ISLAND && (CheckBagHasItem(ITEM_TRI_PASS, 1) || CheckBagHasItem(ITEM_ONE_PASS, 1))) ||
+           (originId != SEAGALLOP_TWO_ISLAND && (CheckBagHasItem(ITEM_TRI_PASS, 1) || CheckBagHasItem(ITEM_TWO_PASS, 1))) ||
+           (originId != SEAGALLOP_THREE_ISLAND && (CheckBagHasItem(ITEM_TRI_PASS, 1) || CheckBagHasItem(ITEM_THREE_PASS, 1))) ||
+           (originId != SEAGALLOP_FOUR_ISLAND && (CheckBagHasItem(ITEM_RAINBOW_PASS, 1) || CheckBagHasItem(ITEM_FOUR_PASS, 1))) ||
+           (originId != SEAGALLOP_FIVE_ISLAND && (CheckBagHasItem(ITEM_RAINBOW_PASS, 1) || CheckBagHasItem(ITEM_FIVE_PASS, 1))) ||
+           (originId != SEAGALLOP_SIX_ISLAND && (CheckBagHasItem(ITEM_RAINBOW_PASS, 1) || CheckBagHasItem(ITEM_SIX_PASS, 1))) ||
+           (originId != SEAGALLOP_SEVEN_ISLAND && (CheckBagHasItem(ITEM_RAINBOW_PASS, 1) || CheckBagHasItem(ITEM_SEVEN_PASS, 1)));
 }
 
 bool8 IsPlayerLeftOfVermilionSailor(void)

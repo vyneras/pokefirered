@@ -4,9 +4,11 @@ NavelRock_Harbor_MapScripts::
 NavelRock_Harbor_EventScript_Sailor::
 	lock
 	faceplayer
+	setvar VAR_0x8004, SEAGALLOP_NAVEL_ROCK
+	specialvar VAR_RESULT, HasSeagallopPass
+	goto_if_eq VAR_RESULT, FALSE, EventScript_CantSail
 	message Text_WhereDoYouWantToSail
 	waitmessage
-	setvar VAR_0x8004, SEAGALLOP_NAVEL_ROCK
 	multichoice 20, 8, MULTICHOICE_SEAGALLOP_VERMILION, FALSE
 	switch VAR_RESULT
 	case 0, EventScript_SailToVermilionCity

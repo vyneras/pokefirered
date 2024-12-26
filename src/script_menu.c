@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
 #include "menu.h"
 #include "task.h"
 #include "script_menu.h"
@@ -1265,7 +1266,8 @@ void DrawSeagallopDestinationMenu(void)
     // Sets the destinations that are available and returns how many there are
     numItemsTotal = 0;
 
-    if (gSpecialVar_0x8004 != SEAGALLOP_VERMILION_CITY)
+    if ((CheckBagHasItem(ITEM_SS_TICKET, 1) || !gArchipelagoOptions.blockVermilionSailing) &&
+        gSpecialVar_0x8004 != SEAGALLOP_VERMILION_CITY)
     {
         seagallopDestinations[numItemsTotal++] = SEAGALLOP_VERMILION_CITY;
     }
