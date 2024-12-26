@@ -547,7 +547,7 @@
 #define FLAG_GOT_BLUE_TEA        0x20D
 #define FLAG_GOT_RED_TEA         0x20E
 #define FLAG_GOT_PURPLE_TEA      0x20F
-#define FLAG_0x210               0x210
+#define FLAG_GOT_RUNNING_SHOES   0x210
 #define FLAG_0x211               0x211
 #define FLAG_0x212               0x212
 #define FLAG_0x213               0x213

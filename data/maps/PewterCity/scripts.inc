@@ -428,7 +428,8 @@ PewterCity_EventScript_AideGiveRunningShoes::
 	msgbox PewterCity_Text_RunningShoesLetterFromMom
 	closemessage
 	removeobject LOCALID_AIDE
-	setflag FLAG_SYS_B_DASH
+Archipelago_Target_NPC_Gift_FLAG_GOT_RUNNING_SHOES::
+	giveitem ITEM_RUNNING_SHOES, 1, FLAG_GOT_RUNNING_SHOES
 	setvar VAR_MAP_SCENE_PEWTER_CITY_OAKS_AIDE, 2
 	return
 

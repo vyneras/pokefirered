@@ -158,7 +158,8 @@ bool8 IsItemUnique(u16 item)
 {
     return (item >= ITEM_BADGE_1 && item <= ITEM_BADGE_8) ||
            (item >= ITEM_FLY_PALLET && item <= ITEM_FLY_ROUTE10) ||
-           (item >= ITEM_COINS_10 && item <= ITEM_PROG_CARD_KEY);
+           (item >= ITEM_COINS_10 && item <= ITEM_PROG_CARD_KEY) ||
+           item == ITEM_RUNNING_SHOES;
 }
 
 void GiveStartingItems(void)

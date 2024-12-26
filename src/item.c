@@ -399,6 +399,9 @@ bool8 AddUniqueBagItem(u16 itemId, u16 count)
     case ITEM_PROG_CARD_KEY:
         AddProgressiveCardKey(count);
         break;
+    case ITEM_RUNNING_SHOES:
+        FlagSet(FLAG_SYS_B_DASH);
+        break;
     default:
         break;
     }
