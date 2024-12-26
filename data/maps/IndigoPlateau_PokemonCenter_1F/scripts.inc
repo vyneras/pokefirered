@@ -15,8 +15,9 @@ IndigoPlateau_PokemonCenter_1F_OnTransition::
 	end
 
 IndigoPlateau_PokemonCenter_1F_BlockDoorEliteFourRematch::
-	call_if_unset FLAG_SYS_CAN_LINK_WITH_RS, IndigoPlateau_PokemonCenter_1F_EventScript_BlockDoor
-	return
+	goto_if_unset FLAG_SYS_CAN_LINK_WITH_RS, IndigoPlateau_PokemonCenter_1F_EventScript_BlockDoor
+	goto IndigoPlateau_PokemonCenter_1F_BlockDoorEliteFour
+	end
 
 IndigoPlateau_PokemonCenter_1F_BlockDoorEliteFour::
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanChallengeEliteFour
@@ -32,7 +33,7 @@ IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuard::
 	lock
 	faceplayer
 	goto_if_set FLAG_SYS_GAME_CLEAR, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardEliteFourRematch
-	goto_if_unset FLAG_SYS_GAME_CLEAR, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardEliteFour
+	goto IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardEliteFour
 	end
 
 IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardEliteFourRematch::
@@ -41,7 +42,7 @@ IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardEliteFourRematch::
 	call PokemonLeague_AgathasRoom_EventScript_AgathaFameChecker
 	call PokemonLeague_LancesRoom_EventScript_LanceFameChecker
 	goto_if_unset FLAG_SYS_CAN_LINK_WITH_RS, IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardLoreleiGone
-	goto IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardGoodLuck
+	goto IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardEliteFour
 	end
 
 IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardLoreleiGone::

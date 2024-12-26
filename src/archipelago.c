@@ -43,6 +43,8 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .route23GuardRequiredCount = 7,
     .eliteFourRequiresGyms = FALSE,
     .eliteFourRequiredCount = 8,
+    .eliteFourRematchRequiresGyms = FALSE,
+    .eliteFourRematchRequiredCount = 8,
     .ceruleanCaveRequirement = 0,
     .ceruleanCaveRequiredCount = 8,
 
