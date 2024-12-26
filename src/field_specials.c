@@ -3035,8 +3035,3 @@ void ArchipelagoSpecial_SetRespawnToStartingLocation(void)
 {
     SetLastHealLocationWarp(gArchipelagoOptions.startingLocation);
 }
-
-void ArchipelagoSpecial_SetHintFlag(void)
-{
-    FlagSet(gSpecialVar_0x8003);
-}

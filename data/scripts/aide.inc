@@ -1,5 +1,5 @@
 Aide_EventScript_HaventCaughtEnough::
-	special ArchipelagoSpecial_SetHintFlag
+	setflagvar VAR_0x8003
 	goto_if_eq VAR_TEMP_3, 0, Aide_EventScript_HaventCaughtEnoughItem
 	goto_if_eq VAR_TEMP_3, 1, Aide_EventScript_HaventCaughtEnoughPlayerItem
 	goto_if_eq VAR_TEMP_3, 2, Aide_EventScript_HaventCaughtEnoughItem
