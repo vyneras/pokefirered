@@ -406,17 +406,8 @@ PewterCity_EventScript_AideGiveRunningShoes::
 	call_if_eq VAR_TEMP_1, 2, PewterCity_EventScript_AideApproachPlayer2
 	call_if_eq VAR_TEMP_1, 3, PewterCity_EventScript_AideApproachPlayer3
 	msgbox PewterCity_Text_AskedToDeliverThis
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	playfanfare MUS_OBTAIN_KEY_ITEM
-	message PewterCity_Text_ReceivedRunningShoesFromAide
-	waitmessage
-	waitfanfare
-	msgbox PewterCity_Text_SwitchedShoesWithRunningShoes
-	special DisableMsgBoxWalkaway
-	signmsg
-	msgbox PewterCity_Text_ExplainRunningShoes
-	normalmsg
-	call EventScript_RestorePrevTextColor
+Archipelago_Target_NPC_Gift_FLAG_GOT_RUNNING_SHOES::
+	giveitem ITEM_RUNNING_SHOES, 1, FLAG_GOT_RUNNING_SHOES
 	msgbox PewterCity_Text_MustBeGoingBackToLab
 	closemessage
 	call_if_eq VAR_TEMP_1, 0, PewterCity_EventScript_AideExit0
@@ -428,8 +419,6 @@ PewterCity_EventScript_AideGiveRunningShoes::
 	msgbox PewterCity_Text_RunningShoesLetterFromMom
 	closemessage
 	removeobject LOCALID_AIDE
-Archipelago_Target_NPC_Gift_FLAG_GOT_RUNNING_SHOES::
-	giveitem ITEM_RUNNING_SHOES, 1, FLAG_GOT_RUNNING_SHOES
 	setvar VAR_MAP_SCENE_PEWTER_CITY_OAKS_AIDE, 2
 	return
 
