@@ -13,10 +13,10 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .betterShopsEnabled = FALSE,
     .reusableTms = FALSE,
     .guaranteedCatch = FALSE,
-
     .areTrainersBlind = FALSE,
     .expMultiplierNumerator = 100,
     .expMultiplierDenominator = 100,
+    .normalizeEncounterRates = FALSE,
 
     .openViridianCity = FALSE,
     .route3Requirement = 1,

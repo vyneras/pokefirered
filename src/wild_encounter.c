@@ -1,4 +1,5 @@
 #include "global.h"
+#include "archipelago.h"
 #include "random.h"
 #include "wild_encounter.h"
 #include "event_data.h"
@@ -46,6 +47,12 @@ static void AddToWildEncounterRateBuff(u8 encouterRate);
 
 #include "data/wild_encounters.h"
 
+#define NORMALIZED_LAND_ENCOUNTER(n) ((n + 1) * ENCOUNTER_CHANCE_LAND_MONS_TOTAL / 12)
+#define NORMALIZED_WATER_ENCOUNTER(n) ((n + 1) * ENCOUNTER_CHANCE_WATER_MONS_TOTAL / 5)
+#define NORMALIZED_OLD_ROD_ENCOUNTER(n) ((n + 1) * ENCOUNTER_CHANCE_FISHING_MONS_OLD_ROD_TOTAL / 2)
+#define NORMALIZED_GOOD_ROD_ENCOUNTER(n) ((n + 1 - 2) * ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_TOTAL / 3)
+#define NORMALIZED_SUPER_ROD_ENCOUNTER(n) ((n + 1 - 5) * ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_TOTAL / 5)
+
 static const u8 sUnownLetterSlots[][LAND_WILD_COUNT] = {
   //  A   A   A   A   A   A   A   A   A   A   A   ?
     { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 27},
@@ -71,6 +78,34 @@ void DisableWildEncounters(bool8 state)
 static u8 ChooseWildMonIndex_Land(void)
 {
     u8 rand = Random() % ENCOUNTER_CHANCE_LAND_MONS_TOTAL;
+
+    if (gArchipelagoOptions.normalizeEncounterRates)
+    {
+        if (rand < NORMALIZED_LAND_ENCOUNTER(0))
+            return 0;
+        else if (rand >= NORMALIZED_LAND_ENCOUNTER(0) && rand < NORMALIZED_LAND_ENCOUNTER(1))
+            return 1;
+        else if (rand >= NORMALIZED_LAND_ENCOUNTER(1) && rand < NORMALIZED_LAND_ENCOUNTER(2))
+            return 2;
+        else if (rand >= NORMALIZED_LAND_ENCOUNTER(2) && rand < NORMALIZED_LAND_ENCOUNTER(3))
+            return 3;
+        else if (rand >= NORMALIZED_LAND_ENCOUNTER(3) && rand < NORMALIZED_LAND_ENCOUNTER(4))
+            return 4;
+        else if (rand >= NORMALIZED_LAND_ENCOUNTER(4) && rand < NORMALIZED_LAND_ENCOUNTER(5))
+            return 5;
+        else if (rand >= NORMALIZED_LAND_ENCOUNTER(5) && rand < NORMALIZED_LAND_ENCOUNTER(6))
+            return 6;
+        else if (rand >= NORMALIZED_LAND_ENCOUNTER(6) && rand < NORMALIZED_LAND_ENCOUNTER(7))
+            return 7;
+        else if (rand >= NORMALIZED_LAND_ENCOUNTER(7) && rand < NORMALIZED_LAND_ENCOUNTER(8))
+            return 8;
+        else if (rand >= NORMALIZED_LAND_ENCOUNTER(8) && rand < NORMALIZED_LAND_ENCOUNTER(9))
+            return 9;
+        else if (rand >= NORMALIZED_LAND_ENCOUNTER(9) && rand < NORMALIZED_LAND_ENCOUNTER(10))
+            return 10;
+        else
+            return 11;
+    }
 
     if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_0)
         return 0;
@@ -102,6 +137,20 @@ static u8 ChooseWildMonIndex_WaterRock(void)
 {
     u8 rand = Random() % ENCOUNTER_CHANCE_WATER_MONS_TOTAL;
 
+    if (gArchipelagoOptions.normalizeEncounterRates)
+    {
+        if (rand < NORMALIZED_WATER_ENCOUNTER(0))
+            return 0;
+        else if (rand >= NORMALIZED_WATER_ENCOUNTER(0) && rand < NORMALIZED_WATER_ENCOUNTER(1))
+            return 1;
+        else if (rand >= NORMALIZED_WATER_ENCOUNTER(1) && rand < NORMALIZED_WATER_ENCOUNTER(2))
+            return 2;
+        else if (rand >= NORMALIZED_WATER_ENCOUNTER(2) && rand < NORMALIZED_WATER_ENCOUNTER(3))
+            return 3;
+        else
+            return 4;
+    }
+
     if (rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_0)
         return 0;
     else if (rand >= ENCOUNTER_CHANCE_WATER_MONS_SLOT_0 && rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_1)
@@ -123,30 +172,68 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
     switch (rod)
     {
     case OLD_ROD:
-        if (rand < ENCOUNTER_CHANCE_FISHING_MONS_OLD_ROD_SLOT_0)
-            wildMonIndex = 0;
+        if (gArchipelagoOptions.normalizeEncounterRates)
+        {
+            if (rand < NORMALIZED_OLD_ROD_ENCOUNTER(0))
+                wildMonIndex = 0;
+            else
+                wildMonIndex = 1;
+        }
         else
-            wildMonIndex = 1;
+        {
+            if (rand < ENCOUNTER_CHANCE_FISHING_MONS_OLD_ROD_SLOT_0)
+                wildMonIndex = 0;
+            else
+                wildMonIndex = 1;
+        }
         break;
     case GOOD_ROD:
-        if (rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_2)
-            wildMonIndex = 2;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_2 && rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_3)
-            wildMonIndex = 3;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_3 && rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_4)
-            wildMonIndex = 4;
+        if (gArchipelagoOptions.normalizeEncounterRates)
+        {
+            if (rand < NORMALIZED_GOOD_ROD_ENCOUNTER(2))
+                wildMonIndex = 2;
+            if (rand >= NORMALIZED_GOOD_ROD_ENCOUNTER(2) && rand < NORMALIZED_GOOD_ROD_ENCOUNTER(3))
+                wildMonIndex = 3;
+            if (rand >= NORMALIZED_GOOD_ROD_ENCOUNTER(3) && rand < NORMALIZED_GOOD_ROD_ENCOUNTER(4))
+                wildMonIndex = 4;
+        }
+        else
+        {
+            if (rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_2)
+                wildMonIndex = 2;
+            if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_2 && rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_3)
+                wildMonIndex = 3;
+            if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_3 && rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_4)
+                wildMonIndex = 4;
+        }
         break;
     case SUPER_ROD:
-        if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_5)
-            wildMonIndex = 5;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_5 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_6)
-            wildMonIndex = 6;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_6 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_7)
-            wildMonIndex = 7;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_7 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_8)
-            wildMonIndex = 8;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_8 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_9)
-            wildMonIndex = 9;
+        if (gArchipelagoOptions.normalizeEncounterRates)
+        {
+            if (rand < NORMALIZED_SUPER_ROD_ENCOUNTER(5))
+                wildMonIndex = 5;
+            if (rand >= NORMALIZED_SUPER_ROD_ENCOUNTER(5) && rand < NORMALIZED_SUPER_ROD_ENCOUNTER(6))
+                wildMonIndex = 6;
+            if (rand >= NORMALIZED_SUPER_ROD_ENCOUNTER(6) && rand < NORMALIZED_SUPER_ROD_ENCOUNTER(7))
+                wildMonIndex = 7;
+            if (rand >= NORMALIZED_SUPER_ROD_ENCOUNTER(7) && rand < NORMALIZED_SUPER_ROD_ENCOUNTER(8))
+                wildMonIndex = 8;
+            if (rand >= NORMALIZED_SUPER_ROD_ENCOUNTER(8) && rand < NORMALIZED_SUPER_ROD_ENCOUNTER(9))
+                wildMonIndex = 9;
+        }
+        else
+        {
+            if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_5)
+                wildMonIndex = 5;
+            if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_5 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_6)
+                wildMonIndex = 6;
+            if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_6 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_7)
+                wildMonIndex = 7;
+            if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_7 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_8)
+                wildMonIndex = 8;
+            if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_8 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_9)
+                wildMonIndex = 9;
+        }
         break;
     }
     return wildMonIndex;
