@@ -20,7 +20,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
 
     .openViridianCity = FALSE,
     .route3Requirement = 1,
-    .saveBillRequired = TRUE,
+    .openCeruleanCity = FALSE,
     .modifyRoute2 = FALSE,
     .modifyRoute9 = FALSE,
     .blockUndergroundTunnels = FALSE,
@@ -28,6 +28,8 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .modifyRoute10 = FALSE,
     .modifyRoute12 = FALSE,
     .modifyRoute16 = FALSE,
+    .openSilphCo = FALSE,
+    .removeSaffronRockets = FALSE,
     .modifyRoute23 = FALSE,
     .route23Trees = FALSE,
     .blockPokemonTower = FALSE,

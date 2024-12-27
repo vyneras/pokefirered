@@ -166,6 +166,11 @@ void NewGameInitData(void)
     if (gArchipelagoOptions.openViridianCity) VarSet(VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1);
     if (!gArchipelagoOptions.route12Boulders) FlagSet(FLAG_HIDE_ROUTE_12_BOULDERS);
     if (!gArchipelagoOptions.blockPokemonTower) VarSet(VAR_MAP_SCENE_POKEMON_TOWER_1F, 1);
+    if (gArchipelagoOptions.removeSaffronRockets)
+    {
+        FlagSet(FLAG_HIDE_SAFFRON_ROCKETS);
+        FlagClear(FLAG_HIDE_SAFFRON_CIVILIANS);
+    }
     if (gArchipelagoOptions.earlyFameGossip) FlagClear(FLAG_HIDE_POSTGAME_GOSSIPERS);
 
     if (!(gArchipelagoOptions.additionalDarkCaves & (1 << 0))) VarSet(VAR_MT_MOON_DARKNESS, 1);

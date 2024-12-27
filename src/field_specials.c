@@ -2674,12 +2674,62 @@ bool8 ArchipelagoSpecial_CanLeavePewterCity(void)
 
 bool8 ArchipelagoSpecial_CanLeaveCeruleanCity(void)
 {
-    if (gArchipelagoOptions.saveBillRequired)
-    {
-        return FlagGet(FLAG_GOT_SS_TICKET);
-    }
+    return FlagGet(FLAG_GOT_SS_TICKET) || gArchipelagoOptions.openCeruleanCity;
+}
 
-    return TRUE;
+bool8 ArchipelagoSpecial_Route2Modified(void)
+{
+    return gArchipelagoOptions.modifyRoute2;
+}
+
+bool8 ArchipelagoSpecial_BlockTunnels(void)
+{
+    return gArchipelagoOptions.blockUndergroundTunnels;
+}
+
+bool8 ArchipelagoSpecial_Route9Modified(void)
+{
+    return gArchipelagoOptions.modifyRoute9;
+}
+
+bool8 ArchipelagoSpecial_Route10Modified(void)
+{
+    return gArchipelagoOptions.modifyRoute10;
+}
+
+bool8 ArchipelagoSpecial_Route12Modified(void)
+{
+    return gArchipelagoOptions.modifyRoute12;
+}
+
+bool8 ArchipelagoSpecial_Route16Modified(void)
+{
+    return gArchipelagoOptions.modifyRoute16;
+}
+
+bool8 ArchipelagoSpecial_CanEnterSilphCo(void)
+{
+    return FlagGet(FLAG_RESCUED_MR_FUJI) || gArchipelagoOptions.openSilphCo;
+}
+
+bool8 ArchipelagoSpecial_Route23Trees(void)
+{
+    return gArchipelagoOptions.route23Trees;
+}
+
+bool8 ArchipelagoSpecial_Route23Modified(void)
+{
+    return gArchipelagoOptions.modifyRoute23;
+}
+
+bool8 ArchipelagoSpecial_VictoryRoadRocks(void)
+{
+    return gArchipelagoOptions.victoryRoadRocks;
+}
+
+bool8 ArchipelagoSpecial_PostGameGossip(void)
+{
+	return FlagGet(FLAG_SYS_GAME_CLEAR) || gArchipelagoOptions.earlyFameGossip;
 }
 
 bool8 ArchipelagoSpecial_GiovanniRequiresGyms(void)
@@ -2964,56 +3014,6 @@ void ArchipelagoSpecial_UseClosestWarp(void)
 bool8 ArchipelagoSpecial_FlashRequired(void)
 {
     return gArchipelagoOptions.flashRequired;
-}
-
-bool8 ArchipelagoSpecial_Route2Modified(void)
-{
-    return gArchipelagoOptions.modifyRoute2;
-}
-
-bool8 ArchipelagoSpecial_BlockTunnels(void)
-{
-    return gArchipelagoOptions.blockUndergroundTunnels;
-}
-
-bool8 ArchipelagoSpecial_Route9Modified(void)
-{
-    return gArchipelagoOptions.modifyRoute9;
-}
-
-bool8 ArchipelagoSpecial_Route10Modified(void)
-{
-    return gArchipelagoOptions.modifyRoute10;
-}
-
-bool8 ArchipelagoSpecial_Route12Modified(void)
-{
-    return gArchipelagoOptions.modifyRoute12;
-}
-
-bool8 ArchipelagoSpecial_Route16Modified(void)
-{
-    return gArchipelagoOptions.modifyRoute16;
-}
-
-bool8 ArchipelagoSpecial_Route23Trees(void)
-{
-    return gArchipelagoOptions.route23Trees;
-}
-
-bool8 ArchipelagoSpecial_Route23Modified(void)
-{
-    return gArchipelagoOptions.modifyRoute23;
-}
-
-bool8 ArchipelagoSpecial_VictoryRoadRocks(void)
-{
-    return gArchipelagoOptions.victoryRoadRocks;
-}
-
-bool8 ArchipelagoSpecial_PostGameGossip(void)
-{
-	return FlagGet(FLAG_SYS_GAME_CLEAR) || gArchipelagoOptions.earlyFameGossip;
 }
 
 bool8 ArchipelagoSpecial_CanOpenSilphDoor(void)

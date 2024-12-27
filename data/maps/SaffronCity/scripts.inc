@@ -11,7 +11,8 @@ SaffronCity_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, SaffronCity_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, SaffronCity_EventScript_SetWorldMapFlag
-	call_if_unset FLAG_RESCUED_MR_FUJI, SaffronCity_EventScript_MoveDoorGuardGrunt
+	specialvar VAR_RESULT, ArchipelagoSpecial_CanEnterSilphCo
+	call_if_eq VAR_RESULT, FALSE, SaffronCity_EventScript_MoveDoorGuardGrunt
 	end
 
 SaffronCity_EventScript_SetGiveFlyUnlockItem::
