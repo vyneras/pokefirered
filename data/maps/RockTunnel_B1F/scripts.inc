@@ -1,5 +1,10 @@
 RockTunnel_B1F_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, RockTunnel_B1F_OnFrame
 	.byte 0
+
+RockTunnel_B1F_OnFrame::
+	map_script_2 VAR_ROCK_TUNNEL_DARKNESS, 0, EventScript_NeedFlash
+	.2byte 0
 
 RockTunnel_B1F_EventScript_Sofia::
 	trainerbattle_single TRAINER_PICNICKER_SOFIA, RockTunnel_B1F_Text_SofiaIntro, RockTunnel_B1F_Text_SofiaDefeat

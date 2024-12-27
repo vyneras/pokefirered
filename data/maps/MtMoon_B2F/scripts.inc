@@ -4,6 +4,7 @@
 
 MtMoon_B2F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MtMoon_B2F_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MtMoon_B2F_OnFrame
 	.byte 0
 
 MtMoon_B2F_OnTransition::
@@ -31,6 +32,10 @@ MtMoon_B2F_EventScript_SetMiguelLeft::
 	setobjectxyperm LOCALID_MIGUEL, 3, 6
 	setvar VAR_MAP_SCENE_MT_MOON_B2F, 1
 	end
+
+MtMoon_B2F_OnFrame::
+	map_script_2 VAR_MT_MOON_DARKNESS, 0, EventScript_NeedFlash
+	.2byte 0
 
 MtMoon_B2F_EventScript_MiguelTrigger::
 	lockall

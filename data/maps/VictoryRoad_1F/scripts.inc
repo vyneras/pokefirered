@@ -3,6 +3,7 @@
 VictoryRoad_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, VictoryRoad_1F_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, VictoryRoad_1F_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, VictoryRoad_1F_OnFrame
 	.byte 0
 
 VictoryRoad_1F_OnLoad::
@@ -23,6 +24,10 @@ VictoryRoad_1F_OnTransition::
 VictoryRoad_1F_EventScript_RemoveRock::
 	setflag FLAG_TEMP_12
 	return
+
+VictoryRoad_1F_OnFrame::
+	map_script_2 VAR_VICTORY_ROAD_DARKNESS, 0, EventScript_NeedFlash
+	.2byte 0
 
 VictoryRoad_1F_EventScript_FloorSwitch::
 	lockall

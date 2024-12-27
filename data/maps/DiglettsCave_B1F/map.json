@@ -31,43 +31,6 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [
-    {
-      "type": "trigger",
-      "x": 2,
-      "y": 3,
-      "elevation": 0,
-      "var": "VAR_DIGLETTS_CAVE_DARKNESS",
-      "var_value": "0",
-      "script": "EventScript_NeedFlash"
-    },
-    {
-      "type": "trigger",
-      "x": 3,
-      "y": 4,
-      "elevation": 0,
-      "var": "VAR_DIGLETTS_CAVE_DARKNESS",
-      "var_value": "0",
-      "script": "EventScript_NeedFlash"
-    },
-    {
-      "type": "trigger",
-      "x": 81,
-      "y": 71,
-      "elevation": 0,
-      "var": "VAR_DIGLETTS_CAVE_DARKNESS",
-      "var_value": "0",
-      "script": "EventScript_NeedFlash"
-    },
-    {
-      "type": "trigger",
-      "x": 82,
-      "y": 72,
-      "elevation": 0,
-      "var": "VAR_DIGLETTS_CAVE_DARKNESS",
-      "var_value": "0",
-      "script": "EventScript_NeedFlash"
-    }
-  ],
+  "coord_events": [],
   "bg_events": []
 }
