@@ -452,7 +452,8 @@ int main (int argc, char *argv[])
             { "sTutorLearnsets", symbol_map["sTutorLearnsets"] - ROM_START },
             { "sFanfares", symbol_map["sFanfares"] - ROM_START },
             { "sInGameTrades", symbol_map["sInGameTrades"] - ROM_START},
-            { "sFlashLevelToRadius", symbol_map["sFlashLevelToRadius"] - ROM_START}
+            { "sFlashLevelToRadius", symbol_map["sFlashLevelToRadius"] - ROM_START},
+            { "sArchipelagoPCItemId", symbol_map["sArchipelagoPCItemId"] - ROM_START}
         };
 
         // ------------------------------------------------------------------------

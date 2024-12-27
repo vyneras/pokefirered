@@ -230,6 +230,9 @@ bool8 AddBagItem(u16 itemId, u16 count)
     u8 pocket;
     s8 idx;
 
+    if (itemId == ITEM_ARCHIPELAGO_PROGRESSION)
+        return TRUE;
+
     if (IsItemUnique(itemId))
         return AddUniqueBagItem(itemId, count);
 
