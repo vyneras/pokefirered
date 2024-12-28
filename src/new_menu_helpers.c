@@ -658,7 +658,7 @@ void DisplayYesNoMenuDefaultNo(void)
 u8 GetTextSpeedSetting(void)
 {
     u32 speed;
-    if (gSaveBlock2Ptr->optionsTextSpeed > OPTIONS_TEXT_SPEED_FAST)
+    if (gSaveBlock2Ptr->optionsTextSpeed > OPTIONS_TEXT_SPEED_INSTANT)
         gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_MID;
     return sTextSpeedFrameDelays[gSaveBlock2Ptr->optionsTextSpeed];
 }
