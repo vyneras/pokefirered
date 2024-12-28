@@ -7,7 +7,7 @@ EventScript_PkmnCenterNurse_HealPkmn::
 	incrementgamestat GAME_STAT_USED_POKECENTER
 	call EventScript_PkmnCenterNurse_TakeAndHealPkmn
 	special SetUsedPkmnCenterQuestLogEvent
-	goto EventScript_PkmnCenterNurse_CheckTrainerTowerAndUnionRoom
+	goto EventScript_PkmnCenterNurse_ReturnPkmn
 	end
 
 EventScript_PkmnCenterNurse_TakeAndHealPkmn::
