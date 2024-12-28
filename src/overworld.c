@@ -1112,6 +1112,8 @@ void Overworld_PlaySpecialMapMusic(void)
         music = gSaveBlock1Ptr->savedMusic;
     else if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING) && Overworld_MusicCanOverrideMapMusic(MUS_SURF))
         music = MUS_SURF;
+    else if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE) && Overworld_MusicCanOverrideMapMusic(MUS_CYCLING))
+        music = MUS_CYCLING;
 
     if (music != GetCurrentMapMusic())
         PlayNewMapMusic(music);
@@ -1148,6 +1150,8 @@ static void Overworld_TryMapConnectionMusicTransition(void)
             return;
         if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING) && Overworld_MusicCanOverrideMapMusic(MUS_SURF))
             newMusic = MUS_SURF;
+        if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE) && Overworld_MusicCanOverrideMapMusic(MUS_CYCLING))
+            newMusic = MUS_CYCLING;
         if (newMusic != currentMusic)
         {
             if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE))
@@ -1264,11 +1268,11 @@ static void ChooseAmbientCrySpecies(void)
 
 bool32 Overworld_MusicCanOverrideMapMusic(u16 music)
 {
-	if (music == MUS_CYCLING)
-	{
-		if (gMapHeader.mapType == MAP_TYPE_INDOOR)
-			return FALSE;
-	}
+    if (music == MUS_CYCLING)
+    {
+        if (gMapHeader.mapType == MAP_TYPE_INDOOR)
+            return FALSE;
+    }
     if (music == MUS_CYCLING || music == MUS_SURF)
     {
         if (gMapHeader.regionMapSectionId == MAPSEC_KANTO_VICTORY_ROAD ||
