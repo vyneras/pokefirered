@@ -20,6 +20,7 @@ static void BikeTransition_TurnDirection(u8);
 static void BikeTransition_MoveDirection(u8);
 static void BikeTransition_Downhill(u8);
 static void BikeTransition_Uphill(u8);
+static void BikeTransition_SlowMoveDirection(u8);
 static u8 BikeInputHandler_Normal(u8 *, u16, u16);
 static u8 BikeInputHandler_Turning(u8 *, u16, u16);
 static u8 BikeInputHandler_Slope(u8 *, u16, u16);
@@ -31,6 +32,7 @@ static void (*const sBikeTransitions[])(u8) =
     [BIKE_TRANS_MOVE]           = BikeTransition_MoveDirection,
     [BIKE_TRANS_DOWNHILL]       = BikeTransition_Downhill,
     [BIKE_TRANS_UPHILL]         = BikeTransition_Uphill,
+    [BIKE_TRANS_SLOW_MOVE]      = BikeTransition_SlowMoveDirection,
 };
 
 static u8 (*const sBikeInputHandlers[])(u8 *, u16, u16) =
@@ -73,7 +75,7 @@ static u8 BikeInputHandler_Normal(u8 *direction_p, u16 newKeys, u16 heldKeys)
             {
                 gPlayerAvatar.acroBikeState = BIKE_STATE_SLOPE;
                 gPlayerAvatar.runningState = MOVING;
-                return BIKE_TRANS_UPHILL;
+                return BIKE_TRANS_SLOW_MOVE;
             }
         }
     }
@@ -122,7 +124,7 @@ static u8 BikeInputHandler_Slope(u8 *direction_p, u16 newKeys, u16 heldKeys)
             gPlayerAvatar.runningState = NOT_MOVING;
             return GetBikeTransitionId(direction_p, newKeys, heldKeys);
         }
-        else
+        else if (!JOY_HELD(B_BUTTON))
         {
             gPlayerAvatar.runningState = MOVING;
             gPlayerAvatar.acroBikeState = BIKE_STATE_SLOPE;
@@ -130,6 +132,12 @@ static u8 BikeInputHandler_Slope(u8 *direction_p, u16 newKeys, u16 heldKeys)
                 return BIKE_TRANS_DOWNHILL;
             else
                 return BIKE_TRANS_UPHILL;
+        }
+        else
+        {
+            gPlayerAvatar.acroBikeState = BIKE_STATE_SLOPE;
+            gPlayerAvatar.runningState = MOVING;
+            return BIKE_TRANS_SLOW_MOVE;
         }
     }
     gPlayerAvatar.acroBikeState = BIKE_STATE_NORMAL;
@@ -207,6 +215,12 @@ static void BikeTransition_Downhill(u8 v)
 }
 
 static void BikeTransition_Uphill(u8 direction)
+{
+    if (GetBikeCollision(direction) == COLLISION_NONE)
+        PlayerWalkFaster(direction);
+}
+
+static void BikeTransition_SlowMoveDirection(u8 direction)
 {
     if (GetBikeCollision(direction) == COLLISION_NONE)
         PlayerWalkNormal(direction);
