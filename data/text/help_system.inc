@@ -1396,7 +1396,7 @@ Help_Text_DefineBadges::
 Help_Text_DefineTextSpeed::
 	.string "You can adjust how quickly the text is\n"
 	.string "displayed. Choose one: SLOW, MID,\l"
-	.string "or FAST.$"
+	.string "FAST or INSTANT.$"
 
 Help_Text_DefineBattleScene::
 	.string "You can choose to turn the battle\n"

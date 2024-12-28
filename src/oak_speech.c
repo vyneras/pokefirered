@@ -17,8 +17,6 @@
 #include "data.h"
 #include "constants/songs.h"
 
-#define INTRO_SPECIES SPECIES_NIDORAN_F
-
 enum
 {
     WIN_INTRO_TEXTBOX,
@@ -45,6 +43,7 @@ struct OakSpeechResources
 };
 
 static EWRAM_DATA struct OakSpeechResources *sOakSpeechResources = NULL;
+static const u16 sIntroSpecies = SPECIES_NIDORAN_F;
 
 static void Task_NewGameScene(u8);
 
@@ -1193,7 +1192,7 @@ static void Task_OakSpeech_IsInhabitedFarAndWide(u8 taskId)
         if (gTasks[taskId].tTimer == 32)
         {
             OakSpeechPrintMessage(gOakSpeech_Text_IsInhabitedFarAndWide, sOakSpeechResources->textSpeed);
-            PlayCry_Normal(INTRO_SPECIES, 0);
+            PlayCry_Normal(sIntroSpecies, 0);
         }
     }
 }
@@ -1884,9 +1883,9 @@ static void CreateNidoranFSprite(u8 taskId)
 {
     u8 spriteId;
 
-    DecompressPicFromTable(&gMonFrontPicTable[INTRO_SPECIES], MonSpritesGfxManager_GetSpritePtr(0), INTRO_SPECIES);
-    LoadCompressedSpritePaletteUsingHeap(&gMonPaletteTable[INTRO_SPECIES]);
-    SetMultiuseSpriteTemplateToPokemon(INTRO_SPECIES, 0);
+    DecompressPicFromTable(&gMonFrontPicTable[sIntroSpecies], MonSpritesGfxManager_GetSpritePtr(0), sIntroSpecies);
+    LoadCompressedSpritePaletteUsingHeap(&gMonPaletteTable[sIntroSpecies]);
+    SetMultiuseSpriteTemplateToPokemon(sIntroSpecies, 0);
     spriteId = CreateSprite(&gMultiuseSpriteTemplate, 96, 96, 1);
     gSprites[spriteId].callback = SpriteCallbackDummy;
     gSprites[spriteId].oam.priority = 1;
