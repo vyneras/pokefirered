@@ -56,7 +56,7 @@ RocketHideout_B4F_EventScript_TryHideMiscKantoRockets::
 	specialvar VAR_RESULT, ArchipelagoSpecial_IsTrainersanity
 	goto_if_eq VAR_RESULT, TRUE, EventScript_Return
 	setflag FLAG_HIDE_MISC_KANTO_ROCKETS
-  return
+	return
 
 RocketHideout_B4F_EventScript_SilphScope::
 	lock

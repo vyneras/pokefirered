@@ -1,4 +1,4 @@
-.set LOCAL_ID_BOULDER_BADGE_GUARD, 1
+.set LOCALID_BOULDER_BADGE_GUARD, 1
 .set REQUIRED_BADGES_GYMS, VAR_TEMP_1
 
 Route22_NorthEntrance_MapScripts::
@@ -13,7 +13,7 @@ Route22_NorthEntrance_EventScript_Guard::
 
 Route22_NorthEntrance_EventScript_GuardTrigger::
 	lockall
-	applymovement LOCAL_ID_BOULDER_BADGE_GUARD, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_BOULDER_BADGE_GUARD, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	setvar VAR_TEMP_2, 1
 	goto Route22_NorthEntrance_EventScript_GuardCheckBadgesGyms

@@ -1144,7 +1144,7 @@ static void Overworld_TryMapConnectionMusicTransition(void)
     {
         newMusic = GetWarpDestinationMusic();
         currentMusic = GetCurrentMapMusic();
-        if (currentMusic == MUS_SURF)
+        if (currentMusic == MUS_SURF || currentMusic == MUS_CYCLING)
             return;
         if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING) && Overworld_MusicCanOverrideMapMusic(MUS_SURF))
             newMusic = MUS_SURF;
@@ -1264,11 +1264,16 @@ static void ChooseAmbientCrySpecies(void)
 
 bool32 Overworld_MusicCanOverrideMapMusic(u16 music)
 {
-    if (music == MUS_CYCLING)
-        return FALSE;
-    if (music == MUS_SURF)
+	if (music == MUS_CYCLING)
+	{
+		if (gMapHeader.mapType == MAP_TYPE_INDOOR)
+			return FALSE;
+	}
+    if (music == MUS_CYCLING || music == MUS_SURF)
     {
-        if (gMapHeader.regionMapSectionId == MAPSEC_KANTO_VICTORY_ROAD || gMapHeader.regionMapSectionId == MAPSEC_ROUTE_23 || gMapHeader.regionMapSectionId == MAPSEC_INDIGO_PLATEAU)
+        if (gMapHeader.regionMapSectionId == MAPSEC_KANTO_VICTORY_ROAD ||
+            gMapHeader.regionMapSectionId == MAPSEC_ROUTE_23 ||
+            gMapHeader.regionMapSectionId == MAPSEC_INDIGO_PLATEAU)
             return FALSE;
     }
     return TRUE;

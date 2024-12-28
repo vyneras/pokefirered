@@ -40,21 +40,10 @@ OneIsland_PokemonCenter_1F_ClearCinnabarIslandBillFlag::
 	return
 
 OneIsland_PokemonCenter_1F_EventScript_SetBillCelioFirstMeetingPos::
-	getplayerxy VAR_0x8004, VAR_0x8005
-	call_if_lt VAR_0x8004, 9, OneIsland_PokemonCenter_1F_EventScript_SetBillFirstMeetingPosStairs
-	call_if_ge VAR_0x8004, 9, OneIsland_PokemonCenter_1F_EventScript_SetBillFirstMeetingPosEntrance
-	setobjectxyperm LOCALID_CELIO, 15, 6
-	setobjectmovementtype LOCALID_CELIO, MOVEMENT_TYPE_FACE_UP
-	return
-
-OneIsland_PokemonCenter_1F_EventScript_SetBillFirstMeetingPosEntrance::
 	setobjectxyperm LOCALID_BILL, 9, 8
 	setobjectmovementtype LOCALID_BILL, MOVEMENT_TYPE_FACE_UP
-	return
-
-OneIsland_PokemonCenter_1F_EventScript_SetBillFirstMeetingPosStairs::
-	setobjectxyperm LOCALID_BILL, 2, 5
-	setobjectmovementtype LOCALID_BILL, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectxyperm LOCALID_CELIO, 15, 6
+	setobjectmovementtype LOCALID_CELIO, MOVEMENT_TYPE_FACE_UP
 	return
 
 OneIsland_PokemonCenter_1F_EventScript_CheckBillHasLeft::
@@ -81,9 +70,7 @@ OneIsland_PokemonCenter_1F_OnFrame::
 OneIsland_PokemonCenter_1F_EventScript_MeetCelioScene::
 	lockall
 	textcolor NPC_TEXT_COLOR_MALE
-	getplayerxy VAR_0x8004, VAR_0x8005
-	call_if_lt VAR_0x8004, 9, OneIsland_PokemonCenter_1F_EventScript_WalkToCelioFromStairs
-	call_if_ge VAR_0x8004, 9, OneIsland_PokemonCenter_1F_EventScript_WalkToCelioFromEntrance
+	call OneIsland_PokemonCenter_1F_EventScript_WalkToCelioFromEntrance
 	msgbox OneIsland_PokemonCenter_1F_Text_BillHeyThereCelio
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
@@ -147,12 +134,6 @@ OneIsland_PokemonCenter_1F_EventScript_WalkToCelioFromEntrance::
 	waitmovement 0
 	return
 
-OneIsland_PokemonCenter_1F_EventScript_WalkToCelioFromStairs::
-	applymovement LOCALID_BILL, OneIsland_PokemonCenter_1F_Movement_BillWalkToCelioFromStairs
-	applymovement OBJ_EVENT_ID_PLAYER, OneIsland_PokemonCenter_1F_Movement_PlayerWalkToCelioFromStairs
-	waitmovement 0
-	return
-
 OneIsland_PokemonCenter_1F_EventScript_IntroducePlayerChamp::
 	msgbox OneIsland_PokemonCenter_1F_Text_PlayerIsReigningPokemonChamp
 	return
@@ -189,42 +170,6 @@ OneIsland_PokemonCenter_1F_Movement_BillWalkToCelioFromEntrance::
 	walk_right
 	walk_right
 	walk_up
-	walk_in_place_faster_right
-	step_end
-
-OneIsland_PokemonCenter_1F_Movement_PlayerWalkToCelioFromStairs::
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_right
-	walk_in_place_faster_up
-	step_end
-
-OneIsland_PokemonCenter_1F_Movement_BillWalkToCelioFromStairs::
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
 	walk_in_place_faster_right
 	step_end
 

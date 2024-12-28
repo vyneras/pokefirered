@@ -83,10 +83,10 @@ SilphCo_11F_EventScript_BattleGiovanni::
 SilphCo_11F_EventScript_TryHideSilphRockets::
 	specialvar VAR_RESULT, ArchipelagoSpecial_IsTrainersanity
 	goto_if_eq VAR_RESULT, TRUE, EventScript_Return
-  removeobject LOCALID_GRUNT1
-  removeobject LOCALID_GRUNT2
+	removeobject LOCALID_GRUNT1
+	removeobject LOCALID_GRUNT2
 	setflag FLAG_HIDE_SILPH_ROCKETS
-  return
+	return
 
 SilphCo_11F_EventScript_GiovanniApproachLeft::
 	applymovement LOCALID_GIOVANNI, SilphCo_11F_Movement_GiovanniApproachLeft
