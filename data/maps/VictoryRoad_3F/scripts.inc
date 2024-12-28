@@ -9,11 +9,16 @@ VictoryRoad_3F_MapScripts::
 
 VictoryRoad_3F_OnLoad::
 	call_if_ne VAR_MAP_SCENE_VICTORY_ROAD_3F, 100, VictoryRoad_3F_EventScript_SetRockBarrier
+	call_if_eq VAR_MAP_SCENE_VICTORY_ROAD_3F, 100, VictoryRoad_3F_EventScript_MoveSwitchBoulder
 	end
 
 VictoryRoad_3F_EventScript_SetRockBarrier::
 	setmetatile 12, 12, METATILE_Cave_RockBarrier_Top, 1
 	setmetatile 12, 13, METATILE_Cave_RockBarrier_Bottom, 1
+	return
+
+VictoryRoad_3F_EventScript_MoveSwitchBoulder::
+	setobjectxyperm 10, 7 ,7
 	return
 
 VictoryRoad_3F_OnTransition::
