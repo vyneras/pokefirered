@@ -35,6 +35,8 @@
 
 #define FC_NONTRAINER_START 0xFE00
 
+#define FAME_CHECKER_AP_FLAG_START 20001
+
 struct FameCheckerData
 {
     MainCallback savedCallback;
@@ -1243,8 +1245,7 @@ void SetFlavorTextFlagFromSpecialVars(void)
                     {
                         u8 rewardNum = (gSpecialVar_0x8004 * 6) + gSpecialVar_0x8005;
                         gRewardQueue[i].itemId = sFameCheckerRewards[rewardNum];
-                        gRewardQueue[i].locationId = FAMECHECKER_FLAGS + rewardNum;
-                        FlagSet(FAMECHECKER_FLAGS + rewardNum);
+                        gRewardQueue[i].locationId = FAME_CHECKER_AP_FLAG_START + rewardNum;
                         break;
                     }
                 }

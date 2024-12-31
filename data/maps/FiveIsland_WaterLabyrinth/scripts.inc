@@ -74,7 +74,7 @@ FiveIsland_WaterLabyrinth_EventScript_CheckGiveFameCheckerHint::
 
 FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHint::
 	setflag FLAG_HINT_SHOW_TOGEPI
-	bufferapitemstrings STR_VAR_2, STR_VAR_3, FLAG_FAMECHECKER_DAISY_3
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, 20009 @ Location Id for Daisy's 3rd entry
 	goto_if_eq VAR_RESULT, 0, FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHintItem
 	goto_if_eq VAR_RESULT, 1, FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHintPlayerItem
 	goto_if_eq VAR_RESULT, 2, FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHintItem

@@ -13,7 +13,7 @@
 using json = nlohmann::json;
 
 #define ROM_START 0x8000000
-#define FAME_CHECKER_FLAG_START 0x300
+#define FAME_CHECKER_FLAG_START 20001
 
 std::map<int, std::string> GAME_VERSION_MAP = {
     {0, "firered"},
