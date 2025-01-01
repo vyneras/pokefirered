@@ -115,38 +115,44 @@ bool16 AddTextPrinter(struct TextPrinterTemplate *textSubPrinter, u8 speed, void
 void RunTextPrinters(void)
 {
     int i;
-    do {
+
+    do
+    {
         int numEmpty = 0;
+
         for (i = 0; i < NUM_TEXT_PRINTERS; ++i)
-		{
+        {
             if (sTextPrinters[i].active)
-			{
-                u32 renderCmd = RenderFont(&sTextPrinters[i]);
+            {
+                u16 renderCmd = RenderFont(&sTextPrinters[i]);
                 u8 renderState = sTextPrinters[i].state;
                 switch (renderCmd)
-				{
+                {
                 case RENDER_PRINT:
                     CopyWindowToVram(sTextPrinters[i].printerTemplate.windowId, COPYWIN_GFX);
                 case RENDER_UPDATE:
                     if (sTextPrinters[i].callback != NULL)
-                        sTextPrinters[i].callback( & sTextPrinters[i].printerTemplate, renderCmd);
+                        sTextPrinters[i].callback(&sTextPrinters[i].printerTemplate, renderCmd);
 
                     // RENDER_REPEAT is only in RENDER_STATE_HANDLE_CHAR with which the RenderFont() deals.
                     // all other states are handled outside of RenderFont()
                     // When user interaction is needed stop the looping, so the system can wait for the action
                     if (renderState != RENDER_STATE_HANDLE_CHAR)
-                        {
-                            numEmpty = NUM_TEXT_PRINTERS;
-                        }
+                    {
+                        numEmpty = NUM_TEXT_PRINTERS;
+                    }
                     break;
                 case RENDER_FINISH:
                     sTextPrinters[i].active = FALSE;
                     break;
                 }
-            } else {
+            }
+            else
+            {
                 numEmpty++;
             }
         }
+
         if (numEmpty >= NUM_TEXT_PRINTERS)
             return;
     } while (gSaveBlock2Ptr->optionsTextSpeed == OPTIONS_TEXT_SPEED_INSTANT);
