@@ -128,10 +128,10 @@
 #define ITEM_BLUE_TEA 114
 #define ITEM_RED_TEA 115
 #define ITEM_PURPLE_TEA 116
-#define ITEM_075 117
-#define ITEM_076 118
-#define ITEM_077 119
-#define ITEM_078 120
+#define ITEM_KINGS_ROCK_EVO 117
+#define ITEM_METAL_COAT_EVO 118
+#define ITEM_DEEP_SEA_SCALE_EVO 119
+#define ITEM_DEEP_SEA_TOOTH_EVO 120
 #define ITEM_ORANGE_MAIL 121
 #define ITEM_HARBOR_MAIL 122
 #define ITEM_GLITTER_MAIL 123
@@ -514,7 +514,7 @@
 #define NUM_SPLIT_PASSES 7
 
 // Check if the item is one that can be used on a Pokemon.
-#define ITEM_IS_CONVERTED_TRADE_EVO_ITEM(item) ((item) == ITEM_KINGS_ROCK || (item) == ITEM_DEEP_SEA_TOOTH || (item) == ITEM_DEEP_SEA_SCALE || (item) == ITEM_METAL_COAT || (item) == ITEM_DRAGON_SCALE || (item) == ITEM_UP_GRADE)
+#define ITEM_IS_CONVERTED_TRADE_EVO_ITEM(item) ((item) == ITEM_KINGS_ROCK_EVO || (item) == ITEM_DEEP_SEA_TOOTH_EVO || (item) == ITEM_DEEP_SEA_SCALE_EVO || (item) == ITEM_METAL_COAT_EVO || (item) == ITEM_DRAGON_SCALE || (item) == ITEM_UP_GRADE)
 #define IS_POKEMON_ITEM(item) (((item) >= ITEM_POTION && (item) <= MAX_BERRY_INDEX) || ITEM_IS_CONVERTED_TRADE_EVO_ITEM(item))
 
 #endif  // GUARD_CONSTANTS_ITEMS_H

@@ -6,8 +6,8 @@ NavelRock_Base_MapScripts::
 	.byte 0
 
 NavelRock_Base_OnTransition::
-	call_if_set FLAG_FOUGHT_LUGIA, NavelRock_Base_EventScript_HideLugia
-	call_if_unset FLAG_FOUGHT_LUGIA, NavelRock_Base_EventScript_TryShowLugia
+	call_if_set FLAG_LUGIA_IS_RECOVERING, NavelRock_Base_EventScript_HideLugia
+	call_if_unset FLAG_LUGIA_IS_RECOVERING, NavelRock_Base_EventScript_TryShowLugia
 	end
 
 NavelRock_Base_EventScript_HideLugia::
@@ -15,7 +15,7 @@ NavelRock_Base_EventScript_HideLugia::
 	return
 
 NavelRock_Base_EventScript_TryShowLugia::
-	goto_if_set FLAG_LUGIA_FLEW_AWAY, EventScript_Return
+	goto_if_set FLAG_CAUGHT_LUGIA, EventScript_Return
 	clearflag FLAG_HIDE_LUGIA
 	return
 
@@ -62,17 +62,20 @@ Archipelago_Target_Legendary_Encounter_LUGIA::
 	waitstate
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
 	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, NavelRock_Base_EventScript_CaughtLugia
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, NavelRock_Base_EventScript_DefeatedLugia
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, NavelRock_Base_EventScript_RanFromLugia
-	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, NavelRock_Base_EventScript_RanFromLugia
-	setflag FLAG_FOUGHT_LUGIA
+	goto NavelRock_Base_EventScript_RanFromLugia
+	end
+
+NavelRock_Base_EventScript_CaughtLugia::
+	setflag FLAG_CAUGHT_LUGIA
 	release
 	end
 
 NavelRock_Base_EventScript_DefeatedLugia::
-	setflag FLAG_LUGIA_FLEW_AWAY
-	setvar VAR_0x8004, SPECIES_LUGIA
-	goto EventScript_MonFlewAway
+	setflag FLAG_DEFEATED_LUGIA
+	setflag FLAG_LUGIA_IS_RECOVERING
+	goto EventScript_RemoveStaticMon
 	end
 
 NavelRock_Base_EventScript_RanFromLugia::

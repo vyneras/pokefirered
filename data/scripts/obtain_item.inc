@@ -17,7 +17,7 @@ Std_ObtainItem::
 	return
 
 EventScript_TrySetGiveItemFlag::
-	call_if_lt LOCATION_ID, 10000, EventScript_SetGiveItemFlag
+	call_if_lt LOCATION_ID, FLAGS_COUNT, EventScript_SetGiveItemFlag
 	return
 
 EventScript_SetGiveItemFlag::

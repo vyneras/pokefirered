@@ -1631,11 +1631,6 @@ static void GiveItemToMon(struct Pokemon *mon, u16 item)
     itemBytes[0] = item;
     itemBytes[1] = item >> 8;
     SetMonData(mon, MON_DATA_HELD_ITEM, itemBytes);
-
-    if (gPartyMenu.action == PARTY_ACTION_GIVE_PC_ITEM &&
-        item == sArchipelagoPCItemId &&
-        !ItemIsMail(item))
-        FlagSet(FLAG_GOT_PC_POTION);
 }
 
 static u8 TryTakeMonItem(struct Pokemon *mon)
@@ -5319,7 +5314,6 @@ static void CB2_UseEvolutionStone(void)
     gCB2_AfterEvolution = gPartyMenu.exitCallback;
     ExecuteTableBasedItemEffect_(gPartyMenu.slotId, gSpecialVar_ItemId, 0);
     ItemUse_SetQuestLogEvent(QL_EVENT_USED_ITEM, &gPlayerParty[gPartyMenu.slotId], gSpecialVar_ItemId, 0xFFFF);
-    RemoveBagItem(gSpecialVar_ItemId, 1);
 }
 
 static bool8 MonCanEvolve(void)
@@ -5543,10 +5537,6 @@ static void CB2_ReturnToPartyOrBagMenuFromWritingMail(void)
     else
     {
         InitPartyMenu(gPartyMenu.menuType, KEEP_PARTY_LAYOUT, gPartyMenu.action, TRUE, PARTY_MSG_NONE, Task_DisplayGaveMailFromBagMessage, gPartyMenu.exitCallback);
-
-        if (gPartyMenu.action == PARTY_ACTION_GIVE_PC_ITEM &&
-            item == sArchipelagoPCItemId)
-            FlagSet(FLAG_GOT_PC_POTION);
     }
 }
 

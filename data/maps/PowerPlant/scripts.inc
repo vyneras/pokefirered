@@ -15,20 +15,23 @@ PowerPlant_EventScript_TryRemoveStaticMon::
 
 PowerPlant_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_POWER_PLANT
-	call_if_unset FLAG_FOUGHT_ZAPDOS, PowerPlant_EventScript_ShowZapdos
-	call_if_unset FLAG_FOUGHT_POWER_PLANT_ELECTRODE_1, PowerPlant_EventScript_ShowElectrode1
-	call_if_unset FLAG_FOUGHT_POWER_PLANT_ELECTRODE_2, PowerPlant_EventScript_ShowElectrode2
+	call_if_unset FLAG_ZAPDOS_IS_RECOVERING, PowerPlant_EventScript_TryShowZapdos
+	call_if_unset FLAG_POWER_PLANT_ELECTRODE_1_IS_RECOVERING, PowerPlant_EventScript_TryShowElectrode1
+	call_if_unset FLAG_POWER_PLANT_ELECTRODE_2_IS_RECOVERING, PowerPlant_EventScript_TryShowElectrode2
 	end
 
-PowerPlant_EventScript_ShowZapdos::
+PowerPlant_EventScript_TryShowZapdos::
+	goto_if_set FLAG_CAUGHT_ZAPDOS, EventScript_Return
 	clearflag FLAG_HIDE_ZAPDOS
 	return
 
-PowerPlant_EventScript_ShowElectrode1::
+PowerPlant_EventScript_TryShowElectrode1::
+	goto_if_set FLAG_CAUGHT_POWER_PLANT_ELECTRODE_1, EventScript_Return
 	clearflag FLAG_HIDE_POWER_PLANT_ELECTRODE_1
 	return
 
-PowerPlant_EventScript_ShowElectrode2::
+PowerPlant_EventScript_TryShowElectrode2::
+	goto_if_set FLAG_CAUGHT_POWER_PLANT_ELECTRODE_2, EventScript_Return
 	clearflag FLAG_HIDE_POWER_PLANT_ELECTRODE_2
 	return
 
@@ -52,15 +55,19 @@ Archipelago_Target_Legendary_Encounter_ZAPDOS::
 	waitstate
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
 	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, PowerPlant_EventScript_CaughtZapdos
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, PowerPlant_EventScript_DefeatedZapdos
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, PowerPlant_EventScript_RanFromZapdos
-	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, PowerPlant_EventScript_RanFromZapdos
-	setflag FLAG_FOUGHT_ZAPDOS
+	goto PowerPlant_EventScript_RanFromZapdos
+	end
+
+PowerPlant_EventScript_CaughtZapdos::
+	setflag FLAG_CAUGHT_ZAPDOS
 	release
 	end
 
 PowerPlant_EventScript_DefeatedZapdos::
-	setflag FLAG_FOUGHT_ZAPDOS
+	setflag FLAG_DEFEATED_ZAPDOS
+	setflag FLAG_ZAPDOS_IS_RECOVERING
 	goto EventScript_RemoveStaticMon
 	end
 
@@ -84,16 +91,14 @@ Archipelago_Target_Static_Encounter_ELECTRODE_1::
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
 	special QuestLog_CutRecording
 	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, PowerPlant_EventScript_FoughtElectrode1
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, PowerPlant_EventScript_FoughtElectrode1
-	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, PowerPlant_EventScript_FoughtElectrode1
-	setflag FLAG_FOUGHT_POWER_PLANT_ELECTRODE_1
-	release
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, PowerPlant_EventScript_CaughtElectrode1
+	setflag FLAG_POWER_PLANT_ELECTRODE_1_IS_RECOVERING
+	goto EventScript_RemoveStaticMon
 	end
 
-PowerPlant_EventScript_FoughtElectrode1::
-	setflag FLAG_FOUGHT_POWER_PLANT_ELECTRODE_1
-	goto EventScript_RemoveStaticMon
+PowerPlant_EventScript_CaughtElectrode1::
+	setflag FLAG_CAUGHT_POWER_PLANT_ELECTRODE_1
+	release
 	end
 
 PowerPlant_EventScript_Electrode2::
@@ -111,14 +116,12 @@ Archipelago_Target_Static_Encounter_ELECTRODE_2::
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
 	special QuestLog_CutRecording
 	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, PowerPlant_EventScript_FoughtElectrode2
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, PowerPlant_EventScript_FoughtElectrode2
-	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, PowerPlant_EventScript_FoughtElectrode2
-	setflag FLAG_FOUGHT_POWER_PLANT_ELECTRODE_2
-	release
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, PowerPlant_EventScript_CaughtElectrode2
+	setflag FLAG_POWER_PLANT_ELECTRODE_2_IS_RECOVERING
+	goto EventScript_RemoveStaticMon
 	end
 
-PowerPlant_EventScript_FoughtElectrode2::
-	setflag FLAG_FOUGHT_POWER_PLANT_ELECTRODE_2
-	goto EventScript_RemoveStaticMon
+PowerPlant_EventScript_CaughtElectrode2::
+	setflag FLAG_CAUGHT_POWER_PLANT_ELECTRODE_2
+	release
 	end

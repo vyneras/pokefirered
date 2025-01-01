@@ -7,6 +7,7 @@
 #include "graphics.h"
 #include "menu.h"
 #include "pokedex.h"
+#include "pokedex_screen.h"
 #include "pokemon_summary_screen.h"
 #include "safari_zone.h"
 #include "constants/songs.h"
@@ -67,6 +68,7 @@ struct TestingBar
 static void SpriteCB_HealthBoxOther(struct Sprite *sprite);
 static void SpriteCB_HealthBar(struct Sprite *sprite);
 static const u8 *GetBattleInterfaceGfxPtr(u8 which);
+static const u8 *GetBattleInterfaceArchipelagoGfxPtr(u8 which);
 static void UpdateHpTextInHealthboxInDoubles(u8 healthboxSpriteId, s16 value, u8 maxOrCurrent);
 static void Task_HidePartyStatusSummary_BattleStart_1(u8 taskId);
 static void Task_HidePartyStatusSummary_BattleStart_2(u8 taskId);
@@ -629,6 +631,11 @@ u8 CreateSafariPlayerHealthboxSprites(void)
 static const u8 *GetBattleInterfaceGfxPtr(u8 elementId)
 {
     return gBattleInterface_Gfx[elementId];
+}
+
+static const u8 *GetBattleInterfaceArchipelagoGfxPtr(u8 elementId)
+{
+    return gBattleInterfaceAp_Gfx[elementId];
 }
 
 // Syncs the position of healthbar accordingly with the healthbox.
@@ -1556,6 +1563,8 @@ void TryAddPokeballIconToHealthbox(u8 healthboxSpriteId, bool8 noStatus)
 {
     u8 battlerId, healthBarSpriteId;
 
+    healthBarSpriteId = gSprites[healthboxSpriteId].sHealthBarSpriteId;
+
     if (gBattleTypeFlags & (BATTLE_TYPE_FIRST_BATTLE | BATTLE_TYPE_OLD_MAN_TUTORIAL | BATTLE_TYPE_POKEDUDE))
         return;
 
@@ -1567,15 +1576,20 @@ void TryAddPokeballIconToHealthbox(u8 healthboxSpriteId, bool8 noStatus)
         return;
     if (CheckBattleTypeGhost(&gEnemyParty[gBattlerPartyIndexes[battlerId]], battlerId))
         return;
-    if (!GetSetPokedexFlag(SpeciesToNationalPokedexNum(GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerId]], MON_DATA_SPECIES)), FLAG_GET_CAUGHT))
-        return;
-
-    healthBarSpriteId = gSprites[healthboxSpriteId].sHealthBarSpriteId;
-
-    if (noStatus)
-        CpuCopy32(GetBattleInterfaceGfxPtr(B_INTERFACE_GFX_BALL_CAUGHT), (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 1 * TILE_SIZE_4BPP);
-    else
-        CpuFill32(0, (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 1 * TILE_SIZE_4BPP);
+    if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerId]], MON_DATA_SPECIES)), FLAG_GET_CAUGHT))
+    {
+        if (noStatus)
+            CpuCopy32(GetBattleInterfaceGfxPtr(B_INTERFACE_GFX_BALL_CAUGHT), (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 1 * TILE_SIZE_4BPP);
+        else
+            CpuFill32(0, (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 1 * TILE_SIZE_4BPP);
+    }
+    else if (HasDexsanityItem(SpeciesToNationalPokedexNum(GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerId]], MON_DATA_SPECIES))))
+    {
+        if (noStatus)
+            CpuCopy32(GetBattleInterfaceArchipelagoGfxPtr(B_INTERFACE_GFX_BALL_CAUGHT), (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 1 * TILE_SIZE_4BPP);
+        else
+            CpuFill32(0, (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 1 * TILE_SIZE_4BPP);
+    }
 }
 
 enum

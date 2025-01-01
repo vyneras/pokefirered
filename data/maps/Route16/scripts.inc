@@ -17,6 +17,7 @@ Route16_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_Route16Modified
 	call_if_eq VAR_RESULT, TRUE, Route16_EventScript_SetAltLayout
 	call_if_eq VAR_RESULT, FALSE, Route16_EventScript_RemoveRock
+	call_if_unset FLAG_ROUTE_16_SNORLAX_IS_RECOVERING, Route16_EventScript_TryShowSnorlax
 	end
 
 Route16_OnTransitionCyclingRoad::
@@ -29,6 +30,11 @@ Route16_EventScript_SetAltLayout::
 
 Route16_EventScript_RemoveRock::
 	setflag FLAG_TEMP_13
+	return
+
+Route16_EventScript_TryShowSnorlax::
+	goto_if_set FLAG_CAUGHT_ROUTE_16_SNORLAX, EventScript_Return
+	clearflag FLAG_HIDE_ROUTE_16_SNORLAX
 	return
 
 Route16_OnWarp::
@@ -59,10 +65,10 @@ Archipelago_Target_Static_Encounter_ROUTE16_SNORLAX::
 	setflag FLAG_SYS_SPECIAL_WILD_BATTLE
 	dowildbattle
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
+	msgbox Text_SnorlaxReturnedToMountains
 	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, Route16_EventScript_FoughtSnorlax
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, Route16_EventScript_FoughtSnorlax
-	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, Route16_EventScript_FoughtSnorlax
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, Route16_EventScript_CaughtSnorlax
+	setflag FLAG_ROUTE_16_SNORLAX_IS_RECOVERING
 	release
 	end
 
@@ -70,8 +76,8 @@ Route16_EventScript_DontUsePokeFlute::
 	release
 	end
 
-Route16_EventScript_FoughtSnorlax::
-	msgbox Text_SnorlaxReturnedToMountains
+Route16_EventScript_CaughtSnorlax::
+	setflag FLAG_CAUGHT_ROUTE_16_SNORLAX
 	release
 	end
 

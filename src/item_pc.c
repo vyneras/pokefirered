@@ -117,12 +117,6 @@ static const struct BgTemplate sBgTemplates[2] = {
 
 static const struct MenuAction sItemPcSubmenuOptions[] = {
     {gText_Withdraw,          {.void_u8 = Task_ItemPcWithdraw}},
-    {gOtherText_Give,         {.void_u8 = Task_ItemPcGive}},
-    {gFameCheckerText_Cancel, {.void_u8 = Task_ItemPcCancel}}
-};
-
-static const struct MenuAction sKeyItemPcSubmenuOptions[] = {
-    {gText_Withdraw,          {.void_u8 = Task_ItemPcWithdraw}},
     {gFameCheckerText_Cancel, {.void_u8 = Task_ItemPcCancel}}
 };
 
@@ -169,9 +163,9 @@ static const struct WindowTemplate sWindowTemplates[] = {
     }, {
         .bg = 0,
         .tilemapLeft = 22,
-        .tilemapTop = 13,
+        .tilemapTop = 15,
         .width = 7,
-        .height = 6,
+        .height = 4,
         .paletteNum = 15,
         .baseBlock = 0x01d7
     }, {
@@ -182,14 +176,6 @@ static const struct WindowTemplate sWindowTemplates[] = {
         .height = 4,
         .paletteNum = 11,
         .baseBlock = 0x016f
-    }, {
-        .bg = 0,
-        .tilemapLeft = 22,
-        .tilemapTop = 15,
-        .width = 7,
-        .height = 4,
-        .paletteNum = 15,
-        .baseBlock = 0x01d7
     }, DUMMY_WIN_TEMPLATE
 };
 
@@ -852,20 +838,10 @@ static void Task_ItemPcSubmenuInit(u8 taskId)
     u8 windowId;
     u16 itemId = ItemPc_GetItemIdBySlotId(data[1]);
 
-    if (ItemId_GetPocket(itemId) != POCKET_KEY_ITEMS && ItemId_GetImportance(itemId) == 0)
-    {
-        ItemPc_SetBorderStyleOnWindow(4);
-        windowId = ItemPc_GetOrCreateSubwindow(0);
-        PrintTextArray(4, FONT_NORMAL, 8, 2, GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) + 2, 3, sItemPcSubmenuOptions);
-        Menu_InitCursor(4, FONT_NORMAL, 0, 2, GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) + 2, 3, 0);
-    }
-    else
-    {
-        ItemPc_SetBorderStyleOnWindow(6);
-        windowId = ItemPc_GetOrCreateSubwindow(0);
-        PrintTextArray(6, FONT_NORMAL, 8, 2, GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) + 2, 2, sKeyItemPcSubmenuOptions);
-        Menu_InitCursor(6, FONT_NORMAL, 0, 2, GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) + 2, 2, 0);
-    }
+    ItemPc_SetBorderStyleOnWindow(4);
+    windowId = ItemPc_GetOrCreateSubwindow(0);
+    PrintTextArray(4, FONT_NORMAL, 8, 2, GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) + 2, 2, sItemPcSubmenuOptions);
+    Menu_InitCursor(4, FONT_NORMAL, 0, 2, GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) + 2, 2, 0);
     CopyItemName(itemId, gStringVar1);
     StringExpandPlaceholders(gStringVar5, gText_Var1IsSelected);
     ItemPc_AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar5, 0, 2, 1, 0, 0, 1);
@@ -875,9 +851,7 @@ static void Task_ItemPcSubmenuInit(u8 taskId)
 
 static void Task_ItemPcSubmenuRun(u8 taskId)
 {
-    s16 * data = gTasks[taskId].data;
     s8 input = Menu_ProcessInputNoWrapAround();
-    u16 itemId = ItemPc_GetItemIdBySlotId(data[1]);
 
     switch (input)
     {
@@ -889,10 +863,7 @@ static void Task_ItemPcSubmenuRun(u8 taskId)
         break;
     default:
         PlaySE(SE_SELECT);
-        if (ItemId_GetPocket(itemId) != POCKET_KEY_ITEMS && ItemId_GetImportance(itemId) == 0)
-            sItemPcSubmenuOptions[input].func.void_u8(taskId);
-        else
-            sKeyItemPcSubmenuOptions[input].func.void_u8(taskId);
+        sItemPcSubmenuOptions[input].func.void_u8(taskId);
     }
 }
 

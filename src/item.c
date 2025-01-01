@@ -236,6 +236,17 @@ bool8 AddBagItem(u16 itemId, u16 count)
     if (IsItemUnique(itemId))
         return AddUniqueBagItem(itemId, count);
 
+    // If the item is one the held items that is also an evo item
+    // we need to add the evo item version to the bag.
+    if (itemId == ITEM_KINGS_ROCK)
+        AddBagItem(ITEM_KINGS_ROCK_EVO, 1);
+    else if (itemId == ITEM_METAL_COAT)
+        AddBagItem(ITEM_METAL_COAT_EVO, 1);
+    else if (itemId == ITEM_DEEP_SEA_SCALE)
+        AddBagItem(ITEM_DEEP_SEA_SCALE_EVO, 1);
+    else if (itemId == ITEM_DEEP_SEA_TOOTH)
+        AddBagItem(ITEM_DEEP_SEA_TOOTH_EVO, 1);
+
     if (ItemId_GetPocket(itemId) == 0)
         return FALSE;
 

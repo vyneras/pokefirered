@@ -14,9 +14,8 @@ SaffronCity_Dojo_Text_ChoosePrizedFightingMon::
     .string "Indeed, I have lost!\p"
     .string "But, I beseech you, do not take\n"
     .string "our emblem as your trophy!\p"
-    .string "In return, I will give you a prized\n"
-    .string "FIGHTING POKéMON!\p"
-    .string "Choose whichever one you like!$"
+    .string "In return, I will give you these\n"
+    .string "prized FIGHTING POKéMON!$"
 
 SaffronCity_Dojo_Text_StayAndTrainWithUs::
     .string "Grunt!\n"

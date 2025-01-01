@@ -367,10 +367,8 @@ void StartLegendaryBattle(void)
     case SPECIES_ZAPDOS:
     case SPECIES_HO_OH:
     case SPECIES_LUGIA:
-        CreateBattleStartTask(B_TRANSITION_BLUR, MUS_VS_LEGEND);
-        break;
     default:
-        CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RS_VS_TRAINER);
+        CreateBattleStartTask(B_TRANSITION_BLUR, MUS_VS_LEGEND);
         break;
     }
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);

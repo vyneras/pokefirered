@@ -14,10 +14,16 @@ Route12_EventScript_TryRemoveSnorlax::
 Route12_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_Route12Modified
 	call_if_eq VAR_RESULT, TRUE, Route12_EventScript_SetAltLayout
+	call_if_unset FLAG_ROUTE_12_SNORLAX_IS_RECOVERING, Route12_EventScript_TryShowSnorlax
 	end
 
 Route12_EventScript_SetAltLayout::
 	setmaplayoutindex LAYOUT_ROUTE12_ALT
+	return
+
+Route12_EventScript_TryShowSnorlax::
+	goto_if_set FLAG_CAUGHT_ROUTE_12_SNORLAX, EventScript_Return
+	clearflag FLAG_HIDE_ROUTE_12_SNORLAX
 	return
 
 Route12_EventScript_Snorlax::
@@ -41,10 +47,10 @@ Archipelago_Target_Static_Encounter_ROUTE12_SNORLAX::
 	setflag FLAG_WOKE_UP_ROUTE_12_SNORLAX
 	dowildbattle
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
+	msgbox Text_SnorlaxReturnedToMountains
 	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, Route12_EventScript_FoughtSnorlax
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, Route12_EventScript_FoughtSnorlax
-	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, Route12_EventScript_FoughtSnorlax
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, Route12_EventScript_CaughtSnorlax
+	setflag FLAG_ROUTE_12_SNORLAX_IS_RECOVERING
 	release
 	end
 
@@ -52,8 +58,8 @@ Route12_EventScript_DontUsePokeFlute::
 	release
 	end
 
-Route12_EventScript_FoughtSnorlax::
-	msgbox Text_SnorlaxReturnedToMountains
+Route12_EventScript_CaughtSnorlax::
+	setflag FLAG_CAUGHT_ROUTE_12_SNORLAX
 	release
 	end
 

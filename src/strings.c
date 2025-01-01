@@ -88,6 +88,7 @@ const u8 gText_PickFlipPageCheckCancel[] = _("{DPAD_LEFTRIGHT}PICK{PLUS}FLIP PAG
 const u8 gText_PokedexPokemon[] = _(" POKéMON");
 const u8 gText_HT[] = _("HT");
 const u8 gText_WT[] = _("WT");
+const u8 gText_HM[] = _("HM");
 const u8 gText_PokedexQuotationMark[] = _("”"); // Unused
 const u8 gText_Lbs[] = _("lbs.");
 const u8 gTextJP_PokemonData[] = _("ポケモンデ-タ");

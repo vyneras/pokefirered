@@ -465,6 +465,7 @@ gSpecials::
 	def_special ArchipelagoSpecial_CanLeaveCeruleanCity
 	def_special ArchipelagoSpecial_Route2Modified
 	def_special ArchipelagoSpecial_BlockTunnels
+	def_special ArchipelagoSpecial_BlockTower
 	def_special ArchipelagoSpecial_Route9Modified
 	def_special ArchipelagoSpecial_Route10Modified
 	def_special ArchipelagoSpecial_Route12Modified

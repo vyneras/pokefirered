@@ -19,7 +19,7 @@ SeafoamIslands_B4F_EventScript_TryRemoveArticuno::
 	return
 
 SeafoamIslands_B4F_OnTransition::
-	call_if_unset FLAG_FOUGHT_ARTICUNO, SeafoamIslands_B4F_EventScript_ShowArticuno
+	call_if_unset FLAG_ARTICUNO_IS_RECOVERING, SeafoamIslands_B4F_EventScript_TryShowArticuno
 	call_if_unset FLAG_STOPPED_SEAFOAM_B4F_CURRENT, SeafoamIslands_B4F_EventScript_CheckStoppedCurrent
 	call_if_set FLAG_STOPPED_SEAFOAM_B4F_CURRENT, SeafoamIslands_B4F_EventScript_SetNoCurrentLayout
 	end
@@ -39,7 +39,8 @@ SeafoamIslands_B4F_EventScript_SetNoCurrentLayout::
 	setmaplayoutindex LAYOUT_SEAFOAM_ISLANDS_B4F_CURRENT_STOPPED
 	return
 
-SeafoamIslands_B4F_EventScript_ShowArticuno::
+SeafoamIslands_B4F_EventScript_TryShowArticuno::
+	goto_if_set FLAG_CAUGHT_ARTICUNO, EventScript_Return
 	clearflag FLAG_HIDE_ARTICUNO
 	return
 
@@ -171,15 +172,19 @@ Archipelago_Target_Legendary_Encounter_ARTICUNO::
 	waitstate
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
 	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, SeafoamIslands_B4F_EventScript_CaughtArticuno
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, SeafoamIslands_B4F_EventScript_DefeatedArticuno
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SeafoamIslands_B4F_EventScript_RanFromArticuno
-	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SeafoamIslands_B4F_EventScript_RanFromArticuno
-	setflag FLAG_FOUGHT_ARTICUNO
+	goto SeafoamIslands_B4F_EventScript_RanFromArticuno
+	end
+
+SeafoamIslands_B4F_EventScript_CaughtArticuno::
+	setflag FLAG_CAUGHT_ARTICUNO
 	release
 	end
 
 SeafoamIslands_B4F_EventScript_DefeatedArticuno::
-	setflag FLAG_FOUGHT_ARTICUNO
+	setflag FLAG_DEFEATED_ARTICUNO
+	setflag FLAG_ARTICUNO_IS_RECOVERING
 	goto EventScript_RemoveStaticMon
 	end
 

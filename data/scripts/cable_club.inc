@@ -1,26 +1,32 @@
 CableClub_OnTransition::
-	call CableClub_EventScript_HideOrShowMysteryGiftMan
 	end
 
-CableClub_EventScript_HideOrShowMysteryGiftMan::
-	specialvar VAR_RESULT, ValidateSavedWonderCard
-	goto_if_eq VAR_RESULT, FALSE, EventScript_HideMysteryGiftMan
-	clearflag FLAG_HIDE_MG_DELIVERYMEN
-	return
-
-EventScript_HideMysteryGiftMan::
-	setflag FLAG_HIDE_MG_DELIVERYMEN
-	return
-
-CableClub_EventScript_MysteryGiftMan::
-	goto_if_questlog EventScript_ReleaseEnd
-	special QuestLog_CutRecording
-	trywondercardscript
-
-@ Unused
-EventScript_MysteryGiftThankYou::
-	msgbox Text_ThankYouForAccessingMysteryGift, MSGBOX_NPC
+CableClub_EventScript_RespawnPokemonMan::
+	lock
+	faceplayer
+	msgbox CableClub_Text_RespawnPokemon, MSGBOX_YESNO
+	call_if_eq VAR_RESULT, YES, CableClub_EventScript_RespawnPokemon
+	release
 	end
+
+CableClub_EventScript_RespawnPokemon::
+	closemessage
+	playfanfare MUS_HEAL
+	clearflag FLAG_MEWTWO_IS_RECOVERING
+	clearflag FLAG_MOLTRES_IS_RECOVERING
+	clearflag FLAG_ARTICUNO_IS_RECOVERING
+	clearflag FLAG_ZAPDOS_IS_RECOVERING
+	clearflag FLAG_LUGIA_IS_RECOVERING
+	clearflag FLAG_HO_OH_IS_RECOVERING
+	clearflag FLAG_DEOXYS_IS_RECOVERING
+	clearflag FLAG_POWER_PLANT_ELECTRODE_1_IS_RECOVERING
+	clearflag FLAG_POWER_PLANT_ELECTRODE_2_IS_RECOVERING
+	clearflag FLAG_ROUTE_12_SNORLAX_IS_RECOVERING
+	clearflag FLAG_ROUTE_16_SNORLAX_IS_RECOVERING
+	clearflag FLAG_POKEMON_TOWER_MAROWAK_IS_RECOVERING
+	clearflag FLAG_BERRY_FOREST_HYPNO_IS_RECOVERING
+	waitfanfare
+	return
 
 CableClub_OnWarp::
 	map_script_2 VAR_CABLE_CLUB_STATE, USING_SINGLE_BATTLE, EventScript_CheckTurnAttendant
@@ -1289,6 +1295,10 @@ TwoIsland_JoyfulGameCorner_EventScript_ShowDodrioBerryPickingRecords::
 	releaseall
 	end
 
+CableClub_Text_RespawnPokemon::
+	.string "Do you want to respawn all the\n"
+	.string "static POKéMON you haven't caught?$"
+
 CableClub_Text_WelcomeWhichCableClubService::
 	.string "Welcome to the POKéMON CABLE\n"
 	.string "CLUB.\p"
@@ -1306,10 +1316,6 @@ CableClub_Text_TradeMonsUsingLinkCable::
 CableClub_Text_BattleUsingLinkCable::
 	.string "You may battle another TRAINER\n"
 	.string "using a GBA Game Link cable.$"
-
-@ Unused, translated in Emerald
-CableClub_Text_CloseThisMenu::
-	.string "おわります$"
 
 CableClub_Text_NeedTwoMonsForDoubleBattle::
 	.string "For a DOUBLE BATTLE, you must\n"
@@ -1340,11 +1346,6 @@ CableClub_Text_StartLinkWithXPlayersAConfirmBCancel::
 CableClub_Text_AwaitingLinkupBCancel::
 	.string "Awaiting linkup…\n"
 	.string "… … B Button: Cancel$"
-
-@ Unused, translated in Emerald
-CableClub_Text_OkayToSaveProgress::
-	.string "はじめる　まえに　レポートを\n"
-	.string "かきますが　よろしいですか？$"
 
 CableClub_Text_PleaseEnter::
 	.string "Please enter.$"
@@ -1418,10 +1419,6 @@ Text_TakeSeatStartTrade::
 	.string "Please take your seat and start\n"
 	.string "your trade.$"
 
-@ Unused, leftover from RS
-RecordCorner_Text_ThanksForComing::
-	.string "ごりよう　ありがとう　ございました$"
-
 CableClub_Text_TrainerCardDataOverwritten::
 	.string "The TRAINER CARD data will\n"
 	.string "be overwritten.$"
@@ -1450,14 +1447,6 @@ CableClub_Text_ParticipantsStepUpToCounter::
 	.string "Participants are asked to step up\n"
 	.string "to the reception counter.$"
 
-@ Unused, translated in Emerald
-CableClub_Text_Hello::
-	.string "こんにちは！$"
-
-@ Unused, translated in Emerald
-CableClub_Text_PleaseWait::
-	.string "しょうしょう　おまちください$"
-
 CableClub_Text_YouMayTradeHere::
 	.string "You may trade your POKéMON here\n"
 	.string "with another TRAINER.$"
@@ -1470,21 +1459,8 @@ CableClub_Text_CanMakeBerryPowder::
 	.string "Two to five TRAINERS can make\n"
 	.string "BERRY POWDER together.$"
 
-@ Unused, Record Mix nopped
-CableClub_Text_CanMixRecords::
-	.string "ワイヤレス　クラブでの\n"
-	.string "あそびかたを　せつめいします$"
-
 CableClub_Text_CancelSelectedItem::
 	.string "Cancels the selected MENU item.$"
-
-@ Unused, translated in Emerald
-CableClub_Text_WhichBattleMode::
-	.string "どちらの　しょうぶに　しますか？$"
-
-@ Unused, translated in Emerald
-CableClub_Text_ReturnsToPreviousStep::
-	.string "ひとつ　まえに　もどります$"
 
 CableClub_Text_NeedBerryForBerryCrush::
 	.string "To use the BERRY CRUSH service,\n"
@@ -1504,11 +1480,6 @@ CableClub_Text_UnionRoomAdapterNotConnected::
 	.string "Unfortunately, your Wireless\n"
 	.string "Adapter is not connected properly.\p"
 	.string "Please do come again.$"
-
-@ Unused, translated in Emerald
-CableClub_Text_OhExcuseMe::
-	.string "あ‥‥\n"
-	.string "おきゃくさま！$"
 
 Text_PlayerIsPlayingRightNowGoForIt::
 	.string "It appears as if {STR_VAR_1} is playing\n"
@@ -1597,11 +1568,6 @@ Text_OnlyDodrioAllowed::
 	.string "Well, the name says it all.\p"
 	.string "You have to have a DODRIO to play\n"
 	.string "this game.$"
-
-@ Unused, translated in Emerald
-Text_RetryFromStartPlease::
-	.string "もういちど　はじめから\n"
-	.string "やりなおして　みて　くれ$"
 
 CableClub_Text_WelcomeWhichDirectCornerRoom::
 	.string "Welcome to the POKéMON WIRELESS\n"

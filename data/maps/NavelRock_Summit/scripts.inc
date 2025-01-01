@@ -6,8 +6,8 @@ NavelRock_Summit_MapScripts::
 	.byte 0
 
 NavelRock_Summit_OnTransition::
-	call_if_set FLAG_FOUGHT_HO_OH, NavelRock_Summit_EventScript_HideHoOh
-	call_if_unset FLAG_FOUGHT_HO_OH, NavelRock_Summit_EventScript_TryShowHoOh
+	call_if_set FLAG_HO_OH_IS_RECOVERING, NavelRock_Summit_EventScript_HideHoOh
+	call_if_unset FLAG_HO_OH_IS_RECOVERING, NavelRock_Summit_EventScript_TryShowHoOh
 	end
 
 NavelRock_Summit_EventScript_HideHoOh::
@@ -17,7 +17,7 @@ NavelRock_Summit_EventScript_HideHoOh::
 
 NavelRock_Summit_EventScript_TryShowHoOh::
 	setvar VAR_TEMP_1, 1
-	goto_if_set FLAG_HO_OH_FLEW_AWAY, EventScript_Return
+	goto_if_set FLAG_CAUGHT_HO_OH, EventScript_Return
 	setvar VAR_TEMP_1, 0
 	clearflag FLAG_HIDE_HO_OH
 	return
@@ -67,17 +67,20 @@ Archipelago_Target_Legendary_Encounter_HO_OH::
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
 	setvar VAR_LAST_TALKED, LOCALID_HO_OH
 	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, NavelRock_Summit_EventScript_CaughtHoOh
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, NavelRock_Summit_EventScript_DefeatedHoOh
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, NavelRock_Summit_EventScript_RanFromHoOh
-	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, NavelRock_Summit_EventScript_RanFromHoOh
-	setflag FLAG_FOUGHT_HO_OH
+	goto NavelRock_Summit_EventScript_RanFromHoOh
+	end
+
+NavelRock_Summit_EventScript_CaughtHoOh::
+	setflag FLAG_CAUGHT_HO_OH
 	releaseall
 	end
 
 NavelRock_Summit_EventScript_DefeatedHoOh::
-	setflag FLAG_HO_OH_FLEW_AWAY
-	setvar VAR_0x8004, SPECIES_HO_OH
-	goto EventScript_MonFlewAway
+	setflag FLAG_DEFEATED_HO_OH
+	setflag FLAG_HO_OH_IS_RECOVERING
+	goto EventScript_RemoveStaticMon
 	end
 
 NavelRock_Summit_EventScript_RanFromHoOh::

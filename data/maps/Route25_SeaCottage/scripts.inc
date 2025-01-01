@@ -101,7 +101,6 @@ Route25_SeaCottage_EventScript_BillGiveSSTicket::
 	call_if_eq VAR_RESULT, FEMALE, Route25_SeaCottage_EventScript_BillThanksFemale
 Archipelago_Target_NPC_Gift_FLAG_GOT_SS_TICKET::
 	giveitem ITEM_SS_TICKET, 1, FLAG_GOT_SS_TICKET
-	setflag FLAG_GOT_SS_TICKET_DUP
 	setflag FLAG_SYS_NOT_SOMEONES_PC
 	goto Route25_SeaCottage_EventScript_BillGoToSSAnne
 	end

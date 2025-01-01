@@ -4401,7 +4401,7 @@
     },
     {
       "id": "LAYOUT_ROUTE10_ALT",
-      "name": "Route10_Layout_Alt",
+      "name": "Route10_Alt_Layout",
       "width": 24,
       "height": 80,
       "border_width": 2,
@@ -4413,7 +4413,7 @@
     },
     {
       "id": "LAYOUT_ROUTE12_ALT",
-      "name": "Route12_Layout_Alt",
+      "name": "Route12_Alt_Layout",
       "width": 24,
       "height": 120,
       "border_width": 2,
@@ -4425,7 +4425,7 @@
     },
     {
       "id": "LAYOUT_ROUTE16_ALT",
-      "name": "Route16_Layout_Alt",
+      "name": "Route16_Alt_Layout",
       "width": 48,
       "height": 20,
       "border_width": 2,
@@ -4437,7 +4437,7 @@
     },
     {
       "id": "LAYOUT_ROUTE23_ALT",
-      "name": "Route23_Layout_Alt",
+      "name": "Route23_Alt_Layout",
       "width": 24,
       "height": 160,
       "border_width": 2,
@@ -4446,6 +4446,18 @@
       "secondary_tileset": "gTileset_IndigoPlateau",
       "border_filepath": "data/layouts/Route23_Alt/border.bin",
       "blockdata_filepath": "data/layouts/Route23_Alt/map.bin"
+    },
+    {
+      "id": "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS_UNLOCKED",
+      "name": "SevenIsland_TanobyRuins_Unlocked_Layout",
+      "width": 144,
+      "height": 20,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_SeviiIslands67",
+      "border_filepath": "data/layouts/SevenIsland_TanobyRuins_Unlocked/border.bin",
+      "blockdata_filepath": "data/layouts/SevenIsland_TanobyRuins_Unlocked/map.bin"
     }
   ]
 }

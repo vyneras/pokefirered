@@ -2687,6 +2687,11 @@ bool8 ArchipelagoSpecial_BlockTunnels(void)
     return gArchipelagoOptions.blockUndergroundTunnels;
 }
 
+bool8 ArchipelagoSpecial_BlockTower(void)
+{
+    return gArchipelagoOptions.blockPokemonTower;
+}
+
 bool8 ArchipelagoSpecial_Route9Modified(void)
 {
     return gArchipelagoOptions.modifyRoute9;

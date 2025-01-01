@@ -54,5 +54,43 @@ SevenIsland_EventScript_OldWomanGavePass::
 	end
 
 SevenIsland_EventScript_Scientist::
-	msgbox SevenIsland_Text_IslandVirtuallyUntouched, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_set FLAG_GAVE_SCANNER, SevenIsland_EventScript_ScientistAlreadyGaveScanner
+	checkitem ITEM_SCANNER
+	goto_if_eq VAR_RESULT, TRUE, SevenIsland_EventScript_AskForScanner
+	msgbox SevenIsland_Text_ColleagueLostScanner
+	release
+	end
+
+SevenIsland_EventScript_AskForScanner::
+	msgbox SevenIsland_Text_CanIHaveIt, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, SevenIsland_EventScript_AcceptTrade
+	goto_if_eq VAR_RESULT, NO, SevenIsland_EventScript_DeclineTrade
+	end
+
+SevenIsland_EventScript_AcceptTrade::
+    textcolor NPC_TEXT_COLOR_NEUTRAL
+	playfanfare MUS_OBTAIN_TMHM
+	message SevenIsland_Text_HandedScanner
+	waitmessage
+	waitfanfare
+	call EventScript_RestorePrevTextColor
+	closemessage
+Archipelago_Target_NPC_Gift_FLAG_GOT_DEEP_SEA_SCALE::
+	giveitem ITEM_DEEP_SEA_SCALE, 1, FLAG_GOT_DEEP_SEA_SCALE
+Archipelago_Target_NPC_Gift_FLAG_GOT_DEEP_SEA_TOOTH::
+	giveitem ITEM_DEEP_SEA_TOOTH, 1, FLAG_GOT_DEEP_SEA_TOOTH
+	setflag FLAG_GAVE_SCANNER
+	goto SevenIsland_EventScript_ScientistAlreadyGaveScanner
+	end
+
+SevenIsland_EventScript_DeclineTrade::
+    msgbox SevenIsland_Text_AreYouSure
+    release
+    end
+
+SevenIsland_EventScript_ScientistAlreadyGaveScanner::
+	msgbox SevenIsland_Text_GetBackToResearch
+	release
 	end

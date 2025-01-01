@@ -14,10 +14,11 @@ MtEmber_Summit_EventScript_TryRemoveMoltres::
 	return
 
 MtEmber_Summit_OnTransition::
-	call_if_unset FLAG_FOUGHT_MOLTRES, MtEmber_Summit_EventScript_ShowMoltres
+	call_if_unset FLAG_MOLTRES_IS_RECOVERING, MtEmber_Summit_EventScript_TryShowMoltres
 	end
 
-MtEmber_Summit_EventScript_ShowMoltres::
+MtEmber_Summit_EventScript_TryShowMoltres::
+	goto_if_set FLAG_CAUGHT_MOLTRES, EventScript_Return
 	clearflag FLAG_HIDE_MOLTRES
 	return
 
@@ -41,15 +42,19 @@ Archipelago_Target_Legendary_Encounter_MOLTRES::
 	waitstate
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
 	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, MtEmber_Summit_EventScript_CaughtMoltres
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, MtEmber_Summit_EventScript_DefeatedMoltres
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, MtEmber_Summit_EventScript_RanFromMoltres
-	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, MtEmber_Summit_EventScript_RanFromMoltres
-	setflag FLAG_FOUGHT_MOLTRES
+	goto MtEmber_Summit_EventScript_RanFromMoltres
+	end
+
+MtEmber_Summit_EventScript_CaughtMoltres::
+	setflag FLAG_CAUGHT_MOLTRES
 	release
 	end
 
 MtEmber_Summit_EventScript_DefeatedMoltres::
-	setflag FLAG_FOUGHT_MOLTRES
+	setflag FLAG_DEFEATED_MOLTRES
+	setflag FLAG_MOLTRES_IS_RECOVERING
 	goto EventScript_RemoveStaticMon
 	end
 

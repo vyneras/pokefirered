@@ -13,7 +13,8 @@
 using json = nlohmann::json;
 
 #define ROM_START 0x8000000
-#define FAME_CHECKER_FLAG_START 20001
+#define DEXSANITY_FLAGS_START 0x5000
+#define FAMESANITY_FLAGS_START 0x6000
 
 std::map<int, std::string> GAME_VERSION_MAP = {
     {0, "firered"},
@@ -371,6 +372,7 @@ int main (int argc, char *argv[])
     std::map<std::string, std::shared_ptr<LocationInfo>> fly_unlocks;
     std::map<std::string, std::shared_ptr<LocationInfo>> badges;
     std::map<std::string, std::shared_ptr<LocationInfo>> famechecker_rewards;
+    std::map<std::string, std::shared_ptr<LocationInfo>> dex_rewards;
     std::map<std::string, std::shared_ptr<TrainerInfo>> trainers;
     std::map<std::string, std::shared_ptr<LocationInfo>> trainer_rewards;
     std::map<std::string, std::shared_ptr<LocationInfo>> ball_items;
@@ -557,11 +559,38 @@ int main (int argc, char *argv[])
                     auto index = (j * 6) + k;
                     famechecker_reward = std::make_shared<LocationInfo>();
                     famechecker_reward->name = FAME_CHECKER_PEOPLE[j] + "_" + num;
-                    famechecker_reward->flag = FAME_CHECKER_FLAG_START + index;
+                    famechecker_reward->flag = FAMESANITY_FLAGS_START + index;
                     famechecker_reward->address[GAME_REVISION_MAP[i]] = symbol_map["sFameCheckerRewards"] + (index * 2) - ROM_START;
                     famechecker_reward->default_item = constants_json["ITEM_NONE"];
                     famechecker_rewards[famechecker_reward->name] = famechecker_reward;
                 }
+            }
+        }
+
+		// Pokedex Entries
+        for (size_t j = 0; j < 386; j++)
+        {
+            std::string padded_dex_number = std::to_string(j + 1);
+
+            if (padded_dex_number.size() < 3)
+            {
+              padded_dex_number = std::string(3 - padded_dex_number.size(), '0') + padded_dex_number;
+            }
+
+            auto dex_reward = dex_rewards["POKEDEX_REWARD_" + padded_dex_number];
+
+            if (dex_reward != nullptr)
+            {
+                dex_reward->address[GAME_REVISION_MAP[i]] = symbol_map["sPokedexRewards"] + (j * 2) - ROM_START;
+            }
+            else
+            {
+                dex_reward = std::make_shared<LocationInfo>();
+                dex_reward->name = "POKEDEX_REWARD_" + padded_dex_number;
+                dex_reward->flag = DEXSANITY_FLAGS_START + j;
+                dex_reward->address[GAME_REVISION_MAP[i]] = symbol_map["sPokedexRewards"] + (j * 2) - ROM_START;
+                dex_reward->default_item = constants_json["ITEM_NONE"];
+                dex_rewards[dex_reward->name] = dex_reward;
             }
         }
 
@@ -1532,24 +1561,6 @@ int main (int argc, char *argv[])
         }
     }
 
-    // // Pokedex Entries
-    // // std::vector<std::shared_ptr<LocationInfo>> dex_rewards;
-    // // for (size_t i = 0; i < 386; ++i)
-    // // {
-    // //     std::string padded_dex_number = std::to_string(i + 1);
-    // //     if (padded_dex_number.size() < 3)
-    // //     {
-    // //         padded_dex_number = std::string(3 - padded_dex_number.size(), '0') + padded_dex_number;
-    // //     }
-
-    // //     std::shared_ptr<LocationInfo> item(new LocationInfo());
-    // //     item->name = "POKEDEX_REWARD_" + padded_dex_number;
-    // //     item->flag = 0;
-    // //     item->address = symbol_map["sPokedexRewards"] + (i * 2) - ROM_START;
-    // //     item->default_item = constants_json["ITEM_GREAT_BALL"];
-    // //     dex_rewards.push_back(item);
-    // // }
-
     // ------------------------------------------------------------------------
     // Creating output
     // ------------------------------------------------------------------------
@@ -1603,10 +1614,10 @@ int main (int argc, char *argv[])
     {
         locations_json[location->name] = location->to_json();
     }
-    // for (const auto& location: dex_rewards)
-    // {
-    //     locations_json[location->name] = location->to_json();
-    // }
+     for (const auto& [name, location]: dex_rewards)
+     {
+         locations_json[location->name] = location->to_json();
+     }
     for (const auto& [name, location]: trainer_rewards)
     {
         locations_json[location->name] = location->to_json();

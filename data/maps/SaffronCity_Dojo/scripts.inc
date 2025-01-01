@@ -22,7 +22,6 @@ SaffronCity_Dojo_EventScript_TriggerMasterBattleRight::
 SaffronCity_Dojo_EventScript_HitmonleeBall::
 	lock
 	faceplayer
-  goto_if_set FLAG_GOT_HITMON_FROM_DOJO, SaffronCity_Dojo_EventScript_AlreadyGotHitmon
 Archipelago_Target_Special_Gift_HITMONLEE::
 	setvar VAR_TEMP_1, SPECIES_HITMONLEE
 	bufferspeciesname STR_VAR_1, VAR_TEMP_1
@@ -40,7 +39,6 @@ Archipelago_Target_Special_Gift_HITMONLEE::
 SaffronCity_Dojo_EventScript_HitmonchanBall::
 	lock
 	faceplayer
-  goto_if_set FLAG_GOT_HITMON_FROM_DOJO, SaffronCity_Dojo_EventScript_AlreadyGotHitmon
 Archipelago_Target_Special_Gift_HITMONCHAN::
 	setvar VAR_TEMP_1, SPECIES_HITMONCHAN
 	bufferspeciesname STR_VAR_1, VAR_TEMP_1
