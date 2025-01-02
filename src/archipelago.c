@@ -50,10 +50,6 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .ceruleanCaveRequirement = 0,
     .ceruleanCaveRequiredCount = 8,
 
-    .startingBadges = 0,
-    .startingProgressiveCardKeys = 0,
-    .startingProgressivePasses = 0,
-    .startingFlyUnlocks = 0,
     .startingMoney = 3000,
 
     .itemfinderRequired = FALSE,
@@ -177,96 +173,6 @@ void GiveStartingItems(void)
         if (item != ITEM_NONE && !IsItemUnique(item) && count > 0)
         {
             AddBagItem(item, count);
-        }
-    }
-}
-
-void GiveStartingCardKeys(void)
-{
-    if (gArchipelagoOptions.startingProgressiveCardKeys >= 1)
-    {
-        AddBagItem(ITEM_CARD_KEY_2F, 1);
-    }
-    if (gArchipelagoOptions.startingProgressiveCardKeys >= 2)
-    {
-        AddBagItem(ITEM_CARD_KEY_3F, 1);
-    }
-    if (gArchipelagoOptions.startingProgressiveCardKeys >= 3)
-    {
-        AddBagItem(ITEM_CARD_KEY_4F, 1);
-    }
-    if (gArchipelagoOptions.startingProgressiveCardKeys >= 4)
-    {
-        AddBagItem(ITEM_CARD_KEY_5F, 1);
-    }
-    if (gArchipelagoOptions.startingProgressiveCardKeys >= 5)
-    {
-        AddBagItem(ITEM_CARD_KEY_6F, 1);
-    }
-    if (gArchipelagoOptions.startingProgressiveCardKeys >= 6)
-    {
-        AddBagItem(ITEM_CARD_KEY_7F, 1);
-    }
-    if (gArchipelagoOptions.startingProgressiveCardKeys >= 7)
-    {
-        AddBagItem(ITEM_CARD_KEY_8F, 1);
-    }
-    if (gArchipelagoOptions.startingProgressiveCardKeys >= 8)
-    {
-        AddBagItem(ITEM_CARD_KEY_9F, 1);
-    }
-    if (gArchipelagoOptions.startingProgressiveCardKeys >= 9)
-    {
-        AddBagItem(ITEM_CARD_KEY_10F, 1);
-    }
-    if (gArchipelagoOptions.startingProgressiveCardKeys >= 10)
-    {
-        AddBagItem(ITEM_CARD_KEY_11F, 1);
-    }
-}
-
-void GiveStartingPasses(void)
-{
-    if (gArchipelagoOptions.passesSplit)
-    {
-        if (gArchipelagoOptions.startingProgressivePasses >= 1)
-        {
-            AddBagItem(ITEM_ONE_PASS, 1);
-        }
-        if (gArchipelagoOptions.startingProgressivePasses >= 2)
-        {
-            AddBagItem(ITEM_TWO_PASS, 1);
-        }
-        if (gArchipelagoOptions.startingProgressivePasses >= 3)
-        {
-            AddBagItem(ITEM_THREE_PASS, 1);
-        }
-        if (gArchipelagoOptions.startingProgressivePasses >= 4)
-        {
-            AddBagItem(ITEM_FOUR_PASS, 1);
-        }
-        if (gArchipelagoOptions.startingProgressivePasses >= 5)
-        {
-            AddBagItem(ITEM_FIVE_PASS, 1);
-        }
-        if (gArchipelagoOptions.startingProgressivePasses >= 6)
-        {
-            AddBagItem(ITEM_SIX_PASS, 1);
-        }
-        if (gArchipelagoOptions.startingProgressivePasses >= 7)
-        {
-            AddBagItem(ITEM_SEVEN_PASS, 1);
-        }
-    }
-    else
-    {
-        if (gArchipelagoOptions.startingProgressivePasses >= 1)
-        {
-            AddBagItem(ITEM_TRI_PASS, 1);
-        }
-        if (gArchipelagoOptions.startingProgressivePasses >= 2)
-        {
-            AddBagItem(ITEM_RAINBOW_PASS, 1);
         }
     }
 }
