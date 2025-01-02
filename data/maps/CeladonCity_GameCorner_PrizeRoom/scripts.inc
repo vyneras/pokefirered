@@ -290,7 +290,6 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeTM::
 CeladonCity_GameCorner_PrizeRoom_EventScript_TM13::
 	setvar VAR_TEMP_1, ITEM_TM13
 	setvar VAR_TEMP_2, 4000
-	buffermovename STR_VAR_2, MOVE_ICE_BEAM
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeTM
 	end
 
@@ -323,6 +322,8 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_TM35::
 	end
 
 CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeTM::
+	copyvar VAR_0x8000, VAR_TEMP_1
+	special BufferTMHMMoveName
 	msgbox CeladonCity_GameCorner_PrizeRoom_Text_YouWantTM, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, CeladonCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_TryGivePrize
