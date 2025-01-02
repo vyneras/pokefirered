@@ -13,7 +13,7 @@ Route9_EventScript_RemoveCutTree::
 	return
 
 Route9_EventScript_RemoveSmashRock::
-	setflag FLAG_TEMP_13
+	setflag FLAG_TEMP_14
 	return
 
 Route9_EventScript_RouteSign::
