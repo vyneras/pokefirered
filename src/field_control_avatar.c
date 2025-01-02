@@ -38,6 +38,8 @@
 static EWRAM_DATA u8 sPreviouslyHeldDirections;
 static EWRAM_DATA u8 sLastPressedDirection;
 
+EWRAM_DATA u16 gTrainersanityNotificationDelay = 0;
+
 #define SIGNPOST_POKECENTER 0
 #define SIGNPOST_POKEMART 1
 #define SIGNPOST_INDIGO_1 2
@@ -235,8 +237,14 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     FieldClearPlayerInput(&gFieldInputRecord);
     gFieldInputRecord.dpadDirection = input->dpadDirection;
 
+    if (gTrainersanityNotificationDelay > 0)
+        gTrainersanityNotificationDelay--;
+
     if (CheckForTrainersWantingBattle() == TRUE)
         return TRUE;
+
+    if (gTrainersanityNotificationDelay == 0)
+        gTrainersanityNotificationDelay = 200;
 
     if (TryRunOnFrameMapScript() == TRUE)
         return TRUE;

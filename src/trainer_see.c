@@ -1,8 +1,10 @@
 #include "global.h"
 #include "archipelago.h"
 #include "battle_setup.h"
+#include "event_data.h"
 #include "event_object_movement.h"
 #include "field_effect.h"
+#include "field_control_avatar.h"
 #include "field_player_avatar.h"
 #include "quest_log.h"
 #include "script.h"
@@ -90,11 +92,6 @@ bool8 CheckForTrainersWantingBattle(void)
 {
     u8 i;
 
-    if (gArchipelagoOptions.areTrainersBlind)
-    {
-        return FALSE;
-    }
-
     if (QL_IsTrainerSightDisabled() == TRUE)
         return FALSE;
 
@@ -113,8 +110,20 @@ static bool8 CheckTrainer(u8 trainerObjId)
 {
     const u8 *script = GetObjectEventScriptPointerByObjectEventId(trainerObjId);
     u8 approachDistance;
-    if (GetTrainerFlagFromScriptPointer(script))
+    u32 flag = GetTrainerFlagFromScriptPointer(script);
+
+    if (FlagGet(flag))
         return FALSE;
+
+    if (gTrainersanityNotificationDelay == 0 && HasTrainersanityItem(flag))
+    {
+        ObjectEventGetLocalIdAndMap(&gObjectEvents[trainerObjId], (u8 *)&gFieldEffectArguments[0], (u8 *)&gFieldEffectArguments[1], (u8 *)&gFieldEffectArguments[2]);
+        FieldEffectStart(FLDEFF_EXCLAMATION_MARK_ICON);
+    }
+
+    if (gArchipelagoOptions.areTrainersBlind)
+        return FALSE;
+
     approachDistance = GetTrainerApproachDistance(&gObjectEvents[trainerObjId]);
     if (approachDistance != 0)
     {

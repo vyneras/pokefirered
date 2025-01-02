@@ -22,6 +22,7 @@ struct FieldInput
 };
 
 extern struct FieldInput gFieldInputRecord;
+extern u16 gTrainersanityNotificationDelay;
 
 void RestartWildEncounterImmunitySteps(void);
 void ClearPoisonStepCounter(void);

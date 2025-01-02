@@ -836,11 +836,14 @@ void ConfigureAndSetUpOneTrainerBattle(u8 trainerEventObjId, const u8 *trainerSc
     LockPlayerFieldControls();
 }
 
-bool32 GetTrainerFlagFromScriptPointer(const u8 *data)
+u32 GetTrainerFlagFromScriptPointer(const u8 *data)
 {
-    u32 flag = TrainerBattleLoadArg16(data + 2);
+    return TRAINER_FLAGS_START + TrainerBattleLoadArg16(data + 2);
+}
 
-    return FlagGet(TRAINER_FLAGS_START + flag);
+bool8 HasTrainersanityItem(u32 flag)
+{
+    return sTrainerRewards[flag - TRAINER_FLAGS_START] != ITEM_NONE;
 }
 
 void SetUpTrainerMovement(void)
