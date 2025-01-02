@@ -470,6 +470,24 @@ int main (int argc, char *argv[])
             exit(1);
         }
 
+        // PC Item
+        auto pc_item = npc_gifts["PC_ITEM_POTION"];
+
+        if (pc_item != nullptr)
+        {
+            pc_item->address[GAME_REVISION_MAP[i]] = symbol_map["gNewGamePCItems"] - ROM_START;
+        }
+        else
+        {
+            pc_item = std::make_shared<LocationInfo>();
+            pc_item->name = "PC_ITEM_POTION";
+            pc_item->flag = constants_json["FLAG_GOT_PC_POTION"];
+            pc_item->address[GAME_REVISION_MAP[i]] = symbol_map["gNewGamePCItems"] - ROM_START;
+            rom.seekg(pc_item->address[GAME_REVISION_MAP[i]], std::ios::beg);
+            rom.read((char*)&(pc_item->default_item), 2);
+            npc_gifts[pc_item->name] = pc_item;
+        }
+
         // NPC Gifts
         for (auto const& [symbol, address] : symbol_map)
         {
