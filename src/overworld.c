@@ -1270,7 +1270,7 @@ bool32 Overworld_MusicCanOverrideMapMusic(u16 music)
 {
     if (music == MUS_CYCLING)
     {
-        if (gMapHeader.mapType == MAP_TYPE_INDOOR)
+        if (gMapHeader.mapType == MAP_TYPE_INDOOR || gMapHeader.mapType == MAP_TYPE_UNDERGROUND)
             return FALSE;
     }
     if (music == MUS_CYCLING || music == MUS_SURF)
