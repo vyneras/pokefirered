@@ -456,6 +456,7 @@ int main (int argc, char *argv[])
             { "sInGameTrades", symbol_map["sInGameTrades"] - ROM_START},
             { "sFlashLevelToRadius", symbol_map["sFlashLevelToRadius"] - ROM_START},
             { "sArchipelagoPCItemId", symbol_map["sArchipelagoPCItemId"] - ROM_START},
+            { "sIntroSpecies", symbol_map["sIntroSpecies"] - ROM_START},
             { "gRandomizedSoundTable", symbol_map["gRandomizedSoundTable"] - ROM_START }
         };
 
