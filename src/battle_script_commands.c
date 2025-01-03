@@ -10,6 +10,7 @@
 #include "mail.h"
 #include "event_data.h"
 #include "strings.h"
+#include "pokemon.h"
 #include "pokemon_special_anim.h"
 #include "pokemon_storage_system.h"
 #include "pokemon_summary_screen.h"
@@ -4527,7 +4528,8 @@ static void Cmd_switchinanim(void)
                                  | BATTLE_TYPE_OLD_MAN_TUTORIAL
                                  | BATTLE_TYPE_POKEDUDE
                                  | BATTLE_TYPE_EREADER_TRAINER
-                                 | BATTLE_TYPE_GHOST)))
+                                 | BATTLE_TYPE_GHOST
+                                 | BATTLE_TYPE_GRIND)))
         HandleSetPokedexFlag(SpeciesToNationalPokedexNum(gBattleMons[gActiveBattler].species), FLAG_SET_SEEN, gBattleMons[gActiveBattler].personality);
 
     gAbsentBattlerFlags &= ~(gBitTable[gActiveBattler]);
@@ -5330,7 +5332,7 @@ static void Cmd_getmoneyreward(void)
 
     const struct TrainerMonItemCustomMoves *party4; //This needs to be out here
 
-    if (gBattleOutcome == B_OUTCOME_WON)
+    if (gBattleOutcome == B_OUTCOME_WON && gBattleTypeFlags & BATTLE_TYPE_TRAINER)
     {
         if (gTrainerBattleOpponent_A == TRAINER_SECRET_BASE)
         {
@@ -5378,6 +5380,15 @@ static void Cmd_getmoneyreward(void)
             moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * (gBattleTypeFlags & BATTLE_TYPE_DOUBLE ? 2 : 1) * gTrainerMoneyTable[i].value;
         }
         AddMoney(&gSaveBlock1Ptr->money, moneyReward);
+    }
+    else if (gBattleTypeFlags & BATTLE_TYPE_GRIND)
+    {
+        u8 level = GetMonData(&gEnemyParty[0], MON_DATA_LEVEL);
+        u16 species = GetMonData(&gEnemyParty[0], MON_DATA_SPECIES);
+        u16 bst = gSpeciesInfo[species].baseHP + gSpeciesInfo[species].baseAttack + gSpeciesInfo[species].baseDefense +
+                  gSpeciesInfo[species].baseSpeed + gSpeciesInfo[species].baseSpAttack + gSpeciesInfo[species].baseSpDefense;
+        DebugPrintf("Level: %d\nSpecies: %d\nBST: %d", level, species, bst);
+        moneyReward = bst * level * gBattleStruct->moneyMultiplier / 25;
     }
     else
     {
@@ -9475,7 +9486,7 @@ static void Cmd_handleballthrow(void)
     gActiveBattler = gBattlerAttacker;
     gBattlerTarget = gBattlerAttacker ^ BIT_SIDE;
 
-    if (gBattleTypeFlags & BATTLE_TYPE_GHOST)
+    if (gBattleTypeFlags & (BATTLE_TYPE_GHOST | BATTLE_TYPE_GRIND))
     {
         BtlController_EmitBallThrowAnim(BUFFER_A, BALL_GHOST_DODGE);
         MarkBattlerForControllerExec(gActiveBattler);

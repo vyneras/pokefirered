@@ -2603,7 +2603,8 @@ static void BattleIntroDrawTrainersOrMonsSprites(void)
                                     | BATTLE_TYPE_LINK
                                     | BATTLE_TYPE_GHOST
                                     | BATTLE_TYPE_OLD_MAN_TUTORIAL
-                                    | BATTLE_TYPE_LEGENDARY)))
+                                    | BATTLE_TYPE_LEGENDARY
+                                    | BATTLE_TYPE_GRIND)))
             {
                 HandleSetPokedexFlag(SpeciesToNationalPokedexNum(gBattleMons[gActiveBattler].species), FLAG_SET_SEEN, gBattleMons[gActiveBattler].personality);
             }
@@ -2622,7 +2623,8 @@ static void BattleIntroDrawTrainersOrMonsSprites(void)
                                             | BATTLE_TYPE_LINK
                                             | BATTLE_TYPE_GHOST
                                             | BATTLE_TYPE_OLD_MAN_TUTORIAL
-                                            | BATTLE_TYPE_LEGENDARY)))
+                                            | BATTLE_TYPE_LEGENDARY
+                                            | BATTLE_TYPE_GRIND)))
                 {
                     HandleSetPokedexFlag(SpeciesToNationalPokedexNum(gBattleMons[gActiveBattler].species), FLAG_SET_SEEN, gBattleMons[gActiveBattler].personality);
                 }
@@ -2778,7 +2780,8 @@ static void BattleIntroRecordMonsToDex(void)
                                    | BATTLE_TYPE_LINK
                                    | BATTLE_TYPE_GHOST
                                    | BATTLE_TYPE_OLD_MAN_TUTORIAL
-                                   | BATTLE_TYPE_LEGENDARY)))
+                                   | BATTLE_TYPE_LEGENDARY
+                                   | BATTLE_TYPE_GRIND)))
                 HandleSetPokedexFlag(SpeciesToNationalPokedexNum(gBattleMons[gActiveBattler].species), FLAG_SET_SEEN, gBattleMons[gActiveBattler].personality);
         gBattleMainFunc = BattleIntroPrintPlayerSendsOut;
     }
@@ -3010,6 +3013,7 @@ u8 IsRunningFromBattleImpossible(void)
     if (holdEffect == HOLD_EFFECT_CAN_ALWAYS_RUN
      || (gBattleTypeFlags & BATTLE_TYPE_LINK)
      || (gBattleTypeFlags & BATTLE_TYPE_GHOST)
+     || (gBattleTypeFlags & BATTLE_TYPE_GRIND)
      || gBattleMons[gActiveBattler].ability == ABILITY_RUN_AWAY)
         return BATTLE_RUN_SUCCESS;
     side = GetBattlerSide(gActiveBattler);
@@ -3756,6 +3760,10 @@ static void HandleEndTurn_BattleWon(void)
             PlayBGM(MUS_VICTORY_TRAINER);
             break;
         }
+    }
+    else if (gBattleTypeFlags & BATTLE_TYPE_GRIND)
+    {
+        gBattlescriptCurrInstr = BattleScript_LocalGrindBattleWon;
     }
     else
     {

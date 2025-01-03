@@ -8,6 +8,7 @@ void StartRoamerBattle(void);
 void StartOldManTutorialBattle(void);
 void StartScriptedWildBattle(void);
 void StartMarowakBattle(void);
+void StartRandomPokemonBattle(void);
 void StartSouthernIslandBattle(void);
 void StartLegendaryBattle(void);
 void StartGroudonKyogreBattle(void);

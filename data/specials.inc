@@ -350,6 +350,7 @@ gSpecials::
 	def_special NullFieldSpecial
 	def_special SetPostgameFlags
 	def_special StartMarowakBattle
+	def_special StartRandomPokemonBattle
 	def_special ForcePlayerOntoBike
 	def_special ListMenu
 	def_special ReturnToListMenu

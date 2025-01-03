@@ -9,6 +9,7 @@
 #include "load_save.h"
 #include "safari_zone.h"
 #include "quest_log.h"
+#include "random.h"
 #include "script.h"
 #include "script_pokemon_util.h"
 #include "strings.h"
@@ -66,6 +67,7 @@ static u8 GetWildBattleTransition(void);
 static u8 GetTrainerBattleTransition(void);
 static void CB2_EndScriptedWildBattle(void);
 static void CB2_EndMarowakBattle(void);
+static void CB2_EndRandomPokemonBattle(void);
 static bool32 IsPlayerDefeated(u32 battleOutcome);
 static void CB2_EndTrainerBattle(void);
 static const u8 *GetIntroSpeechOfApproachingTrainer(void);
@@ -336,6 +338,36 @@ void StartMarowakBattle(void)
     IncrementGameStat(GAME_STAT_WILD_BATTLES);
 }
 
+void StartRandomPokemonBattle(void)
+{
+    u8 i;
+    u16 species = SPECIES_NONE;
+    s8 level = 1;
+    LockPlayerFieldControls();
+    gMain.savedCallback = CB2_EndRandomPokemonBattle;
+    gBattleTypeFlags = BATTLE_TYPE_GRIND;
+    while (species == SPECIES_NONE || species == SPECIES_EGG || (species >= SPECIES_OLD_UNOWN_B && species <= SPECIES_OLD_UNOWN_Z))
+    {
+        species = Random() % NUM_SPECIES;
+    }
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_HP) && !GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG))
+        {
+            level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+        }
+    }
+    level += Random() % 5 - 2;
+    if (level < 1)
+        level = 1;
+    else if (level > 100)
+        level = 100;
+    CreateMonWithNature(&gEnemyParty[0], species, level, USE_RANDOM_IVS, Random() % NUM_NATURES);
+    CreateBattleStartTask(GetWildBattleTransition(), 0);
+    IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
+    IncrementGameStat(GAME_STAT_WILD_BATTLES);
+}
+
 void StartSouthernIslandBattle(void)
 {
     LockPlayerFieldControls();
@@ -459,6 +491,14 @@ static void CB2_EndMarowakBattle(void)
             gSpecialVar_Result = TRUE;
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
     }
+}
+
+static void CB2_EndRandomPokemonBattle(void)
+{
+    CpuFill16(0, (void *)BG_PLTT, BG_PLTT_SIZE);
+    ResetOamRange(0, 128);
+    HealPlayerParty();
+    SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }
 
 u8 BattleSetup_GetTerrainId(void)

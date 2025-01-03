@@ -20,6 +20,7 @@ extern const u8 BattleScript_FaintTarget[];
 extern const u8 BattleScript_GiveExp[];
 extern const u8 BattleScript_HandleFaintedMon[];
 extern const u8 BattleScript_LocalTrainerBattleWon[];
+extern const u8 BattleScript_LocalGrindBattleWon[];
 extern const u8 BattleScript_LocalTwoTrainersDefeated[];
 extern const u8 BattleScript_LocalBattleWonLoseTexts[];
 extern const u8 BattleScript_LocalBattleWonReward[];

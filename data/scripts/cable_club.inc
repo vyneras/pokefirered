@@ -832,16 +832,15 @@ CableClub_EventScript_UnionRoomAdapterNotConnected::
 CableClub_EventScript_WirelessClubAttendant::
 	lock
 	faceplayer
-	goto_if_unset FLAG_SYS_POKEDEX_GET, CableClub_EventScript_WirelessClubAdjustements
-	msgbox CableClub_Text_AskAboutLinking, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, CableClub_EventScript_DontAskAboutLinking
-	msgbox CableClub_Text_ExplainWirelessClub
+	msgbox CableClub_Text_FightPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, CableClub_EventScript_FightPokemon
 	release
 	return
 
-CableClub_EventScript_DontAskAboutLinking::
-	msgbox CableClub_Text_HopeYouEnjoyWirelessSystem
-	release
+CableClub_EventScript_FightPokemon::
+	closemessage
+	special StartRandomPokemonBattle
+	waitstate
 	return
 
 CableClub_EventScript_DirectCornerAttendant::
@@ -1298,6 +1297,10 @@ TwoIsland_JoyfulGameCorner_EventScript_ShowDodrioBerryPickingRecords::
 CableClub_Text_RespawnPokemon::
 	.string "Do you want to respawn all the\n"
 	.string "static POKéMON you haven't caught?$"
+
+CableClub_Text_FightPokemon::
+	.string "Do you want to battle a random\n"
+	.string "POKéMON?$"
 
 CableClub_Text_WelcomeWhichCableClubService::
 	.string "Welcome to the POKéMON CABLE\n"

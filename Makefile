@@ -368,13 +368,8 @@ firered_rev1_modern:   ; @$(MAKE) GAME_VERSION=FIRERED GAME_REVISION=1 MODERN=1
 leafgreen_modern:      ; @$(MAKE) GAME_VERSION=LEAFGREEN MODERN=1
 leafgreen_rev1_modern: ; @$(MAKE) GAME_VERSION=LEAFGREEN GAME_REVISION=1 MODERN=1
 
-extract_firered:       ; @$(MAKE) extract GAME_VERSION=FIRERED
-extract_leafgreen:     ; @$(MAKE) extract GAME_VERSION=LEAFGREEN
-extract_firered_rev1:  ; @$(MAKE) extract GAME_VERSION=FIRERED GAME_REVISION=1
-extract_leafgreen_rev1:; @$(MAKE) extract GAME_VERSION=LEAFGREEN GAME_REVISION=1
-
-patch_firered:         ; @$(MAKE) patch GAME_VERSION=FIRERED
-patch_leafgreen:       ; @$(MAKE) patch GAME_VERSION=LEAFGREEN
+patch_firered:          ; @$(MAKE) patch GAME_VERSION=FIRERED
+patch_leafgreen:        ; @$(MAKE) patch GAME_VERSION=LEAFGREEN
 patch_firered_rev1:     ; @$(MAKE) patch GAME_VERSION=FIRERED GAME_REVISION=1
 patch_leafgreen_rev1:   ; @$(MAKE) patch GAME_VERSION=LEAFGREEN GAME_REVISION=1
 
