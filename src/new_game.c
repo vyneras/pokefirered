@@ -176,6 +176,7 @@ void NewGameInitData(void)
     if (!(gArchipelagoOptions.additionalDarkCaves & (1 << 2))) VarSet(VAR_VICTORY_ROAD_DARKNESS, 1);
 
     if (!gArchipelagoOptions.extraKeyItems) RunScriptImmediately(EventScript_SetExtraKeyItemFlags);
+    if (!gArchipelagoOptions.cardKeysSplit) RunScriptImmediately(EventScript_SetSplitCardKeyItemFlags);
 }
 
 static void ResetMiniGamesResults(void)

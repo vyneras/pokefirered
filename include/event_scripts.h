@@ -1146,6 +1146,7 @@ extern const u8 EventScript_TestSignpostMsg[];
 // new_game
 extern const u8 EventScript_ResetAllMapFlags[];
 extern const u8 EventScript_SetExtraKeyItemFlags[];
+extern const u8 EventScript_SetSplitCardKeyItemFlags[];
 extern const u8 EventScript_SetFreeFlyLocation[];
 
 // player_pc

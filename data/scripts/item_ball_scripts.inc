@@ -222,8 +222,16 @@ SafariZone_West_EventScript_ItemMaxRevive::
 	finditem ITEM_MAX_REVIVE
 	end
 
+SilphCo_2F_EventScript_ItemCardKey2F::
+	finditem ITEM_CARD_KEY_2F
+	end
+
 SilphCo_3F_EventScript_ItemHyperPotion::
 	finditem ITEM_HYPER_POTION
+	end
+
+SilphCo_3F_EventScript_ItemCardKey5F::
+	finditem ITEM_CARD_KEY_5F
 	end
 
 SilphCo_4F_EventScript_ItemMaxRevive::
@@ -236,6 +244,10 @@ SilphCo_4F_EventScript_ItemEscapeRope::
 
 SilphCo_4F_EventScript_ItemFullHeal::
 	finditem ITEM_FULL_HEAL
+	end
+
+SilphCo_4F_EventScript_ItemCardKey4F::
+	finditem ITEM_CARD_KEY_4F
 	end
 
 SilphCo_5F_EventScript_ItemProtein::
@@ -258,12 +270,28 @@ SilphCo_6F_EventScript_ItemXSpecial::
 	finditem ITEM_X_SPECIAL
 	end
 
+SilphCo_6F_EventScript_ItemCardKey6F::
+	finditem ITEM_CARD_KEY_6F
+	end
+
 SilphCo_7F_EventScript_ItemCalcium::
 	finditem ITEM_CALCIUM
 	end
 
 SilphCo_7F_EventScript_ItemTM08::
 	finditem ITEM_TM08
+	end
+
+SilphCo_7F_EventScript_ItemCardKey7F::
+	finditem ITEM_CARD_KEY_7F
+	end
+
+SilphCo_8F_EventScript_ItemCardKey8F::
+	finditem ITEM_CARD_KEY_8F
+	end
+
+SilphCo_9F_EventScript_ItemCardKey9F::
+	finditem ITEM_CARD_KEY_9F
 	end
 
 SilphCo_10F_EventScript_ItemCarbos::
@@ -276,6 +304,10 @@ SilphCo_10F_EventScript_ItemUltraBall::
 
 SilphCo_10F_EventScript_ItemRareCandy::
 	finditem ITEM_RARE_CANDY
+	end
+
+SilphCo_10F_EventScript_ItemCardKey10F::
+	finditem ITEM_CARD_KEY_10F
 	end
 
 PowerPlant_EventScript_ItemMaxPotion::
@@ -456,6 +488,10 @@ SilphCo_8F_EventScript_ItemIron::
 
 SilphCo_11F_EventScript_ItemZinc::
 	finditem ITEM_ZINC
+	end
+
+SilphCo_11F_EventScript_ItemCardKey11F::
+	finditem ITEM_CARD_KEY_11F
 	end
 
 PokemonMansion_1F_EventScript_ItemProtein::

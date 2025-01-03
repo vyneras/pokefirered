@@ -22,16 +22,6 @@ SilphCo_6F_EventScript_WorkerM2RocketsGone::
 SilphCo_6F_EventScript_WorkerM3::
 	lock
 	faceplayer
-	specialvar VAR_RESULT, ArchipelagoSpecial_AreCardKeysSplit
-	goto_if_eq VAR_RESULT, FALSE, SilphCo_6F_EventScript_WorkerM3GaveCardKey
-	goto_if_set FLAG_GOT_6F_CARD_KEY, SilphCo_6F_EventScript_WorkerM3GaveCardKey
-	call EventScript_TakeThisCardKey
-Archipelago_Target_NPC_Gift_FLAG_GOT_6F_CARD_KEY::
-	giveitem ITEM_CARD_KEY_6F, 1, FLAG_GOT_6F_CARD_KEY
-	release
-	end
-
-SilphCo_6F_EventScript_WorkerM3GaveCardKey::
 	goto_if_ge VAR_MAP_SCENE_SILPH_CO_11F, 1, SilphCo_6F_EventScript_WorkerM3RocketsGone
 	msgbox SilphCo_6F_Text_RocketsTookOverBuilding
 	release

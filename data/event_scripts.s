@@ -901,18 +901,6 @@ Text_VoiceRangOutDontRunAway::
 Text_TheDoorIsOpen::
 	.string "The door is open…$"
 
-Text_HelpUsTakeThisCardKey::
-	.string "TEAM ROCKET's BOSS went to the\n"
-	.string "boardroom!\p"
-	.string "Hopefully this will be of use\n"
-	.string "to you.$"
-
-Text_ThanksTakeThisCardKey::
-	.string "Thank you for dealing with\n"
-	.string "TEAM ROCKET.\p"
-	.string "Take this as a sign of my\n"
-	.string "appreciation.$"
-
 Text_TakeThisPass::
 	.string "You need specific passes to\n"
 	.string "travel around the SEVII ISLANDS.\p"
@@ -995,6 +983,18 @@ EventScript_SetExtraKeyItemFlags::
 	setflag FLAG_HIDDEN_ITEM_CERULEAN_CITY_GYM_MACHINE_PART
 	end
 
+EventScript_SetSplitCardKeyItemFlags::
+	setflag FLAG_ITEM_SILPH_CO_2F_CARD_KEY_2F
+	setflag FLAG_ITEM_SILPH_CO_4F_CARD_KEY_4F
+	setflag FLAG_ITEM_SILPH_CO_3F_CARD_KEY_5F
+	setflag FLAG_ITEM_SILPH_CO_6F_CARD_KEY_6F
+	setflag FLAG_ITEM_SILPH_CO_7F_CARD_KEY_7F
+	setflag FLAG_ITEM_SILPH_CO_8F_CARD_KEY_8F
+	setflag FLAG_ITEM_SILPH_CO_9F_CARD_KEY_9F
+	setflag FLAG_ITEM_SILPH_CO_10F_CARD_KEY_10F
+	setflag FLAG_ITEM_SILPH_CO_11F_CARD_KEY_11F
+	end
+
 	.include "data/scripts/hall_of_fame.inc"
 	.include "data/scripts/pkmn_center_nurse.inc"
 	.include "data/scripts/obtain_item.inc"
@@ -1009,15 +1009,6 @@ Common_ShowEasyChatScreen::
 	.include "data/scripts/surf.inc"
 	.include "data/scripts/set_gym_trainers.inc"
 	.include "data/scripts/bag_full.inc"
-
-EventScript_TakeThisCardKey::
-	call_if_eq VAR_MAP_SCENE_SILPH_CO_11F, 1, EventScript_ThanksTakeThisCardKey
-	msgbox Text_HelpUsTakeThisCardKey
-	return
-
-EventScript_ThanksTakeThisCardKey::
-	msgbox Text_ThanksTakeThisCardKey
-	return
 
 EventScript_OutOfCenterPartyHeal::
 	fadescreen FADE_TO_BLACK
