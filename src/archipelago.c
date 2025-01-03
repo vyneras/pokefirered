@@ -17,6 +17,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .expMultiplierNumerator = 100,
     .expMultiplierDenominator = 100,
     .normalizeEncounterRates = FALSE,
+    .canSkipFanfares = FALSE,
 
     .openViridianCity = FALSE,
     .route3Requirement = 1,

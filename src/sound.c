@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gba/m4a_internal.h"
+#include "archipelago.h"
 #include "gflib.h"
 #include "battle.h"
 #include "quest_log.h"
@@ -255,7 +256,7 @@ bool8 IsFanfareTaskInactive(void)
 
 static void Task_Fanfare(u8 taskId)
 {
-    if (sFanfareCounter)
+    if (sFanfareCounter && !(gArchipelagoOptions.canSkipFanfares && JOY_NEW(B_BUTTON)))
     {
         sFanfareCounter--;
     }
