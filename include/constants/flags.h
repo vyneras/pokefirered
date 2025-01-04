@@ -160,7 +160,7 @@
 #define FLAG_HIDE_DOTTED_HOLE_SCIENTIST                    0x090
 #define FLAG_HIDE_THREE_ISLAND_LONE_BIKER                  0x091
 #define FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY            0x092
-#define FLAG_0x093                                         0x093
+#define FLAG_HIDE_FIVE_PASS                                0x093
 #define FLAG_0x094                                         0x094
 #define FLAG_HIDE_RESORT_GORGEOUS_INSIDE_SELPHY            0x095
 #define FLAG_HIDE_SELPHYS_BUTLER                           0x096
@@ -702,8 +702,8 @@
 #define FLAG_GOT_TEA                                     0x2A6
 #define FLAG_RECEIVED_AURORA_TICKET                      0x2A7
 #define FLAG_RECEIVED_MYSTIC_TICKET                      0x2A8
-#define FLAG_GOT_TWO_PASS                                0x2A9
-#define FLAG_GOT_THREE_PASS                              0x2AA
+#define FLAG_GOT_ONE_PASS                                0x2A9
+#define FLAG_GOT_TWO_PASS                                0x2AA
 #define FLAG_GOT_FIVE_PASS                               0x2AB
 #define FLAG_GOT_SIX_PASS                                0x2AC
 #define FLAG_GOT_SEVEN_PASS                              0x2AD

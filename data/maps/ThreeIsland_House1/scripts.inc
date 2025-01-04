@@ -13,8 +13,17 @@ ThreeIsland_House1_EventScript_SetLostelleInHouse::
 ThreeIsland_House1_EventScript_Lostelle::
 	lock
 	faceplayer
+	specialvar VAR_RESULT, ArchipelagoSpecial_ArePassesSplit
+	call_if_eq VAR_RESULT, TRUE,
 	special BufferBigGuyOrBigGirlString
 	msgbox ThreeIsland_House1_Text_YoureAlwaysSoCool
+	release
+	end
+
+ThreeIsland_House1_EventScript_LostelleGivePass::
+	msgbox ThreeIsland_House1_Text_ThanksAgain
+Archipelago_Target_NPC_Gift_FLAG_GOT_TWO_PASS::
+	giveitem ITEM_TWO_PASS, 1, FLAG_GOT_TWO_PASS
 	release
 	end
 

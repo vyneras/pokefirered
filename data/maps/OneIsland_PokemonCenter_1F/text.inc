@@ -229,6 +229,10 @@ OneIsland_PokemonCenter_1F_Text_ManagedToLinkWithHoennThankYou::
     .string "Thanks to you, my dream came\n"
     .string "true…$"
 
+OneIsland_PokemonCenter_1F_Text_ShoudlRewardYou::
+    .string "I should reward you for all your\n"
+    .string "effort. Here, take this.$"
+
 OneIsland_PokemonCenter_1F_Text_CelioHearingRumorsAboutYou::
     .string "CELIO: Hello!\p"
     .string "{PLAYER}, I've been hearing rumors\n"

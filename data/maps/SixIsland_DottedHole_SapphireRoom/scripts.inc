@@ -55,8 +55,15 @@ SixIsland_DottedHole_SapphireRoom_EventScript_Sapphire::
 	delay 35
 	removeobject LOCALID_THIEF
 	setflag FLAG_LEARNED_YES_NAH_CHANSEY
+	specialvar VAR_RESULT, ArchipelagoSpecial_ArePassesSplit
+	goto_if_eq VAR_RESULT, TRUE, SixIsland_DottedHole_SapphireRoom_EventScript_ShowFivePass
 	release
 	end
+
+SixIsland_DottedHole_SapphireRoom_EventScript_ShowFivePass::
+    clearflag FLAG_HIDE_FIVE_PASS
+    release
+    end
 
 @ Lots of redundant scripts below
 SixIsland_DottedHole_SapphireRoom_EventScript_PlayerFaceThiefLeft2::

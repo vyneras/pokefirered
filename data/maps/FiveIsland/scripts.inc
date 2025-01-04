@@ -41,18 +41,5 @@ FiveIsland_EventScript_BugCatcher::
 	end
 
 FiveIsland_EventScript_Fisher::
-	lock
-	faceplayer
-	specialvar VAR_RESULT, ArchipelagoSpecial_ArePassesSplit
-	goto_if_eq VAR_RESULT, FALSE, FiveIsland_EventScript_FisherGavePass
-	goto_if_set FLAG_GOT_FIVE_PASS, FiveIsland_EventScript_FisherGavePass
-	msgbox Text_TakeThisPass
-Archipelago_Target_NPC_Gift_FLAG_GOT_FIVE_PASS::
-	giveitem ITEM_FIVE_PASS, 1, FLAG_GOT_FIVE_PASS
-	release
-	end
-
-FiveIsland_EventScript_FisherGavePass::
-	msgbox FiveIsland_Text_BeenGettingBusierAroundHere
-	release
+	msgbox FiveIsland_Text_BeenGettingBusierAroundHere, MSGBOX_NPC
 	end

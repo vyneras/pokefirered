@@ -81,11 +81,6 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_FULL_RESTORE_FROM_THREE_ISLAND_DEFENDER::
 	release
 	end
 
-ThreeIsland_EventScript_NoRoomForFullRestore::
-	msgbox ThreeIsland_Text_OhYourBagIsFull
-	release
-	end
-
 ThreeIsland_EventScript_BikerArgumentScene::
 	call_if_eq VAR_TEMP_1, 1, ThreeIsland_EventScript_PlayerFaceLeft
 	call_if_eq VAR_TEMP_1, 2, ThreeIsland_EventScript_PlayerFaceLeft
@@ -382,20 +377,7 @@ ThreeIsland_Movement_PaxtonApproachRight::
 	step_end
 
 ThreeIsland_EventScript_Woman::
-	lock
-	faceplayer
-	specialvar VAR_RESULT, ArchipelagoSpecial_ArePassesSplit
-	goto_if_eq VAR_RESULT, FALSE, ThreeIsland_EventScript_WomanGavePass
-	goto_if_set FLAG_GOT_THREE_PASS, ThreeIsland_EventScript_WomanGavePass
-	msgbox Text_TakeThisPass
-Archipelago_Target_NPC_Gift_FLAG_GOT_THREE_PASS::
-	giveitem ITEM_THREE_PASS, 1, FLAG_GOT_THREE_PASS
-	release
-	end
-
-ThreeIsland_EventScript_WomanGavePass::
-	msgbox ThreeIsland_Text_WouldntWantToSeeBikersHereAgain
-	release
+	msgbox ThreeIsland_Text_WouldntWantToSeeBikersHereAgain, MSGBOX_NPC
 	end
 
 ThreeIsland_EventScript_LittleBoy::

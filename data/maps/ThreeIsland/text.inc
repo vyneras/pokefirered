@@ -127,14 +127,6 @@ ThreeIsland_Text_ThankYouOhYourMonGotHurt::
     .string "Oh, look, your POKéMON got hurt\n"
     .string "on my account.$"
 
-ThreeIsland_Text_GivenFullRestore::
-    .string "{PLAYER} was given\n"
-    .string "a FULL RESTORE.$"
-
-ThreeIsland_Text_OhYourBagIsFull::
-    .string "Oh?\n"
-    .string "Your BAG is full.$"
-
 ThreeIsland_Text_YouveGotImpressiveMons::
     .string "You've got seriously impressive\n"
     .string "POKéMON with you.$"

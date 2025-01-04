@@ -22,3 +22,7 @@ SixIsland_DottedHole_SapphireRoom_Text_SellToTeamRocketTellPassword::
     .string "I'm done.\n"
     .string "Don't think badly of me!$"
 
+SixIsland_DottedHole_1F_Text_MustHaveDroppedThis::
+    .string "That man must have dropped this\n"
+    .string "on his way out.$"
+

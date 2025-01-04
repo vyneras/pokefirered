@@ -278,6 +278,8 @@ OneIsland_PokemonCenter_1F_EventScript_GiveCelioSapphire::
 	applymovement LOCALID_CELIO, Common_Movement_FacePlayer
 	waitmovement 0
 	msgbox OneIsland_PokemonCenter_1F_Text_ManagedToLinkWithHoennThankYou
+	specialvar VAR_RESULT, ArchipelagoSpecial_ArePassesSplit
+	call_if_eq VAR_RESULT, TRUE, OneIsland_PokemonCenter_1F_EventScript_CelioGivePass
 	special SetPostgameFlags
 	setflag FLAG_SYS_CAN_LINK_WITH_RS
 	setflag FLAG_HIDE_LORELEI_IN_HER_HOUSE
@@ -285,6 +287,12 @@ OneIsland_PokemonCenter_1F_EventScript_GiveCelioSapphire::
 	special InitRoamer
 	release
 	end
+
+OneIsland_PokemonCenter_1F_EventScript_CelioGivePass::
+	msgbox OneIsland_PokemonCenter_1F_Text_ShoudlRewardYou
+Archipelago_Target_NPC_Gift_FLAG_GOT_SEVEN_PASS::
+	giveitem ITEM_SEVEN_PASS, 1, FLAG_GOT_SEVEN_PASS
+	return
 
 OneIsland_PokemonCenter_1F_EventScript_CelioWaitingForSapphire::
 	goto_if_unset FLAG_TALKED_ABOUT_SAPPHIRE, OneIsland_PokemonCenter_1F_EventScript_CelioRequestSapphire

@@ -85,11 +85,19 @@ FourIsland_IcefallCave_Back_EventScript_LoreleiRocketsScene::
 	waitmovement 0
 	textcolor NPC_TEXT_COLOR_FEMALE
 	msgbox FourIsland_IcefallCave_Back_Text_ThankYouThisIsAwful
+	specialvar VAR_RESULT, ArchipelagoSpecial_ArePassesSplit
+	call_if_eq VAR_RESULT, TRUE,
 	setflag FLAG_HIDE_RUIN_VALLEY_SCIENTIST
 	clearflag FLAG_HIDE_LORELEI_IN_HER_HOUSE
 	setvar VAR_MAP_SCENE_ICEFALL_CAVE_BACK, 1
 	releaseall
 	end
+
+FourIsland_IcefallCave_Back_EventScript_LoreleiGivePass::
+	msgbox FourIsland_IcefallCave_Back_Text_TakeThisAndGoAfterThem
+Archipelago_Target_NPC_Gift_FLAG_GOT_SIX_PASS::
+	giveitem ITEM_SIX_PASS, 1, FLAG_GOT_SIX_PASS
+	return
 
 FourIsland_IcefallCave_Back_Movement_PlayerToRockets::
 	walk_up

@@ -901,12 +901,6 @@ Text_VoiceRangOutDontRunAway::
 Text_TheDoorIsOpen::
 	.string "The door is open…$"
 
-Text_TakeThisPass::
-	.string "You need specific passes to\n"
-	.string "travel around the SEVII ISLANDS.\p"
-	.string "Let me give you the pass\n"
-	.string "for this island.$"
-
 	.include "data/text/pc_transfer.inc"
 	.include "data/text/white_out.inc"
 	.include "data/text/poke_mart.inc"
@@ -933,6 +927,7 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_LIFT_KEY
 	setflag FLAG_HIDE_SILPH_SCOPE
 	setflag FLAG_HIDE_SCANNER
+	setflag FLAG_HIDE_FIVE_PASS
 	setflag FLAG_HIDE_CERULEAN_RIVAL
 	setflag FLAG_HIDE_SS_ANNE_RIVAL
 	setflag FLAG_HIDE_VERMILION_CITY_OAKS_AIDE

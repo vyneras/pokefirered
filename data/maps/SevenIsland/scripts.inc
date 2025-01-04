@@ -37,20 +37,7 @@ SevenIsland_EventScript_IslandSign::
 	end
 
 SevenIsland_EventScript_OldWoman::
-	lock
-	faceplayer
-	specialvar VAR_RESULT, ArchipelagoSpecial_ArePassesSplit
-	goto_if_eq VAR_RESULT, FALSE, SevenIsland_EventScript_OldWomanGavePass
-	goto_if_set FLAG_GOT_SEVEN_PASS, SevenIsland_EventScript_OldWomanGavePass
-	msgbox Text_TakeThisPass
-Archipelago_Target_NPC_Gift_FLAG_GOT_SEVEN_PASS::
-	giveitem ITEM_SEVEN_PASS, 1, FLAG_GOT_SEVEN_PASS
-	release
-	end
-
-SevenIsland_EventScript_OldWomanGavePass::
-	msgbox SevenIsland_Text_IslandsMadeInSevenDays
-	release
+	msgbox SevenIsland_Text_IslandsMadeInSevenDays, MSGBOX_NPC
 	end
 
 SevenIsland_EventScript_Scientist::

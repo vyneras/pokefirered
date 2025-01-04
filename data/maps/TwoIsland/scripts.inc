@@ -202,20 +202,7 @@ TwoIsland_Items_ShopExpanded3::
 	end
 
 TwoIsland_EventScript_Sailor::
-	lock
-	faceplayer
-	specialvar VAR_RESULT, ArchipelagoSpecial_ArePassesSplit
-	goto_if_eq VAR_RESULT, FALSE, TwoIsland_EventScript_SailorGavePass
-	goto_if_set FLAG_GOT_TWO_PASS, TwoIsland_EventScript_SailorGavePass
-	msgbox Text_TakeThisPass
-Archipelago_Target_NPC_Gift_FLAG_GOT_TWO_PASS::
-	giveitem ITEM_TWO_PASS, 1, FLAG_GOT_TWO_PASS
-	release
-	end
-
-TwoIsland_EventScript_SailorGavePass::
-	msgbox TwoIsland_Text_FellowMovedFromCeladonCity
-	release
+	msgbox TwoIsland_Text_FellowMovedFromCeladonCity, MSGBOX_NPC
 	end
 
 TwoIsland_EventScript_Woman::

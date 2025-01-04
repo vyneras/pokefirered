@@ -71,3 +71,8 @@ FourIsland_IcefallCave_Back_Text_ThankYouThisIsAwful::
     .string "I had no idea that those horrible\n"
     .string "criminals were loose here…$"
 
+FourIsland_IcefallCave_Back_Text_TakeThisAndGoAfterThem::
+    .string "Take this and go after them.\p"
+    .string "I'm trusting you to free the\n"
+    .string "captured POKéMON.$"
+

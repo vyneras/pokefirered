@@ -31,6 +31,8 @@ CinnabarIsland_PokemonCenter_1F_EventScript_Youngster::
 CinnabarIsland_PokemonCenter_1F_EventScript_Bill::
 	lock
 	faceplayer
+	specialvar VAR_RESULT, ArchipelagoSpecial_ArePassesSplit
+	call_if_eq VAR_RESULT, TRUE, CinnabarIsland_PokemonCenter_1F_EventScript_BillGivePass
 	msgbox CinnabarIsland_PokemonCenter_1F_Text_ReadyToSailToOneIsland, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, CinnabarIsland_PokemonCenter_1F_EventScript_NotReadyToSail
 	msgbox CinnabarIsland_PokemonCenter_1F_Text_LetsGo
@@ -43,6 +45,14 @@ CinnabarIsland_PokemonCenter_1F_EventScript_Bill::
 	removeobject LOCALID_BILL
 	warp MAP_ONE_ISLAND_POKEMON_CENTER_1F, 9, 9
 	waitstate
+	release
+	end
+
+CinnabarIsland_PokemonCenter_1F_EventScript_BillGivePass::
+	goto_if_set FLAG_GOT_ONE_PASS, EventScript_Return
+	msgbox CinnabarIsland_PokemonCenter_1F_Text_ExtraPass
+Archipelago_Target_NPC_Gift_FLAG_GOT_ONE_PASS::
+	giveitem ITEM_ONE_PASS, 1, FLAG_GOT_ONE_PASS
 	release
 	end
 

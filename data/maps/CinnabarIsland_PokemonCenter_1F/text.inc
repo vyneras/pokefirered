@@ -25,6 +25,10 @@ CinnabarIsland_PokemonCenter_1F_Text_EvolutionCanWaitForNewMoves::
     .string "Evolution can wait until new moves\n"
     .string "have been learned.$"
 
+CinnabarIsland_PokemonCenter_1F_Text_ExtraPass::
+    .string "BILL: I have an extra pass to ONE\n"
+    .string "ISLAND. I'll let you have it.$"
+
 CinnabarIsland_PokemonCenter_1F_Text_ReadyToSailToOneIsland::
     .string "BILL: Hey, you kept me waiting!\n"
     .string "Ready to set sail to ONE ISLAND?$"
