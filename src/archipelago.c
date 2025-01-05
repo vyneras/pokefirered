@@ -3,6 +3,7 @@
 #include "item.h"
 #include "map_preview_screen.h"
 #include "party_menu.h"
+#include "pokedex.h"
 #include "util.h"
 #include "constants/heal_locations.h"
 #include "constants/items.h"
@@ -18,6 +19,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .expMultiplierDenominator = 100,
     .normalizeEncounterRates = FALSE,
     .canSkipFanfares = FALSE,
+    .unlockSeenDexInfo = FALSE,
 
     .openViridianCity = FALSE,
     .route3Requirement = 1,
@@ -176,5 +178,15 @@ void GiveStartingItems(void)
         {
             AddBagItem(item, count);
         }
+    }
+}
+
+void UnlockAllSeenDexInfo(void)
+{
+    u16 i;
+
+    for (i = 1; i <= NATIONAL_DEX_COUNT; i++)
+    {
+        GetSetPokedexFlag(i, FLAG_SET_SEEN);
     }
 }

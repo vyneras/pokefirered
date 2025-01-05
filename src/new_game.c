@@ -159,6 +159,7 @@ void NewGameInitData(void)
     GiveStartingItems();
     VarSet(VAR_RESORT_GORGEOUS_REQUESTED_MON, gArchipelagoOptions.resortGorgeousMon);
 
+    if (gArchipelagoOptions.unlockSeenDexInfo) UnlockAllSeenDexInfo();
     if (!gArchipelagoOptions.reccuringHiddenItems) SetAllRenewableItemFlags();
     if (gArchipelagoOptions.betterShopsEnabled) FlagSet(FLAG_BETTER_SHOPS_ENABLED);
     if (gArchipelagoOptions.openViridianCity) VarSet(VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1);
