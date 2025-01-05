@@ -1,4 +1,5 @@
 EventScript_SetGymTrainers::
+	special ArchipelagoSpecial_GiveDexInfoForGymClear
 	specialvar VAR_RESULT, ArchipelagoSpecial_IsTrainersanity
 	goto_if_eq VAR_RESULT, TRUE, EventScript_Return
 	switch VAR_0x8008

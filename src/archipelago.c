@@ -67,6 +67,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
 
     .reccuringHiddenItems = FALSE,
     .isTrainersanity = FALSE,
+    .isDexsanity = FALSE,
     .extraKeyItems = FALSE,
     .kantoOnly = FALSE,
     .flyUnlocks = FALSE,

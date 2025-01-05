@@ -62,22 +62,23 @@ struct ArchipelagoOptions
 
   /* 0x36 */ bool8 reccuringHiddenItems;
   /* 0x37 */ bool8 isTrainersanity;
-  /* 0x38 */ bool8 extraKeyItems;
-  /* 0x39 */ bool8 kantoOnly;
-  /* 0x3A */ bool8 flyUnlocks;
-  /* 0x3B */ bool8 isFamesanity;
+  /* 0x38 */ bool8 isDexsanity;
+  /* 0x39 */ bool8 extraKeyItems;
+  /* 0x3A */ bool8 kantoOnly;
+  /* 0x3B */ bool8 flyUnlocks;
+  /* 0x3C */ bool8 isFamesanity;
 
-  /* 0x3C */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
-  /* 0x3D */ u8 additionalDarkCaves; // Mt. Moon, Diglett's Cave, Victory Road
+  /* 0x3D */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
+  /* 0x3E */ u8 additionalDarkCaves; // Mt. Moon, Diglett's Cave, Victory Road
 
-  /* 0x3E */ bool8 passesSplit;
-  /* 0x3F */ bool8 cardKeysSplit;
-  /* 0x40 */ bool8 teasSplit;
+  /* 0x3F */ bool8 passesSplit;
+  /* 0x40 */ bool8 cardKeysSplit;
+  /* 0x41 */ bool8 teasSplit;
 
-  /* 0x41 */ u8 startingLocation;
-  /* 0x42 */ u8 freeFlyId;
-  /* 0x43 */ u8 townFreeFlyId;
-  /* 0x44 */ u16 resortGorgeousMon;
+  /* 0x42 */ u8 startingLocation;
+  /* 0x43 */ u8 freeFlyId;
+  /* 0x44 */ u8 townFreeFlyId;
+  /* 0x45 */ u16 resortGorgeousMon;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem

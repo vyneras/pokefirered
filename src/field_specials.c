@@ -2966,6 +2966,18 @@ bool8 ArchipelagoSpecial_IsTrainersanity(void)
     return gArchipelagoOptions.isTrainersanity;
 }
 
+void ArchipelagoSpecial_GiveDexInfoForGymClear(void)
+{
+    if (gArchipelagoOptions.isDexsanity)
+    {
+        u16 i;
+        for (i = gSpecialVar_0x8008; i <= NATIONAL_DEX_COUNT; i += 8)
+        {
+            GetSetPokedexFlag(i, FLAG_SET_SEEN);
+        }
+    }
+}
+
 bool8 ArchipelagoSpecial_ExtraKeyItems(void)
 {
     return gArchipelagoOptions.extraKeyItems;

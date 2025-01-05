@@ -494,6 +494,7 @@ gSpecials::
 	def_special ArchipelagoSpecial_CanUseHmOutsideBattle
 	def_special ArchipelagoSpecial_GetProfessorOaksAideCount
 	def_special ArchipelagoSpecial_IsTrainersanity
+	def_special ArchipelagoSpecial_GiveDexInfoForGymClear
 	def_special ArchipelagoSpecial_ExtraKeyItems
 	def_special ArchipelagoSpecial_KantoOnly
 	def_special ArchipelagoSpecial_FlyUnlocks
