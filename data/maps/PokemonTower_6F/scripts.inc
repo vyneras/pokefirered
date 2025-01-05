@@ -4,16 +4,7 @@ PokemonTower_6F_MapScripts::
 
 PokemonTower_6F_OnTransition::
 	setvar VAR_TEMP_0, 0
-	call_if_unset FLAG_POKEMON_TOWER_MAROWAK_IS_RECOVERING, PokemonTower_6F_EventScript_TryShowMarowak
 	end
-
-PokemonTower_6F_EventScript_TryShowMarowak::
-	goto_if_set FLAG_CAUGHT_POKEMON_TOWER_MAROWAK, EventScript_Return
-	setvar VAR_MAP_SCENE_POKEMON_TOWER_6F, 0
-	specialvar VAR_RESULT, ArchipelagoSpecial_BlockTower
-	goto_if_eq VAR_RESULT, FALSE, EventScript_Return
-	setvar VAR_MAP_SCENE_POKEMON_TOWER_1F, 0
-	return
 
 PokemonTower_6F_EventScript_MarowakGhost::
 	lockall
@@ -41,14 +32,6 @@ PokemonTower_6F_EventScript_DefeatedMarowakGhost::
 	msgbox PokemonTower_6F_Text_MothersSpiritWasCalmed
 	setvar VAR_MAP_SCENE_POKEMON_TOWER_6F, 1
 	setvar VAR_MAP_SCENE_POKEMON_TOWER_1F, 1
-	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, PokemonTower_6F_EventScript_CaughtMarowak
-	setflag FLAG_POKEMON_TOWER_MAROWAK_IS_RECOVERING
-	releaseall
-	end
-
-PokemonTower_6F_EventScript_CaughtMarowak::
-	setflag FLAG_CAUGHT_POKEMON_TOWER_MAROWAK
 	releaseall
 	end
 
