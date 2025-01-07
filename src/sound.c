@@ -44,7 +44,7 @@ extern struct ToneData gCryTable_Reverse[];
 extern u16 SpeciesToCryId(u16);
 
 static void Task_Fanfare(u8 taskId);
-static void CreateFanfareTask(void);
+static void CreateFanfareTask(u16 songNum);
 static void Task_DuckBGMForPokemonCry(u8 taskId);
 static void RestoreBGMVolumeAfterPokemonCry(void);
 
@@ -236,7 +236,7 @@ void PlayFanfare(u16 songNum)
         if (sFanfares[i].songNum == songNum)
         {
             PlayFanfareByFanfareNum(i);
-            CreateFanfareTask();
+            CreateFanfareTask(songNum);
             return;
         }
     }
@@ -244,7 +244,7 @@ void PlayFanfare(u16 songNum)
     // songNum is not in sFanfares
     // Play first fanfare in table instead
     PlayFanfareByFanfareNum(0);
-    CreateFanfareTask();
+    CreateFanfareTask(songNum);
 }
 
 bool8 IsFanfareTaskInactive(void)
@@ -262,15 +262,19 @@ static void Task_Fanfare(u8 taskId)
     }
     else
     {
+        m4aSongNumStop(gTasks[taskId].data[0]);
         m4aMPlayContinue(&gMPlayInfo_BGM);
         DestroyTask(taskId);
     }
 }
 
-static void CreateFanfareTask(void)
+static void CreateFanfareTask(u16 songNum)
 {
     if (FuncIsActiveTask(Task_Fanfare) != TRUE)
-        CreateTask(Task_Fanfare, 80);
+    {
+        u8 taskId = CreateTask(Task_Fanfare, 80);
+        gTasks[taskId].data[0] = songNum;
+    }
 }
 
 void FadeInNewBGM(u16 songNum, u8 speed)
