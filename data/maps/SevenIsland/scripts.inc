@@ -69,6 +69,7 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_DEEP_SEA_SCALE::
 Archipelago_Target_NPC_Gift_FLAG_GOT_DEEP_SEA_TOOTH::
 	giveitem ITEM_DEEP_SEA_TOOTH, 1, FLAG_GOT_DEEP_SEA_TOOTH
 	setflag FLAG_GAVE_SCANNER
+	removeitem ITEM_SCANNER
 	goto SevenIsland_EventScript_ScientistAlreadyGaveScanner
 	end
 
