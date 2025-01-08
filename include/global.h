@@ -705,6 +705,12 @@ struct TrainerNameRecord
     u8 trainerName[PLAYER_NAME_LENGTH + 1];
 };
 
+struct ArchipelagoReward
+{
+    u16 itemId;      // The id of the item to be received
+    u16 locationId;  // The flag id that gave this item
+};
+
 // For external event data storage. The majority of these may have never been used.
 // In FRLG, the only known used fields are the PokeCoupon and BoxRS ones, but hacking the distribution discs allows FRLG to receive events and set the others
 struct ExternalEventData
@@ -792,8 +798,8 @@ struct SaveBlock1
     /*0x2F14*/ u16 easyChatBattleLost[EASY_CHAT_BATTLE_WORDS_COUNT];
     /*0x2F20*/ struct Mail mail[MAIL_COUNT];
     /*0x3160*/ u8 additionalPhrases[NUM_ADDITIONAL_PHRASE_BYTES];
-    /*0x3168*/ OldMan oldMan; // unused
-    /*0x31A4*/ struct DewfordTrend dewfordTrends[5]; // unused
+    /*0x3168*/ struct ArchipelagoReward rewardQueue[REWARD_QUEUE_SIZE];
+    /*0x31A8*/ struct DewfordTrend dewfordTrends[5]; // unused
     /*0x31D0*/ struct DayCare daycare;
     /*0x32EC*/ u8 giftRibbons[GIFT_RIBBONS_COUNT];
     /*0x32F7*/ struct ExternalEventData externalEventData;

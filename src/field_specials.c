@@ -2604,17 +2604,17 @@ u16 ArchipelagoSpecial_GetObjectScriptFlag(void)
 
 u16 ArchipelagoSpecial_PopReward(void)
 {
-    u16 reward = gRewardQueue[0].itemId;
-    u16 locationId = gRewardQueue[0].locationId;
+    u16 reward = gSaveBlock1Ptr->rewardQueue[0].itemId;
+    u16 locationId = gSaveBlock1Ptr->rewardQueue[0].locationId;
     u8 i;
 
     for (i = 0; i < REWARD_QUEUE_SIZE - 1; i++)
     {
-        gRewardQueue[i].itemId = gRewardQueue[i + 1].itemId;
-        gRewardQueue[i].locationId = gRewardQueue[i + 1].locationId;
+        gSaveBlock1Ptr->rewardQueue[i].itemId = gSaveBlock1Ptr->rewardQueue[i + 1].itemId;
+        gSaveBlock1Ptr->rewardQueue[i].locationId = gSaveBlock1Ptr->rewardQueue[i + 1].locationId;
     }
-    gRewardQueue[REWARD_QUEUE_SIZE - 1].itemId = ITEM_NONE;
-    gRewardQueue[REWARD_QUEUE_SIZE - 1].locationId = 0;
+    gSaveBlock1Ptr->rewardQueue[REWARD_QUEUE_SIZE - 1].itemId = ITEM_NONE;
+    gSaveBlock1Ptr->rewardQueue[REWARD_QUEUE_SIZE - 1].locationId = 0;
 
     gSpecialVar_0x8003 = locationId;
     return reward;

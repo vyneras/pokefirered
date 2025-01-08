@@ -1237,7 +1237,7 @@ int SetCableClubWarp(void)
 
 bool8 Archipelago_CheckQueuedRewards()
 {
-    if (gRewardQueue[0].itemId != ITEM_NONE)
+    if (gSaveBlock1Ptr->rewardQueue[0].itemId != ITEM_NONE)
     {
         ScriptContext_SetupScript(ArchipelagoScript_ReceiveReward);
         return TRUE;

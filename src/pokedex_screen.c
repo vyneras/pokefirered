@@ -2318,10 +2318,10 @@ s8 DexScreen_GetSetPokedexFlag(u16 nationalDexNo, u8 caseId, bool8 indexIsSpecie
             {
                 for (rewardIndex = 0; rewardIndex < REWARD_QUEUE_SIZE; ++rewardIndex)
                 {
-                    if (gRewardQueue[rewardIndex].itemId == ITEM_NONE)
+                    if (gSaveBlock1Ptr->rewardQueue[rewardIndex].itemId == ITEM_NONE)
                     {
-                        gRewardQueue[rewardIndex].itemId = sPokedexRewards[nationalDexNo];
-                        gRewardQueue[rewardIndex].locationId = DEXSANITY_FLAGS_START + nationalDexNo;
+                        gSaveBlock1Ptr->rewardQueue[rewardIndex].itemId = sPokedexRewards[nationalDexNo];
+                        gSaveBlock1Ptr->rewardQueue[rewardIndex].locationId = DEXSANITY_FLAGS_START + nationalDexNo;
                         break;
                     }
                 }

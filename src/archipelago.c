@@ -89,7 +89,6 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
 };
 
 EWRAM_DATA struct ArchipelagoReceivedItem gArchipelagoReceivedItem = {0};
-EWRAM_DATA struct ArchipelagoReward gRewardQueue[10] = {0};
 
 const u16 gArchipelagoStartingItems[ITEMS_COUNT] = {0};
 const u16 gArchipelagoStartingItemsCount[ITEMS_COUNT] = {0};
@@ -174,7 +173,7 @@ void GiveStartingItems(void)
     {
         u16 item = gArchipelagoStartingItems[i];
         u16 count = gArchipelagoStartingItemsCount[i];
-        if (item != ITEM_NONE && !IsItemUnique(item) && count > 0)
+        if (item != ITEM_NONE && count > 0)
         {
             AddBagItem(item, count);
         }

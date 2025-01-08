@@ -918,10 +918,10 @@ void SetBattledTrainerFlag(void)
         {
             for (i = 0; i < REWARD_QUEUE_SIZE; i++)
             {
-                if (gRewardQueue[i].itemId == ITEM_NONE)
+                if (gSaveBlock1Ptr->rewardQueue[i].itemId == ITEM_NONE)
                 {
-                    gRewardQueue[i].itemId = sTrainerRewards[gTrainerBattleOpponent_A];
-                    gRewardQueue[i].locationId = GetTrainerAFlag();
+                    gSaveBlock1Ptr->rewardQueue[i].itemId = sTrainerRewards[gTrainerBattleOpponent_A];
+                    gSaveBlock1Ptr->rewardQueue[i].locationId = GetTrainerAFlag();
                     break;
                 }
             }

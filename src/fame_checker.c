@@ -1239,11 +1239,11 @@ void SetFlavorTextFlagFromSpecialVars(void)
             {
                 for (i = 0; i < REWARD_QUEUE_SIZE; i++)
                 {
-                    if (gRewardQueue[i].itemId == ITEM_NONE)
+                    if (gSaveBlock1Ptr->rewardQueue[i].itemId == ITEM_NONE)
                     {
                         u8 rewardNum = (gSpecialVar_0x8004 * 6) + gSpecialVar_0x8005;
-                        gRewardQueue[i].itemId = sFameCheckerRewards[rewardNum];
-                        gRewardQueue[i].locationId = FAMESANITY_FLAGS_START + rewardNum;
+                        gSaveBlock1Ptr->rewardQueue[i].itemId = sFameCheckerRewards[rewardNum];
+                        gSaveBlock1Ptr->rewardQueue[i].locationId = FAMESANITY_FLAGS_START + rewardNum;
                         break;
                     }
                 }

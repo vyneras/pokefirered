@@ -90,20 +90,14 @@ struct ArchipelagoReceivedItem
     bool8 isProgression;         // Whether a message is progression (for filtering messages)
 };
 
-struct ArchipelagoReward
-{
-    u16 itemId;      // The id of the item to be received
-    u16 locationId;  // The flag id that gave this item
-};
+
 
 struct ArchipelagoInfo
 {
     u8 auth[16];
 };
 
-#define REWARD_QUEUE_SIZE 10
 extern struct ArchipelagoReceivedItem gArchipelagoReceivedItem;
-extern struct ArchipelagoReward gRewardQueue[REWARD_QUEUE_SIZE];
 
 extern const u16 gArchipelagoStartingItems[];
 extern const u16 gArchipelagoStartingItemsCount[];
