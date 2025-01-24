@@ -6,10 +6,6 @@ FiveIsland_WaterLabyrinth_Text_LetMeTakeLookAtMons::
     .string "Let me take a look.\n"
     .string "… … …   … … …$"
 
-FiveIsland_WaterLabyrinth_Text_HmmISeeIsee::
-    .string "Ah, hmm…\n"
-    .string "I see, I see…$"
-
 FiveIsland_WaterLabyrinth_Text_TreatMonRightHaveThis::
     .string "Oh, impressive.\n"
     .string "You treat your POKéMON right.\p"

@@ -9,10 +9,8 @@ FiveIsland_WaterLabyrinth_EventScript_EggGentleman::
 	goto_if_set FLAG_GOT_TOGEPI_EGG, FiveIsland_WaterLabyrinth_EventScript_PostEggComment
 	goto_if_set FLAG_NO_ROOM_FOR_TOGEPI_EGG, FiveIsland_WaterLabyrinth_EventScript_ReturnForEgg
 	msgbox FiveIsland_WaterLabyrinth_Text_LetMeTakeLookAtMons
-	specialvar VAR_RESULT, GetLeadMonFriendship
-	goto_if_eq VAR_RESULT, 6, FiveIsland_WaterLabyrinth_EventScript_LeadMonMaxFriendship
-	msgbox FiveIsland_WaterLabyrinth_Text_HmmISeeIsee
-	release
+	msgbox FiveIsland_WaterLabyrinth_Text_TreatMonRightHaveThis
+	goto FiveIsland_WaterLabyrinth_EventScript_TryGiveEgg
 	end
 
 FiveIsland_WaterLabyrinth_EventScript_MonDaisyComment::
@@ -26,11 +24,6 @@ FiveIsland_WaterLabyrinth_EventScript_MonDaisyComment::
 FiveIsland_WaterLabyrinth_EventScript_SetShowedMonFlag::
 	setflag FLAG_SHOWED_TOGEPI_OR_TOGETIC
 	return
-
-FiveIsland_WaterLabyrinth_EventScript_LeadMonMaxFriendship::
-	msgbox FiveIsland_WaterLabyrinth_Text_TreatMonRightHaveThis
-	goto FiveIsland_WaterLabyrinth_EventScript_TryGiveEgg
-	end
 
 FiveIsland_WaterLabyrinth_EventScript_TryGiveEgg::
 	getpartysize
