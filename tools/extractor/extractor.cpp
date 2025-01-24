@@ -431,7 +431,7 @@ int main (int argc, char *argv[])
             { "gSaveBlock2Ptr", symbol_map["gSaveBlock2Ptr"] },
             { "gArchipelagoDeathLinkQueued", symbol_map["gArchipelagoDeathLinkQueued"] },
             { "gPlayerParty", symbol_map["gPlayerParty"] },
-            { "gEnemyParty", symbol_map["gEnemyParty"] },
+            { "gEnemyParty", symbol_map["gEnemyParty"] }
         };
 
         misc_rom_addresses[GAME_REVISION_MAP[i]] = {
@@ -455,8 +455,6 @@ int main (int argc, char *argv[])
             { "sFanfares", symbol_map["sFanfares"] - ROM_START },
             { "sInGameTrades", symbol_map["sInGameTrades"] - ROM_START},
             { "sFlashLevelToRadius", symbol_map["sFlashLevelToRadius"] - ROM_START},
-            { "sArchipelagoPCItemId", symbol_map["sArchipelagoPCItemId"] - ROM_START},
-            { "sIntroSpecies", symbol_map["sIntroSpecies"] - ROM_START},
             { "gRandomizedSoundTable", symbol_map["gRandomizedSoundTable"] - ROM_START }
         };
 

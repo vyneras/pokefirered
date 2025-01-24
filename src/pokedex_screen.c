@@ -1573,7 +1573,7 @@ static void ItemPrintFunc_OrderedListMenu(u8 windowId, u32 itemId, u8 y)
         if (type1 != gSpeciesInfo[species].types[1])
             BlitMenuInfoIcon(sPokedexScreenData->numericalOrderWindowId, gSpeciesInfo[species].types[1] + 1, 0x98, y);
     }
-    else if (seen && sPokedexRewards[species - 1] != ITEM_NONE)
+    else if (seen && HasDexsanityItem(SpeciesToNationalPokedexNum(species)))
     {
         BlitMenuInfoIconArchipelago(sPokedexScreenData->numericalOrderWindowId, MENU_INFO_ICON_DEXSANITY, 0x28, y);
     }
@@ -2314,9 +2314,9 @@ s8 DexScreen_GetSetPokedexFlag(u16 nationalDexNo, u8 caseId, bool8 indexIsSpecie
     case FLAG_SET_CAUGHT:
         if (!gSaveBlock2Ptr->pokedex.owned[index])
         {
-            if (sPokedexRewards[index] != ITEM_NONE)
+            if (sPokedexRewards[nationalDexNo] != ITEM_NONE)
             {
-                for (rewardIndex = 0; rewardIndex < REWARD_QUEUE_SIZE; ++rewardIndex)
+                for (rewardIndex = 0; rewardIndex < REWARD_QUEUE_SIZE; rewardIndex++)
                 {
                     if (gSaveBlock1Ptr->rewardQueue[rewardIndex].itemId == ITEM_NONE)
                     {

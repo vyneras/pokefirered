@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
 #include "data.h"
 #include "decompress.h"
 #include "event_data.h"
@@ -898,7 +899,7 @@ static void ItemPc_DoWithdraw(u8 taskId)
 
     if (AddBagItem(itemId, data[8]) == TRUE)
     {
-        if (itemId == sArchipelagoPCItemId)
+        if (itemId == gArchipelagoOptions.pcItemId)
             FlagSet(FLAG_GOT_PC_POTION);
         ItemUse_SetQuestLogEvent(QL_EVENT_WITHDREW_ITEM_PC, NULL, itemId, 0xFFFF);
         CopyItemName(itemId, gStringVar1);

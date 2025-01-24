@@ -80,6 +80,8 @@ struct ArchipelagoOptions
   /* 0x44 */ u8 freeFlyId;
   /* 0x45 */ u8 townFreeFlyId;
   /* 0x46 */ u16 resortGorgeousMon;
+  /* 0x48 */ u16 introSpecies;
+  /* 0x4A */ u16 pcItemId;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem

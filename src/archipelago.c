@@ -7,6 +7,7 @@
 #include "util.h"
 #include "constants/heal_locations.h"
 #include "constants/items.h"
+#include "constants/species.h"
 
 const struct ArchipelagoOptions gArchipelagoOptions = {
     .advanceTextWithHoldA = FALSE,
@@ -85,7 +86,9 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .startingLocation = SPAWN_PALLET_TOWN,
     .freeFlyId = 0,
     .townFreeFlyId = 0,
-    .resortGorgeousMon = 25
+    .resortGorgeousMon = 25,
+    .introSpecies = SPECIES_NIDORAN_F,
+    .pcItemId = ITEM_POTION
 };
 
 EWRAM_DATA struct ArchipelagoReceivedItem gArchipelagoReceivedItem = {0};

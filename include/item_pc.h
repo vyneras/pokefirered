@@ -6,6 +6,4 @@
 void ItemPc_Init(u8 kind, MainCallback callback);
 void ItemPc_SetInitializedFlag(bool8 flag);
 
-static const u16 sArchipelagoPCItemId = ITEM_POTION;
-
 #endif //GUARD_ITEM_PC_H
