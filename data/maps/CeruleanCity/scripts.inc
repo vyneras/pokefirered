@@ -34,7 +34,7 @@ CeruleanCity_EventScript_RemoveCutTree::
 	return
 
 CeruleanCity_EventScript_RemoveSmashRock::
-	setflag FLAG_TEMP_13
+	setflag FLAG_TEMP_14
 	return
 
 CeruleanCity_EventScript_SetGiveFlyUnlockItem::

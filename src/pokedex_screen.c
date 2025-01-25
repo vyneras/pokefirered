@@ -2312,7 +2312,7 @@ s8 DexScreen_GetSetPokedexFlag(u16 nationalDexNo, u8 caseId, bool8 indexIsSpecie
         gSaveBlock1Ptr->seen2[index] |= mask;
         break;
     case FLAG_SET_CAUGHT:
-        if (!gSaveBlock2Ptr->pokedex.owned[index])
+        if ((gSaveBlock2Ptr->pokedex.owned[index] & mask) == 0)
         {
             if (sPokedexRewards[nationalDexNo] != ITEM_NONE)
             {
