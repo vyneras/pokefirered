@@ -14,7 +14,7 @@ ThreeIsland_House1_EventScript_Lostelle::
 	lock
 	faceplayer
 	specialvar VAR_RESULT, ArchipelagoSpecial_ArePassesSplit
-	call_if_eq VAR_RESULT, TRUE,
+	call_if_eq VAR_RESULT, TRUE, ThreeIsland_House1_EventScript_LostelleGivePass
 	special BufferBigGuyOrBigGirlString
 	msgbox ThreeIsland_House1_Text_YoureAlwaysSoCool
 	release
