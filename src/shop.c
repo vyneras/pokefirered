@@ -78,7 +78,7 @@ EWRAM_DATA u16 (*gShopTilemapBuffer2)[0x400] = {0};
 EWRAM_DATA u16 (*gShopTilemapBuffer3)[0x400] = {0};
 EWRAM_DATA u16 (*gShopTilemapBuffer4)[0x400] = {0};
 EWRAM_DATA struct ListMenuItem *sShopMenuListMenu = {0};
-static EWRAM_DATA u8 (*sShopMenuItemStrings)[13] = {0};
+static EWRAM_DATA u8 (*sShopMenuItemStrings)[14] = {0};
 EWRAM_DATA struct QuestLogEvent_Shop sHistory[2] = {0};
 
 //Function Declarations
