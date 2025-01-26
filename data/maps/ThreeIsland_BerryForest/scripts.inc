@@ -12,8 +12,8 @@ ThreeIsland_BerryForest_OnTransition::
 ThreeIsland_BerryForest_EventScript_Lostelle::
 	lock
 	faceplayer
-	call_if_set FLAG_BERRY_FOREST_HYPNO_IS_RECOVERING, ThreeIsland_BerryForest_EventScript_LostelleTryHypnoBattle
 	goto_if_set FLAG_RESCUED_LOSTELLE, ThreeIsland_BerryForest_EventScript_LostelleGoToGameCorner
+	call ThreeIsland_BerryForest_EventScript_LostelleTryHypnoBattle
 	msgbox ThreeIsland_BerryForest_Text_ThankYouHaveThis
 Archipelago_Target_NPC_Gift_FLAG_RESCUED_LOSTELLE::
 	giveitem ITEM_IAPAPA_BERRY, 1, FLAG_RESCUED_LOSTELLE
@@ -23,6 +23,13 @@ Archipelago_Target_NPC_Gift_FLAG_RESCUED_LOSTELLE::
 	setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 1
 	clearflag FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE
 	goto ThreeIsland_BerryForest_EventScript_WarpToGameCorner
+	end
+
+ThreeIsland_BerryForest_EventScript_LostelleGoToGameCorner::
+	call_if_unset FLAG_BERRY_FOREST_HYPNO_IS_RECOVERING, ThreeIsland_BerryForest_EventScript_LostelleTryHypnoBattle
+	msgbox ThreeIsland_BerryForest_Text_GoToGameCorner, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, ThreeIsland_BerryForest_EventScript_WarpToGameCorner
+	release
 	end
 
 ThreeIsland_BerryForest_EventScript_LostelleTryHypnoBattle::
@@ -45,19 +52,13 @@ Archipelago_Target_Static_Encounter_HYPNO::
 	applymovement LOCALID_LOSTELLE, Common_Movement_FacePlayer
 	waitmovement 0
 	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, ThreeIsland_BerryForest_EventScript_LostelleCaughtMarowak
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, ThreeIsland_BerryForest_EventScript_LostelleCaughtHypno
 	setflag FLAG_BERRY_FOREST_HYPNO_IS_RECOVERING
 	return
 
-ThreeIsland_BerryForest_EventScript_LostelleCaughtMarowak::
+ThreeIsland_BerryForest_EventScript_LostelleCaughtHypno::
 	setflag FLAG_CAUGHT_BERRY_FOREST_HYPNO
 	return
-
-ThreeIsland_BerryForest_EventScript_LostelleGoToGameCorner::
-	msgbox ThreeIsland_BerryForest_Text_GoToGameCorner, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, ThreeIsland_BerryForest_EventScript_WarpToGameCorner
-	release
-	end
 
 ThreeIsland_BerryForest_EventScript_WarpToGameCorner::
 	warp MAP_TWO_ISLAND_JOYFUL_GAME_CORNER, 6, 6
