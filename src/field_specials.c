@@ -2936,7 +2936,7 @@ bool8 ArchipelagoSpecial_CanEnterCeruleanCave(void)
     {
         for (i = 0; i < NUM_BADGES_GYMS; i++)
         {
-            if (FlagGet(gGymFlags[i]))
+            if (FlagGet(gBadgeFlags[i]))
             {
                 count++;
             }
@@ -2946,7 +2946,7 @@ bool8 ArchipelagoSpecial_CanEnterCeruleanCave(void)
     {
         for (i = 0; i < NUM_BADGES_GYMS; i++)
         {
-            if (FlagGet(gBadgeFlags[i]))
+            if (FlagGet(gGymFlags[i]))
             {
                 count++;
             }
