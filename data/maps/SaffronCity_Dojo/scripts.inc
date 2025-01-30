@@ -53,11 +53,6 @@ Archipelago_Target_Special_Gift_HITMONCHAN::
 	release
 	end
 
-SaffronCity_Dojo_EventScript_AlreadyGotHitmon::
-	msgbox SaffronCity_Dojo_Text_BetterNotGetGreedy
-	release
-	end
-
 SaffronCity_Dojo_EventScript_GiveHitmon::
 	hidemonpic
 Archipelago_Target_Level_Special_Gift_HITMONLEE::

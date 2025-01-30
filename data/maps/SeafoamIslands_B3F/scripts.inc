@@ -77,9 +77,9 @@ SeafoamIslands_B3F_Movement_RideCurrentFar::
 	walk_fast_down
 	walk_fast_down
 	walk_fast_down
-  walk_fast_down
-  walk_fast_down
-  walk_fast_down
+ 	walk_fast_down
+	walk_fast_down
+	walk_fast_down
 	step_end
 
 SeafoamIslands_B3F_Movement_RideCurrentClose::
@@ -95,23 +95,23 @@ SeafoamIslands_B3F_Movement_RideCurrentClose::
 	walk_fast_down
 	walk_fast_down
 	walk_fast_down
-  walk_fast_down
-  walk_fast_down
-  walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
 	step_end
 
 SeafoamIslands_B3F_EventScript_FellDownWaterfallLeftTrigger::
-  lockall
-  setvar VAR_MAP_SCENE_SEAFOAM_ISLANDS_B4F, 1
-  warp MAP_SEAFOAM_ISLANDS_B4F, 26, 21
+	lockall
+	setvar VAR_MAP_SCENE_SEAFOAM_ISLANDS_B4F, 1
+	warp MAP_SEAFOAM_ISLANDS_B4F, 26, 21
 	waitstate
 	releaseall
 	end
 
 SeafoamIslands_B3F_EventScript_FellDownWaterfallRightTrigger::
-  lockall
-  setvar VAR_MAP_SCENE_SEAFOAM_ISLANDS_B4F, 1
-  warp MAP_SEAFOAM_ISLANDS_B4F, 27, 21
+	lockall
+	setvar VAR_MAP_SCENE_SEAFOAM_ISLANDS_B4F, 1
+	warp MAP_SEAFOAM_ISLANDS_B4F, 27, 21
 	waitstate
 	releaseall
 	end
