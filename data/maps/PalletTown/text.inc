@@ -1,15 +1,3 @@
-PalletTown_Text_OakDontGoOut::
-    .string "OAK: Hey! Wait!\n"
-    .string "Don't go out!$"
-
-PalletTown_Text_OakGrassUnsafeNeedMon::
-    .string "OAK: It's unsafe!\n"
-    .string "Wild POKéMON live in tall grass!\p"
-    .string "You need your own POKéMON for\n"
-    .string "your protection.\p"
-    .string "I know!\n"
-    .string "Here, come with me!$"
-
 PalletTown_Text_RaisingMonsToo::
     .string "I'm raising POKéMON, too.\p"
     .string "When they get strong, they can\n"
@@ -32,24 +20,4 @@ PalletTown_Text_RivalsHouse::
 PalletTown_Text_TownSign::
     .string "PALLET TOWN\n"
     .string "Shades of your journey await!$"
-
-PalletTown_Text_OakLetMeGiveYouThese::
-    .string "OAK: Ah, {PLAYER}!\n"
-    .string "You're back, are you?\p"
-    .string "How much have you filled in your\n"
-    .string "POKéDEX?\p"
-    .string "May I see it?\p"
-    .string "Let's see…\p"
-    .string "You've caught an impressive number\n"
-    .string "of POKéMON so far.\p"
-    .string "Keep up the good work.\p"
-    .string "Oh, yes, I have something for you.\n"
-    .string "BILL asked me to give these to\l"
-    .string "you.$"
-
-PalletTown_Text_OakIllBeInLab::
-    .string "OAK: Well, that's everything I\n"
-    .string "came to give you.\p"
-    .string "I'll be in my lab if you need me\n"
-    .string "for anything.$"
 

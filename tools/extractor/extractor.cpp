@@ -340,6 +340,12 @@ const std::vector<std::string> FAME_CHECKER_PEOPLE = {
     "FAME_CHECKER_GIOVANNI"
 };
 
+const std::vector<std::string> STARTER_POKEMON_NAMES = {
+    "STARTER_POKEMON_BULBASAUR",
+    "STARTER_POKEMON_SQUIRTLE",
+    "STARTER_POKEMON_CHARMANDER"
+};
+
 int main (int argc, char *argv[])
 {
     std::filesystem::path root_dir = std::filesystem::path(".");
@@ -445,7 +451,6 @@ int main (int argc, char *argv[])
             { "gBattleMoves", symbol_map["gBattleMoves"] - ROM_START },
             { "gLevelUpLearnsets", symbol_map["gLevelUpLearnsets"] - ROM_START },
             { "gSpeciesInfo", symbol_map["gSpeciesInfo"] - ROM_START },
-            { "sStarterSpecies", symbol_map["sStarterSpecies"] - ROM_START },
             { "sTMHMLearnsets", symbol_map["sTMHMLearnsets"] - ROM_START },
             { "gTrainers", symbol_map["gTrainers"] - ROM_START },
             { "sTMHMMoves", symbol_map["sTMHMMoves"] - ROM_START },
@@ -468,6 +473,8 @@ int main (int argc, char *argv[])
             fprintf(stderr, "Could not open rom file\n");
             exit(1);
         }
+
+        std::cout << "Reading locations for " << GAME_NAME_MAP[i] << "..." << std::endl;
 
         // PC Item
         auto pc_item = npc_gifts["PC_ITEM_POTION"];
@@ -825,12 +832,12 @@ int main (int argc, char *argv[])
 
                     // (id, x, y, destination_map, destination_id)
                     std::vector<std::shared_ptr<WarpInfo>> map_warps;
-                    uint i = 0;
+                    uint j = 0;
                     for (const auto& warp_json: warp_events_json)
                     {
                         std::shared_ptr<WarpInfo> warp(new WarpInfo());
                         warp->source_map = map->name;
-                        warp->source_indices.push_back(i);
+                        warp->source_indices.push_back(j);
                         warp->source_coordinates.push_back(std::tuple<int, int>(warp_json["x"], warp_json["y"]));
                         warp->dest_map = warp_json["dest_map"];
                         if (warp_json["dest_warp_id"] == "WARP_ID_DYNAMIC")
@@ -847,7 +854,7 @@ int main (int argc, char *argv[])
                         }
 
                         map_warps.push_back(warp);
-                        ++i;
+                        j++;
                     }
 
                     // Sort so that adjacency checker only needs to check against the
@@ -866,16 +873,16 @@ int main (int argc, char *argv[])
                     // Group warps by whether they're logically the same
                     std::vector<std::shared_ptr<WarpInfo>> grouped_warps;
                     std::vector<bool> is_collected(map_warps.size());
-                    for (uint i = 0; i < map_warps.size(); ++i)
+                    for (uint j = 0; j < map_warps.size(); j++)
                     {
-                        if (is_collected[i]) continue;
+                        if (is_collected[j]) continue;
 
-                        const auto warp = map_warps[i];
-                        is_collected[i] = true;
+                        const auto warp = map_warps[j];
+                        is_collected[j] = true;
 
-                        for (uint j = i + 1; j < map_warps.size(); ++j)
+                        for (uint k = j + 1; k < map_warps.size(); k++)
                         {
-                            const auto other_warp = map_warps[j];
+                            const auto other_warp = map_warps[k];
 
                             // Check destination map to exit early, but we're assuming that adjacent
                             // warps are always part of the same logical warp
@@ -900,7 +907,7 @@ int main (int argc, char *argv[])
                             warp->source_indices.push_back(other_warp->source_indices[0]);
                             warp->dest_indices.push_back(other_warp->dest_indices[0]);
                             warp->source_coordinates.push_back(other_warp->source_coordinates[0]);
-                            is_collected[j] = true;
+                            is_collected[k] = true;
                         }
                         grouped_warps.push_back(warp);
                     }
@@ -1090,37 +1097,26 @@ int main (int argc, char *argv[])
             }
         }
 
-        // Reading player starters
-        for (auto const& [symbol, address] : symbol_map)
+        std::cout << "Reading pokemon for " << GAME_NAME_MAP[i] << "..." << std::endl;
+
+        // Reading starters
+        for (size_t j = 0; j < 3; j++)
         {
-            if (symbol.substr(0, 34) == "Archipelago_Target_Starter_Player_")
+            auto starter = starter_pokemon[STARTER_POKEMON_NAMES[j]];
+
+            if (starter != nullptr)
             {
-                auto starter = starter_pokemon["STARTER_POKEMON_" + symbol.substr(34)];
-
-                if (starter != nullptr)
-                {
-                    starter->player_address[GAME_REVISION_MAP[i]] = address + 3 - ROM_START;
-                }
-                else
-                {
-                    starter = std::make_shared<StarterPokemonInfo>();
-
-                    starter->name = "STARTER_POKEMON_" + symbol.substr(34);
-                    starter->player_address[GAME_REVISION_MAP[i]] = address + 3 - ROM_START;
-                    rom.seekg(starter->player_address[GAME_REVISION_MAP[i]], rom.beg);
-                    rom.read((char*)&(starter->species), 2);
-                    starter_pokemon[starter->name] = starter;
-                }
+                starter->address[GAME_REVISION_MAP[i]] = symbol_map["sStarterSpecies"] + (j * 2) - ROM_START;
             }
-        }
-
-        // Reading rival starters
-        for (auto const& [symbol, address] : symbol_map)
-        {
-            if (symbol.substr(0, 33) == "Archipelago_Target_Starter_Rival_")
+            else
             {
-                auto starter = starter_pokemon["STARTER_POKEMON_" + symbol.substr(33)];
-                starter->rival_address[GAME_REVISION_MAP[i]] = address + 3 - ROM_START;
+                starter = std::make_shared<StarterPokemonInfo>();
+
+                starter->name = STARTER_POKEMON_NAMES[j];
+                starter->address[GAME_REVISION_MAP[i]] = symbol_map["sStarterSpecies"] + (j * 2) - ROM_START;
+                rom.seekg(starter->address[GAME_REVISION_MAP[i]], rom.beg);
+                rom.read((char*)&(starter->species), 2);
+                starter_pokemon[starter->name] = starter;
             }
         }
 
@@ -1873,8 +1869,7 @@ json StarterPokemonInfo::to_json ()
 {
     return {
         { "species", this->species },
-        { "player_address", this->player_address },
-        { "rival_address", this->rival_address }
+        { "address", this->address }
     };
 }
 

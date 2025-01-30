@@ -9,6 +9,8 @@
 #include "help_system.h"
 #include "new_menu_helpers.h"
 #include "event_scripts.h"
+#include "event_data.h"
+#include "field_specials.h"
 #include "scanline_effect.h"
 #include "pokeball.h"
 #include "naming_screen.h"
@@ -24,6 +26,7 @@ enum
     WIN_INTRO_BOYGIRL,
     WIN_INTRO_YESNO,
     WIN_INTRO_NAMES,
+    WIN_INTRO_STARTERS,
     NUM_INTRO_WINDOWS,
 };
 
@@ -76,11 +79,15 @@ static void Task_OakSpeech_HandleRivalNameInput(u8);
 static void Task_OakSpeech_DoNamingScreen(u8);
 static void Task_OakSpeech_ConfirmName(u8);
 static void Task_OakSpeech_HandleConfirmNameInput(u8);
+static void Task_OakSpeech_HandleStarterInput(u8);
+static void Task_OakSpeech_ConfirmStarter(u8);
+static void Task_OakSpeech_HandleConfirmStarter(u8);
 static void Task_OakSpeech_FadeOutPlayerPic(u8);
 static void Task_OakSpeech_FadeOutRivalPic(u8);
 static void Task_OakSpeech_FadeInRivalPic(u8);
 static void Task_OakSpeech_AskRivalsName(u8);
 static void Task_OakSpeech_ReshowPlayersPic(u8);
+static void Task_OakSpeech_AskStarterPokemon(u8);
 static void Task_OakSpeech_LetsGo(u8);
 static void Task_OakSpeech_FadeOutBGM(u8);
 static void Task_OakSpeech_SetUpExitAnimation(u8);
@@ -103,6 +110,7 @@ static void ClearTrainerPic(void);
 static void CreateFadeInTask(u8, u8);
 static void CreateFadeOutTask(u8, u8);
 static void PrintNameChoiceOptions(u8, u8);
+static void PrintStarterChoiceOptions(u8);
 static void GetDefaultName(u8, u8);
 
 extern const u8 gText_Controls[];
@@ -321,6 +329,16 @@ static const struct WindowTemplate sIntro_WindowTemplates[NUM_INTRO_WINDOWS + 1]
         .tilemapTop = 2,
         .width = 12,
         .height = 10,
+        .paletteNum = 15,
+        .baseBlock = 1
+    },
+    [WIN_INTRO_STARTERS] =
+    {
+        .bg = 0,
+        .tilemapLeft = 2,
+        .tilemapTop = 2,
+        .width = 10,
+        .height = 6,
         .paletteNum = 15,
         .baseBlock = 1
     },
@@ -1518,6 +1536,121 @@ static void Task_OakSpeech_HandleConfirmNameInput(u8 taskId)
     }
 }
 
+static void Task_OakSpeech_MovePlayerDisplayOptions(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+
+    if (!IsTextPrinterActive(WIN_INTRO_TEXTBOX))
+    {
+        if (tTrainerPicPosX > -60)
+        {
+            tTrainerPicPosX -= 2;
+            gSpriteCoordOffsetX += 2;
+            ChangeBgX(2, 0x200, BG_COORD_SUB);
+        }
+        else
+        {
+            tTrainerPicPosX = -60;
+            PrintStarterChoiceOptions(taskId);
+            gTasks[taskId].func = Task_OakSpeech_HandleStarterInput;
+        }
+    }
+}
+
+static void Task_OakSpeech_RepeatStarterQuestion(u8 taskId)
+{
+    PrintStarterChoiceOptions(taskId);
+    OakSpeechPrintMessage(gOakSpeech_Text_WhichStarter, 0);
+    gTasks[taskId].func = Task_OakSpeech_HandleStarterInput;
+}
+
+static void Task_OakSpeech_MovePlayerEndIntro(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+
+    if (!IsTextPrinterActive(WIN_INTRO_TEXTBOX))
+    {
+        if (tTrainerPicPosX < 0)
+        {
+            tTrainerPicPosX += 2;
+            gSpriteCoordOffsetX -= 2;
+            ChangeBgX(2, 0x200, BG_COORD_ADD);
+        }
+        else
+        {
+            tTrainerPicPosX = 0;
+            gTasks[taskId].func = Task_OakSpeech_LetsGo;
+        }
+    }
+}
+
+#define tStarterNotConfirmed data[15]
+
+static void Task_OakSpeech_HandleStarterInput(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    s8 input = Menu_ProcessInput();
+    switch (input)
+    {
+    case 0:
+    case 1:
+    case 2:
+        PlaySE(SE_SELECT);
+        ClearStdWindowAndFrameToTransparent(tMenuWindowId, TRUE);
+        RemoveWindow(tMenuWindowId);
+        gSaveBlock2Ptr->starterIndex = input;
+        tStarterNotConfirmed = TRUE;
+        gTasks[taskId].func = Task_OakSpeech_ConfirmStarter;
+        break;
+    case MENU_B_PRESSED:
+        break;
+    }
+}
+
+static void Task_OakSpeech_ConfirmStarter(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    if (!gPaletteFade.active)
+    {
+        if (tStarterNotConfirmed == TRUE)
+        {
+            GetStarterSpeciesName(gStringVar1, gSaveBlock2Ptr->starterIndex);
+            StringExpandPlaceholders(gStringVar5, gOakSpeech_Text_ConfirmStarter);
+            OakSpeechPrintMessage(gStringVar5, sOakSpeechResources->textSpeed);
+            tNameNotConfirmed = FALSE;
+            tTimer = 25;
+        }
+        else if (!IsTextPrinterActive(WIN_INTRO_TEXTBOX))
+        {
+            if (tTimer != 0)
+            {
+                tTimer--;
+            }
+            else
+            {
+                CreateYesNoMenu(&sIntro_WindowTemplates[WIN_INTRO_YESNO], FONT_NORMAL, 0, 2, GetStdWindowBaseTileNum(), 14, 0);
+                gTasks[taskId].func = Task_OakSpeech_HandleConfirmStarter;
+            }
+        }
+    }
+}
+
+static void Task_OakSpeech_HandleConfirmStarter(u8 taskId)
+{
+    s8 input = Menu_ProcessInputNoWrapClearOnChoose();
+    switch (input)
+    {
+    case 0: // YES
+        PlaySE(SE_SELECT);
+        gTasks[taskId].func = Task_OakSpeech_MovePlayerEndIntro;
+        break;
+    case 1: // NO
+    case MENU_B_PRESSED:
+        gTasks[taskId].func = Task_OakSpeech_RepeatStarterQuestion;
+        break;
+    }
+}
+
 static void Task_OakSpeech_FadeOutPlayerPic(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
@@ -1585,8 +1718,17 @@ static void Task_OakSpeech_ReshowPlayersPic(u8 taskId)
             gSpriteCoordOffsetX = 0;
             ChangeBgX(2, 0, BG_COORD_SET);
             CreateFadeOutTask(taskId, 2);
-            gTasks[taskId].func = Task_OakSpeech_LetsGo;
+            gTasks[taskId].func = Task_OakSpeech_AskStarterPokemon;
         }
+    }
+}
+
+static void Task_OakSpeech_AskStarterPokemon(u8 taskId)
+{
+    if (gTasks[taskId].tTrainerPicFadeState != 0)
+    {
+        OakSpeechPrintMessage(gOakSpeech_Text_ChooseAStarter, sOakSpeechResources->textSpeed);
+        gTasks[taskId].func = Task_OakSpeech_MovePlayerDisplayOptions;
     }
 }
 
@@ -2158,6 +2300,25 @@ static void GetDefaultName(u8 hasPlayerBeenNamed, u8 rivalNameChoice)
         dest[i] = EOS;
 }
 
+static void PrintStarterChoiceOptions(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    u8 i;
+    u8 name[12];
+
+    tMenuWindowId = AddWindow(&sIntro_WindowTemplates[WIN_INTRO_STARTERS]);
+    PutWindowTilemap(tMenuWindowId);
+    DrawStdFrameWithCustomTileAndPalette(tMenuWindowId, 1, GetStdWindowBaseTileNum(), 14);
+    FillWindowPixelBuffer(gTasks[taskId].tMenuWindowId, PIXEL_FILL(1));
+    for (i = 0; i < 3; i++)
+    {
+        GetStarterSpeciesName(name, i);
+        AddTextPrinterParameterized(tMenuWindowId, FONT_NORMAL, name, 8, 16 * i + 1, 0, NULL);
+    }
+    Menu_InitCursor(tMenuWindowId, FONT_NORMAL, 0, 1, 16, 3, 0);
+    CopyWindowToVram(tMenuWindowId, COPYWIN_FULL);
+}
+
 #undef tSpriteTimer
 #undef tTrainerPicPosX
 #undef tTrainerPicFadeState
@@ -2177,6 +2338,7 @@ static void GetDefaultName(u8 hasPlayerBeenNamed, u8 rivalNameChoice)
 #undef tSecondaryTimer
 #undef tBlendCoefficient
 #undef tNameNotConfirmed
+#undef tStarterNotConfirmed
 #undef sBodySpriteId
 #undef tParentTaskId
 #undef tBlendTarget1

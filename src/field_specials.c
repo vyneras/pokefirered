@@ -33,6 +33,7 @@
 #include "mystery_gift.h"
 #include "naming_screen.h"
 #include "party_menu.h"
+#include "pokemon.h"
 #include "dynamic_placeholder_text_util.h"
 #include "new_menu_helpers.h"
 #include "constants/songs.h"
@@ -1554,6 +1555,12 @@ static u16 GetStarterSpeciesById(u16 idx)
 u16 GetStarterSpecies(void)
 {
     return GetStarterSpeciesById(VarGet(VAR_STARTER_MON));
+}
+
+void GetStarterSpeciesName(u8 *name, u8 idx)
+{
+    u16 species = GetStarterSpeciesById(idx);
+    GetSpeciesName(name, species);
 }
 
 void SetSeenMon(void)

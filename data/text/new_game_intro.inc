@@ -235,8 +235,18 @@ gOakSpeech_Text_RememberRivalsName::
     .string "That's right! I remember now!\n"
     .string "His name is {RIVAL}!\p$"
 
-gOakSpeech_Text_LetsGo::
+gOakSpeech_Text_ChooseAStarter::
     .string "{PLAYER}!\p"
+    .string "Before you head off, you'll need\n"
+    .string "to choose your first POKéMON.$"
+
+gOakSpeech_Text_WhichStarter::
+    .string "Which POKéMON do you want?$"
+
+gOakSpeech_Text_ConfirmStarter::
+    .string "Are you sure you want {STR_VAR_1}?$"
+
+gOakSpeech_Text_LetsGo::
     .string "Your very own POKéMON legend is\n"
     .string "about to unfold!\p"
     .string "A world of dreams and adventures\n"

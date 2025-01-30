@@ -549,11 +549,8 @@ static bool8 StartMenuGoHomeCallback(void)
 {
     DestroyHelpMessageWindow_();
     CloseStartMenu();
-    if(FlagGet(FLAG_BEAT_RIVAL_IN_OAKS_LAB))
-    {
-        RunScriptImmediately(ArchipelagoScript_GoHome);
-        Overworld_ResetStateAfterGoHome();
-    }
+    RunScriptImmediately(ArchipelagoScript_GoHome);
+    Overworld_ResetStateAfterGoHome();
     return TRUE;
 }
 

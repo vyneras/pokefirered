@@ -337,7 +337,8 @@ struct SaveBlock2
     /*0x018*/ struct Pokedex pokedex;
     /*0x090*/ u8 progressivePassesCount;
     /*0x091*/ u8 progressiveCardKeyCount;
-    /*0x092*/ u8 filler_92[0x6];
+    /*0x092*/ u8 starterIndex;
+    /*0x093*/ u8 filler_93[0x5];
     /*0x098*/ struct Time localTimeOffset;
     /*0x0A0*/ struct Time lastBerryTreeUpdate;
     /*0x0A8*/ u32 gcnLinkFlags; // Read by Pokemon Colosseum/XD

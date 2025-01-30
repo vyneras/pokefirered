@@ -140,8 +140,7 @@ class StaticPokemonInfo {
 class StarterPokemonInfo {
     public:
         std::string name;
-        std::map<std::string, uint32_t> player_address;
-        std::map<std::string, uint32_t> rival_address;
+        std::map<std::string, uint32_t> address;
         uint16_t species;
 
         nlohmann::json to_json ();

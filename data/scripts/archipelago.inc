@@ -56,7 +56,6 @@ ArchipelagoScript_FoundPlayersItem::
 	return
 
 ArchipelagoScript_GoHome::
-	setvar VAR_0x8003, 0
 	special ArchipelagoSpecial_WarpToStartingLocation
 	goto EventScript_ResetEliteFourEnd
 	end
