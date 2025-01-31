@@ -3086,3 +3086,9 @@ void ArchipelagoSpecial_SetRespawnToStartingLocation(void)
 {
     SetLastHealLocationWarp(gArchipelagoOptions.startingLocation);
 }
+
+bool8 ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor(void)
+{
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(CERULEAN_CITY) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(CERULEAN_CITY))
+        return gSaveBlock1Ptr->pos.x == 30 && gSaveBlock1Ptr->pos.y == 11;
+}

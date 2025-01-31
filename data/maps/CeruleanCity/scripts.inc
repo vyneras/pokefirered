@@ -47,9 +47,20 @@ CeruleanCity_EventScript_SetWorldMapFlag::
 	return
 
 CeruleanCity_EventScript_BlockExits::
-	setobjectxyperm LOCALID_POLICEMAN, 30, 12
+	specialvar VAR_RESULT, ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
+	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_GuardNotBlocking
+	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_GuardBlocking
 	setobjectxyperm LOCALID_SLOWBRO, 26, 31
 	setobjectxyperm LOCALID_LASS, 27, 31
+	return
+
+CeruleanCity_EventScript_GuardNotBlocking::
+	setobjectxyperm LOCALID_POLICEMAN, 31, 12
+	setvar VAR_TEMP_4, 1
+	return
+
+CeruleanCity_EventScript_GuardBlocking::
+	setobjectxyperm LOCALID_POLICEMAN, 30, 12
 	return
 
 CeruleanCity_EventScript_RemoveGuard::
@@ -66,8 +77,23 @@ CeruleanCity_EventScript_RivalSetPosition::
 	return
 
 CeruleanCity_OnFrame::
+	map_script_2 VAR_TEMP_4, 1, CeruleanCity_EventScript_PolicemanMoveLeft
 	map_script_2 GIVE_FLY_UNLOCK, 1, CeruleanCity_EventScript_GiveFlyUnlockItem
 	.2byte 0
+
+CeruleanCity_EventScript_PolicemanMoveLeft::
+	lockall
+	applymovement LOCALID_POLICEMAN, CeruleanCity_Movement_PolicemanMoveLeft
+	waitmovement 0
+	setobjectxyperm LOCALID_POLICEMAN, 30, 12
+	setvar VAR_TEMP_4, 0
+	releaseall
+	end
+
+CeruleanCity_Movement_PolicemanMoveLeft::
+	walk_left
+	face_down
+	step_end
 
 CeruleanCity_EventScript_GiveFlyUnlockItem::
 	lockall

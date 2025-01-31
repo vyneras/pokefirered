@@ -24,7 +24,9 @@
 #include "constants/event_object_movement.h"
 #include "constants/event_objects.h"
 #include "constants/field_weather.h"
+#include "constants/maps.h"
 
+static bool8 PlayerEnteredThroughBlockedDoor(void);
 static void ExitWarpFadeInScreen(u8 playerNotMoving);
 static void Task_ExitDoor(u8 taskId);
 static void Task_ExitNonAnimDoor(u8 taskId);
@@ -276,6 +278,12 @@ static void SetUpWarpExitTask(bool8 playerNotMoving)
     CreateTask(func, 10);
 }
 
+static bool8 PlayerEnteredThroughBlockedDoor(void)
+{
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(CERULEAN_CITY) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(CERULEAN_CITY))
+        return gSaveBlock1Ptr->pos.x == 30 && gSaveBlock1Ptr->pos.y == 11;
+}
+
 static void ExitWarpFadeInScreen(bool8 playerNotMoving)
 
 {
@@ -351,7 +359,10 @@ static void Task_ExitDoor(u8 taskId)
         {
             PlayerGetDestCoords(&task->data[12], &task->data[13]);
             SetPlayerVisibility(TRUE);
-            ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0)], MOVEMENT_ACTION_WALK_NORMAL_DOWN);
+            if (PlayerEnteredThroughBlockedDoor())
+            	ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0)], MOVEMENT_ACTION_WALK_NORMAL_DOWN_2);
+            else
+            	ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0)], MOVEMENT_ACTION_WALK_NORMAL_DOWN);
             task->data[0] = 8;
         }
         break;

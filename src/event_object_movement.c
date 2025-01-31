@@ -161,6 +161,7 @@ enum {
     MOVE_SPEED_FAST_2, // water current / bicycle
     MOVE_SPEED_FASTER, // going down cycling road on bicycle
     MOVE_SPEED_FASTEST,
+    MOVE_SPEED_NORMAL_2, // walking 2 spaces
 };
 
 enum {
@@ -7943,6 +7944,46 @@ u8 MovementAction_FlyUp_Step2(struct ObjectEvent *objectEvent, struct Sprite *sp
     return TRUE;
 }
 
+void InitNpcForMovement2(struct ObjectEvent *objectEvent, struct Sprite *sprite, u8 direction, u8 speed)
+{
+    s16 x;
+    s16 y;
+
+    x = objectEvent->currentCoords.x;
+    y = objectEvent->currentCoords.y;
+    SetObjectEventDirection(objectEvent, direction);
+    MoveCoordsInDirection(direction, &x, &y, 2, 2);
+    ShiftObjectEventCoords(objectEvent, x, y);
+    SetSpriteDataForNormalStep(sprite, direction, speed);
+    sprite->animPaused = FALSE;
+    objectEvent->triggerGroundEffectsOnMove = TRUE;
+    sprite->data[2] = 1;
+}
+
+void InitMovementNormal2(struct ObjectEvent *objectEvent, struct Sprite *sprite, u8 direction, u8 speed)
+{
+    u8 (*functions[NELEMS(sDirectionAnimFuncsBySpeed)])(u8);
+    memcpy(functions, sDirectionAnimFuncsBySpeed, sizeof sDirectionAnimFuncsBySpeed);
+    InitNpcForMovement2(objectEvent, sprite, direction, speed);
+    SetStepAnimHandleAlternation(objectEvent, sprite, functions[speed](objectEvent->facingDirection));
+}
+
+static bool8 MovementAction_WalkNormalDown2_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    InitMovementNormal2(objectEvent, sprite, DIR_SOUTH, MOVE_SPEED_NORMAL_2);
+    return MovementAction_WalkNormalDown2_Step1(objectEvent, sprite);
+}
+
+static bool8 MovementAction_WalkNormalDown2_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (UpdateMovementNormal(objectEvent, sprite))
+    {
+        sprite->data[2] = 2;
+        return TRUE;
+    }
+    return FALSE;
+}
+
 static void UpdateObjectEventSpriteAnimPause(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     if (objectEvent->disableAnim)
@@ -8912,20 +8953,57 @@ static const SpriteStepFunc sSpeedFastestStepFuncs[] = {
     Step8
 };
 
+static const SpriteStepFunc sSpeedNormal2StepFuncs[] = {
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1,
+    Step1
+};
+
 static const SpriteStepFunc *const sNpcStepFuncTables[] = {
-    [MOVE_SPEED_NORMAL]  = sSpeedNormalStepFuncs,
-    [MOVE_SPEED_FAST_1]  = sSpeedFast1StepFuncs,
-    [MOVE_SPEED_FAST_2]  = sSpeedFast2StepFuncs,
-    [MOVE_SPEED_FASTER]  = sSpeedFasterStepFuncs,
-    [MOVE_SPEED_FASTEST] = sSpeedFastestStepFuncs,
+    [MOVE_SPEED_NORMAL]   = sSpeedNormalStepFuncs,
+    [MOVE_SPEED_FAST_1]   = sSpeedFast1StepFuncs,
+    [MOVE_SPEED_FAST_2]   = sSpeedFast2StepFuncs,
+    [MOVE_SPEED_FASTER]   = sSpeedFasterStepFuncs,
+    [MOVE_SPEED_FASTEST]  = sSpeedFastestStepFuncs,
+    [MOVE_SPEED_NORMAL_2] = sSpeedNormal2StepFuncs,
 };
 
 static const s16 sStepTimes[] = {
-    [MOVE_SPEED_NORMAL]  = NELEMS(sSpeedNormalStepFuncs),
-    [MOVE_SPEED_FAST_1]  = NELEMS(sSpeedFast1StepFuncs),
-    [MOVE_SPEED_FAST_2]  = NELEMS(sSpeedFast2StepFuncs),
-    [MOVE_SPEED_FASTER]  = NELEMS(sSpeedFasterStepFuncs),
-    [MOVE_SPEED_FASTEST] = NELEMS(sSpeedFastestStepFuncs),
+    [MOVE_SPEED_NORMAL]   = NELEMS(sSpeedNormalStepFuncs),
+    [MOVE_SPEED_FAST_1]   = NELEMS(sSpeedFast1StepFuncs),
+    [MOVE_SPEED_FAST_2]   = NELEMS(sSpeedFast2StepFuncs),
+    [MOVE_SPEED_FASTER]   = NELEMS(sSpeedFasterStepFuncs),
+    [MOVE_SPEED_FASTEST]  = NELEMS(sSpeedFastestStepFuncs),
+    [MOVE_SPEED_NORMAL_2] = NELEMS(sSpeedNormal2StepFuncs),
 };
 
 bool8 NpcTakeStep(struct Sprite *sprite)

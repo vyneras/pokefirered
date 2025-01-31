@@ -508,4 +508,5 @@ gSpecials::
 	def_special ArchipelagoSpecial_CanOpenSilphDoor
 	def_special ArchipelagoSpecial_WarpToStartingLocation
 	def_special ArchipelagoSpecial_SetRespawnToStartingLocation
+	def_special ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
 gSpecialsEnd::
