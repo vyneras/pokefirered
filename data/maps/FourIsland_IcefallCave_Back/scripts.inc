@@ -86,7 +86,7 @@ FourIsland_IcefallCave_Back_EventScript_LoreleiRocketsScene::
 	textcolor NPC_TEXT_COLOR_FEMALE
 	msgbox FourIsland_IcefallCave_Back_Text_ThankYouThisIsAwful
 	specialvar VAR_RESULT, ArchipelagoSpecial_ArePassesSplit
-	call_if_eq VAR_RESULT, TRUE,
+	call_if_eq VAR_RESULT, TRUE, FourIsland_IcefallCave_Back_EventScript_LoreleiGivePass
 	setflag FLAG_HIDE_RUIN_VALLEY_SCIENTIST
 	clearflag FLAG_HIDE_LORELEI_IN_HER_HOUSE
 	setvar VAR_MAP_SCENE_ICEFALL_CAVE_BACK, 1
