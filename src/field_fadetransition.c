@@ -282,6 +282,7 @@ static bool8 PlayerEnteredThroughBlockedDoor(void)
 {
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(CERULEAN_CITY) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(CERULEAN_CITY))
         return gSaveBlock1Ptr->pos.x == 30 && gSaveBlock1Ptr->pos.y == 11;
+    return FALSE;
 }
 
 static void ExitWarpFadeInScreen(bool8 playerNotMoving)
