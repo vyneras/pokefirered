@@ -254,7 +254,7 @@ int main(int argc, char *argv[])
                     break;
                 }
 
-                case 'v':    // ignored, compatability with other gbafix
+                case 'v':    // ignored, compatibility with other gbafix
                 {
                     break;
                 }
