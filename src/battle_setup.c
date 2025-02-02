@@ -355,6 +355,7 @@ void StartRandomPokemonBattle(void)
         if (GetMonData(&gPlayerParty[i], MON_DATA_HP) && !GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG))
         {
             level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+            break;
         }
     }
     level += Random() % 5 - 2;
