@@ -292,6 +292,10 @@ static const u8 sItemEffect_LeafStone[6] = {
     [4] = ITEM4_EVO_STONE,
 };
 
+static const u8 sItemEffect_LinkCable[6] = {
+    [4] = ITEM4_EVO_STONE,
+};
+
 static const u8 sItemEffect_CheriBerry[6] = {
     [3] = ITEM3_PARALYSIS,
 };
@@ -333,30 +337,6 @@ static const u8 sItemEffect_LumBerry[6] = {
 static const u8 sItemEffect_SitrusBerry[7] = {
     [4] = ITEM4_HEAL_HP,
     [6] = 30, // Amount of HP to recover
-};
-
-const u8 sItemEffect_KingsRock[6] = {
-    [4] = ITEM4_EVO_STONE,
-};
-
-const u8 sItemEffect_DeepSeaTooth[6] = {
-    [4] = ITEM4_EVO_STONE,
-};
-
-const u8 sItemEffect_DeepSeaScale[6] = {
-    [4] = ITEM4_EVO_STONE,
-};
-
-const u8 sItemEffect_MetalCoat[6] = {
-    [4] = ITEM4_EVO_STONE,
-};
-
-const u8 sItemEffect_DragonScale[6] = {
-    [4] = ITEM4_EVO_STONE,
-};
-
-const u8 sItemEffect_UpGrade[6] = {
-    [4] = ITEM4_EVO_STONE,
 };
 
 const u8 *const gItemEffectTable[] =
@@ -414,6 +394,7 @@ const u8 *const gItemEffectTable[] =
     [ITEM_THUNDER_STONE - ITEM_POTION]      = sItemEffect_ThunderStone,
     [ITEM_WATER_STONE - ITEM_POTION]        = sItemEffect_WaterStone,
     [ITEM_LEAF_STONE - ITEM_POTION]         = sItemEffect_LeafStone,
+    [ITEM_LINK_CABLE - ITEM_POTION]         = sItemEffect_LinkCable,
     [ITEM_CHERI_BERRY - ITEM_POTION]        = sItemEffect_CheriBerry,
     [ITEM_CHESTO_BERRY - ITEM_POTION]       = sItemEffect_ChestoBerry,
     [ITEM_PECHA_BERRY - ITEM_POTION]        = sItemEffect_PechaBerry,
@@ -424,11 +405,5 @@ const u8 *const gItemEffectTable[] =
     [ITEM_PERSIM_BERRY - ITEM_POTION]       = sItemEffect_PersimBerry,
     [ITEM_LUM_BERRY - ITEM_POTION]          = sItemEffect_LumBerry,
     [ITEM_SITRUS_BERRY - ITEM_POTION]       = sItemEffect_SitrusBerry,
-    [LAST_BERRY_INDEX - ITEM_POTION]        = NULL,
-    [ITEM_KINGS_ROCK_EVO - ITEM_POTION]     = sItemEffect_KingsRock,
-    [ITEM_DEEP_SEA_TOOTH_EVO - ITEM_POTION] = sItemEffect_DeepSeaTooth,
-    [ITEM_DEEP_SEA_SCALE_EVO - ITEM_POTION] = sItemEffect_DeepSeaScale,
-    [ITEM_METAL_COAT_EVO - ITEM_POTION]     = sItemEffect_MetalCoat,
-    [ITEM_DRAGON_SCALE - ITEM_POTION]       = sItemEffect_DragonScale,
-    [ITEM_UP_GRADE - ITEM_POTION]           = sItemEffect_UpGrade
+    [LAST_BERRY_INDEX - ITEM_POTION]        = NULL
 };

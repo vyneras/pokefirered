@@ -109,11 +109,11 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_THUNDER_STONE]           = {gItemIcon_ThunderStone, gItemIconPalette_ThunderStone},
     [ITEM_WATER_STONE]             = {gItemIcon_WaterStone, gItemIconPalette_WaterStone},
     [ITEM_LEAF_STONE]              = {gItemIcon_LeafStone, gItemIconPalette_LeafStone},
+    [ITEM_LINK_CABLE]              = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     // Extra Key items
     [ITEM_HIDEOUT_KEY]             = {gItemIcon_LiftKey, gItemIconPalette_HideoutKey},
     [ITEM_SAFARI_PASS]             = {gItemIcon_MysticTicket, gItemIconPalette_SafariPass},
     [ITEM_MACHINE_PART]            = {gItemIcon_DevonScope, gItemIconPalette_DevonScope},
-    [ITEM_066]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     // Valuables
     [ITEM_TINY_MUSHROOM]           = {gItemIcon_TinyMushroom, gItemIconPalette_Mushroom},
     [ITEM_BIG_MUSHROOM]            = {gItemIcon_BigMushroom, gItemIconPalette_Mushroom},
@@ -131,11 +131,11 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_BLUE_TEA]                = {gItemIcon_Tea, gItemIconPalette_BlueTea},
     [ITEM_RED_TEA]                 = {gItemIcon_Tea, gItemIconPalette_RedTea},
     [ITEM_PURPLE_TEA]              = {gItemIcon_Tea, gItemIconPalette_PurpleTea},
-    // Evolution items
-    [ITEM_KINGS_ROCK_EVO]          = {gItemIcon_KingsRock, gItemIconPalette_KingsRock},
-    [ITEM_METAL_COAT_EVO]          = {gItemIcon_MetalCoat, gItemIconPalette_MetalCoat},
-    [ITEM_DEEP_SEA_SCALE_EVO]      = {gItemIcon_DeepSeaScale, gItemIconPalette_DeepSeaScale},
-    [ITEM_DEEP_SEA_TOOTH_EVO]      = {gItemIcon_DeepSeaTooth, gItemIconPalette_DeepSeaTooth},
+    // ????????
+    [ITEM_075]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_076]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_077]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_078]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     // Mail
     [ITEM_ORANGE_MAIL]             = {gItemIcon_OrangeMail, gItemIconPalette_OrangeMail},
     [ITEM_HARBOR_MAIL]             = {gItemIcon_HarborMail, gItemIconPalette_HarborMail},
