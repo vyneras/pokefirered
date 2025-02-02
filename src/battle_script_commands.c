@@ -5387,8 +5387,8 @@ static void Cmd_getmoneyreward(void)
         u16 species = GetMonData(&gEnemyParty[0], MON_DATA_SPECIES);
         u16 bst = gSpeciesInfo[species].baseHP + gSpeciesInfo[species].baseAttack + gSpeciesInfo[species].baseDefense +
                   gSpeciesInfo[species].baseSpeed + gSpeciesInfo[species].baseSpAttack + gSpeciesInfo[species].baseSpDefense;
-        DebugPrintf("Level: %d\nSpecies: %d\nBST: %d", level, species, bst);
         moneyReward = bst * level * gBattleStruct->moneyMultiplier / 25;
+        AddMoney(&gSaveBlock1Ptr->money, moneyReward);
     }
     else
     {
