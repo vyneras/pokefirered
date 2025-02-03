@@ -126,7 +126,7 @@ CinnabarIsland_EventScript_PolicemanFoundLetter::
 	closemessage
 	msgbox CinnabarIsland_Text_YouCanHeadIn
 	closemessage
-	call_if_eq VAR_FACING, DIR_EAST, CinnabarIsland_EventScript_PolicemanMoveEast
+	goto_if_eq VAR_FACING, DIR_EAST, CinnabarIsland_EventScript_PolicemanMoveEast
 	applymovement LOCALID_POLICEMAN, CinnabarIsland_Movement_PolicemanMoveWest
 	waitmovement 0
 	release
