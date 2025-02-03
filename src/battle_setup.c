@@ -344,6 +344,7 @@ void StartRandomPokemonBattle(void)
     u16 species = SPECIES_NONE;
     s8 level = 1;
     LockPlayerFieldControls();
+    ZeroEnemyPartyMons();
     gMain.savedCallback = CB2_EndRandomPokemonBattle;
     gBattleTypeFlags = BATTLE_TYPE_GRIND;
     while (species == SPECIES_NONE || species == SPECIES_EGG || (species >= SPECIES_OLD_UNOWN_B && species <= SPECIES_OLD_UNOWN_Z))
