@@ -199,6 +199,7 @@ void NewGameInitData(void)
         FlagClear(FLAG_HIDE_SAFFRON_CIVILIANS);
     }
     if (gArchipelagoOptions.earlyFameGossip) FlagClear(FLAG_HIDE_POSTGAME_GOSSIPERS);
+    if (!gArchipelagoOptions.kantoOnly) FlagSet(FLAG_HIDE_MOVE_MANIAC);
 
     if (!(gArchipelagoOptions.additionalDarkCaves & (1 << 0))) VarSet(VAR_MT_MOON_DARKNESS, 1);
     if (!(gArchipelagoOptions.additionalDarkCaves & (1 << 1))) VarSet(VAR_DIGLETTS_CAVE_DARKNESS, 1);

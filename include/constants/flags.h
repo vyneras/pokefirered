@@ -161,7 +161,7 @@
 #define FLAG_HIDE_THREE_ISLAND_LONE_BIKER                  0x091
 #define FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY            0x092
 #define FLAG_HIDE_FIVE_PASS                                0x093
-#define FLAG_0x094                                         0x094
+#define FLAG_HIDE_MOVE_MANIAC                              0x094
 #define FLAG_HIDE_RESORT_GORGEOUS_INSIDE_SELPHY            0x095
 #define FLAG_HIDE_SELPHYS_BUTLER                           0x096
 #define FLAG_0x097                                         0x097
