@@ -51,6 +51,9 @@ SilphCo_7F_EventScript_RivalScene::
 	settrainerflag TRAINER_RIVAL_SILPH_BULBASAUR
 	settrainerflag TRAINER_RIVAL_SILPH_CHARMANDER
 	settrainerflag TRAINER_RIVAL_SILPH_SQUIRTLE
+Archipelago_Target_NPC_Gift_FLAG_GOT_LINK_CABLE::
+	msgbox SilphCo_7F_Text_RivalLinkCable
+	giveitem ITEM_LINK_CABLE, 1, FLAG_GOT_LINK_CABLE
 	msgbox SilphCo_7F_Text_RivalPostBattle
 	closemessage
 	playbgm MUS_RIVAL_EXIT, 0

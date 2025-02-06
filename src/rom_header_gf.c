@@ -60,7 +60,7 @@ struct GFRomHeader
     u32 unkFlagOffset2;
     u32 externalEventFlagsOffset;
     u32 externalEventDataOffset;
-    u32 unk18;
+    u32 archipelagoChecksum;
     const struct SpeciesInfo * speciesInfo;
     const u8 (* abilityNames)[];
     const u8 *const * abilityDescriptions;
@@ -92,9 +92,9 @@ static const struct GFRomHeader sGFRomHeader = {
     .version = GAME_VERSION,
     .language = GAME_LANGUAGE,
 #ifdef FIRERED
-	.gameName = "pokemon red version 0.8.4",
+	.gameName = "pokemon red version AP",
 #else
-	.gameName = "pokemon green version 0.8.4",
+	.gameName = "pokemon green version AP",
 #endif
     .monFrontPics = gMonFrontPicTable,
     .monBackPics = gMonBackPicTable,
@@ -145,7 +145,7 @@ static const struct GFRomHeader sGFRomHeader = {
     .unkFlagOffset2 = offsetof(struct SaveBlock2, unkFlag2),
     .externalEventFlagsOffset = offsetof(struct SaveBlock1, externalEventFlags),
     .externalEventDataOffset = offsetof(struct SaveBlock1, externalEventData),
-    .unk18 = 0x00000000,
+    .archipelagoChecksum = 0x12F1DCBC,
     .speciesInfo = gSpeciesInfo,
     .abilityNames = gAbilityNames,
     .abilityDescriptions = gAbilityDescriptionPointers,

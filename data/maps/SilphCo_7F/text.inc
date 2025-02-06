@@ -113,11 +113,12 @@ SilphCo_7F_Text_RivalDefeat::
     .string "So, you are ready for BOSS\l"
     .string "ROCKET!$"
 
-SilphCo_7F_Text_RivalVictory::
-    .string "{RIVAL}“おまえなあ‥\p"
-    .string "こんな　うでまえじゃ\n"
-    .string "まだまだ‥\l"
-    .string "いちにんまえ　とは　いえないぜ$"
+SilphCo_7F_Text_RivalLinkCable::
+    .string "Oh, yeah, right.\p"
+    .string "You're so far behind me that I\n"
+    .string "feel sorry for you.\p"
+    .string "I'll give you this since I don't\n"
+    .string "need it.$"
 
 SilphCo_7F_Text_RivalPostBattle::
     .string "Well, {PLAYER}!\n"

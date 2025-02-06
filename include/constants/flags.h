@@ -707,7 +707,7 @@
 #define FLAG_GOT_FIVE_PASS                               0x2AB
 #define FLAG_GOT_SIX_PASS                                0x2AC
 #define FLAG_GOT_SEVEN_PASS                              0x2AD
-#define FLAG_0x2AE                                       0x2AE
+#define FLAG_GOT_LINK_CABLE                              0x2AE
 #define FLAG_0x2AF                                       0x2AF
 #define FLAG_0x2B0                                       0x2B0
 #define FLAG_0x2B1                                       0x2B1
