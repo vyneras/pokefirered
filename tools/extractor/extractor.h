@@ -54,7 +54,8 @@ enum EvolutionMethod {
     LEVEL_NINJASK,
     LEVEL_SHEDINJA,
     ITEM,
-    FRIENDSHIP
+    FRIENDSHIP,
+    ITEM_HELD
 };
 
 class EvolutionInfo {
@@ -62,6 +63,7 @@ class EvolutionInfo {
         EvolutionMethod method;
         uint16_t param;
         uint16_t species;
+        uint16_t param2;
 };
 
 class SpeciesInfo {

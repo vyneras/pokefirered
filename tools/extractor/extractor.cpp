@@ -391,6 +391,7 @@ int main (int argc, char *argv[])
     std::map<int, std::shared_ptr<SpeciesInfo>> all_species;
     uint16_t tmhm_moves[58];
     std::map<std::string, std::string> rom_names;
+    uint32_t rom_checksum;
 
     std::map<int, std::string> trainer_names;
 
@@ -1523,6 +1524,9 @@ int main (int argc, char *argv[])
                         case 14:
                             evolution.method = LEVEL_SHEDINJA;
                             break;
+                        case 16:
+                            evolution.method = ITEM_HELD;
+                            break;
                         default:
                             std::cerr << "Unknown evolution method: " << method << std::endl;
                             throw new std::exception();
@@ -1533,6 +1537,9 @@ int main (int argc, char *argv[])
 
                     rom.seekg(species->evolutions_address[GAME_REVISION_MAP[i]] + (k * 8) + 4, rom.beg);
                     rom.read((char*)&(evolution.species), 2);
+
+                    rom.seekg(species->evolutions_address[GAME_REVISION_MAP[i]] + (k * 8) + 6, rom.beg);
+                    rom.read((char*)&(evolution.param2), 2);
 
                     species->evolutions.push_back(evolution);
                 }
@@ -1554,6 +1561,10 @@ int main (int argc, char *argv[])
         rom.seekg(symbol_map["sGFRomHeader"] - ROM_START + 8, rom.beg);
         rom.read((char*)&(rom_name), 32);
         rom_names[GAME_REVISION_MAP[i]] = rom_name;
+
+        // Read ROM checksum
+        rom.seekg(symbol_map["sGFRomHeader"] - ROM_START + 184, rom.beg);
+        rom.read((char*)&(rom_checksum), 4);
     }
 
     // Now that all warps are created we can check 1-way
@@ -1673,6 +1684,7 @@ int main (int argc, char *argv[])
     json output_json = {
         { "comment", "DO NOT MODIFY. This file was auto-generated. Your changes will likely be overwritten." },
         { "rom_names", rom_names },
+        { "rom_checksum", rom_checksum},
         { "maps", maps_json },
         { "starter_pokemon", starter_pokemon_json },
         { "misc_pokemon", misc_pokemon_json },
@@ -1898,6 +1910,8 @@ json SpeciesInfo::to_json ()
                 return "ITEM";
             case FRIENDSHIP:
                 return "FRIENDSHIP";
+            case ITEM_HELD:
+                return "ITEM_HELD";
             default:
                 throw new std::exception();
         }
@@ -1911,6 +1925,7 @@ json SpeciesInfo::to_json ()
             { "species", evolution.species },
             { "param", evolution.param },
             { "method", evolution_method_to_string(evolution.method) },
+            { "param2", evolution.param2 },
         });
     }
 
