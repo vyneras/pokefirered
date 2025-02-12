@@ -44,11 +44,13 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_Abra::
 Archipelago_Target_Prize_Pokemon_1::
 	setvar VAR_TEMP_1, SPECIES_ABRA
 	setvar VAR_TEMP_2, 180
+	setvar VAR_TEMP_3, 1
 	.else
 	.ifdef LEAFGREEN
 Archipelago_Target_Prize_Pokemon_1::
 	setvar VAR_TEMP_1, SPECIES_ABRA
 	setvar VAR_TEMP_2, 120
+	setvar VAR_TEMP_3, 1
 	.endif
 	.endif
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon
@@ -59,11 +61,13 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_Clefairy::
 Archipelago_Target_Prize_Pokemon_2::
 	setvar VAR_TEMP_1, SPECIES_CLEFAIRY
 	setvar VAR_TEMP_2, 500
+	setvar VAR_TEMP_3, 2
 	.else
 	.ifdef LEAFGREEN
 Archipelago_Target_Prize_Pokemon_2::
 	setvar VAR_TEMP_1, SPECIES_CLEFAIRY
 	setvar VAR_TEMP_2, 750
+	setvar VAR_TEMP_3, 2
 	.endif
 	.endif
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon
@@ -74,11 +78,13 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_DratiniPinsir::
 Archipelago_Target_Prize_Pokemon_3::
 	setvar VAR_TEMP_1, SPECIES_DRATINI
 	setvar VAR_TEMP_2, 2800
+	setvar VAR_TEMP_3, 3
 	.else
 	.ifdef LEAFGREEN
 Archipelago_Target_Prize_Pokemon_3::
 	setvar VAR_TEMP_1, SPECIES_PINSIR
 	setvar VAR_TEMP_2, 2500
+	setvar VAR_TEMP_3, 3
 	.endif
 	.endif
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon
@@ -89,11 +95,13 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_ScytherDratini::
 Archipelago_Target_Prize_Pokemon_4::
 	setvar VAR_TEMP_1, SPECIES_SCYTHER
 	setvar VAR_TEMP_2, 5500
+	setvar VAR_TEMP_3, 4
 	.else
 	.ifdef LEAFGREEN
 Archipelago_Target_Prize_Pokemon_4::
 	setvar VAR_TEMP_1, SPECIES_DRATINI
 	setvar VAR_TEMP_2, 4600
+	setvar VAR_TEMP_3, 4
 	.endif
 	.endif
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon
@@ -104,11 +112,13 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_Porygon::
 Archipelago_Target_Prize_Pokemon_5::
 	setvar VAR_TEMP_1, SPECIES_PORYGON
 	setvar VAR_TEMP_2, 9999
+	setvar VAR_TEMP_3, 5
 	.else
 	.ifdef LEAFGREEN
 Archipelago_Target_Prize_Pokemon_5::
 	setvar VAR_TEMP_1, SPECIES_PORYGON
 	setvar VAR_TEMP_2, 6500
+	setvar VAR_TEMP_3, 5
 	.endif
 	.endif
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon
@@ -121,16 +131,15 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon::
 	checkcoins VAR_RESULT
 	goto_if_lt VAR_RESULT, VAR_TEMP_2, CeladonCity_GameCorner_PrizeRoom_EventScript_NotEnoughCoins
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	switch VAR_TEMP_1
-	case SPECIES_ABRA,     CeladonCity_GameCorner_PrizeRoom_EventScript_GiveAbra
-	case SPECIES_CLEFAIRY, CeladonCity_GameCorner_PrizeRoom_EventScript_GiveClefairy
-	case SPECIES_DRATINI,  CeladonCity_GameCorner_PrizeRoom_EventScript_GiveDratini
-	case SPECIES_SCYTHER,  CeladonCity_GameCorner_PrizeRoom_EventScript_GiveScyther
-	case SPECIES_PORYGON,  CeladonCity_GameCorner_PrizeRoom_EventScript_GivePorygon
-	case SPECIES_PINSIR,   CeladonCity_GameCorner_PrizeRoom_EventScript_GivePinsir
+	switch VAR_TEMP_3
+	case 1, CeladonCity_GameCorner_PrizeRoom_EventScript_GivePokemon1
+	case 2, CeladonCity_GameCorner_PrizeRoom_EventScript_GivePokemon2
+	case 3, CeladonCity_GameCorner_PrizeRoom_EventScript_GivePokemon3
+	case 4, CeladonCity_GameCorner_PrizeRoom_EventScript_GivePokemon4
+	case 5, CeladonCity_GameCorner_PrizeRoom_EventScript_GivePokemon5
 	end
 
-CeladonCity_GameCorner_PrizeRoom_EventScript_GiveAbra::
+CeladonCity_GameCorner_PrizeRoom_EventScript_GivePokemon1::
 	.ifdef FIRERED
 Archipelago_Target_Level_Prize_Pokemon_1::
 	givemon VAR_TEMP_1, 9
@@ -143,7 +152,7 @@ Archipelago_Target_Level_Prize_Pokemon_1::
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_CheckReceivedMon
 	end
 
-CeladonCity_GameCorner_PrizeRoom_EventScript_GiveClefairy::
+CeladonCity_GameCorner_PrizeRoom_EventScript_GivePokemon2::
 	.ifdef FIRERED
 Archipelago_Target_Level_Prize_Pokemon_2::
 	givemon VAR_TEMP_1, 8
@@ -156,10 +165,23 @@ Archipelago_Target_Level_Prize_Pokemon_2::
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_CheckReceivedMon
 	end
 
-CeladonCity_GameCorner_PrizeRoom_EventScript_GiveDratini::
+CeladonCity_GameCorner_PrizeRoom_EventScript_GivePokemon3::
 	.ifdef FIRERED
 Archipelago_Target_Level_Prize_Pokemon_3::
 	givemon VAR_TEMP_1, 18
+	.else
+	.ifdef LEAFGREEN
+Archipelago_Target_Level_Prize_Pokemon_3::
+	givemon VAR_TEMP_1, 18
+	.endif
+	.endif
+	goto CeladonCity_GameCorner_PrizeRoom_EventScript_CheckReceivedMon
+	end
+
+CeladonCity_GameCorner_PrizeRoom_EventScript_GivePokemon4::
+	.ifdef FIRERED
+Archipelago_Target_Level_Prize_Pokemon_4::
+	givemon VAR_TEMP_1, 25
 	.else
 	.ifdef LEAFGREEN
 Archipelago_Target_Level_Prize_Pokemon_4::
@@ -169,15 +191,7 @@ Archipelago_Target_Level_Prize_Pokemon_4::
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_CheckReceivedMon
 	end
 
-CeladonCity_GameCorner_PrizeRoom_EventScript_GiveScyther::
-	.ifdef FIRERED
-Archipelago_Target_Level_Prize_Pokemon_4::
-	.endif
-	givemon VAR_TEMP_1, 25
-	goto CeladonCity_GameCorner_PrizeRoom_EventScript_CheckReceivedMon
-	end
-
-CeladonCity_GameCorner_PrizeRoom_EventScript_GivePorygon::
+CeladonCity_GameCorner_PrizeRoom_EventScript_GivePokemon5::
 	.ifdef FIRERED
 Archipelago_Target_Level_Prize_Pokemon_5::
 	givemon VAR_TEMP_1, 26
@@ -187,14 +201,6 @@ Archipelago_Target_Level_Prize_Pokemon_5::
 	givemon VAR_TEMP_1, 18
 	.endif
 	.endif
-	goto CeladonCity_GameCorner_PrizeRoom_EventScript_CheckReceivedMon
-	end
-
-CeladonCity_GameCorner_PrizeRoom_EventScript_GivePinsir::
-	.ifdef LEAFGREEN
-Archipelago_Target_Level_Prize_Pokemon_3::
-	.endif
-	givemon VAR_TEMP_1, 18
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_CheckReceivedMon
 	end
 
