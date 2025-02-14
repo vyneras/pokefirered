@@ -129,12 +129,14 @@ CinnabarIsland_EventScript_PolicemanFoundLetter::
 	goto_if_eq VAR_FACING, DIR_EAST, CinnabarIsland_EventScript_PolicemanMoveEast
 	applymovement LOCALID_POLICEMAN, CinnabarIsland_Movement_PolicemanMoveWest
 	waitmovement 0
+	setobjectxyperm LOCALID_POLICEMAN, 8, 3
 	release
 	end
 
 CinnabarIsland_EventScript_PolicemanMoveEast::
 	applymovement LOCALID_POLICEMAN, CinnabarIsland_Movement_PolicemanMoveEast
 	waitmovement 0
+	setobjectxyperm LOCALID_POLICEMAN, 8, 5
 	release
 	end
 
