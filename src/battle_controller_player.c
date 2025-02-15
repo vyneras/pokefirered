@@ -18,6 +18,8 @@
 #include "battle_message.h"
 #include "battle_script_commands.h"
 #include "reshow_battle_screen.h"
+#include "new_menu_helpers.h"
+#include "pokemon_summary_screen.h"
 #include "constants/battle_anim.h"
 #include "constants/items.h"
 #include "constants/moves.h"
@@ -86,6 +88,7 @@ static void HandleInputChooseTarget(void);
 static void MoveSelectionDisplayPpNumber(void);
 static void MoveSelectionDisplayPpString(void);
 static void MoveSelectionDisplayMoveType(void);
+static void MoveSelectionDisplayMoveDescription(void);
 static void MoveSelectionDisplayMoveNames(void);
 static void HandleMoveSwitching(void);
 static void WaitForMonSelection(void);
@@ -167,6 +170,8 @@ static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(void) =
     [CONTROLLER_ENDLINKBATTLE]            = PlayerHandleCmd55,
     [CONTROLLER_TERMINATOR_NOP]           = PlayerCmdEnd,
 };
+
+static EWRAM_DATA bool8 sDescriptionSubmenu = 0;
 
 static const u8 sTargetIdentities[] = { B_POSITION_PLAYER_LEFT, B_POSITION_PLAYER_RIGHT, B_POSITION_OPPONENT_RIGHT, B_POSITION_OPPONENT_LEFT };
 
@@ -440,7 +445,7 @@ void HandleInputChooseMove(void)
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleBufferA[gActiveBattler][4]);
 
     PreviewDeterminativeMoveTargets();
-    if (JOY_NEW(A_BUTTON))
+    if (JOY_NEW(A_BUTTON) && !sDescriptionSubmenu)
     {
         u8 moveTarget;
 
@@ -500,7 +505,7 @@ void HandleInputChooseMove(void)
             gSprites[gBattlerSpriteIds[gMultiUsePlayerCursor]].callback = SpriteCB_ShowAsMoveTarget;
         }
     }
-    else if (JOY_NEW(B_BUTTON))
+    else if (JOY_NEW(B_BUTTON) && !sDescriptionSubmenu)
     {
         PlaySE(SE_SELECT);
         BtlController_EmitTwoReturnValues(1, 10, 0xFFFF);
@@ -519,6 +524,8 @@ void HandleInputChooseMove(void)
             MoveSelectionDisplayPpNumber();
             MoveSelectionDisplayMoveType();
             BeginNormalPaletteFade(0xF0000, 0, 0, 0, RGB_WHITE);
+            if (sDescriptionSubmenu)
+                MoveSelectionDisplayMoveDescription();
         }
     }
     else if (JOY_NEW(DPAD_RIGHT))
@@ -533,6 +540,8 @@ void HandleInputChooseMove(void)
             MoveSelectionDisplayPpNumber();
             MoveSelectionDisplayMoveType();
             BeginNormalPaletteFade(0xF0000, 0, 0, 0, RGB_WHITE);
+            if (sDescriptionSubmenu)
+                MoveSelectionDisplayMoveDescription();
         }
     }
     else if (JOY_NEW(DPAD_UP))
@@ -546,6 +555,8 @@ void HandleInputChooseMove(void)
             MoveSelectionDisplayPpNumber();
             MoveSelectionDisplayMoveType();
             BeginNormalPaletteFade(0xF0000, 0, 0, 0, RGB_WHITE);
+            if (sDescriptionSubmenu)
+                MoveSelectionDisplayMoveDescription();
         }
     }
     else if (JOY_NEW(DPAD_DOWN))
@@ -560,9 +571,11 @@ void HandleInputChooseMove(void)
             MoveSelectionDisplayPpNumber();
             MoveSelectionDisplayMoveType();
             BeginNormalPaletteFade(0xF0000, 0, 0, 0, RGB_WHITE);
+            if (sDescriptionSubmenu)
+                MoveSelectionDisplayMoveDescription();
         }
     }
-    else if (JOY_NEW(SELECT_BUTTON))
+    else if (JOY_NEW(SELECT_BUTTON) && !sDescriptionSubmenu)
     {
         if (gNumberOfMovesToChoose > 1 && !(gBattleTypeFlags & BATTLE_TYPE_LINK))
         {
@@ -575,6 +588,25 @@ void HandleInputChooseMove(void)
             BattlePutTextOnWindow(gText_BattleSwitchWhich, B_WIN_SWITCH_PROMPT);
             gBattlerControllerFuncs[gActiveBattler] = HandleMoveSwitching;
         }
+    }
+
+    if (sDescriptionSubmenu)
+    {
+        if (JOY_NEW(START_BUTTON) || JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON))
+        {
+            sDescriptionSubmenu = FALSE;
+            FillWindowPixelBuffer(B_WIN_MOVE_DESCRIPTION, PIXEL_FILL(0));
+            ClearStdWindowAndFrame(B_WIN_MOVE_DESCRIPTION, FALSE);
+            CopyWindowToVram(B_WIN_MOVE_DESCRIPTION, COPYWIN_GFX);
+            PlaySE(SE_SELECT);
+            MoveSelectionDisplayPpNumber();
+            MoveSelectionDisplayMoveType();
+        }
+    }
+    else if (JOY_NEW(START_BUTTON))
+    {
+        sDescriptionSubmenu = TRUE;
+        MoveSelectionDisplayMoveDescription();
     }
 }
 
@@ -1411,6 +1443,115 @@ static void MoveSelectionDisplayMoveType(void)
     txtPtr = StringCopy(txtPtr, gText_MoveInterfaceDynamicColors);
     StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type]);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);
+}
+
+static void MoveSelectionDisplayMoveDescription(void)
+{
+    u8 moveFlags;
+    u8 *temp;
+    u8 newlineCount = 0;
+    struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleBufferA[gActiveBattler][4]);
+    u16 move = moveInfo->moves[gMoveSelectionCursor[gActiveBattler]];
+    u16 pwr = gBattleMoves[move].power;
+    u16 acc = gBattleMoves[move].accuracy;
+    s16 pri = gBattleMoves[move].priority;
+    u8 opponentId1 = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
+    u8 opponentId2 = GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
+    u8 pwrNum[3], accNum[3], priNum[3], effNum[5], i;
+    u8 pwrDesc[7] = _("PWR: ");
+    u8 accDesc[7] = _("ACC: ");
+    u8 priDesc[7] = _("PRI: ");
+    u8 effDesc[7] = _("EFF: ");
+    u8 accStart[] = _("{CLEAR_TO 0x35}");
+    u8 priStart[] = _("{CLEAR_TO 0x6A}");
+    u8 effStart[] = _("{CLEAR_TO 0x9F}");
+    u8 dash[] = _("-");
+    u8 circle[] = _("{CIRCLE_DOT}");
+    u8 triangle[] = _("{TRIANGLE}");
+    u8 cross[] = _("{BIG_MULT_X}");
+    u8 slash[] = _(" / ");
+    u8 newline[] = _("\n");
+
+    LoadStdWindowFrameGfx();
+    DrawStdWindowFrame(B_WIN_MOVE_DESCRIPTION, FALSE);
+
+    if (pwr < 2)
+    {
+        StringCopy(pwrNum, dash);
+    }
+    else
+    {
+        ConvertIntToDecimalStringN(pwrNum, pwr, STR_CONV_MODE_LEFT_ALIGN, 3);
+    }
+    if (acc == 0)
+    {
+        StringCopy(accNum, dash);
+    }
+    else
+    {
+        ConvertIntToDecimalStringN(accNum, acc, STR_CONV_MODE_LEFT_ALIGN, 3);
+    }
+    ConvertIntToDecimalStringN(priNum, pri, STR_CONV_MODE_LEFT_ALIGN, 2);
+    if (opponentId1 < gBattlersCount)
+    {
+        moveFlags = AI_TypeCalc(move, gBattleMons[opponentId1].species, gBattleMons[opponentId1].ability);
+        if (moveFlags & MOVE_RESULT_NO_EFFECT)
+        {
+            StringCopy(effNum, cross);
+        }
+        else if (moveFlags & MOVE_RESULT_NOT_VERY_EFFECTIVE)
+        {
+            StringCopy(effNum, triangle);
+        }
+        else if(moveFlags & MOVE_RESULT_SUPER_EFFECTIVE)
+        {
+            StringCopy(effNum, circle);
+        }
+        else
+        {
+           StringCopy(effNum, dash);
+        }
+    }
+    if (opponentId2 < gBattlersCount)
+    {
+        moveFlags = AI_TypeCalc(move, gBattleMons[opponentId2].species, gBattleMons[opponentId2].ability);
+        StringAppend(effNum, slash);
+        if (moveFlags & MOVE_RESULT_NO_EFFECT)
+        {
+            StringAppend(effNum, cross);
+        }
+        else if (moveFlags & MOVE_RESULT_NOT_VERY_EFFECTIVE)
+        {
+            StringAppend(effNum, triangle);
+        }
+        else if(moveFlags & MOVE_RESULT_SUPER_EFFECTIVE)
+        {
+            StringAppend(effNum, circle);
+        }
+        else
+        {
+           StringAppend(effNum, dash);
+        }
+    }
+
+    StringCopy(gDisplayedStringBattle, gText_FontSmall);
+    StringAppend(gDisplayedStringBattle, pwrDesc);
+    StringAppend(gDisplayedStringBattle, pwrNum);
+    StringAppend(gDisplayedStringBattle, accStart);
+    StringAppend(gDisplayedStringBattle, accDesc);
+    StringAppend(gDisplayedStringBattle, accNum);
+    StringAppend(gDisplayedStringBattle, priStart);
+    StringAppend(gDisplayedStringBattle, priDesc);
+    StringAppend(gDisplayedStringBattle, priNum);
+    StringAppend(gDisplayedStringBattle, effStart);
+    StringAppend(gDisplayedStringBattle, effDesc);
+    StringAppend(gDisplayedStringBattle, effNum);
+    StringAppend(gDisplayedStringBattle, newline);
+    StringAppend(gDisplayedStringBattle, gText_FontNormal);
+    StringAppendIgnoreNewline(gDisplayedStringBattle, gMoveDescriptionPointers[move -1]);
+
+    BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_DESCRIPTION);
+    CopyWindowToVram(B_WIN_MOVE_DESCRIPTION, COPYWIN_FULL);
 }
 
 void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 arg1)

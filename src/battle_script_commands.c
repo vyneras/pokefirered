@@ -1464,7 +1464,7 @@ u8 TypeCalc(u16 move, u8 attacker, u8 defender)
     if (move == MOVE_STRUGGLE)
         return 0;
 
-    moveType = gBattleMoves[move].type;
+    GET_MOVE_TYPE(move, moveType);
 
     // check stab
     if (IS_BATTLER_OF_TYPE(attacker, moveType))
@@ -1523,7 +1523,7 @@ u8 AI_TypeCalc(u16 move, u16 targetSpecies, u8 targetAbility)
     if (move == MOVE_STRUGGLE)
         return 0;
 
-    moveType = gBattleMoves[move].type;
+    GET_MOVE_TYPE(move, moveType);
 
     if (targetAbility == ABILITY_LEVITATE && moveType == TYPE_GROUND)
     {

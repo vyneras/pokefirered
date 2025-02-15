@@ -124,6 +124,45 @@ u8 *StringAppendN(u8 *dest, const u8 *src, u8 n)
     return StringCopyN(dest, src, n);
 }
 
+u8 *StringAppendIgnoreNewline(u8 *dest, const u8 *src)
+{
+    u8 newlineCount = 0;
+    u8 previousCharacter = EOS;
+
+    while (*dest != EOS)
+        dest++;
+
+    while (*src != EOS)
+    {
+        if (*src != CHAR_NEWLINE)
+        {
+            *dest = *src;
+            previousCharacter = *src;
+            dest++;
+        }
+        else
+        {
+            if (newlineCount % 2 != 0)
+            {
+                *dest = CHAR_NEWLINE;
+                previousCharacter = CHAR_NEWLINE;
+                dest++;
+            }
+            else if(previousCharacter != CHAR_HYPHEN)
+            {
+                *dest = CHAR_SPACE;
+                previousCharacter = CHAR_SPACE;
+                dest++;
+            }
+            newlineCount++;
+        }
+        src++;
+    }
+
+    *dest = EOS;
+    return dest;
+}
+
 u16 StringLength(const u8 *str)
 {
     u16 length = 0;
@@ -167,6 +206,13 @@ u8 *ConvertIntToDecimalStringN(u8 *dest, s32 value, enum StringConvertMode mode,
     enum { WAITING_FOR_NONZERO_DIGIT, WRITING_DIGITS, WRITING_SPACES } state;
     s32 powerOfTen;
     s32 largestPowerOfTen = sPowersOfTen[n - 1];
+    bool8 addNegSign = FALSE;
+
+    if (value < 0)
+    {
+        addNegSign = TRUE;
+        value = abs(value);
+    }
 
     state = WAITING_FOR_NONZERO_DIGIT;
 
@@ -187,6 +233,12 @@ u8 *ConvertIntToDecimalStringN(u8 *dest, s32 value, enum StringConvertMode mode,
         {
             out = dest++;
 
+            if (addNegSign)
+            {
+                addNegSign = FALSE;
+                *out = CHAR_HYPHEN;
+                out = dest++;
+            }
             if (digit <= 9)
                 c = sDigits[digit];
             else
@@ -199,6 +251,12 @@ u8 *ConvertIntToDecimalStringN(u8 *dest, s32 value, enum StringConvertMode mode,
             state = WRITING_DIGITS;
             out = dest++;
 
+            if (addNegSign)
+            {
+                addNegSign = FALSE;
+                *out = CHAR_HYPHEN;
+                out = dest++;
+            }
             if (digit <= 9)
                 c = sDigits[digit];
             else
