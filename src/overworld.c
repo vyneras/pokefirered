@@ -652,7 +652,7 @@ void WarpToStartingLocation(void)
 {
     SetLastHealLocationWarp(gArchipelagoOptions.startingLocation);
     SetWarpDestinationToHealLocation(gArchipelagoOptions.startingLocation);
-    DoTeleportWarp();
+    DoTeleport2Warp();
     ResetInitialPlayerAvatarState();
 }
 
@@ -684,6 +684,13 @@ void SetWarpDestinationToDynamicWarp(u8 unusedWarpId)
 void SetWarpDestinationToHealLocation(u8 healLocationId)
 {
     const struct HealLocation *warp = GetHealLocation(healLocationId);
+    if (warp)
+        SetWarpDestination(warp->group, warp->map, -1, warp->x, warp->y);
+}
+
+void SetWarpDestinationToFlyLocation(u8 healLocationId)
+{
+    const struct HealLocation *warp = GetFlyLocation(healLocationId);
     if (warp)
         SetWarpDestination(warp->group, warp->map, -1, warp->x, warp->y);
 }

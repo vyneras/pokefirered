@@ -45,6 +45,7 @@ enum {
 enum {
     LAYER_MAP,
     LAYER_DUNGEON,
+    LAYER_FLY,
     LAYER_COUNT
 };
 
@@ -219,6 +220,7 @@ struct MapCursor
     u16 selectedMapsec;
     u16 selectedMapsecType;
     u16 selectedDungeonType;
+    u16 selectedFlyType;
     struct Sprite *sprite;
     u16 tileTag;
     u16 palTag;
@@ -350,6 +352,7 @@ static u16 GetMapCursorX(void);
 static u16 GetMapCursorY(void);
 static u16 GetMapsecUnderCursor(void);
 static u16 GetDungeonMapsecUnderCursor(void);
+static u16 GetFlyMapsecUnderCursor(void);
 static u8 GetMapsecType(u8);
 static u8 GetDungeonMapsecType(u8);
 static u8 GetSelectedMapsecType(u8);
@@ -1518,10 +1521,6 @@ static void BufferRegionMapBg(u8 bg, u16 *map)
         whichMap = sSwitchMapMenu->currentSelection;
     else
         whichMap = sRegionMap->selectedRegion;
-    if (whichMap == REGIONMAP_SEVII45 && !FlagGet(FLAG_WORLD_MAP_NAVEL_ROCK_EXTERIOR))
-        FillBgTilemapBufferRect_Palette0(0, 0x003, 13, 11, 3, 2);
-    if (whichMap == REGIONMAP_SEVII67 && !FlagGet(FLAG_WORLD_MAP_BIRTH_ISLAND_EXTERIOR))
-        FillBgTilemapBufferRect_Palette0(0, 0x003, 21, 16, 3, 3);
 }
 
 static bool8 GetRegionMapPermission(u8 attr)
@@ -2698,6 +2697,7 @@ static void CreateMapCursor(u16 tileTag, u16 palTag)
     sMapCursor->inputHandler = HandleRegionMapInput;
     sMapCursor->selectedMapsecType = GetMapsecType(sMapCursor->selectedMapsec);
     sMapCursor->selectedDungeonType = GetDungeonMapsecType(GetSelectedMapSection(GetSelectedRegionMap(), LAYER_DUNGEON, sMapCursor->y, sMapCursor->x));
+    sMapCursor->selectedFlyType = GetMapsecType(GetSelectedMapSection(GetSelectedRegionMap(), LAYER_FLY, sMapCursor->y, sMapCursor->x));
     CreateMapCursorSprite();
 }
 
@@ -2814,6 +2814,7 @@ static u8 HandleRegionMapInput(void)
             sMapCursor->selectedMapsec = GetSelectedMapSection(GetSelectedRegionMap(), LAYER_MAP, sMapCursor->y, sMapCursor->x);
             sMapCursor->selectedMapsecType = GetMapsecType(sMapCursor->selectedMapsec);
             sMapCursor->selectedDungeonType = GetDungeonMapsecType(GetSelectedMapSection(GetSelectedRegionMap(), LAYER_DUNGEON, sMapCursor->y, sMapCursor->x));
+            sMapCursor->selectedFlyType = GetMapsecType(GetSelectedMapSection(GetSelectedRegionMap(), LAYER_FLY, sMapCursor->y, sMapCursor->x));
             return MAP_INPUT_MOVE_END;
         }
         else if (JOY_NEW(SELECT_BUTTON) && sRegionMap->savedCallback == CB2_ReturnToField)
@@ -2848,6 +2849,7 @@ static u8 MoveMapCursor(void)
     sMapCursor->selectedMapsec = GetSelectedMapSection(GetSelectedRegionMap(), LAYER_MAP, sMapCursor->y, sMapCursor->x);
     sMapCursor->selectedMapsecType = GetMapsecType(sMapCursor->selectedMapsec);
     sMapCursor->selectedDungeonType = GetDungeonMapsecType(GetSelectedMapSection(GetSelectedRegionMap(), LAYER_DUNGEON, sMapCursor->y, sMapCursor->x));
+    sMapCursor->selectedFlyType = GetMapsecType(GetSelectedMapSection(GetSelectedRegionMap(), LAYER_FLY, sMapCursor->y, sMapCursor->x));
     sMapCursor->inputHandler = HandleRegionMapInput;
     return MAP_INPUT_MOVE_END;
 }
@@ -2929,8 +2931,6 @@ static u16 GetMapsecUnderCursor(void)
         return MAPSEC_NONE;
 
     mapsec = GetSelectedMapSection(GetSelectedRegionMap(), LAYER_MAP, sMapCursor->y, sMapCursor->x);
-    if ((mapsec == MAPSEC_NAVEL_ROCK || mapsec == MAPSEC_BIRTH_ISLAND) && !FlagGet(FLAG_WORLD_MAP_NAVEL_ROCK_EXTERIOR))
-        mapsec = MAPSEC_NONE;
     return mapsec;
 }
 
@@ -2944,8 +2944,19 @@ static u16 GetDungeonMapsecUnderCursor(void)
         return MAPSEC_NONE;
 
     mapsec = GetSelectedMapSection(GetSelectedRegionMap(), LAYER_DUNGEON, sMapCursor->y, sMapCursor->x);
-    if (mapsec == MAPSEC_CERULEAN_CAVE && !FlagGet(FLAG_SYS_CAN_LINK_WITH_RS))
-        mapsec = MAPSEC_NONE;
+    return mapsec;
+}
+
+static u16 GetFlyMapsecUnderCursor(void)
+{
+    u8 mapsec;
+    if (sMapCursor->y < 0
+     || sMapCursor->y >= MAP_HEIGHT
+     || sMapCursor->x < 0
+     || sMapCursor->x >= MAP_WIDTH)
+        return MAPSEC_NONE;
+
+    mapsec = GetSelectedMapSection(GetSelectedRegionMap(), LAYER_FLY, sMapCursor->y, sMapCursor->x);
     return mapsec;
 }
 
@@ -3085,6 +3096,8 @@ static u8 GetSelectedMapsecType(u8 layer)
         return sMapCursor->selectedMapsecType;
     case LAYER_DUNGEON:
         return sMapCursor->selectedDungeonType;
+    case LAYER_FLY:
+        return sMapCursor->selectedFlyType;
     }
 }
 
@@ -3567,7 +3580,7 @@ static void CreateFlyIcons(void)
             {
                 for (x = 0; x < MAP_WIDTH; x++)
                 {
-                    if (GetMapsecType(GetSelectedMapSection(i, LAYER_MAP, y, x)) == MAPSECTYPE_VISITED)
+                    if (GetMapsecType(GetSelectedMapSection(i, LAYER_FLY, y, x)) == MAPSECTYPE_VISITED)
                     {
                         CreateFlyIconSprite(i, numIcons, x, y, numIcons + 10, 10);
                         numIcons++;
@@ -3591,8 +3604,6 @@ static void CreateDungeonIcons(void)
             {
                 mapsec = GetSelectedMapSection(i, LAYER_DUNGEON, y, x);
                 if (mapsec == MAPSEC_NONE)
-                    continue;
-                if (mapsec == MAPSEC_CERULEAN_CAVE && !FlagGet(FLAG_SYS_CAN_LINK_WITH_RS))
                     continue;
                 CreateDungeonIconSprite(i, numIcons, x, y, numIcons + 35, 10);
                 if (GetDungeonMapsecType(mapsec) != 2)
@@ -3930,7 +3941,7 @@ static void Task_FlyMap(u8 taskId)
             sFlyMap->state = 6;
             break;
         case MAP_INPUT_MOVE_END:
-            if (GetSelectedMapsecType(LAYER_MAP) == MAPSECTYPE_VISITED)
+            if (GetSelectedMapsecType(LAYER_FLY) == MAPSECTYPE_VISITED)
                 PlaySE(SE_DEX_PAGE);
             else
                 PlaySEForSelectedMapsec();
@@ -3943,7 +3954,7 @@ static void Task_FlyMap(u8 taskId)
                 PlaySE(SE_M_SPIT_UP);
                 PrintTopBarTextRight(gText_RegionMap_AButtonCancel);
             }
-            else if (GetSelectedMapsecType(LAYER_MAP) == MAPSECTYPE_VISITED || GetSelectedMapsecType(LAYER_MAP) == MAPSECTYPE_UNKNOWN)
+            else if (GetSelectedMapsecType(LAYER_FLY) == MAPSECTYPE_VISITED || GetSelectedMapsecType(LAYER_FLY) == MAPSECTYPE_UNKNOWN)
             {
                 PrintTopBarTextRight(gText_RegionMap_AButtonOK);
             }
@@ -3953,7 +3964,7 @@ static void Task_FlyMap(u8 taskId)
             }
             break;
         case MAP_INPUT_A_BUTTON:
-            if ((GetSelectedMapsecType(LAYER_MAP) == MAPSECTYPE_VISITED || GetSelectedMapsecType(LAYER_MAP) == MAPSECTYPE_UNKNOWN) && GetRegionMapPermission(MAPPERM_HAS_FLY_DESTINATIONS) == TRUE)
+            if ((GetSelectedMapsecType(LAYER_FLY) == MAPSECTYPE_VISITED || GetSelectedMapsecType(LAYER_FLY) == MAPSECTYPE_UNKNOWN) && GetRegionMapPermission(MAPPERM_HAS_FLY_DESTINATIONS) == TRUE)
             {
                 switch (GetMapTypeByGroupAndId(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum))
                 {
@@ -3988,7 +3999,7 @@ static void Task_FlyMap(u8 taskId)
         if (!gPaletteFade.active)
         {
             if (sFlyMap->selectedDestination == TRUE)
-                SetFlyWarpDestination(GetMapsecUnderCursor());
+                SetFlyWarpDestination(GetFlyMapsecUnderCursor());
             FreeFlyMap(taskId);
         }
         break;
@@ -4025,7 +4036,7 @@ static void SetFlyWarpDestination(u16 mapsec)
     u16 idx = mapsec - MAPSECS_KANTO;
     if (sMapFlyDestinations[idx][2])
     {
-        SetWarpDestinationToHealLocation(sMapFlyDestinations[idx][2]);
+        SetWarpDestinationToFlyLocation(sMapFlyDestinations[idx][2]);
         SetUsedFlyQuestLogEvent(sMapFlyDestinations[idx]);
     }
     else

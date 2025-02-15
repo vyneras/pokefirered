@@ -167,7 +167,6 @@ ViridianCity_EventScript_OldManGymClosedNoGym::
 ViridianCity_EventScript_TutorialOldMan::
 	lock
 	faceplayer
-	goto_if_set FLAG_BADGE01_GET, ViridianCity_EventScript_AskIfTeachyTVHelpful
 	goto_if_ge VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2, ViridianCity_EventScript_TutorialCompleted
 	goto_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1, ViridianCity_EventScript_TutorialStart
 	goto_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 0, ViridianCity_EventScript_TutorialNotReady
@@ -186,6 +185,7 @@ ViridianCity_EventScript_TeachyTVNotHelpful::
 	end
 
 ViridianCity_EventScript_TutorialCompleted::
+	goto_if_set FLAG_BADGE01_GET, ViridianCity_EventScript_AskIfTeachyTVHelpful
 	msgbox ViridianCity_Text_WeakenMonsFirstToCatch
 	release
 	end

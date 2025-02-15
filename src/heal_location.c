@@ -58,6 +58,15 @@ const struct HealLocation * GetHealLocation(u32 idx)
     return &sSpawnPoints[idx - 1];
 }
 
+const struct HealLocation * GetFlyLocation(u32 idx)
+{
+    if (idx == 0)
+        return NULL;
+    if (idx > NELEMS(sSpawnPoints))
+        return NULL;
+    return &sFlyPoints[idx - 1];
+}
+
 void SetWhiteoutRespawnWarpAndHealerNpc(struct WarpData * warp)
 {
     u32 healLocationIdx;
