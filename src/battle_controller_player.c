@@ -1543,9 +1543,12 @@ static void MoveSelectionDisplayMoveDescription(void)
     StringAppend(gDisplayedStringBattle, priStart);
     StringAppend(gDisplayedStringBattle, priDesc);
     StringAppend(gDisplayedStringBattle, priNum);
-    StringAppend(gDisplayedStringBattle, effStart);
-    StringAppend(gDisplayedStringBattle, effDesc);
-    StringAppend(gDisplayedStringBattle, effNum);
+    if (gSaveBlock2Ptr->optionsShowEffectiveness == OPTIONS_SHOW_EFFECTIVENESS_ON)
+    {
+        StringAppend(gDisplayedStringBattle, effStart);
+        StringAppend(gDisplayedStringBattle, effDesc);
+        StringAppend(gDisplayedStringBattle, effNum);
+    }
     StringAppend(gDisplayedStringBattle, newline);
     StringAppend(gDisplayedStringBattle, gText_FontNormal);
     StringAppendIgnoreNewline(gDisplayedStringBattle, gMoveDescriptionPointers[move -1]);

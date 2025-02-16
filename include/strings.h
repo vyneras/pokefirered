@@ -945,7 +945,10 @@ extern const u8 gText_ButtonTypeHelp[];
 extern const u8 gText_ButtonTypeLR[];
 extern const u8 gText_ButtonTypeLEqualsA[];
 extern const u8 gText_Option[];
+extern const u8 gText_LargeDot[];
+extern const u8 gText_SmallDot[];
 extern const u8 gText_FrameType[];
+extern const u8 gText_ShowEffectiveness[];
 extern const u8 gTextJP_Type[];
 extern const u8 gText_PickSwitchCancel[];
 
