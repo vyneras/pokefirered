@@ -128,7 +128,7 @@ SilphCo_7F_EventScript_LaprasGuy::
 	msgbox SilphCo_7F_Text_HaveMonForSavingUs
 Archipelago_Target_Special_Gift_LAPRAS::
 	setvar VAR_TEMP_1, SPECIES_LAPRAS
-	bufferspeciesname STR_VAR_1, VAR_TEMP_1
+	bufferspeciesname STR_VAR_2, VAR_TEMP_1
 Archipelago_Target_Level_Special_Gift_LAPRAS::
 	givemon VAR_TEMP_1, 25
 	goto_if_eq VAR_RESULT, 0, SilphCo_7F_EventScript_ReceiveLaprasParty

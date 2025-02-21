@@ -8,7 +8,7 @@ CeladonCity_Condominiums_RoofRoom_Text_TheresNothingIDontKnow::
 
 CeladonCity_Condominiums_RoofRoom_Text_ObtainedAnEevee::
     .string "{PLAYER} obtained the POKéMON\n"
-    .string "{STR_VAR_1}!$"
+    .string "{STR_VAR_2}!$"
 
 CeladonCity_Condominiums_RoofRoom_Text_WirelessAdapterLecture::
     .string "POKéMON Lecture\p"
