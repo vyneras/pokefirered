@@ -33,6 +33,8 @@ CinnabarIsland_PokemonCenter_1F_EventScript_Bill::
 	faceplayer
 	specialvar VAR_RESULT, ArchipelagoSpecial_ArePassesSplit
 	call_if_eq VAR_RESULT, TRUE, CinnabarIsland_PokemonCenter_1F_EventScript_BillGivePass
+	specialvar VAR_RESULT, ArchipelagoSpecial_KantoOnly
+	goto_if_eq VAR_RESULT, TRUE, CinnabarIsland_PokemonCenter_1F_EventScript_BillGoToVermilionCity
 	msgbox CinnabarIsland_PokemonCenter_1F_Text_ReadyToSailToOneIsland, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, CinnabarIsland_PokemonCenter_1F_EventScript_NotReadyToSail
 	msgbox CinnabarIsland_PokemonCenter_1F_Text_LetsGo
@@ -53,6 +55,22 @@ CinnabarIsland_PokemonCenter_1F_EventScript_BillGivePass::
 	msgbox CinnabarIsland_PokemonCenter_1F_Text_ExtraPass
 Archipelago_Target_NPC_Gift_FLAG_GOT_ONE_PASS::
 	giveitem ITEM_ONE_PASS, 1, FLAG_GOT_ONE_PASS
+	release
+	end
+
+CinnabarIsland_PokemonCenter_1F_EventScript_BillGoToVermilionCity::
+	msgbox CinnabarIsland_PokemonCenter_1F_Text_ReadyToSailToVermilionCity, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, CinnabarIsland_PokemonCenter_1F_EventScript_NotReadyToSail
+	msgbox CinnabarIsland_PokemonCenter_1F_Text_LetsGo
+	closemessage
+	playbgm MUS_FOLLOW_ME, 1
+	delay 20
+	call_if_eq VAR_FACING, DIR_SOUTH, CinnabarIsland_PokemonCenter_1F_EventScript_ExitWithBillSouth
+	call_if_eq VAR_FACING, DIR_EAST, CinnabarIsland_PokemonCenter_1F_EventScript_ExitWithBillEast
+	call_if_eq VAR_FACING, DIR_WEST, CinnabarIsland_PokemonCenter_1F_EventScript_ExitWithBillWest
+	removeobject LOCALID_BILL
+	warp MAP_VERMILION_CITY, 23, 32
+	waitstate
 	release
 	end
 

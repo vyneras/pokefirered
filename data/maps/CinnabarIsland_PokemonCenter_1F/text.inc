@@ -33,6 +33,10 @@ CinnabarIsland_PokemonCenter_1F_Text_ReadyToSailToOneIsland::
     .string "BILL: Hey, you kept me waiting!\n"
     .string "Ready to set sail to ONE ISLAND?$"
 
+CinnabarIsland_PokemonCenter_1F_Text_ReadyToSailToVermilionCity::
+    .string "BILL: Hey, you kept me waiting!\n"
+    .string "Ready to set sail to VERMILION CITY?$"
+
 CinnabarIsland_PokemonCenter_1F_Text_OhNotDoneYet::
     .string "Oh, you're still not done yet?$"
 

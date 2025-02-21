@@ -12,6 +12,7 @@ VermilionCity_OnTransition::
 	call_if_eq VAR_RESULT, TRUE, VermilionCity_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, VermilionCity_EventScript_SetWorldMapFlag
 	call_if_set FLAG_TALKED_TO_OAKS_AIDE_IN_VERMILION, VermilionCity_EventScript_HideOaksAide
+	call_if_set FLAG_DEFEATED_BLAINE, VermilionCity_ClearCinnabarIslandBillFlag
 	end
 
 VermilionCity_EventScript_SetGiveFlyUnlockItem::
@@ -25,6 +26,12 @@ VermilionCity_EventScript_SetWorldMapFlag::
 
 VermilionCity_EventScript_HideOaksAide::
 	setflag FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
+	return
+
+VermilionCity_ClearCinnabarIslandBillFlag::
+	specialvar VAR_RESULT, ArchipelagoSpecial_KantoOnly
+	goto_if_eq VAR_RESULT, FALSE, EventScript_Return
+	clearflag FLAG_HIDE_CINNABAR_POKECENTER_BILL
 	return
 
 VermilionCity_OnFrame::

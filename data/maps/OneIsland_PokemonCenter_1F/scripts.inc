@@ -36,6 +36,8 @@ OneIsland_PokemonCenter_1F_OnTransition::
 	end
 
 OneIsland_PokemonCenter_1F_ClearCinnabarIslandBillFlag::
+	specialvar VAR_RESULT, ArchipelagoSpecial_KantoOnly
+	goto_if_eq VAR_RESULT, TRUE, EventScript_Return
 	clearflag FLAG_HIDE_CINNABAR_POKECENTER_BILL
 	return
 
