@@ -12,9 +12,6 @@
 #include "constants/easy_chat.h"
 #include "constants/rgb.h"
 
-// Freeing up space in SaveBlock1
-#define FREE_UNUSED_BLOCKS
-
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
 
@@ -809,21 +806,11 @@ struct SaveBlock1
     /*0x3170*/ struct Roamer roamer;
     /*0x3320*/ struct EnigmaBerry enigmaBerry;
     /*0x3370*/ struct MysteryGiftSave mysteryGift;
-
-    #ifndef FREE_UNUSED_BLOCKS
-    /*------*/ u8 unused_removed_1[400];
-    #endif // FREE_UNUSED_BLOCKS
-
     /*0x36DC*/ struct RamScript ramScript;
     /*0x3AC8*/ struct RecordMixingGift recordMixingGift; // unused
     /*0x3AD8*/ u8 seen2[DEX_FLAGS_NO];
     /*0x3B0C*/ u8 rivalName[PLAYER_NAME_LENGTH + 1];
     /*0x3B14*/ struct FameCheckerSaveData fameChecker[NUM_FAMECHECKER_PERSONS];
-
-    #ifndef FREE_UNUSED_BLOCKS
-    /*------*/ u8 unused_3B04[64];
-    #endif // FREE_UNUSED_BLOCKS
-
     /*0x3B54*/ u8 registeredTexts[UNION_ROOM_KB_ROW_COUNT][21];
     /*0x3C28*/ struct TrainerNameRecord trainerNameRecords[20];
     /*0x3D18*/ struct DaycareMon route5DayCareMon;
