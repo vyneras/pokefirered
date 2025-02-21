@@ -774,7 +774,7 @@ static void Task_EvolutionScene(u8 taskId)
         {
             StringExpandPlaceholders(gStringVar5, gText_CongratsPkmnEvolved);
             BattlePutTextOnWindow(gStringVar5, B_WIN_MSG);
-            PlayBGM(MUS_EVOLVED);
+            PlayFanfare(MUS_EVOLVED);
             gTasks[taskId].tState++;
             SetMonData(mon, MON_DATA_SPECIES, (void *)(&gTasks[taskId].tPostEvoSpecies));
             CalculateMonStats(mon);
