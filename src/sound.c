@@ -206,7 +206,7 @@ void PlayFanfareByFanfareNum(u8 fanfareNum)
 
 bool8 WaitFanfare(bool8 stop)
 {
-    if (sFanfareCounter)
+    if (sFanfareCounter && !(gArchipelagoOptions.canSkipFanfares && JOY_NEW(B_BUTTON)))
     {
         sFanfareCounter--;
         return FALSE;
