@@ -121,7 +121,7 @@ static bool8 CheckTrainer(u8 trainerObjId)
         FieldEffectStart(FLDEFF_EXCLAMATION_MARK_ICON);
     }
 
-    if (gArchipelagoOptions.areTrainersBlind)
+    if (gSaveBlock2Ptr->optionsBlindTrainers)
         return FALSE;
 
     approachDistance = GetTrainerApproachDistance(&gObjectEvents[trainerObjId]);

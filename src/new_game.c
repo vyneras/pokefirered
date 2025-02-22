@@ -63,13 +63,25 @@ static void InitPlayerTrainerId(void)
 
 static void SetDefaultOptions(void)
 {
-    gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_INSTANT;
-    gSaveBlock2Ptr->optionsWindowFrameType = 0;
-    gSaveBlock2Ptr->optionsSound = OPTIONS_SOUND_MONO;
-    gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SHIFT;
-    gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
+    gSaveBlock2Ptr->optionsWindowFrameType = gArchipelagoOptions.windowFrameType;
+    gSaveBlock2Ptr->optionsTextSpeed = gArchipelagoOptions.textSpeedOption;
+    gSaveBlock2Ptr->optionsTurboA = gArchipelagoOptions.turboA;
+    gSaveBlock2Ptr->optionsAutoRun = gArchipelagoOptions.autoRun;
+    gSaveBlock2Ptr->optionsButtonMode = gArchipelagoOptions.buttonMode;
+    gSaveBlock2Ptr->optionsBattleScene = gArchipelagoOptions.battleScene;
+    gSaveBlock2Ptr->optionsBattleStyle = gArchipelagoOptions.battleStyle;
+    gSaveBlock2Ptr->optionsShowEffectiveness = gArchipelagoOptions.showEffectiveness;
+    gSaveBlock2Ptr->optionsExpMultiplier = gArchipelagoOptions.expMultiplier;
+    gSaveBlock2Ptr->optionsSound = gArchipelagoOptions.sound;
+    gSaveBlock2Ptr->optionsLowHPBeep = gArchipelagoOptions.lowHPBeep;
+    gSaveBlock2Ptr->optionsSkipFanfares = gArchipelagoOptions.skipFanfares;
+    gSaveBlock2Ptr->optionsBikeMusic = gArchipelagoOptions.bikeMusic;
+    gSaveBlock2Ptr->optionsSurfMusic = gArchipelagoOptions.surfMusic;
+    gSaveBlock2Ptr->optionsGuaranteedCatch = gArchipelagoOptions.guaranteedCatch;
+    gSaveBlock2Ptr->optionsNormalizeEncounterRates = gArchipelagoOptions.normalizeEncounterRates;
+    gSaveBlock2Ptr->optionsBlindTrainers = gArchipelagoOptions.blindTrainers;
+    gSaveBlock2Ptr->optionsItemMessages = gArchipelagoOptions.itemMessages;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
-    gSaveBlock2Ptr->optionsButtonMode = OPTIONS_BUTTON_MODE_HELP;
 }
 
 static void ClearPokedexFlags(void)

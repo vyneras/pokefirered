@@ -14,7 +14,7 @@
 #include "field_fadetransition.h"
 #include "gba/m4a_internal.h"
 
-#define PAGE_COUNT 2
+#define PAGE_COUNT 4
 
 // can't include the one in menu_helpers.h since Task_OptionMenu needs bool32 for matching
 bool32 IsActiveOverworldLinkBusy(void);
@@ -23,20 +23,39 @@ bool32 IsActiveOverworldLinkBusy(void);
 enum
 {
     MENUITEM_TEXTSPEED = 0,
-    MENUITEM_BATTLESCENE,
-    MENUITEM_BATTLESTYLE,
-    MENUITEM_SOUND,
+    MENUITEM_TURBOA,
+    MENUITEM_AUTORUN,
     MENUITEM_BUTTONMODE,
     MENUITEM_FRAMETYPE,
-    MENUITEM_CANCEL,
     MENUITEM_COUNT
 };
 
 enum
 {
-    MENUITEM_SHOWEFFECTIVENESS = 0,
-    MENUITEM_CANCEL2,
+    MENUITEM_BATTLESCENE = 0,
+    MENUITEM_BATTLESTYLE,
+    MENUITEM_SHOWEFFECTIVENESS,
+    MENUITEM_EXPERIENCE,
     MENUITEM_COUNT2
+};
+
+enum
+{
+    MENUITEM_SOUND = 0,
+    MENUITEM_LOWHPBEEP,
+    MENUITEM_SKIPFANFARES,
+    MENUITEM_BIKEMUSIC,
+    MENUITEM_SURFMUSIC,
+    MENUITEM_COUNT3
+};
+
+enum
+{
+    MENUITEM_GUARANTEEDCATCH = 0,
+    MENUITEM_ENCOUNTERRATES,
+    MENUITEM_BLINDTRAINERS,
+    MENUITEM_ITEMMESSAGES,
+    MENUITEM_COUNT4
 };
 
 // Window Ids
@@ -49,13 +68,15 @@ enum
 // RAM symbols
 struct OptionMenu
 {
-    /*0x00*/ u16 option[MENUITEM_COUNT];
-    /*0x0E*/ u16 option2[MENUITEM_COUNT2];
-    /*0x12*/ u16 cursorPos;
-    /*0x14*/ u8 loadState;
-    /*0x15*/ u8 state;
-    /*0x16*/ u8 loadPaletteState;
-    /*0x17*/ u8 currentPage;
+    /*0x00*/ u16 generalOptions[MENUITEM_COUNT];
+    /*0x08*/ u16 battleOptions[MENUITEM_COUNT2];
+    /*0x10*/ u16 soundOptions[MENUITEM_COUNT3];
+    /*0x1A*/ u16 qualityOptions[MENUITEM_COUNT4];
+    /*0x22*/ u16 cursorPos;
+    /*0x24*/ u8 loadState;
+    /*0x25*/ u8 state;
+    /*0x26*/ u8 loadPaletteState;
+    /*0x27*/ u8 currentPage;
 };
 
 static EWRAM_DATA struct OptionMenu *sOptionMenuPtr = NULL;
@@ -68,7 +89,7 @@ static void OptionMenu_SetVBlankCallback(void);
 static void CB2_OptionMenu(void);
 static void SetOptionMenuTask(void);
 static void InitOptionMenuBg(void);
-static void OptionMenu_PickSwitchCancel(void);
+static void OptionMenu_Page(void);
 static void OptionMenu_ResetSpriteData(void);
 static bool8 LoadOptionMenuPalette(void);
 static void Task_OptionMenu(u8 taskId);
@@ -145,24 +166,43 @@ static const struct BgTemplate sOptionMenuBgTemplates[] =
 };
 
 static const u16 sOptionMenuPalette[] = INCBIN_U16("graphics/misc/option_menu.gbapal");
-static const u16 sOptionMenuItemCounts[MENUITEM_COUNT] = {4, 2, 2, 2, 3, 10, 0};
-static const u16 sOptionMenu2ItemCounts[MENUITEM_COUNT2] = {2, 0};
+static const u16 sOptionMenuItemCounts[MENUITEM_COUNT] = {4, 2, 2, 3, 10};
+static const u16 sOptionMenu2ItemCounts[MENUITEM_COUNT2] = {2, 2, 2, 7};
+static const u16 sOptionMenu3ItemCounts[MENUITEM_COUNT3] = {2, 2, 2, 2, 2};
+static const u16 sOptionMenu4ItemCounts[MENUITEM_COUNT4] = {2, 2, 2, 3};
 
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
     [MENUITEM_TEXTSPEED]   = gText_TextSpeed,
-    [MENUITEM_BATTLESCENE] = gText_BattleScene,
-    [MENUITEM_BATTLESTYLE] = gText_BattleStyle,
-    [MENUITEM_SOUND]       = gText_Sound,
+    [MENUITEM_TURBOA]      = gText_TurboA,
+    [MENUITEM_AUTORUN]     = gText_AutoRun,
     [MENUITEM_BUTTONMODE]  = gText_ButtonMode,
-    [MENUITEM_FRAMETYPE]   = gText_Frame,
-    [MENUITEM_CANCEL]      = gText_OptionMenuCancel,
+    [MENUITEM_FRAMETYPE]   = gText_Frame
 };
 
 static const u8 *const sOptionMenu2ItemsNames[MENUITEM_COUNT2] =
 {
+    [MENUITEM_BATTLESCENE]       = gText_BattleScene,
+    [MENUITEM_BATTLESTYLE]       = gText_BattleStyle,
     [MENUITEM_SHOWEFFECTIVENESS] = gText_ShowEffectiveness,
-    [MENUITEM_CANCEL2]           = gText_OptionMenuCancel,
+    [MENUITEM_EXPERIENCE]        = gText_Experience
+};
+
+static const u8 *const sOptionMenu3ItemsNames[MENUITEM_COUNT3] =
+{
+    [MENUITEM_SOUND]        = gText_Sound,
+    [MENUITEM_LOWHPBEEP]    = gText_LowHPBeep,
+    [MENUITEM_SKIPFANFARES] = gText_SkipFanfares,
+    [MENUITEM_BIKEMUSIC]    = gText_BikeMusic,
+    [MENUITEM_SURFMUSIC]    = gText_SurfMusic
+};
+
+static const u8 *const sOptionMenu4ItemsNames[MENUITEM_COUNT4] =
+{
+    [MENUITEM_GUARANTEEDCATCH] = gText_GuaranteedCatch,
+    [MENUITEM_ENCOUNTERRATES]  = gText_EncounterRates,
+    [MENUITEM_BLINDTRAINERS]   = gText_BlindTrainers,
+    [MENUITEM_ITEMMESSAGES]    = gText_ItemMessages
 };
 
 static const u8 *const sTextSpeedOptions[] =
@@ -173,22 +213,16 @@ static const u8 *const sTextSpeedOptions[] =
     gText_TextSpeedInstant
 };
 
-static const u8 *const sBattleSceneOptions[] =
+static const u8 *const sTurboAOptions[] =
 {
-    gText_BattleSceneOn,
-    gText_BattleSceneOff
+    gText_BattleSceneOff,
+    gText_BattleSceneOn
 };
 
-static const u8 *const sBattleStyleOptions[] =
+static const u8 *const sAutoRunOptions[] =
 {
-    gText_BattleStyleShift,
-    gText_BattleStyleSet
-};
-
-static const u8 *const sSoundOptions[] =
-{
-    gText_SoundMono,
-    gText_SoundStereo
+    gText_BattleSceneOff,
+    gText_BattleSceneOn
 };
 
 static const u8 *const sButtonTypeOptions[] =
@@ -198,13 +232,91 @@ static const u8 *const sButtonTypeOptions[] =
 	gText_ButtonTypeLEqualsA
 };
 
-static const u8 *const sShowEffectivenessOptions[] =
+static const u8 *const sBattleSceneOptions[] =
 {
-    gText_BattleSceneOn,
-    gText_BattleSceneOff
+    gText_BattleSceneOff,
+    gText_BattleSceneOn
 };
 
-static const u8 sOptionMenuPickSwitchCancelTextColor[] = {TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
+static const u8 *const sBattleStyleOptions[] =
+{
+    gText_BattleStyleShift,
+    gText_BattleStyleSet
+};
+
+static const u8 *const sShowEffectivenessOptions[] =
+{
+    gText_BattleSceneOff,
+    gText_BattleSceneOn
+};
+
+static const u8 *const sExperienceOptions[] =
+{
+    gText_ExperienceNone,
+    gText_ExperienceHalf,
+    gText_ExperienceNormal,
+    gText_ExperienceDouble,
+    gText_ExperienceTriple,
+    gText_ExperienceQuadruple,
+    gText_ExperienceCustom
+};
+
+static const u8 *const sSoundOptions[] =
+{
+    gText_SoundMono,
+    gText_SoundStereo
+};
+
+static const u8 *const sLowHPBeepOptions[] =
+{
+    gText_BattleSceneOff,
+    gText_BattleSceneOn
+};
+
+static const u8 *const sSkipFanfaresOptions[] =
+{
+    gText_BattleSceneOff,
+    gText_BattleSceneOn
+};
+
+static const u8 *const sBikeMusicOptions[] =
+{
+    gText_BattleSceneOff,
+    gText_BattleSceneOn
+};
+
+static const u8 *const sSurfMusicOptions[] =
+{
+    gText_BattleSceneOff,
+    gText_BattleSceneOn
+};
+
+static const u8 *const sGuaranteedCatchOptions[] =
+{
+    gText_BattleSceneOff,
+    gText_BattleSceneOn
+};
+
+static const u8 *const sEncounterRatesOptions[] =
+{
+    gText_EncounterRatesVanilla,
+    gText_EncounterRatesNormalized
+};
+
+static const u8 *const sBlindTrainersOptions[] =
+{
+    gText_BattleSceneOff,
+    gText_BattleSceneOn
+};
+
+static const u8 *const sItemMessagesOptions[] =
+{
+    gText_ItemMessagesAll,
+    gText_ItemMessagesProgression,
+    gText_ExperienceNone
+};
+
+static const u8 sOptionMenuPageTextColor[] = {TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
 static const u8 sOptionMenuTextColor[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_RED, TEXT_COLOR_RED};
 
 // Functions
@@ -234,24 +346,45 @@ void CB2_OptionsMenuFromStartMenu(void)
     sOptionMenuPtr->loadPaletteState = 0;
     sOptionMenuPtr->state = 0;
     sOptionMenuPtr->cursorPos = 0;
-    sOptionMenuPtr->currentPage = 0;
-    sOptionMenuPtr->option[MENUITEM_TEXTSPEED] = gSaveBlock2Ptr->optionsTextSpeed;
-    sOptionMenuPtr->option[MENUITEM_BATTLESCENE] = gSaveBlock2Ptr->optionsBattleSceneOff;
-    sOptionMenuPtr->option[MENUITEM_BATTLESTYLE] = gSaveBlock2Ptr->optionsBattleStyle;
-    sOptionMenuPtr->option[MENUITEM_SOUND] = gSaveBlock2Ptr->optionsSound;
-    sOptionMenuPtr->option[MENUITEM_BUTTONMODE] = gSaveBlock2Ptr->optionsButtonMode;
-    sOptionMenuPtr->option[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
-    sOptionMenuPtr->option2[MENUITEM_SHOWEFFECTIVENESS] = gSaveBlock2Ptr->optionsShowEffectiveness;
+    sOptionMenuPtr->currentPage = 1;
+    sOptionMenuPtr->generalOptions[MENUITEM_TEXTSPEED] = gSaveBlock2Ptr->optionsTextSpeed;
+    sOptionMenuPtr->generalOptions[MENUITEM_TURBOA] = gSaveBlock2Ptr->optionsTurboA;
+    sOptionMenuPtr->generalOptions[MENUITEM_AUTORUN] = gSaveBlock2Ptr->optionsAutoRun;
+    sOptionMenuPtr->generalOptions[MENUITEM_BUTTONMODE] = gSaveBlock2Ptr->optionsButtonMode;
+    sOptionMenuPtr->generalOptions[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
+    sOptionMenuPtr->battleOptions[MENUITEM_BATTLESCENE] = gSaveBlock2Ptr->optionsBattleScene;
+    sOptionMenuPtr->battleOptions[MENUITEM_BATTLESTYLE] = gSaveBlock2Ptr->optionsBattleStyle;
+    sOptionMenuPtr->battleOptions[MENUITEM_SHOWEFFECTIVENESS] = gSaveBlock2Ptr->optionsShowEffectiveness;
+    sOptionMenuPtr->battleOptions[MENUITEM_EXPERIENCE] = gSaveBlock2Ptr->optionsExpMultiplier;
+    sOptionMenuPtr->soundOptions[MENUITEM_SOUND] = gSaveBlock2Ptr->optionsSound;
+    sOptionMenuPtr->soundOptions[MENUITEM_LOWHPBEEP] = gSaveBlock2Ptr->optionsLowHPBeep;
+    sOptionMenuPtr->soundOptions[MENUITEM_SKIPFANFARES] = gSaveBlock2Ptr->optionsSkipFanfares;
+    sOptionMenuPtr->soundOptions[MENUITEM_BIKEMUSIC] = gSaveBlock2Ptr->optionsBikeMusic;
+    sOptionMenuPtr->soundOptions[MENUITEM_SURFMUSIC] = gSaveBlock2Ptr->optionsSurfMusic;
+    sOptionMenuPtr->qualityOptions[MENUITEM_GUARANTEEDCATCH] = gSaveBlock2Ptr->optionsGuaranteedCatch;
+    sOptionMenuPtr->qualityOptions[MENUITEM_ENCOUNTERRATES] = gSaveBlock2Ptr->optionsNormalizeEncounterRates;
+    sOptionMenuPtr->qualityOptions[MENUITEM_BLINDTRAINERS] = gSaveBlock2Ptr->optionsBlindTrainers;
+    sOptionMenuPtr->qualityOptions[MENUITEM_ITEMMESSAGES] = gSaveBlock2Ptr->optionsItemMessages;
     
     for (i = 0; i < MENUITEM_COUNT - 1; i++)
     {
-        if (sOptionMenuPtr->option[i] > (sOptionMenuItemCounts[i]) - 1)
-            sOptionMenuPtr->option[i] = 0;
+        if (sOptionMenuPtr->generalOptions[i] > (sOptionMenuItemCounts[i]) - 1)
+            sOptionMenuPtr->generalOptions[i] = 0;
     }
     for (i = 0; i < MENUITEM_COUNT2 - 1; i++)
     {
-        if (sOptionMenuPtr->option2[i] > (sOptionMenu2ItemCounts[i]) - 1)
-            sOptionMenuPtr->option2[i] = 0;
+        if (sOptionMenuPtr->battleOptions[i] > (sOptionMenu2ItemCounts[i]) - 1)
+            sOptionMenuPtr->battleOptions[i] = 0;
+    }
+    for (i = 0; i < MENUITEM_COUNT3 - 1; i++)
+    {
+        if (sOptionMenuPtr->soundOptions[i] > (sOptionMenu3ItemCounts[i]) - 1)
+            sOptionMenuPtr->soundOptions[i] = 0;
+    }
+    for (i = 0; i < MENUITEM_COUNT4 - 1; i++)
+    {
+        if (sOptionMenuPtr->qualityOptions[i] > (sOptionMenu4ItemCounts[i]) - 1)
+            sOptionMenuPtr->qualityOptions[i] = 0;
     }
     FlagSet(FLAG_SYS_IN_OPTIONS_MENU);
     SetHelpContext(HELPCONTEXT_OPTIONS);
@@ -298,22 +431,31 @@ static void CB2_OptionMenu(void)
         LoadOptionMenuItemNames();
         break;
     case 7:
-        if (sOptionMenuPtr->currentPage == 0)
+        switch (sOptionMenuPtr->currentPage)
         {
-            for (i = 0; i < MENUITEM_COUNT; i++)
+        case 1:
+           for (i = 0; i < MENUITEM_COUNT; i++)
                 BufferOptionMenuString(i);
-        }
-        else
-        {
-            for (i = 0; i < MENUITEM_COUNT2; i++)
+           break;
+        case 2:
+           for (i = 0; i < MENUITEM_COUNT2; i++)
                 BufferOptionMenuString(i);
+           break;
+        case 3:
+           for (i = 0; i < MENUITEM_COUNT3; i++)
+                BufferOptionMenuString(i);
+           break;
+        case 4:
+           for (i = 0; i < MENUITEM_COUNT4; i++)
+                BufferOptionMenuString(i);
+           break;
         }
         break;
     case 8:
         UpdateSettingSelectionDisplay(sOptionMenuPtr->cursorPos);
         break;
     case 9:
-        OptionMenu_PickSwitchCancel();
+        OptionMenu_Page();
         break;
     default:
         SetOptionMenuTask();
@@ -357,12 +499,30 @@ static void InitOptionMenuBg(void)
     ShowBg(2);
 };
 
-static void OptionMenu_PickSwitchCancel(void)
+static void OptionMenu_Page(void)
 {
     s32 x;
-    x = 0xE4 - GetStringWidth(FONT_SMALL, gText_PickSwitchCancel, 0);
-    FillWindowPixelBuffer(2, PIXEL_FILL(15)); 
-    AddTextPrinterParameterized3(2, FONT_SMALL, x, 0, sOptionMenuPickSwitchCancelTextColor, 0, gText_PickSwitchCancel);
+    x = 0xE4;
+    FillWindowPixelBuffer(2, PIXEL_FILL(15));
+    switch (sOptionMenuPtr->currentPage)
+    {
+    case 1:
+        x -= GetStringWidth(FONT_SMALL, gText_OptionPage1, 0);
+        AddTextPrinterParameterized3(2, FONT_SMALL, x, 0, sOptionMenuPageTextColor, 0, gText_OptionPage1);
+        break;
+    case 2:
+        x -= GetStringWidth(FONT_SMALL, gText_OptionPage2, 0);
+        AddTextPrinterParameterized3(2, FONT_SMALL, x, 0, sOptionMenuPageTextColor, 0, gText_OptionPage2);
+        break;
+    case 3:
+        x -= GetStringWidth(FONT_SMALL, gText_OptionPage3, 0);
+        AddTextPrinterParameterized3(2, FONT_SMALL, x, 0, sOptionMenuPageTextColor, 0, gText_OptionPage3);
+        break;
+    case 4:
+        x -= GetStringWidth(FONT_SMALL, gText_OptionPage4, 0);
+        AddTextPrinterParameterized3(2, FONT_SMALL, x, 0, sOptionMenuPageTextColor, 0, gText_OptionPage4);
+        break;
+    }
     PutWindowTilemap(2);
     CopyWindowToVram(2, COPYWIN_FULL);
 }
@@ -381,10 +541,10 @@ static bool8 LoadOptionMenuPalette(void)
     switch (sOptionMenuPtr->loadPaletteState)
     {
     case 0:
-        LoadBgTiles(1, GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1AA);
+        LoadBgTiles(1, GetUserWindowGraphics(sOptionMenuPtr->generalOptions[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1AA);
         break;
     case 1:
-        LoadPalette(GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->palette, BG_PLTT_ID(2), PLTT_SIZE_4BPP);
+        LoadPalette(GetUserWindowGraphics(sOptionMenuPtr->generalOptions[MENUITEM_FRAMETYPE])->palette, BG_PLTT_ID(2), PLTT_SIZE_4BPP);
         break;
     case 2:
         LoadPalette(sOptionMenuPalette, BG_PLTT_ID(1), sizeof(sOptionMenuPalette));
@@ -425,8 +585,8 @@ static void Task_OptionMenu(u8 taskId)
             sOptionMenuPtr->loadState++;
             break;
         case 2:
-            LoadBgTiles(1, GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1AA);
-            LoadPalette(GetUserWindowGraphics(sOptionMenuPtr->option[MENUITEM_FRAMETYPE])->palette, BG_PLTT_ID(2), PLTT_SIZE_4BPP);
+            LoadBgTiles(1, GetUserWindowGraphics(sOptionMenuPtr->generalOptions[MENUITEM_FRAMETYPE])->tiles, 0x120, 0x1AA);
+            LoadPalette(GetUserWindowGraphics(sOptionMenuPtr->generalOptions[MENUITEM_FRAMETYPE])->palette, BG_PLTT_ID(2), PLTT_SIZE_4BPP);
             BufferOptionMenuString(sOptionMenuPtr->cursorPos);
             break;
         case 3:
@@ -436,13 +596,29 @@ static void Task_OptionMenu(u8 taskId)
             BufferOptionMenuString(sOptionMenuPtr->cursorPos);
             break;
         case 5:
-            if (sOptionMenuPtr->currentPage == 0)
+            if (sOptionMenuPtr->currentPage == 4)
             {
                 sOptionMenuPtr->currentPage = 1;
             }
             else
             {
-                sOptionMenuPtr->currentPage = 0;
+                sOptionMenuPtr->currentPage++;
+            }
+            PrintOptionMenuHeader();
+            sOptionMenuPtr->state = 6;
+            sOptionMenuPtr->loadState = 1;
+            sOptionMenuPtr->cursorPos = 0;
+            DestroyTask(taskId);
+            SetMainCallback2(CB2_OptionMenu);
+            break;
+        case 6:
+            if (sOptionMenuPtr->currentPage == 1)
+            {
+                sOptionMenuPtr->currentPage = 4;
+            }
+            else
+            {
+                sOptionMenuPtr->currentPage--;
             }
             PrintOptionMenuHeader();
             sOptionMenuPtr->state = 6;
@@ -474,76 +650,113 @@ static u8 OptionMenu_ProcessInput(void)
     u16 *curr;
     if (JOY_REPT(DPAD_RIGHT))
     {
-        if (sOptionMenuPtr->currentPage == 0)
+        switch (sOptionMenuPtr->currentPage)
         {
-            current = sOptionMenuPtr->option[(sOptionMenuPtr->cursorPos)];
+        case 1:
+            current = sOptionMenuPtr->generalOptions[sOptionMenuPtr->cursorPos];
             if (current == (sOptionMenuItemCounts[sOptionMenuPtr->cursorPos] - 1))
-                sOptionMenuPtr->option[sOptionMenuPtr->cursorPos] = 0;
+                sOptionMenuPtr->generalOptions[sOptionMenuPtr->cursorPos] = 0;
             else
-                sOptionMenuPtr->option[sOptionMenuPtr->cursorPos] = current + 1;
+                sOptionMenuPtr->generalOptions[sOptionMenuPtr->cursorPos] = current + 1;
             if (sOptionMenuPtr->cursorPos == MENUITEM_FRAMETYPE)
                 return 2;
             else
                 return 4;
-        }
-        else
-        {
-            current = sOptionMenuPtr->option2[(sOptionMenuPtr->cursorPos)];
+        case 2:
+            current = sOptionMenuPtr->battleOptions[sOptionMenuPtr->cursorPos];
             if (current == (sOptionMenu2ItemCounts[sOptionMenuPtr->cursorPos] - 1))
-                sOptionMenuPtr->option2[sOptionMenuPtr->cursorPos] = 0;
+                sOptionMenuPtr->battleOptions[sOptionMenuPtr->cursorPos] = 0;
             else
-                sOptionMenuPtr->option2[sOptionMenuPtr->cursorPos] = current + 1;
+                sOptionMenuPtr->battleOptions[sOptionMenuPtr->cursorPos] = current + 1;
+            return 4;
+        case 3:
+            current = sOptionMenuPtr->soundOptions[sOptionMenuPtr->cursorPos];
+            if (current == (sOptionMenu3ItemCounts[sOptionMenuPtr->cursorPos] - 1))
+                sOptionMenuPtr->soundOptions[sOptionMenuPtr->cursorPos] = 0;
+            else
+                sOptionMenuPtr->soundOptions[sOptionMenuPtr->cursorPos] = current + 1;
+            return 4;
+        case 4:
+            current = sOptionMenuPtr->qualityOptions[sOptionMenuPtr->cursorPos];
+            if (current == (sOptionMenu4ItemCounts[sOptionMenuPtr->cursorPos] - 1))
+                sOptionMenuPtr->qualityOptions[sOptionMenuPtr->cursorPos] = 0;
+            else
+                sOptionMenuPtr->qualityOptions[sOptionMenuPtr->cursorPos] = current + 1;
             return 4;
         }
     }
     else if (JOY_REPT(DPAD_LEFT))
     {
-        if (sOptionMenuPtr->currentPage == 0)
+        switch (sOptionMenuPtr->currentPage)
         {
-            curr = &sOptionMenuPtr->option[sOptionMenuPtr->cursorPos];
-            if (*curr == 0)
-                *curr = sOptionMenuItemCounts[sOptionMenuPtr->cursorPos] - 1;
+        case 1:
+            current = sOptionMenuPtr->generalOptions[sOptionMenuPtr->cursorPos];
+            if (current == 0)
+                sOptionMenuPtr->generalOptions[sOptionMenuPtr->cursorPos] = sOptionMenuItemCounts[sOptionMenuPtr->cursorPos] - 1;
             else
-                --*curr;
-
+               sOptionMenuPtr->generalOptions[sOptionMenuPtr->cursorPos] = current - 1;
             if (sOptionMenuPtr->cursorPos == MENUITEM_FRAMETYPE)
                 return 2;
             else
                 return 4;
-        }
-        else
-        {
-            curr = &sOptionMenuPtr->option2[sOptionMenuPtr->cursorPos];
-            if (*curr == 0)
-                *curr = sOptionMenu2ItemCounts[sOptionMenuPtr->cursorPos] - 1;
+        case 2:
+            current = sOptionMenuPtr->battleOptions[sOptionMenuPtr->cursorPos];
+            if (current == 0)
+                sOptionMenuPtr->battleOptions[sOptionMenuPtr->cursorPos] = sOptionMenu2ItemCounts[sOptionMenuPtr->cursorPos] - 1;
             else
-                --*curr;
+               sOptionMenuPtr->battleOptions[sOptionMenuPtr->cursorPos] = current - 1;
+            return 4;
+        case 3:
+            current = sOptionMenuPtr->soundOptions[sOptionMenuPtr->cursorPos];
+            if (current == 0)
+                sOptionMenuPtr->soundOptions[sOptionMenuPtr->cursorPos] = sOptionMenu3ItemCounts[sOptionMenuPtr->cursorPos] - 1;
+            else
+               sOptionMenuPtr->soundOptions[sOptionMenuPtr->cursorPos] = current - 1;
+            return 4;
+        case 4:
+            current = sOptionMenuPtr->qualityOptions[sOptionMenuPtr->cursorPos];
+            if (current == 0)
+                sOptionMenuPtr->qualityOptions[sOptionMenuPtr->cursorPos] = sOptionMenu4ItemCounts[sOptionMenuPtr->cursorPos] - 1;
+            else
+               sOptionMenuPtr->qualityOptions[sOptionMenuPtr->cursorPos] = current - 1;
             return 4;
         }
     }
     else if (JOY_REPT(DPAD_UP))
     {
-        if (sOptionMenuPtr->cursorPos == MENUITEM_TEXTSPEED && sOptionMenuPtr->currentPage == 0)
-            sOptionMenuPtr->cursorPos = MENUITEM_CANCEL;
-        else if (sOptionMenuPtr->cursorPos == MENUITEM_SHOWEFFECTIVENESS && sOptionMenuPtr->currentPage == 1)
-            sOptionMenuPtr->cursorPos = MENUITEM_CANCEL2;
+        if (sOptionMenuPtr->cursorPos == MENUITEM_TEXTSPEED && sOptionMenuPtr->currentPage == 1)
+            sOptionMenuPtr->cursorPos = MENUITEM_FRAMETYPE;
+        else if (sOptionMenuPtr->cursorPos == MENUITEM_BATTLESCENE && sOptionMenuPtr->currentPage == 2)
+            sOptionMenuPtr->cursorPos = MENUITEM_EXPERIENCE;
+        else if (sOptionMenuPtr->cursorPos == MENUITEM_SOUND && sOptionMenuPtr->currentPage == 3)
+            sOptionMenuPtr->cursorPos = MENUITEM_SURFMUSIC;
+        else if (sOptionMenuPtr->cursorPos == MENUITEM_GUARANTEEDCATCH && sOptionMenuPtr->currentPage == 4)
+            sOptionMenuPtr->cursorPos = MENUITEM_ITEMMESSAGES;
         else
             sOptionMenuPtr->cursorPos = sOptionMenuPtr->cursorPos - 1;
         return 3;        
     }
     else if (JOY_REPT(DPAD_DOWN))
     {
-        if (sOptionMenuPtr->cursorPos == MENUITEM_CANCEL && sOptionMenuPtr->currentPage == 0)
+        if (sOptionMenuPtr->cursorPos == MENUITEM_FRAMETYPE && sOptionMenuPtr->currentPage == 1)
             sOptionMenuPtr->cursorPos = MENUITEM_TEXTSPEED;
-        else if (sOptionMenuPtr->cursorPos == MENUITEM_CANCEL2 && sOptionMenuPtr->currentPage == 1)
-            sOptionMenuPtr->cursorPos = MENUITEM_SHOWEFFECTIVENESS;
+        else if (sOptionMenuPtr->cursorPos == MENUITEM_EXPERIENCE && sOptionMenuPtr->currentPage == 2)
+            sOptionMenuPtr->cursorPos = MENUITEM_BATTLESCENE;
+        else if (sOptionMenuPtr->cursorPos == MENUITEM_SURFMUSIC && sOptionMenuPtr->currentPage == 3)
+            sOptionMenuPtr->cursorPos = MENUITEM_SOUND;
+        else if (sOptionMenuPtr->cursorPos == MENUITEM_ITEMMESSAGES && sOptionMenuPtr->currentPage == 4)
+            sOptionMenuPtr->cursorPos = MENUITEM_GUARANTEEDCATCH;
         else
             sOptionMenuPtr->cursorPos = sOptionMenuPtr->cursorPos + 1;
         return 3;
     }
-    else if (JOY_NEW(R_BUTTON) || JOY_NEW(L_BUTTON))
+    else if (JOY_NEW(R_BUTTON))
     {
         return 5;
+    }
+    else if (JOY_NEW(L_BUTTON))
+    {
+        return 6;
     }
     else if (JOY_NEW(B_BUTTON) || JOY_NEW(A_BUTTON))
     {
@@ -567,45 +780,91 @@ static void BufferOptionMenuString(u8 selection)
     y = ((GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) - 1) * selection) + 2;
     FillWindowPixelRect(1, 1, x, y, 0x46, GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT));
 
-    if (sOptionMenuPtr->currentPage == 0)
+    switch (sOptionMenuPtr->currentPage)
     {
+    case 1:
         switch (selection)
         {
         case MENUITEM_TEXTSPEED:
-            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sTextSpeedOptions[sOptionMenuPtr->option[selection]]);
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sTextSpeedOptions[sOptionMenuPtr->generalOptions[selection]]);
             break;
-        case MENUITEM_BATTLESCENE:
-            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sBattleSceneOptions[sOptionMenuPtr->option[selection]]);
+        case MENUITEM_TURBOA:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sAutoRunOptions[sOptionMenuPtr->generalOptions[selection]]);
             break;
-        case MENUITEM_BATTLESTYLE:
-            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sBattleStyleOptions[sOptionMenuPtr->option[selection]]);
-            break;
-        case MENUITEM_SOUND:
-            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sSoundOptions[sOptionMenuPtr->option[selection]]);
+        case MENUITEM_AUTORUN:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sTurboAOptions[sOptionMenuPtr->generalOptions[selection]]);
             break;
         case MENUITEM_BUTTONMODE:
-            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sButtonTypeOptions[sOptionMenuPtr->option[selection]]);
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sButtonTypeOptions[sOptionMenuPtr->generalOptions[selection]]);
             break;
         case MENUITEM_FRAMETYPE:
             StringCopy(str, gText_FrameType);
-            ConvertIntToDecimalStringN(buf, sOptionMenuPtr->option[selection] + 1, 1, 2);
+            ConvertIntToDecimalStringN(buf, sOptionMenuPtr->generalOptions[selection] + 1, 1, 2);
             StringAppendN(str, buf, 3);
             AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, str);
             break;
-        default:
-            break;
         }
-    }
-    else
-    {
+        break;
+    case 2:
         switch (selection)
         {
+        case MENUITEM_BATTLESCENE:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sBattleSceneOptions[sOptionMenuPtr->battleOptions[selection]]);
+            break;
+        case MENUITEM_BATTLESTYLE:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sBattleStyleOptions[sOptionMenuPtr->battleOptions[selection]]);
+            break;
         case MENUITEM_SHOWEFFECTIVENESS:
-            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sShowEffectivenessOptions[sOptionMenuPtr->option2[selection]]);
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sShowEffectivenessOptions[sOptionMenuPtr->battleOptions[selection]]);
+            break;
+        case MENUITEM_EXPERIENCE:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sExperienceOptions[sOptionMenuPtr->battleOptions[selection]]);
             break;
         default:
             break;
         }
+        break;
+    case 3:
+        switch (selection)
+        {
+        case MENUITEM_SOUND:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sSoundOptions[sOptionMenuPtr->soundOptions[selection]]);
+            break;
+        case MENUITEM_LOWHPBEEP:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sLowHPBeepOptions[sOptionMenuPtr->soundOptions[selection]]);
+            break;
+        case MENUITEM_SKIPFANFARES:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sSkipFanfaresOptions[sOptionMenuPtr->soundOptions[selection]]);
+            break;
+        case MENUITEM_BIKEMUSIC:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sBikeMusicOptions[sOptionMenuPtr->soundOptions[selection]]);
+            break;
+        case MENUITEM_SURFMUSIC:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sSurfMusicOptions[sOptionMenuPtr->soundOptions[selection]]);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 4:
+        switch (selection)
+        {
+        case MENUITEM_GUARANTEEDCATCH:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sGuaranteedCatchOptions[sOptionMenuPtr->qualityOptions[selection]]);
+            break;
+        case MENUITEM_ENCOUNTERRATES:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sEncounterRatesOptions[sOptionMenuPtr->qualityOptions[selection]]);
+            break;
+        case MENUITEM_BLINDTRAINERS:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sBlindTrainersOptions[sOptionMenuPtr->qualityOptions[selection]]);
+            break;
+        case MENUITEM_ITEMMESSAGES:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sItemMessagesOptions[sOptionMenuPtr->qualityOptions[selection]]);
+            break;
+        default:
+            break;
+        }
+        break;
     }
 
     PutWindowTilemap(1);
@@ -617,13 +876,24 @@ static void CloseAndSaveOptionMenu(u8 taskId)
     gFieldCallback = FieldCB_DefaultWarpExit;
     SetMainCallback2(gMain.savedCallback);
     FreeAllWindowBuffers();
-    gSaveBlock2Ptr->optionsTextSpeed = sOptionMenuPtr->option[MENUITEM_TEXTSPEED];
-    gSaveBlock2Ptr->optionsBattleSceneOff = sOptionMenuPtr->option[MENUITEM_BATTLESCENE];
-    gSaveBlock2Ptr->optionsBattleStyle = sOptionMenuPtr->option[MENUITEM_BATTLESTYLE];
-    gSaveBlock2Ptr->optionsSound = sOptionMenuPtr->option[MENUITEM_SOUND];
-    gSaveBlock2Ptr->optionsButtonMode = sOptionMenuPtr->option[MENUITEM_BUTTONMODE];
-    gSaveBlock2Ptr->optionsWindowFrameType = sOptionMenuPtr->option[MENUITEM_FRAMETYPE];
-    gSaveBlock2Ptr->optionsShowEffectiveness = sOptionMenuPtr->option2[MENUITEM_SHOWEFFECTIVENESS];
+    gSaveBlock2Ptr->optionsTextSpeed = sOptionMenuPtr->generalOptions[MENUITEM_TEXTSPEED];
+    gSaveBlock2Ptr->optionsTurboA = sOptionMenuPtr->generalOptions[MENUITEM_TURBOA];
+    gSaveBlock2Ptr->optionsAutoRun = sOptionMenuPtr->generalOptions[MENUITEM_AUTORUN];
+    gSaveBlock2Ptr->optionsButtonMode = sOptionMenuPtr->generalOptions[MENUITEM_BUTTONMODE];
+    gSaveBlock2Ptr->optionsWindowFrameType = sOptionMenuPtr->generalOptions[MENUITEM_FRAMETYPE];
+    gSaveBlock2Ptr->optionsBattleScene = sOptionMenuPtr->battleOptions[MENUITEM_BATTLESCENE];
+    gSaveBlock2Ptr->optionsBattleStyle = sOptionMenuPtr->battleOptions[MENUITEM_BATTLESTYLE];
+    gSaveBlock2Ptr->optionsShowEffectiveness = sOptionMenuPtr->battleOptions[MENUITEM_SHOWEFFECTIVENESS];
+    gSaveBlock2Ptr->optionsExpMultiplier = sOptionMenuPtr->battleOptions[MENUITEM_EXPERIENCE];
+    gSaveBlock2Ptr->optionsSound = sOptionMenuPtr->soundOptions[MENUITEM_SOUND];
+    gSaveBlock2Ptr->optionsLowHPBeep = sOptionMenuPtr->soundOptions[MENUITEM_LOWHPBEEP];
+    gSaveBlock2Ptr->optionsSkipFanfares = sOptionMenuPtr->soundOptions[MENUITEM_SKIPFANFARES];
+    gSaveBlock2Ptr->optionsBikeMusic = sOptionMenuPtr->soundOptions[MENUITEM_BIKEMUSIC];
+    gSaveBlock2Ptr->optionsSurfMusic = sOptionMenuPtr->soundOptions[MENUITEM_SURFMUSIC];
+    gSaveBlock2Ptr->optionsGuaranteedCatch = sOptionMenuPtr->qualityOptions[MENUITEM_GUARANTEEDCATCH];
+    gSaveBlock2Ptr->optionsNormalizeEncounterRates = sOptionMenuPtr->qualityOptions[MENUITEM_ENCOUNTERRATES];
+    gSaveBlock2Ptr->optionsBlindTrainers = sOptionMenuPtr->qualityOptions[MENUITEM_BLINDTRAINERS];
+    gSaveBlock2Ptr->optionsItemMessages = sOptionMenuPtr->qualityOptions[MENUITEM_ITEMMESSAGES];
     SetPokemonCryStereo(gSaveBlock2Ptr->optionsSound);
     FREE_AND_SET_NULL(sOptionMenuPtr);
     FlagClear(FLAG_SYS_IN_OPTIONS_MENU);
@@ -632,46 +902,22 @@ static void CloseAndSaveOptionMenu(u8 taskId)
 
 static void PrintOptionMenuHeader(void)
 {
-    u8 i;
-    u8 pageDots[9] = _("");
-    u8 colorRed[] = _("{COLOR LIGHT_RED}{SHADOW RED}");
-    u8 colorBlack[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}");
-    u8 circle1[] = _("{CIRCLE_1}");
-    u8 circle2[] = _("{CIRCLE_2}");
-    u32 optionWidth = GetStringWidth(FONT_NORMAL, gText_Option, 0);
-
-    for (i = 0; i < PAGE_COUNT; i++)
-    {
-        if (i == sOptionMenuPtr->currentPage)
-        {
-            StringAppend(pageDots, colorRed);
-        }
-        else
-        {
-            StringAppend(pageDots, colorBlack);
-        }
-
-        switch (i)
-        {
-        case 0:
-            StringAppend(pageDots, circle1);
-            break;
-        case 1:
-            StringAppend(pageDots, circle2);
-            break;
-        default:
-            break;
-        }
-
-        if (i < PAGE_COUNT - 1)
-        {
-            StringAppend(pageDots, gText_RegionMap_Space);
-        }
-    }
-
     FillWindowPixelBuffer(0, PIXEL_FILL(1));
-    AddTextPrinterParameterized(WIN_TEXT_OPTION, FONT_NORMAL, gText_Option, 8, 1, TEXT_SKIP_DRAW, NULL);
-    AddTextPrinterParameterized(WIN_TEXT_OPTION, FONT_NORMAL, pageDots, optionWidth + 13, 1, TEXT_SKIP_DRAW, NULL);
+    switch (sOptionMenuPtr->currentPage)
+    {
+    case 1:
+        AddTextPrinterParameterized(WIN_TEXT_OPTION, FONT_NORMAL, gText_GeneralOptions, 8, 1, TEXT_SKIP_DRAW, NULL);
+        break;
+    case 2:
+        AddTextPrinterParameterized(WIN_TEXT_OPTION, FONT_NORMAL, gText_BattleOptions, 8, 1, TEXT_SKIP_DRAW, NULL);
+        break;
+    case 3:
+        AddTextPrinterParameterized(WIN_TEXT_OPTION, FONT_NORMAL, gText_SoundOptions, 8, 1, TEXT_SKIP_DRAW, NULL);
+        break;
+    case 4:
+        AddTextPrinterParameterized(WIN_TEXT_OPTION, FONT_NORMAL, gText_QOLOptions, 8, 1, TEXT_SKIP_DRAW, NULL);
+        break;
+    }
     PutWindowTilemap(0);
     CopyWindowToVram(0, COPYWIN_FULL);
 }
@@ -705,19 +951,24 @@ static void LoadOptionMenuItemNames(void)
     u8 i;
     
     FillWindowPixelBuffer(1, PIXEL_FILL(1));
-    if (sOptionMenuPtr->currentPage == 0)
+    switch (sOptionMenuPtr->currentPage)
     {
+    case 1:
         for (i = 0; i < MENUITEM_COUNT; i++)
-        {
             AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, sOptionMenuItemsNames[i], 8, (u8)((i * (GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT))) + 2) - i, TEXT_SKIP_DRAW, NULL);
-        }
-    }
-    else
-    {
+        break;
+    case 2:
         for (i = 0; i < MENUITEM_COUNT2; i++)
-        {
             AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, sOptionMenu2ItemsNames[i], 8, (u8)((i * (GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT))) + 2) - i, TEXT_SKIP_DRAW, NULL);
-        }
+        break;
+    case 3:
+        for (i = 0; i < MENUITEM_COUNT3; i++)
+            AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, sOptionMenu3ItemsNames[i], 8, (u8)((i * (GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT))) + 2) - i, TEXT_SKIP_DRAW, NULL);
+        break;
+    case 4:
+        for (i = 0; i < MENUITEM_COUNT4; i++)
+            AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, sOptionMenu4ItemsNames[i], 8, (u8)((i * (GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT))) + 2) - i, TEXT_SKIP_DRAW, NULL);
+        break;
     }
 }
 

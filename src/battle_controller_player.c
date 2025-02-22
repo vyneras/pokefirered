@@ -1543,7 +1543,7 @@ static void MoveSelectionDisplayMoveDescription(void)
     StringAppend(gDisplayedStringBattle, priStart);
     StringAppend(gDisplayedStringBattle, priDesc);
     StringAppend(gDisplayedStringBattle, priNum);
-    if (gSaveBlock2Ptr->optionsShowEffectiveness == OPTIONS_SHOW_EFFECTIVENESS_ON)
+    if (gSaveBlock2Ptr->optionsShowEffectiveness)
     {
         StringAppend(gDisplayedStringBattle, effStart);
         StringAppend(gDisplayedStringBattle, effDesc);

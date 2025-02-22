@@ -206,7 +206,7 @@ void PlayFanfareByFanfareNum(u8 fanfareNum)
 
 bool8 WaitFanfare(bool8 stop)
 {
-    if (sFanfareCounter && !(gArchipelagoOptions.canSkipFanfares && JOY_NEW(B_BUTTON)))
+    if (sFanfareCounter && !(gSaveBlock2Ptr->optionsSkipFanfares && JOY_NEW(B_BUTTON)))
     {
         sFanfareCounter--;
         return FALSE;
@@ -256,7 +256,7 @@ bool8 IsFanfareTaskInactive(void)
 
 static void Task_Fanfare(u8 taskId)
 {
-    if (sFanfareCounter && !(gArchipelagoOptions.canSkipFanfares && JOY_NEW(B_BUTTON)))
+    if (sFanfareCounter && !(gSaveBlock2Ptr->optionsSkipFanfares && JOY_NEW(B_BUTTON)))
     {
         sFanfareCounter--;
     }

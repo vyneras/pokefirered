@@ -1316,7 +1316,7 @@ static bool8 WaitForAorBPress(void)
         return TRUE;
     if (JOY_NEW(B_BUTTON))
         return TRUE;
-    if (gArchipelagoOptions.advanceTextWithHoldA && JOY_HELD_RAW(A_BUTTON))
+    if (gSaveBlock2Ptr->optionsTurboA && JOY_HELD_RAW(A_BUTTON))
         return TRUE;
 
     if (ScriptContext_NextCommandEndsScript(sQuestLogScriptContextPtr) == TRUE)

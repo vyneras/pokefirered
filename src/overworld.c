@@ -1272,6 +1272,8 @@ static void ChooseAmbientCrySpecies(void)
 
 bool32 Overworld_MusicCanOverrideMapMusic(u16 music)
 {
+    if ((music == MUS_CYCLING && !gSaveBlock2Ptr->optionsBikeMusic) || (music == MUS_SURF && !gSaveBlock2Ptr->optionsSurfMusic))
+        return FALSE;
     if (music == MUS_CYCLING)
     {
         if (gMapHeader.mapType == MAP_TYPE_INDOOR || gMapHeader.mapType == MAP_TYPE_UNDERGROUND)

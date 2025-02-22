@@ -1248,8 +1248,8 @@ bool8 Archipelago_CheckQueuedRewards()
 bool8 Archipelago_CheckReceivedItem()
 {
     if (gArchipelagoReceivedItem.isFilled == TRUE) {
-        if ((gArchipelagoOptions.receivedItemMessageFilter == 0) ||
-            (gArchipelagoOptions.receivedItemMessageFilter == 1 && gArchipelagoReceivedItem.isProgression))
+        if ((gSaveBlock2Ptr->optionsItemMessages == OPTIONS_ITEM_MESSAGES_ALL) ||
+            (gSaveBlock2Ptr->optionsItemMessages == OPTIONS_ITEM_MESSAGES_PROGRESSION && gArchipelagoReceivedItem.isProgression))
             ScriptContext_SetupScript(ArchipelagoScript_ReceiveRemoteItem);
         else
             ScriptContext_SetupScript(ArchipelagoScript_ReceiveRemoteItemSilent);

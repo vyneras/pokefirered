@@ -3115,12 +3115,38 @@ static void Cmd_jumpiftype(void)
 
 static void Cmd_getexp(void)
 {
-    u16 item;
+    u16 item, expMultiplierNumerator, expMultiplierDenominator;
     s32 i; // also used as stringId
     u8 holdEffect;
     s32 sentIn;
     s32 viaExpShare = 0;
     u16 *exp = &gBattleStruct->expValue;
+
+    expMultiplierDenominator = gArchipelagoOptions.expMultiplierDenominator;
+    switch (gSaveBlock2Ptr->optionsExpMultiplier)
+    {
+    case OPTIONS_EXPIERENCE_NONE:
+        expMultiplierNumerator = 0;
+        break;
+    case OPTIONS_EXPIERENCE_HALF:
+        expMultiplierNumerator = 50;
+        break;
+    case OPTIONS_EXPIERENCE_NORMAL:
+        expMultiplierNumerator = 100;
+        break;
+    case OPTIONS_EXPIERENCE_DOUBLE:
+        expMultiplierNumerator = 200;
+        break;
+    case OPTIONS_EXPIERENCE_TRIPLE:
+        expMultiplierNumerator = 300;
+        break;
+    case OPTIONS_EXPIERENCE_QUADRUPLE:
+        expMultiplierNumerator = 400;
+        break;
+    case OPTIONS_EXPIERENCE_CUSTOM:
+        expMultiplierNumerator = gArchipelagoOptions.expMultiplierNumerator;
+        break;
+    }
 
     gBattlerFainted = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
     sentIn = gSentPokesToOpponent[(gBattlerFainted & 2) >> 1];
@@ -3166,7 +3192,7 @@ static void Cmd_getexp(void)
                     viaExpShare++;
             }
 
-            calculatedExp = gSpeciesInfo[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7 * gArchipelagoOptions.expMultiplierNumerator / gArchipelagoOptions.expMultiplierDenominator;
+            calculatedExp = gSpeciesInfo[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7 * expMultiplierNumerator / expMultiplierDenominator;
 
             if (viaExpShare) // at least one mon is getting exp via exp share
             {
@@ -9584,7 +9610,7 @@ static void Cmd_handleballthrow(void)
             }
         }
 
-        if (gArchipelagoOptions.guaranteedCatch)
+        if (gSaveBlock2Ptr->optionsGuaranteedCatch)
         {
             odds = 255;
         }

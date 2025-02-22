@@ -324,13 +324,24 @@ struct SaveBlock2
     /*0x010*/ u8 playTimeMinutes;
     /*0x011*/ u8 playTimeSeconds;
     /*0x012*/ u8 playTimeVBlanks;
-    /*0x013*/ u8 optionsButtonMode;  // OPTIONS_BUTTON_MODE_[NORMAL/LR/L_EQUALS_A]
+    /*0x013*/ u8 optionsWindowFrameType; // Specifies one of the 20 decorative borders for text boxes
     /*0x014*/ u16 optionsTextSpeed:3; // OPTIONS_TEXT_SPEED_[SLOW/MID/FAST/INSTANT]
-              u16 optionsWindowFrameType:5; // Specifies one of the 20 decorative borders for text boxes
-    /*0x016*/ u16 optionsSound:1; // OPTIONS_SOUND_[MONO/STEREO]
+              u16 optionsTurboA:1; // whether turbo A is enabled
+              u16 optionsAutoRun:1; // whether auto run is enabled
+              u16 optionsButtonMode:2; // OPTIONS_BUTTON_MODE_[HELP/LR/L_EQUALS_A]
+              u16 optionsBattleScene:1; // whether battle animations are enabled
               u16 optionsBattleStyle:1; // OPTIONS_BATTLE_STYLE_[SHIFT/SET]
-              u16 optionsBattleSceneOff:1; // whether battle animations are disabled
-              u16 optionsShowEffectiveness:1;
+              u16 optionsShowEffectiveness:1; // whether effectiveness should be shown in move detail panel
+              u16 optionsExpMultiplier:3; // OPTIONS_EXPERIENCE_[NONE/HALF/NORMAL/DOUBLE/TRIPLE/QUADRUPLE/CUSTOM]
+              u16 optionsSound:1; // OPTIONS_SOUND_[MONO/STEREO]
+              u16 optionsLowHPBeep:1; // whether the low HP beef is enabled
+              u16 optionsSkipFanfares:1; // whether fanfares can be skipped by pressing B
+    /*0x016*/ u16 optionsBikeMusic:1; // whether the bike music is enabled
+              u16 optionsSurfMusic:1; // whether the surfing music is enabled
+              u16 optionsGuaranteedCatch:1; // wehter guaranteed catch is enabled
+              u16 optionsNormalizeEncounterRates:1; // whether encounter rates are normalized
+              u16 optionsBlindTrainers:1; // whether trainers are blind
+              u16 optionsItemMessages:2; // OPTIONS_ITEM_MESSAGES_[ALL/PROGRESSION/NONE]
               u16 regionMapZoom:1; // whether the map is zoomed in
     /*0x018*/ struct Pokedex pokedex;
     /*0x090*/ u8 progressivePassesCount;
