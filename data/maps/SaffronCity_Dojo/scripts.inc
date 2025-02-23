@@ -24,7 +24,7 @@ SaffronCity_Dojo_EventScript_HitmonleeBall::
 	faceplayer
 Archipelago_Target_Special_Gift_HITMONLEE::
 	setvar VAR_TEMP_1, SPECIES_HITMONLEE
-	bufferspeciesname STR_VAR_2, VAR_TEMP_1
+	bufferspeciesname STR_VAR_1, VAR_TEMP_1
 	showmonpic VAR_TEMP_1, 10, 3
 	applymovement LOCALID_KARATE_MASTER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
@@ -41,7 +41,7 @@ SaffronCity_Dojo_EventScript_HitmonchanBall::
 	faceplayer
 Archipelago_Target_Special_Gift_HITMONCHAN::
 	setvar VAR_TEMP_1, SPECIES_HITMONCHAN
-	bufferspeciesname STR_VAR_2, VAR_TEMP_1
+	bufferspeciesname STR_VAR_1, VAR_TEMP_1
 	showmonpic VAR_TEMP_1, 10, 3
 	applymovement LOCALID_KARATE_MASTER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0

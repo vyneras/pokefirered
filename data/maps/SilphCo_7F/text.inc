@@ -6,16 +6,16 @@ SilphCo_7F_Text_HaveMonForSavingUs::
     .string "for saving us.$"
 
 SilphCo_7F_Text_ObtainedLaprasFromEmployee::
-    .string "{PLAYER} obtained a {STR_VAR_2} from\n"
+    .string "{PLAYER} obtained a {STR_VAR_1} from\n"
     .string "the SILPH employee!$"
 
 SilphCo_7F_Text_ExplainLapras::
-    .string "It's a {STR_VAR_2}.\n"
+    .string "It's a {STR_VAR_1}.\n"
     .string "It's a very intelligent POKéMON.\p"
     .string "We kept it in our lab, but it will\n"
     .string "be much better off with you.\p"
     .string "I think you will be a good TRAINER\n"
-    .string "for {STR_VAR_2}!\p"
+    .string "for {STR_VAR_1}!\p"
     .string "It's a good swimmer.\n"
     .string "It'll give you a lift across water!$"
 
