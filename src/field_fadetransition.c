@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
 #include "field_fadetransition.h"
 #include "overworld.h"
 #include "fldeff.h"
@@ -26,7 +27,6 @@
 #include "constants/field_weather.h"
 #include "constants/maps.h"
 
-static bool8 PlayerEnteredThroughBlockedDoor(void);
 static void ExitWarpFadeInScreen(u8 playerNotMoving);
 static void Task_ExitDoor(u8 taskId);
 static void Task_ExitNonAnimDoor(u8 taskId);
@@ -278,10 +278,12 @@ static void SetUpWarpExitTask(bool8 playerNotMoving)
     CreateTask(func, 10);
 }
 
-static bool8 PlayerEnteredThroughBlockedDoor(void)
+bool8 PlayerEnteredThroughBlockedDoor(void)
 {
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(CERULEAN_CITY) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(CERULEAN_CITY))
-        return gSaveBlock1Ptr->pos.x == 30 && gSaveBlock1Ptr->pos.y == 11;
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(CERULEAN_CITY) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(CERULEAN_CITY) &&
+        gSaveBlock1Ptr->pos.x == 30 && gSaveBlock1Ptr->pos.y == 11 &&
+        !CanLeaveCeruleanCity())
+        return TRUE;
     return FALSE;
 }
 

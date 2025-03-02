@@ -124,11 +124,15 @@ extern const struct ArchipelagoOptions gArchipelagoOptions;
 extern const struct ArchipelagoInfo gArchipelagoInfo;
 extern bool8 gArchipelagoDeathLinkQueued;
 
-bool8 ArchipelagoSpecial_CanUseHmOutsideBattle(void);
 bool8 CanUseHmOutsideBattle(u8 fieldMove);
 void SetFlyMapFlag(u8 id);
 bool8 IsItemUnique(u16 item);
 void GiveStartingItems(void);
 void UnlockAllSeenDexInfo(void);
+bool8 CanLeavePewterCity(void);
+bool8 CanLeaveCeruleanCity(void);
+bool8 CanEnterSilphCo(void);
+bool8 HasRequiredBadgesOrGyms(bool8 requiresGyms, u8 requiredCount);
+bool8 CanEnterCeruleanCave(void);
 
 #endif // GUARD_ARCHIPELAGO_H

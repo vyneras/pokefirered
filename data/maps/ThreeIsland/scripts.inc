@@ -82,29 +82,30 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_FULL_RESTORE_FROM_THREE_ISLAND_DEFENDER::
 	end
 
 ThreeIsland_EventScript_BikerArgumentScene::
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	call_if_eq VAR_TEMP_1, 1, ThreeIsland_EventScript_PlayerFaceLeft
 	call_if_eq VAR_TEMP_1, 2, ThreeIsland_EventScript_PlayerFaceLeft
 	applymovement LOCALID_ANTIBIKER1, ThreeIsland_Movement_SpeakRight
 	waitmovement 0
-	msgbox ThreeIsland_Text_GoBackToKanto
+	msgbox ThreeIsland_Text_Normally
 	call_if_eq VAR_TEMP_1, 0, ThreeIsland_EventScript_PlayerFaceRight
 	call_if_eq VAR_TEMP_1, 1, ThreeIsland_EventScript_PlayerFaceRight
 	call_if_eq VAR_TEMP_1, 2, ThreeIsland_EventScript_PlayerFaceBiker
 	applymovement LOCALID_BIKER1, ThreeIsland_Movement_SpeakLeft
 	waitmovement 0
-	msgbox ThreeIsland_Text_BossIsOnHisWay
+	msgbox ThreeIsland_Text_ThisMeans
 	call_if_eq VAR_TEMP_1, 0, ThreeIsland_EventScript_PlayerFaceUp
 	call_if_eq VAR_TEMP_1, 1, ThreeIsland_EventScript_PlayerFaceUp
 	call_if_eq VAR_TEMP_1, 2, ThreeIsland_EventScript_PlayerFaceAntiBiker
 	applymovement LOCALID_ANTIBIKER2, ThreeIsland_Movement_SpeakRight
 	waitmovement 0
-	msgbox ThreeIsland_Text_GetOffIslandNow
+	msgbox ThreeIsland_Text_InFact
 	call_if_eq VAR_TEMP_1, 0, ThreeIsland_EventScript_PlayerFaceRight
 	call_if_eq VAR_TEMP_1, 1, ThreeIsland_EventScript_PlayerFaceRight
 	call_if_eq VAR_TEMP_1, 2, ThreeIsland_EventScript_PlayerFaceBiker
 	applymovement LOCALID_BIKER3, ThreeIsland_Movement_SpeakLeft
 	waitmovement 0
-	msgbox ThreeIsland_Text_WhosGonnaMakeMe
+	msgbox ThreeIsland_Text_RememberTo
 	return
 
 ThreeIsland_EventScript_PlayerFaceUp::

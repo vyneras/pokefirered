@@ -9,6 +9,30 @@
 #include "constants/items.h"
 #include "constants/species.h"
 
+#define NUM_BADGES_GYMS 8
+
+const u16 gBadgeFlags[NUM_BADGES_GYMS] = {
+    FLAG_BADGE01_GET,
+    FLAG_BADGE02_GET,
+    FLAG_BADGE03_GET,
+    FLAG_BADGE04_GET,
+    FLAG_BADGE05_GET,
+    FLAG_BADGE06_GET,
+    FLAG_BADGE07_GET,
+    FLAG_BADGE08_GET
+};
+
+const u16 gGymFlags[NUM_BADGES_GYMS] = {
+    FLAG_DEFEATED_BROCK,
+    FLAG_DEFEATED_MISTY,
+    FLAG_DEFEATED_LT_SURGE,
+    FLAG_DEFEATED_ERIKA,
+    FLAG_DEFEATED_KOGA,
+    FLAG_DEFEATED_SABRINA,
+    FLAG_DEFEATED_BLAINE,
+    FLAG_DEFEATED_LEADER_GIOVANNI
+};
+
 const struct ArchipelagoOptions gArchipelagoOptions = {
     .windowFrameType = 0,
     .textSpeedOption = 3,
@@ -157,11 +181,6 @@ bool8 CanUseHmOutsideBattle(u8 fieldMove)
     return FALSE;
 }
 
-bool8 ArchipelagoSpecial_CanUseHmOutsideBattle(void)
-{
-    return CanUseHmOutsideBattle(gSpecialVar_0x8003);
-}
-
 void SetFlyMapFlag(u8 id)
 {
     u32 flag_id = SYS_FLAGS + 0x8F + id;
@@ -203,4 +222,124 @@ void UnlockAllSeenDexInfo(void)
     {
         GetSetPokedexFlag(i, FLAG_SET_SEEN);
     }
+}
+
+bool8 CanLeavePewterCity(void)
+{
+    u8 i;
+
+    if (gArchipelagoOptions.route3Requirement == 1)
+    {
+        return FlagGet(FLAG_DEFEATED_BROCK);
+    }
+    else if (gArchipelagoOptions.route3Requirement == 2)
+    {
+        for (i = 0; i < NUM_BADGES_GYMS; i++)
+        {
+            if (FlagGet(gGymFlags[i]))
+            {
+                return TRUE;
+            }
+        }
+
+        return FALSE;
+    }
+    else if (gArchipelagoOptions.route3Requirement == 3)
+    {
+        return FlagGet(FLAG_BADGE01_GET);
+    }
+    else if (gArchipelagoOptions.route3Requirement == 4)
+    {
+        for (i = 0; i < NUM_BADGES_GYMS; i++)
+        {
+            if (FlagGet(gBadgeFlags[i]))
+            {
+                return TRUE;
+            }
+        }
+
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+bool8 CanLeaveCeruleanCity(void)
+{
+    return FlagGet(FLAG_GOT_SS_TICKET) || gArchipelagoOptions.openCeruleanCity;
+}
+
+bool8 CanEnterSilphCo(void)
+{
+    return FlagGet(FLAG_RESCUED_MR_FUJI) || FlagGet(FLAG_HIDE_SAFFRON_ROCKETS) || gArchipelagoOptions.openSilphCo;
+}
+
+bool8 HasRequiredBadgesOrGyms(bool8 requiresGyms, u8 requiredCount)
+{
+    u8 i;
+    u8 count = 0;
+
+    if (requiresGyms)
+    {
+        for (i = 0; i < NUM_BADGES_GYMS; i++)
+        {
+            if (FlagGet(gGymFlags[i]))
+            {
+                count++;
+            }
+        }
+    }
+    else
+    {
+        for (i = 0; i < NUM_BADGES_GYMS; i++)
+        {
+            if (FlagGet(gBadgeFlags[i]))
+            {
+                count++;
+            }
+        }
+    }
+
+    return count >= requiredCount;
+}
+
+bool8 CanEnterCeruleanCave(void)
+{
+    u8 i;
+    u8 count = 0;
+
+    if(gArchipelagoOptions.ceruleanCaveRequirement == 0)
+    {
+        return FlagGet(FLAG_SYS_GAME_CLEAR) && FlagGet(FLAG_SYS_CAN_LINK_WITH_RS);
+    }
+    else if (gArchipelagoOptions.ceruleanCaveRequirement == 1)
+    {
+        return FlagGet(FLAG_SYS_GAME_CLEAR);
+    }
+    else if (gArchipelagoOptions.ceruleanCaveRequirement == 2)
+    {
+        return FlagGet(FLAG_SYS_CAN_LINK_WITH_RS);
+    }
+    else if (gArchipelagoOptions.ceruleanCaveRequirement == 3)
+    {
+        for (i = 0; i < NUM_BADGES_GYMS; i++)
+        {
+            if (FlagGet(gBadgeFlags[i]))
+            {
+                count++;
+            }
+        }
+    }
+    else
+    {
+        for (i = 0; i < NUM_BADGES_GYMS; i++)
+        {
+            if (FlagGet(gGymFlags[i]))
+            {
+                count++;
+            }
+        }
+    }
+
+    return count >= gArchipelagoOptions.ceruleanCaveRequiredCount;
 }

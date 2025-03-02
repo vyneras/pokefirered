@@ -14,6 +14,7 @@
 #include "battle.h"
 #include "fieldmap.h"
 #include "field_specials.h"
+#include "field_fadetransition.h"
 #include "region_map.h"
 #include "task.h"
 #include "battle_tower.h"
@@ -89,30 +90,6 @@ static u8 *const sStringVarPtrs[] = {
     gStringVar2,
     gStringVar3,
     gStringVar4
-};
-
-#define NUM_BADGES_GYMS 8
-
-const u16 gBadgeFlags[NUM_BADGES_GYMS] = {
-    FLAG_BADGE01_GET,
-    FLAG_BADGE02_GET,
-    FLAG_BADGE03_GET,
-    FLAG_BADGE04_GET,
-    FLAG_BADGE05_GET,
-    FLAG_BADGE06_GET,
-    FLAG_BADGE07_GET,
-    FLAG_BADGE08_GET
-};
-
-const u16 gGymFlags[NUM_BADGES_GYMS] = {
-    FLAG_DEFEATED_BROCK,
-    FLAG_DEFEATED_MISTY,
-    FLAG_DEFEATED_LT_SURGE,
-    FLAG_DEFEATED_ERIKA,
-    FLAG_DEFEATED_KOGA,
-    FLAG_DEFEATED_SABRINA,
-    FLAG_DEFEATED_BLAINE,
-    FLAG_DEFEATED_LEADER_GIOVANNI
 };
 
 void ShowDiploma(void)
@@ -2641,47 +2618,12 @@ u8 ArchipelagoSpecial_GetPewterCityRequirement(void)
 
 bool8 ArchipelagoSpecial_CanLeavePewterCity(void)
 {
-    u8 i;
-
-    if (gArchipelagoOptions.route3Requirement == 1)
-    {
-        return FlagGet(FLAG_DEFEATED_BROCK);
-    }
-    else if (gArchipelagoOptions.route3Requirement == 2)
-    {
-        for (i = 0; i < NUM_BADGES_GYMS; i++)
-        {
-            if (FlagGet(gGymFlags[i]))
-            {
-                return TRUE;
-            }
-        }
-
-        return FALSE;
-    }
-    else if (gArchipelagoOptions.route3Requirement == 3)
-    {
-        return FlagGet(FLAG_BADGE01_GET);
-    }
-    else if (gArchipelagoOptions.route3Requirement == 4)
-    {
-        for (i = 0; i < NUM_BADGES_GYMS; i++)
-        {
-            if (FlagGet(gBadgeFlags[i]))
-            {
-                return TRUE;
-            }
-        }
-
-        return FALSE;
-    }
-
-    return TRUE;
+    return CanLeavePewterCity();
 }
 
 bool8 ArchipelagoSpecial_CanLeaveCeruleanCity(void)
 {
-    return FlagGet(FLAG_GOT_SS_TICKET) || gArchipelagoOptions.openCeruleanCity;
+    return CanLeaveCeruleanCity();
 }
 
 bool8 ArchipelagoSpecial_Route2Modified(void)
@@ -2716,7 +2658,7 @@ bool8 ArchipelagoSpecial_Route16Modified(void)
 
 bool8 ArchipelagoSpecial_CanEnterSilphCo(void)
 {
-    return FlagGet(FLAG_RESCUED_MR_FUJI) || gArchipelagoOptions.openSilphCo;
+    return CanEnterSilphCo();
 }
 
 bool8 ArchipelagoSpecial_Route23Trees(void)
@@ -2751,31 +2693,7 @@ u8 ArchipelagoSpecial_GetGiovanniRequiredCount(void)
 
 bool8 ArchipelagoSpecial_CanChallengeGiovanni(void)
 {
-    u8 i;
-    u8 count = 0;
-
-    if (gArchipelagoOptions.giovanniRequiresGyms)
-    {
-        for (i = 0; i < NUM_BADGES_GYMS; i++)
-        {
-            if (FlagGet(gGymFlags[i]))
-            {
-                count++;
-            }
-        }
-    }
-    else
-    {
-        for (i = 0; i < NUM_BADGES_GYMS; i++)
-        {
-            if (FlagGet(gBadgeFlags[i]))
-            {
-                count++;
-            }
-        }
-    }
-
-    return count >= gArchipelagoOptions.giovanniRequiredCount;
+    return HasRequiredBadgesOrGyms(gArchipelagoOptions.giovanniRequiresGyms, gArchipelagoOptions.giovanniRequiredCount);
 }
 
 bool8 ArchipelagoSpecial_Route22RequiresGyms(void)
@@ -2790,31 +2708,7 @@ u8 ArchipelagoSpecial_GetRoute22RequiredCount(void)
 
 bool8 ArchipelagoSpecial_CanPassRoute22Gate(void)
 {
-    u8 i;
-    u8 count = 0;
-
-    if (gArchipelagoOptions.route22GateRequiresGyms)
-    {
-        for (i = 0; i < NUM_BADGES_GYMS; i++)
-        {
-            if (FlagGet(gGymFlags[i]))
-            {
-                count++;
-            }
-        }
-    }
-    else
-    {
-        for (i = 0; i < NUM_BADGES_GYMS; i++)
-        {
-            if (FlagGet(gBadgeFlags[i]))
-            {
-                count++;
-            }
-        }
-    }
-
-    return count >= gArchipelagoOptions.route22GateRequiredCount;
+    return HasRequiredBadgesOrGyms(gArchipelagoOptions.route22GateRequiresGyms, gArchipelagoOptions.route22GateRequiredCount);
 }
 
 bool8 ArchipelagoSpecial_Route23RequiresGyms(void)
@@ -2829,31 +2723,7 @@ u8 ArchipelagoSpecial_GetRoute23RequiredCount(void)
 
 bool8 ArchipelagoSpecial_CanPassRoute23Guard(void)
 {
-    u8 i;
-    u8 count = 0;
-
-    if (gArchipelagoOptions.route23GuardRequiresGyms)
-    {
-        for (i = 0; i < NUM_BADGES_GYMS; i++)
-        {
-            if (FlagGet(gGymFlags[i]))
-            {
-                count++;
-            }
-        }
-    }
-    else
-    {
-        for (i = 0; i < NUM_BADGES_GYMS; i++)
-        {
-            if (FlagGet(gBadgeFlags[i]))
-            {
-                count++;
-            }
-        }
-    }
-
-    return count >= gArchipelagoOptions.route23GuardRequiredCount;
+    return HasRequiredBadgesOrGyms(gArchipelagoOptions.route23GuardRequiresGyms, gArchipelagoOptions.route23GuardRequiredCount);
 }
 
 bool8 ArchipelagoSpecial_EliteFourRequiresGyms(void)
@@ -2874,8 +2744,7 @@ u8 ArchipelagoSpecial_GetEliteFourRequiredCount(void)
 
 bool8 ArchipelagoSpecial_CanChallengeEliteFour(void)
 {
-    u8 i, requiresGyms, requiredCount;
-    u8 count = 0;
+    u8 requiresGyms, requiredCount;
 
     if (FlagGet(FLAG_SYS_GAME_CLEAR))
     {
@@ -2888,28 +2757,7 @@ bool8 ArchipelagoSpecial_CanChallengeEliteFour(void)
         requiredCount = gArchipelagoOptions.eliteFourRequiredCount;
     }
 
-    if (requiresGyms)
-    {
-        for (i = 0; i < NUM_BADGES_GYMS; i++)
-        {
-            if (FlagGet(gGymFlags[i]))
-            {
-                count++;
-            }
-        }
-    }
-    else
-    {
-        for (i = 0; i < NUM_BADGES_GYMS; i++)
-        {
-            if (FlagGet(gBadgeFlags[i]))
-            {
-                count++;
-            }
-        }
-    }
-
-    return count >= requiredCount;
+    return HasRequiredBadgesOrGyms(requiresGyms, requiredCount);
 }
 
 u8 ArchipelagoSpecial_GetCeruleanCaveRequirement(void)
@@ -2924,43 +2772,12 @@ u8 ArchipelagoSpecial_GetCeruleanCaveRequiredCount(void)
 
 bool8 ArchipelagoSpecial_CanEnterCeruleanCave(void)
 {
-    u8 i;
-    u8 count = 0;
+    return CanEnterCeruleanCave();
+}
 
-    if(gArchipelagoOptions.ceruleanCaveRequirement == 0)
-    {
-        return FlagGet(FLAG_SYS_GAME_CLEAR) && FlagGet(FLAG_SYS_CAN_LINK_WITH_RS);
-    }
-    else if (gArchipelagoOptions.ceruleanCaveRequirement == 1)
-    {
-        return FlagGet(FLAG_SYS_GAME_CLEAR);
-    }
-    else if (gArchipelagoOptions.ceruleanCaveRequirement == 2)
-    {
-        return FlagGet(FLAG_SYS_CAN_LINK_WITH_RS);
-    }
-    else if (gArchipelagoOptions.ceruleanCaveRequirement == 3)
-    {
-        for (i = 0; i < NUM_BADGES_GYMS; i++)
-        {
-            if (FlagGet(gBadgeFlags[i]))
-            {
-                count++;
-            }
-        }
-    }
-    else
-    {
-        for (i = 0; i < NUM_BADGES_GYMS; i++)
-        {
-            if (FlagGet(gGymFlags[i]))
-            {
-                count++;
-            }
-        }
-    }
-
-    return count >= gArchipelagoOptions.ceruleanCaveRequiredCount;
+bool8 ArchipelagoSpecial_CanUseHmOutsideBattle(void)
+{
+    return CanUseHmOutsideBattle(gSpecialVar_0x8003);
 }
 
 u8 ArchipelagoSpecial_GetProfessorOaksAideCount(void)
@@ -3089,6 +2906,5 @@ void ArchipelagoSpecial_SetRespawnToStartingLocation(void)
 
 bool8 ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor(void)
 {
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(CERULEAN_CITY) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(CERULEAN_CITY))
-        return gSaveBlock1Ptr->pos.x == 30 && gSaveBlock1Ptr->pos.y == 11;
+    return PlayerEnteredThroughBlockedDoor();
 }

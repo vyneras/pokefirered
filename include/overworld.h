@@ -161,8 +161,9 @@ void SetContinueGameWarpToDynamicWarp(int);
 void SetContinueGameWarpToHealLocation(u8 loc);
 
 void UpdateAmbientCry(s16 *state, u16 *delayCounter);
-void SetWarpDestinationToHealLocation(u8 a0);
-void SetWarpDestinationToFlyLocation(u8 a0);
+void SetWarpDestinationToHealLocation(u8 healLocationId);
+void SetWarpDestinationToFlyLocation(u8 healLocationId);
+void AdjustAndSetWarpDestination(s8 group, s8 map, s16 x, s16 y);
 bool32 Overworld_SendKeysToLinkIsRunning(void);
 bool32 Overworld_RecvKeysFromLinkIsRunning(void);
 void OverworldWhiteOutGetMoneyLoss(void);

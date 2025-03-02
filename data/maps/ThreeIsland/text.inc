@@ -7,25 +7,21 @@ ThreeIsland_Text_IslandBelongsToUs::
     .string "From this day on, this island\n"
     .string "belongs to us!$"
 
-ThreeIsland_Text_GoBackToKanto::
-    .string "We don't need you people bringing\n"
-    .string "your noise and trouble here!\p"
-    .string "We're asking you to go back to\n"
-    .string "KANTO!$"
+ThreeIsland_Text_Normally::
+    .string "Normally you aren't able to talk\n"
+    .string "to these NPCs from this direction.$"
 
-ThreeIsland_Text_BossIsOnHisWay::
-    .string "Hey, go cry somewhere else.\n"
-    .string "Our boss is on his way.\p"
-    .string "When he gets here, we'll give you\n"
-    .string "a k-rad motorbike show you won't\l"
-    .string "soon forget!$"
+ThreeIsland_Text_ThisMeans::
+    .string "This means the way the player turns\n"
+    .string "during this scene makes no sense.$"
 
-ThreeIsland_Text_GetOffIslandNow::
-    .string "W-what!? Not on your life!\n"
-    .string "Get off the island now!$"
+ThreeIsland_Text_InFact::
+    .string "In fact, you can't trigger this\n"
+    .string "scene from below in the randomizer.$"
 
-ThreeIsland_Text_WhosGonnaMakeMe::
-    .string "Who's gonna make me?$"
+ThreeIsland_Text_RememberTo::
+    .string "Remember to press 1 to subscribe\n"
+    .string "to more rando facts.$"
 
 ThreeIsland_Text_AreYouBossGoBackToKanto::
     .string "Are you the boss?\n"
