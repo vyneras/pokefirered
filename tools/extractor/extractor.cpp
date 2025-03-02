@@ -459,9 +459,14 @@ int main (int argc, char *argv[])
             { "gTutorMoves", symbol_map["gTutorMoves"] - ROM_START },
             { "sTutorLearnsets", symbol_map["sTutorLearnsets"] - ROM_START },
             { "sFanfares", symbol_map["sFanfares"] - ROM_START },
-            { "sInGameTrades", symbol_map["sInGameTrades"] - ROM_START},
-            { "sFlashLevelToRadius", symbol_map["sFlashLevelToRadius"] - ROM_START},
-            { "gRandomizedSoundTable", symbol_map["gRandomizedSoundTable"] - ROM_START }
+            { "sInGameTrades", symbol_map["sInGameTrades"] - ROM_START },
+            { "sFlashLevelToRadius", symbol_map["sFlashLevelToRadius"] - ROM_START },
+            { "gRandomizedSoundTable", symbol_map["gRandomizedSoundTable"] - ROM_START },
+            { "sFlyPoints", symbol_map["sFlyPoints"] - ROM_START },
+            { "sRegionMapSections_Kanto", symbol_map["sRegionMapSections_Kanto"] - ROM_START },
+            { "sRegionMapSections_Sevii123", symbol_map["sRegionMapSections_Sevii123"] - ROM_START },
+            { "sRegionMapSections_Sevii45", symbol_map["sRegionMapSections_Sevii45"] - ROM_START },
+            { "sRegionMapSections_Sevii67", symbol_map["sRegionMapSections_Sevii67"] - ROM_START }
         };
 
         // ------------------------------------------------------------------------
