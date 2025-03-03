@@ -134,7 +134,7 @@ CeladonCity_DepartmentStore_Roof_EventScript_GiveLemonade::
 	goto_if_set FLAG_GOT_TM33_FROM_THIRSTY_GIRL, CeladonCity_DepartmentStore_Roof_EventScript_NotThirstyAfterAll
 	msgbox CeladonCity_DepartmentStore_Roof_Text_YayLemonadeHaveThis
 Archipelago_Target_NPC_Gift_FLAG_GOT_TM33_FROM_THIRSTY_GIRL::
-	giveitem ITEM_TM33, 1, ITEM_TM33
+	giveitem ITEM_TM33, 1, FLAG_GOT_TM33_FROM_THIRSTY_GIRL
 	goto CeladonCity_DepartmentStore_Roof_EventScript_GiveDrink
 	end
 
@@ -147,17 +147,14 @@ CeladonCity_DepartmentStore_Roof_EventScript_GiveDrink::
 	end
 
 CeladonCity_DepartmentStore_Roof_EventScript_ExplainTM16::
-	setflag FLAG_GOT_TM16_FROM_THIRSTY_GIRL
 	msgbox CeladonCity_DepartmentStore_Roof_Text_ExplainTM16
 	return
 
 CeladonCity_DepartmentStore_Roof_EventScript_ExplainTM20::
-	setflag FLAG_GOT_TM20_FROM_THIRSTY_GIRL
 	msgbox CeladonCity_DepartmentStore_Roof_Text_ExplainTM20
 	return
 
 CeladonCity_DepartmentStore_Roof_EventScript_ExplainTM33::
-	setflag FLAG_GOT_TM33_FROM_THIRSTY_GIRL
 	msgbox CeladonCity_DepartmentStore_Roof_Text_ExplainTM33
 	return
 
