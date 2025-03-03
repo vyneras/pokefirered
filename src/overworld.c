@@ -542,7 +542,7 @@ static void ApplyCurrentWarp(void)
     sFixedHoleWarp = sDummyWarpData;
 }
 
-static void SetWarpData(struct WarpData *warp, s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y)
+static void SetWarpData(struct WarpData *warp, s8 mapGroup, s8 mapNum, s8 warpId, s16 x, s16 y)
 {
     warp->mapGroup = mapGroup;
     warp->mapNum = mapNum;
@@ -658,7 +658,7 @@ void WarpToStartingLocation(void)
     ResetInitialPlayerAvatarState();
 }
 
-void SetWarpDestination(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y)
+void SetWarpDestination(s8 mapGroup, s8 mapNum, s8 warpId, s16 x, s16 y)
 {
     SetWarpData(&sWarpDestination, mapGroup, mapNum, warpId, x, y);
 }
