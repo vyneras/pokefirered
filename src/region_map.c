@@ -3125,6 +3125,7 @@ static void GetPlayerPositionOnRegionMap(void)
     case MAP_TYPE_ROUTE:
     case MAP_TYPE_UNDERWATER:
     case MAP_TYPE_OCEAN_ROUTE:
+    case MAP_TYPE_DUNGEON:
         sMapCursor->selectedMapsec = gMapHeader.regionMapSectionId;
         width = gMapHeader.mapLayout->width;
         height = gMapHeader.mapLayout->height;
@@ -3132,7 +3133,6 @@ static void GetPlayerPositionOnRegionMap(void)
         y = gSaveBlock1Ptr->pos.y;
         break;
     case MAP_TYPE_UNDERGROUND:
-    case MAP_TYPE_UNKNOWN:
         mapHeader = Overworld_GetMapHeaderByGroupAndId(gSaveBlock1Ptr->escapeWarp.mapGroup, gSaveBlock1Ptr->escapeWarp.mapNum);
         sMapCursor->selectedMapsec = mapHeader->regionMapSectionId;
         width = mapHeader->mapLayout->width;

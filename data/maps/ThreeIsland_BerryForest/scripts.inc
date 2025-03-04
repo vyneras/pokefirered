@@ -6,7 +6,6 @@ ThreeIsland_BerryForest_MapScripts::
 
 ThreeIsland_BerryForest_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_THREE_ISLAND_BERRY_FOREST
-	setescapewarp MAP_THREE_ISLAND_BOND_BRIDGE, 12, 6
 	end
 
 ThreeIsland_BerryForest_EventScript_Lostelle::

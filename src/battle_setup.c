@@ -521,6 +521,7 @@ u8 BattleSetup_GetTerrainId(void)
     case MAP_TYPE_TOWN:
     case MAP_TYPE_CITY:
     case MAP_TYPE_ROUTE:
+    case MAP_TYPE_DUNGEON:
         break;
     case MAP_TYPE_UNDERGROUND:
         if (MetatileBehavior_IsIndoorEncounter(tileBehavior))

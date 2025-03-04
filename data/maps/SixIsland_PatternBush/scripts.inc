@@ -4,18 +4,7 @@ SixIsland_PatternBush_MapScripts::
 
 SixIsland_PatternBush_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_SIX_ISLAND_PATTERN_BUSH
-	getplayerxy VAR_TEMP_1, VAR_TEMP_2
-	call_if_ge VAR_TEMP_1, 50, SixIsland_PatternBush_EventScript_SetEscapeRightExit
-	call_if_le VAR_TEMP_1, 49, SixIsland_PatternBush_EventScript_SetEscapeLeftExit
 	end
-
-SixIsland_PatternBush_EventScript_SetEscapeRightExit::
-	setescapewarp MAP_SIX_ISLAND_GREEN_PATH, 255, 64, 10
-	return
-
-SixIsland_PatternBush_EventScript_SetEscapeLeftExit::
-	setescapewarp MAP_SIX_ISLAND_GREEN_PATH, 255, 45, 10
-	return
 
 SixIsland_PatternBush_EventScript_Bethany::
 	trainerbattle_single TRAINER_PKMN_BREEDER_BETHANY, SixIsland_PatternBush_Text_BethanyIntro, SixIsland_PatternBush_Text_BethanyDefeat

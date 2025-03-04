@@ -25,6 +25,7 @@
 #include "trig.h"
 #include "util.h"
 #include "constants/event_object_movement.h"
+#include "constants/map_types.h"
 #include "constants/metatile_behaviors.h"
 #include "constants/songs.h"
 #include "constants/sound.h"
@@ -2578,7 +2579,7 @@ static void (*const sShowMonOutdoorsEffectFuncs[])(struct Task *task) = {
 u32 FldEff_FieldMoveShowMon(void)
 {
     u8 taskId;
-    if (IsMapTypeOutdoors(GetCurrentMapType()) == TRUE)
+    if (IsMapTypeOutdoors(GetCurrentMapType()) == TRUE || GetCurrentMapType() == MAP_TYPE_DUNGEON)
         taskId = CreateTask(Task_ShowMon_Outdoors, 0xFF);
     else
         taskId = CreateTask(Task_ShowMon_Indoors, 0xFF);
