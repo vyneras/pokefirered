@@ -792,8 +792,8 @@ struct SaveBlock1
     /*0x06B4*/ struct ItemSlot bagPocket_TMHM[BAG_TMHM_COUNT];
     /*0x079C*/ struct ItemSlot bagPocket_Berries[BAG_BERRIES_COUNT];
     /*0x0848*/ u8 seen1[DEX_FLAGS_NO];
-    /*0x087C*/ u16 berryBlenderRecords[3]; // unused
-    /*0x0882*/ u8 unused_882[6];
+    /*0x087C*/ struct WarpData lastWarp;
+    /*0x0884*/ u8 unused_882[4];
     /*0x0888*/ u16 trainerRematchStepCounter;
     /*0x088A*/ u8 ALIGNED(2) trainerRematches[MAX_REMATCH_ENTRIES];
     /*0x08F0*/ struct ObjectEvent objectEvents[OBJECT_EVENTS_COUNT];

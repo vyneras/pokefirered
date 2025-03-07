@@ -616,36 +616,9 @@ void WarpIntoMap(void)
     SetPlayerCoordsFromWarp();
 }
 
-void UseClosestWarp(void)
+void UseLastWarp(void)
 {
-    s8 warpEventId = -1;
-    struct WarpEvent warp;
-    u8 i;
-    u8 currentDistance = 0;
-
-    for (i = 0; i < gMapHeader.events->warpCount; i++)
-    {
-        if (warpEventId == -1)
-        {
-            warpEventId = i;
-            currentDistance = abs(gSaveBlock1Ptr->pos.x - gMapHeader.events->warps[i].x) + abs(gSaveBlock1Ptr->pos.y - gMapHeader.events->warps[i].y);
-        }
-        else
-        {
-            u8 newDistance = abs(gSaveBlock1Ptr->pos.x - gMapHeader.events->warps[i].x) + abs(gSaveBlock1Ptr->pos.y - gMapHeader.events->warps[i].y);
-            if (newDistance < currentDistance)
-            {
-                warpEventId = i;
-                currentDistance = newDistance;
-            }
-        }
-    }
-
-    if (warpEventId == -1)
-        return;
-
-    warp = gMapHeader.events->warps[warpEventId];
-    SetWarpDestination(warp.mapGroup, warp.mapNum, warp.warpId, warp.x, warp.y);
+    SetWarpDestination(gSaveBlock1Ptr->lastWarp.mapGroup, gSaveBlock1Ptr->lastWarp.mapNum, gSaveBlock1Ptr->lastWarp.warpId, gSaveBlock1Ptr->lastWarp.x, gSaveBlock1Ptr->lastWarp.y);
     DoWarp();
     ResetInitialPlayerAvatarState();
 }
@@ -763,12 +736,19 @@ void UpdateEscapeWarp(s16 x, s16 y)
     u8 delta;
     if (IsMapTypeOutdoors(currMapType) && IsMapTypeOutdoors(destMapType) != TRUE)
     {
-        delta = GetPlayerFacingDirection() != DIR_SOUTH;
+        delta = GetPlayerFacingDirection() == DIR_NORTH;
         SetEscapeWarp(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, -1, x - 7, y - 7 + delta);
     }
 }
 
-void SetEscapeWarp(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y)
+void UpdateLastWarp(s16 x, s16 y)
+{
+    u8 delta;
+    delta = GetPlayerFacingDirection() == DIR_NORTH;
+    SetLastWarp(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, -1, x - 7, y - 7 + delta);
+}
+
+void SetEscapeWarp(s8 mapGroup, s8 mapNum, s8 warpId, s16 x, s16 y)
 {
     SetWarpData(&gSaveBlock1Ptr->escapeWarp, mapGroup, mapNum, warpId, x, y);
 }
@@ -776,6 +756,16 @@ void SetEscapeWarp(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y)
 void SetWarpDestinationToEscapeWarp(void)
 {
     sWarpDestination = gSaveBlock1Ptr->escapeWarp;
+}
+
+void SetLastWarp(s8 mapGroup, s8 mapNum, s8 warpId, s16 x, s16 y)
+{
+    SetWarpData(&gSaveBlock1Ptr->lastWarp, mapGroup, mapNum, warpId, x, y);
+}
+
+void SetWarpDestinationToLastWarp(void)
+{
+    sWarpDestination = gSaveBlock1Ptr->lastWarp;
 }
 
 void SetFixedDiveWarp(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y)

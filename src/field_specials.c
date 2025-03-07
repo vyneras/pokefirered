@@ -2842,9 +2842,9 @@ bool8 ArchipelagoSpecial_AreTeasSplit(void)
     return gArchipelagoOptions.teasSplit;
 }
 
-void ArchipelagoSpecial_UseClosestWarp(void)
+void ArchipelagoSpecial_UseLastWarp(void)
 {
-    UseClosestWarp();
+    UseLastWarp();
 }
 
 bool8 ArchipelagoSpecial_FlashRequired(void)

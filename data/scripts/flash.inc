@@ -26,6 +26,6 @@ EventScript_CanUseFlash::
 EventScript_CantUseFlash::
 	msgbox Text_NeedFlash
 	closemessage
-	special ArchipelagoSpecial_UseClosestWarp
+	special ArchipelagoSpecial_UseLastWarp
 	releaseall
 	end
