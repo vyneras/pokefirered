@@ -33,12 +33,17 @@
 #include "pokemon_jump.h"
 #include "event_scripts.h"
 #include "field_specials.h"
+#include "constants/items.h"
 
 // this file's functions
 static void ResetMiniGamesResults(void);
 
 // EWRAM vars
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
+
+#define NEW_GAME_ITEM_COUNT 2
+
+static const u16 sNewGameItems[NEW_GAME_ITEM_COUNT] = {ITEM_BERRY_POUCH, ITEM_TM_CASE};
 
 void SetTrainerId(u32 trainerId, u8 *dst)
 {
@@ -123,6 +128,7 @@ void ResetMenuAndMonGlobals(void)
 
 void NewGameInitData(void)
 {
+    u8 i;
     u8 rivalName[PLAYER_NAME_LENGTH + 1];
 
     StringCopy(rivalName, gSaveBlock1Ptr->rivalName);
@@ -220,6 +226,12 @@ void NewGameInitData(void)
     if (!gArchipelagoOptions.extraKeyItems) RunScriptImmediately(EventScript_SetExtraKeyItemFlags);
     if (!gArchipelagoOptions.cardKeysSplit) RunScriptImmediately(EventScript_SetSplitCardKeyItemFlags);
     if (!gArchipelagoOptions.gymKeys) RunScriptImmediately(EventScript_SetGymKeysFlags);
+
+    for (i = 0; i < NEW_GAME_ITEM_COUNT; i++)
+        AddBagItem(sNewGameItems[i], 1);
+
+    FlagSet(FLAG_GOT_BERRY_POUCH);
+    FlagSet(FLAG_GOT_TM_CASE);
 }
 
 static void ResetMiniGamesResults(void)

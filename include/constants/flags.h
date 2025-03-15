@@ -709,8 +709,8 @@
 #define FLAG_GOT_SIX_PASS                                0x2AC
 #define FLAG_GOT_SEVEN_PASS                              0x2AD
 #define FLAG_GOT_LINK_CABLE                              0x2AE
-#define FLAG_0x2AF                                       0x2AF
-#define FLAG_0x2B0                                       0x2B0
+#define FLAG_GOT_BERRY_POUCH                             0x2AF
+#define FLAG_GOT_TM_CASE                                 0x2B0
 #define FLAG_0x2B1                                       0x2B1
 #define FLAG_0x2B2                                       0x2B2
 #define FLAG_0x2B3                                       0x2B3

@@ -262,25 +262,6 @@ bool8 AddBagItem(u16 itemId, u16 count)
         }
     }
 
-    if (pocket == POCKET_TM_CASE - 1 && !CheckBagHasItem(ITEM_TM_CASE, 1))
-    {
-        idx = BagPocketGetFirstEmptySlot(POCKET_KEY_ITEMS - 1);
-        if (idx == -1)
-            return FALSE;
-        gBagPockets[POCKET_KEY_ITEMS - 1].itemSlots[idx].itemId = ITEM_TM_CASE;
-        SetBagItemQuantity(&gBagPockets[POCKET_KEY_ITEMS - 1].itemSlots[idx].quantity, 1);
-    }
-
-    if (pocket == POCKET_BERRY_POUCH - 1 && !CheckBagHasItem(ITEM_BERRY_POUCH, 1))
-    {
-        idx = BagPocketGetFirstEmptySlot(POCKET_KEY_ITEMS - 1);
-        if (idx == -1)
-            return FALSE;
-        gBagPockets[POCKET_KEY_ITEMS - 1].itemSlots[idx].itemId = ITEM_BERRY_POUCH;
-        SetBagItemQuantity(&gBagPockets[POCKET_KEY_ITEMS - 1].itemSlots[idx].quantity, 1);
-        FlagSet(FLAG_SYS_GOT_BERRY_POUCH);
-    }
-
     if (itemId == ITEM_BERRY_POUCH)
         FlagSet(FLAG_SYS_GOT_BERRY_POUCH);
 
