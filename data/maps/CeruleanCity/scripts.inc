@@ -11,6 +11,7 @@
 
 CeruleanCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, CeruleanCity_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, CeruleanCity_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, CeruleanCity_OnFrame
 	.byte 0
 
@@ -76,6 +77,10 @@ CeruleanCity_EventScript_RivalSetPosition::
 	setobjectxyperm LOCALID_RIVAL, 23, 20
 	return
 
+CeruleanCity_OnLoad::
+	call_if_set FLAG_UNLOCKED_CERULEAN_GYM_DOOR, CeruleanCity_EventScript_SetGymDoorUnlocked
+	end
+
 CeruleanCity_OnFrame::
 	map_script_2 VAR_TEMP_4, 1, CeruleanCity_EventScript_PolicemanMoveLeft
 	map_script_2 GIVE_FLY_UNLOCK, 1, CeruleanCity_EventScript_GiveFlyUnlockItem
@@ -102,6 +107,36 @@ Archipelago_Target_Fly_Unlock_FLAG_VISITED_CERULEAN_CITY::
 	setvar GIVE_FLY_UNLOCK, 0
 	releaseall
 	end
+
+CeruleanCity_EventScript_GymDoor::
+	lockall
+	goto_if_set FLAG_UNLOCKED_CERULEAN_GYM_DOOR, CeruleanCity_EventScript_GymDoorAlreadyOpen
+	checkitem ITEM_CERULEAN_KEY
+	goto_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_OpenGymDoor
+	msgbox Text_DoorIsLocked
+	releaseall
+	end
+
+CeruleanCity_EventScript_OpenGymDoor::
+	msgbox Text_InsertGymKey
+	closemessage
+	playse SE_UNLOCK
+	waitse
+	call CeruleanCity_EventScript_SetGymDoorUnlocked
+	special DrawWholeMapView
+	setflag FLAG_UNLOCKED_CERULEAN_GYM_DOOR
+	msgbox Text_OpenedGymDoor
+	releaseall
+	end
+
+CeruleanCity_EventScript_GymDoorAlreadyOpen::
+	msgbox Text_GymDoorAlreadyOpen
+	releaseall
+	end
+
+CeruleanCity_EventScript_SetGymDoorUnlocked::
+	setmetatile 31, 21, METATILE_General_SlidingDoubleDoor, 1
+	return
 
 CeruleanCity_EventScript_RivalTriggerLeft::
 	lockall

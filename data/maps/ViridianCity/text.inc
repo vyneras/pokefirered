@@ -27,23 +27,35 @@ ViridianCity_Text_CanCarryMonsAnywhere::
     .string "use POKéMON anytime, anywhere.$"
 
 ViridianCity_Text_OnlyOpenWithXBadges::
-    .string "The GYM is closed. You need to\n"
-    .string "have {STR_VAR_1} BADGES for it to open.$"
+    .string "The GYM is closed until the GYM\n"
+    .string "LEADER returns.\p"
+    .string "You need to have {STR_VAR_1} BADGES\n"
+    .string "for it to open.$"
 
 ViridianCity_Text_OnlyOpenWithBadge::
-    .string "The GYM is closed. You need to\n"
-    .string "have {STR_VAR_1} BADGE for it to open.$"
+    .string "The GYM is closed until the GYM\n"
+    .string "LEADER returns.\p"
+    .string "You need to have {STR_VAR_1} BADGE\n"
+    .string "for it to open.$"
 
 ViridianCity_Text_OnlyOpenWithXGyms::
-    .string "The GYM is closed. You need to\n"
-    .string "beat {STR_VAR_1} GYMS for it to open.$"
+    .string "The GYM is closed until the GYM\n"
+    .string "LEADER returns.\p"
+    .string "You need to beat {STR_VAR_1} GYMS\n"
+    .string "for it to open.$"
 
 ViridianCity_Text_OnlyOpenWithGym::
-    .string "The GYM is closed. You need to\n"
-    .string "beat {STR_VAR_1} GYM for it to open.$"
+    .string "The GYM is closed until the GYM\n"
+    .string "LEADER returns.\p"
+    .string "You need to beat {STR_VAR_1} GYM\n"
+    .string "for it to open.$"
 
 ViridianCity_Text_ViridiansGymLeaderReturned::
     .string "VIRIDIAN GYM's LEADER returned!$"
+
+ViridianCity_Text_YoullNeedThis::
+    .string "If you want to challenge him\n"
+    .string "you'll need this.$"
 
 ViridianCity_Text_WantToKnowAboutCaterpillarMons::
     .string "You want to know about the two\n"
@@ -140,5 +152,6 @@ ViridianCity_Text_GymSign::
     .string "VIRIDIAN CITY POKéMON GYM$"
 
 ViridianCity_Text_GymDoorsAreLocked::
-    .string "VIRIDIAN GYM's doors are locked…$"
+    .string "The GYM's doors are locked until\n"
+    .string "the GYM LEADER returns.$"
 

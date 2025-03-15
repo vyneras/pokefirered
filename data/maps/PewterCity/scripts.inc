@@ -6,6 +6,7 @@
 
 PewterCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, PewterCity_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, PewterCity_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, PewterCity_OnFrame
 	.byte 0
 
@@ -45,6 +46,10 @@ PewterCity_EventScript_SetRunningShoesGuyTrigger::
 	setvar VAR_MAP_SCENE_PEWTER_CITY_OAKS_AIDE, 1
 	return
 
+PewterCity_OnLoad::
+	call_if_set FLAG_UNLOCKED_PEWTER_GYM_DOOR, PewterCity_EventScript_SetGymDoorUnlocked
+	end
+
 PewterCity_OnFrame::
 	map_script_2 GIVE_FLY_UNLOCK, 1, PewterCity_EventScript_GiveFlyUnlockItem
 	.2byte 0
@@ -56,6 +61,36 @@ Archipelago_Target_Fly_Unlock_FLAG_VISITED_PEWTER_CITY::
 	setvar GIVE_FLY_UNLOCK, 0
 	releaseall
 	end
+
+PewterCity_EventScript_GymDoor::
+	lockall
+	goto_if_set FLAG_UNLOCKED_PEWTER_GYM_DOOR, PewterCity_EventScript_GymDoorAlreadyOpen
+	checkitem ITEM_PEWTER_KEY
+	goto_if_eq VAR_RESULT, TRUE, PewterCity_EventScript_OpenGymDoor
+	msgbox Text_DoorIsLocked
+	releaseall
+	end
+
+PewterCity_EventScript_OpenGymDoor::
+	msgbox Text_InsertGymKey
+	closemessage
+	playse SE_UNLOCK
+	waitse
+	call PewterCity_EventScript_SetGymDoorUnlocked
+	special DrawWholeMapView
+	setflag FLAG_UNLOCKED_PEWTER_GYM_DOOR
+	msgbox Text_OpenedGymDoor
+	releaseall
+	end
+
+PewterCity_EventScript_GymDoorAlreadyOpen::
+	msgbox Text_GymDoorAlreadyOpen
+	releaseall
+	end
+
+PewterCity_EventScript_SetGymDoorUnlocked::
+	setmetatile 15, 16, METATILE_General_SlidingDoubleDoor, 1
+	return
 
 PewterCity_EventScript_GymGuide::
 	lock

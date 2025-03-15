@@ -4,6 +4,7 @@
 
 SaffronCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, SaffronCity_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, SaffronCity_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, SaffronCity_OnFrame
 	.byte 0
 
@@ -28,6 +29,10 @@ SaffronCity_EventScript_MoveDoorGuardGrunt::
 	setobjectxyperm LOCALID_DOOR_GUARD_GRUNT, 33, 31
 	return
 
+SaffronCity_OnLoad::
+	call_if_set FLAG_UNLOCKED_SAFFRON_GYM_DOOR, SaffronCity_EventScript_SetGymDoorUnlocked
+	end
+
 SaffronCity_OnFrame::
 	map_script_2 GIVE_FLY_UNLOCK, 1, SaffronCity_EventScript_GiveFlyUnlockItem
 	.2byte 0
@@ -39,6 +44,36 @@ Archipelago_Target_Fly_Unlock_FLAG_VISITED_SAFFRON_CITY::
 	setvar GIVE_FLY_UNLOCK, 0
 	releaseall
 	end
+
+SaffronCity_EventScript_GymDoor::
+	lockall
+	goto_if_set FLAG_UNLOCKED_SAFFRON_GYM_DOOR, SaffronCity_EventScript_GymDoorAlreadyOpen
+	checkitem ITEM_SAFFRON_KEY
+	goto_if_eq VAR_RESULT, TRUE, SaffronCity_EventScript_OpenGymDoor
+	msgbox Text_DoorIsLocked
+	releaseall
+	end
+
+SaffronCity_EventScript_OpenGymDoor::
+	msgbox Text_InsertGymKey
+	closemessage
+	playse SE_UNLOCK
+	waitse
+	call SaffronCity_EventScript_SetGymDoorUnlocked
+	special DrawWholeMapView
+	setflag FLAG_UNLOCKED_SAFFRON_GYM_DOOR
+	msgbox Text_OpenedGymDoor
+	releaseall
+	end
+
+SaffronCity_EventScript_GymDoorAlreadyOpen::
+	msgbox Text_GymDoorAlreadyOpen
+	releaseall
+	end
+
+SaffronCity_EventScript_SetGymDoorUnlocked::
+	setmetatile 46, 12, METATILE_General_SlidingDoubleDoor, 1
+	return
 
 SaffronCity_EventScript_RocketGrunt1::
 	msgbox SaffronCity_Text_WhatDoYouWantGetLost, MSGBOX_NPC

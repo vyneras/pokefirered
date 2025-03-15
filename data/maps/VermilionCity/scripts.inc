@@ -4,6 +4,7 @@
 
 VermilionCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, VermilionCity_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, VermilionCity_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, VermilionCity_OnFrame
 	.byte 0
 
@@ -34,6 +35,10 @@ VermilionCity_ClearCinnabarIslandBillFlag::
 	clearflag FLAG_HIDE_CINNABAR_POKECENTER_BILL
 	return
 
+VermilionCity_OnLoad::
+	call_if_set FLAG_UNLOCKED_VERMILION_GYM_DOOR, VermilionCity_EventScript_SetGymDoorUnlocked
+	end
+
 VermilionCity_OnFrame::
 	map_script_2 GIVE_FLY_UNLOCK, 1, VermilionCity_EventScript_GiveFlyUnlockItem
 	.2byte 0
@@ -45,6 +50,36 @@ Archipelago_Target_Fly_Unlock_FLAG_VISITED_VERMILION_CITY::
 	setvar GIVE_FLY_UNLOCK, 0
 	releaseall
 	end
+
+VermilionCity_EventScript_GymDoor::
+	lockall
+	goto_if_set FLAG_UNLOCKED_VERMILION_GYM_DOOR, VermilionCity_EventScript_GymDoorAlreadyOpen
+	checkitem ITEM_VERMILION_KEY
+	goto_if_eq VAR_RESULT, TRUE, VermilionCity_EventScript_OpenGymDoor
+	msgbox Text_DoorIsLocked
+	releaseall
+	end
+
+VermilionCity_EventScript_OpenGymDoor::
+	msgbox Text_InsertGymKey
+	closemessage
+	playse SE_UNLOCK
+	waitse
+	call VermilionCity_EventScript_SetGymDoorUnlocked
+	special DrawWholeMapView
+	setflag FLAG_UNLOCKED_VERMILION_GYM_DOOR
+	msgbox Text_OpenedGymDoor
+	releaseall
+	end
+
+VermilionCity_EventScript_GymDoorAlreadyOpen::
+	msgbox Text_GymDoorAlreadyOpen
+	releaseall
+	end
+
+VermilionCity_EventScript_SetGymDoorUnlocked::
+	setmetatile 14, 25, METATILE_General_SlidingDoubleDoor, 1
+	return
 
 VermilionCity_EventScript_Woman::
 	msgbox VermilionCity_Text_GrimerMultipliesInSludge, MSGBOX_NPC

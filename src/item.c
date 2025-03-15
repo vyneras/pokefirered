@@ -409,6 +409,11 @@ bool8 AddUniqueBagItem(u16 itemId, u16 count)
         break;
     }
 
+    if (!gArchipelagoOptions.gymKeys &&
+        HasRequiredBadgesOrGyms(gArchipelagoOptions.giovanniRequiresGyms, gArchipelagoOptions.giovanniRequiredCount) &&
+        VarGet(VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR) == 0)
+        VarSet(VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 1);
+
     return TRUE;
 }
 

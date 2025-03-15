@@ -673,11 +673,7 @@ void SetWarpDestinationToFlyLocation(u8 healLocationId)
 
 void AdjustAndSetWarpDestination(s8 group, s8 map, s16 x, s16 y)
 {
-    if (group == MAP_GROUP(VIRIDIAN_CITY) && map == MAP_NUM(VIRIDIAN_CITY) &&
-        x == 36 && y == 11 &&
-        !HasRequiredBadgesOrGyms(gArchipelagoOptions.giovanniRequiresGyms, gArchipelagoOptions.giovanniRequiredCount))
-        x++;
-    else if (group == MAP_GROUP(CERULEAN_CITY) && map == MAP_NUM(CERULEAN_CITY) &&
+    if (group == MAP_GROUP(CERULEAN_CITY) && map == MAP_NUM(CERULEAN_CITY) &&
              x == 30 && y == 12 &&
              !CanLeaveCeruleanCity())
         x--;
@@ -697,10 +693,6 @@ void AdjustAndSetWarpDestination(s8 group, s8 map, s16 x, s16 y)
              x == 8 && y == 4 &&
              !FlagGet(FLAG_SHOWED_LETTER))
         x++;
-    else if (group == MAP_GROUP(CINNABAR_ISLAND) && map == MAP_NUM(CINNABAR_ISLAND) &&
-             x == 20 && y == 5 &&
-             !CheckBagHasItem(ITEM_SECRET_KEY, 1))
-        x--;
     else if (group == MAP_GROUP(ROUTE10) && map == MAP_NUM(ROUTE10) &&
              x == 7 && y == 41 &&
              !FlagGet(FLAG_HIDE_ROUTE_10_SCIENTIST))

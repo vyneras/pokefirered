@@ -57,18 +57,19 @@
 #define METATILE_GameCorner_StairsTop                 0x29E
 
 // gTileset_General
-#define METATILE_General_CalmWater               0x12B
-#define METATILE_General_Door                    0x03D
-#define METATILE_General_Plain_Grass             0x00D
-#define METATILE_General_Plain_Mowed             0x001
-#define METATILE_General_SlidingDoubleDoor       0x15B
-#define METATILE_General_SlidingSingleDoor       0x062
-#define METATILE_General_ThinTreeTop_Grass       0x00A
-#define METATILE_General_ThinTreeTop_Mowed       0x013
-#define METATILE_General_WideTreeTopLeft_Grass   0x00B
-#define METATILE_General_WideTreeTopLeft_Mowed   0x00E
-#define METATILE_General_WideTreeTopRight_Grass  0x00C
-#define METATILE_General_WideTreeTopRight_Mowed  0x00F
+#define METATILE_General_CalmWater                0x12B
+#define METATILE_General_Door                     0x03D
+#define METATILE_General_Plain_Grass              0x00D
+#define METATILE_General_Plain_Mowed              0x001
+#define METATILE_General_SlidingDoubleDoor        0x15B
+#define METATILE_General_SlidingDoubleDoorLocked  0x15F
+#define METATILE_General_SlidingSingleDoor        0x062
+#define METATILE_General_ThinTreeTop_Grass        0x00A
+#define METATILE_General_ThinTreeTop_Mowed        0x013
+#define METATILE_General_WideTreeTopLeft_Grass    0x00B
+#define METATILE_General_WideTreeTopLeft_Mowed    0x00E
+#define METATILE_General_WideTreeTopRight_Grass   0x00C
+#define METATILE_General_WideTreeTopRight_Mowed   0x00F
 
 // gTileset_GenericBuilding1
 #define METATILE_GenericBuilding1_PlayersPCOff  0x28F

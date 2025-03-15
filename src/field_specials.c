@@ -2822,6 +2822,11 @@ bool8 ArchipelagoSpecial_IsFamesanity(void)
     return gArchipelagoOptions.isFamesanity;
 }
 
+bool8 ArchipelagoSpecial_GymKeys(void)
+{
+    return gArchipelagoOptions.gymKeys;
+}
+
 bool8 ArchipelagoSpecial_SetFameCheckerFlag(void)
 {
     return !gArchipelagoOptions.fameCheckerRequired || CheckBagHasItem(ITEM_FAME_CHECKER, 1);

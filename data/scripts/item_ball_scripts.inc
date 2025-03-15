@@ -709,3 +709,23 @@ SilphCo_4F_EventScript_ItemTM41::
 CeladonCity_GameCorner_EventScript_ItemHideoutKey::
 	finditem ITEM_HIDEOUT_KEY
 	end
+
+PewterCity_Museum_2F_EventScript_ItemPewterKey::
+	finditem ITEM_PEWTER_KEY
+	end
+
+Digletts_Cave_B1F_EventScript_ItemVermilionKey::
+	finditem ITEM_VERMILION_KEY
+	end
+
+CeladonCity_Hotel_EventScript_ItemCeladonKey::
+	finditem ITEM_CELADON_KEY
+	end
+
+SafariZone_East_RestHouse_EventScript_ItemFuchsiaKey::
+	finditem ITEM_FUCHSIA_KEY
+	end
+
+SaffronCity_Dojo_EventScript_ItemSaffronKey::
+	finditem ITEM_SAFFRON_KEY
+	end

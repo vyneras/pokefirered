@@ -461,8 +461,8 @@
 #define FLAG_ITEM_FUCHSIA_CITY_WARDENS_HOUSE_RARE_CANDY         0x1B9
 #define FLAG_ITEM_TWO_ISLAND_REVIVE                             0x1BA
 #define FLAG_ITEM_THREE_ISLAND_ZINC                             0x1BB
-#define FLAG_0x1BC                                              0x1BC
-#define FLAG_0x1BD                                              0x1BD
+#define FLAG_ITEM_PEWTER_MUSEUM_2F_PEWTER_KEY                   0x1BC
+#define FLAG_ITEM_DIGLETTS_CAVE_B1F_VERMILION_KEY               0x1BD
 #define FLAG_ITEM_VIRIDIAN_FOREST_POTION_2                      0x1BE
 #define FLAG_ITEM_MT_MOON_B2F_REVIVE                            0x1BF
 #define FLAG_ITEM_MT_MOON_B2F_ANTIDOTE                          0x1C0
@@ -537,10 +537,11 @@
 #define FLAG_ITEM_SILPH_CO_9F_CARD_KEY_9F                       0x205
 #define FLAG_ITEM_SILPH_CO_10F_CARD_KEY_10F                     0x206
 #define FLAG_ITEM_SILPH_CO_11F_CARD_KEY_11F                     0x207
+#define FLAG_ITEM_CELADON_CITY_HOTEL_CELADON_KEY                0x208
+#define FLAG_ITEM_SAFARI_ZONE_EAST_RESTHOUSE_FUCHSIA_KEY        0x209
+#define FLAG_ITEM_SAFFRON_CITY_DOJO_SAFFRON_KEY                 0x20A
 
 // Unused
-#define FLAG_0x209               0x209
-#define FLAG_0x20A               0x20A
 #define FLAG_0x20B               0x20B
 #define FLAG_0x20C               0x20C
 #define FLAG_0x20D               0x20D
@@ -829,18 +830,18 @@
 #define FLAG_GAVE_SCANNER                                0x325
 #define FLAG_GOT_DEEP_SEA_SCALE                          0x326
 #define FLAG_GOT_DEEP_SEA_TOOTH                          0x327
+#define FLAG_UNLOCKED_PEWTER_GYM_DOOR                    0x328
+#define FLAG_UNLOCKED_CERULEAN_GYM_DOOR                  0x329
+#define FLAG_UNLOCKED_VERMILION_GYM_DOOR                 0x32A
+#define FLAG_UNLOCKED_CELADON_GYM_DOOR                   0x32B
+#define FLAG_UNLOCKED_FUCHSIA_GYM_DOOR                   0x32C
+#define FLAG_UNLOCKED_SAFFRON_GYM_DOOR                   0x32D
+#define FLAG_UNLOCKED_CINNABAR_GYM_DOOR                  0x32E
+#define FLAG_UNLOCKED_VIRIDIAN_GYM_DOOR                  0x32F
+#define FLAG_GOT_CERULEAN_KEY                            0x330
+#define FLAG_GOT_VIRIDIAN_KEY                            0x331
 
 // Unused
-#define FLAG_0x328               0x328
-#define FLAG_0x329               0x329
-#define FLAG_0x32A               0x32A
-#define FLAG_0x32B               0x32B
-#define FLAG_0x32C               0x32C
-#define FLAG_0x32D               0x32D
-#define FLAG_0x32E               0x32E
-#define FLAG_0x32F               0x32F
-#define FLAG_0x330               0x330
-#define FLAG_0x331               0x331
 #define FLAG_0x332               0x332
 #define FLAG_0x333               0x333
 #define FLAG_0x334               0x334

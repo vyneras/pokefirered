@@ -118,7 +118,7 @@ bool8 MetatileBehavior_IsWarpDoor(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsWarpDoor_2(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_WARP_DOOR)
+    if (metatileBehavior == MB_WARP_DOOR || metatileBehavior == MB_WARP_DOOR_LOCKED)
         return TRUE;
     else
         return FALSE;

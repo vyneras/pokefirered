@@ -2,6 +2,7 @@
 
 FuchsiaCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, FuchsiaCity_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, FuchsiaCity_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, FuchsiaCity_OnFrame
 	.byte 0
 
@@ -29,6 +30,10 @@ FuchsiaCity_EventScript_SetOmanyteGfx::
 FuchsiaCity_EventScript_SetKabutoGfx::
 	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_KABUTO
 	return
+	
+FuchsiaCity_OnLoad::
+	call_if_set FLAG_UNLOCKED_FUCHSIA_GYM_DOOR, FuchsiaCity_EventScript_SetGymDoorUnlocked
+	end
 
 FuchsiaCity_OnFrame::
 	map_script_2 GIVE_FLY_UNLOCK, 1, FuchsiaCity_EventScript_GiveFlyUnlockItem
@@ -41,6 +46,36 @@ Archipelago_Target_Fly_Unlock_FLAG_VISITED_FUCHSIA_CITY::
 	setvar GIVE_FLY_UNLOCK, 0
 	releaseall
 	end
+	
+FuchsiaCity_EventScript_GymDoor::
+	lockall
+	goto_if_set FLAG_UNLOCKED_FUCHSIA_GYM_DOOR, FuchsiaCity_EventScript_GymDoorAlreadyOpen
+	checkitem ITEM_FUCHSIA_KEY
+	goto_if_eq VAR_RESULT, TRUE, FuchsiaCity_EventScript_OpenGymDoor
+	msgbox Text_DoorIsLocked
+	releaseall
+	end
+
+FuchsiaCity_EventScript_OpenGymDoor::
+	msgbox Text_InsertGymKey
+	closemessage
+	playse SE_UNLOCK
+	waitse
+	call FuchsiaCity_EventScript_SetGymDoorUnlocked
+	special DrawWholeMapView
+	setflag FLAG_UNLOCKED_FUCHSIA_GYM_DOOR
+	msgbox Text_OpenedGymDoor
+	releaseall
+	end
+
+FuchsiaCity_EventScript_GymDoorAlreadyOpen::
+	msgbox Text_GymDoorAlreadyOpen
+	releaseall
+	end
+
+FuchsiaCity_EventScript_SetGymDoorUnlocked::
+	setmetatile 9, 32, METATILE_General_SlidingDoubleDoor, 1
+	return
 
 FuchsiaCity_EventScript_LittleBoy::
 	msgbox FuchsiaCity_Text_DidYouTrySafariGame, MSGBOX_NPC

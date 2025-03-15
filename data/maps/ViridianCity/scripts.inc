@@ -7,6 +7,7 @@
 
 ViridianCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, ViridianCity_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, ViridianCity_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, ViridianCity_OnFrame
 	.byte 0
 
@@ -14,7 +15,7 @@ ViridianCity_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, ViridianCity_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, ViridianCity_EventScript_SetWorldMapFlag
-	call_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 0, ViridianCity_EventScript_TryUnlockGym
+	call_if_unset FLAG_UNLOCKED_VIRIDIAN_GYM_DOOR, ViridianCity_EventScript_TryUnlockGym
 	call_if_ge VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2, ViridianCity_EventScript_SetOldManNormal
 	call_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1, ViridianCity_EventScript_SetOldManStandingByRoad
 	call_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 0, ViridianCity_EventScript_SetOldManBlockingRoad
@@ -27,6 +28,14 @@ ViridianCity_EventScript_SetGiveFlyUnlockItem::
 
 ViridianCity_EventScript_SetWorldMapFlag::
 	setworldmapflag FLAG_WORLD_MAP_VIRIDIAN_CITY
+	return
+
+ViridianCity_EventScript_TryUnlockGym::
+	specialvar VAR_RESULT, ArchipelagoSpecial_GymKeys
+	goto_if_eq VAR_RESULT, TRUE, EventScript_Return
+	specialvar VAR_RESULT, ArchipelagoSpecial_CanChallengeGiovanni
+	goto_if_eq VAR_RESULT, FALSE, EventScript_Return
+	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 1
 	return
 
 ViridianCity_EventScript_SetOldManNormal::
@@ -51,14 +60,13 @@ ViridianCity_EventScript_SetOldManBlockingRoad::
 	setobjectmovementtype LOCALID_TUTORIAL_MAN, MOVEMENT_TYPE_FACE_DOWN
 	return
 
-ViridianCity_EventScript_TryUnlockGym::
-	specialvar VAR_RESULT, ArchipelagoSpecial_CanChallengeGiovanni
-	goto_if_eq VAR_RESULT, FALSE, EventScript_Return
-	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 1
-	return
+ViridianCity_OnLoad::
+	call_if_set FLAG_UNLOCKED_VIRIDIAN_GYM_DOOR, ViridianCity_EventScript_SetGymDoorUnlocked
+	end
 
 ViridianCity_OnFrame::
 	map_script_2 GIVE_FLY_UNLOCK, 1, ViridianCity_EventScript_GiveFlyUnlockItem
+	map_script_2 VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 1, ViridianCity_EventScript_UnlockGymDoor
 	.2byte 0
 
 ViridianCity_EventScript_GiveFlyUnlockItem::
@@ -69,28 +77,47 @@ Archipelago_Target_Fly_Unlock_FLAG_VISITED_VIRIDIAN_CITY::
 	releaseall
 	end
 
-ViridianCity_EventScript_GymDoorLocked::
+ViridianCity_EventScript_GymDoor::
 	lockall
-	call ViridianCity_EventScript_TryUnlockGym
-	goto_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 0, ViridianCity_EventScript_GymDoorStillLocked
+	goto_if_set FLAG_UNLOCKED_VIRIDIAN_GYM_DOOR, ViridianCity_EventScript_GymDoorAlreadyOpen
+	specialvar VAR_RESULT, ArchipelagoSpecial_CanChallengeGiovanni
+	goto_if_eq VAR_RESULT, FALSE, ViridianCity_EventScript_GymDoorNoLeader
+	checkitem ITEM_VIRIDIAN_KEY
+	goto_if_eq VAR_RESULT, TRUE, ViridianCity_EventScript_OpenGymDoor
+	msgbox Text_DoorIsLocked
 	releaseall
 	end
 
-ViridianCity_EventScript_GymDoorStillLocked::
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	delay 20
+ViridianCity_EventScript_GymDoorAlreadyOpen::
+	msgbox Text_GymDoorAlreadyOpen
+	releaseall
+	end
+
+ViridianCity_EventScript_GymDoorNoLeader::
 	msgbox ViridianCity_Text_GymDoorsAreLocked
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, ViridianCity_Movement_JumpDownLedge
-	waitmovement 0
 	releaseall
 	end
 
-ViridianCity_Movement_JumpDownLedge::
-	jump_2_down
-	step_end
+ViridianCity_EventScript_OpenGymDoor::
+	msgbox Text_InsertGymKey
+	closemessage
+	playse SE_UNLOCK
+	waitse
+	call ViridianCity_EventScript_UnlockGymDoor
+	msgbox Text_OpenedGymDoor
+	releaseall
+	end
+
+ViridianCity_EventScript_UnlockGymDoor::
+	call ViridianCity_EventScript_SetGymDoorUnlocked
+	special DrawWholeMapView
+	setflag FLAG_UNLOCKED_VIRIDIAN_GYM_DOOR
+	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 2
+	return
+
+ViridianCity_EventScript_SetGymDoorUnlocked::
+	setmetatile 36, 10, METATILE_General_SlidingDoubleDoor, 1
+	return
 
 ViridianCity_EventScript_CitySign::
 	msgbox ViridianCity_Text_CitySign, MSGBOX_SIGN
@@ -108,10 +135,6 @@ ViridianCity_EventScript_GymSign::
 	msgbox ViridianCity_Text_GymSign, MSGBOX_SIGN
 	end
 
-ViridianCity_EventScript_GymDoor::
-	msgbox ViridianCity_Text_GymDoorsAreLocked, MSGBOX_SIGN
-	end
-
 ViridianCity_EventScript_Boy::
 	msgbox ViridianCity_Text_CanCarryMonsAnywhere, MSGBOX_NPC
 	end
@@ -120,11 +143,20 @@ ViridianCity_EventScript_Boy::
 ViridianCity_EventScript_OldMan::
 	lock
 	faceplayer
-	call ViridianCity_EventScript_TryUnlockGym
-	goto_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR, 0, ViridianCity_EventScript_OldManGymClosed
+	specialvar VAR_RESULT, ArchipelagoSpecial_CanChallengeGiovanni
+	goto_if_eq VAR_RESULT, FALSE, ViridianCity_EventScript_OldManGymClosed
 	msgbox ViridianCity_Text_ViridiansGymLeaderReturned
+	specialvar VAR_RESULT, ArchipelagoSpecial_GymKeys
+	call_if_eq VAR_RESULT, TRUE, ViridianCity_EventScript_OldManGiveViridianKey
 	release
 	end
+
+ViridianCity_EventScript_OldManGiveViridianKey::
+	goto_if_set FLAG_GOT_VIRIDIAN_KEY, EventScript_Return
+	msgbox ViridianCity_Text_YoullNeedThis
+Archipelago_Target_NPC_Gift_FLAG_GOT_VIRIDIAN_KEY::
+	giveitem ITEM_VIRIDIAN_KEY, 1, FLAG_GOT_VIRIDIAN_KEY
+	return
 
 ViridianCity_EventScript_OldManGymClosed::
 	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetGiovanniRequiredCount

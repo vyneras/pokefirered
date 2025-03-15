@@ -117,3 +117,9 @@ Route25_Text_AreYouHereAlone::
     .string "If you're out at CERULEAN's cape…\n"
     .string "Well, it should be as a couple.$"
 
+Route25_Text_MistyDroppedThis::
+    .string "The GYM LEADER MISTY was here\n"
+    .string "earlier scouting the area.\p"
+    .string "It seems she accidently dropped\n"
+    .string "this. Could you return it for me?$"
+

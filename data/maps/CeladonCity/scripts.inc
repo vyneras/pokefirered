@@ -5,6 +5,7 @@
 
 CeladonCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, CeladonCity_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, CeladonCity_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, CeladonCity_OnFrame
 	.byte 0
 
@@ -30,6 +31,10 @@ CeladonCity_EventScript_SetWorldMapFlag::
 	setworldmapflag FLAG_WORLD_MAP_CELADON_CITY
 	return
 
+CeladonCity_OnLoad::
+	call_if_set FLAG_UNLOCKED_CELADON_GYM_DOOR, CeladonCity_EventScript_SetGymDoorUnlocked
+	end
+
 CeladonCity_OnFrame::
 	map_script_2 GIVE_FLY_UNLOCK, 1, CeladonCity_EventScript_GiveFlyUnlockItem
 	.2byte 0
@@ -41,6 +46,36 @@ Archipelago_Target_Fly_Unlock_FLAG_VISITED_CELADON_CITY::
 	setvar GIVE_FLY_UNLOCK, 0
 	releaseall
 	end
+
+CeladonCity_EventScript_GymDoor::
+	lockall
+	goto_if_set FLAG_UNLOCKED_CELADON_GYM_DOOR, CeladonCity_EventScript_GymDoorAlreadyOpen
+	checkitem ITEM_CELADON_KEY
+	goto_if_eq VAR_RESULT, TRUE, CeladonCity_EventScript_OpenGymDoor
+	msgbox Text_DoorIsLocked
+	releaseall
+	end
+
+CeladonCity_EventScript_OpenGymDoor::
+	msgbox Text_InsertGymKey
+	closemessage
+	playse SE_UNLOCK
+	waitse
+	call CeladonCity_EventScript_SetGymDoorUnlocked
+	special DrawWholeMapView
+	setflag FLAG_UNLOCKED_CELADON_GYM_DOOR
+	msgbox Text_OpenedGymDoor
+	releaseall
+	end
+
+CeladonCity_EventScript_GymDoorAlreadyOpen::
+	msgbox Text_GymDoorAlreadyOpen
+	releaseall
+	end
+
+CeladonCity_EventScript_SetGymDoorUnlocked::
+	setmetatile 11, 30, METATILE_General_SlidingDoubleDoor, 1
+	return
 
 CeladonCity_EventScript_LittleGirl::
 	msgbox CeladonCity_Text_GotMyKoffingInCinnabar, MSGBOX_NPC

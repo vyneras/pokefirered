@@ -816,9 +816,6 @@ Text_PleaseComeAgain::
 
 	.include "data/text/obtain_item.inc"
 
-Text_MakingPreparations::
-	.string "じゅんびちゅうです！$"
-
 Text_WantWhichFloor::
 	.string "Which floor do you want?$"
 
@@ -900,6 +897,19 @@ Text_VoiceRangOutDontRunAway::
 
 Text_TheDoorIsOpen::
 	.string "The door is open…$"
+
+Text_GymDoorAlreadyOpen::
+	.string "The GYM's doors are already open.$"
+
+Text_InsertGymKey::
+	.string "{PLAYER} inserted the GYM's key.$"
+
+Text_OpenedGymDoor::
+	.string "The GYM's doors opened!$"
+
+Text_DoorIsLocked::
+	.string "The GYM's doors are locked.\n"
+	.string "You need a key to unlock them.$"
 
 	.include "data/text/pc_transfer.inc"
 	.include "data/text/white_out.inc"
@@ -996,6 +1006,19 @@ EventScript_SetSplitCardKeyItemFlags::
 	setflag FLAG_ITEM_SILPH_CO_10F_CARD_KEY_10F
 	setflag FLAG_ITEM_SILPH_CO_11F_CARD_KEY_11F
 	end
+
+EventScript_SetGymKeysFlags::
+	setflag FLAG_UNLOCKED_PEWTER_GYM_DOOR
+	setflag FLAG_UNLOCKED_CERULEAN_GYM_DOOR
+	setflag FLAG_UNLOCKED_VERMILION_GYM_DOOR
+	setflag FLAG_UNLOCKED_CELADON_GYM_DOOR
+	setflag FLAG_UNLOCKED_FUCHSIA_GYM_DOOR
+	setflag FLAG_UNLOCKED_SAFFRON_GYM_DOOR
+	setflag FLAG_ITEM_PEWTER_MUSEUM_2F_PEWTER_KEY
+	setflag FLAG_ITEM_DIGLETTS_CAVE_B1F_VERMILION_KEY
+	setflag FLAG_ITEM_CELADON_CITY_HOTEL_CELADON_KEY
+	setflag FLAG_ITEM_SAFARI_ZONE_EAST_RESTHOUSE_FUCHSIA_KEY
+	setflag FLAG_ITEM_SAFFRON_CITY_DOJO_SAFFRON_KEY
 
 	.include "data/scripts/hall_of_fame.inc"
 	.include "data/scripts/pkmn_center_nurse.inc"

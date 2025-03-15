@@ -499,6 +499,7 @@ gSpecials::
 	def_special ArchipelagoSpecial_KantoOnly
 	def_special ArchipelagoSpecial_FlyUnlocks
 	def_special ArchipelagoSpecial_IsFamesanity
+	def_special ArchipelagoSpecial_GymKeys
 	def_special ArchipelagoSpecial_SetFameCheckerFlag
 	def_special ArchipelagoSpecial_ArePassesSplit
 	def_special ArchipelagoSpecial_AreCardKeysSplit

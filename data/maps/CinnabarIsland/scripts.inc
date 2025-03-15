@@ -1,9 +1,10 @@
 .set LOCALID_POLICEMAN, 3
 
-.equ GIVE_FLY_UNLOCK, VAR_TEMP_2
+.equ GIVE_FLY_UNLOCK, VAR_TEMP_1
 
 CinnabarIsland_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, CinnabarIsland_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, CinnabarIsland_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, CinnabarIsland_OnFrame
 	.byte 0
 
@@ -11,7 +12,6 @@ CinnabarIsland_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, CinnabarIsland_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, CinnabarIsland_EventScript_SetWorldMapFlag
-	call CinnabarIsland_EventScript_CheckUnlockGym
 	specialvar VAR_RESULT ArchipelagoSpecial_ExtraKeyItems
 	call_if_eq VAR_RESULT, TRUE, CinnabarIsland_EventScript_CheckBlockMansion
 	end
@@ -25,15 +25,6 @@ CinnabarIsland_EventScript_SetWorldMapFlag::
 	setworldmapflag FLAG_WORLD_MAP_CINNABAR_ISLAND
 	return
 
-CinnabarIsland_EventScript_CheckUnlockGym::
-	checkitem ITEM_SECRET_KEY
-	goto_if_eq VAR_RESULT, TRUE, CinnabarIsland_EventScript_UnlockGym
-	return
-
-CinnabarIsland_EventScript_UnlockGym::
-	setvar VAR_TEMP_1, 1
-	return
-
 CinnabarIsland_EventScript_CheckBlockMansion::
 	call_if_unset FLAG_SHOWED_LETTER, CinnabarIsland_EventScript_BlockMansion
 	return
@@ -41,6 +32,10 @@ CinnabarIsland_EventScript_CheckBlockMansion::
 CinnabarIsland_EventScript_BlockMansion::
 	setobjectxyperm LOCALID_POLICEMAN, 8, 4
 	return
+
+CinnabarIsland_OnLoad::
+	call_if_set FLAG_UNLOCKED_CINNABAR_GYM_DOOR, CinnabarIsland_EventScript_SetGymDoorUnlocked
+	end
 
 CinnabarIsland_OnFrame::
 	map_script_2 GIVE_FLY_UNLOCK, 1, CinnabarIsland_EventScript_GiveFlyUnlockItem
@@ -54,27 +49,37 @@ Archipelago_Target_Fly_Unlock_FLAG_VISITED_CINNABAR_ISLAND::
 	releaseall
 	end
 
-@ Triggered when VAR_TEMP_1 is 0
-CinnabarIsland_EventScript_GymDoorLockedTrigger::
+CinnabarIsland_EventScript_GymDoor::
 	lockall
+	goto_if_set FLAG_UNLOCKED_CINNABAR_GYM_DOOR, CinnabarIsland_EventScript_GymDoorAlreadyOpen
 	checkitem ITEM_SECRET_KEY
-	call_if_eq VAR_RESULT, FALSE, CinnabarIsland_EventScript_GymDoorLocked
+	goto_if_eq VAR_RESULT, TRUE, CinnabarIsland_EventScript_OpenGymDoor
+	checkitem ITEM_CINNABAR_KEY
+	goto_if_eq VAR_RESULT, TRUE, CinnabarIsland_EventScript_OpenGymDoor
+	msgbox Text_DoorIsLocked
 	releaseall
 	end
 
-CinnabarIsland_EventScript_GymDoorLocked::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	delay 20
-	msgbox CinnabarIsland_Text_DoorIsLocked
+CinnabarIsland_EventScript_OpenGymDoor::
+	msgbox Text_InsertGymKey
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, CinnabarIsland_Movement_ForcePlayerFromDoor
-	waitmovement 0
-	return
+	playse SE_UNLOCK
+	waitse
+	call CinnabarIsland_EventScript_SetGymDoorUnlocked
+	special DrawWholeMapView
+	setflag FLAG_UNLOCKED_CINNABAR_GYM_DOOR
+	msgbox Text_OpenedGymDoor
+	releaseall
+	end
 
-CinnabarIsland_Movement_ForcePlayerFromDoor::
-	walk_down
-	step_end
+CinnabarIsland_EventScript_GymDoorAlreadyOpen::
+	msgbox Text_GymDoorAlreadyOpen
+	releaseall
+	end
+
+CinnabarIsland_EventScript_SetGymDoorUnlocked::
+	setmetatile 20, 4, METATILE_General_SlidingDoubleDoor, 1
+	return
 
 CinnabarIsland_EventScript_Woman::
 	lock

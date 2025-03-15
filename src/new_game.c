@@ -219,6 +219,7 @@ void NewGameInitData(void)
 
     if (!gArchipelagoOptions.extraKeyItems) RunScriptImmediately(EventScript_SetExtraKeyItemFlags);
     if (!gArchipelagoOptions.cardKeysSplit) RunScriptImmediately(EventScript_SetSplitCardKeyItemFlags);
+    if (!gArchipelagoOptions.gymKeys) RunScriptImmediately(EventScript_SetGymKeysFlags);
 }
 
 static void ResetMiniGamesResults(void)
