@@ -691,7 +691,8 @@ void AdjustAndSetWarpDestination(s8 group, s8 map, s16 x, s16 y)
         x--;
     else if (group == MAP_GROUP(CINNABAR_ISLAND) && map == MAP_NUM(CINNABAR_ISLAND) &&
              x == 8 && y == 4 &&
-             !FlagGet(FLAG_SHOWED_LETTER))
+             !FlagGet(FLAG_SHOWED_LETTER) &&
+             !FlagGet(FLAG_HIDE_CINNABAR_ISLAND_POILCEMAN))
         x++;
     else if (group == MAP_GROUP(ROUTE10) && map == MAP_NUM(ROUTE10) &&
              x == 7 && y == 41 &&

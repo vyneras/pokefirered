@@ -30,7 +30,14 @@ CinnabarIsland_EventScript_CheckBlockMansion::
 	return
 
 CinnabarIsland_EventScript_BlockMansion::
+	specialvar VAR_RESULT, ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
+	goto_if_eq VAR_RESULT, TRUE, CinnabarIsland_EventScript_DontBlockMansion
 	setobjectxyperm LOCALID_POLICEMAN, 8, 4
+	return
+
+CinnabarIsland_EventScript_DontBlockMansion::
+	setobjectxyperm LOCALID_POLICEMAN, 7, 4
+	setvar VAR_TEMP_2, 1
 	return
 
 CinnabarIsland_OnLoad::
@@ -38,8 +45,23 @@ CinnabarIsland_OnLoad::
 	end
 
 CinnabarIsland_OnFrame::
+	map_script_2 VAR_TEMP_2, 1, CinnabarIsland_EventScript_PolicemanMoveRight
 	map_script_2 GIVE_FLY_UNLOCK, 1, CinnabarIsland_EventScript_GiveFlyUnlockItem
 	.2byte 0
+
+CinnabarIsland_EventScript_PolicemanMoveRight::
+	lockall
+	applymovement LOCALID_POLICEMAN, CinnabarIsland_Movement_MoveRight
+	waitmovement 0
+	setobjectxyperm LOCALID_POLICEMAN, 8, 4
+	setvar VAR_TEMP_2, 0
+	releaseall
+	end
+
+CinnabarIsland_Movement_MoveRight::
+	walk_right
+	face_down
+	step_end
 
 CinnabarIsland_EventScript_GiveFlyUnlockItem::
 	lockall

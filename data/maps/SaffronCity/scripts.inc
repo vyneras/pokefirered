@@ -26,7 +26,13 @@ SaffronCity_EventScript_SetWorldMapFlag::
 	return
 
 SaffronCity_EventScript_MoveDoorGuardGrunt::
+	specialvar VAR_RESULT, ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
+	goto_if_eq VAR_RESULT, TRUE, SaffronCity_EventScript_DontMoveDoorGuardGrunt
 	setobjectxyperm LOCALID_DOOR_GUARD_GRUNT, 33, 31
+	return
+
+SaffronCity_EventScript_DontMoveDoorGuardGrunt::
+	setvar VAR_TEMP_2, 1
 	return
 
 SaffronCity_OnLoad::
@@ -34,8 +40,23 @@ SaffronCity_OnLoad::
 	end
 
 SaffronCity_OnFrame::
+	map_script_2 VAR_TEMP_2, 1, SaffronCity_EventScript_DoorGuardGruntMoveLeft
 	map_script_2 GIVE_FLY_UNLOCK, 1, SaffronCity_EventScript_GiveFlyUnlockItem
 	.2byte 0
+
+SaffronCity_EventScript_DoorGuardGruntMoveLeft::
+	lockall
+	applymovement LOCALID_DOOR_GUARD_GRUNT, SaffronCity_Movement_MoveLeft
+	waitmovement 0
+	setobjectxyperm LOCALID_DOOR_GUARD_GRUNT, 33, 31
+	setvar VAR_TEMP_2, 0
+	releaseall
+	end
+
+SaffronCity_Movement_MoveLeft::
+	walk_left
+	face_down
+	step_end
 
 SaffronCity_EventScript_GiveFlyUnlockItem::
 	lockall

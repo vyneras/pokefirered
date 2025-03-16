@@ -1,6 +1,7 @@
 #include "global.h"
 #include "gflib.h"
 #include "archipelago.h"
+#include "event_data.h"
 #include "field_fadetransition.h"
 #include "overworld.h"
 #include "fldeff.h"
@@ -280,9 +281,31 @@ static void SetUpWarpExitTask(bool8 playerNotMoving)
 
 bool8 PlayerEnteredThroughBlockedDoor(void)
 {
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(CERULEAN_CITY) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(CERULEAN_CITY) &&
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(CERULEAN_CITY) &&
+        gSaveBlock1Ptr->location.mapNum == MAP_NUM(CERULEAN_CITY) &&
         gSaveBlock1Ptr->pos.x == 30 && gSaveBlock1Ptr->pos.y == 11 &&
         !CanLeaveCeruleanCity())
+        return TRUE;
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(CERULEAN_CITY) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(CERULEAN_CITY) &&
+             gSaveBlock1Ptr->pos.x == 1 && gSaveBlock1Ptr->pos.y == 12 &&
+             !CanEnterCeruleanCave())
+        return TRUE;
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SAFFRON_CITY) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(SAFFRON_CITY) &&
+             gSaveBlock1Ptr->pos.x == 33 && gSaveBlock1Ptr->pos.y == 30 &&
+             !CanEnterSilphCo())
+        return TRUE;
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(CINNABAR_ISLAND) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(CINNABAR_ISLAND) &&
+             gSaveBlock1Ptr->pos.x == 8 && gSaveBlock1Ptr->pos.y == 3 &&
+             !FlagGet(FLAG_SHOWED_LETTER) &&
+             !FlagGet(FLAG_HIDE_CINNABAR_ISLAND_POILCEMAN))
+        return TRUE;
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE10) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE10) &&
+             gSaveBlock1Ptr->pos.x == 7 && gSaveBlock1Ptr->pos.y == 40 &&
+             !FlagGet(FLAG_HIDE_ROUTE_10_SCIENTIST))
         return TRUE;
     return FALSE;
 }
@@ -431,7 +454,10 @@ static void Task_ExitNonAnimDoor(u8 taskId)
         if (FieldFadeTransitionBackgroundEffectIsFinished())
         {
             SetPlayerVisibility(TRUE);
-            ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0)], GetWalkNormalMovementAction(GetPlayerFacingDirection()));
+            if (PlayerEnteredThroughBlockedDoor())
+                ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0)], MOVEMENT_ACTION_WALK_NORMAL_DOWN_2);
+            else
+                ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0)], GetWalkNormalMovementAction(GetPlayerFacingDirection()));
             task->data[0] = 2;
         }
         break;

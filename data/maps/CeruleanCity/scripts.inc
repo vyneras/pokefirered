@@ -21,8 +21,7 @@ CeruleanCity_OnTransition::
 	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_SetWorldMapFlag
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanLeaveCeruleanCity
 	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_BlockExits
-	specialvar VAR_RESULT, ArchipelagoSpecial_CanEnterCeruleanCave
-	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_RemoveGuard
+	call CeruleanCity_EventScript_CheckRemoveGuard
 	specialvar VAR_RESULT, ArchipelagoSpecial_Route9Modified
 	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_RemoveCutTree
 	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_RemoveSmashRock
@@ -49,19 +48,28 @@ CeruleanCity_EventScript_SetWorldMapFlag::
 
 CeruleanCity_EventScript_BlockExits::
 	specialvar VAR_RESULT, ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
-	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_GuardNotBlocking
-	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_GuardBlocking
+	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_PolicemanNotBlocking
+	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_PolicemanBlocking
 	setobjectxyperm LOCALID_SLOWBRO, 26, 31
 	setobjectxyperm LOCALID_LASS, 27, 31
 	return
 
-CeruleanCity_EventScript_GuardNotBlocking::
+CeruleanCity_EventScript_PolicemanNotBlocking::
 	setobjectxyperm LOCALID_POLICEMAN, 31, 12
 	setvar VAR_TEMP_4, 1
 	return
 
-CeruleanCity_EventScript_GuardBlocking::
+CeruleanCity_EventScript_PolicemanBlocking::
 	setobjectxyperm LOCALID_POLICEMAN, 30, 12
+	return
+
+CeruleanCity_EventScript_CheckRemoveGuard::
+	specialvar VAR_RESULT, ArchipelagoSpecial_CanEnterCeruleanCave
+	goto_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_RemoveGuard
+	specialvar VAR_RESULT, ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
+	goto_if_eq VAR_RESULT, FALSE, EventScript_Return
+	setobjectxyperm LOCALID_CAVE_GUARD, 2, 13
+	setvar VAR_TEMP_5, 1
 	return
 
 CeruleanCity_EventScript_RemoveGuard::
@@ -83,19 +91,29 @@ CeruleanCity_OnLoad::
 
 CeruleanCity_OnFrame::
 	map_script_2 VAR_TEMP_4, 1, CeruleanCity_EventScript_PolicemanMoveLeft
+	map_script_2 VAR_TEMP_5, 1, CeruleanCity_EventScript_GuardMoveLeft
 	map_script_2 GIVE_FLY_UNLOCK, 1, CeruleanCity_EventScript_GiveFlyUnlockItem
 	.2byte 0
 
 CeruleanCity_EventScript_PolicemanMoveLeft::
 	lockall
-	applymovement LOCALID_POLICEMAN, CeruleanCity_Movement_PolicemanMoveLeft
+	applymovement LOCALID_POLICEMAN, CeruleanCity_Movement_MoveLeft
 	waitmovement 0
 	setobjectxyperm LOCALID_POLICEMAN, 30, 12
 	setvar VAR_TEMP_4, 0
 	releaseall
 	end
 
-CeruleanCity_Movement_PolicemanMoveLeft::
+CeruleanCity_EventScript_GuardMoveLeft::
+	lockall
+	applymovement LOCALID_CAVE_GUARD, CeruleanCity_Movement_MoveLeft
+	waitmovement 0
+	setobjectxyperm LOCALID_CAVE_GUARD, 1, 13
+	setvar VAR_TEMP_5, 0
+	releaseall
+	end
+
+CeruleanCity_Movement_MoveLeft::
 	walk_left
 	face_down
 	step_end
