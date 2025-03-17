@@ -307,6 +307,11 @@ bool8 PlayerEnteredThroughBlockedDoor(void)
              gSaveBlock1Ptr->pos.x == 7 && gSaveBlock1Ptr->pos.y == 40 &&
              !FlagGet(FLAG_HIDE_ROUTE_10_SCIENTIST))
         return TRUE;
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SIX_ISLAND_RUIN_VALLEY) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(SIX_ISLAND_RUIN_VALLEY) &&
+             gSaveBlock1Ptr->pos.x == 24 && gSaveBlock1Ptr->pos.x == 24 &&
+             !FlagGet(FLAG_HIDE_RUIN_VALLEY_SCIENTIST))
+        return TRUE;
     return FALSE;
 }
 

@@ -1,8 +1,20 @@
 .set LOCALID_SCIENTIST, 1
 
 SixIsland_RuinValley_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, SixIsland_RuinValley_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, SixIsland_RuinValley_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SixIsland_RuinValley_OnFrame
 	.byte 0
+
+SixIsland_RuinValley_OnTransition::
+	specialvar VAR_RESULT, ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
+	call_if_eq VAR_RESULT, TRUE, SixIsland_RuinValley_EventScript_DontBlockDottedHole
+	end
+
+SixIsland_RuinValley_EventScript_DontBlockDottedHole::
+	setobjectxyperm LOCALID_SCIENTIST, 25, 25
+	setvar VAR_TEMP_1, 1
+	return
 
 SixIsland_RuinValley_OnLoad::
 	call_if_set FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE, SixIsland_RuinValley_EventScript_OpenDottedHoleDoor
@@ -11,6 +23,24 @@ SixIsland_RuinValley_OnLoad::
 SixIsland_RuinValley_EventScript_OpenDottedHoleDoor::
 	setmetatile 24, 24, METATILE_SeviiIslands67_DottedHoleDoor_Open, 0
 	return
+
+SixIsland_RuinValley_OnFrame::
+	map_script_2 VAR_TEMP_1, 1, SixIsland_RuinValley_EventScript_ScientistMoveLeft
+	.2byte 0
+
+SixIsland_RuinValley_EventScript_ScientistMoveLeft::
+	lockall
+	applymovement LOCALID_SCIENTIST, SixIsland_RuinValley_Movement_MoveLeft
+	waitmovement 0
+	setobjectxyperm LOCALID_SCIENTIST, 24, 25
+	setvar VAR_TEMP_1, 0
+	releaseall
+	end
+
+SixIsland_RuinValley_Movement_MoveLeft::
+	walk_left
+	face_up
+	step_end
 
 SixIsland_RuinValley_EventScript_Scientist::
 	lock
