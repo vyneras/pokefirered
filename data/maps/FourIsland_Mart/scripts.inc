@@ -7,23 +7,10 @@ FourIsland_Mart_EventScript_Clerk::
 	faceplayer
 	message Text_MayIHelpYou
 	waitmessage
-	goto_if_set FLAG_BETTER_SHOPS_ENABLED, Poke_Mart_EventScript_BetterItems
-	pokemart FourIsland_Mart_Items
+	specialvar VAR_RESULT, ArchipelagoSpecial_UseBetterShops
+	goto_if_eq VAR_RESULT, TRUE, Poke_Mart_EventScript_BetterItems
+	pokemart SHOP_FOUR_ISLAND
 	msgbox Text_PleaseComeAgain
-	release
-	end
-
-	.align 2
-FourIsland_Mart_Items::
-	.2byte ITEM_ULTRA_BALL
-	.2byte ITEM_MAX_POTION
-	.2byte ITEM_FULL_RESTORE
-	.2byte ITEM_REVIVE
-	.2byte ITEM_ICE_HEAL
-	.2byte ITEM_FULL_HEAL
-	.2byte ITEM_ESCAPE_ROPE
-	.2byte ITEM_MAX_REPEL
-	.2byte ITEM_NONE
 	release
 	end
 

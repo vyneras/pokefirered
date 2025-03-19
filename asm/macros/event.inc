@@ -1103,24 +1103,22 @@
 	.4byte \text
 	.endm
 
-	@ Opens the Pokemart system, offering the specified products for sale.
-	@ Products should be a list of .2byte item values preceded by an .align 2
-	.macro pokemart products:req
+	@ Opens the Pokemart system, using the specified shop ID.
+	.macro pokemart shopId:req
 	.byte 0x86
-	.4byte \products
+	.byte \shopId
 	.endm
 
-	@ Opens the Pokemart system and treats the list of items as decorations.
-	@ Products should be a list of .2byte decoration values preceded by an .align 2
-	.macro pokemartdecoration products:req
+	@ Opens the Pokemart system, using the specified shop ID and treating the items as decorations.
+	.macro pokemartdecoration shopId:req
 	.byte 0x87
-	.4byte \products
+	.byte \shopId
 	.endm
 
 	@ Identical to pokemartdecoration, but with slight changes to the clerk dialogue. See uses of MART_TYPE_DECOR2.
-	.macro pokemartdecoration2 products:req
+	.macro pokemartdecoration2 shopId:req
 	.byte 0x88
-	.4byte \products
+	.byte \shopId
 	.endm
 
 	@ Starts up the slot machine minigame. id is a SLOT_MACHINE_* value that influences probabilities of certain reel outcomes.

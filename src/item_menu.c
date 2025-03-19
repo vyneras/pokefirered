@@ -86,7 +86,7 @@ static bool8 TryAllocListMenuBuffers(void);
 static void Bag_BuildListMenuTemplate(u8 pocket);
 static void BagListMenuGetItemNameColored(u8 *dest, u16 itemId);
 static void BagListMenuMoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list);
-static void BagListMenuItemPrintFunc(u8 windowId, u32 itemId, u8 y);
+static void BagListMenuItemPrintFunc(u8 windowId, u32 itemId, u8 y, u16 index);
 static void bag_menu_print_cursor(u8 y, u8 colorIdx);
 static void PrintBagPocketName(void);
 static void PrintItemDescriptionOnMessageWindow(s32 itemIndex);
@@ -694,7 +694,7 @@ static void BagListMenuMoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMe
     }
 }
 
-static void BagListMenuItemPrintFunc(u8 windowId, u32 itemId, u8 y)
+static void BagListMenuItemPrintFunc(u8 windowId, u32 itemId, u8 y, u16 index)
 {
     u16 bagItemId;
     u16 bagItemQuantity;
@@ -1931,7 +1931,7 @@ static void Task_FinalizeSaleToShop(u8 taskId)
     PlaySE(SE_SHOP);
     RemoveBagItem(gSpecialVar_ItemId, data[8]);
     AddMoney(&gSaveBlock1Ptr->money, ItemId_GetPrice(gSpecialVar_ItemId) / 2 * data[8]);
-    RecordItemTransaction(gSpecialVar_ItemId, data[8], QL_EVENT_SOLD_ITEM - QL_EVENT_USED_POKEMART);
+    RecordItemTransaction(taskId, gSpecialVar_ItemId, data[8], QL_EVENT_SOLD_ITEM - QL_EVENT_USED_POKEMART);
     DestroyListMenuTask(data[0], &gBagMenuState.cursorPos[gBagMenuState.pocket], &gBagMenuState.itemsAbove[gBagMenuState.pocket]);
     Pocket_CalculateNItemsAndMaxShowed(gBagMenuState.pocket);
     PocketCalculateInitialCursorPosAndItemsAbove(gBagMenuState.pocket);

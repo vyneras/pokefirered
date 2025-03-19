@@ -232,6 +232,8 @@ void NewGameInitData(void)
 
     FlagSet(FLAG_GOT_BERRY_POUCH);
     FlagSet(FLAG_GOT_TM_CASE);
+
+    SetPokemonCenterShopStartingFlags();
 }
 
 static void ResetMiniGamesResults(void)

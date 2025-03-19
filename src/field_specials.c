@@ -2827,6 +2827,11 @@ bool8 ArchipelagoSpecial_GymKeys(void)
     return gArchipelagoOptions.gymKeys;
 }
 
+bool8 ArchipelagoSpecial_UseBetterShops(void)
+{
+    return !gArchipelagoOptions.isShopsanity && FlagGet(FLAG_BETTER_SHOPS_ENABLED);
+}
+
 bool8 ArchipelagoSpecial_SetFameCheckerFlag(void)
 {
     return !gArchipelagoOptions.fameCheckerRequired || CheckBagHasItem(ITEM_FAME_CHECKER, 1);

@@ -81,7 +81,7 @@ static bool8 AllocateListMenuBuffers(void);
 static void SetUpListMenuTemplate(void);
 static void GetBerryNameAndIndexForMenu(u8 * dest, u16 itemId);
 static void BerryPouchMoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list);
-static void BerryPouchItemPrintFunc(u8 windowId, u32 itemId, u8 y);
+static void BerryPouchItemPrintFunc(u8 windowId, u32 itemId, u8 y, u16 index);
 static void BerryPouchSetArrowCursorAt(u8 y, u8 colorIdx);
 static void PrintSelectedBerryDescription(s32 itemIndex);
 static void CreateScrollIndicatorArrows_BerryPouchList(void);
@@ -717,7 +717,7 @@ static void BerryPouchMoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMen
     PrintSelectedBerryDescription(itemIndex);
 }
 
-static void BerryPouchItemPrintFunc(u8 windowId, u32 itemId, u8 y)
+static void BerryPouchItemPrintFunc(u8 windowId, u32 itemId, u8 y, u16 index)
 {
     u16 unused;
     u16 itemQuantity;
@@ -1385,7 +1385,7 @@ static void Task_SellBerries_PlaySfxAndRemoveBerries(u8 taskId)
     PlaySE(SE_SHOP);
     RemoveBagItem(gSpecialVar_ItemId, data[8]);
     AddMoney(&gSaveBlock1Ptr->money, ItemId_GetPrice(gSpecialVar_ItemId) / 2 * data[8]);
-    RecordItemTransaction(gSpecialVar_ItemId, data[8], QL_EVENT_SOLD_ITEM - QL_EVENT_USED_POKEMART);
+    RecordItemTransaction(taskId, gSpecialVar_ItemId, data[8], QL_EVENT_SOLD_ITEM - QL_EVENT_USED_POKEMART);
     DestroyListMenuTask(data[0], &sStaticCnt.listMenuScrollOffset, &sStaticCnt.listMenuSelectedRow);
     SortAndCountBerries();
     SanitizeListMenuSelectionParams();

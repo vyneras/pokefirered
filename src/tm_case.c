@@ -128,7 +128,7 @@ static void CreateTMCaseListMenuBuffers(void);
 static void InitTMCaseListMenuItems(void);
 static void GetTMNumberAndMoveString(u8 * dest, u16 itemId);
 static void List_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list);
-static void List_ItemPrintFunc(u8 windowId, u32 itemId, u8 y);
+static void List_ItemPrintFunc(u8 windowId, u32 itemId, u8 y, u16 index);
 static void PrintDescription(s32 itemIndex);
 static void PrintMoveInfo(u16 itemId);
 static void PrintListCursorAtRow(u8 y, u8 colorIdx);
@@ -715,7 +715,7 @@ static void List_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *li
     PrintMoveInfo(itemId);
 }
 
-static void List_ItemPrintFunc(u8 windowId, u32 itemIndex, u8 y)
+static void List_ItemPrintFunc(u8 windowId, u32 itemIndex, u8 y, u16 index)
 {
     if (itemIndex != LIST_CANCEL)
     {
@@ -1293,7 +1293,7 @@ static void Task_DoSaleOfTMs(u8 taskId)
     PlaySE(SE_SHOP);
     RemoveBagItem(gSpecialVar_ItemId, tQuantitySelected);
     AddMoney(&gSaveBlock1Ptr->money, ItemId_GetPrice(gSpecialVar_ItemId) / 2 * tQuantitySelected);
-    RecordItemTransaction(gSpecialVar_ItemId, tQuantitySelected, QL_EVENT_SOLD_ITEM - QL_EVENT_USED_POKEMART);
+    RecordItemTransaction(taskId, gSpecialVar_ItemId, tQuantitySelected, QL_EVENT_SOLD_ITEM - QL_EVENT_USED_POKEMART);
     DestroyListMenuTask(tListTaskId, &sTMCaseStaticResources.scrollOffset, &sTMCaseStaticResources.selectedRow);
     TMCaseSetup_GetTMCount();
     TMCaseSetup_InitListMenuPositions();

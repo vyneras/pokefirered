@@ -81,20 +81,21 @@ struct ArchipelagoOptions
     /* 0x3A */ bool8 flyUnlocks;
     /* 0x3B */ bool8 isFamesanity;
     /* 0x3C */ bool8 gymKeys;
+    /* 0x3D */ bool8 isShopsanity;
 
-    /* 0x3D */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
-    /* 0x3E */ u8 additionalDarkCaves; // Mt. Moon, Diglett's Cave, Victory Road
+    /* 0x3E */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
+    /* 0x3F */ u8 additionalDarkCaves; // Mt. Moon, Diglett's Cave, Victory Road
 
-    /* 0x3F */ bool8 passesSplit;
-    /* 0x40 */ bool8 cardKeysSplit;
-    /* 0x41 */ bool8 teasSplit;
+    /* 0x40 */ bool8 passesSplit;
+    /* 0x41 */ bool8 cardKeysSplit;
+    /* 0x42 */ bool8 teasSplit;
 
-    /* 0x42 */ u8 startingLocation;
-    /* 0x43 */ u8 freeFlyId;
-    /* 0x44 */ u8 townFreeFlyId;
-    /* 0x45 */ u16 resortGorgeousMon;
-    /* 0x47 */ u16 introSpecies;
-    /* 0x49 */ u16 pcItemId;
+    /* 0x43 */ u8 startingLocation;
+    /* 0x44 */ u8 freeFlyId;
+    /* 0x45 */ u8 townFreeFlyId;
+    /* 0x46 */ u16 resortGorgeousMon;
+    /* 0x48 */ u16 introSpecies;
+    /* 0x4A */ u16 pcItemId;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem

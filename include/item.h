@@ -77,6 +77,8 @@ bool8 AddBagItem(u16 itemId, u16 count);
 bool8 AddUniqueBagItem(u16 itemId, u16 count);
 void AddProgressivePass(u16 count);
 void AddProgressiveCardKey(u16 count);
+void SetPokemonCenterShopStartingFlags(void);
+void SetPokemonCenterShopFlag(u16 itemId);
 
 void SortPocketAndPlaceHMsFirst(struct BagPocket * pocket);
 u16 BagGetItemIdByPocketPosition(u8 pocketId, u16 itemId);

@@ -19,22 +19,8 @@ CeladonCity_DepartmentStore_4F_EventScript_Clerk::
 	faceplayer
 	message Text_MayIHelpYou
 	waitmessage
-	pokemart CeladonCity_DepartmentStore_4F_EvoItems
+	pokemart SHOP_CELADON_DEPT_EVO_SHOP
 	msgbox Text_PleaseComeAgain
-	release
-	end
-
-	.align 2
-CeladonCity_DepartmentStore_4F_EvoItems::
-	.2byte ITEM_POKE_DOLL
-	.2byte ITEM_RETRO_MAIL
-	.2byte ITEM_FIRE_STONE
-	.2byte ITEM_THUNDER_STONE
-	.2byte ITEM_WATER_STONE
-	.2byte ITEM_LEAF_STONE
-	.2byte ITEM_MOON_STONE
-	.2byte ITEM_SUN_STONE
-	.2byte ITEM_NONE
 	release
 	end
 
@@ -44,20 +30,7 @@ CeladonCity_DepartmentStore_4F_EventScript_Clerk2::
 	faceplayer
 	message Text_MayIHelpYou
 	waitmessage
-	pokemart CeladonCity_DepartmentStore_4F_HeldItems
+	pokemart SHOP_CELADON_DEPT_HELD_SHOP
 	msgbox Text_PleaseComeAgain
-	release
-	end
-
-	.align 2
-CeladonCity_DepartmentStore_4F_HeldItems::
-	.2byte ITEM_KINGS_ROCK
-	.2byte ITEM_METAL_COAT
-	.2byte ITEM_DRAGON_SCALE
-	.2byte ITEM_UP_GRADE
-	.2byte ITEM_DEEP_SEA_SCALE
-	.2byte ITEM_DEEP_SEA_TOOTH
-	.2byte ITEM_HEART_SCALE
-	.2byte ITEM_NONE
 	release
 	end

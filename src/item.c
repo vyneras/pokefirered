@@ -13,6 +13,7 @@
 #include "constants/hold_effects.h"
 #include "constants/items.h"
 #include "constants/maps.h"
+#include "constants/shops.h"
 
 EWRAM_DATA struct BagPocket gBagPockets[NUM_BAG_POCKETS] = {};
 
@@ -39,6 +40,36 @@ const u8 gFlyUnlockNames[NUM_FLY_UNLOCKS][FLY_UNLOCK_NAME_LENGTH + 1] = {
     [ITEM_FLY_SEVEN_ISLAND - FIRST_FLY_UNLOCK_INDEX] = _("SEVEN ISLAND"),
     [ITEM_FLY_ROUTE4 - FIRST_FLY_UNLOCK_INDEX]       = _("ROUTE 4"),
     [ITEM_FLY_ROUTE10 - FIRST_FLY_UNLOCK_INDEX]      = _("ROUTE 10")
+};
+
+const u16 gPokemonCenterShopItems[] = {
+    ITEM_POKE_BALL,
+    ITEM_GREAT_BALL,
+    ITEM_ULTRA_BALL,
+    ITEM_POTION,
+    ITEM_SUPER_POTION,
+    ITEM_HYPER_POTION,
+    ITEM_MAX_POTION,
+    ITEM_FULL_RESTORE,
+    ITEM_REVIVE,
+    ITEM_ANTIDOTE,
+    ITEM_PARALYZE_HEAL,
+    ITEM_AWAKENING,
+    ITEM_BURN_HEAL,
+    ITEM_ICE_HEAL,
+    ITEM_FULL_HEAL,
+    ITEM_ESCAPE_ROPE,
+    ITEM_REPEL,
+    ITEM_SUPER_REPEL,
+    ITEM_MAX_REPEL,
+    ITEM_X_ATTACK,
+    ITEM_X_DEFEND,
+    ITEM_X_SPEED,
+    ITEM_X_SPECIAL,
+    ITEM_X_ACCURACY,
+    ITEM_GUARD_SPEC,
+    ITEM_DIRE_HIT,
+    ITEM_NONE
 };
 
 // Item descriptions and data
@@ -265,6 +296,18 @@ bool8 AddBagItem(u16 itemId, u16 count)
     if (itemId == ITEM_BERRY_POUCH)
         FlagSet(FLAG_SYS_GOT_BERRY_POUCH);
 
+    if (!gArchipelagoOptions.isShopsanity)
+    {
+        if (itemId == ITEM_FIRE_STONE)
+            gSaveBlock2Ptr->shopItemFlags[SHOP_CELADON_DEPT_EVO_SHOP - SHOPSANITY_FIRST_INDEX] |= (1 << 2);
+        else if (itemId == ITEM_THUNDER_STONE)
+            gSaveBlock2Ptr->shopItemFlags[SHOP_CELADON_DEPT_EVO_SHOP - SHOPSANITY_FIRST_INDEX] |= (1 << 3);
+        else if (itemId == ITEM_WATER_STONE)
+            gSaveBlock2Ptr->shopItemFlags[SHOP_CELADON_DEPT_EVO_SHOP - SHOPSANITY_FIRST_INDEX] |= (1 << 4);
+        else if (itemId == ITEM_LEAF_STONE)
+            gSaveBlock2Ptr->shopItemFlags[SHOP_CELADON_DEPT_EVO_SHOP - SHOPSANITY_FIRST_INDEX] |= (1 << 5);
+    }
+
     if (itemId == ITEM_TOWN_MAP)
         SetFlyMapFlag(gArchipelagoOptions.townFreeFlyId);
 
@@ -274,6 +317,7 @@ bool8 AddBagItem(u16 itemId, u16 count)
 
     gBagPockets[pocket].itemSlots[idx].itemId = itemId;
     SetBagItemQuantity(&gBagPockets[pocket].itemSlots[idx].quantity, count);
+    SetPokemonCenterShopFlag(itemId);
     return TRUE;
 }
 
@@ -493,6 +537,42 @@ void AddProgressiveCardKey(u16 count)
 
         gSaveBlock2Ptr->progressiveCardKeyCount++;
         count--;
+    }
+}
+
+void SetPokemonCenterShopStartingFlags()
+{
+    u8 i = 0;
+
+    if (FlagGet(FLAG_BETTER_SHOPS_ENABLED))
+    {
+        while(gPokemonCenterShopItems[i] != ITEM_NONE)
+        {
+            gSaveBlock2Ptr->centerShopItemFlags |= (1 << i);
+            i++;
+        }
+    }
+    else
+    {
+        gSaveBlock2Ptr->centerShopItemFlags |= (1 << 0);
+        gSaveBlock2Ptr->centerShopItemFlags |= (1 << 3);
+        gSaveBlock2Ptr->centerShopItemFlags |= (1 << 9);
+        gSaveBlock2Ptr->centerShopItemFlags |= (1 << 10);
+    }
+}
+
+void SetPokemonCenterShopFlag(u16 itemId)
+{
+    u8 i = 0;
+
+    while(gPokemonCenterShopItems[i] != ITEM_NONE)
+    {
+        if (gPokemonCenterShopItems[i] == itemId)
+        {
+            gSaveBlock2Ptr->centerShopItemFlags |= (1 << i);
+            break;
+        }
+        i++;
     }
 }
 

@@ -112,6 +112,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .flyUnlocks = FALSE,
     .isFamesanity = FALSE,
     .gymKeys = FALSE,
+    .isShopsanity = FALSE,
 
     .removeBadgeRequirement = 0,
     .additionalDarkCaves = 0,

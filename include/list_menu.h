@@ -54,7 +54,7 @@ struct ListMenuTemplate
 {
     /*0x00*/ const struct ListMenuItem *items;
     /*0x04*/ void (* moveCursorFunc)(s32 itemIndex, bool8 onInit, struct ListMenu *list);
-    /*0x08*/ void (* itemPrintFunc)(u8 windowId, u32 itemId, u8 y);
+    /*0x08*/ void (* itemPrintFunc)(u8 windowId, u32 itemId, u8 y, u16 index);
     /*0x0C*/ u16 totalItems;
     /*0x0E*/ u16 maxShowed;
     /*0x10*/ u8 windowId;
@@ -100,6 +100,7 @@ u8 ListMenuInitInRect(const struct ListMenuTemplate *listMenuTemplate, const str
 s32 ListMenu_ProcessInput(u8 listTaskId);
 void DestroyListMenuTask(u8 listTaskId, u16 *cursorPos, u16 *itemsAbove);
 void RedrawListMenu(u8 listTaskId);
+void ListMenuGetCurrentItemArrayId(u8 listTaskId, u16 *arrayId);
 void ListMenuGetScrollAndRow(u8 listTaskId, u16 *cursorPos, u16 *itemsAbove);
 u16 ListMenuGetYCoordForPrintingArrowCursor(u8 listTaskId);
 void ListMenuOverrideSetColors(u8 cursorPal, u8 fillValue, u8 cursorShadowPal);

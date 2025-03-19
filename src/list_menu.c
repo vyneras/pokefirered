@@ -289,7 +289,7 @@ static s32 ListMenuTestInput(struct ListMenuTemplate *template, u32 cursorPos, u
     return LIST_NOTHING_CHOSEN;
 }
 
-static void ListMenuGetCurrentItemArrayId(u8 listTaskId, u16 *arrayId)
+void ListMenuGetCurrentItemArrayId(u8 listTaskId, u16 *arrayId)
 {
     struct ListMenu *list = (struct ListMenu *)gTasks[listTaskId].data;
 
@@ -377,7 +377,7 @@ static void ListMenuPrintEntries(struct ListMenu *list, u16 startIndex, u16 yOff
             x = list->template.header_X;
         y = (yOffset + i) * yMultiplier + list->template.upText_Y;
         if (list->template.itemPrintFunc != NULL)
-            list->template.itemPrintFunc(list->template.windowId, list->template.items[startIndex].index, y);
+            list->template.itemPrintFunc(list->template.windowId, list->template.items[startIndex].index, y, startIndex);
         ListMenuPrint(list, list->template.items[startIndex].label, x, y);
         startIndex++;
     }

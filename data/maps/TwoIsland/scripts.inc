@@ -134,70 +134,26 @@ TwoIsland_EventScript_ClerkShopSkipIntro::
 	end
 
 TwoIsland_EventScript_ShopInitial::
-	pokemart TwoIsland_Items_ShopInitial
+	pokemart SHOP_TWO_ISLAND_INITIAL
 	msgbox Text_PleaseComeAgain
-	release
-	end
-
-	.align 2
-TwoIsland_Items_ShopInitial::
-	.2byte ITEM_GREAT_BALL
-	.2byte ITEM_FRESH_WATER
-	.2byte ITEM_NONE
 	release
 	end
 
 TwoIsland_EventScript_ShopExpanded1::
-	pokemart TwoIsland_Items_ShopExpanded1
+	pokemart SHOP_TWO_ISLAND_EXPANDED_1
 	msgbox Text_PleaseComeAgain
-	release
-	end
-
-	.align 2
-TwoIsland_Items_ShopExpanded1::
-	.2byte ITEM_GREAT_BALL
-	.2byte ITEM_ULTRA_BALL
-	.2byte ITEM_SODA_POP
-	.2byte ITEM_FRESH_WATER
-	.2byte ITEM_NONE
 	release
 	end
 
 TwoIsland_EventScript_ShopExpanded2::
-	pokemart TwoIsland_Items_ShopExpanded2
+	pokemart SHOP_TWO_ISLAND_EXPANDED_2
 	msgbox Text_PleaseComeAgain
-	release
-	end
-
-	.align 2
-TwoIsland_Items_ShopExpanded2::
-	.2byte ITEM_GREAT_BALL
-	.2byte ITEM_ULTRA_BALL
-	.2byte ITEM_LEMONADE
-	.2byte ITEM_SODA_POP
-	.2byte ITEM_FRESH_WATER
-	.2byte ITEM_MOOMOO_MILK
-	.2byte ITEM_NONE
 	release
 	end
 
 TwoIsland_EventScript_ShopExpanded3::
-	pokemart TwoIsland_Items_ShopExpanded3
+	pokemart SHOP_TWO_ISLAND_EXPANDED_3
 	msgbox Text_PleaseComeAgain
-	release
-	end
-
-	.align 2
-TwoIsland_Items_ShopExpanded3::
-	.2byte ITEM_ULTRA_BALL
-	.2byte ITEM_TIMER_BALL
-	.2byte ITEM_REPEAT_BALL
-	.2byte ITEM_LEMONADE
-	.2byte ITEM_SODA_POP
-	.2byte ITEM_FRESH_WATER
-	.2byte ITEM_MOOMOO_MILK
-	.2byte ITEM_LAVA_COOKIE
-	.2byte ITEM_NONE
 	release
 	end
 

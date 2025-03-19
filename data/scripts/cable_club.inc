@@ -843,20 +843,15 @@ CableClub_EventScript_FightPokemon::
 	return
 
 CableClub_EventScript_DirectCornerAttendant::
-	goto_if_questlog EventScript_ReleaseEnd
-	special QuestLog_CutRecording
 	lock
 	faceplayer
-	goto_if_unset FLAG_SYS_POKEDEX_GET, CableClub_EventScript_WirelessClubAdjustements
-	specialvar VAR_RESULT, IsBadEggInParty
-	goto_if_eq VAR_RESULT, TRUE, CableClub_EventScript_AbortLinkPlayerHasBadEgg
-	specialvar VAR_RESULT, IsWirelessAdapterConnected
-	goto_if_eq VAR_RESULT, FALSE, CableClub_EventScript_WelcomeToCableClub
-	message CableClub_Text_WelcomeWhichDirectCornerRoom
+	goto_if_questlog EventScript_ReleaseEnd
+	message Text_MayIHelpYou
 	waitmessage
-	delay 15
-	goto CableClub_EventScript_DirectCornerSelectService
-	end
+	pokemart SHOP_POKEMON_CENTER
+	msgbox Text_PleaseComeAgain
+	release
+	return
 
 CableClub_EventScript_DirectCornerSelectService::
 	checkitem ITEM_POWDER_JAR

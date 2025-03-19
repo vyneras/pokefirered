@@ -7,6 +7,7 @@
 #include "constants/global.h"
 #include "constants/flags.h"
 #include "constants/vars.h"
+#include "constants/shops.h"
 #include "constants/species.h"
 #include "constants/pokedex.h"
 #include "constants/easy_chat.h"
@@ -359,7 +360,9 @@ struct SaveBlock2
     /*0xAF0*/ struct BerryCrush berryCrush;
     /*0xB00*/ struct PokemonJumpRecords pokeJump;
     /*0xB10*/ struct BerryPickingResults berryPick;
-    /*0xB20*/ u8 filler_B20[0x400];
+    /*0xB20*/ u16 shopItemFlags[SHOPSANITY_LAST_INDEX];
+    /*0XB50*/ u32 centerShopItemFlags;
+    /*0xB54*/ u8 filler_B54[0x3CC];
     /*0xF20*/ u32 encryptionKey;
 }; // size: 0xF24
 

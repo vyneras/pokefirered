@@ -19,24 +19,10 @@ CeladonCity_DepartmentStore_2F_EventScript_ClerkItems::
 	faceplayer
 	message Text_MayIHelpYou
 	waitmessage
-	goto_if_set FLAG_BETTER_SHOPS_ENABLED, Poke_Mart_EventScript_BetterItems
-	pokemart CeladonCity_DepartmentStore_2F_Items
+	specialvar VAR_RESULT, ArchipelagoSpecial_UseBetterShops
+	goto_if_eq VAR_RESULT, TRUE, Poke_Mart_EventScript_BetterItems
+	pokemart SHOP_CELADON_DEPT_ITEM_SHOP
 	msgbox Text_PleaseComeAgain
-	release
-	end
-
-	.align 2
-CeladonCity_DepartmentStore_2F_Items::
-	.2byte ITEM_GREAT_BALL
-	.2byte ITEM_SUPER_POTION
-	.2byte ITEM_REVIVE
-	.2byte ITEM_ANTIDOTE
-	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_AWAKENING
-	.2byte ITEM_BURN_HEAL
-	.2byte ITEM_ICE_HEAL
-	.2byte ITEM_SUPER_REPEL
-	.2byte ITEM_NONE
 	release
 	end
 
@@ -46,19 +32,7 @@ CeladonCity_DepartmentStore_2F_EventScript_ClerkTMs::
 	faceplayer
 	message Text_MayIHelpYou
 	waitmessage
-	pokemart CeladonCity_DepartmentStore_2F_TMs
+	pokemart SHOP_CELADON_DEPT_TM_SHOP
 	msgbox Text_PleaseComeAgain
-	release
-	end
-
-	.align 2
-CeladonCity_DepartmentStore_2F_TMs::
-	.2byte ITEM_TM05
-	.2byte ITEM_TM15
-	.2byte ITEM_TM28
-	.2byte ITEM_TM31
-	.2byte ITEM_TM43
-	.2byte ITEM_TM45
-	.2byte ITEM_NONE
 	release
 	end
