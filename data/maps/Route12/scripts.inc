@@ -47,10 +47,10 @@ Archipelago_Target_Static_Encounter_ROUTE12_SNORLAX::
 	setflag FLAG_WOKE_UP_ROUTE_12_SNORLAX
 	dowildbattle
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
-	msgbox Text_SnorlaxReturnedToMountains
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, Route12_EventScript_CaughtSnorlax
 	setflag FLAG_ROUTE_12_SNORLAX_IS_RECOVERING
+	msgbox Text_SnorlaxReturnedToMountains
 	release
 	end
 

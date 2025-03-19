@@ -65,10 +65,10 @@ Archipelago_Target_Static_Encounter_ROUTE16_SNORLAX::
 	setflag FLAG_SYS_SPECIAL_WILD_BATTLE
 	dowildbattle
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
-	msgbox Text_SnorlaxReturnedToMountains
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, Route16_EventScript_CaughtSnorlax
 	setflag FLAG_ROUTE_16_SNORLAX_IS_RECOVERING
+	msgbox Text_SnorlaxReturnedToMountains
 	release
 	end
 
