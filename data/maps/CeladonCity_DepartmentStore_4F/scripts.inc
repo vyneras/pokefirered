@@ -19,7 +19,7 @@ CeladonCity_DepartmentStore_4F_EventScript_Clerk::
 	faceplayer
 	message Text_MayIHelpYou
 	waitmessage
-	pokemart SHOP_CELADON_DEPT_EVO_SHOP
+	pokemart SHOP_CELADON_CITY_DEPT_EVO
 	msgbox Text_PleaseComeAgain
 	release
 	end
@@ -30,7 +30,7 @@ CeladonCity_DepartmentStore_4F_EventScript_Clerk2::
 	faceplayer
 	message Text_MayIHelpYou
 	waitmessage
-	pokemart SHOP_CELADON_DEPT_HELD_SHOP
+	pokemart SHOP_CELADON_CITY_DEPT_HELD
 	msgbox Text_PleaseComeAgain
 	release
 	end

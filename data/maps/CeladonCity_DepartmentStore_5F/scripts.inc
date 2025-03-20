@@ -21,7 +21,7 @@ CeladonCity_DepartmentStore_5F_EventScript_ClerkXItems::
 	waitmessage
 	specialvar VAR_RESULT, ArchipelagoSpecial_UseBetterShops
 	goto_if_eq VAR_RESULT, TRUE, Poke_Mart_EventScript_BetterItems
-	pokemart SHOP_CELADON_DEPT_BATTLE_SHOP
+	pokemart SHOP_CELADON_CITY_DEPT_BATTLE
 	msgbox Text_PleaseComeAgain
 	release
 	end
@@ -32,7 +32,7 @@ CeladonCity_DepartmentStore_5F_EventScript_ClerkVitamins::
 	faceplayer
 	message Text_MayIHelpYou
 	waitmessage
-	pokemart SHOP_CELADON_DEPT_VITAMIN_SHOP
+	pokemart SHOP_CELADON_CITY_DEPT_VITAMIN
 	msgbox Text_PleaseComeAgain
 	release
 	end

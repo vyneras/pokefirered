@@ -8,13 +8,23 @@
 #include <string>
 #include <regex>
 #include <sstream>
+#include <tuple>
 
 #include <json.hpp>
 using json = nlohmann::json;
 
 #define ROM_START 0x8000000
 #define DEXSANITY_FLAGS_START 0x5000
+#define SHOPSANITY_FLAGS_START 0x5200
 #define FAMESANITY_FLAGS_START 0x6000
+
+struct ShopData
+{
+    std::string shop_name;
+    std::string address_name;
+    uint8_t item_count;
+    uint8_t flag_offset;
+};
 
 std::map<int, std::string> GAME_VERSION_MAP = {
     {0, "firered"},
@@ -340,6 +350,29 @@ const std::vector<std::string> FAME_CHECKER_PEOPLE = {
     "FAME_CHECKER_GIOVANNI"
 };
 
+const std::vector<ShopData> SHOP_DATA = {
+    {"SHOP_VIRIDIAN_CITY", "sViridianShop", 4, 0},
+    {"SHOP_PEWTER_CITY", "sPewterShop", 8, 1},
+    {"SHOP_CERULEAN_CITY", "sCeruleanShop", 9, 2},
+    {"SHOP_VERMILION_CITY", "sVermilionShop", 7, 3},
+    {"SHOP_LAVENDER_TOWN", "sLavenderShop", 9, 4},
+    {"SHOP_CELADON_CITY_DEPT_ITEM", "sCeladonDeptItemShop", 9, 5},
+    {"SHOP_CELADON_CITY_DEPT_TM", "sCeladonDeptTMShop", 6, 6},
+    {"SHOP_CELADON_CITY_DEPT_EVO", "sCeladonDeptEvoShop", 6, 7},
+    {"SHOP_CELADON_CITY_DEPT_BATTLE", "sCeladonDeptBattleShop", 7, 9},
+    {"SHOP_CELADON_CITY_DEPT_VITAMIN", "sCeladonDeptVitaminShop", 6, 10},
+    {"SHOP_FUCHSIA_CITY", "sFuchsiaShop", 6, 11},
+    {"SHOP_SAFFRON_CITY", "sSaffronShop", 6, 12},
+    {"SHOP_CINNABAR_ISLAND", "sCinnabarShop", 7, 13},
+    {"SHOP_INDIGO_PLATEAU", "sIndigoShop", 7, 14},
+    {"SHOP_TWO_ISLAND", "sTwoIslandShopExpanded3", 9, 18},
+    {"SHOP_THREE_ISLAND", "sThreeIslandShop", 6, 19},
+    {"SHOP_FOUR_ISLAND", "sFourIslandShop", 8, 20},
+    {"SHOP_SIX_ISLAND", "sSixIslandShop", 8, 21},
+    {"SHOP_SEVEN_ISLAND", "sSevenIslandShop", 9, 22},
+    {"SHOP_TRAINER_TOWER", "sTrainerTowerShop", 9, 23}
+};
+
 const std::vector<std::string> STARTER_POKEMON_NAMES = {
     "STARTER_POKEMON_BULBASAUR",
     "STARTER_POKEMON_SQUIRTLE",
@@ -374,6 +407,7 @@ int main (int argc, char *argv[])
 
     std::map<std::string, std::map<std::string, uint32_t>> misc_ram_addresses;
     std::map<std::string, std::map<std::string, uint32_t>> misc_rom_addresses;
+    std::map<std::string, std::map<std::string, uint32_t>> shop_addresses;
     std::map<std::string, std::shared_ptr<LocationInfo>> npc_gifts;
     std::map<std::string, std::shared_ptr<LocationInfo>> fly_unlocks;
     std::map<std::string, std::shared_ptr<LocationInfo>> badges;
@@ -383,6 +417,7 @@ int main (int argc, char *argv[])
     std::map<std::string, std::shared_ptr<LocationInfo>> trainer_rewards;
     std::map<std::string, std::shared_ptr<LocationInfo>> ball_items;
     std::map<std::string, std::shared_ptr<LocationInfo>> hidden_items;
+    std::map<std::string, std::shared_ptr<LocationInfo>> shop_items;
     std::map<std::string, std::shared_ptr<MapInfo>> maps;
     std::vector<std::shared_ptr<WarpInfo>> warps;
     std::map<std::string, std::shared_ptr<StarterPokemonInfo>> starter_pokemon;
@@ -657,6 +692,36 @@ int main (int argc, char *argv[])
                 dex_reward->address[GAME_REVISION_MAP[i]] = symbol_map["sPokedexRewards"] + (j * 2) - ROM_START;
                 dex_reward->default_item = constants_json["ITEM_NONE"];
                 dex_rewards[dex_reward->name] = dex_reward;
+            }
+        }
+
+        // Shop Items
+        for (size_t j = 0; j < SHOP_DATA.size(); j++)
+        {
+            std::string shop_name = SHOP_DATA[j].shop_name;
+            std::string address_name = SHOP_DATA[j].address_name;
+            uint16_t flag_start = SHOPSANITY_FLAGS_START + (SHOP_DATA[j].flag_offset * 16);
+
+            shop_addresses[GAME_REVISION_MAP[i]][address_name] = symbol_map[address_name] - ROM_START;
+
+            for (size_t k = 0; k < SHOP_DATA[j].item_count; k++)
+            {
+                auto shop_item = shop_items[shop_name + "_" + std::to_string(k + 1)];
+
+                if (shop_item != nullptr)
+                {
+                    shop_item->address[GAME_REVISION_MAP[i]] = symbol_map[address_name] + (k * 8) - ROM_START;
+                }
+                else
+                {
+                    shop_item = std::make_shared<LocationInfo>();
+                    shop_item->name = shop_name + "_" + std::to_string(k + 1);
+                    shop_item->flag = flag_start + k;
+                    shop_item->address[GAME_REVISION_MAP[i]] = symbol_map[address_name] + (k * 8) - ROM_START;
+                    rom.seekg(shop_item->address[GAME_REVISION_MAP[i]], std::ios::beg);
+                    rom.read((char*)&(shop_item->default_item), 2);
+                    shop_items[shop_item->name] = shop_item;
+                }
             }
         }
 
@@ -1679,10 +1744,14 @@ int main (int argc, char *argv[])
     {
         locations_json[location->name] = location->to_json();
     }
-     for (const auto& [name, location]: dex_rewards)
-     {
-         locations_json[location->name] = location->to_json();
-     }
+    for (const auto& [name, location]: dex_rewards)
+    {
+        locations_json[location->name] = location->to_json();
+    }
+    for (const auto& [name, location]: shop_items)
+    {
+        locations_json[location->name] = location->to_json();
+    }
     for (const auto& [name, location]: trainer_rewards)
     {
         locations_json[location->name] = location->to_json();
@@ -1731,6 +1800,7 @@ int main (int argc, char *argv[])
         { "legendary_pokemon", legendary_pokemon_json },
         { "misc_ram_addresses", misc_ram_addresses },
         { "misc_rom_addresses", misc_rom_addresses },
+        { "shop_addresses", shop_addresses },
         { "locations", locations_json },
         { "warps", warp_destinations },
         { "species", species_json },

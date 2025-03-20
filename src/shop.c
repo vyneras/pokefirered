@@ -378,13 +378,6 @@ static const struct ShopItem sCeladonDeptVitaminShop[] = {
     {ITEM_NONE, 0, TRUE}
 };
 
-static const struct ShopItem sCeladonDeptVendingShop[] = {
-    {ITEM_FRESH_WATER, 0, TRUE},
-    {ITEM_SODA_POP, 0, TRUE},
-    {ITEM_LEMONADE, 0, TRUE},
-    {ITEM_NONE, 0, TRUE}
-};
-
 static const struct ShopItem sFuchsiaShop[] = {
     {ITEM_GREAT_BALL, 0, TRUE},
     {ITEM_ULTRA_BALL, 0, TRUE},
@@ -619,17 +612,17 @@ static const struct ShopItem* GetShopItemsFromShopId(u8 shopId)
         return sVermilionShop;
     case SHOP_LAVENDER_TOWN:
         return sLavenderShop;
-    case SHOP_CELADON_DEPT_ITEM_SHOP:
+    case SHOP_CELADON_CITY_DEPT_ITEM:
         return sCeladonDeptItemShop;
-    case SHOP_CELADON_DEPT_TM_SHOP:
+    case SHOP_CELADON_CITY_DEPT_TM:
         return sCeladonDeptTMShop;
-    case SHOP_CELADON_DEPT_EVO_SHOP:
+    case SHOP_CELADON_CITY_DEPT_EVO:
         return sCeladonDeptEvoShop;
-    case SHOP_CELADON_DEPT_HELD_SHOP:
+    case SHOP_CELADON_CITY_DEPT_HELD:
         return sCeladonDeptHeldShop;
-    case SHOP_CELADON_DEPT_BATTLE_SHOP:
+    case SHOP_CELADON_CITY_DEPT_BATTLE:
         return sCeladonDeptBattleShop;
-    case SHOP_CELADON_DEPT_VITAMIN_SHOP:
+    case SHOP_CELADON_CITY_DEPT_VITAMIN:
         return sCeladonDeptVitaminShop;
     case SHOP_FUCHSIA_CITY:
         return sFuchsiaShop;

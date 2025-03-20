@@ -302,13 +302,13 @@ bool8 AddBagItem(u16 itemId, u16 count)
     if (!gArchipelagoOptions.isShopsanity)
     {
         if (itemId == ITEM_FIRE_STONE)
-            gSaveBlock2Ptr->shopItemFlags[SHOP_CELADON_DEPT_EVO_SHOP - SHOPSANITY_FIRST_INDEX] |= (1 << 2);
+            gSaveBlock2Ptr->shopItemFlags[SHOP_CELADON_CITY_DEPT_EVO - SHOPSANITY_FIRST_INDEX] |= (1 << 2);
         else if (itemId == ITEM_THUNDER_STONE)
-            gSaveBlock2Ptr->shopItemFlags[SHOP_CELADON_DEPT_EVO_SHOP - SHOPSANITY_FIRST_INDEX] |= (1 << 3);
+            gSaveBlock2Ptr->shopItemFlags[SHOP_CELADON_CITY_DEPT_EVO - SHOPSANITY_FIRST_INDEX] |= (1 << 3);
         else if (itemId == ITEM_WATER_STONE)
-            gSaveBlock2Ptr->shopItemFlags[SHOP_CELADON_DEPT_EVO_SHOP - SHOPSANITY_FIRST_INDEX] |= (1 << 4);
+            gSaveBlock2Ptr->shopItemFlags[SHOP_CELADON_CITY_DEPT_EVO - SHOPSANITY_FIRST_INDEX] |= (1 << 4);
         else if (itemId == ITEM_LEAF_STONE)
-            gSaveBlock2Ptr->shopItemFlags[SHOP_CELADON_DEPT_EVO_SHOP - SHOPSANITY_FIRST_INDEX] |= (1 << 5);
+            gSaveBlock2Ptr->shopItemFlags[SHOP_CELADON_CITY_DEPT_EVO - SHOPSANITY_FIRST_INDEX] |= (1 << 5);
     }
 
     if (itemId == ITEM_TOWN_MAP)
