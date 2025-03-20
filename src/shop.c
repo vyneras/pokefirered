@@ -524,6 +524,39 @@ static const struct ShopItem sTrainerTowerShop[] = {
     {ITEM_NONE, 0, TRUE}
 };
 
+static const struct ShopItem sPokemonCenterShop[] = {
+    {ITEM_POKE_BALL, 0, TRUE},
+    {ITEM_GREAT_BALL, 0, TRUE},
+    {ITEM_ULTRA_BALL, 0, TRUE},
+    {ITEM_POTION, 0, TRUE},
+    {ITEM_SUPER_POTION, 0, TRUE},
+    {ITEM_HYPER_POTION, 0, TRUE},
+    {ITEM_MAX_POTION, 0, TRUE},
+    {ITEM_FULL_RESTORE, 0, TRUE},
+    {ITEM_REVIVE, 0, TRUE},
+    {ITEM_ANTIDOTE, 0, TRUE},
+    {ITEM_PARALYZE_HEAL, 0, TRUE},
+    {ITEM_AWAKENING, 0, TRUE},
+    {ITEM_BURN_HEAL, 0, TRUE},
+    {ITEM_ICE_HEAL, 0, TRUE},
+    {ITEM_FULL_HEAL, 0, TRUE},
+    {ITEM_ESCAPE_ROPE, 0, TRUE},
+    {ITEM_REPEL, 0, TRUE},
+    {ITEM_SUPER_REPEL, 0, TRUE},
+    {ITEM_MAX_REPEL, 0, TRUE},
+    {ITEM_X_ATTACK, 0, TRUE},
+    {ITEM_X_DEFEND, 0, TRUE},
+    {ITEM_X_SPEED, 0, TRUE},
+    {ITEM_X_SPECIAL, 0, TRUE},
+    {ITEM_X_ACCURACY, 0, TRUE},
+    {ITEM_GUARD_SPEC, 0, TRUE},
+    {ITEM_DIRE_HIT, 0, TRUE},
+    {ITEM_LEMONADE, 0, TRUE},
+    {ITEM_SODA_POP, 0, TRUE},
+    {ITEM_FRESH_WATER, 0, TRUE},
+    {ITEM_NONE, 0, TRUE}
+};
+
 static const struct TwoIslandShopIndex sTwoIslandShopIndexes[TWO_ISLAND_SHOP_ITEM_COUNT] = {
     { 0,  0,  0, 0},
     {-1,  1,  1, 1},
@@ -575,7 +608,6 @@ static const struct ShopItem* GetShopItemsFromShopId(u8 shopId)
     switch (shopId)
     {
     case SHOP_BETTER:
-    case SHOP_POKEMON_CENTER:
         return sBetterShop;
     case SHOP_VIRIDIAN_CITY:
         return sViridianShop;
@@ -625,6 +657,8 @@ static const struct ShopItem* GetShopItemsFromShopId(u8 shopId)
         return sSevenIslandShop;
     case SHOP_TRAINER_TOWER:
         return sTrainerTowerShop;
+    case SHOP_POKEMON_CENTER:
+        return sPokemonCenterShop;
     default:
         break;
     }
