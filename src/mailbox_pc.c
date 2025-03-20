@@ -11,7 +11,7 @@
 static EWRAM_DATA u8 sWindowIds[3] = {};
 static EWRAM_DATA struct ListMenuItem * sListMenuItems = NULL;
 
-static void MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu * list);
+static void MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu * list, u16 index);
 
 static const struct WindowTemplate sWindowTemplates[] = {
     {
@@ -123,7 +123,7 @@ u8 MailboxPC_InitListMenu(struct PlayerPCItemPageStruct * playerPcStruct)
     return ListMenuInit(&gMultiuseListMenuTemplate, playerPcStruct->cursorPos, playerPcStruct->itemsAbove);
 }
 
-static void MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu * list)
+static void MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu * list, u16 index)
 {
     if (onInit != TRUE)
         PlaySE(SE_SELECT);

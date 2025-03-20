@@ -64,7 +64,7 @@ static bool8 ItemPc_InitBgs(void);
 static bool8 ItemPc_LoadGraphics(void);
 static bool8 ItemPc_AllocateResourcesForListMenu(void);
 static void ItemPc_BuildListMenuTemplate(void);
-static void ItemPc_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu * list);
+static void ItemPc_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu * list, u16 index);
 static void ItemPc_ItemPrintFunc(u8 windowId, u32 itemId, u8 y, u16 index);
 static void ItemPc_PrintOrRemoveCursorAt(u8 y, u8 state);
 static void ItemPc_PrintWithdrawItem(void);
@@ -509,7 +509,7 @@ static void ItemPc_BuildListMenuTemplate(void)
     gMultiuseListMenuTemplate.cursorKind = 0;
 }
 
-static void ItemPc_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu * list)
+static void ItemPc_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu * list, u16 index)
 {
     u16 itemId;
     const u8 * desc;
@@ -525,6 +525,8 @@ static void ItemPc_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *
             CreateItemMenuIcon(itemId, sStateDataPtr->itemMenuIconSlot);
             if (ItemId_GetPocket(itemId) == POCKET_TM_CASE)
                 desc = gMoveNames[ItemIdToBattleMoveId(itemId)];
+            else if (itemId == ITEM_ARCHIPELAGO_PROGRESSION)
+                desc = ItemId_GetAPItemDescription(FLAG_GOT_PC_POTION);
             else
                 desc = ItemId_GetDescription(itemId);
         }

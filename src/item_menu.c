@@ -85,7 +85,7 @@ static u8 CreateBagInputHandlerTask(u8 location);
 static bool8 TryAllocListMenuBuffers(void);
 static void Bag_BuildListMenuTemplate(u8 pocket);
 static void BagListMenuGetItemNameColored(u8 *dest, u16 itemId);
-static void BagListMenuMoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list);
+static void BagListMenuMoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list, u16 index);
 static void BagListMenuItemPrintFunc(u8 windowId, u32 itemId, u8 y, u16 index);
 static void bag_menu_print_cursor(u8 y, u8 colorIdx);
 static void PrintBagPocketName(void);
@@ -674,7 +674,7 @@ static void BagListMenuGetItemNameColored(u8 *dest, u16 itemId)
     StringAppend(dest, ItemId_GetName(itemId));
 }
 
-static void BagListMenuMoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list)
+static void BagListMenuMoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list, u16 index)
 {
     if (onInit != TRUE)
     {

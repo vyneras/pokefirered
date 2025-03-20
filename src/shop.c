@@ -26,6 +26,7 @@
 #include "money.h"
 #include "quest_log.h"
 #include "script.h"
+#include "constants/flags.h"
 #include "constants/shops.h"
 #include "constants/songs.h"
 #include "constants/items.h"
@@ -129,7 +130,7 @@ static void RecolorItemDescriptionBox(bool32 a0);
 static void BuyMenuDrawGraphics(void);
 static bool8 BuyMenuBuildListMenuTemplate(void);
 static void PokeMartWriteNameAndIdAt(struct ListMenuItem *list, u16 index, u8 *dst);
-static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, struct ListMenu *list);
+static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, struct ListMenu *list, u16 index);
 static void BuyMenuPrintPriceInList(u8 windowId, u32 item, u8 y, u16 index);
 static void LoadTmHmNameInMart(s32 item);
 static void BuyMenuPrintCursor(u8 listTaskId, u8 a1);
@@ -997,7 +998,7 @@ static void PokeMartWriteNameAndIdAt(struct ListMenuItem *list, u16 index, u8 *d
     list->index = index;
 }
 
-static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, struct ListMenu *list)
+static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, struct ListMenu *list, u16 index)
 {
     const u8 *description;
 
@@ -1005,7 +1006,10 @@ static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, s
         PlaySE(SE_SELECT);
 
     if (item != INDEX_CANCEL)
-        description = ItemId_GetDescription(item);
+    	if (item == ITEM_ARCHIPELAGO_PROGRESSION)
+    		description = ItemId_GetAPItemDescription(SHOPSANITY_FLAGS_START + sShopData.shopId - SHOPSANITY_FIRST_INDEX + index);
+    	else
+        	description = ItemId_GetDescription(item);
     else
         description = gText_QuitShopping;
 

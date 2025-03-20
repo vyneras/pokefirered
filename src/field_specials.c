@@ -68,7 +68,7 @@ static void AnimateElevatorWindowView(u16 nfloors, bool8 direction);
 static void Task_AnimateElevatorWindowView(u8 taskId);
 static void Task_CreateScriptListMenu(u8 taskId);
 static void CreateScriptListMenu(void);
-static void ScriptListMenuMoveCursorFunction(s32 nothing, bool8 is, struct ListMenu * used);
+static void ScriptListMenuMoveCursorFunction(s32 nothing, bool8 is, struct ListMenu * used, u16 index);
 static void Task_ListMenuHandleInput(u8 taskId);
 static void Task_DestroyListMenu(u8 taskId);
 static void Task_SuspendListMenu(u8 taskId);
@@ -1390,7 +1390,7 @@ static void CreateScriptListMenu(void)
     sFieldSpecialsListMenuTemplate.cursorKind = 0;
 }
 
-static void ScriptListMenuMoveCursorFunction(s32 nothing, bool8 is, struct ListMenu * used)
+static void ScriptListMenuMoveCursorFunction(s32 nothing, bool8 is, struct ListMenu * used, u16 index)
 {
     u8 taskId;
     struct Task *task;

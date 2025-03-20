@@ -53,7 +53,7 @@ enum ListMenuFields
 struct ListMenuTemplate
 {
     /*0x00*/ const struct ListMenuItem *items;
-    /*0x04*/ void (* moveCursorFunc)(s32 itemIndex, bool8 onInit, struct ListMenu *list);
+    /*0x04*/ void (* moveCursorFunc)(s32 itemIndex, bool8 onInit, struct ListMenu *list, u16 index);
     /*0x08*/ void (* itemPrintFunc)(u8 windowId, u32 itemId, u8 y, u16 index);
     /*0x0C*/ u16 totalItems;
     /*0x0E*/ u16 maxShowed;
@@ -104,7 +104,7 @@ void ListMenuGetCurrentItemArrayId(u8 listTaskId, u16 *arrayId);
 void ListMenuGetScrollAndRow(u8 listTaskId, u16 *cursorPos, u16 *itemsAbove);
 u16 ListMenuGetYCoordForPrintingArrowCursor(u8 listTaskId);
 void ListMenuOverrideSetColors(u8 cursorPal, u8 fillValue, u8 cursorShadowPal);
-void ListMenuDefaultCursorMoveFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list);
+void ListMenuDefaultCursorMoveFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list, u16 index);
 void ListMenuSetTemplateField(u8 taskId, u8 field, s32 value);
 
 #endif //GUARD_LIST_MENU_H

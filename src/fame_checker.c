@@ -106,7 +106,7 @@ static void UpdateIconDescriptionBoxOff(void);
 static void FC_CreateListMenu(void);
 static void SpriteCB_FCSpinningPokeball(struct Sprite *sprite);
 static void InitListMenuTemplate(void);
-static void FC_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu * list);
+static void FC_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu * list, u16 index);
 static void Task_SwitchToPickMode(u8 taskId);
 static void PrintCancelDescription(void);
 static void FC_DoMoveCursor(s32 itemIndex, bool8 onInit);
@@ -1470,7 +1470,7 @@ static void InitListMenuTemplate(void)
     gFameChecker_ListMenuTemplate.cursorKind = 0;
 }
 
-static void FC_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list)
+static void FC_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list, u16 index)
 {
     u16 listMenuTopIdx;
     u8 taskId;

@@ -82,7 +82,7 @@ static void TeachyTvSetupBg(void);
 static void TeachyTvLoadGraphic(void);
 static void TeachyTvPostBattleFadeControl(u8);
 static void TeachyTvOptionListController(u8);
-static void TeachyTvAudioByInput(s32, bool8, struct ListMenu *);
+static void TeachyTvAudioByInput(s32, bool8, struct ListMenu *, u16);
 static void TeachyTvQuitFadeControlAndTaskDel(u8 taskId);
 static void TeachyTvRenderMsgAndSwitchClusterFuncs(u8 taskId);
 static void TeachyTvClearBg1EndGraphicText(void);
@@ -587,7 +587,7 @@ static void TeachyTvRemoveScrollIndicatorArrowPair(void)
     }
 }
 
-static void TeachyTvAudioByInput(s32 notUsed, bool8 play, struct ListMenu *notUsedAlt)
+static void TeachyTvAudioByInput(s32 notUsed, bool8 play, struct ListMenu *notUsedAlt, u16 index)
 {
     if (play != TRUE)
         PlaySE(SE_SELECT);

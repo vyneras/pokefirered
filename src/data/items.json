@@ -1798,7 +1798,7 @@
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
-      "description_english": "An item that belongs to someone\\nfrom another world.",
+      "description_english": "An item from another world.",
       "importance": 1,
       "registrability": 0,
       "pocket": "POCKET_KEY_ITEMS",

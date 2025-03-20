@@ -137,7 +137,7 @@ void DexScreen_CreateCategoryPageSpeciesList(u8 category, u8 pageNum);
 static u8 DexScreen_PageNumberToRenderablePages(u16 page);
 void DexScreen_InputHandler_StartToCry(void);
 void DexScreen_PrintStringWithAlignment(const u8 *str, s32 mode);
-static void MoveCursorFunc_DexModeSelect(s32 itemIndex, bool8 onInit, struct ListMenu *list);
+static void MoveCursorFunc_DexModeSelect(s32 itemIndex, bool8 onInit, struct ListMenu *list, u16 index);
 static void ItemPrintFunc_DexModeSelect(u8 windowId, u32 itemId, u8 y, u16 index);
 static void ItemPrintFunc_OrderedListMenu(u8 windowId, u32 itemId, u8 y, u16 index);
 static void Task_DexScreen_RegisterNonKantoMonBeforeNationalDex(u8 taskId);
@@ -1183,7 +1183,7 @@ static void DexScreen_InitGfxForTopMenu(void)
     CopyWindowToVram(sPokedexScreenData->dexCountsWindowId, COPYWIN_GFX);
 }
 
-static void MoveCursorFunc_DexModeSelect(s32 itemIndex, bool8 onInit, struct ListMenu *list)
+static void MoveCursorFunc_DexModeSelect(s32 itemIndex, bool8 onInit, struct ListMenu *list, u16 index)
 {
     if (!onInit)
         PlaySE(SE_SELECT);

@@ -611,7 +611,7 @@ static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAn
 static void ListMenuCallSelectionChangedCallback(struct ListMenu *list, u8 onInit)
 {
     if (list->template.moveCursorFunc != NULL)
-        list->template.moveCursorFunc(list->template.items[list->cursorPos + list->itemsAbove].index, onInit, list);
+        list->template.moveCursorFunc(list->template.items[list->cursorPos + list->itemsAbove].index, onInit, list, list->cursorPos + list->itemsAbove);
 }
 
 void ListMenuOverrideSetColors(u8 cursorPal, u8 fillValue, u8 cursorShadowPal)
@@ -622,7 +622,7 @@ void ListMenuOverrideSetColors(u8 cursorPal, u8 fillValue, u8 cursorShadowPal)
     gListMenuOverride.enabled = TRUE;
 }
 
-void ListMenuDefaultCursorMoveFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list)
+void ListMenuDefaultCursorMoveFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list, u16 index)
 {
     if (!onInit)
         PlaySE(SE_SELECT);

@@ -166,7 +166,7 @@ static void MoveRelearnerMenuHandleInput(void);
 static void MoveLearnerInitListMenu(void);
 static void LoadMoveInfoUI(void);
 static void PrintMoveInfoHandleCancel_CopyToVram(void);
-static void MoveRelearnerMenu_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list);
+static void MoveRelearnerMenu_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list, u16 index);
 static s8 YesNoMenuProcessInput(void);
 static void PrintTextOnWindow(u8 windowId, const u8 *str, u8 x, u8 y, s32 speed, s32 colorIdx);
 
@@ -883,7 +883,7 @@ static void PrintMoveInfoHandleCancel_CopyToVram(void)
     CopyWindowToVram(7, COPYWIN_FULL);
 }
 
-static void MoveRelearnerMenu_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list)
+static void MoveRelearnerMenu_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list, u16 index)
 {
     if (!onInit)
     {

@@ -977,6 +977,37 @@ u8 ItemId_GetHoldEffectParam(u16 itemId)
     return gItems[SanitizeItemId(itemId)].holdEffectParam;
 }
 
+const u8 * ItemId_GetAPItemDescription(u16 locationId)
+{
+    u16 i;
+    u16 itemNameOffset;
+    u8 playerNameId;
+
+    for (i = 0; i < NAME_TABLE_BUFFER_SIZE / 5; i++)
+    {
+        if ((gArchipelagoNameTable[(i * 5) + 0] | (gArchipelagoNameTable[(i * 5) + 1] << 8)) == locationId)
+        {
+            playerNameId = gArchipelagoNameTable[(i * 5) + 4];
+
+            if (playerNameId == 0)
+            {
+                break;
+            }
+
+            itemNameOffset = gArchipelagoNameTable[(i * 5) + 2] | (gArchipelagoNameTable[(i * 5) + 3] << 8);
+            StringCopy(gStringVar1, gArchipelagoPlayerNames + (playerNameId * 17));
+            StringCopy(gStringVar2, gArchipelagoItemNames + itemNameOffset);
+            return gText_APItemDescription;
+        }
+        else if ((gArchipelagoNameTable[(i * 5) + 0] | (gArchipelagoNameTable[(i * 5) + 1] << 8)) > locationId)
+        {
+            break;
+        }
+    }
+
+    return gItems[ITEM_ARCHIPELAGO_PROGRESSION].description;
+}
+
 const u8 * ItemId_GetDescription(u16 itemId)
 {
     return gItems[SanitizeItemId(itemId)].description;

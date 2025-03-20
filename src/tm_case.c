@@ -127,7 +127,7 @@ static bool8 HandleLoadTMCaseGraphicsAndPalettes(void);
 static void CreateTMCaseListMenuBuffers(void);
 static void InitTMCaseListMenuItems(void);
 static void GetTMNumberAndMoveString(u8 * dest, u16 itemId);
-static void List_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list);
+static void List_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list, u16 index);
 static void List_ItemPrintFunc(u8 windowId, u32 itemId, u8 y, u16 index);
 static void PrintDescription(s32 itemIndex);
 static void PrintMoveInfo(u16 itemId);
@@ -697,7 +697,7 @@ static void GetTMNumberAndMoveString(u8 * dest, u16 itemId)
     StringCopy(dest, gStringVar5);
 }
 
-static void List_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list)
+static void List_MoveCursorFunc(s32 itemIndex, bool8 onInit, struct ListMenu *list, u16 index)
 {
     u16 itemId;
 
