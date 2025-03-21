@@ -927,7 +927,7 @@ u16 SanitizeItemId(u16 itemId)
 
 const u8 * ItemId_GetName(u16 itemId)
 {
-    if (itemId >= ITEM_FLY_PALLET && itemId <= ITEM_FLY_ROUTE10)
+    if (itemId >= ITEM_FLY_PALLET && itemId <= ITEM_FLY_ROUTE10 && FlagGet(FLAG_SYS_GET_UNIQUE_ITEM_NAME))
     {
         return gFlyUnlockNames[itemId - FIRST_FLY_UNLOCK_INDEX];
     }

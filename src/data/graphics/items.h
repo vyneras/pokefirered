@@ -726,3 +726,9 @@ const u32 gItemIconPalette_Sapphire[] = INCBIN_U32("graphics/items/icon_palettes
 
 const u32 gItemIcon_ArchipelagoItem[] = INCBIN_U32("graphics/items/icons/ap_item.4bpp.lz");
 const u32 gItemIconPalette_ArchipelagoItem[] = INCBIN_U32("graphics/items/icon_palettes/ap_item.gbapal.lz");
+
+const u32 gItemIcon_FlyPoint[] = INCBIN_U32("graphics/items/icons/fly_point.4bpp.lz");
+const u32 gItemIconPalette_FlyPoint[] = INCBIN_U32("graphics/items/icon_palettes/fly_point.gbapal.lz");
+
+const u32 gItemIcon_Badge[] = INCBIN_U32("graphics/items/icons/badge.4bpp.lz");
+const u32 gItemIconPalette_Badge[] = INCBIN_U32("graphics/items/icon_palettes/badge.gbapal.lz");

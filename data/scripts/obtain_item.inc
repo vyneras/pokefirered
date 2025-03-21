@@ -67,7 +67,9 @@ EventScript_ObtainedBadge::
 	return
 
 EventScript_ObtainedFlyUnlock::
+	setflag FLAG_SYS_GET_UNIQUE_ITEM_NAME
 	msgbox Text_ObtainedFlyUnlock, MSGBOX_DEFAULT
+	clearflag FLAG_SYS_GET_UNIQUE_ITEM_NAME
 	return
 
 EventScript_ObtainedCoins::

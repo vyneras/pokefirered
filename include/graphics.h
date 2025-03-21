@@ -3295,6 +3295,10 @@ extern const u32 gItemIconPalette_Ruby[];
 extern const u32 gItemIconPalette_Sapphire[];
 extern const u32 gItemIcon_ArchipelagoItem[];
 extern const u32 gItemIconPalette_ArchipelagoItem[];
+extern const u32 gItemIcon_FlyPoint[];
+extern const u32 gItemIconPalette_FlyPoint[];
+extern const u32 gItemIcon_Badge[];
+extern const u32 gItemIconPalette_Badge[];
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u32 gItemIconPalette_ReturnToFieldArrow[];
 
