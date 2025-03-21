@@ -407,7 +407,6 @@ int main (int argc, char *argv[])
 
     std::map<std::string, std::map<std::string, uint32_t>> misc_ram_addresses;
     std::map<std::string, std::map<std::string, uint32_t>> misc_rom_addresses;
-    std::map<std::string, std::map<std::string, uint32_t>> shop_addresses;
     std::map<std::string, std::shared_ptr<LocationInfo>> npc_gifts;
     std::map<std::string, std::shared_ptr<LocationInfo>> fly_unlocks;
     std::map<std::string, std::shared_ptr<LocationInfo>> badges;
@@ -701,8 +700,6 @@ int main (int argc, char *argv[])
             std::string shop_name = SHOP_DATA[j].shop_name;
             std::string address_name = SHOP_DATA[j].address_name;
             uint16_t flag_start = SHOPSANITY_FLAGS_START + (SHOP_DATA[j].flag_offset * 16);
-
-            shop_addresses[GAME_REVISION_MAP[i]][address_name] = symbol_map[address_name] - ROM_START;
 
             for (size_t k = 0; k < SHOP_DATA[j].item_count; k++)
             {
@@ -1800,7 +1797,6 @@ int main (int argc, char *argv[])
         { "legendary_pokemon", legendary_pokemon_json },
         { "misc_ram_addresses", misc_ram_addresses },
         { "misc_rom_addresses", misc_rom_addresses },
-        { "shop_addresses", shop_addresses },
         { "locations", locations_json },
         { "warps", warp_destinations },
         { "species", species_json },

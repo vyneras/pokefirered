@@ -667,7 +667,7 @@ static const struct CreditsOverworldCmd *const sOverworldMapScenes[] = {
 
 static const struct CreditsTextHeader sCreditsTexts[] = {
     { gCreditsString_Archipelago_Mod, gCreditsString_Vyneras, FALSE },
-    { gCreditsString_Archipelago_Special_Thanks, gCreditsString_Zunawe_pret, FALSE },
+    { gCreditsString_Archipelago_Special_Thanks, gCreditsString_Zunawe_kattnip_pret, FALSE },
     { gCreditsString_Director, gCreditsString_Junichi_Masuda, FALSE },
     { gCreditsString_Art_Director_Battle_Director, gCreditsString_Ken_Sugimori_Shigeki_Morimoto, FALSE },
     { gCreditsString_Program_Leader_Planning_Leader_Graphic_Design_Leader, gCreditsString_Tetsuya_Watanabe_Koji_Nishino_Takao_Unno, FALSE },
