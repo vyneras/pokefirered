@@ -424,6 +424,7 @@ int main (int argc, char *argv[])
     std::map<std::string, std::shared_ptr<StaticPokemonInfo>> legendary_pokemon;
     std::map<int, std::shared_ptr<SpeciesInfo>> all_species;
     uint16_t tmhm_moves[58];
+    std::map<std::string, std::shared_ptr<MoveInfo>> moves;
     std::map<std::string, std::string> rom_names;
     uint32_t rom_checksum;
 
@@ -436,6 +437,16 @@ int main (int argc, char *argv[])
             iter.key() != "TRAINER_FLAGS_END")
         {
             trainer_names[iter.value()] = iter.key();
+        }
+    }
+
+    std::map<int, std::string> move_names;
+
+    for (auto iter = constants_json.begin(); iter != constants_json.end(); iter++)
+    {
+        if (iter.key().substr(0, 5) == "MOVE_")
+        {
+            move_names[iter.value()] = iter.key();
         }
     }
 
@@ -1658,6 +1669,46 @@ int main (int argc, char *argv[])
             }
         }
 
+        // Reading move data
+        if (i == 0) // Only on first pass
+        {
+            for (size_t j = 0; j < constants_json["MOVES_COUNT"]; j++)
+            {
+                auto move = std::make_shared<MoveInfo>();
+                std::string move_name = move_names[j];
+                uint32_t address = symbol_map["gBattleMoves"] - ROM_START + (j * 12);
+
+                rom.seekg(address, rom.beg);
+                rom.read((char*)&(move->effect), 1);
+
+                rom.seekg(address + 1, rom.beg);
+                rom.read((char*)&(move->power), 1);
+
+                rom.seekg(address + 2, rom.beg);
+                rom.read((char*)&(move->type), 2);
+
+                rom.seekg(address + 3, rom.beg);
+                rom.read((char*)&(move->accuracy), 1);
+
+                rom.seekg(address + 4, rom.beg);
+                rom.read((char*)&(move->pp), 1);
+
+                rom.seekg(address + 5, rom.beg);
+                rom.read((char*)&(move->secondaryEffectChance), 1);
+
+                rom.seekg(address + 6, rom.beg);
+                rom.read((char*)&(move->target), 1);
+
+                rom.seekg(address + 7, rom.beg);
+                rom.read((char*)&(move->priority), 1);
+
+                rom.seekg(address + 8, rom.beg);
+                rom.read((char*)&(move->flags), 1);
+
+                moves[move_name] = move;
+            }
+        }
+
         // Read ROM name
         char rom_name[32];
         rom.seekg(symbol_map["sGFRomHeader"] - ROM_START + 8, rom.beg);
@@ -1787,6 +1838,12 @@ int main (int argc, char *argv[])
         warp_destinations[warp->encode()] = destination;
     }
 
+    json moves_json;
+    for (const auto& [name, move]: moves)
+    {
+        moves_json[name] = move->to_json();
+    }
+
     json output_json = {
         { "comment", "DO NOT MODIFY. This file was auto-generated. Your changes will likely be overwritten." },
         { "rom_names", rom_names },
@@ -1802,6 +1859,7 @@ int main (int argc, char *argv[])
         { "species", species_json },
         { "trainers", trainers_json },
         { "tmhm_moves", tmhm_moves },
+        { "moves", moves_json },
         { "constants", constants_json },
     };
 
@@ -1816,6 +1874,21 @@ json LocationInfo::to_json ()
         { "flag", this->flag },
         { "address", this->address },
         { "default_item", this->default_item }
+    };
+}
+
+json MoveInfo::to_json ()
+{
+    return {
+        { "effect", this->effect },
+        { "power", this->power },
+        { "type", this->type },
+        { "accuracy", this->accuracy },
+        { "pp", this->pp },
+        { "secondaryEffectChance", this->secondaryEffectChance },
+        { "target", this->target },
+        { "priority", this->priority },
+        { "flags", this->flags }
     };
 }
 

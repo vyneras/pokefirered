@@ -161,4 +161,19 @@ class MapInfo {
         nlohmann::json to_json ();
 };
 
+class MoveInfo {
+    public:
+        uint8_t effect;
+        uint8_t power;
+        uint8_t type;
+        uint8_t accuracy;
+        uint8_t pp;
+        uint8_t secondaryEffectChance;
+        uint8_t target;
+        int8_t priority;
+        uint8_t flags;
+
+        nlohmann::json to_json ();
+};
+
 #endif
