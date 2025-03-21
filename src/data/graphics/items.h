@@ -712,7 +712,6 @@ const u32 gItemIconPalette_PurpleTea[] = INCBIN_U32("graphics/items/icon_palette
 
 const u32 gItemIcon_MysticTicket[] = INCBIN_U32("graphics/items/icons/mystic_ticket.4bpp.lz");
 const u32 gItemIconPalette_MysticTicket[] = INCBIN_U32("graphics/items/icon_palettes/mystic_ticket.gbapal.lz");
-const u32 gItemIconPalette_SafariPass[] = INCBIN_U32("graphics/items/icon_palettes/safari_pass.gbapal.lz");
 
 const u32 gItemIcon_AuroraTicket[] = INCBIN_U32("graphics/items/icons/aurora_ticket.4bpp.lz");
 const u32 gItemIconPalette_AuroraTicket[] = INCBIN_U32("graphics/items/icon_palettes/aurora_ticket.gbapal.lz");
@@ -732,3 +731,6 @@ const u32 gItemIconPalette_FlyPoint[] = INCBIN_U32("graphics/items/icon_palettes
 
 const u32 gItemIcon_Badge[] = INCBIN_U32("graphics/items/icons/badge.4bpp.lz");
 const u32 gItemIconPalette_Badge[] = INCBIN_U32("graphics/items/icon_palettes/badge.gbapal.lz");
+
+const u32 gItemIcon_SafariPass[] = INCBIN_U32("graphics/items/icons/safari_pass.4bpp.lz");
+const u32 gItemIconPalette_SafariPass[] = INCBIN_U32("graphics/items/icon_palettes/safari_pass.gbapal.lz");

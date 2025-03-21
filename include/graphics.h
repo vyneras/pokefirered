@@ -3285,7 +3285,6 @@ extern const u32 gItemIconPalette_RedTea[];
 extern const u32 gItemIconPalette_PurpleTea[];
 extern const u32 gItemIcon_MysticTicket[];
 extern const u32 gItemIconPalette_MysticTicket[];
-extern const u32 gItemIconPalette_SafariPass[];
 extern const u32 gItemIcon_AuroraTicket[];
 extern const u32 gItemIconPalette_AuroraTicket[];
 extern const u32 gItemIcon_PowderJar[];
@@ -3299,6 +3298,8 @@ extern const u32 gItemIcon_FlyPoint[];
 extern const u32 gItemIconPalette_FlyPoint[];
 extern const u32 gItemIcon_Badge[];
 extern const u32 gItemIconPalette_Badge[];
+extern const u32 gItemIcon_SafariPass[];
+extern const u32 gItemIconPalette_SafariPass[];
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u32 gItemIconPalette_ReturnToFieldArrow[];
 
