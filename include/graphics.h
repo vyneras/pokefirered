@@ -3302,6 +3302,12 @@ extern const u32 gItemIcon_SafariPass[];
 extern const u32 gItemIconPalette_SafariPass[];
 extern const u32 gItemIcon_MachinePart[];
 extern const u32 gItemIconPalette_MachinePart[];
+extern const u32 gItemIcon_LinkCable[];
+extern const u32 gItemIconPalette_LinkCable[];
+extern const u32 gItemIcon_Coins[];
+extern const u32 gItemIconPalette_Coins[];
+extern const u32 gItemIcon_RunningShoes[];
+extern const u32 gItemIconPalette_RunningShoes[];
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u32 gItemIconPalette_ReturnToFieldArrow[];
 

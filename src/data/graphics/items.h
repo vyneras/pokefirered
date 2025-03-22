@@ -737,3 +737,12 @@ const u32 gItemIconPalette_SafariPass[] = INCBIN_U32("graphics/items/icon_palett
 
 const u32 gItemIcon_MachinePart[] = INCBIN_U32("graphics/items/icons/machine_part.4bpp.lz");
 const u32 gItemIconPalette_MachinePart[] = INCBIN_U32("graphics/items/icon_palettes/machine_part.gbapal.lz");
+
+const u32 gItemIcon_LinkCable[] = INCBIN_U32("graphics/items/icons/link_cable.4bpp.lz");
+const u32 gItemIconPalette_LinkCable[] = INCBIN_U32("graphics/items/icon_palettes/link_cable.gbapal.lz");
+
+const u32 gItemIcon_Coins[] = INCBIN_U32("graphics/items/icons/coins.4bpp.lz");
+const u32 gItemIconPalette_Coins[] = INCBIN_U32("graphics/items/icon_palettes/coins.gbapal.lz");
+
+const u32 gItemIcon_RunningShoes[] = INCBIN_U32("graphics/items/icons/running_shoes.4bpp.lz");
+const u32 gItemIconPalette_RunningShoes[] = INCBIN_U32("graphics/items/icon_palettes/running_shoes.gbapal.lz");
