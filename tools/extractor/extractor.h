@@ -172,6 +172,7 @@ class MoveInfo {
         uint8_t target;
         int8_t priority;
         uint8_t flags;
+        uint8_t category;
 
         nlohmann::json to_json ();
 };

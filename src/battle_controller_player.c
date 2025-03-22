@@ -1430,15 +1430,15 @@ static void MoveSelectionDisplayPpString(void)
 static void MoveSelectionDisplaySplitIcon(void)
 {
     struct ChooseMoveStruct *moveInfo;
-    u8 moveCategory, power, type;
+    u8 moveCategory, power, type, category;
 
     moveInfo = (struct ChooseMoveStruct *)(&gBattleBufferA[gActiveBattler][4]);
     power = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].power;
     type = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type;
+    category = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].category;
     if (power > 0)
     {
-
-            moveCategory = GetDamageType(type);
+        moveCategory = GetDamageType(type, category);
     }
     else
     {

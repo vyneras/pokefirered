@@ -511,7 +511,8 @@ int main (int argc, char *argv[])
             { "sRegionMapSections_Kanto", symbol_map["sRegionMapSections_Kanto"] - ROM_START },
             { "sRegionMapSections_Sevii123", symbol_map["sRegionMapSections_Sevii123"] - ROM_START },
             { "sRegionMapSections_Sevii45", symbol_map["sRegionMapSections_Sevii45"] - ROM_START },
-            { "sRegionMapSections_Sevii67", symbol_map["sRegionMapSections_Sevii67"] - ROM_START }
+            { "sRegionMapSections_Sevii67", symbol_map["sRegionMapSections_Sevii67"] - ROM_START },
+            { "sDamageTypeTable", symbol_map["sDamageTypeTable"] - ROM_START }
         };
 
         // ------------------------------------------------------------------------
@@ -1705,6 +1706,9 @@ int main (int argc, char *argv[])
                 rom.seekg(address + 8, rom.beg);
                 rom.read((char*)&(move->flags), 1);
 
+                rom.seekg(address + 9, rom.beg);
+                rom.read((char*)&(move->category), 1);
+
                 moves[move_name] = move;
             }
         }
@@ -1888,7 +1892,8 @@ json MoveInfo::to_json ()
         { "secondaryEffectChance", this->secondaryEffectChance },
         { "target", this->target },
         { "priority", this->priority },
-        { "flags", this->flags }
+        { "flags", this->flags },
+        { "category", this->category }
     };
 }
 
