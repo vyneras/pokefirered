@@ -734,3 +734,6 @@ const u32 gItemIconPalette_Badge[] = INCBIN_U32("graphics/items/icon_palettes/ba
 
 const u32 gItemIcon_SafariPass[] = INCBIN_U32("graphics/items/icons/safari_pass.4bpp.lz");
 const u32 gItemIconPalette_SafariPass[] = INCBIN_U32("graphics/items/icon_palettes/safari_pass.gbapal.lz");
+
+const u32 gItemIcon_MachinePart[] = INCBIN_U32("graphics/items/icons/machine_part.4bpp.lz");
+const u32 gItemIconPalette_MachinePart[] = INCBIN_U32("graphics/items/icon_palettes/machine_part.gbapal.lz");

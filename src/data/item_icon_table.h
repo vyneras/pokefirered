@@ -113,7 +113,7 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     // Extra Key items
     [ITEM_HIDEOUT_KEY]             = {gItemIcon_LiftKey, gItemIconPalette_HideoutKey},
     [ITEM_SAFARI_PASS]             = {gItemIcon_SafariPass, gItemIconPalette_SafariPass},
-    [ITEM_MACHINE_PART]            = {gItemIcon_DevonScope, gItemIconPalette_DevonScope},
+    [ITEM_MACHINE_PART]            = {gItemIcon_MachinePart, gItemIconPalette_MachinePart},
     // Valuables
     [ITEM_TINY_MUSHROOM]           = {gItemIcon_TinyMushroom, gItemIconPalette_Mushroom},
     [ITEM_BIG_MUSHROOM]            = {gItemIcon_BigMushroom, gItemIconPalette_Mushroom},

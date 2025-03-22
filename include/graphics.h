@@ -3300,6 +3300,8 @@ extern const u32 gItemIcon_Badge[];
 extern const u32 gItemIconPalette_Badge[];
 extern const u32 gItemIcon_SafariPass[];
 extern const u32 gItemIconPalette_SafariPass[];
+extern const u32 gItemIcon_MachinePart[];
+extern const u32 gItemIconPalette_MachinePart[];
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u32 gItemIconPalette_ReturnToFieldArrow[];
 
