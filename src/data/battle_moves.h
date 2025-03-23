@@ -11,7 +11,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .flags = 0,
-        .category = MOVE_CATEGORY_STATUS,
+        .category= MOVE_CATEGORY_PHYSICAL,
     },
 
     [MOVE_POUND] =
@@ -3161,7 +3161,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
-        .category = MOVE_CATEGORY_PHYSICAL,
+        .category= MOVE_CATEGORY_SPECIAL,
     },
 
     [MOVE_BATON_PASS] =

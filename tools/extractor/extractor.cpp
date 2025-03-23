@@ -1671,13 +1671,21 @@ int main (int argc, char *argv[])
         }
 
         // Reading move data
-        if (i == 0) // Only on first pass
+        for (size_t j = 0; j < constants_json["MOVES_COUNT"]; j++)
         {
-            for (size_t j = 0; j < constants_json["MOVES_COUNT"]; j++)
+            std::string move_name = move_names[j];
+            uint32_t address = misc_rom_addresses[GAME_REVISION_MAP[i]]["gBattleMoves"] + (j * 12);
+            auto move = moves[move_name];
+
+            if (move != nullptr)
+            {
+                move->address[GAME_REVISION_MAP[i]] = address;
+            }
+            else
             {
                 auto move = std::make_shared<MoveInfo>();
-                std::string move_name = move_names[j];
-                uint32_t address = symbol_map["gBattleMoves"] - ROM_START + (j * 12);
+
+                move->address[GAME_REVISION_MAP[i]] = address;
 
                 rom.seekg(address, rom.beg);
                 rom.read((char*)&(move->effect), 1);
@@ -1695,7 +1703,7 @@ int main (int argc, char *argv[])
                 rom.read((char*)&(move->pp), 1);
 
                 rom.seekg(address + 5, rom.beg);
-                rom.read((char*)&(move->secondaryEffectChance), 1);
+                rom.read((char*)&(move->secondary_effect_chance), 1);
 
                 rom.seekg(address + 6, rom.beg);
                 rom.read((char*)&(move->target), 1);
@@ -1711,6 +1719,7 @@ int main (int argc, char *argv[])
 
                 moves[move_name] = move;
             }
+
         }
 
         // Read ROM name
@@ -1884,12 +1893,13 @@ json LocationInfo::to_json ()
 json MoveInfo::to_json ()
 {
     return {
+        { "address", this->address },
         { "effect", this->effect },
         { "power", this->power },
         { "type", this->type },
         { "accuracy", this->accuracy },
         { "pp", this->pp },
-        { "secondaryEffectChance", this->secondaryEffectChance },
+        { "secondary_effect_chance", this->secondary_effect_chance },
         { "target", this->target },
         { "priority", this->priority },
         { "flags", this->flags },

@@ -163,12 +163,13 @@ class MapInfo {
 
 class MoveInfo {
     public:
+        std::map<std::string, uint32_t> address;
         uint8_t effect;
         uint8_t power;
         uint8_t type;
         uint8_t accuracy;
         uint8_t pp;
-        uint8_t secondaryEffectChance;
+        uint8_t secondary_effect_chance;
         uint8_t target;
         int8_t priority;
         uint8_t flags;
