@@ -3,8 +3,8 @@ Text_WhereDoYouWantToSail::
     .string "Where do you want to sail?$"
 
 Text_CantSail::
-	.string "Ahoy, there!\n"
-	.string "You'll need a ticket to baord.$"
+    .string "Ahoy, there!\n"
+    .string "You'll need a ticket to board.$"
 
 OneIsland_Text_LuckyToHaveCelioHere::
     .string "Here we are on an island smack in\n"
