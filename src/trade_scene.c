@@ -2438,6 +2438,7 @@ u16 GetInGameTradeSpeciesInfo(void)
     const struct InGameTrade * inGameTrade = &sInGameTrades[gSpecialVar_0x8004];
     StringCopy(gStringVar1, gSpeciesNames[inGameTrade->requestedSpecies]);
     StringCopy(gStringVar2, gSpeciesNames[inGameTrade->species]);
+    GetSetPokedexFlag(SpeciesToNationalPokedexNum(inGameTrade->requestedSpecies), 2);
     return inGameTrade->requestedSpecies;
 }
 
