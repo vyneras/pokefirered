@@ -192,7 +192,6 @@ PalletTown_ProfessorOaksLab_EventScript_ReceiveDexScene::
 	waitfanfare
 	call EventScript_RestorePrevTextColor
 	special SetUnlockedPokedexFlags
-	setvar VAR_MAP_SCENE_POKEMON_CENTER_TEALA, 1
 	msgbox PalletTown_ProfessorOaksLab_Text_OakCatchMonsForDataTakeThese
 Archipelago_Target_NPC_Gift_FLAG_GOT_FIRST_POKEBALLS::
 	giveitem ITEM_POKE_BALL, 1, FLAG_GOT_FIRST_POKEBALLS

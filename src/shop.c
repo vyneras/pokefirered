@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
 #include "shop.h"
 #include "event_data.h"
 #include "menu.h"
@@ -588,6 +589,9 @@ static u8 GetMartTypeFromItemList(u32 martType)
     if (martType != MART_TYPE_REGULAR)
         return martType;
 
+    if (gArchipelagoOptions.isShopsanity)
+        return martType;
+
     for (i = 0; i < sShopData.itemCount && sShopData.itemList[i].item != 0; i++)
     {
         if (ItemId_GetPocket(sShopData.itemList[i].item) == POCKET_TM_CASE)
@@ -1034,9 +1038,11 @@ static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, s
 
     if (item != INDEX_CANCEL)
     	if (item == ITEM_ARCHIPELAGO_PROGRESSION)
-    		description = ItemId_GetAPItemDescription(SHOPSANITY_FLAGS_START + sShopData.shopId - SHOPSANITY_FIRST_INDEX + index);
+            description = ItemId_GetAPItemDescription(SHOPSANITY_FLAGS_START + (sShopData.shopId - SHOPSANITY_FIRST_INDEX * 16) + index);
+    	else if (sShopData.martType != MART_TYPE_TMHM && item >= ITEM_TM01 && item <= ITEM_TM50)
+            description = gMoveNames[ItemIdToBattleMoveId(item)];
     	else
-        	description = ItemId_GetDescription(item);
+            description = ItemId_GetDescription(item);
     else
         description = gText_QuitShopping;
 
