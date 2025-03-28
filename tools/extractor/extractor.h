@@ -135,6 +135,18 @@ class StaticPokemonInfo {
         std::map<std::string, uint16_t> species;
         std::map<std::string, uint8_t> level;
         std::map<std::string, uint32_t> level_address;
+        std::map<std::string, uint32_t> requested_trade_address;
+
+        nlohmann::json to_json ();
+};
+
+class TradePokemonInfo {
+    public:
+        std::string name;
+        std::map<std::string, uint32_t> species_address;
+        std::map<std::string, uint16_t> species;
+        std::map<std::string, uint32_t> requested_species_address;
+        std::map<std::string, uint16_t> requested_species;
 
         nlohmann::json to_json ();
 };

@@ -419,11 +419,13 @@ int main (int argc, char *argv[])
     std::map<std::string, std::shared_ptr<LocationInfo>> shop_items;
     std::map<std::string, std::shared_ptr<MapInfo>> maps;
     std::vector<std::shared_ptr<WarpInfo>> warps;
-    std::map<std::string, std::shared_ptr<StarterPokemonInfo>> starter_pokemon;
-    std::map<std::string, std::shared_ptr<StaticPokemonInfo>> misc_pokemon;
-    std::map<std::string, std::shared_ptr<StaticPokemonInfo>> legendary_pokemon;
+    std::map<std::string, std::shared_ptr<StarterPokemonInfo>> starter_pokemon_data;
+    std::map<std::string, std::shared_ptr<StaticPokemonInfo>> misc_pokemon_data;
+    std::map<std::string, std::shared_ptr<StaticPokemonInfo>> legendary_pokemon_data;
+    std::map<std::string, std::shared_ptr<TradePokemonInfo>> trade_pokemon_data;
     std::map<int, std::shared_ptr<SpeciesInfo>> all_species;
     uint16_t tmhm_moves[58];
+    uint8_t damage_type_table[18];
     std::map<std::string, std::shared_ptr<MoveInfo>> moves;
     std::map<std::string, std::string> rom_names;
     uint32_t rom_checksum;
@@ -1217,7 +1219,7 @@ int main (int argc, char *argv[])
         // Reading starters
         for (size_t j = 0; j < 3; j++)
         {
-            auto starter = starter_pokemon[STARTER_POKEMON_NAMES[j]];
+            auto starter = starter_pokemon_data[STARTER_POKEMON_NAMES[j]];
 
             if (starter != nullptr)
             {
@@ -1231,7 +1233,7 @@ int main (int argc, char *argv[])
                 starter->address[GAME_REVISION_MAP[i]] = symbol_map["sStarterSpecies"] + (j * 2) - ROM_START;
                 rom.seekg(starter->address[GAME_REVISION_MAP[i]], rom.beg);
                 rom.read((char*)&(starter->species), 2);
-                starter_pokemon[starter->name] = starter;
+                starter_pokemon_data[starter->name] = starter;
             }
         }
 
@@ -1240,7 +1242,7 @@ int main (int argc, char *argv[])
         {
             if (symbol.substr(0, 32) == "Archipelago_Target_Special_Gift_")
             {
-                auto gift_pokemon = misc_pokemon["GIFT_POKEMON_" + symbol.substr(32)];
+                auto gift_pokemon = misc_pokemon_data["GIFT_POKEMON_" + symbol.substr(32)];
 
                 if (gift_pokemon != nullptr)
                 {
@@ -1260,12 +1262,12 @@ int main (int argc, char *argv[])
                     gift_pokemon->address[GAME_REVISION_MAP[i]] = address + 3 - ROM_START;
                     rom.seekg(gift_pokemon->address[GAME_REVISION_MAP[i]], rom.beg);
                     rom.read((char*)&(gift_pokemon->species[GAME_VERSION_MAP[i]]), 2);
-                    misc_pokemon[gift_pokemon->name] = gift_pokemon;
+                    misc_pokemon_data[gift_pokemon->name] = gift_pokemon;
                 }
             }
             else if (symbol.substr(0, 38) == "Archipelago_Target_Level_Special_Gift_")
             {
-                auto gift_pokemon = misc_pokemon["GIFT_POKEMON_" + symbol.substr(38)];
+                auto gift_pokemon = misc_pokemon_data["GIFT_POKEMON_" + symbol.substr(38)];
 
                 if(gift_pokemon != nullptr)
                 {
@@ -1285,12 +1287,12 @@ int main (int argc, char *argv[])
                     gift_pokemon->level_address[GAME_REVISION_MAP[i]] = address + 3 - ROM_START;
                     rom.seekg(gift_pokemon->level_address[GAME_REVISION_MAP[i]], rom.beg);
                     rom.read((char*)&(gift_pokemon->level[GAME_VERSION_MAP[i]]), 1);
-                    misc_pokemon[gift_pokemon->name] = gift_pokemon;
+                    misc_pokemon_data[gift_pokemon->name] = gift_pokemon;
                 }
             }
             else if (symbol.substr(0, 33) == "Archipelago_Target_Prize_Pokemon_")
             {
-                auto prize_pokemon = misc_pokemon["CELADON_PRIZE_POKEMON_" + symbol.substr(33)];
+                auto prize_pokemon = misc_pokemon_data["CELADON_PRIZE_POKEMON_" + symbol.substr(33)];
 
                 if (prize_pokemon != nullptr)
                 {
@@ -1310,12 +1312,12 @@ int main (int argc, char *argv[])
                     prize_pokemon->address[GAME_REVISION_MAP[i]] = address + 3 - ROM_START;
                     rom.seekg(prize_pokemon->address[GAME_REVISION_MAP[i]], rom.beg);
                     rom.read((char*)&(prize_pokemon->species[GAME_VERSION_MAP[i]]), 2);
-                    misc_pokemon[prize_pokemon->name] = prize_pokemon;
+                    misc_pokemon_data[prize_pokemon->name] = prize_pokemon;
                 }
             }
             else if (symbol.substr(0, 39) == "Archipelago_Target_Level_Prize_Pokemon_")
             {
-                auto prize_pokemon = misc_pokemon["CELADON_PRIZE_POKEMON_" + symbol.substr(39)];
+                auto prize_pokemon = misc_pokemon_data["CELADON_PRIZE_POKEMON_" + symbol.substr(39)];
 
                 if(prize_pokemon != nullptr)
                 {
@@ -1335,12 +1337,12 @@ int main (int argc, char *argv[])
                     prize_pokemon->level_address[GAME_REVISION_MAP[i]] = address + 3 - ROM_START;
                     rom.seekg(prize_pokemon->level_address[GAME_REVISION_MAP[i]], rom.beg);
                     rom.read((char*)&(prize_pokemon->level[GAME_VERSION_MAP[i]]), 1);
-                    misc_pokemon[prize_pokemon->name] = prize_pokemon;
+                    misc_pokemon_data[prize_pokemon->name] = prize_pokemon;
                 }
             }
             else if (symbol.substr(0, 36) == "Archipelago_Target_Special_Egg_Gift_")
             {
-                auto egg_pokemon = misc_pokemon["EGG_POKEMON_" + symbol.substr(36)];
+                auto egg_pokemon = misc_pokemon_data["EGG_POKEMON_" + symbol.substr(36)];
 
                 if (egg_pokemon != nullptr)
                 {
@@ -1368,7 +1370,7 @@ int main (int argc, char *argv[])
                     egg_pokemon->level[GAME_VERSION_MAP[i]] = 0;
                     rom.seekg(egg_pokemon->address[GAME_REVISION_MAP[i]], rom.beg);
                     rom.read((char*)&(egg_pokemon->species[GAME_VERSION_MAP[i]]), 2);
-                    misc_pokemon[egg_pokemon->name] = egg_pokemon;
+                    misc_pokemon_data[egg_pokemon->name] = egg_pokemon;
                 }
             }
         }
@@ -1376,35 +1378,37 @@ int main (int argc, char *argv[])
         // Reading trade pokemon
         for (size_t j = 0; j < TRADE_POKEMON_MAP.size(); j++)
         {
-            auto trade_pokemon = misc_pokemon[TRADE_POKEMON_MAP[j]];
+            auto trade_pokemon = trade_pokemon_data[TRADE_POKEMON_MAP[j]];
 
             if (trade_pokemon != nullptr)
             {
-                trade_pokemon->address[GAME_REVISION_MAP[i]] = misc_rom_addresses[GAME_REVISION_MAP[i]]["sInGameTrades"] + 12 + (j * 60);
-                trade_pokemon->level_address[GAME_REVISION_MAP[i]] = 0;
+                trade_pokemon->species_address[GAME_REVISION_MAP[i]] = misc_rom_addresses[GAME_REVISION_MAP[i]]["sInGameTrades"] + 12 + (j * 60);
+                trade_pokemon->requested_species_address[GAME_REVISION_MAP[i]] = misc_rom_addresses[GAME_REVISION_MAP[i]]["sInGameTrades"] + 56 + (j * 60);
 
                 if (trade_pokemon->species.find(GAME_VERSION_MAP[i]) == trade_pokemon->species.end())
                 {
-                    rom.seekg(trade_pokemon->address[GAME_REVISION_MAP[i]], rom.beg);
+                    rom.seekg(trade_pokemon->species_address[GAME_REVISION_MAP[i]], rom.beg);
                     rom.read((char*)&(trade_pokemon->species[GAME_VERSION_MAP[i]]), 2);
                 }
 
-                if (trade_pokemon->level.find(GAME_VERSION_MAP[i]) == trade_pokemon->level.end())
+                if (trade_pokemon->requested_species.find(GAME_VERSION_MAP[i]) == trade_pokemon->requested_species.end())
                 {
-                    trade_pokemon->level[GAME_VERSION_MAP[i]] = 0;
+                    rom.seekg(trade_pokemon->requested_species_address[GAME_REVISION_MAP[i]], rom.beg);
+                    rom.read((char*)&(trade_pokemon->requested_species[GAME_VERSION_MAP[i]]), 2);
                 }
             }
             else
             {
-                trade_pokemon = std::make_shared<StaticPokemonInfo>();
+                trade_pokemon = std::make_shared<TradePokemonInfo>();
 
                 trade_pokemon->name = TRADE_POKEMON_MAP[j];
-                trade_pokemon->address[GAME_REVISION_MAP[i]] = misc_rom_addresses[GAME_REVISION_MAP[i]]["sInGameTrades"] + 12 + (j * 60);
-                trade_pokemon->level_address[GAME_REVISION_MAP[i]] = 0;
-                trade_pokemon->level[GAME_VERSION_MAP[i]] = 0;
-                rom.seekg(trade_pokemon->address[GAME_REVISION_MAP[i]], rom.beg);
+                trade_pokemon->species_address[GAME_REVISION_MAP[i]] = misc_rom_addresses[GAME_REVISION_MAP[i]]["sInGameTrades"] + 12 + (j * 60);
+                trade_pokemon->requested_species_address[GAME_REVISION_MAP[i]] = misc_rom_addresses[GAME_REVISION_MAP[i]]["sInGameTrades"] + 56 + (j * 60);
+                rom.seekg(trade_pokemon->species_address[GAME_REVISION_MAP[i]], rom.beg);
                 rom.read((char*)&(trade_pokemon->species[GAME_VERSION_MAP[i]]), 2);
-                misc_pokemon[trade_pokemon->name] = trade_pokemon;
+                rom.seekg(trade_pokemon->requested_species_address[GAME_REVISION_MAP[i]], rom.beg);
+                rom.read((char*)&(trade_pokemon->requested_species[GAME_VERSION_MAP[i]]), 2);
+                trade_pokemon_data[trade_pokemon->name] = trade_pokemon;
             }
         }
 
@@ -1413,7 +1417,7 @@ int main (int argc, char *argv[])
         {
             if (symbol.substr(0, 36) == "Archipelago_Target_Static_Encounter_")
             {
-                auto static_encounter = misc_pokemon["STATIC_POKEMON_" + symbol.substr(36)];
+                auto static_encounter = misc_pokemon_data["STATIC_POKEMON_" + symbol.substr(36)];
 
                 if (static_encounter != nullptr)
                 {
@@ -1442,7 +1446,7 @@ int main (int argc, char *argv[])
                     rom.seekg(static_encounter->address[GAME_REVISION_MAP[i]], rom.beg);
                     rom.read((char*)&(static_encounter->species[GAME_VERSION_MAP[i]]), 2);
                     rom.read((char*)&(static_encounter->level[GAME_VERSION_MAP[i]]), 1);
-                    misc_pokemon[static_encounter->name] = static_encounter;
+                    misc_pokemon_data[static_encounter->name] = static_encounter;
                 }
             }
         }
@@ -1452,7 +1456,7 @@ int main (int argc, char *argv[])
         {
             if (symbol.substr(0, 39) == "Archipelago_Target_Legendary_Encounter_")
             {
-                auto legendary_encounter = legendary_pokemon["LEGENDARY_POKEMON_" + symbol.substr(39)];
+                auto legendary_encounter = legendary_pokemon_data["LEGENDARY_POKEMON_" + symbol.substr(39)];
 
                 if (legendary_encounter != nullptr)
                 {
@@ -1481,7 +1485,7 @@ int main (int argc, char *argv[])
                     rom.seekg(legendary_encounter->address[GAME_REVISION_MAP[i]], rom.beg);
                     rom.read((char*)&(legendary_encounter->species[GAME_VERSION_MAP[i]]), 2);
                     rom.read((char*)&(legendary_encounter->level[GAME_VERSION_MAP[i]]), 1);
-                    legendary_pokemon[legendary_encounter->name] = legendary_encounter;
+                    legendary_pokemon_data[legendary_encounter->name] = legendary_encounter;
                 }
             }
         }
@@ -1670,6 +1674,16 @@ int main (int argc, char *argv[])
             }
         }
 
+        // Reading daamage type table
+        if (i == 0) // Only on first pass
+        {
+            for (size_t j = 0; j < 18; j++)
+            {
+                rom.seekg(misc_rom_addresses[GAME_REVISION_MAP[i]]["sDamageTypeTable"] + j, rom.beg);
+                rom.read((char*)&(damage_type_table[j]), 1);
+            }
+        }
+
         // Reading move data
         for (size_t j = 0; j < constants_json["MOVES_COUNT"]; j++)
         {
@@ -1763,21 +1777,27 @@ int main (int argc, char *argv[])
     }
 
     json starter_pokemon_json;
-    for (const auto& [name, mon]: starter_pokemon)
+    for (const auto& [name, mon]: starter_pokemon_data)
     {
         starter_pokemon_json[mon->name] = mon->to_json();
     }
 
     json misc_pokemon_json;
-    for (const auto& [name, mon]: misc_pokemon)
+    for (const auto& [name, mon]: misc_pokemon_data)
     {
         misc_pokemon_json[mon->name] = mon->to_json();
     }
 
     json legendary_pokemon_json;
-    for (const auto& [name, mon]: legendary_pokemon)
+    for (const auto& [name, mon]: legendary_pokemon_data)
     {
         legendary_pokemon_json[mon->name] = mon->to_json();
+    }
+
+    json trade_pokemon_json;
+    for (const auto& [name, mon]: trade_pokemon_data)
+    {
+        trade_pokemon_json[mon->name] = mon->to_json();
     }
 
     json species_json = json::array();
@@ -1865,6 +1885,7 @@ int main (int argc, char *argv[])
         { "starter_pokemon", starter_pokemon_json },
         { "misc_pokemon", misc_pokemon_json },
         { "legendary_pokemon", legendary_pokemon_json },
+        { "trade_pokemon", trade_pokemon_json },
         { "misc_ram_addresses", misc_ram_addresses },
         { "misc_rom_addresses", misc_rom_addresses },
         { "locations", locations_json },
@@ -1872,6 +1893,7 @@ int main (int argc, char *argv[])
         { "species", species_json },
         { "trainers", trainers_json },
         { "tmhm_moves", tmhm_moves },
+        { "damage_type_table", damage_type_table },
         { "moves", moves_json },
         { "constants", constants_json },
     };
@@ -2068,6 +2090,16 @@ json StaticPokemonInfo::to_json ()
         { "address", this->address },
         { "level", this->level },
         { "level_address", this->level_address }
+    };
+}
+
+json TradePokemonInfo::to_json ()
+{
+    return {
+        { "species", this->species },
+        { "species_address", this->species_address },
+        { "requested_species", this->requested_species },
+        { "requested_species_address", this->requested_species_address }
     };
 }
 
