@@ -25,7 +25,7 @@ EventScript_SetGiveItemFlag::
 	return
 
 EventScript_ObtainItem::
-	bufferitemnameplural STR_VAR_2, ITEM_ID, AMOUNT
+	bufferitemname STR_VAR_2, ITEM_ID
 	call EventScript_PlayItemFanfare
 	call EventScript_ObtainItemMessage
 	waitfanfare
@@ -67,9 +67,8 @@ EventScript_ObtainedBadge::
 	return
 
 EventScript_ObtainedFlyUnlock::
-	setflag FLAG_SYS_GET_UNIQUE_ITEM_NAME
+	bufferuniqueitemname STR_VAR_2, ITEM_ID
 	msgbox Text_ObtainedFlyUnlock, MSGBOX_DEFAULT
-	clearflag FLAG_SYS_GET_UNIQUE_ITEM_NAME
 	return
 
 EventScript_ObtainedCoins::

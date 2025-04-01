@@ -1654,6 +1654,14 @@
 	.byte \tutorId
 	.endm
 
+	@ Writes the unique name of the specified item to the specified buffer. If itemId is >= ITEMS_COUNT,
+	@ then the name of ITEM_NONE ("????????") is buffered instead.
+	.macro bufferuniqueitemname stringVarId:req, item:req
+	.byte 0xd8
+	stringvar \stringVarId
+	.2byte \item
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req

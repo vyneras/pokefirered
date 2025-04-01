@@ -517,7 +517,8 @@ int main (int argc, char *argv[])
             { "sRegionMapSections_Sevii123", symbol_map["sRegionMapSections_Sevii123"] - ROM_START },
             { "sRegionMapSections_Sevii45", symbol_map["sRegionMapSections_Sevii45"] - ROM_START },
             { "sRegionMapSections_Sevii67", symbol_map["sRegionMapSections_Sevii67"] - ROM_START },
-            { "sDamageTypeTable", symbol_map["sDamageTypeTable"] - ROM_START }
+            { "sDamageTypeTable", symbol_map["sDamageTypeTable"] - ROM_START },
+            { "gFlyUnlockNames", symbol_map["gFlyUnlockNames"] - ROM_START }
         };
 
         // ------------------------------------------------------------------------

@@ -2566,7 +2566,7 @@ bool8 ArchipelagoSpecial_IsItemBadge(void)
 
 bool8 ArchipelagoSpecial_IsItemFlyUnlock(void)
 {
-    return gSpecialVar_0x8000 >= ITEM_FLY_PALLET && gSpecialVar_0x8000 <= ITEM_FLY_ROUTE10;
+    return gSpecialVar_0x8000 >= ITEM_FLY_PALLET && gSpecialVar_0x8000 <= ITEM_FLY_SIX_ISLAND;
 }
 
 bool8 ArchipelagoSpecial_IsItemCoins(void)

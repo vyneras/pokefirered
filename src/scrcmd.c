@@ -2306,3 +2306,12 @@ bool8 ScrCmd_buffertutormovename(struct ScriptContext *ctx)
     StringCopy(sScriptStringVars[stringVarIndex], gMoveNames[gTutorMoves[tutorId]]);
     return FALSE;
 }
+
+bool8 ScrCmd_bufferuniqueitemname(struct ScriptContext * ctx)
+{
+    u8 stringVarIndex = ScriptReadByte(ctx);
+    u16 itemId = VarGet(ScriptReadHalfword(ctx));
+
+    CopyUniqueItemName(itemId, sScriptStringVars[stringVarIndex]);
+    return FALSE;
+}

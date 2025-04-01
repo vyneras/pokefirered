@@ -217,6 +217,7 @@ gScriptCmdTable::
 	.4byte ScrCmd_bufferapitemstrings            @ 0xd5
 	.4byte ScrCmd_setflagvar                     @ 0xd6
 	.4byte ScrCmd_buffertutormovename            @ 0xd7
+	.4byte ScrCmd_bufferuniqueitemname           @ 0xd8
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop
