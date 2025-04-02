@@ -4390,7 +4390,7 @@
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
-      "description_english": "A letter given to you by a SCIENTIST\\nat the POKéMON LAB. Show it to the\\nGUARD in front of the POKéMON MANSION.",
+      "description_english": "A letter that will grant you entry\\nto the POKéMON MANSION.",
       "importance": 2,
       "registrability": 0,
       "pocket": "POCKET_KEY_ITEMS",

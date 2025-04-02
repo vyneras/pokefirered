@@ -1038,7 +1038,7 @@ static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, s
 
     if (item != INDEX_CANCEL)
     	if (item == ITEM_ARCHIPELAGO_PROGRESSION)
-            description = ItemId_GetAPItemDescription(SHOPSANITY_FLAGS_START + (sShopData.shopId - SHOPSANITY_FIRST_INDEX * 16) + index);
+            description = ItemId_GetAPItemDescription(SHOPSANITY_FLAGS_START + ((sShopData.shopId - SHOPSANITY_FIRST_INDEX) * 16) + index);
     	else if (sShopData.martType != MART_TYPE_TMHM && item >= ITEM_TM01 && item <= ITEM_TM50)
             description = gMoveNames[ItemIdToBattleMoveId(item)];
     	else
