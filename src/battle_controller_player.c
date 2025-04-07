@@ -179,8 +179,8 @@ static const u8 sTargetIdentities[] = { B_POSITION_PLAYER_LEFT, B_POSITION_PLAYE
 // unknown unused data
 static const u8 sUnused[] = { 0x48, 0x48, 0x20, 0x5a, 0x50, 0x50, 0x50, 0x58 };
 
-static const u16 sSplitIcons_Pal[] = INCBIN_U16("graphics/battle_interface/split_icons_battle.gbapal");
-static const u8 sSplitIcons_Gfx[] = INCBIN_U8("graphics/battle_interface/split_icons_battle.4bpp");
+static const u16 sSplitIconsBattle_Pal[] = INCBIN_U16("graphics/battle_interface/split_icons_battle.gbapal");
+static const u8 sSplitIconsBattle_Gfx[] = INCBIN_U8("graphics/battle_interface/split_icons_battle.4bpp");
 
 void BattleControllerDummy(void)
 {
@@ -1444,8 +1444,8 @@ static void MoveSelectionDisplaySplitIcon(void)
     {
         moveCategory = 2;
     }
-    LoadPalette(sSplitIcons_Pal, BG_PLTT_ID(10), sizeof(sSplitIcons_Pal));
-    BlitBitmapToWindow(B_WIN_PSS_ICON, sSplitIcons_Gfx + 0x80 * moveCategory, 0, 0, 16, 16);
+    LoadPalette(sSplitIconsBattle_Pal, BG_PLTT_ID(10), sizeof(sSplitIconsBattle_Pal));
+    BlitBitmapToWindow(B_WIN_PSS_ICON, sSplitIconsBattle_Gfx + 0x80 * moveCategory, 0, 0, 16, 16);
 	PutWindowTilemap(B_WIN_PSS_ICON);
 	CopyWindowToVram(B_WIN_PSS_ICON, COPYWIN_FULL);
 }
