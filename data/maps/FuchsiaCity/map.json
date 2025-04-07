@@ -302,7 +302,7 @@
     {
       "x": 25,
       "y": 31,
-      "elevation": 3,
+      "elevation": 0,
       "dest_map": "MAP_FUCHSIA_CITY_POKEMON_CENTER_1F",
       "dest_warp_id": "0"
     },
