@@ -78,11 +78,6 @@ static const struct MoveMenuInfoIcon sMenuInfoIcons[] =
     [MENU_INFO_ICON_DEXSANITY] = { 12, 12, 0x04}
 };
 
-static const struct MoveMenuInfoIcon sMenuInfoApIcons[] =
-{   // { width, height, offset }
-    [MENU_INFO_ICON_DEXSANITY] = { 12, 12, 0x00 }
-};
-
 static void ListMenuDummyTask(u8 taskId)
 {
 }
