@@ -9,7 +9,7 @@
 #define MENU_B_PRESSED -1
 
 #define MENU_INFO_ICON_CAUGHT    0
-#define MENU_INFO_ICON_DEXSANITY 0
+#define MENU_INFO_ICON_DEXSANITY 24
 #define MENU_INFO_ICON_TYPE      (NUMBER_OF_MON_TYPES + 1)
 #define MENU_INFO_ICON_POWER     (NUMBER_OF_MON_TYPES + 2)
 #define MENU_INFO_ICON_ACCURACY  (NUMBER_OF_MON_TYPES + 3)
@@ -40,7 +40,6 @@ void ListMenu_LoadMonIconPalette(u8 palOffset, u16 speciesId);
 void ListMenu_DrawMonIconGraphics(u8 windowId, u16 speciesId, u32 personality, u16 x, u16 y);
 void ListMenuLoadStdPalAt(u8 palOffset, u8 palId);
 void BlitMenuInfoIcon(u8 windowId, u8 iconId, u16 x, u16 y);
-void BlitMenuInfoIconArchipelago(u8 windowId, u8 iconId, u16 x, u16 y);
 
 // menu
 s8 Menu_ProcessInputGridLayout(void);

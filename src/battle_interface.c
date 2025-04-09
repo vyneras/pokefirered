@@ -34,6 +34,7 @@ struct TestingBar
 #define B_INTERFACE_GFX_STATUS_SLP_BATTLER0     27
 #define B_INTERFACE_GFX_STATUS_FRZ_BATTLER0     30
 #define B_INTERFACE_GFX_STATUS_BRN_BATTLER0     33
+#define B_INTERFACE_GFX_BALL_DEXSANITY          36
 // tiles 36 through 38 are unused
 #define B_INTERFACE_GFX_STATUS_NONE             39
 // tiles 40 through 42 are unused
@@ -67,8 +68,7 @@ struct TestingBar
 
 static void SpriteCB_HealthBoxOther(struct Sprite *sprite);
 static void SpriteCB_HealthBar(struct Sprite *sprite);
-static const u8 *GetBattleInterfaceGfxPtr(u8 which);
-static const u8 *GetBattleInterfaceArchipelagoGfxPtr(u8 which);
+static const u8 *GetBattleInterfaceGfxPtr(u8 elementId);
 static void UpdateHpTextInHealthboxInDoubles(u8 healthboxSpriteId, s16 value, u8 maxOrCurrent);
 static void Task_HidePartyStatusSummary_BattleStart_1(u8 taskId);
 static void Task_HidePartyStatusSummary_BattleStart_2(u8 taskId);
@@ -631,11 +631,6 @@ u8 CreateSafariPlayerHealthboxSprites(void)
 static const u8 *GetBattleInterfaceGfxPtr(u8 elementId)
 {
     return gBattleInterface_Gfx[elementId];
-}
-
-static const u8 *GetBattleInterfaceArchipelagoGfxPtr(u8 elementId)
-{
-    return gBattleInterfaceAp_Gfx[elementId];
 }
 
 // Syncs the position of healthbar accordingly with the healthbox.
@@ -1586,7 +1581,7 @@ void TryAddPokeballIconToHealthbox(u8 healthboxSpriteId, bool8 noStatus)
     else if (HasDexsanityItem(SpeciesToNationalPokedexNum(GetMonData(&gEnemyParty[gBattlerPartyIndexes[battlerId]], MON_DATA_SPECIES))))
     {
         if (noStatus && !(gBattleTypeFlags & BATTLE_TYPE_GRIND))
-            CpuCopy32(GetBattleInterfaceArchipelagoGfxPtr(B_INTERFACE_GFX_BALL_CAUGHT), (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 1 * TILE_SIZE_4BPP);
+            CpuCopy32(GetBattleInterfaceGfxPtr(B_INTERFACE_GFX_BALL_DEXSANITY), (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 1 * TILE_SIZE_4BPP);
         else
             CpuFill32(0, (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 1 * TILE_SIZE_4BPP);
     }

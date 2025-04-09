@@ -2746,7 +2746,6 @@ extern const u32 gTrainerPalette_Lady[];
 extern const u32 gTrainerPalette_Painter[];
 
 extern const u8 gMenuInfoElements_Gfx[];
-extern const u8 gMenuInfoApElements_Gfx[];
 extern const u16 gMenuInfoElements1_Pal[];
 extern const u16 gMenuInfoElements2_Pal[];
 
@@ -4503,7 +4502,6 @@ extern const u32 gBattleInterface_Textbox_Pal[];
 extern const u32 gBattleInterface_Textbox_Tilemap[];
 extern const u32 gBattleInterface_PartySummaryBar_Gfx[];
 extern const u8 gBattleInterface_Gfx[][32];
-extern const u8 gBattleInterfaceAp_Gfx[][32];
 extern const u16 gBattleInterface_Healthbox_Pal[];
 extern const u16 gBattleInterface_Healthbar_Pal[];
 
