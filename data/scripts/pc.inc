@@ -22,6 +22,7 @@ EventScript_PCMainMenu::
 	waitmessage
 	special CreatePCMenu
 	waitstate
+	waitse
 	goto EventScript_ChoosePCMenu
 	end
 
