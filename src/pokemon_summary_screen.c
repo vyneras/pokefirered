@@ -650,12 +650,6 @@ static const u8 sPrintMoveTextColors[][3] = {
     {0, 5, 6}
 };
 
-static const u8 sCategoryText[3][9] = {
-    _("PHYSICAL"),
-    _("SPECIAL"),
-    _("STATUS")
-};
-
 static const struct BgTemplate sBgTempaltes[] =
 {
 	 {
@@ -876,7 +870,7 @@ static const struct WindowTemplate sWindowTemplates_Moves[] =
         .tilemapTop = 7,
         .width = 15,
         .height = 13,
-        .paletteNum = 6,
+        .paletteNum = 9,
         .baseBlock = 0x00b5
     },
     [POKESUM_WIN_MOVES_5 - 3] = {
@@ -2028,6 +2022,7 @@ static u8 PokeSum_HandleLoadBgGfx(void)
         break;
     case 1:
         ListMenuLoadStdPalAt(BG_PLTT_ID(6), 1);
+        ListMenuLoadStdPalAt(BG_PLTT_ID(9), 2);
         LoadPalette(sTextHeaderPalette, BG_PLTT_ID(7), PLTT_SIZE_4BPP);
         break;
     case 2:
@@ -2882,11 +2877,7 @@ static void PokeSum_PrintSelectedMoveStats(void)
                                      sLevelNickTextColors[0], TEXT_SKIP_DRAW,
                                      gMoveDescriptionPointers[sMonSummaryScreen->moveIds[sMoveSelectionCursorPos] - 1]);
 
-        AddTextPrinterParameterized4(sMonSummaryScreen->windowIds[POKESUM_WIN_TRAINER_MEMO], FONT_SMALL,
-                                     75, 27,
-                                     0, 0,
-                                     sLevelNickTextColors[0], TEXT_SKIP_DRAW,
-                                     sCategoryText[sMonSummaryScreen->moveCategory[sMoveSelectionCursorPos]]);
+        BlitMenuInfoIcon(sMonSummaryScreen->windowIds[POKESUM_WIN_TRAINER_MEMO], sMonSummaryScreen->moveCategory[sMoveSelectionCursorPos] + 25, 91, 8);
     }
 }
 

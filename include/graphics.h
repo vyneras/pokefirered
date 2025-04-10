@@ -2748,6 +2748,7 @@ extern const u32 gTrainerPalette_Painter[];
 extern const u8 gMenuInfoElements_Gfx[];
 extern const u16 gMenuInfoElements1_Pal[];
 extern const u16 gMenuInfoElements2_Pal[];
+extern const u16 gMenuInfoElements3_Pal[];
 
 extern const u32 gItemIcon_QuestionMark[];
 extern const u32 gItemIconPalette_QuestionMark[];

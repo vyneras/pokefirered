@@ -51,31 +51,34 @@ static u8 ListMenuAddCursorObject(struct ListMenu *list, u32 cursorKind);
 
 static const struct MoveMenuInfoIcon sMenuInfoIcons[] =
 {   // { width, height, offset }
-    [MENU_INFO_ICON_CAUGHT] = { 12, 12, 0x00 },
-    [TYPE_NORMAL + 1]   = { 32, 12, 0x20 },
-    [TYPE_FIGHTING + 1] = { 32, 12, 0x64 },
-    [TYPE_FLYING + 1]   = { 32, 12, 0x60 },
-    [TYPE_POISON + 1]   = { 32, 12, 0x80 },
-    [TYPE_GROUND + 1]   = { 32, 12, 0x48 },
-    [TYPE_ROCK + 1]     = { 32, 12, 0x44 },
-    [TYPE_BUG + 1]      = { 32, 12, 0x6C },
-    [TYPE_GHOST + 1]    = { 32, 12, 0x68 },
-    [TYPE_STEEL + 1]    = { 32, 12, 0x88 },
-    [TYPE_MYSTERY + 1]  = { 32, 12, 0xA4 },
-    [TYPE_FIRE + 1]     = { 32, 12, 0x24 },
-    [TYPE_WATER + 1]    = { 32, 12, 0x28 },
-    [TYPE_GRASS + 1]    = { 32, 12, 0x2C },
-    [TYPE_ELECTRIC + 1] = { 32, 12, 0x40 },
-    [TYPE_PSYCHIC + 1]  = { 32, 12, 0x84 },
-    [TYPE_ICE + 1]      = { 32, 12, 0x4C },
-    [TYPE_DRAGON + 1]   = { 32, 12, 0xA0 },
-    [TYPE_DARK + 1]     = { 32, 12, 0x8C },
+    [MENU_INFO_ICON_CAUGHT]    = { 12, 12, 0x00 },
+    [TYPE_NORMAL + 1]          = { 32, 12, 0x20 },
+    [TYPE_FIGHTING + 1]        = { 32, 12, 0x64 },
+    [TYPE_FLYING + 1]          = { 32, 12, 0x60 },
+    [TYPE_POISON + 1]          = { 32, 12, 0x80 },
+    [TYPE_GROUND + 1]          = { 32, 12, 0x48 },
+    [TYPE_ROCK + 1]            = { 32, 12, 0x44 },
+    [TYPE_BUG + 1]             = { 32, 12, 0x6C },
+    [TYPE_GHOST + 1]           = { 32, 12, 0x68 },
+    [TYPE_STEEL + 1]           = { 32, 12, 0x88 },
+    [TYPE_MYSTERY + 1]         = { 32, 12, 0xA4 },
+    [TYPE_FIRE + 1]            = { 32, 12, 0x24 },
+    [TYPE_WATER + 1]           = { 32, 12, 0x28 },
+    [TYPE_GRASS + 1]           = { 32, 12, 0x2C },
+    [TYPE_ELECTRIC + 1]        = { 32, 12, 0x40 },
+    [TYPE_PSYCHIC + 1]         = { 32, 12, 0x84 },
+    [TYPE_ICE + 1]             = { 32, 12, 0x4C },
+    [TYPE_DRAGON + 1]          = { 32, 12, 0xA0 },
+    [TYPE_DARK + 1]            = { 32, 12, 0x8C },
     [MENU_INFO_ICON_TYPE]      = { 40, 12, 0xA8 },
     [MENU_INFO_ICON_POWER]     = { 40, 12, 0xC0 },
     [MENU_INFO_ICON_ACCURACY]  = { 40, 12, 0xC8 },
     [MENU_INFO_ICON_PP]        = { 40, 12, 0xE0 },
     [MENU_INFO_ICON_EFFECT]    = { 40, 12, 0xE8 },
-    [MENU_INFO_ICON_DEXSANITY] = { 12, 12, 0x04}
+    [MENU_INFO_ICON_DEXSANITY] = { 12, 12, 0x04 },
+    [MENU_INFO_ICON_PHYSICAL]  = { 24, 12, 0x06 },
+    [MENU_INFO_ICON_SPECIAL]   = { 24, 12, 0x09 },
+    [MENU_INFO_ICON_STATUS]    = { 24, 12, 0x0C }
 };
 
 static void ListMenuDummyTask(u8 taskId)
@@ -748,6 +751,9 @@ void ListMenuLoadStdPalAt(u8 palOffset, u8 palId)
         break;
     case 1:
         palette = gMenuInfoElements2_Pal;
+        break;
+    case 2:
+        palette = gMenuInfoElements3_Pal;
         break;
     }
     LoadPalette(palette, palOffset, PLTT_SIZE_4BPP);
