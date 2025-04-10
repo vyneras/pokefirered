@@ -179,7 +179,10 @@ static const u8 sTargetIdentities[] = { B_POSITION_PLAYER_LEFT, B_POSITION_PLAYE
 // unknown unused data
 static const u8 sUnused[] = { 0x48, 0x48, 0x20, 0x5a, 0x50, 0x50, 0x50, 0x58 };
 
-static const u16 sDamageIconsBattle_Pal[] = INCBIN_U16("graphics/battle_interface/damage_icons.gbapal");
+static const u16 sDamageIconsBattlePPMax_Pal[] = INCBIN_U16("graphics/battle_interface/damage_icons_pp_max.gbapal");
+static const u16 sDamageIconsBattlePPHalf_Pal[] = INCBIN_U16("graphics/battle_interface/damage_icons_pp_half.gbapal");
+static const u16 sDamageIconsBattlePPQuarter_Pal[] = INCBIN_U16("graphics/battle_interface/damage_icons_pp_quarter.gbapal");
+static const u16 sDamageIconsBattlePPNone_Pal[] = INCBIN_U16("graphics/battle_interface/damage_icons_pp_none.gbapal");
 static const u8 sDamageIconsBattle_Gfx[] = INCBIN_U8("graphics/battle_interface/damage_icons.4bpp");
 
 void BattleControllerDummy(void)
@@ -1430,42 +1433,43 @@ static void MoveSelectionDisplayPpString(void)
 static void MoveSelectionDisplaySplitIcon(void)
 {
     struct ChooseMoveStruct *moveInfo;
-    u8 moveCategory, power, type, category;
+    u8 moveCategory, power, type, category, ppValue;
 
     moveInfo = (struct ChooseMoveStruct *)(&gBattleBufferA[gActiveBattler][4]);
     power = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].power;
     type = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type;
     category = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].category;
+    ppValue = GetCurrentPpToMaxPpState(moveInfo->currentPp[gMoveSelectionCursor[gActiveBattler]],
+                                       moveInfo->maxPp[gMoveSelectionCursor[gActiveBattler]]);
     if (power > 0)
-    {
         moveCategory = GetDamageType(type, category);
-    }
     else
-    {
         moveCategory = 2;
-    }
-    LoadPalette(sDamageIconsBattle_Pal, BG_PLTT_ID(10), sizeof(sDamageIconsBattle_Pal));
-    BlitBitmapToWindow(B_WIN_PSS_ICON, sDamageIconsBattle_Gfx + 0xC0 * moveCategory, 0, 0, 24, 16);
+    if (ppValue == 3)
+        LoadPalette(sDamageIconsBattlePPMax_Pal, BG_PLTT_ID(10), sizeof(sDamageIconsBattlePPMax_Pal));
+    else if (ppValue == 2)
+        LoadPalette(sDamageIconsBattlePPNone_Pal, BG_PLTT_ID(10), sizeof(sDamageIconsBattlePPNone_Pal));
+    else if (ppValue == 1)
+        LoadPalette(sDamageIconsBattlePPQuarter_Pal, BG_PLTT_ID(10), sizeof(sDamageIconsBattlePPQuarter_Pal));
+    else
+        LoadPalette(sDamageIconsBattlePPHalf_Pal, BG_PLTT_ID(10), sizeof(sDamageIconsBattlePPHalf_Pal));
+    BlitBitmapToWindow(B_WIN_PSS_ICON, sDamageIconsBattle_Gfx + 0x100 * moveCategory, 0, 0, 32, 16);
     PutWindowTilemap(B_WIN_PSS_ICON);
     CopyWindowToVram(B_WIN_PSS_ICON, COPYWIN_FULL);
 }
 
 static void MoveSelectionDisplayPpNumber(void)
 {
-    u8 currPP[2], maxPP[2];
+    u8 *txtPtr;
     struct ChooseMoveStruct *moveInfo;
-    u8 slash[] = _("/");
 
     if (gBattleBufferA[gActiveBattler][2] == TRUE) // check if we didn't want to display pp number
         return;
     SetPpNumbersPaletteInMoveSelection();
     moveInfo = (struct ChooseMoveStruct *)(&gBattleBufferA[gActiveBattler][4]);
-    ConvertIntToDecimalStringN(currPP, moveInfo->currentPp[gMoveSelectionCursor[gActiveBattler]], STR_CONV_MODE_RIGHT_ALIGN, 2);
-    ConvertIntToDecimalStringN(maxPP, moveInfo->maxPp[gMoveSelectionCursor[gActiveBattler]], STR_CONV_MODE_RIGHT_ALIGN, 2);
-    StringCopy(gDisplayedStringBattle, gText_MoveInterfacePP);
-    StringAppend(gDisplayedStringBattle, currPP);
-    StringAppend(gDisplayedStringBattle, slash);
-    StringAppend(gDisplayedStringBattle, maxPP);
+    txtPtr = ConvertIntToDecimalStringN(gDisplayedStringBattle, moveInfo->currentPp[gMoveSelectionCursor[gActiveBattler]], STR_CONV_MODE_RIGHT_ALIGN, 2);
+    *txtPtr = CHAR_SLASH;
+    ConvertIntToDecimalStringN(++txtPtr, moveInfo->maxPp[gMoveSelectionCursor[gActiveBattler]], STR_CONV_MODE_RIGHT_ALIGN, 2);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP_REMAINING);
 }
 
