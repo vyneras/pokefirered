@@ -214,22 +214,23 @@ struct PokemonSummaryScreenData
     s16 ALIGNED(4) flipPagesBgHofs; /* 0x324C */
 
     u16 moveTypes[5]; /* 0x3250 */
-    u16 moveIds[5]; /* 0x325A */
-    u8 ALIGNED(4) numMoves; /* 0x3264 */
-    u8 ALIGNED(4) isSwappingMoves; /* 0x3268 */
+    u8  moveCategory[5]; /* 0x325A */
+    u16 moveIds[5]; /* 0x325F */
+    u8 ALIGNED(4) numMoves; /* 0x3269 */
+    u8 ALIGNED(4) isSwappingMoves; /* 0x326D */
 
-    u8 ALIGNED(4) curMonStatusAilment; /* 0x326C */
+    u8 ALIGNED(4) curMonStatusAilment; /* 0x3271 */
 
-    u8 ALIGNED(4) state3270; /* 0x3270 */
-    u8 ALIGNED(4) summarySetupStep; /* 0x3274 */
-    u8 ALIGNED(4) loadBgGfxStep; /* 0x3278 */
-    u8 ALIGNED(4) spriteCreationStep; /* 0x327C */
-    u8 ALIGNED(4) bufferStringsStep; /* 0x3280 */
-    u8 ALIGNED(4) state3284; /* 0x3284 */
-    u8 ALIGNED(4) selectMoveInputHandlerState; /* 0x3288 */
-    u8 ALIGNED(4) switchMonTaskState; /* 0x328C */
+    u8 ALIGNED(4) state3270; /* 0x3275 */
+    u8 ALIGNED(4) summarySetupStep; /* 0x3279 */
+    u8 ALIGNED(4) loadBgGfxStep; /* 0x327D */
+    u8 ALIGNED(4) spriteCreationStep; /* 0x3281 */
+    u8 ALIGNED(4) bufferStringsStep; /* 0x3285 */
+    u8 ALIGNED(4) state3284; /* 0x3289 */
+    u8 ALIGNED(4) selectMoveInputHandlerState; /* 0x328D */
+    u8 ALIGNED(4) switchMonTaskState; /* 0x3291 */
 
-    struct Pokemon currentMon; /* 0x3290 */
+    struct Pokemon currentMon; /* 0x3295 */
 
     union
     {
@@ -240,8 +241,8 @@ struct PokemonSummaryScreenData
     MainCallback savedCallback;
     struct Sprite *markingSprite;
 
-    u8 ALIGNED(4) lastPageFlipDirection; /* 0x3300 */
-    u8 ALIGNED(4) unk3304; /* 0x3304 */
+    u8 ALIGNED(4) lastPageFlipDirection; /* 0x3305 */
+    u8 ALIGNED(4) unk3304; /* 0x3309 */
 };
 
 struct Struct203B144
@@ -647,6 +648,12 @@ static const u8 sPrintMoveTextColors[][3] = {
     {0, 1, 2},
     {0, 3, 4},
     {0, 5, 6}
+};
+
+static const u8 sCategoryText[3][9] = {
+    _("PHYSICAL"),
+    _("SPECIAL"),
+    _("STATUS")
 };
 
 static const struct BgTemplate sBgTempaltes[] =
@@ -2270,6 +2277,7 @@ static void BufferMonMoveI(u8 i)
 
     sMonSummaryScreen->numMoves++;
     sMonSummaryScreen->moveTypes[i] = gBattleMoves[sMonSummaryScreen->moveIds[i]].type;
+    sMonSummaryScreen->moveCategory[i] = gBattleMoves[sMonSummaryScreen->moveIds[i]].category;
     StringCopy(sMonSummaryScreen->summary.moveNameStrBufs[i], gMoveNames[sMonSummaryScreen->moveIds[i]]);
 
     if (i >= 4 && sMonSummaryScreen->mode == PSS_MODE_SELECT_MOVE)
@@ -2566,8 +2574,7 @@ static void PokeSum_PrintMoveName(u8 i)
           colorIdx = 1;
     }
 
-    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_NORMAL, 36, GetMovePpPrinterYpos(i), sPrintMoveTextColors[colorIdx], TEXT_SKIP_DRAW,
-        gText_PokeSum_PP);
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_NORMAL, 36, GetMovePpPrinterYpos(i), sPrintMoveTextColors[colorIdx], TEXT_SKIP_DRAW, gText_PokeSum_PP);
     AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_NORMAL, 46 + sMonSkillsPrinterXpos->curPp[i], GetMovePpPrinterYpos(i), sPrintMoveTextColors[colorIdx], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.moveCurPpStrBufs[i]);
 
     if (sMonSummaryScreen->moveIds[i] != MOVE_NONE)
@@ -2874,6 +2881,12 @@ static void PokeSum_PrintSelectedMoveStats(void)
                                      0, 0,
                                      sLevelNickTextColors[0], TEXT_SKIP_DRAW,
                                      gMoveDescriptionPointers[sMonSummaryScreen->moveIds[sMoveSelectionCursorPos] - 1]);
+
+        AddTextPrinterParameterized4(sMonSummaryScreen->windowIds[POKESUM_WIN_TRAINER_MEMO], FONT_SMALL,
+                                     75, 27,
+                                     0, 0,
+                                     sLevelNickTextColors[0], TEXT_SKIP_DRAW,
+                                     sCategoryText[sMonSummaryScreen->moveCategory[sMoveSelectionCursorPos]]);
     }
 }
 
