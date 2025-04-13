@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
 #include "scanline_effect.h"
 #include "task.h"
 #include "m4a.h"
@@ -2987,18 +2988,32 @@ static u8 GetMapsecType(u8 mapsec)
     case MAPSEC_SAFFRON_CITY:
         return FlagGet(FLAG_WORLD_MAP_SAFFRON_CITY) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     case MAPSEC_ONE_ISLAND:
+        if (gArchipelagoOptions.kantoOnly)
+            return MAPSECTYPE_NOT_VISITED;
         return FlagGet(FLAG_WORLD_MAP_ONE_ISLAND) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     case MAPSEC_TWO_ISLAND:
+        if (gArchipelagoOptions.kantoOnly)
+                return MAPSECTYPE_NOT_VISITED;
         return FlagGet(FLAG_WORLD_MAP_TWO_ISLAND) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     case MAPSEC_THREE_ISLAND:
+        if (gArchipelagoOptions.kantoOnly)
+            return MAPSECTYPE_NOT_VISITED;
         return FlagGet(FLAG_WORLD_MAP_THREE_ISLAND) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     case MAPSEC_FOUR_ISLAND:
+        if (gArchipelagoOptions.kantoOnly)
+            return MAPSECTYPE_NOT_VISITED;
         return FlagGet(FLAG_WORLD_MAP_FOUR_ISLAND) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     case MAPSEC_FIVE_ISLAND:
+        if (gArchipelagoOptions.kantoOnly)
+            return MAPSECTYPE_NOT_VISITED;
         return FlagGet(FLAG_WORLD_MAP_FIVE_ISLAND) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     case MAPSEC_SEVEN_ISLAND:
+        if (gArchipelagoOptions.kantoOnly)
+            return MAPSECTYPE_NOT_VISITED;
         return FlagGet(FLAG_WORLD_MAP_SEVEN_ISLAND) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     case MAPSEC_SIX_ISLAND:
+        if (gArchipelagoOptions.kantoOnly)
+            return MAPSECTYPE_NOT_VISITED;
         return FlagGet(FLAG_WORLD_MAP_SIX_ISLAND) ? MAPSECTYPE_VISITED : MAPSECTYPE_NOT_VISITED;
     case MAPSEC_ROUTE_4_POKECENTER:
         if (!GetRegionMapPermission(MAPPERM_HAS_FLY_DESTINATIONS))

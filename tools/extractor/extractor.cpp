@@ -382,6 +382,47 @@ const std::vector<std::string> STARTER_POKEMON_NAMES = {
     "STARTER_POKEMON_CHARMANDER"
 };
 
+const std::vector<std::string> MISC_RAM_ADDRESSES = {
+    "CB2_Overworld",
+    "gArchipelagoReceivedItem",
+    "gMain",
+    "gSaveBlock1Ptr",
+    "gSaveBlock2Ptr",
+    "gArchipelagoDeathLinkQueued",
+    "gPlayerParty",
+    "gEnemyParty"
+};
+
+const std::vector<std::string> MISC_ROM_ADDRESSES = {
+    "gArchipelagoOptions",
+    "gArchipelagoStartingItems",
+    "gArchipelagoStartingItemsCount",
+    "gArchipelagoPlayerNames",
+    "gArchipelagoItemNames",
+    "gArchipelagoNameTable",
+    "gArchipelagoInfo",
+    "gBattleMoves",
+    "gLevelUpLearnsets",
+    "gSpeciesInfo",
+    "sTMHMLearnsets",
+    "gTrainers",
+    "sTMHMMoves",
+    "gEvolutionTable",
+    "gTutorMoves",
+    "sTutorLearnsets",
+    "sFanfares",
+    "sInGameTrades",
+    "sFlashLevelToRadius",
+    "gRandomizedSoundTable",
+    "sFlyPoints",
+    "sRegionMapSections_Kanto",
+    "sRegionMapSections_Sevii123",
+    "sRegionMapSections_Sevii45",
+    "sRegionMapSections_Sevii67",
+    "sDamageTypeTable",
+    "gFlyUnlockNames"
+};
+
 int main (int argc, char *argv[])
 {
     std::filesystem::path root_dir = std::filesystem::path(".");
@@ -480,46 +521,11 @@ int main (int argc, char *argv[])
             }
         }
 
-        misc_ram_addresses[GAME_REVISION_MAP[i]] = {
-            { "CB2_Overworld", symbol_map["CB2_Overworld"] },
-            { "gArchipelagoReceivedItem", symbol_map["gArchipelagoReceivedItem"] },
-            { "gMain", symbol_map["gMain"] },
-            { "gSaveBlock1Ptr", symbol_map["gSaveBlock1Ptr"] },
-            { "gSaveBlock2Ptr", symbol_map["gSaveBlock2Ptr"] },
-            { "gArchipelagoDeathLinkQueued", symbol_map["gArchipelagoDeathLinkQueued"] },
-            { "gPlayerParty", symbol_map["gPlayerParty"] },
-            { "gEnemyParty", symbol_map["gEnemyParty"] }
-        };
+        for (size_t j = 0; j < MISC_RAM_ADDRESSES.size(); j++)
+            misc_ram_addresses[MISC_RAM_ADDRESSES[j]][GAME_REVISION_MAP[i]] = symbol_map[MISC_RAM_ADDRESSES[j]];
 
-        misc_rom_addresses[GAME_REVISION_MAP[i]] = {
-            { "gArchipelagoOptions", symbol_map["gArchipelagoOptions"] - ROM_START },
-            { "gArchipelagoStartingItems", symbol_map["gArchipelagoStartingItems"] - ROM_START },
-            { "gArchipelagoStartingItemsCount", symbol_map["gArchipelagoStartingItemsCount"] - ROM_START },
-            { "gArchipelagoPlayerNames", symbol_map["gArchipelagoPlayerNames"] - ROM_START },
-            { "gArchipelagoItemNames", symbol_map["gArchipelagoItemNames"] - ROM_START },
-            { "gArchipelagoNameTable", symbol_map["gArchipelagoNameTable"] - ROM_START },
-            { "gArchipelagoInfo", symbol_map["gArchipelagoInfo"] - ROM_START },
-            { "gBattleMoves", symbol_map["gBattleMoves"] - ROM_START },
-            { "gLevelUpLearnsets", symbol_map["gLevelUpLearnsets"] - ROM_START },
-            { "gSpeciesInfo", symbol_map["gSpeciesInfo"] - ROM_START },
-            { "sTMHMLearnsets", symbol_map["sTMHMLearnsets"] - ROM_START },
-            { "gTrainers", symbol_map["gTrainers"] - ROM_START },
-            { "sTMHMMoves", symbol_map["sTMHMMoves"] - ROM_START },
-            { "gEvolutionTable", symbol_map["gEvolutionTable"] - ROM_START },
-            { "gTutorMoves", symbol_map["gTutorMoves"] - ROM_START },
-            { "sTutorLearnsets", symbol_map["sTutorLearnsets"] - ROM_START },
-            { "sFanfares", symbol_map["sFanfares"] - ROM_START },
-            { "sInGameTrades", symbol_map["sInGameTrades"] - ROM_START },
-            { "sFlashLevelToRadius", symbol_map["sFlashLevelToRadius"] - ROM_START },
-            { "gRandomizedSoundTable", symbol_map["gRandomizedSoundTable"] - ROM_START },
-            { "sFlyPoints", symbol_map["sFlyPoints"] - ROM_START },
-            { "sRegionMapSections_Kanto", symbol_map["sRegionMapSections_Kanto"] - ROM_START },
-            { "sRegionMapSections_Sevii123", symbol_map["sRegionMapSections_Sevii123"] - ROM_START },
-            { "sRegionMapSections_Sevii45", symbol_map["sRegionMapSections_Sevii45"] - ROM_START },
-            { "sRegionMapSections_Sevii67", symbol_map["sRegionMapSections_Sevii67"] - ROM_START },
-            { "sDamageTypeTable", symbol_map["sDamageTypeTable"] - ROM_START },
-            { "gFlyUnlockNames", symbol_map["gFlyUnlockNames"] - ROM_START }
-        };
+        for (size_t j = 0; j < MISC_ROM_ADDRESSES.size(); j++)
+            misc_rom_addresses[MISC_ROM_ADDRESSES[j]][GAME_REVISION_MAP[i]] = symbol_map[MISC_ROM_ADDRESSES[j]] - ROM_START;
 
         // ------------------------------------------------------------------------
         // Reading ROM
@@ -747,7 +753,7 @@ int main (int argc, char *argv[])
 
             if (trainer != nullptr)
             {
-                trainer->address[GAME_REVISION_MAP[i]] = misc_rom_addresses[GAME_REVISION_MAP[i]]["gTrainers"] + (trainer_id * 0x28);
+                trainer->address[GAME_REVISION_MAP[i]] = misc_rom_addresses["gTrainers"][GAME_REVISION_MAP[i]] + (trainer_id * 0x28);
 
                 rom.seekg(trainer->address[GAME_REVISION_MAP[i]] + 0x24, rom.beg);
                 rom.read((char*)&(trainer->party_address[GAME_REVISION_MAP[i]]), 4);
@@ -758,7 +764,7 @@ int main (int argc, char *argv[])
                 trainer = std::make_shared<TrainerInfo>();
 
                 trainer->name = trainer_name;
-                trainer->address[GAME_REVISION_MAP[i]] = misc_rom_addresses[GAME_REVISION_MAP[i]]["gTrainers"] + (trainer_id * 0x28);
+                trainer->address[GAME_REVISION_MAP[i]] = misc_rom_addresses["gTrainers"][GAME_REVISION_MAP[i]] + (trainer_id * 0x28);
 
                 uint8_t party_flags;
                 rom.seekg(trainer->address[GAME_REVISION_MAP[i]] + 0x0, rom.beg);
@@ -1386,8 +1392,8 @@ int main (int argc, char *argv[])
 
             if (trade_pokemon != nullptr)
             {
-                trade_pokemon->species_address[GAME_REVISION_MAP[i]] = misc_rom_addresses[GAME_REVISION_MAP[i]]["sInGameTrades"] + 12 + (j * 60);
-                trade_pokemon->requested_species_address[GAME_REVISION_MAP[i]] = misc_rom_addresses[GAME_REVISION_MAP[i]]["sInGameTrades"] + 56 + (j * 60);
+                trade_pokemon->species_address[GAME_REVISION_MAP[i]] = misc_rom_addresses["sInGameTrades"][GAME_REVISION_MAP[i]] + 12 + (j * 60);
+                trade_pokemon->requested_species_address[GAME_REVISION_MAP[i]] = misc_rom_addresses["sInGameTrades"][GAME_REVISION_MAP[i]] + 56 + (j * 60);
 
                 if (trade_pokemon->species.find(GAME_VERSION_MAP[i]) == trade_pokemon->species.end())
                 {
@@ -1406,8 +1412,8 @@ int main (int argc, char *argv[])
                 trade_pokemon = std::make_shared<TradePokemonInfo>();
 
                 trade_pokemon->name = TRADE_POKEMON_MAP[j];
-                trade_pokemon->species_address[GAME_REVISION_MAP[i]] = misc_rom_addresses[GAME_REVISION_MAP[i]]["sInGameTrades"] + 12 + (j * 60);
-                trade_pokemon->requested_species_address[GAME_REVISION_MAP[i]] = misc_rom_addresses[GAME_REVISION_MAP[i]]["sInGameTrades"] + 56 + (j * 60);
+                trade_pokemon->species_address[GAME_REVISION_MAP[i]] = misc_rom_addresses["sInGameTrades"][GAME_REVISION_MAP[i]] + 12 + (j * 60);
+                trade_pokemon->requested_species_address[GAME_REVISION_MAP[i]] = misc_rom_addresses["sInGameTrades"][GAME_REVISION_MAP[i]] + 56 + (j * 60);
                 rom.seekg(trade_pokemon->species_address[GAME_REVISION_MAP[i]], rom.beg);
                 rom.read((char*)&(trade_pokemon->species[GAME_VERSION_MAP[i]]), 2);
                 rom.seekg(trade_pokemon->requested_species_address[GAME_REVISION_MAP[i]], rom.beg);
@@ -1501,14 +1507,14 @@ int main (int argc, char *argv[])
 
             if (species != nullptr)
             {
-                species->address[GAME_REVISION_MAP[i]] = misc_rom_addresses[GAME_REVISION_MAP[i]]["gSpeciesInfo"] + (j * 28);
+                species->address[GAME_REVISION_MAP[i]] = misc_rom_addresses["gSpeciesInfo"][GAME_REVISION_MAP[i]] + (j * 28);
             }
             else
             {
                 species = std::make_shared<SpeciesInfo>();
 
                 species->id = j;
-                species->address[GAME_REVISION_MAP[i]] = misc_rom_addresses[GAME_REVISION_MAP[i]]["gSpeciesInfo"] + (j * 28);
+                species->address[GAME_REVISION_MAP[i]] = misc_rom_addresses["gSpeciesInfo"][GAME_REVISION_MAP[i]] + (j * 28);
 
                 // Base Stats
                 rom.seekg(species->address[GAME_REVISION_MAP[i]] + 0, rom.beg);
@@ -1554,7 +1560,7 @@ int main (int argc, char *argv[])
             auto species = all_species[j];
 
             uint32_t learnset_pointer;
-            rom.seekg(misc_rom_addresses[GAME_REVISION_MAP[i]]["gLevelUpLearnsets"] + (j * 4), rom.beg);
+            rom.seekg(misc_rom_addresses["gLevelUpLearnsets"][GAME_REVISION_MAP[i]] + (j * 4), rom.beg);
             rom.read((char*)&(learnset_pointer), 4);
             learnset_pointer -= ROM_START;
             species->learnset_info.address[GAME_REVISION_MAP[i]] = learnset_pointer;
@@ -1589,7 +1595,7 @@ int main (int argc, char *argv[])
             {
                 auto species = all_species[j];
 
-                rom.seekg(misc_rom_addresses[GAME_REVISION_MAP[i]]["sTMHMLearnsets"] + (j * 8), rom.beg);
+                rom.seekg(misc_rom_addresses["sTMHMLearnsets"][GAME_REVISION_MAP[i]] + (j * 8), rom.beg);
                 rom.read((char*)&(species->tmhm_learnset), 8);
             }
         }
@@ -1600,7 +1606,7 @@ int main (int argc, char *argv[])
             const size_t NUM_EVOS_PER_MON = 5;
             auto species = all_species[j];
 
-            species->evolutions_address[GAME_REVISION_MAP[i]] = misc_rom_addresses[GAME_REVISION_MAP[i]]["gEvolutionTable"] + (j * (8 * 5));
+            species->evolutions_address[GAME_REVISION_MAP[i]] = misc_rom_addresses["gEvolutionTable"][GAME_REVISION_MAP[i]] + (j * (8 * 5));
 
             if (i == 0) // Only on first pass
             {
@@ -1673,7 +1679,7 @@ int main (int argc, char *argv[])
         {
             for (size_t j = 0; j < 58; j++)
             {
-                rom.seekg(misc_rom_addresses[GAME_REVISION_MAP[i]]["sTMHMMoves"] + (j * 2), rom.beg);
+                rom.seekg(misc_rom_addresses["sTMHMMoves"][GAME_REVISION_MAP[i]] + (j * 2), rom.beg);
                 rom.read((char*)&(tmhm_moves[j]), 2);
             }
         }
@@ -1683,7 +1689,7 @@ int main (int argc, char *argv[])
         {
             for (size_t j = 0; j < 18; j++)
             {
-                rom.seekg(misc_rom_addresses[GAME_REVISION_MAP[i]]["sDamageTypeTable"] + j, rom.beg);
+                rom.seekg(misc_rom_addresses["sDamageTypeTable"][GAME_REVISION_MAP[i]] + j, rom.beg);
                 rom.read((char*)&(damage_type_table[j]), 1);
             }
         }
@@ -1692,7 +1698,7 @@ int main (int argc, char *argv[])
         for (size_t j = 0; j < constants_json["MOVES_COUNT"]; j++)
         {
             std::string move_name = move_names[j];
-            uint32_t address = misc_rom_addresses[GAME_REVISION_MAP[i]]["gBattleMoves"] + (j * 12);
+            uint32_t address = misc_rom_addresses["gBattleMoves"][GAME_REVISION_MAP[i]] + (j * 12);
             auto move = moves[move_name];
 
             if (move != nullptr)
