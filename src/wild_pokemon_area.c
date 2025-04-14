@@ -6,9 +6,9 @@
 #include "overworld.h"
 #include "pokedex.h"
 #include "pokedex_area_markers.h"
+#include "pokedex_screen.h"
 #include "strings.h"
 #include "string_util.h"
-#include "wild_pokemon_area.h"
 #include "constants/region_map_sections.h"
 #include "constants/maps.h"
 
@@ -267,7 +267,7 @@ void GetSpeciesPokedexAreaInfo(u16 species, struct EncounterAreaInfo * areaInfo)
                 StringCopy(gStringVar5, blank);
                 currentPage++;
                 areaCount = 0;
-                if (currentPage == NUM_MAX_PAGES)
+                if (currentPage == NUM_MAX_AREA_PAGES)
                     break;
             }
         }
@@ -285,7 +285,7 @@ void GetSpeciesPokedexAreaInfo(u16 species, struct EncounterAreaInfo * areaInfo)
                 StringCopy(gStringVar5, blank);
                 currentPage++;
                 areaCount = 0;
-                if (currentPage == NUM_MAX_PAGES)
+                if (currentPage == NUM_MAX_AREA_PAGES)
                     break;
             }
         }
@@ -303,7 +303,7 @@ void GetSpeciesPokedexAreaInfo(u16 species, struct EncounterAreaInfo * areaInfo)
                 StringCopy(gStringVar5, blank);
                 currentPage++;
                 areaCount = 0;
-                if (currentPage == NUM_MAX_PAGES)
+                if (currentPage == NUM_MAX_AREA_PAGES)
                     break;
             }
         }

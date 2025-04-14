@@ -20,6 +20,7 @@
 #include "link.h"
 #include "m4a.h"
 #include "pokedex.h"
+#include "pokedex_screen.h"
 #include "strings.h"
 #include "overworld.h"
 #include "party_menu.h"
@@ -6471,4 +6472,79 @@ u8 *MonSpritesGfxManager_GetSpritePtr(u8 spriteNum)
             spriteNum = 0;
         return sMonSpritesGfxManager->spritePointers[spriteNum];
     }
+}
+
+void GetSpeciesEvolutionInfo(u16 species, struct EvolutionInfo * evolutionInfo)
+{
+    s32 i;
+    u8 name[12], level[2], item1[14], item2[14];
+    u8 blank[] = _("");
+    u8 newLine[] = _("\n");
+    u8 dot[] = _("· ");
+    u8 levelLabel[] = _("LEVEL ");
+    u8 friendshipLabel[] = _("FRIENDSHIP");
+    u8 evolutionCount = 0;
+    u8 totalPages = 0;
+    u8 currentPage = 0;
+
+    memcpy(evolutionInfo, 0, sizeof(struct EvolutionInfo));
+    evolutionInfo->currentPage = currentPage;
+    StringCopy(gStringVar5, blank);
+
+    for (i = 0; i < EVOS_PER_MON; i++)
+    {
+        if (gEvolutionTable[species][i].method == 0)
+            continue;
+        GetSpeciesName(name, gEvolutionTable[species][i].targetSpecies);
+        StringAppend(gStringVar5, name);
+        StringAppend(gStringVar5, newLine);
+        StringAppend(gStringVar5, dot);
+        switch(gEvolutionTable[species][i].method)
+        {
+        case EVO_LEVEL:
+        case EVO_LEVEL_NINJASK:
+        case EVO_LEVEL_SHEDINJA:
+        case EVO_LEVEL_ATK_LT_DEF:
+        case EVO_LEVEL_ATK_GT_DEF:
+        case EVO_LEVEL_ATK_EQ_DEF:
+        case EVO_LEVEL_SILCOON:
+        case EVO_LEVEL_CASCOON:
+            StringAppend(gStringVar5, levelLabel);
+            ConvertIntToDecimalStringN(level, gEvolutionTable[species][i].param, STR_CONV_MODE_LEFT_ALIGN, 2);
+            StringAppend(gStringVar5, level);
+            break;
+        case EVO_FRIENDSHIP:
+            StringAppend(gStringVar5, friendshipLabel);
+            break;
+        case EVO_ITEM:
+        case EVO_ITEM_HELD:
+            CopyItemName(gEvolutionTable[species][i].param, item1);
+            StringAppend(gStringVar5, item1);
+            break;
+        }
+        StringAppend(gStringVar5, newLine);
+        if (evolutionCount == 0)
+            totalPages++;
+        evolutionCount++;
+        if (evolutionCount >= 2)
+        {
+            StringCopy(evolutionInfo->infoPages[currentPage], gStringVar5);
+            StringCopy(gStringVar5, blank);
+            currentPage++;
+            evolutionCount = 0;
+            if (currentPage == NUM_MAX_EVOLUTION_PAGES)
+                break;
+        }
+    }
+
+    if (evolutionCount != 0)
+        StringCopy(evolutionInfo->infoPages[currentPage], gStringVar5);
+
+    if (totalPages == 0)
+    {
+        StringCopy(evolutionInfo->infoPages[currentPage], gText_CantEvolve);
+        totalPages++;
+    }
+
+    evolutionInfo->totalPages = totalPages;
 }

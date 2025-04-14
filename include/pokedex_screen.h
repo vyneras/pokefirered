@@ -21,7 +21,26 @@
 
 #define DEX_MODE(name) (DEX_CATEGORY_COUNT + DEX_ORDER_##name)
 
+#define NUM_MAX_AREA_PAGES 20
+#define NUM_MAX_EVOLUTION_PAGES 3
+#define INFO_BUFFER_LENGTH 300
+
+
 #include "pokedex.h"
+
+struct EncounterAreaInfo
+{
+    u8 infoPages[NUM_MAX_AREA_PAGES][INFO_BUFFER_LENGTH];
+    u8 currentPage;
+    u8 totalPages;
+};
+
+struct EvolutionInfo
+{
+   u8 infoPages[NUM_MAX_EVOLUTION_PAGES][INFO_BUFFER_LENGTH];
+    u8 currentPage;
+    u8 totalPages;
+};
 
 extern const struct PokedexEntry gPokedexEntries[];
 

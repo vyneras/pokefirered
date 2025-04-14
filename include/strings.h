@@ -1040,7 +1040,7 @@ extern const u8 gText_WT[];
 extern const u8 gText_HM[];
 extern const u8 gText_Lbs[];
 extern const u8 gText_Cry[];
-extern const u8 gText_CryAreaPage[];
+extern const u8 gText_AreaEvolution[];
 extern const u8 gText_NextDataCancel[];
 extern const u8 gText_Next[];
 extern const u8 gText_NextDataPreviousData[];
@@ -1048,7 +1048,9 @@ extern const u8 gText_CancelPreviousData[];
 extern const u8 gText_Area[];
 extern const u8 gText_Size[];
 extern const u8 gText_AreaUnknown[];
+extern const u8 gText_CantEvolve[];
 extern const u8 gText_EncounterArea[];
+extern const u8 gText_Evolutions[];
 
 // daycare
 extern const u8 gText_Lv[];

@@ -2,6 +2,7 @@
 #define GUARD_POKEMON_H
 
 #include "global.h"
+#include "pokedex_screen.h"
 #include "sprite.h"
 #include "constants/pokemon.h"
 
@@ -432,5 +433,6 @@ bool8 CheckBattleTypeGhost(struct Pokemon *mon, u8 bank);
 struct MonSpritesGfxManager *CreateMonSpritesGfxManager(u8 battlePosition, u8 mode);
 void DestroyMonSpritesGfxManager(void);
 u8 *MonSpritesGfxManager_GetSpritePtr(u8 bufferId);
+void GetSpeciesEvolutionInfo(u16 species, struct EvolutionInfo * evolutionInfo);
 
 #endif // GUARD_POKEMON_H
