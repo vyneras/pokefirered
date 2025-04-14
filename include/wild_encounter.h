@@ -7,6 +7,7 @@
 #define WATER_WILD_COUNT    5
 #define ROCK_WILD_COUNT     5
 #define FISH_WILD_COUNT     10
+#define MAP_NAME_LENGTH     20
 
 #define NUM_ALTERING_CAVE_TABLES 9
 
@@ -31,6 +32,7 @@ struct WildPokemonHeader
     const struct WildPokemonInfo *waterMonsInfo;
     const struct WildPokemonInfo *rockSmashMonsInfo;
     const struct WildPokemonInfo *fishingMonsInfo;
+    u8 mapName[MAP_NAME_LENGTH + 1];
 };
 
 extern const struct WildPokemonHeader gWildMonHeaders[];

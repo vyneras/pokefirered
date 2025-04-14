@@ -79,6 +79,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS_MONEAN_CHAMBER",
           "base_label": "sSevenIslandTanobyRuinsMoneanChamber_FireRed",
+          "map_name": "MONEAN CHAMBER",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -148,6 +149,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS_MONEAN_CHAMBER",
           "base_label": "sSevenIslandTanobyRuinsMoneanChamber_LeafGreen",
+          "map_name": "MONEAN CHAMBER",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -217,6 +219,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS_LIPTOO_CHAMBER",
           "base_label": "sSevenIslandTanobyRuinsLiptooChamber_FireRed",
+          "map_name": "LIPTOO CHAMBER",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -286,6 +289,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS_LIPTOO_CHAMBER",
           "base_label": "sSevenIslandTanobyRuinsLiptooChamber_LeafGreen",
+          "map_name": "LIPTOO CHAMBER",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -355,6 +359,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS_WEEPTH_CHAMBER",
           "base_label": "sSevenIslandTanobyRuinsWeepthChamber_FireRed",
+          "map_name": "WEEPTH CHAMBER",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -424,6 +429,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS_WEEPTH_CHAMBER",
           "base_label": "sSevenIslandTanobyRuinsWeepthChamber_LeafGreen",
+          "map_name": "WEEPTH CHAMBER",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -493,6 +499,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS_DILFORD_CHAMBER",
           "base_label": "sSevenIslandTanobyRuinsDilfordChamber_FireRed",
+          "map_name": "DILFORD CHAMBER",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -562,6 +569,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS_DILFORD_CHAMBER",
           "base_label": "sSevenIslandTanobyRuinsDilfordChamber_LeafGreen",
+          "map_name": "DILFORD CHAMBER",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -631,6 +639,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS_SCUFIB_CHAMBER",
           "base_label": "sSevenIslandTanobyRuinsScufibChamber_FireRed",
+          "map_name": "SCUFIB CHAMBER",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -700,6 +709,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS_SCUFIB_CHAMBER",
           "base_label": "sSevenIslandTanobyRuinsScufibChamber_LeafGreen",
+          "map_name": "SCUFIB CHAMBER",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -769,6 +779,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS_RIXY_CHAMBER",
           "base_label": "sSevenIslandTanobyRuinsRixyChamber_FireRed",
+          "map_name": "RIXY CHAMBER",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -838,6 +849,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS_RIXY_CHAMBER",
           "base_label": "sSevenIslandTanobyRuinsRixyChamber_LeafGreen",
+          "map_name": "RIXY CHAMBER",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -907,6 +919,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS_VIAPOIS_CHAMBER",
           "base_label": "sSevenIslandTanobyRuinsViapoisChamber_FireRed",
+          "map_name": "VIAPOIS CHAMBER",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -976,6 +989,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS_VIAPOIS_CHAMBER",
           "base_label": "sSevenIslandTanobyRuinsViapoisChamber_LeafGreen",
+          "map_name": "VIAPOIS CHAMBER",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -1045,6 +1059,7 @@
         {
           "map": "MAP_VIRIDIAN_FOREST",
           "base_label": "sViridianForest_FireRed",
+          "map_name": "VIRIDIAN FOREST",
           "land_mons": {
             "encounter_rate": 14,
             "mons": [
@@ -1114,6 +1129,7 @@
         {
           "map": "MAP_VIRIDIAN_FOREST",
           "base_label": "sViridianForest_LeafGreen",
+          "map_name": "VIRIDIAN FOREST",
           "land_mons": {
             "encounter_rate": 14,
             "mons": [
@@ -1183,6 +1199,7 @@
         {
           "map": "MAP_MT_MOON_1F",
           "base_label": "sMtMoon1F_FireRed",
+          "map_name": "MT. MOON 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -1252,6 +1269,7 @@
         {
           "map": "MAP_MT_MOON_1F",
           "base_label": "sMtMoon1F_LeafGreen",
+          "map_name": "MT. MOON 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -1321,6 +1339,7 @@
         {
           "map": "MAP_MT_MOON_B1F",
           "base_label": "sMtMoonB1F_FireRed",
+          "map_name": "MT. MOON B1F",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -1390,6 +1409,7 @@
         {
           "map": "MAP_MT_MOON_B1F",
           "base_label": "sMtMoonB1F_LeafGreen",
+          "map_name": "MT. MOON B1F",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -1459,6 +1479,7 @@
         {
           "map": "MAP_MT_MOON_B2F",
           "base_label": "sMtMoonB2F_FireRed",
+          "map_name": "MT. MOON B2F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -1528,6 +1549,7 @@
         {
           "map": "MAP_MT_MOON_B2F",
           "base_label": "sMtMoonB2F_LeafGreen",
+          "map_name": "MT. MOON B2F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -1597,6 +1619,7 @@
         {
           "map": "MAP_SSANNE_EXTERIOR",
           "base_label": "sSSAnneExterior_FireRed",
+          "map_name": "S.S. ANNE",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -1686,6 +1709,7 @@
         {
           "map": "MAP_SSANNE_EXTERIOR",
           "base_label": "sSSAnneExterior_LeafGreen",
+          "map_name": "S.S. ANNE",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -1775,6 +1799,7 @@
         {
           "map": "MAP_DIGLETTS_CAVE_B1F",
           "base_label": "sDiglettsCaveB1F_FireRed",
+          "map_name": "DIGLETT'S CAVE B1F",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -1844,6 +1869,7 @@
         {
           "map": "MAP_DIGLETTS_CAVE_B1F",
           "base_label": "sDiglettsCaveB1F_LeafGreen",
+          "map_name": "DIGLETT'S CAVE B1F",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -1913,6 +1939,7 @@
         {
           "map": "MAP_VICTORY_ROAD_1F",
           "base_label": "sVictoryRoad1F_FireRed",
+          "map_name": "VICTORY ROAD 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -1982,6 +2009,7 @@
         {
           "map": "MAP_VICTORY_ROAD_1F",
           "base_label": "sVictoryRoad1F_LeafGreen",
+          "map_name": "VICTORY ROAD 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -2051,6 +2079,7 @@
         {
           "map": "MAP_VICTORY_ROAD_2F",
           "base_label": "sVictoryRoad2F_FireRed",
+          "map_name": "VICTORY ROAD 2F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -2120,6 +2149,7 @@
         {
           "map": "MAP_VICTORY_ROAD_2F",
           "base_label": "sVictoryRoad2F_LeafGreen",
+          "map_name": "VICTORY ROAD 2F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -2189,6 +2219,7 @@
         {
           "map": "MAP_VICTORY_ROAD_3F",
           "base_label": "sVictoryRoad3F_FireRed",
+          "map_name": "VICTORY ROAD 3F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -2258,6 +2289,7 @@
         {
           "map": "MAP_VICTORY_ROAD_3F",
           "base_label": "sVictoryRoad3F_LeafGreen",
+          "map_name": "VICTORY ROAD 3F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -2327,6 +2359,7 @@
         {
           "map": "MAP_POKEMON_MANSION_1F",
           "base_label": "sPokemonMansion1F_FireRed",
+          "map_name": "POKéMON MANSION 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -2396,6 +2429,7 @@
         {
           "map": "MAP_POKEMON_MANSION_1F",
           "base_label": "sPokemonMansion1F_LeafGreen",
+          "map_name": "POKéMON MANSION 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -2465,6 +2499,7 @@
         {
           "map": "MAP_POKEMON_MANSION_2F",
           "base_label": "sPokemonMansion2F_FireRed",
+          "map_name": "POKéMON MANSION 2F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -2534,6 +2569,7 @@
         {
           "map": "MAP_POKEMON_MANSION_2F",
           "base_label": "sPokemonMansion2F_LeafGreen",
+          "map_name": "POKéMON MANSION 2F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -2603,6 +2639,7 @@
         {
           "map": "MAP_POKEMON_MANSION_3F",
           "base_label": "sPokemonMansion3F_FireRed",
+          "map_name": "POKéMON MANSION 3F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -2672,6 +2709,7 @@
         {
           "map": "MAP_POKEMON_MANSION_3F",
           "base_label": "sPokemonMansion3F_LeafGreen",
+          "map_name": "POKéMON MANSION 3F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -2741,6 +2779,7 @@
         {
           "map": "MAP_POKEMON_MANSION_B1F",
           "base_label": "sPokemonMansionB1F_FireRed",
+          "map_name": "POKéMON MANSION B1F",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -2810,6 +2849,7 @@
         {
           "map": "MAP_POKEMON_MANSION_B1F",
           "base_label": "sPokemonMansionB1F_LeafGreen",
+          "map_name": "POKéMON MANSION B1F",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -2879,6 +2919,7 @@
         {
           "map": "MAP_SAFARI_ZONE_CENTER",
           "base_label": "sSafariZoneCenter_FireRed",
+          "map_name": "SAFARI ZONE CENTER",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -3033,6 +3074,7 @@
         {
           "map": "MAP_SAFARI_ZONE_CENTER",
           "base_label": "sSafariZoneCenter_LeafGreen",
+          "map_name": "SAFARI ZONE CENTER",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -3187,6 +3229,7 @@
         {
           "map": "MAP_SAFARI_ZONE_EAST",
           "base_label": "sSafariZoneEast_FireRed",
+          "map_name": "SAFARI ZONE EAST",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -3341,6 +3384,7 @@
         {
           "map": "MAP_SAFARI_ZONE_EAST",
           "base_label": "sSafariZoneEast_LeafGreen",
+          "map_name": "SAFARI ZONE EAST",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -3495,6 +3539,7 @@
         {
           "map": "MAP_SAFARI_ZONE_NORTH",
           "base_label": "sSafariZoneNorth_FireRed",
+          "map_name": "SAFARI ZONE NORTH",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -3649,6 +3694,7 @@
         {
           "map": "MAP_SAFARI_ZONE_NORTH",
           "base_label": "sSafariZoneNorth_LeafGreen",
+          "map_name": "SAFARI ZONE NORTH",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -3803,6 +3849,7 @@
         {
           "map": "MAP_SAFARI_ZONE_WEST",
           "base_label": "sSafariZoneWest_FireRed",
+          "map_name": "SAFARI ZONE WEST",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -3957,6 +4004,7 @@
         {
           "map": "MAP_SAFARI_ZONE_WEST",
           "base_label": "sSafariZoneWest_LeafGreen",
+          "map_name": "SAFARI ZONE WEST",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -4111,6 +4159,7 @@
         {
           "map": "MAP_CERULEAN_CAVE_1F",
           "base_label": "sCeruleanCave1F_FireRed",
+          "map_name": "CERULEAN CAVE 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -4295,6 +4344,7 @@
         {
           "map": "MAP_CERULEAN_CAVE_1F",
           "base_label": "sCeruleanCave1F_LeafGreen",
+          "map_name": "CERULEAN CAVE 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -4479,6 +4529,7 @@
         {
           "map": "MAP_CERULEAN_CAVE_2F",
           "base_label": "sCeruleanCave2F_FireRed",
+          "map_name": "CERULEAN CAVE 2F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -4578,6 +4629,7 @@
         {
           "map": "MAP_CERULEAN_CAVE_2F",
           "base_label": "sCeruleanCave2F_LeafGreen",
+          "map_name": "CERULEAN CAVE 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -4677,6 +4729,7 @@
         {
           "map": "MAP_CERULEAN_CAVE_B1F",
           "base_label": "sCeruleanCaveB1F_FireRed",
+          "map_name": "CERULEAN CAVE B1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -4861,6 +4914,7 @@
         {
           "map": "MAP_CERULEAN_CAVE_B1F",
           "base_label": "sCeruleanCaveB1F_LeafGreen",
+          "map_name": "CERULEAN CAVE B1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -5045,6 +5099,7 @@
         {
           "map": "MAP_ROCK_TUNNEL_1F",
           "base_label": "sRockTunnel1F_FireRed",
+          "map_name": "ROCK TUNNEL 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -5114,6 +5169,7 @@
         {
           "map": "MAP_ROCK_TUNNEL_1F",
           "base_label": "sRockTunnel1F_LeafGreen",
+          "map_name": "ROCK TUNNEL 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -5183,6 +5239,7 @@
         {
           "map": "MAP_ROCK_TUNNEL_B1F",
           "base_label": "sRockTunnelB1F_FireRed",
+          "map_name": "ROCK TUNNEL B1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -5282,6 +5339,7 @@
         {
           "map": "MAP_ROCK_TUNNEL_B1F",
           "base_label": "sRockTunnelB1F_LeafGreen",
+          "map_name": "ROCK TUNNEL B1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -5381,6 +5439,7 @@
         {
           "map": "MAP_SEAFOAM_ISLANDS_1F",
           "base_label": "sSeafoamIslands1F_FireRed",
+          "map_name": "SEAFOAM ISLANDS 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -5450,6 +5509,7 @@
         {
           "map": "MAP_SEAFOAM_ISLANDS_1F",
           "base_label": "sSeafoamIslands1F_LeafGreen",
+          "map_name": "SEAFOAM ISLANDS 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -5519,6 +5579,7 @@
         {
           "map": "MAP_SEAFOAM_ISLANDS_B1F",
           "base_label": "sSeafoamIslandsB1F_FireRed",
+          "map_name": "SEAFOAM ISLANDS B1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -5588,6 +5649,7 @@
         {
           "map": "MAP_SEAFOAM_ISLANDS_B1F",
           "base_label": "sSeafoamIslandsB1F_LeafGreen",
+          "map_name": "SEAFOAM ISLANDS B1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -5657,6 +5719,7 @@
         {
           "map": "MAP_SEAFOAM_ISLANDS_B2F",
           "base_label": "sSeafoamIslandsB2F_FireRed",
+          "map_name": "SEAFOAM ISLANDS B2F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -5726,6 +5789,7 @@
         {
           "map": "MAP_SEAFOAM_ISLANDS_B2F",
           "base_label": "sSeafoamIslandsB2F_LeafGreen",
+          "map_name": "SEAFOAM ISLANDS B2F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -5795,6 +5859,7 @@
         {
           "map": "MAP_SEAFOAM_ISLANDS_B3F",
           "base_label": "sSeafoamIslandsB3F_FireRed",
+          "map_name": "SEAFOAM ISLANDS B3F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -5949,6 +6014,7 @@
         {
           "map": "MAP_SEAFOAM_ISLANDS_B3F",
           "base_label": "sSeafoamIslandsB3F_LeafGreen",
+          "map_name": "SEAFOAM ISLANDS B3F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -6103,6 +6169,7 @@
         {
           "map": "MAP_SEAFOAM_ISLANDS_B4F",
           "base_label": "sSeafoamIslandsB4F_FireRed",
+          "map_name": "SEAFOAM ISLANDS B4F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -6257,6 +6324,7 @@
         {
           "map": "MAP_SEAFOAM_ISLANDS_B4F",
           "base_label": "sSeafoamIslandsB4F_LeafGreen",
+          "map_name": "SEAFOAM ISLANDS B4F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -6411,6 +6479,7 @@
         {
           "map": "MAP_POKEMON_TOWER_3F",
           "base_label": "sPokemonTower3F_FireRed",
+          "map_name": "POKéMON TOWER 3F",
           "land_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -6480,6 +6549,7 @@
         {
           "map": "MAP_POKEMON_TOWER_3F",
           "base_label": "sPokemonTower3F_LeafGreen",
+          "map_name": "POKéMON TOWER 3F",
           "land_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -6549,6 +6619,7 @@
         {
           "map": "MAP_POKEMON_TOWER_4F",
           "base_label": "sPokemonTower4F_FireRed",
+          "map_name": "POKéMON TOWER 4F",
           "land_mons": {
             "encounter_rate": 4,
             "mons": [
@@ -6618,6 +6689,7 @@
         {
           "map": "MAP_POKEMON_TOWER_4F",
           "base_label": "sPokemonTower4F_LeafGreen",
+          "map_name": "POKéMON TOWER 4F",
           "land_mons": {
             "encounter_rate": 4,
             "mons": [
@@ -6687,6 +6759,7 @@
         {
           "map": "MAP_POKEMON_TOWER_5F",
           "base_label": "sPokemonTower5F_FireRed",
+          "map_name": "POKéMON TOWER 5F",
           "land_mons": {
             "encounter_rate": 6,
             "mons": [
@@ -6756,6 +6829,7 @@
         {
           "map": "MAP_POKEMON_TOWER_5F",
           "base_label": "sPokemonTower5F_LeafGreen",
+          "map_name": "POKéMON TOWER 5F",
           "land_mons": {
             "encounter_rate": 6,
             "mons": [
@@ -6825,6 +6899,7 @@
         {
           "map": "MAP_POKEMON_TOWER_6F",
           "base_label": "sPokemonTower6F_FireRed",
+          "map_name": "POKéMON TOWER 6F",
           "land_mons": {
             "encounter_rate": 8,
             "mons": [
@@ -6894,6 +6969,7 @@
         {
           "map": "MAP_POKEMON_TOWER_6F",
           "base_label": "sPokemonTower6F_LeafGreen",
+          "map_name": "POKéMON TOWER 6F",
           "land_mons": {
             "encounter_rate": 8,
             "mons": [
@@ -6963,6 +7039,7 @@
         {
           "map": "MAP_POKEMON_TOWER_7F",
           "base_label": "sPokemonTower7F_FireRed",
+          "map_name": "POKéMON TOWER 7F",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -7032,6 +7109,7 @@
         {
           "map": "MAP_POKEMON_TOWER_7F",
           "base_label": "sPokemonTower7F_LeafGreen",
+          "map_name": "POKéMON TOWER 7F",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -7101,6 +7179,7 @@
         {
           "map": "MAP_POWER_PLANT",
           "base_label": "sPowerPlant_FireRed",
+          "map_name": "POWER PLANT",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -7170,6 +7249,7 @@
         {
           "map": "MAP_POWER_PLANT",
           "base_label": "sPowerPlant_LeafGreen",
+          "map_name": "POWER PLANT",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -7239,6 +7319,7 @@
         {
           "map": "MAP_MT_EMBER_EXTERIOR",
           "base_label": "sMtEmberExterior_FireRed",
+          "map_name": "MT. EMBER",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -7338,6 +7419,7 @@
         {
           "map": "MAP_MT_EMBER_EXTERIOR",
           "base_label": "sMtEmberExterior_LeafGreen",
+          "map_name": "MT. EMBER",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -7437,6 +7519,7 @@
         {
           "map": "MAP_MT_EMBER_SUMMIT_PATH_1F",
           "base_label": "sMtEmberSummitPath1F_FireRed",
+          "map_name": "SUMMIT PATH 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -7506,6 +7589,7 @@
         {
           "map": "MAP_MT_EMBER_SUMMIT_PATH_1F",
           "base_label": "sMtEmberSummitPath1F_LeafGreen",
+          "map_name": "SUMMIT PATH 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -7575,6 +7659,7 @@
         {
           "map": "MAP_MT_EMBER_SUMMIT_PATH_2F",
           "base_label": "sMtEmberSummitPath2F_FireRed",
+          "map_name": "SUMMIT PATH 2F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -7674,6 +7759,7 @@
         {
           "map": "MAP_MT_EMBER_SUMMIT_PATH_2F",
           "base_label": "sMtEmberSummitPath2F_LeafGreen",
+          "map_name": "SUMMIT PATH 2F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -7773,6 +7859,7 @@
         {
           "map": "MAP_MT_EMBER_SUMMIT_PATH_3F",
           "base_label": "sMtEmberSummitPath3F_FireRed",
+          "map_name": "SUMMIT PATH 3F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -7842,6 +7929,7 @@
         {
           "map": "MAP_MT_EMBER_SUMMIT_PATH_3F",
           "base_label": "sMtEmberSummitPath3F_LeafGreen",
+          "map_name": "SUMMIT PATH 3F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -7911,6 +7999,7 @@
         {
           "map": "MAP_MT_EMBER_RUBY_PATH_1F",
           "base_label": "sMtEmberRubyPath1F_FireRed",
+          "map_name": "RUBY PATH 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -8010,6 +8099,7 @@
         {
           "map": "MAP_MT_EMBER_RUBY_PATH_1F",
           "base_label": "sMtEmberRubyPath1F_LeafGreen",
+          "map_name": "RUBY PATH 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -8109,6 +8199,7 @@
         {
           "map": "MAP_MT_EMBER_RUBY_PATH_B1F",
           "base_label": "sMtEmberRubyPathB1F_FireRed",
+          "map_name": "RUBY PATH B1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -8208,6 +8299,7 @@
         {
           "map": "MAP_MT_EMBER_RUBY_PATH_B1F",
           "base_label": "sMtEmberRubyPathB1F_LeafGreen",
+          "map_name": "RUBY PATH B1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -8307,6 +8399,7 @@
         {
           "map": "MAP_MT_EMBER_RUBY_PATH_B2F",
           "base_label": "sMtEmberRubyPathB2F_FireRed",
+          "map_name": "RUBY PATH B2F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -8406,6 +8499,7 @@
         {
           "map": "MAP_MT_EMBER_RUBY_PATH_B2F",
           "base_label": "sMtEmberRubyPathB2F_LeafGreen",
+          "map_name": "RUBY PATH B2F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -8505,6 +8599,7 @@
         {
           "map": "MAP_MT_EMBER_RUBY_PATH_B3F",
           "base_label": "sMtEmberRubyPathB3F_FireRed",
+          "map_name": "RUBY PATH B3F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -8604,6 +8699,7 @@
         {
           "map": "MAP_MT_EMBER_RUBY_PATH_B3F",
           "base_label": "sMtEmberRubyPathB3F_LeafGreen",
+          "map_name": "RUBY PATH B3F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -8702,7 +8798,8 @@
         },
         {
           "map": "MAP_MT_EMBER_RUBY_PATH_B2F_STAIRS",
-          "base_label": "sMtEmberRubyPathB1FStairs_FireRed",
+          "base_label": "sMtEmberRubyPathB2FStairs_FireRed",
+          "map_name": "RUBY PATH B2F RETURN",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -8801,7 +8898,8 @@
         },
         {
           "map": "MAP_MT_EMBER_RUBY_PATH_B2F_STAIRS",
-          "base_label": "sMtEmberRubyPathB1FStairs_LeafGreen",
+          "base_label": "sMtEmberRubyPathB2FStairs_LeafGreen",
+          "map_name": "RUBY PATH B2F RETURN",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -8900,7 +8998,8 @@
         },
         {
           "map": "MAP_MT_EMBER_RUBY_PATH_B1F_STAIRS",
-          "base_label": "sMtEmberRubyPathB2FStairs_FireRed",
+          "base_label": "sMtEmberRubyPathB1FStairs_FireRed",
+          "map_name": "RUBY PATH B1F RETURN",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -8999,7 +9098,8 @@
         },
         {
           "map": "MAP_MT_EMBER_RUBY_PATH_B1F_STAIRS",
-          "base_label": "sMtEmberRubyPathB2FStairs_LeafGreen",
+          "base_label": "sMtEmberRubyPathB1FStairs_LeafGreen",
+          "map_name": "RUBY PATH B1F RETURN",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -9099,6 +9199,7 @@
         {
           "map": "MAP_THREE_ISLAND_BERRY_FOREST",
           "base_label": "sThreeIslandBerryForest_FireRed",
+          "map_name": "BERRY FOREST",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -9253,6 +9354,7 @@
         {
           "map": "MAP_THREE_ISLAND_BERRY_FOREST",
           "base_label": "sThreeIslandBerryForest_LeafGreen",
+          "map_name": "BERRY FOREST",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -9407,6 +9509,7 @@
         {
           "map": "MAP_FOUR_ISLAND_ICEFALL_CAVE_ENTRANCE",
           "base_label": "sFourIslandIcefallCaveEntrance_FireRed",
+          "map_name": "ICEFALL CAVE FRONT",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -9561,6 +9664,7 @@
         {
           "map": "MAP_FOUR_ISLAND_ICEFALL_CAVE_ENTRANCE",
           "base_label": "sFourIslandIcefallCaveEntrance_LeafGreen",
+          "map_name": "ICEFALL CAVE FRONT",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -9715,6 +9819,7 @@
         {
           "map": "MAP_FOUR_ISLAND_ICEFALL_CAVE_1F",
           "base_label": "sFourIslandIcefallCave1F_FireRed",
+          "map_name": "ICEFALL CAVE 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -9784,6 +9889,7 @@
         {
           "map": "MAP_FOUR_ISLAND_ICEFALL_CAVE_1F",
           "base_label": "sFourIslandIcefallCave1F_LeafGreen",
+          "map_name": "ICEFALL CAVE 1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -9853,6 +9959,7 @@
         {
           "map": "MAP_FOUR_ISLAND_ICEFALL_CAVE_B1F",
           "base_label": "sFourIslandIcefallCaveB1F_FireRed",
+          "map_name": "ICEFALL CAVE B1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -9922,6 +10029,7 @@
         {
           "map": "MAP_FOUR_ISLAND_ICEFALL_CAVE_B1F",
           "base_label": "sFourIslandIcefallCaveB1F_LeafGreen",
+          "map_name": "ICEFALL CAVE B1F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -9991,6 +10099,7 @@
         {
           "map": "MAP_FOUR_ISLAND_ICEFALL_CAVE_BACK",
           "base_label": "sFourIslandIcefallCaveBack_FireRed",
+          "map_name": "ICEFALL CAVE BACK",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -10145,6 +10254,7 @@
         {
           "map": "MAP_FOUR_ISLAND_ICEFALL_CAVE_BACK",
           "base_label": "sFourIslandIcefallCaveBack_LeafGreen",
+          "map_name": "ICEFALL CAVE BACK",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -10299,6 +10409,7 @@
         {
           "map": "MAP_SIX_ISLAND_PATTERN_BUSH",
           "base_label": "sSixIslandPatternBush_FireRed",
+          "map_name": "PATTERN BUSH",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -10368,6 +10479,7 @@
         {
           "map": "MAP_SIX_ISLAND_PATTERN_BUSH",
           "base_label": "sSixIslandPatternBush_LeafGreen",
+          "map_name": "PATTERN BUSH",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -10437,6 +10549,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM1",
           "base_label": "sFiveIslandLostCaveRoom1_FireRed",
+          "map_name": "LOST CAVE ROOM 1",
           "land_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -10506,6 +10619,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM1",
           "base_label": "sFiveIslandLostCaveRoom1_LeafGreen",
+          "map_name": "LOST CAVE ROOM 1",
           "land_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -10575,6 +10689,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM2",
           "base_label": "sFiveIslandLostCaveRoom2_FireRed",
+          "map_name": "LOST CAVE ROOM 2",
           "land_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -10644,6 +10759,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM2",
           "base_label": "sFiveIslandLostCaveRoom2_LeafGreen",
+          "map_name": "LOST CAVE ROOM 2",
           "land_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -10713,6 +10829,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM3",
           "base_label": "sFiveIslandLostCaveRoom3_FireRed",
+          "map_name": "LOST CAVE ROOM 3",
           "land_mons": {
             "encounter_rate": 3,
             "mons": [
@@ -10782,6 +10899,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM3",
           "base_label": "sFiveIslandLostCaveRoom3_LeafGreen",
+          "map_name": "LOST CAVE ROOM 3",
           "land_mons": {
             "encounter_rate": 3,
             "mons": [
@@ -10851,6 +10969,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM4",
           "base_label": "sFiveIslandLostCaveRoom4_FireRed",
+          "map_name": "LOST CAVE ROOM 4",
           "land_mons": {
             "encounter_rate": 4,
             "mons": [
@@ -10920,6 +11039,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM4",
           "base_label": "sFiveIslandLostCaveRoom4_LeafGreen",
+          "map_name": "LOST CAVE ROOM 4",
           "land_mons": {
             "encounter_rate": 4,
             "mons": [
@@ -10989,6 +11109,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM5",
           "base_label": "sFiveIslandLostCaveRoom5_FireRed",
+          "map_name": "LOST CAVE ROOM 5",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -11058,6 +11179,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM5",
           "base_label": "sFiveIslandLostCaveRoom5_LeafGreen",
+          "map_name": "LOST CAVE ROOM 5",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -11127,6 +11249,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM6",
           "base_label": "sFiveIslandLostCaveRoom6_FireRed",
+          "map_name": "LOST CAVE ROOM 6",
           "land_mons": {
             "encounter_rate": 6,
             "mons": [
@@ -11196,6 +11319,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM6",
           "base_label": "sFiveIslandLostCaveRoom6_LeafGreen",
+          "map_name": "LOST CAVE ROOM 6",
           "land_mons": {
             "encounter_rate": 6,
             "mons": [
@@ -11265,6 +11389,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM7",
           "base_label": "sFiveIslandLostCaveRoom7_FireRed",
+          "map_name": "LOST CAVE ROOM 7",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -11334,6 +11459,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM7",
           "base_label": "sFiveIslandLostCaveRoom7_LeafGreen",
+          "map_name": "LOST CAVE ROOM 7",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -11403,6 +11529,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM8",
           "base_label": "sFiveIslandLostCaveRoom8_FireRed",
+          "map_name": "LOST CAVE ROOM 8",
           "land_mons": {
             "encounter_rate": 8,
             "mons": [
@@ -11472,6 +11599,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM8",
           "base_label": "sFiveIslandLostCaveRoom8_LeafGreen",
+          "map_name": "LOST CAVE ROOM 8",
           "land_mons": {
             "encounter_rate": 8,
             "mons": [
@@ -11541,6 +11669,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM9",
           "base_label": "sFiveIslandLostCaveRoom9_FireRed",
+          "map_name": "LOST CAVE ROOM 9",
           "land_mons": {
             "encounter_rate": 9,
             "mons": [
@@ -11610,6 +11739,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM9",
           "base_label": "sFiveIslandLostCaveRoom9_LeafGreen",
+          "map_name": "LOST CAVE ROOM 9",
           "land_mons": {
             "encounter_rate": 9,
             "mons": [
@@ -11679,6 +11809,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM10",
           "base_label": "sFiveIslandLostCaveRoom10_FireRed",
+          "map_name": "LOST CAVE ROOM 10",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -11748,6 +11879,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM10",
           "base_label": "sFiveIslandLostCaveRoom10_LeafGreen",
+          "map_name": "LOST CAVE ROOM 10",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -11817,6 +11949,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM11",
           "base_label": "sFiveIslandLostCaveRoom11_FireRed",
+          "map_name": "LOST CAVE ROOM 11",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -11886,6 +12019,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM11",
           "base_label": "sFiveIslandLostCaveRoom11_LeafGreen",
+          "map_name": "LOST CAVE ROOM 11",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -11955,6 +12089,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM12",
           "base_label": "sFiveIslandLostCaveRoom12_FireRed",
+          "map_name": "LOST CAVE ROOM 12",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -12024,6 +12159,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM12",
           "base_label": "sFiveIslandLostCaveRoom12_LeafGreen",
+          "map_name": "LOST CAVE ROOM 12",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -12093,6 +12229,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM13",
           "base_label": "sFiveIslandLostCaveRoom13_FireRed",
+          "map_name": "LOST CAVE ROOM 13",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -12162,6 +12299,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM13",
           "base_label": "sFiveIslandLostCaveRoom13_LeafGreen",
+          "map_name": "LOST CAVE ROOM 13",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -12231,6 +12369,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM14",
           "base_label": "sFiveIslandLostCaveRoom14_FireRed",
+          "map_name": "LOST CAVE ROOM 14",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -12300,6 +12439,7 @@
         {
           "map": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM14",
           "base_label": "sFiveIslandLostCaveRoom14_LeafGreen",
+          "map_name": "LOST CAVE ROOM 14",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -12369,6 +12509,7 @@
         {
           "map": "MAP_ONE_ISLAND_KINDLE_ROAD",
           "base_label": "sOneIslandKindleRoad_FireRed",
+          "map_name": "KINDLE ROAD",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -12553,6 +12694,7 @@
         {
           "map": "MAP_ONE_ISLAND_KINDLE_ROAD",
           "base_label": "sOneIslandKindleRoad_LeafGreen",
+          "map_name": "KINDLE ROAD",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -12737,6 +12879,7 @@
         {
           "map": "MAP_ONE_ISLAND_TREASURE_BEACH",
           "base_label": "sOneIslandTreasureBeach_FireRed",
+          "map_name": "TREASURE BEACH",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -12891,6 +13034,7 @@
         {
           "map": "MAP_ONE_ISLAND_TREASURE_BEACH",
           "base_label": "sOneIslandTreasureBeach_LeafGreen",
+          "map_name": "TREASURE BEACH",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -13045,6 +13189,7 @@
         {
           "map": "MAP_TWO_ISLAND_CAPE_BRINK",
           "base_label": "sTwoIslandCapeBrink_FireRed",
+          "map_name": "CAPE BRINK",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -13199,6 +13344,7 @@
         {
           "map": "MAP_TWO_ISLAND_CAPE_BRINK",
           "base_label": "sTwoIslandCapeBrink_LeafGreen",
+          "map_name": "CAPE BRINK",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -13353,6 +13499,7 @@
         {
           "map": "MAP_THREE_ISLAND_BOND_BRIDGE",
           "base_label": "sThreeIslandBondBridge_FireRed",
+          "map_name": "BOND BRIDGE",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -13507,6 +13654,7 @@
         {
           "map": "MAP_THREE_ISLAND_BOND_BRIDGE",
           "base_label": "sThreeIslandBondBridge_LeafGreen",
+          "map_name": "BOND BRIDGE",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -13661,6 +13809,7 @@
         {
           "map": "MAP_THREE_ISLAND_PORT",
           "base_label": "sThreeIslandPort_FireRed",
+          "map_name": "THREE ISLE PORT",
           "land_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -13730,6 +13879,7 @@
         {
           "map": "MAP_THREE_ISLAND_PORT",
           "base_label": "sThreeIslandPort_LeafGreen",
+          "map_name": "THREE ISLE PORT",
           "land_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -13799,6 +13949,7 @@
         {
           "map": "MAP_FIVE_ISLAND_RESORT_GORGEOUS",
           "base_label": "sFiveIslandResortGorgeous_FireRed",
+          "map_name": "RESORT GORGEOUS",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -13888,6 +14039,7 @@
         {
           "map": "MAP_FIVE_ISLAND_RESORT_GORGEOUS",
           "base_label": "sFiveIslandResortGorgeous_LeafGreen",
+          "map_name": "RESORT GORGEOUS",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -13977,6 +14129,7 @@
         {
           "map": "MAP_FIVE_ISLAND_WATER_LABYRINTH",
           "base_label": "sFiveIslandWaterLabyrinth_FireRed",
+          "map_name": "WATER LBYRINTH",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -14066,6 +14219,7 @@
         {
           "map": "MAP_FIVE_ISLAND_WATER_LABYRINTH",
           "base_label": "sFiveIslandWaterLabyrinth_LeafGreen",
+          "map_name": "WATER LBYRINTH",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -14155,6 +14309,7 @@
         {
           "map": "MAP_FIVE_ISLAND_MEADOW",
           "base_label": "sFiveIslandMeadow_FireRed",
+          "map_name": "FIVE ISLE MEADOW",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -14309,6 +14464,7 @@
         {
           "map": "MAP_FIVE_ISLAND_MEADOW",
           "base_label": "sFiveIslandMeadow_LeafGreen",
+          "map_name": "FIVE ISLE MEADOW",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -14463,6 +14619,7 @@
         {
           "map": "MAP_FIVE_ISLAND_MEMORIAL_PILLAR",
           "base_label": "sFiveIslandMemorialPillar_FireRed",
+          "map_name": "MEMORIAL PILLAR",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -14617,6 +14774,7 @@
         {
           "map": "MAP_FIVE_ISLAND_MEMORIAL_PILLAR",
           "base_label": "sFiveIslandMemorialPillar_LeafGreen",
+          "map_name": "MEMORIAL PILLAR",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -14771,6 +14929,7 @@
         {
           "map": "MAP_SIX_ISLAND_OUTCAST_ISLAND",
           "base_label": "sSixIslandOutcastIsland_FireRed",
+          "map_name": "OUTCAST ISLAND",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -14860,6 +15019,7 @@
         {
           "map": "MAP_SIX_ISLAND_OUTCAST_ISLAND",
           "base_label": "sSixIslandOutcastIsland_LeafGreen",
+          "map_name": "OUTCAST ISLAND",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -14949,6 +15109,7 @@
         {
           "map": "MAP_SIX_ISLAND_GREEN_PATH",
           "base_label": "sSixIslandGreenPath_FireRed",
+          "map_name": "GREEN PATH",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -15038,6 +15199,7 @@
         {
           "map": "MAP_SIX_ISLAND_GREEN_PATH",
           "base_label": "sSixIslandGreenPath_LeafGreen",
+          "map_name": "GREEN PATH",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -15127,6 +15289,7 @@
         {
           "map": "MAP_SIX_ISLAND_WATER_PATH",
           "base_label": "sSixIslandWaterPath_FireRed",
+          "map_name": "WATER PATH",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -15281,6 +15444,7 @@
         {
           "map": "MAP_SIX_ISLAND_WATER_PATH",
           "base_label": "sSixIslandWaterPath_LeafGreen",
+          "map_name": "WATER PATH",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -15435,6 +15599,7 @@
         {
           "map": "MAP_SIX_ISLAND_RUIN_VALLEY",
           "base_label": "sSixIslandRuinValley_FireRed",
+          "map_name": "RUIN VALLEY",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -15589,6 +15754,7 @@
         {
           "map": "MAP_SIX_ISLAND_RUIN_VALLEY",
           "base_label": "sSixIslandRuinValley_LeafGreen",
+          "map_name": "RUIN VALLEY",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -15743,6 +15909,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TRAINER_TOWER",
           "base_label": "sSevenIslandTrainerTower_FireRed",
+          "map_name": "TRAINER TOWER",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -15832,6 +15999,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TRAINER_TOWER",
           "base_label": "sSevenIslandTrainerTower_LeafGreen",
+          "map_name": "TRAINER TOWER",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -15921,6 +16089,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_SEVAULT_CANYON_ENTRANCE",
           "base_label": "sSevenIslandSevaultCanyonEntrance_FireRed",
+          "map_name": "CANYON ENTRANCE",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -15990,6 +16159,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_SEVAULT_CANYON_ENTRANCE",
           "base_label": "sSevenIslandSevaultCanyonEntrance_LeafGreen",
+          "map_name": "CANYON ENTRANCE",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -16059,6 +16229,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_SEVAULT_CANYON",
           "base_label": "sSevenIslandSevaultCanyon_FireRed",
+          "map_name": "SEVAULT CANYON",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -16158,6 +16329,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_SEVAULT_CANYON",
           "base_label": "sSevenIslandSevaultCanyon_LeafGreen",
+          "map_name": "SEVAULT CANYON",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -16257,6 +16429,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS",
           "base_label": "sSevenIslandTanobyRuins_FireRed",
+          "map_name": "TANOBY RUINS",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -16346,6 +16519,7 @@
         {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS",
           "base_label": "sSevenIslandTanobyRuins_LeafGreen",
+          "map_name": "TANOBY RUINS",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -16435,6 +16609,7 @@
         {
           "map": "MAP_ROUTE1",
           "base_label": "sRoute1_FireRed",
+          "map_name": "ROUTE 1",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -16504,6 +16679,7 @@
         {
           "map": "MAP_ROUTE1",
           "base_label": "sRoute1_LeafGreen",
+          "map_name": "ROUTE 1",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -16573,6 +16749,7 @@
         {
           "map": "MAP_ROUTE2",
           "base_label": "sRoute2_FireRed",
+          "map_name": "ROUTE 2",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -16642,6 +16819,7 @@
         {
           "map": "MAP_ROUTE2",
           "base_label": "sRoute2_LeafGreen",
+          "map_name": "ROUTE 2",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -16711,6 +16889,7 @@
         {
           "map": "MAP_ROUTE3",
           "base_label": "sRoute3_FireRed",
+          "map_name": "ROUTE 3",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -16780,6 +16959,7 @@
         {
           "map": "MAP_ROUTE3",
           "base_label": "sRoute3_LeafGreen",
+          "map_name": "ROUTE 3",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -16849,6 +17029,7 @@
         {
           "map": "MAP_ROUTE4",
           "base_label": "sRoute4_FireRed",
+          "map_name": "ROUTE 4",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -17003,6 +17184,7 @@
         {
           "map": "MAP_ROUTE4",
           "base_label": "sRoute4_LeafGreen",
+          "map_name": "ROUTE 4",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -17157,6 +17339,7 @@
         {
           "map": "MAP_ROUTE5",
           "base_label": "sRoute5_FireRed",
+          "map_name": "ROUTE 5",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -17226,6 +17409,7 @@
         {
           "map": "MAP_ROUTE5",
           "base_label": "sRoute5_LeafGreen",
+          "map_name": "ROUTE 5",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -17295,6 +17479,7 @@
         {
           "map": "MAP_ROUTE6",
           "base_label": "sRoute6_FireRed",
+          "map_name": "ROUTE 6",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -17449,6 +17634,7 @@
         {
           "map": "MAP_ROUTE6",
           "base_label": "sRoute6_LeafGreen",
+          "map_name": "ROUTE 6",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -17603,6 +17789,7 @@
         {
           "map": "MAP_ROUTE7",
           "base_label": "sRoute7_FireRed",
+          "map_name": "ROUTE 7",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -17672,6 +17859,7 @@
         {
           "map": "MAP_ROUTE7",
           "base_label": "sRoute7_LeafGreen",
+          "map_name": "ROUTE 7",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -17741,6 +17929,7 @@
         {
           "map": "MAP_ROUTE8",
           "base_label": "sRoute8_FireRed",
+          "map_name": "ROUTE 8",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -17810,6 +17999,7 @@
         {
           "map": "MAP_ROUTE8",
           "base_label": "sRoute8_LeafGreen",
+          "map_name": "ROUTE 8",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -17879,6 +18069,7 @@
         {
           "map": "MAP_ROUTE9",
           "base_label": "sRoute9_FireRed",
+          "map_name": "ROUTE 9",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -17948,6 +18139,7 @@
         {
           "map": "MAP_ROUTE9",
           "base_label": "sRoute9_LeafGreen",
+          "map_name": "ROUTE 9",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -18017,6 +18209,7 @@
         {
           "map": "MAP_ROUTE10",
           "base_label": "sRoute10_FireRed",
+          "map_name": "ROUTE 10",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -18171,6 +18364,7 @@
         {
           "map": "MAP_ROUTE10",
           "base_label": "sRoute10_LeafGreen",
+          "map_name": "ROUTE 10",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -18325,6 +18519,7 @@
         {
           "map": "MAP_ROUTE11",
           "base_label": "sRoute11_FireRed",
+          "map_name": "ROUTE 11",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -18479,6 +18674,7 @@
         {
           "map": "MAP_ROUTE11",
           "base_label": "sRoute11_LeafGreen",
+          "map_name": "ROUTE 11",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -18633,6 +18829,7 @@
         {
           "map": "MAP_ROUTE12",
           "base_label": "sRoute12_FireRed",
+          "map_name": "ROUTE 12",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -18787,6 +18984,7 @@
         {
           "map": "MAP_ROUTE12",
           "base_label": "sRoute12_LeafGreen",
+          "map_name": "ROUTE 12",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -18941,6 +19139,7 @@
         {
           "map": "MAP_ROUTE13",
           "base_label": "sRoute13_FireRed",
+          "map_name": "ROUTE 13",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -19095,6 +19294,7 @@
         {
           "map": "MAP_ROUTE13",
           "base_label": "sRoute13_LeafGreen",
+          "map_name": "ROUTE 13",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -19249,6 +19449,7 @@
         {
           "map": "MAP_ROUTE14",
           "base_label": "sRoute14_FireRed",
+          "map_name": "ROUTE 14",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -19318,6 +19519,7 @@
         {
           "map": "MAP_ROUTE14",
           "base_label": "sRoute14_LeafGreen",
+          "map_name": "ROUTE 14",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -19387,6 +19589,7 @@
         {
           "map": "MAP_ROUTE15",
           "base_label": "sRoute15_FireRed",
+          "map_name": "ROUTE 15",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -19456,6 +19659,7 @@
         {
           "map": "MAP_ROUTE15",
           "base_label": "sRoute15_LeafGreen",
+          "map_name": "ROUTE 15",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -19525,6 +19729,7 @@
         {
           "map": "MAP_ROUTE16",
           "base_label": "sRoute16_FireRed",
+          "map_name": "ROUTE 16",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -19594,6 +19799,7 @@
         {
           "map": "MAP_ROUTE16",
           "base_label": "sRoute16_LeafGreen",
+          "map_name": "ROUTE 16",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -19663,6 +19869,7 @@
         {
           "map": "MAP_ROUTE17",
           "base_label": "sRoute17_FireRed",
+          "map_name": "ROUTE 17",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -19732,6 +19939,7 @@
         {
           "map": "MAP_ROUTE17",
           "base_label": "sRoute17_LeafGreen",
+          "map_name": "ROUTE 17",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -19801,6 +20009,7 @@
         {
           "map": "MAP_ROUTE18",
           "base_label": "sRoute18_FireRed",
+          "map_name": "ROUTE 18",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -19870,6 +20079,7 @@
         {
           "map": "MAP_ROUTE18",
           "base_label": "sRoute18_LeafGreen",
+          "map_name": "ROUTE 18",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -19939,6 +20149,7 @@
         {
           "map": "MAP_ROUTE19",
           "base_label": "sRoute19_FireRed",
+          "map_name": "ROUTE 19",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -20028,6 +20239,7 @@
         {
           "map": "MAP_ROUTE19",
           "base_label": "sRoute19_LeafGreen",
+          "map_name": "ROUTE 19",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -20117,6 +20329,7 @@
         {
           "map": "MAP_ROUTE20",
           "base_label": "sRoute20_FireRed",
+          "map_name": "ROUTE 20",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -20206,6 +20419,7 @@
         {
           "map": "MAP_ROUTE20",
           "base_label": "sRoute20_LeafGreen",
+          "map_name": "ROUTE 20",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -20295,6 +20509,7 @@
         {
           "map": "MAP_ROUTE21_NORTH",
           "base_label": "sRoute21North_FireRed",
+          "map_name": "ROUTE 21",
           "land_mons": {
             "encounter_rate": 14,
             "mons": [
@@ -20449,6 +20664,7 @@
         {
           "map": "MAP_ROUTE21_NORTH",
           "base_label": "sRoute21North_LeafGreen",
+          "map_name": "ROUTE 21",
           "land_mons": {
             "encounter_rate": 14,
             "mons": [
@@ -20603,6 +20819,7 @@
         {
           "map": "MAP_ROUTE21_SOUTH",
           "base_label": "sRoute21South_FireRed",
+          "map_name": "ROUTE 21",
           "land_mons": {
             "encounter_rate": 14,
             "mons": [
@@ -20757,6 +20974,7 @@
         {
           "map": "MAP_ROUTE21_SOUTH",
           "base_label": "sRoute21South_LeafGreen",
+          "map_name": "ROUTE 21",
           "land_mons": {
             "encounter_rate": 14,
             "mons": [
@@ -20911,6 +21129,7 @@
         {
           "map": "MAP_ROUTE22",
           "base_label": "sRoute22_FireRed",
+          "map_name": "ROUTE 22",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -21065,6 +21284,7 @@
         {
           "map": "MAP_ROUTE22",
           "base_label": "sRoute22_LeafGreen",
+          "map_name": "ROUTE 22",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -21219,6 +21439,7 @@
         {
           "map": "MAP_ROUTE23",
           "base_label": "sRoute23_FireRed",
+          "map_name": "ROUTE 23",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -21373,6 +21594,7 @@
         {
           "map": "MAP_ROUTE23",
           "base_label": "sRoute23_LeafGreen",
+          "map_name": "ROUTE 23",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -21527,6 +21749,7 @@
         {
           "map": "MAP_ROUTE24",
           "base_label": "sRoute24_FireRed",
+          "map_name": "ROUTE 24",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -21681,6 +21904,7 @@
         {
           "map": "MAP_ROUTE24",
           "base_label": "sRoute24_LeafGreen",
+          "map_name": "ROUTE 24",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -21835,6 +22059,7 @@
         {
           "map": "MAP_ROUTE25",
           "base_label": "sRoute25_FireRed",
+          "map_name": "ROUTE 25",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -21989,6 +22214,7 @@
         {
           "map": "MAP_ROUTE25",
           "base_label": "sRoute25_LeafGreen",
+          "map_name": "ROUTE 25",
           "land_mons": {
             "encounter_rate": 21,
             "mons": [
@@ -22143,6 +22369,7 @@
         {
           "map": "MAP_PALLET_TOWN",
           "base_label": "sPalletTown_FireRed",
+          "map_name": "PALLET TOWN",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -22232,6 +22459,7 @@
         {
           "map": "MAP_PALLET_TOWN",
           "base_label": "sPalletTown_LeafGreen",
+          "map_name": "PALLET TOWN",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -22321,6 +22549,7 @@
         {
           "map": "MAP_VIRIDIAN_CITY",
           "base_label": "sViridianCity_FireRed",
+          "map_name": "VIRIDIAN CITY",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -22410,6 +22639,7 @@
         {
           "map": "MAP_VIRIDIAN_CITY",
           "base_label": "sViridianCity_LeafGreen",
+          "map_name": "VIRIDIAN CITY",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -22499,6 +22729,7 @@
         {
           "map": "MAP_CERULEAN_CITY",
           "base_label": "sCeruleanCity_FireRed",
+          "map_name": "CERULEAN CITY",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -22588,6 +22819,7 @@
         {
           "map": "MAP_CERULEAN_CITY",
           "base_label": "sCeruleanCity_LeafGreen",
+          "map_name": "CERULEAN CITY",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -22677,6 +22909,7 @@
         {
           "map": "MAP_VERMILION_CITY",
           "base_label": "sVermilionCity_FireRed",
+          "map_name": "VERMILION CITY",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -22766,6 +22999,7 @@
         {
           "map": "MAP_VERMILION_CITY",
           "base_label": "sVermilionCity_LeafGreen",
+          "map_name": "VERMILION CITY",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -22855,6 +23089,7 @@
         {
           "map": "MAP_CELADON_CITY",
           "base_label": "sCeladonCity_FireRed",
+          "map_name": "CELADON CITY",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -22944,6 +23179,7 @@
         {
           "map": "MAP_CELADON_CITY",
           "base_label": "sCeladonCity_LeafGreen",
+          "map_name": "CELADON CITY",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -23033,6 +23269,7 @@
         {
           "map": "MAP_FUCHSIA_CITY",
           "base_label": "sFuchsiaCity_FireRed",
+          "map_name": "FUCHSIA CITY",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -23122,6 +23359,7 @@
         {
           "map": "MAP_FUCHSIA_CITY",
           "base_label": "sFuchsiaCity_LeafGreen",
+          "map_name": "FUCHSIA CITY",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -23211,6 +23449,7 @@
         {
           "map": "MAP_CINNABAR_ISLAND",
           "base_label": "sCinnabarIsland_FireRed",
+          "map_name": "CINNABAR ISLAND",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -23300,6 +23539,7 @@
         {
           "map": "MAP_CINNABAR_ISLAND",
           "base_label": "sCinnabarIsland_LeafGreen",
+          "map_name": "CINNABAR ISLAND",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -23389,6 +23629,7 @@
         {
           "map": "MAP_ONE_ISLAND",
           "base_label": "sOneIsland_FireRed",
+          "map_name": "ONE ISLAND",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -23478,6 +23719,7 @@
         {
           "map": "MAP_ONE_ISLAND",
           "base_label": "sOneIsland_LeafGreen",
+          "map_name": "ONE ISLAND",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -23567,6 +23809,7 @@
         {
           "map": "MAP_FOUR_ISLAND",
           "base_label": "sFourIsland_FireRed",
+          "map_name": "FOUR ISLAND",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -23656,6 +23899,7 @@
         {
           "map": "MAP_FOUR_ISLAND",
           "base_label": "sFourIsland_LeafGreen",
+          "map_name": "FOUR ISLAND",
           "water_mons": {
             "encounter_rate": 2,
             "mons": [
@@ -23745,6 +23989,7 @@
         {
           "map": "MAP_FIVE_ISLAND",
           "base_label": "sFiveIsland_FireRed",
+          "map_name": "FIVE ISLAND",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -23834,6 +24079,7 @@
         {
           "map": "MAP_FIVE_ISLAND",
           "base_label": "sFiveIsland_LeafGreen",
+          "map_name": "FIVE ISLAND",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -23923,6 +24169,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_FireRed",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -23992,6 +24239,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_2_FireRed",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -24061,6 +24309,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_3_FireRed",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -24130,6 +24379,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_4_FireRed",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -24199,6 +24449,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_5_FireRed",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -24268,6 +24519,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_6_FireRed",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -24337,6 +24589,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_7_FireRed",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -24406,6 +24659,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_8_FireRed",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -24475,6 +24729,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_9_FireRed",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 5,
             "mons": [
@@ -24544,6 +24799,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_LeafGreen",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -24613,6 +24869,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_2_LeafGreen",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -24682,6 +24939,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_3_LeafGreen",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -24751,6 +25009,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_4_LeafGreen",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -24820,6 +25079,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_5_LeafGreen",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -24889,6 +25149,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_6_LeafGreen",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -24958,6 +25219,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_7_LeafGreen",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -25027,6 +25289,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_8_LeafGreen",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [
@@ -25096,6 +25359,7 @@
         {
           "map": "MAP_SIX_ISLAND_ALTERING_CAVE",
           "base_label": "sSixIslandAlteringCave_9_LeafGreen",
+          "map_name": "ALTERING CAVE",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [

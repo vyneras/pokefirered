@@ -6,6 +6,9 @@
 #include "overworld.h"
 #include "pokedex.h"
 #include "pokedex_area_markers.h"
+#include "strings.h"
+#include "string_util.h"
+#include "wild_pokemon_area.h"
 #include "constants/region_map_sections.h"
 #include "constants/maps.h"
 
@@ -173,9 +176,6 @@ s32 GetSpeciesPokedexAreaMarkers(u16 species, struct Subsprite * subsprites)
     s32 alteringCaveNum;
     s32 i;
 
-    if (GetRoamerIndex(species) >= 0)
-        return GetRoamerPokedexAreaMarkers(species, subsprites);
-
     seviiAreas = GetUnlockedSeviiAreas();
     alteringCaveCount = 0;
     alteringCaveNum = 0;
@@ -218,6 +218,107 @@ s32 GetSpeciesPokedexAreaMarkers(u16 species, struct Subsprite * subsprites)
     }
 
     return areaCount;
+}
+
+void GetSpeciesPokedexAreaInfo(u16 species, struct EncounterAreaInfo * areaInfo)
+{
+    s32 i;
+    s32 alteringCaveCount;
+    s32 alteringCaveNum;
+    u8 blank[] = _("");
+    u8 newLine[] = _("\n");
+    u8 landIndication[] = _(" (L)");
+    u8 waterIndication[] = _(" (W)");
+    u8 fishingIndication[] = _(" (F)");
+    u8 areaCount = 0;
+    u8 totalPages = 0;
+    u8 currentPage = 0;
+
+    memcpy(areaInfo, 0, sizeof(struct EncounterAreaInfo));
+    areaInfo->currentPage = currentPage;
+    StringCopy(gStringVar5, blank);
+    alteringCaveCount = 0;
+    alteringCaveNum = 0;
+    if (alteringCaveNum >= NUM_ALTERING_CAVE_TABLES)
+        alteringCaveNum = 0;
+    for (i = 0; gWildMonHeaders[i].mapGroup != MAP_GROUP(UNDEFINED); i++)
+    {
+        if (gWildMonHeaders[i].mapGroup == MAP_GROUP(SIX_ISLAND_ALTERING_CAVE) &&
+            gWildMonHeaders[i].mapNum == MAP_NUM(SIX_ISLAND_ALTERING_CAVE))
+        {
+            alteringCaveCount++;
+            if (alteringCaveNum != alteringCaveCount - 1)
+                continue;
+        }
+        if (gWildMonHeaders[i].mapGroup == MAP_GROUP(ROUTE21_SOUTH) &&
+            gWildMonHeaders[i].mapNum == MAP_NUM(ROUTE21_SOUTH))
+            continue;
+        if (IsSpeciesInEncounterTable(gWildMonHeaders[i].landMonsInfo, species, LAND_WILD_COUNT))
+        {
+            StringAppend(gStringVar5, gWildMonHeaders[i].mapName);
+            StringAppend(gStringVar5, landIndication);
+            StringAppend(gStringVar5, newLine);
+            if (areaCount == 0)
+                totalPages++;
+            areaCount++;
+            if (areaCount >= 7)
+            {
+                StringCopy(areaInfo->infoPages[currentPage], gStringVar5);
+                StringCopy(gStringVar5, blank);
+                currentPage++;
+                areaCount = 0;
+                if (currentPage == NUM_MAX_PAGES)
+                    break;
+            }
+        }
+        if (IsSpeciesInEncounterTable(gWildMonHeaders[i].waterMonsInfo, species, WATER_WILD_COUNT))
+        {
+            StringAppend(gStringVar5, gWildMonHeaders[i].mapName);
+            StringAppend(gStringVar5, waterIndication);
+            StringAppend(gStringVar5, newLine);
+            if (areaCount == 0)
+                totalPages++;
+            areaCount++;
+            if (areaCount >= 7)
+            {
+                StringCopy(areaInfo->infoPages[currentPage], gStringVar5);
+                StringCopy(gStringVar5, blank);
+                currentPage++;
+                areaCount = 0;
+                if (currentPage == NUM_MAX_PAGES)
+                    break;
+            }
+        }
+        if (IsSpeciesInEncounterTable(gWildMonHeaders[i].fishingMonsInfo, species, FISH_WILD_COUNT))
+        {
+            StringAppend(gStringVar5, gWildMonHeaders[i].mapName);
+            StringAppend(gStringVar5, fishingIndication);
+            StringAppend(gStringVar5, newLine);
+            if (areaCount == 0)
+                totalPages++;
+            areaCount++;
+            if (areaCount >= 7)
+            {
+                StringCopy(areaInfo->infoPages[currentPage], gStringVar5);
+                StringCopy(gStringVar5, blank);
+                currentPage++;
+                areaCount = 0;
+                if (currentPage == NUM_MAX_PAGES)
+                    break;
+            }
+        }
+    }
+
+    if (areaCount != 0)
+        StringCopy(areaInfo->infoPages[currentPage], gStringVar5);
+
+    if (totalPages == 0)
+    {
+        StringCopy(areaInfo->infoPages[currentPage], gText_AreaUnknown);
+        totalPages++;
+    }
+
+    areaInfo->totalPages = totalPages;
 }
 
 static s32 GetRoamerIndex(u16 species)
