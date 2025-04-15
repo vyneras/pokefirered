@@ -21,6 +21,7 @@ ThreeIsland_House1_EventScript_Lostelle::
 	end
 
 ThreeIsland_House1_EventScript_LostelleGivePass::
+	goto_if_set FLAG_GOT_TWO_PASS, EventScript_Return
 	msgbox ThreeIsland_House1_Text_ThanksAgain
 Archipelago_Target_NPC_Gift_FLAG_GOT_TWO_PASS::
 	giveitem ITEM_TWO_PASS, 1, FLAG_GOT_TWO_PASS
