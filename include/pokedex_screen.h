@@ -12,12 +12,13 @@
 #define DEX_CATEGORY_RARE           8
 #define DEX_CATEGORY_COUNT          9
 
-#define DEX_ORDER_NUMERICAL_KANTO    0
-#define DEX_ORDER_ATOZ               1
-#define DEX_ORDER_TYPE               2
-#define DEX_ORDER_LIGHTEST           3
-#define DEX_ORDER_SMALLEST           4
-#define DEX_ORDER_NUMERICAL_NATIONAL 5
+#define DEX_ORDER_NUMERICAL_KANTO     0
+#define DEX_ORDER_ATOZ                1
+#define DEX_ORDER_TYPE                2
+#define DEX_ORDER_LIGHTEST            3
+#define DEX_ORDER_SMALLEST            4
+#define DEX_ORDER_NUMERICAL_NATIONAL  5
+#define DEX_ORDER_NUMERICAL_DEXSANITY 6
 
 #define DEX_MODE(name) (DEX_CATEGORY_COUNT + DEX_ORDER_##name)
 

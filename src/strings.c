@@ -80,6 +80,7 @@ const u8 gText_SmallestMode[] = _("SMALLEST MODE");
 const u8 gText_PokemonList[] = _("{COLOR DYNAMIC_COLOR6}{SHADOW DYNAMIC_COLOR5}POKéMON LIST");
 const u8 gText_NumericalModeKanto[] = _("NUMERICAL MODE: KANTO");
 const u8 gText_NumericalModeNational[] = _("NUMERICAL MODE: NATIONAL");
+const u8 gText_NumericalModeDexsanity[] = _("NUMERICAL MODE: DEXSANITY");
 const u8 gText_PokemonListNoColor[] = _("POKéMON LIST");
 const u8 gText_SearchNoColor[] = _("SEARCH");
 const u8 gText_PickOKExit[] = _("{DPAD_UPDOWN}PICK {A_BUTTON}OK {B_BUTTON}CANCEL");

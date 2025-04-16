@@ -1034,6 +1034,7 @@ extern const u8 gText_PokedexOther[];
 extern const u8 gText_ClosePokedex[];
 extern const u8 gText_NumericalModeKanto[];
 extern const u8 gText_NumericalModeNational[];
+extern const u8 gText_NumericalModeDexsanity[];
 extern const u8 gText_PokedexPokemon[];
 extern const u8 gText_HT[];
 extern const u8 gText_WT[];
