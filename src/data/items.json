@@ -3745,7 +3745,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 1",
       "itemId": "ITEM_FLY_PALLET",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3761,7 +3761,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 2",
       "itemId": "ITEM_FLY_VIRIDIAN",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3777,7 +3777,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 3",
       "itemId": "ITEM_FLY_PEWTER",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3793,7 +3793,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 4",
       "itemId": "ITEM_FLY_CERULEAN",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3809,7 +3809,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 5",
       "itemId": "ITEM_FLY_LAVENDER",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3825,7 +3825,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 6",
       "itemId": "ITEM_FLY_VERMILION",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3841,7 +3841,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 7",
       "itemId": "ITEM_FLY_CELADON",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3857,7 +3857,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 8",
       "itemId": "ITEM_FLY_FUCHSIA",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3873,7 +3873,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 9",
       "itemId": "ITEM_FLY_CINNABAR",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3889,7 +3889,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 10",
       "itemId": "ITEM_FLY_INDIGO",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3905,7 +3905,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 11",
       "itemId": "ITEM_FLY_SAFFRON",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3921,7 +3921,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 12",
       "itemId": "ITEM_FLY_ROUTE4",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3937,7 +3937,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 13",
       "itemId": "ITEM_FLY_ROUTE10",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3953,7 +3953,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 14",
       "itemId": "ITEM_FLY_ONE_ISLAND",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3969,7 +3969,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 15",
       "itemId": "ITEM_FLY_TWO_ISLAND",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -3985,7 +3985,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 16",
       "itemId": "ITEM_FLY_THREE_ISLAND",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -4001,7 +4001,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 17",
       "itemId": "ITEM_FLY_FOUR_ISLAND",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -4017,7 +4017,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 18",
       "itemId": "ITEM_FLY_FIVE_ISLAND",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -4033,7 +4033,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 19",
       "itemId": "ITEM_FLY_SEVEN_ISLAND",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -4049,7 +4049,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FLY UNLOCK",
+      "english": "FLY UNLOCK 20",
       "itemId": "ITEM_FLY_SIX_ISLAND",
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
