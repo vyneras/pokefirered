@@ -1070,8 +1070,6 @@ void DexScreen_LoadResources(void)
     sPokedexScreenData->numOwnedNational = DexScreen_GetDexCount(FLAG_GET_CAUGHT, 1);
     sPokedexScreenData->numSeenKanto = DexScreen_GetDexCount(FLAG_GET_SEEN, 0);
     sPokedexScreenData->numOwnedKanto = DexScreen_GetDexCount(FLAG_GET_CAUGHT, 0);
-    sPokedexScreenData->encounterAreaInfo = AllocZeroed(sizeof(struct EncounterAreaInfo));
-    sPokedexScreenData->evolutionInfo = AllocZeroed(sizeof(struct EvolutionInfo));
     SetBGMVolume_SuppressHelpSystemReduction(0x80);
     ChangeBgX(0, 0, 0);
     ChangeBgY(0, 0, 0);
@@ -1123,8 +1121,6 @@ bool8 DoClosePokedex(void)
         return FALSE;
     case 2:
         FREE_IF_NOT_NULL(sPokedexScreenData->listItems);
-        FREE_IF_NOT_NULL(sPokedexScreenData->encounterAreaInfo);
-        FREE_IF_NOT_NULL(sPokedexScreenData->evolutionInfo);
         FREE_IF_NOT_NULL(sPokedexScreenData);
         FreeAllWindowBuffers();
         FREE_IF_NOT_NULL(GetBgTilemapBuffer(0));
@@ -3551,6 +3547,9 @@ u8 DexScreen_DrawMonInfoPage(void)
     u16 species;
     u8 currentPage[2], totalPages[2];
 
+    sPokedexScreenData->encounterAreaInfo = AllocZeroed(sizeof(struct EncounterAreaInfo));
+    sPokedexScreenData->evolutionInfo = AllocZeroed(sizeof(struct EvolutionInfo));
+
     species = sPokedexScreenData->dexSpecies;
     monIsCaught = DexScreen_GetSetPokedexFlag(species, FLAG_GET_CAUGHT, TRUE);
 
@@ -3818,6 +3817,9 @@ u8 DexScreen_DestroyInfoScreenResources(void)
 
     for (i = 0; i < 7; i++)
         DexScreen_RemoveWindow(&sPokedexScreenData->windowIds[i]);
+
+    FREE_IF_NOT_NULL(sPokedexScreenData->encounterAreaInfo);
+    FREE_IF_NOT_NULL(sPokedexScreenData->evolutionInfo);
 
     return 0;
 }

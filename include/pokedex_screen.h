@@ -22,9 +22,9 @@
 
 #define DEX_MODE(name) (DEX_CATEGORY_COUNT + DEX_ORDER_##name)
 
-#define NUM_MAX_AREA_PAGES 20
+#define NUM_MAX_AREA_PAGES 15
 #define NUM_MAX_EVOLUTION_PAGES 3
-#define INFO_BUFFER_LENGTH 300
+#define INFO_BUFFER_LENGTH 200
 
 
 #include "pokedex.h"
