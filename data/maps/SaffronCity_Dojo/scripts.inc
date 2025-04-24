@@ -5,6 +5,7 @@ SaffronCity_Dojo_MapScripts::
 
 SaffronCity_Dojo_EventScript_TriggerMasterBattleLeft::
 	lockall
+	setflag FLAG_SYS_IGNORE_BLIND_TRAINERS
 	setvar VAR_MAP_SCENE_SAFFRON_CITY_DOJO, 1
 	applymovement LOCALID_KARATE_MASTER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
@@ -13,6 +14,7 @@ SaffronCity_Dojo_EventScript_TriggerMasterBattleLeft::
 
 SaffronCity_Dojo_EventScript_TriggerMasterBattleRight::
 	lockall
+	setflag FLAG_SYS_IGNORE_BLIND_TRAINERS
 	setvar VAR_MAP_SCENE_SAFFRON_CITY_DOJO, 1
 	applymovement LOCALID_KARATE_MASTER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
@@ -144,6 +146,7 @@ SaffronCity_Dojo_EventScript_MasterKoichiAlreadyGotHitmon::
 	end
 
 SaffronCity_Dojo_EventScript_DefeatedMasterKoichi::
+	clearflag FLAG_SYS_IGNORE_BLIND_TRAINERS
 	setvar VAR_MAP_SCENE_SAFFRON_CITY_DOJO, 1
 	release
 	end

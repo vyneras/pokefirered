@@ -298,6 +298,7 @@ void Overworld_ResetStateAfterFly(void)
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_FLASH_ACTIVE);
     FlagClear(FLAG_SYS_QL_DEPARTED);
+    FlagClear(FLAG_SYS_IGNORE_BLIND_TRAINERS);
     VarSet(VAR_QL_ENTRANCE, 0);
 }
 
@@ -312,6 +313,7 @@ void Overworld_ResetStateAfterGoHome(void)
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_FLASH_ACTIVE);
     FlagClear(FLAG_SYS_QL_DEPARTED);
+    FlagClear(FLAG_SYS_IGNORE_BLIND_TRAINERS);
     VarSet(VAR_QL_ENTRANCE, 0);
 }
 
@@ -326,6 +328,7 @@ void Overworld_ResetStateAfterTeleport(void)
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_FLASH_ACTIVE);
     FlagClear(FLAG_SYS_QL_DEPARTED);
+    FlagClear(FLAG_SYS_IGNORE_BLIND_TRAINERS);
     VarSet(VAR_QL_ENTRANCE, 0);
 }
 
@@ -340,6 +343,7 @@ void Overworld_ResetStateAfterDigEscRope(void)
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_FLASH_ACTIVE);
     FlagClear(FLAG_SYS_QL_DEPARTED);
+    FlagClear(FLAG_SYS_IGNORE_BLIND_TRAINERS);
     VarSet(VAR_QL_ENTRANCE, 0);
 }
 
@@ -354,6 +358,7 @@ static void Overworld_ResetStateAfterWhitingOut(void)
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_FLASH_ACTIVE);
     FlagClear(FLAG_SYS_QL_DEPARTED);
+    FlagClear(FLAG_SYS_IGNORE_BLIND_TRAINERS);
     VarSet(VAR_QL_ENTRANCE, 0);
 }
 

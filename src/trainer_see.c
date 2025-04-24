@@ -121,7 +121,7 @@ static bool8 CheckTrainer(u8 trainerObjId)
         FieldEffectStart(FLDEFF_EXCLAMATION_MARK_ICON);
     }
 
-    if (gSaveBlock2Ptr->optionsBlindTrainers)
+    if (gSaveBlock2Ptr->optionsBlindTrainers && !FlagGet(FLAG_SYS_IGNORE_BLIND_TRAINERS))
         return FALSE;
 
     approachDistance = GetTrainerApproachDistance(&gObjectEvents[trainerObjId]);

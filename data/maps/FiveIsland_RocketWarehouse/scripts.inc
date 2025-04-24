@@ -45,6 +45,7 @@ FiveIsland_RocketWarehouse_EventScript_Admin2Trigger::
 	lockall
 	applymovement LOCALID_ADMIN2, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
+	setflag FLAG_SYS_IGNORE_BLIND_TRAINERS
 	setvar VAR_MAP_SCENE_ROCKET_WAREHOUSE, 1
 	releaseall
 	end
@@ -83,6 +84,7 @@ FiveIsland_RocketWarehouse_EventScript_Admin2::
 	end
 
 FiveIsland_RocketWarehouse_EventScript_DefeatedAdmin2::
+	clearflag FLAG_SYS_IGNORE_BLIND_TRAINERS
 	getplayerxy PLAYER_X_POS, PLAYER_Y_POS
 	call_if_le PLAYER_X_POS, 24, FiveIsland_RocketWarehouse_EventScript_PlayerFaceAdmin2
 	msgbox FiveIsland_RocketWarehouse_Text_Admin2PostBattle
