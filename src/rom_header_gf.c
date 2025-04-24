@@ -32,22 +32,7 @@ struct GFRomHeader
     u32 mysteryGiftFlag;
     u32 pokedexCount;
     u8 playerNameLength;
-    u8 unk2;
-    u8 pokemonNameLength1;
-    u8 pokemonNameLength2;
-    u8 unk5;
-    u8 unk6;
-    u8 unk7;
-    u8 unk8;
-    u8 unk9;
-    u8 unk10;
-    u8 unk11;
-    u8 unk12;
-    u8 unk13;
-    u8 unk14;
-    u8 unk15;
-    u8 unk16;
-    u8 unk17;
+    u8 archipelagoVersion[16];
     u32 saveBlock2Size;
     u32 saveBlock1Size;
     u32 partyCountOffset;
@@ -116,23 +101,7 @@ static const struct GFRomHeader sGFRomHeader = {
     .mysteryGiftFlag = FLAG_SYS_MYSTERY_GIFT_ENABLED,
     .pokedexCount = NATIONAL_DEX_COUNT,
     .playerNameLength = PLAYER_NAME_LENGTH,
-    .unk2 = 10,
-    .pokemonNameLength1 = POKEMON_NAME_LENGTH,
-    .pokemonNameLength2 = POKEMON_NAME_LENGTH,
-    // Two of the below 12s are likely move/ability name length, given their presence in this header
-    .unk5 = 12,
-    .unk6 = 12,
-    .unk7 = 6,
-    .unk8 = 12,
-    .unk9 = 6,
-    .unk10 = 16,
-    .unk11 = 18,
-    .unk12 = 12,
-    .unk13 = 15,
-    .unk14 = 11,
-    .unk15 = 1,
-    .unk16 = 8,
-    .unk17 = 12,
+    .archipelagoVersion = "",
     .saveBlock2Size = sizeof(struct SaveBlock2),
     .saveBlock1Size = sizeof(struct SaveBlock1),
     .partyCountOffset = offsetof(struct SaveBlock1, playerPartyCount),
@@ -145,7 +114,7 @@ static const struct GFRomHeader sGFRomHeader = {
     .unkFlagOffset2 = offsetof(struct SaveBlock2, unkFlag2),
     .externalEventFlagsOffset = offsetof(struct SaveBlock1, externalEventFlags),
     .externalEventDataOffset = offsetof(struct SaveBlock1, externalEventData),
-    .archipelagoChecksum = 0x54A9B693,
+    .archipelagoChecksum = 0x91A43F1C,
     .speciesInfo = gSpeciesInfo,
     .abilityNames = gAbilityNames,
     .abilityDescriptions = gAbilityDescriptionPointers,

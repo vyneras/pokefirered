@@ -6,7 +6,6 @@
 #define PLAYER_NAME_BUFFER_SIZE 17 * 250
 #define ITEM_NAME_BUFFER_SIZE 36 * 1600
 #define NAME_TABLE_BUFFER_SIZE (2 + 2 + 1) * 1600 // 2 bytes for location id, 2 bytes for item name offset, 1 byte for player name id
-#define AP_VERSION_LENGTH 16
 
 struct ArchipelagoOptions
 {
@@ -123,8 +122,6 @@ extern const u16 gArchipelagoStartingItemsCount[];
 extern const u8 gArchipelagoPlayerNames[];
 extern const u8 gArchipelagoItemNames[];
 extern const u8 gArchipelagoNameTable[];
-
-extern const u8 gArchipelagoVersion[];
 
 extern const struct ArchipelagoOptions gArchipelagoOptions;
 extern const struct ArchipelagoInfo gArchipelagoInfo;

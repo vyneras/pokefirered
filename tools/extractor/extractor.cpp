@@ -400,7 +400,6 @@ const std::vector<std::string> MISC_ROM_ADDRESSES = {
     "gArchipelagoPlayerNames",
     "gArchipelagoItemNames",
     "gArchipelagoNameTable",
-    "gArchipelagoVersion",
     "gArchipelagoInfo",
     "gBattleMoves",
     "gLevelUpLearnsets",

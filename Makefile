@@ -246,8 +246,8 @@ syms: $(SYM)
 parse-constants:
 	$(NODE) ./tools/extractor/parseConstants.js
 
-patch: $(ROM)
-	bsdiff4 poke$(BUILD_NAME).gba $(ROM) base_patch_$(BUILD_NAME).bsdiff4
+patch: $(ROM) $(SYM)
+	bsdiff4f poke$(BUILD_NAME).gba $(ROM) base_patch_$(BUILD_NAME).bsdiff4
 
 extract: tools rom syms parse-constants
 	$(EXTRACTOR) pokefirered_ap.sym pokeleafgreen_ap.sym pokefirered_rev1_ap.sym pokeleafgreen_rev1_ap.sym pokefirered_ap.gba pokeleafgreen_ap.gba pokefirered_rev1_ap.gba pokeleafgreen_rev1_ap.gba

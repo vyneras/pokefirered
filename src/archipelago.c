@@ -139,8 +139,6 @@ const u8 gArchipelagoPlayerNames[PLAYER_NAME_BUFFER_SIZE] = {0};
 const u8 gArchipelagoItemNames[ITEM_NAME_BUFFER_SIZE] = {0};
 const u8 gArchipelagoNameTable[NAME_TABLE_BUFFER_SIZE] = {0};
 
-const u8 gArchipelagoVersion[AP_VERSION_LENGTH] = {0};
-
 const struct ArchipelagoInfo gArchipelagoInfo = {
     .auth = {0},
 };
