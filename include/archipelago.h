@@ -97,6 +97,7 @@ struct ArchipelagoOptions
     /* 0x47 */ u16 resortGorgeousMon;
     /* 0x49 */ u16 introSpecies;
     /* 0x4B */ u16 pcItemId;
+    /* 0x4D */ bool8 remoteItems;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem

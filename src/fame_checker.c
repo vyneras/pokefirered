@@ -1153,8 +1153,6 @@ void ResetFameChecker(void)
         gSaveBlock1Ptr->fameChecker[i].unk_0_E = 0;
     }
     gSaveBlock1Ptr->fameChecker[FAMECHECKER_OAK].pickState = FCPICKSTATE_COLORED;
-
-    VarSet(VAR_FAMECHECKER_DAISY_2_REWARD, sFameCheckerRewards[8]);
 }
 
 void FullyUnlockFameChecker(void)

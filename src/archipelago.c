@@ -127,7 +127,8 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .townFreeFlyId = 0,
     .resortGorgeousMon = 25,
     .introSpecies = SPECIES_NIDORAN_F,
-    .pcItemId = ITEM_POTION
+    .pcItemId = ITEM_POTION,
+    .remoteItems = FALSE
 };
 
 EWRAM_DATA struct ArchipelagoReceivedItem gArchipelagoReceivedItem = {0};

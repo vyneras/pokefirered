@@ -6,7 +6,6 @@ Aide_EventScript_HaventCaughtEnough::
 	end
 
 Aide_EventScript_HaventCaughtEnoughItem::
-	bufferitemname STR_VAR_3, VAR_TEMP_2
 	msgbox Aide_Text_HaventCaughtEnoughMonsForItem
 	release
 	end
@@ -17,13 +16,13 @@ Aide_EventScript_HaventCaughtEnoughPlayerItem::
 	end
 
 Aide_EventScript_DeclineCheckMons::
+	setflagvar VAR_0x8003
 	goto_if_eq VAR_TEMP_3, 0, Aide_EventScript_DeclineCheckMonsItem
 	goto_if_eq VAR_TEMP_3, 1, Aide_EventScript_DeclineCheckMonsPlayerItem
 	goto_if_eq VAR_TEMP_3, 2, Aide_EventScript_DeclineCheckMonsItem
 	end
 
 Aide_EventScript_DeclineCheckMonsItem::
-	bufferitemname STR_VAR_3, VAR_TEMP_2
 	msgbox Aide_Text_GetEnoughMonsComeBackForItem
 	release
 	end
@@ -40,7 +39,6 @@ Aide_EventScript_GiveIfSeenXMons::
 	return
 
 Aide_EventScript_GiveItemIfSeenXMons::
-	bufferitemname STR_VAR_3, VAR_TEMP_2
 	msgbox Aide_Text_GiveItemIfCaughtEnough, MSGBOX_YESNO
 	return
 

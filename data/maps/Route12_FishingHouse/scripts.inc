@@ -23,8 +23,6 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_SUPER_ROD::
 Route12_FishingHouse_EventScript_CheckMagikarpRecord::
 	goto_if_questlog EventScript_ReleaseEnd
 	special QuestLog_CutRecording
-Archipelago_Target_NPC_Gift_FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE::
-	setvar VAR_TEMP_1, ITEM_NET_BALL
 	setvar VAR_0x8004, SPECIES_MAGIKARP
 	special SetSeenMon
 	specialvar VAR_RESULT, DoesPlayerPartyContainSpecies
@@ -52,7 +50,6 @@ Route12_FishingHouse_EventScript_NoMagikarpInParty::
 	end
 
 Route12_FishingHouse_EventScript_BringMeMagikarpItem::
-	bufferitemname STR_VAR_3, VAR_TEMP_1
 	msgbox Route12_FishingHouse_Text_TryFishingBringMeMagikarpItem
 	release
 	end
@@ -85,7 +82,8 @@ Route12_FishingHouse_EventScript_TieRecordMagikarp::
 
 Route12_FishingHouse_EventScript_NewRecordMagikarp::
 	msgbox Route12_FishingHouse_Text_WhoaXInchesTakeThis
-	giveitem VAR_TEMP_1, 1, FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE
+Archipelago_Target_NPC_Gift_FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE::
+	giveitem ITEM_NET_BALL, 1, FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE
 	msgbox Route12_FishingHouse_Text_LookForwardToGreaterRecords
 	release
 	end

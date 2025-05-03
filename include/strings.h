@@ -1138,7 +1138,8 @@ extern const u8 gText_CantWriteMailHere[];
 extern const u8 gText_DepositHowManyStrVars1[];
 extern const u8 gText_DepositedStrVar2StrVar1s[];
 extern const u8 gText_NoRoomToStoreItems[];
-extern const u8 gText_APItemDescription[];
+extern const u8 gText_APItemDescriptionSelf[];
+extern const u8 gText_APItemDescriptionOther[];
 extern const u8 gText_FlyItemDescription[];
 
 // union_room_battle

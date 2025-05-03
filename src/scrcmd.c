@@ -2271,15 +2271,13 @@ bool8 ScrCmd_bufferapitemstrings(struct ScriptContext *ctx)
             playerNameId = gArchipelagoNameTable[(i * 5) + 4];
 
             if (playerNameId == 0)
-            {
                 gSpecialVar_Result = 2; // Self item
-                return FALSE;
-            }
+            else
+            	gSpecialVar_Result = 1; // Foreign item
 
             itemNameOffset = gArchipelagoNameTable[(i * 5) + 2] | (gArchipelagoNameTable[(i * 5) + 3] << 8);
             StringCopy(sScriptStringVars[stringVarIndexA], gArchipelagoPlayerNames + (playerNameId * 17));
             StringCopy(sScriptStringVars[stringVarIndexB], gArchipelagoItemNames + itemNameOffset);
-            gSpecialVar_Result = 1; // Foreign item
             return FALSE;
         }
         else if ((gArchipelagoNameTable[(i * 5) + 0] | (gArchipelagoNameTable[(i * 5) + 1] << 8)) > locationId)
@@ -2289,6 +2287,7 @@ bool8 ScrCmd_bufferapitemstrings(struct ScriptContext *ctx)
     }
 
     gSpecialVar_Result = 0; // Unknown, display "ARCHIPELAGO_ITEM"
+    CopyItemName(ITEM_ARCHIPELAGO_PROGRESSION, sScriptStringVars[stringVarIndexB]);
     return FALSE;
 }
 

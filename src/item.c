@@ -1004,16 +1004,17 @@ const u8 * ItemId_GetAPItemDescription(u16 locationId)
         if ((gArchipelagoNameTable[(i * 5) + 0] | (gArchipelagoNameTable[(i * 5) + 1] << 8)) == locationId)
         {
             playerNameId = gArchipelagoNameTable[(i * 5) + 4];
-
+            itemNameOffset = gArchipelagoNameTable[(i * 5) + 2] | (gArchipelagoNameTable[(i * 5) + 3] << 8);
             if (playerNameId == 0)
             {
-                break;
+            	StringCopy(gStringVar5, gText_APItemDescriptionSelf);
             }
-
-            itemNameOffset = gArchipelagoNameTable[(i * 5) + 2] | (gArchipelagoNameTable[(i * 5) + 3] << 8);
-            StringCopy(gStringVar5, gText_APItemDescription);
-            StringAppend(gStringVar5, gArchipelagoPlayerNames + (playerNameId * 17));
-            StringAppend(gStringVar5, newline);
+            else
+            {
+                StringCopy(gStringVar5, gText_APItemDescriptionOther);
+                StringAppend(gStringVar5, gArchipelagoPlayerNames + (playerNameId * 17));
+                StringAppend(gStringVar5, newline);
+            }
             StringAppend(gStringVar5, gArchipelagoItemNames + itemNameOffset);
             StringAppend(gStringVar5, period);
             return gStringVar5;
