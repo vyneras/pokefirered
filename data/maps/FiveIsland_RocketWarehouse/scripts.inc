@@ -46,7 +46,6 @@ FiveIsland_RocketWarehouse_EventScript_Admin2Trigger::
 	applymovement LOCALID_ADMIN2, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	setflag FLAG_SYS_IGNORE_BLIND_TRAINERS
-	setvar VAR_MAP_SCENE_ROCKET_WAREHOUSE, 1
 	releaseall
 	end
 
