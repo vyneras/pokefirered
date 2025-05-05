@@ -27,7 +27,8 @@ SixIsland_WaterPath_House1_EventScript_Beauty::
 
 SixIsland_WaterPath_House1_EventScript_NoHeracrossInParty::
 	setflag FLAG_HINT_SHOW_HERACROSS
-	bufferapitemstrings STR_VAR_2, STR_VAR_3, FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1
+	setvar VAR_0x8003, FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8003
 	goto_if_eq VAR_RESULT, 0, SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossItem
 	goto_if_eq VAR_RESULT, 1, SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossPlayerItem
 	goto_if_eq VAR_RESULT, 2, SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossItem

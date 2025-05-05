@@ -43,7 +43,8 @@ Route12_FishingHouse_EventScript_CheckMagikarpRecord::
 
 Route12_FishingHouse_EventScript_NoMagikarpInParty::
 	setflag FLAG_HINT_SHOW_MAGIKARP
-	bufferapitemstrings STR_VAR_2, STR_VAR_3, FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE
+	setvar VAR_0x8003, FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8003
 	goto_if_eq VAR_RESULT, 0, Route12_FishingHouse_EventScript_BringMeMagikarpItem
 	goto_if_eq VAR_RESULT, 1, Route12_FishingHouse_EventScript_BringMeMagikarpPlayerItem
 	goto_if_eq VAR_RESULT, 2, Route12_FishingHouse_EventScript_BringMeMagikarpItem

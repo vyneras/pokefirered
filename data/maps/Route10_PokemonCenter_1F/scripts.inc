@@ -62,8 +62,9 @@ Route10_PokemonCenter_1F_EventScript_Aide::
 	faceplayer
 Archipelago_Target_NPC_Gift_FLAG_GOT_EVERSTONE_FROM_OAKS_AIDE::
 	setvar VAR_TEMP_2, ITEM_EVERSTONE
-	call Route10_PokemonCenter_1F_EventScript_GetAideRequestInfo
 	goto_if_set FLAG_GOT_EVERSTONE_FROM_OAKS_AIDE, Route10_PokemonCenter_1F_EventScript_AlreadyGotEverstone
+	setvar VAR_0x8003, FLAG_GOT_EVERSTONE_FROM_OAKS_AIDE
+	call Route10_PokemonCenter_1F_EventScript_GetAideRequestInfo
 	setvar VAR_0x8003, FLAG_HINT_ROUTE_10_OAKS_AIDE
 	call Aide_EventScript_GiveIfSeenXMons
 	goto_if_eq VAR_RESULT, NO, Aide_EventScript_DeclineCheckMons
@@ -85,6 +86,6 @@ Route10_PokemonCenter_1F_EventScript_AlreadyGotEverstone::
 
 Route10_PokemonCenter_1F_EventScript_GetAideRequestInfo::
 	buffernumberstring STR_VAR_1, REQUIRED_CAUGHT_MONS
-	bufferapitemstrings STR_VAR_2, STR_VAR_3, FLAG_GOT_EVERSTONE_FROM_OAKS_AIDE
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8003
 	copyvar VAR_TEMP_3, VAR_RESULT
 	return

@@ -18,7 +18,8 @@ FiveIsland_ResortGorgeous_House_EventScript_Selphy::
 	goto_if_eq VAR_RESULT, TRUE, FiveIsland_ResortGorgeous_House_EventScript_ShowRequestedMon
 	setflag FLAG_HINT_SHOW_RESORT_GORGEOUS_MON
 	bufferspeciesname STR_VAR_1, VAR_RESORT_GORGEOUS_REQUESTED_MON
-	bufferapitemstrings STR_VAR_2, STR_VAR_3, FLAG_GOT_LUXURY_BALL_FROM_RESORT_GORGEOUS_HOUSE
+	setvar VAR_0x8003, FLAG_GOT_LUXURY_BALL_FROM_RESORT_GORGEOUS_HOUSE
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8003
 	goto_if_eq VAR_RESULT, 0, FiveIsland_ResortGorgeous_House_EventScript_WishToSeeMonPleaseItem
 	goto_if_eq VAR_RESULT, 1, FiveIsland_ResortGorgeous_House_EventScript_WishToSeeMonPleasePlayerItem
 	goto_if_eq VAR_RESULT, 2, FiveIsland_ResortGorgeous_House_EventScript_WishToSeeMonPleaseItem

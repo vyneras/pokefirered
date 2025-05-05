@@ -14,8 +14,9 @@ Route2_EastBuilding_EventScript_Aide::
 	faceplayer
 Archipelago_Target_NPC_Gift_FLAG_GOT_HM05::
 	setvar VAR_TEMP_2, ITEM_HM05
-	call Route2_EastBuilding_EventScript_GetAideRequestInfo
 	goto_if_set FLAG_GOT_HM05, Route2_EastBuilding_EventScript_AlreadyGotHM05
+	setvar VAR_0x8003, FLAG_GOT_HM05
+	call Route2_EastBuilding_EventScript_GetAideRequestInfo
 	setvar VAR_0x8003, FLAG_HINT_ROUTE_2_OAKS_AIDE
 	call Aide_EventScript_GiveIfSeenXMons
 	goto_if_eq VAR_RESULT, NO, Aide_EventScript_DeclineCheckMons
@@ -37,7 +38,7 @@ Route2_EastBuilding_EventScript_AlreadyGotHM05::
 
 Route2_EastBuilding_EventScript_GetAideRequestInfo::
 	buffernumberstring STR_VAR_1, REQUIRED_CAUGHT_MONS
-	bufferapitemstrings STR_VAR_2, STR_VAR_3, FLAG_GOT_HM05
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8003
 	copyvar VAR_TEMP_3, VAR_RESULT
 	return
 

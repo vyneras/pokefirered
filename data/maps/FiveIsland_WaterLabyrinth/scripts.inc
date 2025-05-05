@@ -67,7 +67,8 @@ FiveIsland_WaterLabyrinth_EventScript_CheckGiveFameCheckerHint::
 
 FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHint::
 	setflag FLAG_HINT_SHOW_TOGEPI
-	bufferapitemstrings STR_VAR_2, STR_VAR_3, FLAG_FAME_CHECKER_DAISY_2
+	setvar VAR_0x8003, FLAG_FAME_CHECKER_DAISY_2
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8003
 	goto_if_eq VAR_RESULT, 0, FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHintItem
 	goto_if_eq VAR_RESULT, 1, FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHintPlayerItem
 	goto_if_eq VAR_RESULT, 2, FiveIsland_WaterLabyrinth_EventScript_GiveFameCheckerHintItem

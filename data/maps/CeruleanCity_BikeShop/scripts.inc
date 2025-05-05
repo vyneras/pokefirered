@@ -9,7 +9,8 @@ CeruleanCity_BikeShop_EventScript_Clerk::
 	goto_if_eq VAR_RESULT, TRUE, CeruleanCity_BikeShop_EventScript_ExchangeBikeVoucher
 	showmoneybox 0, 0
 	setflag FLAG_HINT_BICYCLE_SHOP
-	bufferapitemstrings STR_VAR_2, STR_VAR_3, FLAG_GOT_BICYCLE
+	setvar VAR_0x8003, FLAG_GOT_BICYCLE
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8003
 	call_if_eq VAR_RESULT, 0, CeruleanCity_BikeShop_EventScript_WelcomeToBikeShopItem
 	call_if_eq VAR_RESULT, 1, CeruleanCity_BikeShop_EventScript_WelcomeToBikeShopPlayerItem
 	call_if_eq VAR_RESULT, 2, CeruleanCity_BikeShop_EventScript_WelcomeToBikeShopItem
