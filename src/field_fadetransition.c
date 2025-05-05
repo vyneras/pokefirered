@@ -293,6 +293,13 @@ bool8 PlayerEnteredThroughBlockedDoor(void)
         return TRUE;
     else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SAFFRON_CITY) &&
              gSaveBlock1Ptr->location.mapNum == MAP_NUM(SAFFRON_CITY) &&
+             ((gSaveBlock1Ptr->pos.x == 22 && gSaveBlock1Ptr->pos.y == 14) ||
+              (gSaveBlock1Ptr->pos.x == 46 && gSaveBlock1Ptr->pos.y == 12) ||
+              (gSaveBlock1Ptr->pos.x == 27 && gSaveBlock1Ptr->pos.y == 21)) &&
+             !FlagGet(FLAG_HIDE_SAFFRON_ROCKETS))
+        return TRUE;
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SAFFRON_CITY) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(SAFFRON_CITY) &&
              gSaveBlock1Ptr->pos.x == 33 && gSaveBlock1Ptr->pos.y == 30 &&
              !CanEnterSilphCo())
         return TRUE;

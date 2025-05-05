@@ -681,32 +681,32 @@ void AdjustAndSetWarpDestination(s8 group, s8 map, s16 x, s16 y)
     if (group == MAP_GROUP(CERULEAN_CITY) && map == MAP_NUM(CERULEAN_CITY) &&
              x == 30 && y == 12 &&
              !CanLeaveCeruleanCity())
-        x--;
+        y++;
     else if (group == MAP_GROUP(CERULEAN_CITY) && map == MAP_NUM(CERULEAN_CITY) &&
              x == 1 && y == 13 &&
              !CanEnterCeruleanCave())
-        x--;
+        y++;
     else if (group == MAP_GROUP(SAFFRON_CITY) && map == MAP_NUM(SAFFRON_CITY) &&
              ((x == 22 && y == 15) || (x == 46 && y == 13) || (x == 27 && y == 22)) &&
              !FlagGet(FLAG_HIDE_SAFFRON_ROCKETS))
-        x--;
+        y++;
     else if (group == MAP_GROUP(SAFFRON_CITY) && map == MAP_NUM(SAFFRON_CITY) &&
              x == 33 && y == 31 &&
              !CanEnterSilphCo())
-        x--;
+        y++;
     else if (group == MAP_GROUP(CINNABAR_ISLAND) && map == MAP_NUM(CINNABAR_ISLAND) &&
              x == 8 && y == 4 &&
              !FlagGet(FLAG_SHOWED_LETTER) &&
              !FlagGet(FLAG_HIDE_CINNABAR_ISLAND_POILCEMAN))
-        x++;
+        y++;
     else if (group == MAP_GROUP(ROUTE10) && map == MAP_NUM(ROUTE10) &&
              x == 7 && y == 41 &&
              !FlagGet(FLAG_HIDE_ROUTE_10_SCIENTIST))
-        x++;
+        y++;
     else if (group == MAP_GROUP(SIX_ISLAND_RUIN_VALLEY) && map == MAP_NUM(SIX_ISLAND_RUIN_VALLEY) &&
              x == 24 && y == 25 &&
              !FlagGet(FLAG_HIDE_RUIN_VALLEY_SCIENTIST))
-        x++;
+        y++;
     SetWarpDestination(group, map, -1, x, y);
 }
 

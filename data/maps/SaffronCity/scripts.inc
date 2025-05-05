@@ -1,3 +1,6 @@
+.set LOCALID_ROCKET_GRUNT_1, 1
+.set LOCALID_ROCKET_GRUNT_2, 3
+.set LOCALID_ROCKET_GRUNT_3, 4
 .set LOCALID_DOOR_GUARD_GRUNT, 6
 
 .equ GIVE_FLY_UNLOCK, VAR_TEMP_1
@@ -14,6 +17,7 @@ SaffronCity_OnTransition::
 	call_if_eq VAR_RESULT, FALSE, SaffronCity_EventScript_SetWorldMapFlag
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanEnterSilphCo
 	call_if_eq VAR_RESULT, FALSE, SaffronCity_EventScript_MoveDoorGuardGrunt
+	call_if_unset FLAG_HIDE_SAFFRON_ROCKETS, SaffronCity_EventScript_MoveRocketGrunts
 	end
 
 SaffronCity_EventScript_SetGiveFlyUnlockItem::
@@ -35,12 +39,22 @@ SaffronCity_EventScript_DontMoveDoorGuardGrunt::
 	setvar VAR_TEMP_2, 1
 	return
 
+SaffronCity_EventScript_MoveRocketGrunts::
+	specialvar VAR_RESULT, ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
+	goto_if_eq VAR_RESULT, FALSE, EventScript_Return
+	setobjectxyperm LOCALID_ROCKET_GRUNT_1, 23, 15
+	setobjectxyperm LOCALID_ROCKET_GRUNT_2, 47, 13
+	setobjectxyperm LOCALID_ROCKET_GRUNT_3, 28, 22
+	setvar VAR_TEMP_3, 1
+	return
+
 SaffronCity_OnLoad::
 	call_if_set FLAG_UNLOCKED_SAFFRON_GYM_DOOR, SaffronCity_EventScript_SetGymDoorUnlocked
 	end
 
 SaffronCity_OnFrame::
 	map_script_2 VAR_TEMP_2, 1, SaffronCity_EventScript_DoorGuardGruntMoveLeft
+	map_script_2 VAR_TEMP_3, 1, SaffronCity_EventScript_RocketGruntsMoveLeft
 	map_script_2 GIVE_FLY_UNLOCK, 1, SaffronCity_EventScript_GiveFlyUnlockItem
 	.2byte 0
 
@@ -50,6 +64,19 @@ SaffronCity_EventScript_DoorGuardGruntMoveLeft::
 	waitmovement 0
 	setobjectxyperm LOCALID_DOOR_GUARD_GRUNT, 33, 31
 	setvar VAR_TEMP_2, 0
+	releaseall
+	end
+
+SaffronCity_EventScript_RocketGruntsMoveLeft::
+	lockall
+	applymovement LOCALID_ROCKET_GRUNT_1, SaffronCity_Movement_MoveLeft
+	applymovement LOCALID_ROCKET_GRUNT_2, SaffronCity_Movement_MoveLeft
+	applymovement LOCALID_ROCKET_GRUNT_3, SaffronCity_Movement_MoveLeft
+	waitmovement 0
+	setobjectxyperm LOCALID_ROCKET_GRUNT_1, 22, 15
+	setobjectxyperm LOCALID_ROCKET_GRUNT_2, 46, 13
+	setobjectxyperm LOCALID_ROCKET_GRUNT_3, 27, 22
+	setvar VAR_TEMP_3, 0
 	releaseall
 	end
 
