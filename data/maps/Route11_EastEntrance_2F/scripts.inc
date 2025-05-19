@@ -65,9 +65,8 @@ Route11_EastEntrance_2F_EventScript_Aide::
 Archipelago_Target_NPC_Gift_FLAG_GOT_ITEMFINDER::
 	setvar VAR_TEMP_2, ITEM_ITEMFINDER
 	goto_if_set FLAG_GOT_ITEMFINDER, Route11_EastEntrance_2F_EventScript_AlreadyGotItemfinder
-	setvar VAR_0x8003, FLAG_GOT_ITEMFINDER
-	call Route11_EastEntrance_2F_EventScript_GetAideRequestInfo
 	setvar VAR_0x8003, FLAG_HINT_ROUTE_11_OAKS_AIDE
+	call Route11_EastEntrance_2F_EventScript_GetAideRequestInfo
 	call Aide_EventScript_GiveIfSeenXMons
 	goto_if_eq VAR_RESULT, NO, Aide_EventScript_DeclineCheckMons
 	setvar VAR_0x8004, 1
@@ -87,7 +86,8 @@ Route11_EastEntrance_2F_EventScript_AlreadyGotItemfinder::
 	end
 
 Route11_EastEntrance_2F_EventScript_GetAideRequestInfo::
+	setvar VAR_0x8014, FLAG_GOT_ITEMFINDER
 	buffernumberstring STR_VAR_1, REQUIRED_CAUGHT_MONS
-	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8003
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8014
 	copyvar VAR_TEMP_3, VAR_RESULT
 	return
