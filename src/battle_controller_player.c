@@ -1534,6 +1534,27 @@ static void MoveSelectionDisplayMoveDescription(void)
         ConvertIntToDecimalStringN(accNum, acc, STR_CONV_MODE_LEFT_ALIGN, 3);
     }
     ConvertIntToDecimalStringN(priNum, pri, STR_CONV_MODE_LEFT_ALIGN, 2);
+    if (opponentId2 < gBattlersCount)
+    {
+        moveFlags = AI_TypeCalc(move, gBattleMons[opponentId2].species, gBattleMons[opponentId2].ability);
+        if (moveFlags & MOVE_RESULT_NO_EFFECT)
+        {
+            StringAppend(effNum, cross);
+        }
+        else if (moveFlags & MOVE_RESULT_NOT_VERY_EFFECTIVE)
+        {
+            StringAppend(effNum, triangle);
+        }
+        else if(moveFlags & MOVE_RESULT_SUPER_EFFECTIVE)
+        {
+            StringAppend(effNum, circle);
+        }
+        else
+        {
+           StringAppend(effNum, dash);
+        }
+        StringAppend(effNum, slash);
+    }
     if (opponentId1 < gBattlersCount)
     {
         moveFlags = AI_TypeCalc(move, gBattleMons[opponentId1].species, gBattleMons[opponentId1].ability);
@@ -1552,27 +1573,6 @@ static void MoveSelectionDisplayMoveDescription(void)
         else
         {
            StringCopy(effNum, dash);
-        }
-    }
-    if (opponentId2 < gBattlersCount)
-    {
-        moveFlags = AI_TypeCalc(move, gBattleMons[opponentId2].species, gBattleMons[opponentId2].ability);
-        StringAppend(effNum, slash);
-        if (moveFlags & MOVE_RESULT_NO_EFFECT)
-        {
-            StringAppend(effNum, cross);
-        }
-        else if (moveFlags & MOVE_RESULT_NOT_VERY_EFFECTIVE)
-        {
-            StringAppend(effNum, triangle);
-        }
-        else if(moveFlags & MOVE_RESULT_SUPER_EFFECTIVE)
-        {
-            StringAppend(effNum, circle);
-        }
-        else
-        {
-           StringAppend(effNum, dash);
         }
     }
 
