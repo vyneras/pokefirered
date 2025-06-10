@@ -446,7 +446,10 @@ const std::vector<std::string> MISC_ROM_ADDRESSES = {
     "sBackAnims_RSBrendan",
     "gObjectEventSpriteOamTables_16x16",
     "gObjectEventSpriteOamTables_16x32",
-    "gObjectEventSpriteOamTables_32x32"
+    "gObjectEventSpriteOamTables_32x32",
+    "gObjectEventBaseOam_16x16",
+    "gObjectEventBaseOam_16x32",
+    "gObjectEventBaseOam_32x32"
 };
 
 int main (int argc, char *argv[])
