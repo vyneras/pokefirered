@@ -5,15 +5,17 @@ CeruleanCity_BikeShop_EventScript_Clerk::
 	lock
 	faceplayer
 	goto_if_set FLAG_GOT_BICYCLE, CeruleanCity_BikeShop_EventScript_AlreadyGotBicycle
+Archipelago_Target_NPC_Gift_FLAG_GOT_BICYCLE::
+	setvar VAR_TEMP_1, ITEM_BICYCLE
 	checkitem ITEM_BIKE_VOUCHER
 	goto_if_eq VAR_RESULT, TRUE, CeruleanCity_BikeShop_EventScript_ExchangeBikeVoucher
 	showmoneybox 0, 0
-	setflag FLAG_HINT_BICYCLE_SHOP
 	setvar VAR_0x8003, FLAG_GOT_BICYCLE
-	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8003
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8003, VAR_TEMP_1
 	call_if_eq VAR_RESULT, 0, CeruleanCity_BikeShop_EventScript_WelcomeToBikeShopItem
 	call_if_eq VAR_RESULT, 1, CeruleanCity_BikeShop_EventScript_WelcomeToBikeShopPlayerItem
 	call_if_eq VAR_RESULT, 2, CeruleanCity_BikeShop_EventScript_WelcomeToBikeShopItem
+	setflag FLAG_HINT_BICYCLE_SHOP
 	multichoice 11, 0, MULTICHOICE_BIKE_SHOP, FALSE
 	switch VAR_RESULT
 	case 0, CeruleanCity_BikeShop_EventScript_TryPurchaseBicycle
@@ -43,8 +45,7 @@ CeruleanCity_BikeShop_EventScript_ClerkGoodbye::
 
 CeruleanCity_BikeShop_EventScript_ExchangeBikeVoucher::
 	msgbox CeruleanCity_BikeShop_Text_OhBikeVoucherHereYouGo
-Archipelago_Target_NPC_Gift_FLAG_GOT_BICYCLE::
-	giveitem ITEM_BICYCLE, 1, FLAG_GOT_BICYCLE
+	giveitem VAR_TEMP_1, 1, FLAG_GOT_BICYCLE
 	removeitem ITEM_BIKE_VOUCHER
 	msgbox CeruleanCity_BikeShop_Text_ThankYouComeAgain
 	release

@@ -1,8 +1,11 @@
 .include "data/text/archipelago.inc"
 
+.set ITEM_ID, VAR_0x8000
+.set LOCATION_ID, VAR_0x8003
+
 ArchipelagoScript_ReceiveReward::
 	specialvar VAR_RESULT, ArchipelagoSpecial_PopReward
-	giveitem VAR_RESULT, 1, VAR_0x8003
+	giveitem VAR_RESULT, 1, LOCATION_ID
 	releaseall
 	end
 
@@ -34,7 +37,7 @@ ArchipelagoScript_FindHiddenItem::
 	return
 
 ArchipelagoScript_HandleTextBox::
-	bufferapitemstrings STR_VAR_1, STR_VAR_2, VAR_0x8003
+	bufferapitemstrings STR_VAR_1, STR_VAR_2, LOCATION_ID, ITEM_ID
 	goto_if_eq VAR_RESULT, 0, ArchipelagoScript_FoundArchipelagoItem
 	goto_if_eq VAR_RESULT, 1, ArchipelagoScript_FoundPlayersItem
 	return

@@ -7,6 +7,8 @@ SixIsland_WaterPath_House1_EventScript_Beauty::
 	goto_if_questlog EventScript_ReleaseEnd
 	special QuestLog_CutRecording
 	goto_if_set FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1, SixIsland_WaterPath_House1_EventScript_AlreadyShowedHeracross
+Archipelago_Target_NPC_Gift_FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1::
+	setvar VAR_TEMP_1, ITEM_NEST_BALL
 	setvar VAR_0x8004, SPECIES_HERACROSS
 	special SetSeenMon
 	specialvar VAR_RESULT, DoesPlayerPartyContainSpecies
@@ -26,23 +28,22 @@ SixIsland_WaterPath_House1_EventScript_Beauty::
 	end
 
 SixIsland_WaterPath_House1_EventScript_NoHeracrossInParty::
-	setflag FLAG_HINT_SHOW_HERACROSS
 	setvar VAR_0x8003, FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1
-	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8003
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8003, VAR_TEMP_1
 	goto_if_eq VAR_RESULT, 0, SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossItem
 	goto_if_eq VAR_RESULT, 1, SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossPlayerItem
 	goto_if_eq VAR_RESULT, 2, SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossItem
+	setflag FLAG_HINT_SHOW_HERACROSS
+	release
 	end
 
 SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossItem::
 	msgbox SixIsland_WaterPath_House1_Text_LoveItNeedItHeracrossItem
-	release
-	end
+	return
 
 SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossPlayerItem::
 	msgbox SixIsland_WaterPath_House1_Text_LoveItNeedItHeracrossPlayerItem
-	release
-	end
+	return
 
 SixIsland_WaterPath_House1_EventScript_DontShowMon::
 	release
@@ -67,8 +68,7 @@ SixIsland_WaterPath_House1_EventScript_ShownTiedHeracross::
 
 SixIsland_WaterPath_House1_EventScript_ShownBigHeracross::
 	msgbox SixIsland_WaterPath_House1_Text_ItsXInchesDeserveReward
-Archipelago_Target_NPC_Gift_FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1::
-	giveitem ITEM_NEST_BALL, 1, FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1
+	giveitem VAR_TEMP_1, 1, FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1
 	msgbox SixIsland_WaterPath_House1_Text_WantToSeeBiggerOne
 	release
 	end

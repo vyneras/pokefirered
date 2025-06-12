@@ -31,14 +31,15 @@ Route16_NorthEntrance_2F_EventScript_Aide::
 Archipelago_Target_NPC_Gift_FLAG_GOT_AMULET_COIN_FROM_OAKS_AIDE::
 	setvar VAR_TEMP_2, ITEM_AMULET_COIN
 	goto_if_set FLAG_GOT_AMULET_COIN_FROM_OAKS_AIDE, Route16_NorthEntrance_2F_EventScript_AlreadyGotAmuletCoin
-	setvar VAR_0x8003, FLAG_HINT_ROUTE_16_OAKS_AIDE
 	call Route16_NorthEntrance_2F_EventScript_GetAideRequestInfo
 	call Aide_EventScript_GiveIfSeenXMons
+	setvar VAR_0x8003, FLAG_HINT_ROUTE_16_OAKS_AIDE
 	goto_if_eq VAR_RESULT, NO, Aide_EventScript_DeclineCheckMons
 	setvar VAR_0x8004, 1
 	specialvar VAR_RESULT, GetPokedexCount
 	buffernumberstring STR_VAR_4, VAR_0x8006
 	call Route16_NorthEntrance_2F_EventScript_GetAideRequestInfo
+	setvar VAR_0x8003, FLAG_HINT_ROUTE_16_OAKS_AIDE
 	goto_if_lt VAR_0x8006, REQUIRED_CAUGHT_MONS, Aide_EventScript_HaventCaughtEnough
 	msgbox Route16_NorthEntrance_2F_Text_GreatHereYouGo
 	giveitem VAR_TEMP_2, 1, FLAG_GOT_AMULET_COIN_FROM_OAKS_AIDE
@@ -52,8 +53,8 @@ Route16_NorthEntrance_2F_EventScript_AlreadyGotAmuletCoin::
 	end
 
 Route16_NorthEntrance_2F_EventScript_GetAideRequestInfo::
-	setvar VAR_0x8014, FLAG_GOT_AMULET_COIN_FROM_OAKS_AIDE
+	setvar VAR_0x8003, FLAG_GOT_AMULET_COIN_FROM_OAKS_AIDE
 	buffernumberstring STR_VAR_1, REQUIRED_CAUGHT_MONS
-	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8014
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8003, VAR_TEMP_2
 	copyvar VAR_TEMP_3, VAR_RESULT
 	return

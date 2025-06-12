@@ -1634,11 +1634,12 @@
 	.endm
 
 	@ Writes the archipelago player's name and item being recevied to the specified buffers.
-	.macro bufferapitemstrings stringVarIdA:req, stringVarIdB:req, flag:req
+	.macro bufferapitemstrings stringVarIdA:req, stringVarIdB:req, flag:req, defaultItem:req
 	.byte 0xd5
 	stringvar \stringVarIdA
 	stringvar \stringVarIdB
 	.2byte \flag
+	.2byte \defaultItem
 	.endm
 
 	@ Sets flag stored in a var to TRUE.

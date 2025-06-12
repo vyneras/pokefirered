@@ -1587,6 +1587,8 @@ static void BuyMenuReturnToItemList(u8 taskId)
 
 static void ExitBuyMenu(u8 taskId)
 {
+	if (sShopData.shopId >= SHOP_VIRIDIAN_CITY && sShopData.shopId <= SHOP_TRAINER_TOWER)
+        FlagSet(SHOP_HINT_FLAGS_START + sShopData.shopId - 1);
     gFieldCallback = MapPostLoadHook_ReturnToShopMenu;
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     gTasks[taskId].func = Task_ExitBuyMenu;

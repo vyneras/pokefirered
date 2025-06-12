@@ -12,28 +12,29 @@ FiveIsland_ResortGorgeous_House_EventScript_Selphy::
 	lock
 	faceplayer
 	goto_if_set FLAG_GOT_LUXURY_BALL_FROM_RESORT_GORGEOUS_HOUSE, FiveIsland_ResortGorgeous_House_EventScript_JustFulfilledRequest
+Archipelago_Target_NPC_Gift_FLAG_GOT_LUXURY_BALL_FROM_RESORT_GORGEOUS_HOUSE::
+	setvar VAR_TEMP_1, ITEM_LUXURY_BALL
 	copyvar VAR_0x8004, VAR_RESORT_GORGEOUS_REQUESTED_MON
 	special SetSeenMon
 	specialvar VAR_RESULT, DoesPlayerPartyContainSpecies
 	goto_if_eq VAR_RESULT, TRUE, FiveIsland_ResortGorgeous_House_EventScript_ShowRequestedMon
-	setflag FLAG_HINT_SHOW_RESORT_GORGEOUS_MON
 	bufferspeciesname STR_VAR_1, VAR_RESORT_GORGEOUS_REQUESTED_MON
 	setvar VAR_0x8003, FLAG_GOT_LUXURY_BALL_FROM_RESORT_GORGEOUS_HOUSE
-	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8003
-	goto_if_eq VAR_RESULT, 0, FiveIsland_ResortGorgeous_House_EventScript_WishToSeeMonPleaseItem
-	goto_if_eq VAR_RESULT, 1, FiveIsland_ResortGorgeous_House_EventScript_WishToSeeMonPleasePlayerItem
-	goto_if_eq VAR_RESULT, 2, FiveIsland_ResortGorgeous_House_EventScript_WishToSeeMonPleaseItem
+	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8003, VAR_TEMP_1
+	call_if_eq VAR_RESULT, 0, FiveIsland_ResortGorgeous_House_EventScript_WishToSeeMonPleaseItem
+	call_if_eq VAR_RESULT, 1, FiveIsland_ResortGorgeous_House_EventScript_WishToSeeMonPleasePlayerItem
+	call_if_eq VAR_RESULT, 2, FiveIsland_ResortGorgeous_House_EventScript_WishToSeeMonPleaseItem
+	setflag FLAG_HINT_SHOW_RESORT_GORGEOUS_MON\
+	release
 	end
 
 FiveIsland_ResortGorgeous_House_EventScript_WishToSeeMonPleaseItem::
 	msgbox FiveIsland_ResortGorgeous_House_Text_WishToSeeMonPleaseItem
-	release
-	end
+	return
 
 FiveIsland_ResortGorgeous_House_EventScript_WishToSeeMonPleasePlayerItem::
 	msgbox FiveIsland_ResortGorgeous_House_Text_WishToSeeMonPleasePlayerItem
-	release
-	end
+	return
 
 FiveIsland_ResortGorgeous_House_EventScript_ShowRequestedMon::
 	bufferspeciesname STR_VAR_1, VAR_RESORT_GORGEOUS_REQUESTED_MON
@@ -56,8 +57,7 @@ FiveIsland_ResortGorgeous_House_EventScript_ShowRequestedMon::
 	call_if_eq VAR_FACING, DIR_WEST, FiveIsland_ResortGorgeous_House_EventScript_ButlerApproachPlayerWest
 	copyobjectxytoperm LOCALID_BUTLER
 	msgbox FiveIsland_ResortGorgeous_House_Text_ButlerPleaseAcceptThisAsHerThanks
-Archipelago_Target_NPC_Gift_FLAG_GOT_LUXURY_BALL_FROM_RESORT_GORGEOUS_HOUSE::
-	giveitem ITEM_LUXURY_BALL, 1, FLAG_GOT_LUXURY_BALL_FROM_RESORT_GORGEOUS_HOUSE
+	giveitem VAR_TEMP_1, 1, FLAG_GOT_LUXURY_BALL_FROM_RESORT_GORGEOUS_HOUSE
 	release
 	end
 

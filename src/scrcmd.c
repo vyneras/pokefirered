@@ -2263,6 +2263,7 @@ bool8 ScrCmd_bufferapitemstrings(struct ScriptContext *ctx)
     u8 stringVarIndexA = ScriptReadByte(ctx);
     u8 stringVarIndexB = ScriptReadByte(ctx);
     u16 locationId = VarGet(ScriptReadHalfword(ctx));
+    u16 defaultItemId = VarGet(ScriptReadHalfword(ctx));
 
     for (i = 0; i < NAME_TABLE_BUFFER_SIZE / 5; i++)
     {
@@ -2286,8 +2287,8 @@ bool8 ScrCmd_bufferapitemstrings(struct ScriptContext *ctx)
         }
     }
 
-    gSpecialVar_Result = 0; // Unknown, display "ARCHIPELAGO_ITEM"
-    CopyItemName(ITEM_ARCHIPELAGO_PROGRESSION, sScriptStringVars[stringVarIndexB]);
+    gSpecialVar_Result = 0; // Unknown, display default item name
+    CopyItemName(defaultItemId, sScriptStringVars[stringVarIndexB]);
     return FALSE;
 }
 
