@@ -388,7 +388,8 @@ const std::vector<std::string> MISC_RAM_ADDRESSES = {
     "gMain",
     "gSaveBlock1Ptr",
     "gSaveBlock2Ptr",
-    "gArchipelagoDeathLinkQueued",
+    "gArchipelagoDeathLinkReceived",
+    "gArchipelagoDeathLinkSent",
     "gPlayerParty",
     "gEnemyParty"
 };

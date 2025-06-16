@@ -3390,12 +3390,10 @@ static void HandleTurnActionSelectionState(void)
     // Check if everyone chose actions.
     if (gBattleCommunication[ACTIONS_CONFIRMED_COUNT] == gBattlersCount)
     {
-        if (gArchipelagoDeathLinkQueued == TRUE && !(gBattleTypeFlags & BATTLE_TYPE_SAFARI) && !(gBattleTypeFlags & BATTLE_TYPE_GRIND))
+        if (gArchipelagoDeathLinkReceived && !(gBattleTypeFlags & BATTLE_TYPE_SAFARI) && !(gBattleTypeFlags & BATTLE_TYPE_GRIND))
         {
             gBattleMainFunc = HandleEndTurn_BattleLost;
             gBattleOutcome |= B_OUTCOME_LOST;
-            gArchipelagoDeathLinkQueued = FALSE;
-            DecrementGameStat(GAME_STAT_WHITED_OUT);  // Prevent incoming deaths from triggering outgoing deaths
             return;
         }
 

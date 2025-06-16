@@ -333,7 +333,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     if ((gPlayerAvatar.tileTransitionState == T_NOT_MOVING || gPlayerAvatar.tileTransitionState == T_TILE_CENTER) && !(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_FORCED))
     {
-        if (Archipelago_CheckDeathLinkQueued() == TRUE)
+        if (Archipelago_CheckDeathLinkStatus() == TRUE)
             return TRUE;
 
         if (Archipelago_CheckQueuedRewards() == TRUE)
@@ -1259,7 +1259,7 @@ bool8 Archipelago_CheckReceivedItem()
     return FALSE;
 }
 
-bool8 Archipelago_CheckDeathLinkQueued()
+bool8 Archipelago_CheckDeathLinkStatus()
 {
     u8 i;
     bool8 hasUsableMon = FALSE;
@@ -1273,10 +1273,9 @@ bool8 Archipelago_CheckDeathLinkQueued()
         }
     }
 
-    if (hasUsableMon && gArchipelagoDeathLinkQueued == TRUE) {
+    if (hasUsableMon && gArchipelagoDeathLinkReceived)
+    {
         ScriptContext_SetupScript(EventScript_FieldWhiteOut);
-        gArchipelagoDeathLinkQueued = FALSE;
-        DecrementGameStat(GAME_STAT_WHITED_OUT);  // Prevent incoming deaths from triggering outgoing deaths
         return TRUE;
     }
     return FALSE;

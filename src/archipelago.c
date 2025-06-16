@@ -144,7 +144,8 @@ const struct ArchipelagoInfo gArchipelagoInfo = {
     .auth = {0},
 };
 
-EWRAM_DATA bool8 gArchipelagoDeathLinkQueued = FALSE;
+EWRAM_DATA u8 gArchipelagoDeathLinkReceived = FALSE;
+EWRAM_DATA u8 gArchipelagoDeathLinkSent = FALSE;
 
 bool8 ArchipelagoSpecial_CheckReusableTms(void)
 {

@@ -126,7 +126,8 @@ extern const u8 gArchipelagoNameTable[];
 
 extern const struct ArchipelagoOptions gArchipelagoOptions;
 extern const struct ArchipelagoInfo gArchipelagoInfo;
-extern bool8 gArchipelagoDeathLinkQueued;
+extern bool8 gArchipelagoDeathLinkReceived;
+extern bool8 gArchipelagoDeathLinkSent;
 
 bool8 CanUseHmOutsideBattle(u8 fieldMove);
 void SetFlyMapFlag(u8 id);

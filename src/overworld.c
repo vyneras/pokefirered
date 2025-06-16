@@ -1662,6 +1662,10 @@ void CB2_WhiteOut(void)
 
     if (++gMain.state >= 120)
     {
+        if (gArchipelagoDeathLinkReceived)
+            gArchipelagoDeathLinkReceived = FALSE;
+        else
+            gArchipelagoDeathLinkSent = TRUE;
         IncrementGameStat(GAME_STAT_WHITED_OUT);
         FieldClearVBlankHBlankCallbacks();
         StopMapMusic();

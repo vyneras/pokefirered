@@ -40,6 +40,6 @@ void HandleBoulderActivateVictoryRoadSwitch(u16 x, u16 y);
 
 bool8 Archipelago_CheckQueuedRewards(void);
 bool8 Archipelago_CheckReceivedItem(void);
-bool8 Archipelago_CheckDeathLinkQueued(void);
+bool8 Archipelago_CheckDeathLinkStatus(void);
 
 #endif //GUARD_FIELD_CONTROL_AVATAR_H

@@ -152,7 +152,6 @@ void NewGameInitData(void)
     ResetFameChecker();
     SetMoney(&gSaveBlock1Ptr->money, gArchipelagoOptions.startingMoney);
     ResetGameStats();
-    SetGameStat(GAME_STAT_WHITED_OUT, 100);
     ClearPlayerLinkBattleRecords();
     InitHeracrossSizeRecord();
     InitMagikarpSizeRecord();
