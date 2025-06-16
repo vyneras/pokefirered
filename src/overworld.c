@@ -739,11 +739,11 @@ void UpdateEscapeWarp(s16 x, s16 y)
     }
 }
 
-void UpdateLastWarp(s16 x, s16 y)
+void UpdateLastWarp(s8 warpId, s16 x, s16 y)
 {
     u8 delta;
     delta = GetPlayerFacingDirection() == DIR_NORTH;
-    SetLastWarp(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, -1, x - 7, y - 7 + delta);
+    SetLastWarp(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, warpId, x - 7, y - 7 + delta);
 }
 
 void SetEscapeWarp(s8 mapGroup, s8 mapNum, s8 warpId, s16 x, s16 y)
