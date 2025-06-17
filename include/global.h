@@ -828,7 +828,8 @@ struct SaveBlock1
     /*0x3B54*/ u8 registeredTexts[UNION_ROOM_KB_ROW_COUNT][21];
     /*0x3C28*/ struct TrainerNameRecord trainerNameRecords[20];
     /*0x3D18*/ struct DaycareMon route5DayCareMon;
-    /*0x3DA4*/ u8 unused_3D94[16];
+    /*0x3DA4*/ struct WarpData nextWarp;
+    /*0x3DAC*/ u8 unused_3D9C[8];
     /*0x3DB4*/ u32 towerChallengeId;
     /*0x3DB8*/ struct TrainerTower trainerTower[NUM_TOWER_CHALLENGE_TYPES];
     /*0x3DE8*/ u16 archipelagoLastReceivedItemIndex;

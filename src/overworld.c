@@ -644,6 +644,7 @@ void SetWarpDestination(s8 mapGroup, s8 mapNum, s8 warpId, s16 x, s16 y)
 void SetWarpDestinationToMapWarp(s8 mapGroup, s8 mapNum, s8 warpId)
 {
     SetWarpDestination(mapGroup, mapNum, warpId, -1, -1);
+    SetNextWarp(mapGroup, mapNum, warpId);
 }
 
 void SetDynamicWarp(s32 unused, s8 mapGroup, s8 mapNum, s8 warpId)
@@ -739,13 +740,6 @@ void UpdateEscapeWarp(s16 x, s16 y)
     }
 }
 
-void UpdateLastWarp(s8 warpId, s16 x, s16 y)
-{
-    u8 delta;
-    delta = GetPlayerFacingDirection() == DIR_NORTH;
-    SetLastWarp(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, warpId, x - 7, y - 7 + delta);
-}
-
 void SetEscapeWarp(s8 mapGroup, s8 mapNum, s8 warpId, s16 x, s16 y)
 {
     SetWarpData(&gSaveBlock1Ptr->escapeWarp, mapGroup, mapNum, warpId, x, y);
@@ -756,9 +750,14 @@ void SetWarpDestinationToEscapeWarp(void)
     sWarpDestination = gSaveBlock1Ptr->escapeWarp;
 }
 
-void SetLastWarp(s8 mapGroup, s8 mapNum, s8 warpId, s16 x, s16 y)
+void SetLastWarp(s8 mapGroup, s8 mapNum, s8 warpId)
 {
-    SetWarpData(&gSaveBlock1Ptr->lastWarp, mapGroup, mapNum, warpId, x, y);
+    SetWarpData(&gSaveBlock1Ptr->lastWarp, mapGroup, mapNum, warpId, -1, -1);
+}
+
+void SetNextWarp(s8 mapGroup, s8 mapNum, s8 warpId)
+{
+    SetWarpData(&gSaveBlock1Ptr->nextWarp, mapGroup, mapNum, warpId, -1, -1);
 }
 
 void SetWarpDestinationToLastWarp(void)
