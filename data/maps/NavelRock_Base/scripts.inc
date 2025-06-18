@@ -61,6 +61,7 @@ Archipelago_Target_Legendary_Encounter_LUGIA::
 	special StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
+	setflag FLAG_FOUGHT_LUGIA
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, NavelRock_Base_EventScript_CaughtLugia
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, NavelRock_Base_EventScript_DefeatedLugia
@@ -73,7 +74,6 @@ NavelRock_Base_EventScript_CaughtLugia::
 	end
 
 NavelRock_Base_EventScript_DefeatedLugia::
-	setflag FLAG_DEFEATED_LUGIA
 	setflag FLAG_LUGIA_IS_RECOVERING
 	goto EventScript_RemoveStaticMon
 	end

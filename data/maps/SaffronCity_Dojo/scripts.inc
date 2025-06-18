@@ -28,6 +28,7 @@ Archipelago_Target_Special_Gift_HITMONLEE::
 	showmonpic VAR_TEMP_1, 10, 3
 	applymovement LOCALID_KARATE_MASTER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
+	setflag FLAG_VIEWED_HITMONLEE_FROM_DOJO
 	textcolor NPC_TEXT_COLOR_MALE
 	msgbox SaffronCity_Dojo_Text_YouWantHitmonlee, MSGBOX_YESNO
 	call EventScript_RestorePrevTextColor
@@ -45,6 +46,7 @@ Archipelago_Target_Special_Gift_HITMONCHAN::
 	showmonpic VAR_TEMP_1, 10, 3
 	applymovement LOCALID_KARATE_MASTER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
+	setflag FLAG_VIEWED_HITMONCHAN_FROM_DOJO
 	textcolor NPC_TEXT_COLOR_MALE
 	msgbox SaffronCity_Dojo_Text_YouWantHitmonchan, MSGBOX_YESNO
 	call EventScript_RestorePrevTextColor
@@ -70,7 +72,6 @@ SaffronCity_Dojo_EventScript_ReceivedHitmonParty::
 	message SaffronCity_Dojo_Text_ReceivedMonFromKarateMaster
 	waitmessage
 	waitfanfare
-	setflag FLAG_GOT_HITMON_FROM_DOJO
 	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, SaffronCity_Dojo_EventScript_EndGiveMon
 	call EventScript_GetGiftMonPartySlot
@@ -84,7 +85,6 @@ SaffronCity_Dojo_EventScript_ReceivedHitmonPC::
 	message SaffronCity_Dojo_Text_ReceivedMonFromKarateMaster
 	waitmessage
 	waitfanfare
-	setflag FLAG_GOT_HITMON_FROM_DOJO
 	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, SaffronCity_Dojo_EventScript_TransferredHitmonToPC
 	call EventScript_NameReceivedBoxMon
@@ -134,7 +134,8 @@ SaffronCity_Dojo_EventScript_Mike::
 
 SaffronCity_Dojo_EventScript_MasterKoichi::
 	trainerbattle_single TRAINER_BLACK_BELT_KOICHI, SaffronCity_Dojo_Text_MasterKoichiIntro, SaffronCity_Dojo_Text_MasterKoichiDefeat, SaffronCity_Dojo_EventScript_DefeatedMasterKoichi
-	goto_if_set FLAG_GOT_HITMON_FROM_DOJO, SaffronCity_Dojo_EventScript_MasterKoichiAlreadyGotHitmon
+	goto_if_set FLAG_HIDE_DOJO_HITMONLEE_BALL, SaffronCity_Dojo_EventScript_MasterKoichiAlreadyGotHitmon
+	goto_if_set FLAG_HIDE_DOJO_HITMONCHAN_BALL, SaffronCity_Dojo_EventScript_MasterKoichiAlreadyGotHitmon
 	msgbox SaffronCity_Dojo_Text_ChoosePrizedFightingMon, MSGBOX_AUTOCLOSE
 	end
 

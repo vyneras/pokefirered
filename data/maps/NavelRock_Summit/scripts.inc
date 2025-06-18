@@ -65,6 +65,7 @@ Archipelago_Target_Legendary_Encounter_HO_OH::
 	special StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
+	setflag FLAG_FOUGHT_HO_OH
 	setvar VAR_LAST_TALKED, LOCALID_HO_OH
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, NavelRock_Summit_EventScript_CaughtHoOh
@@ -78,7 +79,6 @@ NavelRock_Summit_EventScript_CaughtHoOh::
 	end
 
 NavelRock_Summit_EventScript_DefeatedHoOh::
-	setflag FLAG_DEFEATED_HO_OH
 	setflag FLAG_HO_OH_IS_RECOVERING
 	goto EventScript_RemoveStaticMon
 	end

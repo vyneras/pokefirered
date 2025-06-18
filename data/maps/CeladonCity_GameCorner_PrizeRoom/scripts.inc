@@ -21,6 +21,7 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_PrizeClerkMons::
 	end
 
 CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon::
+    setflag FLAG_VIEWED_PRIZE_POKEMON
 	message CeladonCity_GameCorner_PrizeRoom_Text_WhichPrize
 	waitmessage
 	multichoice 11, 0, MULTICHOICE_GAME_CORNER_POKEMON_PRIZES, FALSE

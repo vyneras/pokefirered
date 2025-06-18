@@ -41,6 +41,7 @@ Archipelago_Target_Legendary_Encounter_MEWTWO::
 	special StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
+	setflag FLAG_FOUGHT_MEWTWO
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, CeruleanCave_B1F_EventScript_CaughtMewtwo
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, CeruleanCave_B1F_EventScript_DefeatedMewtwo
@@ -53,7 +54,6 @@ CeruleanCave_B1F_EventScript_CaughtMewtwo::
 	end
 
 CeruleanCave_B1F_EventScript_DefeatedMewtwo::
-	setflag FLAG_DEFEATED_MEWTWO
 	setflag FLAG_MEWTWO_IS_RECOVERING
 	goto EventScript_RemoveStaticMon
 	end

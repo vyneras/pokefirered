@@ -54,6 +54,7 @@ Archipelago_Target_Special_Gift_MAGIKARP::
 	setvar VAR_TEMP_1, SPECIES_MAGIKARP
 	showmoneybox 0, 0
 	bufferspeciesname STR_VAR_1, VAR_TEMP_1
+	setflag FLAG_TALKED_TO_MAGIKARP_SALESMAN
 	checkplayergender
 	goto_if_eq VAR_RESULT, MALE, Route4_PokemonCenter_1F_EventScript_AskBuyMagikarpMale
 	goto_if_eq VAR_RESULT, FEMALE, Route4_PokemonCenter_1F_EventScript_AskBuyMagikarpFemale

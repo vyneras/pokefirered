@@ -11,6 +11,7 @@ CeruleanCity_House3_EventScript_Dontae::
 	setvar VAR_0x8008, INGAME_TRADE_JYNX
 	call EventScript_GetInGameTradeSpeciesInfo
 	goto_if_set FLAG_DID_ZYNX_TRADE, CeruleanCity_House3_EventScript_AlreadyTraded
+	setflag FLAG_VIEWED_ZYNX_TRADE
 	msgbox Trade_Text_DoYouHaveMonWouldYouTradeForMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, CeruleanCity_House3_EventScript_DeclineTrade
 	call EventScript_ChooseMonForInGameTrade

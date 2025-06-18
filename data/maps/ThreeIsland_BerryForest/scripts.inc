@@ -50,6 +50,7 @@ Archipelago_Target_Static_Encounter_HYPNO::
 	special QuestLog_CutRecording
 	applymovement LOCALID_LOSTELLE, Common_Movement_FacePlayer
 	waitmovement 0
+    setflag FLAG_FOUGHT_BERRY_FOREST_HYPNO
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, ThreeIsland_BerryForest_EventScript_LostelleCaughtHypno
 	setflag FLAG_BERRY_FOREST_HYPNO_IS_RECOVERING

@@ -7,6 +7,7 @@ UndergroundPath_NorthEntrance_EventScript_Saige::
 	setvar VAR_0x8008, INGAME_TRADE_NIDORAN
 	call EventScript_GetInGameTradeSpeciesInfo
 	goto_if_set FLAG_DID_MS_NIDO_TRADE, UndergroundPath_NorthEntrance_EventScript_AlreadyTraded
+	setflag FLAG_VIEWED_MS_NIDO_TRADE
 	msgbox Trade_Text_DoYouHaveMonWantToTradeForMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, UndergroundPath_NorthEntrance_EventScript_DeclineTrade
 	call EventScript_ChooseMonForInGameTrade

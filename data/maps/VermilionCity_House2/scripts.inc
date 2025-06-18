@@ -7,6 +7,7 @@ VermilionCity_House2_EventScript_Elyssa::
 	setvar VAR_0x8008, INGAME_TRADE_FARFETCHD
 	call EventScript_GetInGameTradeSpeciesInfo
 	goto_if_set FLAG_DID_CH_DING_TRADE, VermilionCity_House2_EventScript_AlreadyTraded
+	setflag FLAG_VIEWED_CH_DING_TRADE
 	msgbox VermilionCity_House2_Text_DoYouHaveMonWantToTradeForMyMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, VermilionCity_House2_EventScript_DeclineTrade
 	call EventScript_ChooseMonForInGameTrade

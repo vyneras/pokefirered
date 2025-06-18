@@ -11,6 +11,7 @@ Route2_House_EventScript_Reyley::
 	setvar VAR_0x8008, INGAME_TRADE_MR_MIME
 	call EventScript_GetInGameTradeSpeciesInfo
 	goto_if_set FLAG_DID_MIMIEN_TRADE, Route2_House_EventScript_AlreadyTraded
+	setflag FLAG_VIEWED_MIMIEN_TRADE
 	msgbox Trade_Text_LookingForMonWannaTradeForMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Route2_House_EventScript_DeclineTrade
 	call EventScript_ChooseMonForInGameTrade

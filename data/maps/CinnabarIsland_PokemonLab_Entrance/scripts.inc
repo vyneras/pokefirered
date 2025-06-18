@@ -1,14 +1,5 @@
 CinnabarIsland_PokemonLab_Entrance_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, CinnabarIsland_PokemonLab_Entrance_OnTransition
 	.byte 0
-
-CinnabarIsland_PokemonLab_Entrance_OnTransition::
-	call_if_eq VAR_MAP_SCENE_CINNABAR_ISLAND_POKEMON_LAB_EXPERIMENT_ROOM_REVIVE_STATE, 1, CinnabarIsland_PokemonLab_Entrance_EventScript_ReadyFossil
-	end
-
-CinnabarIsland_PokemonLab_Entrance_EventScript_ReadyFossil::
-	setvar VAR_MAP_SCENE_CINNABAR_ISLAND_POKEMON_LAB_EXPERIMENT_ROOM_REVIVE_STATE, 2
-	return
 
 CinnabarIsland_PokemonLab_Entrance_EventScript_Scientist::
 	msgbox CinnabarIsland_PokemonLab_Entrance_Text_StudyMonsExtensively, MSGBOX_NPC

@@ -54,6 +54,7 @@ Archipelago_Target_Legendary_Encounter_ZAPDOS::
 	special StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
+	setflag FLAG_FOUGHT_ZAPDOS
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, PowerPlant_EventScript_CaughtZapdos
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, PowerPlant_EventScript_DefeatedZapdos
@@ -66,7 +67,6 @@ PowerPlant_EventScript_CaughtZapdos::
 	end
 
 PowerPlant_EventScript_DefeatedZapdos::
-	setflag FLAG_DEFEATED_ZAPDOS
 	setflag FLAG_ZAPDOS_IS_RECOVERING
 	goto EventScript_RemoveStaticMon
 	end
@@ -89,6 +89,7 @@ Archipelago_Target_Static_Encounter_ELECTRODE_1::
 	setflag FLAG_SYS_SPECIAL_WILD_BATTLE
 	dowildbattle
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
+	setflag FLAG_FOUGHT_POWER_PLANT_ELECTRODE_1
 	special QuestLog_CutRecording
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, PowerPlant_EventScript_CaughtElectrode1
@@ -114,6 +115,7 @@ Archipelago_Target_Static_Encounter_ELECTRODE_2::
 	setflag FLAG_SYS_SPECIAL_WILD_BATTLE
 	dowildbattle
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
+	setflag FLAG_FOUGHT_POWER_PLANT_ELECTRODE_2
 	special QuestLog_CutRecording
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, PowerPlant_EventScript_CaughtElectrode2

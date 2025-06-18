@@ -89,6 +89,7 @@ Archipelago_Target_Legendary_Encounter_DEOXYS::
 	special StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
+	setflag FLAG_FOUGHT_DEOXYS
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, BirthIsland_Exterior_EventScript_CaughtDeoxys
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, BirthIsland_Exterior_EventScript_DefeatedDeoxys
@@ -101,7 +102,6 @@ BirthIsland_Exterior_EventScript_CaughtDeoxys::
 	end
 
 BirthIsland_Exterior_EventScript_DefeatedDeoxys::
-	setflag FLAG_DEFEATED_DEOXYS
 	setflag FLAG_DEOXYS_IS_RECOVERING
 	goto EventScript_RemoveStaticMon
 	end

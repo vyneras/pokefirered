@@ -171,6 +171,7 @@ Archipelago_Target_Legendary_Encounter_ARTICUNO::
 	special StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
+	setflag FLAG_FOUGHT_ARTICUNO
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, SeafoamIslands_B4F_EventScript_CaughtArticuno
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, SeafoamIslands_B4F_EventScript_DefeatedArticuno
@@ -183,7 +184,6 @@ SeafoamIslands_B4F_EventScript_CaughtArticuno::
 	end
 
 SeafoamIslands_B4F_EventScript_DefeatedArticuno::
-	setflag FLAG_DEFEATED_ARTICUNO
 	setflag FLAG_ARTICUNO_IS_RECOVERING
 	goto EventScript_RemoveStaticMon
 	end

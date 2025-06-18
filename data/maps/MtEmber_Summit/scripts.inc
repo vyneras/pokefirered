@@ -41,6 +41,7 @@ Archipelago_Target_Legendary_Encounter_MOLTRES::
 	special StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_SPECIAL_WILD_BATTLE
+	setflag FLAG_FOUGHT_MOLTRES
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, MtEmber_Summit_EventScript_CaughtMoltres
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, MtEmber_Summit_EventScript_DefeatedMoltres
@@ -53,7 +54,6 @@ MtEmber_Summit_EventScript_CaughtMoltres::
 	end
 
 MtEmber_Summit_EventScript_DefeatedMoltres::
-	setflag FLAG_DEFEATED_MOLTRES
 	setflag FLAG_MOLTRES_IS_RECOVERING
 	goto EventScript_RemoveStaticMon
 	end
