@@ -41,11 +41,12 @@ CinnabarIsland_EventScript_DontBlockMansion::
 	return
 
 CinnabarIsland_OnLoad::
-	call_if_set FLAG_UNLOCKED_CINNABAR_GYM_DOOR, CinnabarIsland_EventScript_SetGymDoorUnlocked
+	setvar VAR_TEMP_3, 1
 	end
 
 CinnabarIsland_OnFrame::
 	map_script_2 VAR_TEMP_2, 1, CinnabarIsland_EventScript_PolicemanMoveRight
+	map_script_2 VAR_TEMP_3, 1, CinnabarIsland_EventScript_CheckGymDoorUnlocked
 	map_script_2 GIVE_FLY_UNLOCK, 1, CinnabarIsland_EventScript_GiveFlyUnlockItem
 	.2byte 0
 
@@ -62,6 +63,11 @@ CinnabarIsland_Movement_MoveRight::
 	walk_right
 	face_down
 	step_end
+
+CinnabarIsland_EventScript_CheckGymDoorUnlocked::
+	call_if_set FLAG_UNLOCKED_CINNABAR_GYM_DOOR, CinnabarIsland_EventScript_SetGymDoorUnlocked
+	setvar VAR_TEMP_3, 0
+	end
 
 CinnabarIsland_EventScript_GiveFlyUnlockItem::
 	lockall
@@ -88,7 +94,6 @@ CinnabarIsland_EventScript_OpenGymDoor::
 	playse SE_UNLOCK
 	waitse
 	call CinnabarIsland_EventScript_SetGymDoorUnlocked
-	special DrawWholeMapView
 	setflag FLAG_UNLOCKED_CINNABAR_GYM_DOOR
 	msgbox Text_OpenedGymDoor
 	releaseall
@@ -101,6 +106,7 @@ CinnabarIsland_EventScript_GymDoorAlreadyOpen::
 
 CinnabarIsland_EventScript_SetGymDoorUnlocked::
 	setmetatile 20, 4, METATILE_General_SlidingDoubleDoor, 1
+	special DrawWholeMapView
 	return
 
 CinnabarIsland_EventScript_Woman::
