@@ -81,6 +81,7 @@ bool8 AddBagItem(u16 itemId, u16 count);
 bool8 AddUniqueBagItem(u16 itemId, u16 count);
 void AddProgressivePass(u16 count);
 void AddProgressiveCardKey(u16 count);
+void AddProgressiveRod(u16 count);
 void SetPokemonCenterShopStartingFlags(void);
 void SetPokemonCenterShopFlag(u16 itemId);
 

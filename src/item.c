@@ -435,6 +435,9 @@ bool8 AddUniqueBagItem(u16 itemId, u16 count)
     case ITEM_PROG_CARD_KEY:
         AddProgressiveCardKey(count);
         break;
+    case ITEM_PROG_ROD:
+    	AddProgressiveRod(count);
+    	break;
     case ITEM_RUNNING_SHOES:
         FlagSet(FLAG_SYS_B_DASH);
         break;
@@ -544,6 +547,30 @@ void AddProgressiveCardKey(u16 count)
         }
 
         gSaveBlock2Ptr->progressiveCardKeyCount++;
+        count--;
+    }
+}
+
+void AddProgressiveRod(u16 count)
+{
+    while (count > 0)
+    {
+        switch (gSaveBlock2Ptr->progressiveRod)
+        {
+        case 0:
+            AddBagItem(ITEM_OLD_ROD, 1);
+            break;
+        case 1:
+            AddBagItem(ITEM_GOOD_ROD, 1);
+            break;
+        case 2:
+            AddBagItem(ITEM_SUPER_ROD, 1);
+            break;
+        default:
+            return;
+        }
+
+        gSaveBlock2Ptr->progressiveRod++;
         count--;
     }
 }
@@ -935,26 +962,33 @@ const u8 * ItemId_GetName(u16 itemId)
     if (itemId == ITEM_PROG_CARD_KEY)
     {
         if (gSaveBlock2Ptr->progressiveCardKeyCount < NUM_CARD_KEYS)
-        {
             return gItems[ITEM_CARD_KEY_2F + gSaveBlock2Ptr->progressiveCardKeyCount].name;
-        }
+        else
+            return gItems[ITEM_CARD_KEY_11F].name;
     }
     else if (itemId == ITEM_PROG_PASS)
     {
         if (gArchipelagoOptions.passesSplit)
         {
             if (gSaveBlock2Ptr->progressivePassesCount < NUM_SPLIT_PASSES)
-            {
                 return gItems[ITEM_ONE_PASS + gSaveBlock2Ptr->progressivePassesCount].name;
-            }
+            else
+                return gItems[ITEM_SEVEN_PASS].name;
         }
         else
         {
             if (gSaveBlock2Ptr->progressivePassesCount < NUM_PASSES)
-            {
                 return gItems[ITEM_TRI_PASS + gSaveBlock2Ptr->progressivePassesCount].name;
-            }
+            else
+                return gItems[ITEM_RAINBOW_PASS].name;
         }
+    }
+    else if (itemId == ITEM_PROG_ROD)
+    {
+        if (gSaveBlock2Ptr->progressiveRod < NUM_RODS)
+            return gItems[ITEM_OLD_ROD + gSaveBlock2Ptr->progressiveRod].name;
+        else
+            return gItems[ITEM_SUPER_ROD].name;
     }
 
     return gItems[SanitizeItemId(itemId)].name;
@@ -963,9 +997,7 @@ const u8 * ItemId_GetName(u16 itemId)
 const u8 * ItemId_GetUniqueName(u16 itemId)
 {
     if (itemId >= ITEM_FLY_PALLET && itemId <= ITEM_FLY_SIX_ISLAND)
-    {
         return gFlyUnlockNames[itemId - ITEM_FLY_PALLET];
-    }
 
     return ItemId_GetName(itemId);
 }
@@ -1032,6 +1064,37 @@ const u8 * ItemId_GetDescription(u16 itemId)
 {
     if (itemId >= ITEM_FLY_PALLET && itemId <= ITEM_FLY_SIX_ISLAND)
         return ItemId_GetFlyDescription(itemId);
+    else if (itemId == ITEM_PROG_CARD_KEY)
+    {
+        if (gSaveBlock2Ptr->progressiveCardKeyCount < NUM_CARD_KEYS)
+            return gItems[ITEM_CARD_KEY_2F + gSaveBlock2Ptr->progressiveCardKeyCount].description;
+        else
+            return gItems[ITEM_CARD_KEY_11F].description;
+    }
+    else if (itemId == ITEM_PROG_PASS)
+    {
+        if (gArchipelagoOptions.passesSplit)
+        {
+            if (gSaveBlock2Ptr->progressivePassesCount < NUM_SPLIT_PASSES)
+                return gItems[ITEM_ONE_PASS + gSaveBlock2Ptr->progressivePassesCount].description;
+            else
+                return gItems[ITEM_SEVEN_PASS].description;
+        }
+        else
+        {
+            if (gSaveBlock2Ptr->progressivePassesCount < NUM_PASSES)
+                return gItems[ITEM_TRI_PASS + gSaveBlock2Ptr->progressivePassesCount].description;
+            else
+                return gItems[ITEM_RAINBOW_PASS].description;
+        }
+    }
+    else if (itemId == ITEM_PROG_ROD)
+    {
+        if (gSaveBlock2Ptr->progressiveRod < NUM_RODS)
+            return gItems[ITEM_OLD_ROD + gSaveBlock2Ptr->progressiveRod].description;
+        else
+            return gItems[ITEM_SUPER_ROD].description;
+    }
     return gItems[SanitizeItemId(itemId)].description;
 }
 

@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
 #include "decompress.h"
 #include "graphics.h"
 #include "item_menu_icons.h"
@@ -415,6 +416,37 @@ const u32 *GetItemIconGfxPtr(u16 itemId, u8 attrId)
 {
     if (itemId > ITEMS_COUNT)
         itemId = ITEM_NONE;
+    else if (itemId == ITEM_PROG_CARD_KEY)
+    {
+        if (gSaveBlock2Ptr->progressiveCardKeyCount < NUM_CARD_KEYS)
+            return sItemIconTable[ITEM_CARD_KEY_2F + gSaveBlock2Ptr->progressiveCardKeyCount][attrId];
+        else
+            return sItemIconTable[ITEM_CARD_KEY_11F][attrId];
+    }
+    else if (itemId == ITEM_PROG_PASS)
+    {
+        if (gArchipelagoOptions.passesSplit)
+        {
+            if (gSaveBlock2Ptr->progressivePassesCount < NUM_SPLIT_PASSES)
+                return sItemIconTable[ITEM_ONE_PASS + gSaveBlock2Ptr->progressivePassesCount][attrId];
+            else
+                return sItemIconTable[ITEM_SEVEN_PASS][attrId];
+        }
+        else
+        {
+            if (gSaveBlock2Ptr->progressivePassesCount < NUM_PASSES)
+                return sItemIconTable[ITEM_TRI_PASS + gSaveBlock2Ptr->progressivePassesCount][attrId];
+            else
+                return sItemIconTable[ITEM_RAINBOW_PASS][attrId];
+        }
+    }
+    else if (itemId == ITEM_PROG_ROD)
+    {
+        if (gSaveBlock2Ptr->progressiveRod < NUM_RODS)
+            return sItemIconTable[ITEM_OLD_ROD + gSaveBlock2Ptr->progressiveRod][attrId];
+        else
+            return sItemIconTable[ITEM_SUPER_ROD][attrId];
+    }
     return sItemIconTable[itemId][attrId];
 }
 

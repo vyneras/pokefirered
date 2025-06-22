@@ -201,7 +201,7 @@ bool8 IsItemUnique(u16 item)
     return (item >= ITEM_BADGE_1 && item <= ITEM_BADGE_8) ||
            (item >= ITEM_FLY_PALLET && item <= ITEM_FLY_SIX_ISLAND) ||
            (item >= ITEM_COINS_10 && item <= ITEM_COINS_100) ||
-           (item >= ITEM_PROG_PASS && item <= ITEM_PROG_CARD_KEY) ||
+           (item >= ITEM_PROG_PASS && item <= ITEM_PROG_ROD) ||
            item == ITEM_RUNNING_SHOES;
 }
 

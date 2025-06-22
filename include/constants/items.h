@@ -496,7 +496,7 @@
 #define ITEM_VIRIDIAN_KEY 424
 #define ITEM_PROG_PASS 425
 #define ITEM_PROG_CARD_KEY 426
-#define ITEM_1AB 427
+#define ITEM_PROG_ROD 427
 #define ITEM_1AC 428
 #define ITEM_1AD 429
 #define ITEM_1AE 430
@@ -538,6 +538,7 @@
 #define NUM_CARD_KEYS 10
 #define NUM_PASSES 2
 #define NUM_SPLIT_PASSES 7
+#define NUM_RODS 3
 
 // Check if the item is one that can be used on a Pokemon.
 #define IS_POKEMON_ITEM(item) ((item) >= ITEM_POTION && (item) <= MAX_BERRY_INDEX)

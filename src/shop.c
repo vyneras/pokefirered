@@ -1558,11 +1558,16 @@ static void BuyMenuSubtractMoney(u8 taskId)
 
 static void Task_ReturnToItemListAfterItemPurchase(u8 taskId)
 {
+    u16 i;
     s16 *data = gTasks[taskId].data;
 
     if (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
+        for (i = 0; i < sShopData.itemCount; i++)
+        {
+            PokeMartWriteNameAndIdAt(&sShopMenuListMenu[i], sShopData.itemList[i].item, sShopMenuItemStrings[i]);
+        }
         RedrawListMenu(tListTaskId);
         BuyMenuReturnToItemList(taskId);
     }
