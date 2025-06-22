@@ -20,26 +20,26 @@ EWRAM_DATA struct BagPocket gBagPockets[NUM_BAG_POCKETS] = {};
 void SortAndCompactBagPocket(struct BagPocket * pocket);
 
 const u8 gFlyUnlockNames[NUM_FLY_UNLOCKS][FLY_UNLOCK_NAME_LENGTH + 1] = {
-    [ITEM_FLY_PALLET - FIRST_FLY_UNLOCK_INDEX]       = _("PALLET TOWN"),
-    [ITEM_FLY_VIRIDIAN - FIRST_FLY_UNLOCK_INDEX]     = _("VIRIDIAN CITY"),
-    [ITEM_FLY_PEWTER - FIRST_FLY_UNLOCK_INDEX]       = _("PEWTER CITY"),
-    [ITEM_FLY_CERULEAN - FIRST_FLY_UNLOCK_INDEX]     = _("CERULEAN CITY"),
-    [ITEM_FLY_LAVENDER - FIRST_FLY_UNLOCK_INDEX]     = _("LAVENDER TOWN"),
-    [ITEM_FLY_VERMILION - FIRST_FLY_UNLOCK_INDEX]    = _("VERMILION CITY"),
-    [ITEM_FLY_CELADON - FIRST_FLY_UNLOCK_INDEX]      = _("CELADON CITY"),
-    [ITEM_FLY_FUCHSIA - FIRST_FLY_UNLOCK_INDEX]      = _("FUCHSIA CITY"),
-    [ITEM_FLY_CINNABAR - FIRST_FLY_UNLOCK_INDEX]     = _("CINNABAR ISLAND"),
-    [ITEM_FLY_INDIGO - FIRST_FLY_UNLOCK_INDEX]       = _("INDIGO PLATEAU"),
-    [ITEM_FLY_SAFFRON - FIRST_FLY_UNLOCK_INDEX]      = _("SAFFRON CITY"),
-    [ITEM_FLY_ROUTE4 - FIRST_FLY_UNLOCK_INDEX]       = _("ROUTE 4"),
-    [ITEM_FLY_ROUTE10 - FIRST_FLY_UNLOCK_INDEX]      = _("ROUTE 10"),
-    [ITEM_FLY_ONE_ISLAND - FIRST_FLY_UNLOCK_INDEX]   = _("ONE ISLAND"),
-    [ITEM_FLY_TWO_ISLAND - FIRST_FLY_UNLOCK_INDEX]   = _("TWO ISLAND"),
-    [ITEM_FLY_THREE_ISLAND - FIRST_FLY_UNLOCK_INDEX] = _("THREE ISLAND"),
-    [ITEM_FLY_FOUR_ISLAND - FIRST_FLY_UNLOCK_INDEX]  = _("FOUR ISLAND"),
-    [ITEM_FLY_FIVE_ISLAND - FIRST_FLY_UNLOCK_INDEX]  = _("FIVE ISLAND"),
-    [ITEM_FLY_SEVEN_ISLAND - FIRST_FLY_UNLOCK_INDEX] = _("SEVEN ISLAND"),
-    [ITEM_FLY_SIX_ISLAND - FIRST_FLY_UNLOCK_INDEX]   = _("SIX ISLAND")
+    [ITEM_FLY_PALLET - ITEM_FLY_PALLET]       = _("PALLET TOWN"),
+    [ITEM_FLY_VIRIDIAN - ITEM_FLY_PALLET]     = _("VIRIDIAN CITY"),
+    [ITEM_FLY_PEWTER - ITEM_FLY_PALLET]       = _("PEWTER CITY"),
+    [ITEM_FLY_CERULEAN - ITEM_FLY_PALLET]     = _("CERULEAN CITY"),
+    [ITEM_FLY_LAVENDER - ITEM_FLY_PALLET]     = _("LAVENDER TOWN"),
+    [ITEM_FLY_VERMILION - ITEM_FLY_PALLET]    = _("VERMILION CITY"),
+    [ITEM_FLY_CELADON - ITEM_FLY_PALLET]      = _("CELADON CITY"),
+    [ITEM_FLY_FUCHSIA - ITEM_FLY_PALLET]      = _("FUCHSIA CITY"),
+    [ITEM_FLY_CINNABAR - ITEM_FLY_PALLET]     = _("CINNABAR ISLAND"),
+    [ITEM_FLY_INDIGO - ITEM_FLY_PALLET]       = _("INDIGO PLATEAU"),
+    [ITEM_FLY_SAFFRON - ITEM_FLY_PALLET]      = _("SAFFRON CITY"),
+    [ITEM_FLY_ROUTE4 - ITEM_FLY_PALLET]       = _("ROUTE 4"),
+    [ITEM_FLY_ROUTE10 - ITEM_FLY_PALLET]      = _("ROUTE 10"),
+    [ITEM_FLY_ONE_ISLAND - ITEM_FLY_PALLET]   = _("ONE ISLAND"),
+    [ITEM_FLY_TWO_ISLAND - ITEM_FLY_PALLET]   = _("TWO ISLAND"),
+    [ITEM_FLY_THREE_ISLAND - ITEM_FLY_PALLET] = _("THREE ISLAND"),
+    [ITEM_FLY_FOUR_ISLAND - ITEM_FLY_PALLET]  = _("FOUR ISLAND"),
+    [ITEM_FLY_FIVE_ISLAND - ITEM_FLY_PALLET]  = _("FIVE ISLAND"),
+    [ITEM_FLY_SEVEN_ISLAND - ITEM_FLY_PALLET] = _("SEVEN ISLAND"),
+    [ITEM_FLY_SIX_ISLAND - ITEM_FLY_PALLET]   = _("SIX ISLAND")
 };
 
 const u16 gPokemonCenterShopItems[] = {
@@ -936,7 +936,7 @@ const u8 * ItemId_GetName(u16 itemId)
     {
         if (gSaveBlock2Ptr->progressiveCardKeyCount < NUM_CARD_KEYS)
         {
-            return gItems[FIRST_CARD_KEY_INDEX + gSaveBlock2Ptr->progressiveCardKeyCount].name;
+            return gItems[ITEM_CARD_KEY_2F + gSaveBlock2Ptr->progressiveCardKeyCount].name;
         }
     }
     else if (itemId == ITEM_PROG_PASS)
@@ -945,14 +945,14 @@ const u8 * ItemId_GetName(u16 itemId)
         {
             if (gSaveBlock2Ptr->progressivePassesCount < NUM_SPLIT_PASSES)
             {
-                return gItems[FIRST_SPLIT_PASS_INDEX + gSaveBlock2Ptr->progressivePassesCount].name;
+                return gItems[ITEM_ONE_PASS + gSaveBlock2Ptr->progressivePassesCount].name;
             }
         }
         else
         {
             if (gSaveBlock2Ptr->progressivePassesCount < NUM_PASSES)
             {
-                return gItems[FIRST_PASS_INDEX + gSaveBlock2Ptr->progressivePassesCount].name;
+                return gItems[ITEM_TRI_PASS + gSaveBlock2Ptr->progressivePassesCount].name;
             }
         }
     }
@@ -964,7 +964,7 @@ const u8 * ItemId_GetUniqueName(u16 itemId)
 {
     if (itemId >= ITEM_FLY_PALLET && itemId <= ITEM_FLY_SIX_ISLAND)
     {
-        return gFlyUnlockNames[itemId - FIRST_FLY_UNLOCK_INDEX];
+        return gFlyUnlockNames[itemId - ITEM_FLY_PALLET];
     }
 
     return ItemId_GetName(itemId);
@@ -1039,7 +1039,7 @@ const u8 * ItemId_GetFlyDescription(u16 itemId)
 {
     u8 period[] = _(".");
     StringCopy(gStringVar5, gText_FlyItemDescription);
-    StringAppend(gStringVar5, gFlyUnlockNames[itemId - FIRST_FLY_UNLOCK_INDEX]);
+    StringAppend(gStringVar5, gFlyUnlockNames[itemId - ITEM_FLY_PALLET]);
     StringAppend(gStringVar5, period);
     return gStringVar5;
 }
