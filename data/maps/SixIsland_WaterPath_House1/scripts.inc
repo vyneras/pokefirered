@@ -30,9 +30,9 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1::
 SixIsland_WaterPath_House1_EventScript_NoHeracrossInParty::
 	setvar VAR_0x8003, FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1
 	bufferapitemstrings STR_VAR_2, STR_VAR_3, VAR_0x8003, VAR_TEMP_1
-	goto_if_eq VAR_RESULT, 0, SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossItem
-	goto_if_eq VAR_RESULT, 1, SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossPlayerItem
-	goto_if_eq VAR_RESULT, 2, SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossItem
+	call_if_eq VAR_RESULT, 0, SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossItem
+	call_if_eq VAR_RESULT, 1, SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossPlayerItem
+	call_if_eq VAR_RESULT, 2, SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracrossItem
 	setflag FLAG_HINT_SHOW_HERACROSS
 	release
 	end
