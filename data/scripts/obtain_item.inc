@@ -55,6 +55,8 @@ EventScript_ObtainItemMessage::
 	goto_if_eq VAR_RESULT, TRUE, EventScript_ObtainedFlyUnlock
 	specialvar VAR_RESULT, ArchipelagoSpecial_IsItemCoins
 	goto_if_eq VAR_RESULT, TRUE, EventScript_ObtainedCoins
+	specialvar VAR_RESULT, ArchipelagoSpecial_IsItemLedgeJump
+	goto_if_eq VAR_RESULT, TRUE, EventScript_ObtainedLedgeJump
 	msgbox Text_ObtainedItem, MSGBOX_DEFAULT
 	return
 
@@ -73,6 +75,10 @@ EventScript_ObtainedFlyUnlock::
 
 EventScript_ObtainedCoins::
 	msgbox Text_ObtainedCoins, MSGBOX_DEFAULT
+	return
+
+EventScript_ObtainedLedgeJump::
+	msgbox Text_ObtainedLedgeJump, MSGBOX_DEFAULT
 	return
 
 Std_ObtainDecoration::
@@ -123,6 +129,8 @@ EventScript_FindItemMessage::
 	goto_if_eq VAR_RESULT, TRUE, EventScript_ObtainedFlyUnlock
 	specialvar VAR_RESULT, ArchipelagoSpecial_IsItemCoins
 	goto_if_eq VAR_RESULT, TRUE, EventScript_FoundCoins
+	specialvar VAR_RESULT, ArchipelagoSpecial_IsItemLedgeJump
+	goto_if_eq VAR_RESULT, TRUE, EventScript_ObtainedLedgeJump
 	msgbox Text_FoundItem, MSGBOX_DEFAULT
 	return
 

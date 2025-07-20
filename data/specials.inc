@@ -458,6 +458,7 @@ gSpecials::
 	def_special ArchipelagoSpecial_IsItemBadge
 	def_special ArchipelagoSpecial_IsItemFlyUnlock
 	def_special ArchipelagoSpecial_IsItemCoins
+	def_special ArchipelagoSpecial_IsItemLedgeJump
 	def_special ArchipelagoSpecial_GetObjectScriptFlag
 	def_special ArchipelagoSpecial_PopReward
 	def_special ArchipelagoSpecial_ConsumeReceivedItem

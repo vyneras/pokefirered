@@ -709,8 +709,8 @@
 #define FLAG_GOT_SIX_PASS                                0x2AC
 #define FLAG_GOT_SEVEN_PASS                              0x2AD
 #define FLAG_GOT_LINK_CABLE                              0x2AE
-#define FLAG_GOT_BERRY_POUCH                             0x2AF
-#define FLAG_GOT_TM_CASE                                 0x2B0
+#define FLAG_0x2AF                                       0x2AF
+#define FLAG_0x2BO                                       0x2B0
 #define FLAG_GOT_RUNNING_SHOES                           0x2B1
 #define FLAG_GAVE_SCANNER                                0x2B2
 #define FLAG_GOT_DEEP_SEA_SCALE                          0x2B3
@@ -1380,7 +1380,7 @@
 #define FLAG_SYS_IGNORE_BLIND_TRAINERS                              (SYS_FLAGS + 0x2B)
 #define FLAG_SYS_GAME_CLEAR                                         (SYS_FLAGS + 0x2C)
 #define FLAG_SYS_SET_TRAINER_CARD_PROFILE                           (SYS_FLAGS + 0x2D)
-#define FLAG_0x82E                                                  (SYS_FLAGS + 0x2E)
+#define FLAG_SYS_LEDGE_JUMP                                         (SYS_FLAGS + 0x2E)
 #define FLAG_SYS_B_DASH                                             (SYS_FLAGS + 0x2F)
 #define FLAG_SYS_ON_CYCLING_ROAD                                    (SYS_FLAGS + 0x30)
 #define FLAG_0x831                                                  (SYS_FLAGS + 0x31)

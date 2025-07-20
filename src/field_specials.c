@@ -2574,6 +2574,11 @@ bool8 ArchipelagoSpecial_IsItemCoins(void)
     return gSpecialVar_0x8000 >= ITEM_COINS_10 && gSpecialVar_0x8000 <= ITEM_COINS_100;
 }
 
+bool8 ArchipelagoSpecial_IsItemLedgeJump(void)
+{
+    return gSpecialVar_0x8000 == ITEM_LEDGE_JUMP;
+}
+
 u16 ArchipelagoSpecial_GetObjectScriptFlag(void)
 {
     u8 i;

@@ -570,41 +570,6 @@ int main (int argc, char *argv[])
 
         std::cout << "Reading locations for " << GAME_NAME_MAP[i] << "..." << std::endl;
 
-        // Starting Items
-        auto berry_pouch = npc_gifts["STARTING_ITEM_BERRY_POUCH"];
-
-        if (berry_pouch != nullptr)
-        {
-            berry_pouch->address[GAME_REVISION_MAP[i]] = symbol_map["sNewGameItems"] - ROM_START;
-        }
-        else
-        {
-            berry_pouch = std::make_shared<LocationInfo>();
-            berry_pouch->name = "STARTING_ITEM_BERRY_POUCH";
-            berry_pouch->flag = constants_json["FLAG_GOT_BERRY_POUCH"];
-            berry_pouch->address[GAME_REVISION_MAP[i]] = symbol_map["sNewGameItems"] - ROM_START;
-            rom.seekg(berry_pouch->address[GAME_REVISION_MAP[i]], std::ios::beg);
-            rom.read((char*)&(berry_pouch->default_item), 2);
-            npc_gifts[berry_pouch->name] = berry_pouch;
-        }
-
-        auto tm_case = npc_gifts["STARTING_ITEM_TM_CASE"];
-
-        if (tm_case != nullptr)
-        {
-            tm_case->address[GAME_REVISION_MAP[i]] = symbol_map["sNewGameItems"] + 2 - ROM_START;
-        }
-        else
-        {
-            tm_case = std::make_shared<LocationInfo>();
-            tm_case->name = "STARTING_ITEM_TM_CASE";
-            tm_case->flag = constants_json["FLAG_GOT_TM_CASE"];
-            tm_case->address[GAME_REVISION_MAP[i]] = symbol_map["sNewGameItems"] + 2 - ROM_START;
-            rom.seekg(tm_case->address[GAME_REVISION_MAP[i]], std::ios::beg);
-            rom.read((char*)&(tm_case->default_item), 2);
-            npc_gifts[tm_case->name] = tm_case;
-        }
-
         // PC Item
         auto pc_item = npc_gifts["PC_ITEM_POTION"];
 

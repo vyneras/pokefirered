@@ -654,7 +654,7 @@ static bool8 CanStopSurfing(s16 x, s16 y, u8 direction)
 
 static bool8 ShouldJumpLedge(s16 x, s16 y, u8 direction)
 {
-    if (GetLedgeJumpDirection(x, y, direction) != DIR_NONE)
+    if (GetLedgeJumpDirection(x, y, direction) != DIR_NONE && FlagGet(FLAG_SYS_LEDGE_JUMP))
         return TRUE;
     else
         return FALSE;

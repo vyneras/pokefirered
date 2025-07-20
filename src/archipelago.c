@@ -128,7 +128,8 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .resortGorgeousMon = 25,
     .introSpecies = SPECIES_NIDORAN_F,
     .pcItemId = ITEM_POTION,
-    .remoteItems = FALSE
+    .remoteItems = FALSE,
+    .randomized = FALSE
 };
 
 EWRAM_DATA struct ArchipelagoReceivedItem gArchipelagoReceivedItem = {0};
@@ -202,7 +203,8 @@ bool8 IsItemUnique(u16 item)
            (item >= ITEM_FLY_PALLET && item <= ITEM_FLY_SIX_ISLAND) ||
            (item >= ITEM_COINS_10 && item <= ITEM_COINS_100) ||
            (item >= ITEM_PROG_PASS && item <= ITEM_PROG_ROD) ||
-           item == ITEM_RUNNING_SHOES;
+           item == ITEM_RUNNING_SHOES ||
+           item == ITEM_LEDGE_JUMP;
 }
 
 void GiveStartingItems(void)

@@ -41,10 +41,6 @@ static void ResetMiniGamesResults(void);
 // EWRAM vars
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
 
-#define NEW_GAME_ITEM_COUNT 2
-
-static const u16 sNewGameItems[NEW_GAME_ITEM_COUNT] = {ITEM_BERRY_POUCH, ITEM_TM_CASE};
-
 void SetTrainerId(u32 trainerId, u8 *dst)
 {
     dst[0] = trainerId;
@@ -228,11 +224,12 @@ void NewGameInitData(void)
     if (!gArchipelagoOptions.cardKeysSplit) RunScriptImmediately(EventScript_SetSplitCardKeyItemFlags);
     if (!gArchipelagoOptions.gymKeys) RunScriptImmediately(EventScript_SetGymKeysFlags);
 
-    for (i = 0; i < NEW_GAME_ITEM_COUNT; i++)
-        AddBagItem(sNewGameItems[i], 1);
-
-    FlagSet(FLAG_GOT_BERRY_POUCH);
-    FlagSet(FLAG_GOT_TM_CASE);
+    if (!gArchipelagoOptions.randomized)
+    {
+        AddBagItem(ITEM_BERRY_POUCH, 1);
+        AddBagItem(ITEM_TM_CASE, 1);
+        AddBagItem(ITEM_LEDGE_JUMP, 1);
+    }
 
     SetPokemonCenterShopStartingFlags();
 }

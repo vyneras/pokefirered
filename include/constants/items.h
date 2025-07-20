@@ -497,7 +497,7 @@
 #define ITEM_PROG_PASS 425
 #define ITEM_PROG_CARD_KEY 426
 #define ITEM_PROG_ROD 427
-#define ITEM_1AC 428
+#define ITEM_LEDGE_JUMP 428
 #define ITEM_1AD 429
 #define ITEM_1AE 430
 #define ITEM_1AF 431

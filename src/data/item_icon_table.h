@@ -459,8 +459,9 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_PROG_PASS]               = {gItemIcon_TriPass, gItemIconPalette_TriPass},
     [ITEM_PROG_CARD_KEY]           = {gItemIcon_CardKey, gItemIconPalette_CardKey},
     [ITEM_PROG_ROD]                = {gItemIcon_SuperRod, gItemIconPalette_SuperRod},
+    // Ledge jump
+    [ITEM_LEDGE_JUMP]              = {gItemIcon_Badge, gItemIconPalette_Badge},
     // ????????
-    [ITEM_1AC]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_1AD]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_1AE]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_1AF]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
