@@ -1,15 +1,7 @@
 .equ LOCALID_PROF_OAK,        4
-.equ LOCALID_BULBASAUR_BALL,  5
-.equ LOCALID_SQUIRTLE_BALL,   6
-.equ LOCALID_CHARMANDER_BALL, 7
 .equ LOCALID_RIVAL,           8
 .equ LOCALID_POKEDEX_1,       9
 .equ LOCALID_POKEDEX_2,       10
-
-.equ PLAYER_STARTER_NUM,      VAR_TEMP_1
-.equ PLAYER_STARTER_SPECIES,  VAR_TEMP_2
-.equ RIVAL_STARTER_SPECIES,   VAR_TEMP_3
-.equ RIVAL_STARTER_ID,        VAR_TEMP_4
 
 .equ SHOWED_OAK_COMPLETE_DEX, FLAG_TEMP_2
 
@@ -26,10 +18,56 @@ PalletTown_ProfessorOaksLab_EventScript_SetSkipPokeBallCheck::
 	setflag FLAG_OAK_SKIP_22_RIVAL_CHECK
 	return
 
-PalletTown_ProfessorOaksLab_EventScript_Rival::
-	lock
-	faceplayer
+PalletTown_ProfessorOaksLab_EventScript_RivalBattleTriggerLeft::
+	lockall
 	playbgm MUS_ENCOUNTER_RIVAL, 0
+	setvar VAR_TEMP_1, 1
+	applymovement LOCALID_RIVAL, PalletTown_ProfessorOaksLab_Movement_RivalApproachLeft
+	waitmovement 0
+	goto PalletTown_ProfessorOaksLab_EventScript_RivalBattle
+	end
+
+PalletTown_ProfessorOaksLab_EventScript_RivalBattleTriggerMid::
+	lockall
+	playbgm MUS_ENCOUNTER_RIVAL, 0
+	setvar VAR_TEMP_1, 2
+	applymovement LOCALID_RIVAL, PalletTown_ProfessorOaksLab_Movement_RivalApproachCenter
+	waitmovement 0
+	goto PalletTown_ProfessorOaksLab_EventScript_RivalBattle
+	end
+
+PalletTown_ProfessorOaksLab_EventScript_RivalBattleTriggerRight::
+	lockall
+	playbgm MUS_ENCOUNTER_RIVAL, 0
+	setvar VAR_TEMP_1, 3
+	applymovement LOCALID_RIVAL, PalletTown_ProfessorOaksLab_Movement_RivalApproachRight
+	waitmovement 0
+	goto PalletTown_ProfessorOaksLab_EventScript_RivalBattle
+	end
+
+PalletTown_ProfessorOaksLab_Movement_RivalApproachLeft::
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+PalletTown_ProfessorOaksLab_Movement_RivalApproachCenter::
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+PalletTown_ProfessorOaksLab_Movement_RivalApproachRight::
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+PalletTown_ProfessorOaksLab_EventScript_RivalBattle::
+	textcolor NPC_TEXT_COLOR_MALE
 	msgbox PalletTown_ProfessorOaksLab_Text_RivalLetsCheckOutMons
 	closemessage
 	goto_if_eq VAR_STARTER_MON, 0, PalletTown_ProfessorOaksLab_EventScript_RivalBattleCharmander
@@ -60,59 +98,89 @@ PalletTown_ProfessorOaksLab_EventScript_EndRivalBattle::
 	msgbox PalletTown_ProfessorOaksLab_Text_RivalGoToughenMyMon
 	closemessage
 	playbgm MUS_RIVAL_EXIT, 0
-	goto_if_eq VAR_FACING, DIR_WEST, PalletTown_ProfessorOaksLab_EventScript_RivalExitAfterBattleDown
-	applymovement LOCALID_RIVAL, PalletTown_ProfessorOaksLab_Movement_RivalExitAfterBattleRight
-	waitmovement 0
-	goto PalletTown_ProfessorOaksLab_EventScript_RemoveRival
-	end
-
-PalletTown_ProfessorOaksLab_EventScript_RivalExitAfterBattleDown::
-	applymovement LOCALID_RIVAL, PalletTown_ProfessorOaksLab_Movement_RivalExitAfterBattleDown
-	waitmovement 0
-	goto PalletTown_ProfessorOaksLab_EventScript_RemoveRival
-	end
-
-PalletTown_ProfessorOaksLab_Movement_RivalExitAfterBattleRight::
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-PalletTown_ProfessorOaksLab_Movement_RivalExitAfterBattleDown::
-	walk_down
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-PalletTown_ProfessorOaksLab_EventScript_RemoveRival::
+	call_if_eq VAR_TEMP_1, 1, PalletTown_ProfessorOaksLab_EventScript_RivalExitAfterBattleLeft
+	call_if_eq VAR_TEMP_1, 2, PalletTown_ProfessorOaksLab_EventScript_RivalExitAfterBattleMid
+	call_if_eq VAR_TEMP_1, 3, PalletTown_ProfessorOaksLab_EventScript_RivalExitAfterBattleRight
 	removeobject LOCALID_RIVAL
 	playse SE_EXIT
 	fadedefaultbgm
-	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 4
+	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 1
 	setflag FLAG_BEAT_RIVAL_IN_OAKS_LAB
-	release
+	releaseall
 	end
+
+PalletTown_ProfessorOaksLab_EventScript_RivalExitAfterBattleLeft::
+	applymovement LOCALID_RIVAL, PalletTown_ProfessorOaksLab_Movement_RivalExitAfterBattleLeft
+	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_ProfessorOaksLab_Movement_PlayerWatchRivalExitAfterBattle
+	waitmovement LOCALID_RIVAL
+	return
+
+PalletTown_ProfessorOaksLab_EventScript_RivalExitAfterBattleMid::
+	applymovement LOCALID_RIVAL, PalletTown_ProfessorOaksLab_Movement_RivalExitAfterBattleMid
+	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_ProfessorOaksLab_Movement_PlayerWatchRivalExitAfterBattle
+	waitmovement LOCALID_RIVAL
+	return
+
+PalletTown_ProfessorOaksLab_EventScript_RivalExitAfterBattleRight::
+	applymovement LOCALID_RIVAL, PalletTown_ProfessorOaksLab_Movement_RivalExitAfterBattleRight
+	applymovement OBJ_EVENT_ID_PLAYER, PalletTown_ProfessorOaksLab_Movement_PlayerWatchRivalExitAfterBattleRight
+	waitmovement LOCALID_RIVAL
+	return
+
+PalletTown_ProfessorOaksLab_Movement_RivalExitAfterBattleLeft::
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	delay_8
+	step_end
+
+PalletTown_ProfessorOaksLab_Movement_RivalExitAfterBattleRight::
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	delay_8
+	step_end
+
+PalletTown_ProfessorOaksLab_Movement_RivalExitAfterBattleMid::
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_down
+	walk_down
+	delay_8
+	step_end
+
+PalletTown_ProfessorOaksLab_Movement_PlayerWatchRivalExitAfterBattle::
+	delay_16
+	delay_8
+	walk_in_place_faster_right
+	delay_16
+	walk_in_place_faster_down
+	step_end
+
+PalletTown_ProfessorOaksLab_Movement_PlayerWatchRivalExitAfterBattleRight::
+	delay_16
+	delay_8
+	walk_in_place_faster_left
+	delay_16
+	walk_in_place_faster_down
+	step_end
 
 PalletTown_ProfessorOaksLab_EventScript_ProfOak::
 	lock
 	faceplayer
 	call_if_set FLAG_DELIVERED_OAKS_PARCEL, PalletTown_ProfessorOaksLab_EventScript_GiveOakFameChecker
-	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 6, PalletTown_ProfessorOaksLab_EventScript_RatePokedex
-	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 5, PalletTown_ProfessorOaksLab_EventScript_RatePokedexOrTryGiveBalls
-	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 4, PalletTown_ProfessorOaksLab_EventScript_OakBattleMonForItToGrow
-	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 3, PalletTown_ProfessorOaksLab_EventScript_OakCanReachNextTownWithMon
+	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 3, PalletTown_ProfessorOaksLab_EventScript_RatePokedex
+	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 2, PalletTown_ProfessorOaksLab_EventScript_RatePokedexOrTryGiveBalls
+	goto_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 1, PalletTown_ProfessorOaksLab_EventScript_OakBattleMonForItToGrow
 	msgbox PalletTown_ProfessorOaksLab_Text_OakWhichOneWillYouChoose
 	release
 	end
@@ -120,11 +188,6 @@ PalletTown_ProfessorOaksLab_EventScript_ProfOak::
 PalletTown_ProfessorOaksLab_EventScript_GiveOakFameChecker::
 	famechecker FAMECHECKER_OAK, 1
 	return
-
-PalletTown_ProfessorOaksLab_EventScript_OakCanReachNextTownWithMon::
-	msgbox PalletTown_ProfessorOaksLab_Text_OakCanReachNextTownWithMon
-	release
-	end
 
 PalletTown_ProfessorOaksLab_EventScript_OakBattleMonForItToGrow::
 	checkitem ITEM_OAKS_PARCEL
@@ -212,7 +275,7 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_FIRST_POKEBALLS::
 	call_if_eq VAR_FACING, DIR_WEST, PalletTown_ProfessorOaksLab_EventScript_RivalExit
 	removeobject LOCALID_RIVAL
 	fadedefaultbgm
-	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 5
+	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 2
 	setvar VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 1
 	setflag FLAG_DELIVERED_OAKS_PARCEL
 	release
@@ -404,7 +467,7 @@ PalletTown_ProfessorOaksLab_EventScript_GivePlayerSecondPokeballs::
 	msgbox PalletTown_ProfessorOaksLab_Text_OakNeedMorePokeballs
 Archipelago_Target_NPC_Gift_FLAG_GOT_POKEBALLS_FROM_OAK_AFTER_22_RIVAL::
 	giveitem ITEM_POKE_BALL, 1, FLAG_GOT_POKEBALLS_FROM_OAK_AFTER_22_RIVAL
-	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 6
+	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 3
 	release
 	end
 
@@ -606,7 +669,7 @@ PalletTown_ProfessorOaksLab_EventScript_LeftSign::
 
 PalletTown_ProfessorOaksLab_EventScript_RightSign::
 	lockall
-	goto_if_ge VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 6, PalletTown_ProfessorOaksLab_EventScript_RightSignAlt
+	goto_if_ge VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 2, PalletTown_ProfessorOaksLab_EventScript_RightSignAlt
 	msgbox PalletTown_ProfessorOaksLab_Text_SaveOptionInMenu
 	releaseall
 	end

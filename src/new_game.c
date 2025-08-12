@@ -176,7 +176,6 @@ void NewGameInitData(void)
     FlagSet(FLAG_SYS_SEVII_MAP_4567);
     FlagSet(FLAG_SYS_POKEMON_GET);
     FlagSet(FLAG_SYS_POKEDEX_GET);
-    VarSet(VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 3);
     VarSet(VAR_STARTER_MON, gSaveBlock2Ptr->starterIndex);
     ScriptGiveMon(GetStarterSpecies(), 5, 0, 0, 0, 0);
 

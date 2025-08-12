@@ -98,12 +98,6 @@ PalletTown_ProfessorOaksLab_Text_ReceivedMonFromOak::
     .string "{PLAYER} received the {STR_VAR_1}\n"
     .string "from PROF. OAK!$"
 
-PalletTown_ProfessorOaksLab_Text_OakCanReachNextTownWithMon::
-    .string "OAK: If a wild POKéMON appears,\n"
-    .string "your POKéMON can battle it.\p"
-    .string "With it at your side, you should be\n"
-    .string "able to reach the next town.$"
-
 PalletTown_ProfessorOaksLab_Text_OakBattleMonForItToGrow::
     .string "OAK: {PLAYER}, raise your young\n"
     .string "POKéMON by making it battle.\p"
