@@ -75,5 +75,12 @@ PokedexRating_EventScript_DexComplete::
 	end
 
 PokedexRating_EventScript_EndRating::
+	specialvar VAR_RESULT, ArchipelagoSpecial_GiveDexsanityItem
+	goto_if_eq VAR_RESULT, TRUE, PokedexRating_EventScript_GiveDexsanityItem
 	special RestoreHelpContext
 	return
+
+PokedexRating_EventScript_GiveDexsanityItem::
+	giveitem VAR_0x8000, 1, VAR_0x8003
+	goto PokedexRating_EventScript_EndRating
+	end

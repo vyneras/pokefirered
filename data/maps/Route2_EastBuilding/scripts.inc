@@ -18,6 +18,7 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_HM05::
 	call Route2_EastBuilding_EventScript_GetAideRequestInfo
 	call Aide_EventScript_GiveIfSeenXMons
 	setvar VAR_0x8003, FLAG_HINT_ROUTE_2_OAKS_AIDE
+	goto_if_unset FLAG_SYS_POKEDEX_GET, Aide_EventScript_NoPokedex
 	goto_if_eq VAR_RESULT, NO, Aide_EventScript_DeclineCheckMons
 	setvar VAR_0x8004, 1
 	specialvar VAR_RESULT, GetPokedexCount

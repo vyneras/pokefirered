@@ -14,6 +14,22 @@ Aide_EventScript_HaventCaughtEnoughPlayerItem::
 	msgbox Aide_Text_HaventCaughtEnoughMonsForPlayerItem
 	return
 
+Aide_EventScript_NoPokedex::
+	call_if_eq VAR_TEMP_3, 0, Aide_EventScript_NoPokedexItem
+	call_if_eq VAR_TEMP_3, 1, Aide_EventScript_NoPokedexPlayerItem
+	call_if_eq VAR_TEMP_3, 2, Aide_EventScript_NoPokedexItem
+	setflagvar VAR_0x8003
+	release
+	end
+
+Aide_EventScript_NoPokedexItem::
+	msgbox Aide_Text_NoPokedexComeBackForItem
+	return
+
+Aide_EventScript_NoPokedexPlayerItem::
+	msgbox Aide_Text_NoPokedexComeBackForPlayerItem
+	return
+
 Aide_EventScript_DeclineCheckMons::
 	call_if_eq VAR_TEMP_3, 0, Aide_EventScript_DeclineCheckMonsItem
 	call_if_eq VAR_TEMP_3, 1, Aide_EventScript_DeclineCheckMonsPlayerItem

@@ -45,7 +45,7 @@ ArchipelagoScript_HandleTextBox::
 ArchipelagoScript_FoundArchipelagoItem::
 	call EventScript_PlayNormalItemFanfare
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox Archipelago_Text_PlayerFoundArchipelagoItem, MSGBOX_DEFAULT
+	msgbox Archipelago_Text_PlayerSentArchipelagoItem, MSGBOX_DEFAULT
 	waitfanfare
 	call EventScript_RestorePrevTextColor
 	return
@@ -53,7 +53,7 @@ ArchipelagoScript_FoundArchipelagoItem::
 ArchipelagoScript_FoundPlayersItem::
 	call EventScript_PlayNormalItemFanfare
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox Archipelago_Text_PlayerFoundPlayersItem, MSGBOX_DEFAULT
+	msgbox Archipelago_Text_PlayerSentPlayersItem, MSGBOX_DEFAULT
 	waitfanfare
 	call EventScript_RestorePrevTextColor
 	return

@@ -23,7 +23,8 @@ EventScript_PCMainMenu::
 	special CreatePCMenu
 	waitstate
 	waitse
-	goto EventScript_ChoosePCMenu
+	goto_if_set FLAG_SYS_POKEDEX_GET, EventScript_ChoosePCMenu
+	goto EventScript_ChooseHallOfFamePCMenu
 	end
 
 EventScript_ChoosePCMenu::
@@ -33,6 +34,15 @@ EventScript_ChoosePCMenu::
 	case 2, EventScript_AccessProfOaksPC
 	case 3, EventScript_AccessHallOfFame
 	case 4, EventScript_TurnOffPC
+	case SCR_MENU_CANCEL, EventScript_TurnOffPC
+	end
+
+EventScript_ChooseHallOfFamePCMenu::
+	switch VAR_RESULT
+	case 0, EventScript_AccessPokemonStorage
+	case 1, EventScript_AccessPlayersPC
+	case 2, EventScript_AccessHallOfFame
+	case 3, EventScript_TurnOffPC
 	case SCR_MENU_CANCEL, EventScript_TurnOffPC
 	end
 
@@ -81,7 +91,8 @@ EventScript_AccessHallOfFame::
 	special HallOfFamePCBeginFade
 	waitstate
 	special RestoreHelpContext
-	goto EventScript_ChoosePCMenu
+	goto_if_set FLAG_SYS_POKEDEX_GET, EventScript_ChoosePCMenu
+	goto EventScript_ChooseHallOfFamePCMenu
 	end
 
 EventScript_AccessProfOaksPC::

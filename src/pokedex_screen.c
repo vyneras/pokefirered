@@ -2598,30 +2598,21 @@ s8 DexScreen_GetSetPokedexFlag(u16 nationalDexNo, u8 caseId, bool8 indexIsSpecie
     case FLAG_GET_SEEN:
         if (gSaveBlock2Ptr->pokedex.seen[index] & mask)
         {
-            // Anticheat
-            if ((gSaveBlock2Ptr->pokedex.seen[index] & mask) == (gSaveBlock1Ptr->seen1[index] & mask)
-                && (gSaveBlock2Ptr->pokedex.seen[index] & mask) == (gSaveBlock1Ptr->seen2[index] & mask))
-                retVal = 1;
+            retVal = 1;
         }
         break;
     case FLAG_GET_CAUGHT:
         if (gSaveBlock2Ptr->pokedex.owned[index] & mask)
         {
-            // Anticheat
-            if ((gSaveBlock2Ptr->pokedex.owned[index] & mask) == (gSaveBlock2Ptr->pokedex.seen[index] & mask)
-                && (gSaveBlock2Ptr->pokedex.owned[index] & mask) == (gSaveBlock1Ptr->seen1[index] & mask)
-                && (gSaveBlock2Ptr->pokedex.owned[index] & mask) == (gSaveBlock1Ptr->seen2[index] & mask))
+            if ((gSaveBlock2Ptr->pokedex.owned[index] & mask) == (gSaveBlock2Ptr->pokedex.seen[index] & mask))
                 retVal = 1;
         }
         break;
     case FLAG_SET_SEEN:
         gSaveBlock2Ptr->pokedex.seen[index] |= mask;
-        // Anticheat
-        gSaveBlock1Ptr->seen1[index] |= mask;
-        gSaveBlock1Ptr->seen2[index] |= mask;
         break;
     case FLAG_SET_CAUGHT:
-        if ((gSaveBlock2Ptr->pokedex.owned[index] & mask) == 0)
+        if ((gSaveBlock1Ptr->dexsanityFlags[index] & mask) == 0 && FlagGet(FLAG_SYS_POKEDEX_GET))
         {
             if (sPokedexRewards[nationalDexNo] != ITEM_NONE)
             {
@@ -2631,6 +2622,7 @@ s8 DexScreen_GetSetPokedexFlag(u16 nationalDexNo, u8 caseId, bool8 indexIsSpecie
                     {
                         gSaveBlock1Ptr->rewardQueue[rewardIndex].itemId = sPokedexRewards[nationalDexNo];
                         gSaveBlock1Ptr->rewardQueue[rewardIndex].locationId = DEXSANITY_FLAGS_START + nationalDexNo;
+                        gSaveBlock1Ptr->dexsanityFlags[index] |= mask;
                         break;
                     }
                 }
@@ -4114,4 +4106,30 @@ void DexScreen_PrintStringWithAlignment(const u8 * str, s32 mode)
 bool8 HasDexsanityItem(u16 nationalDexNo)
 {
     return sPokedexRewards[nationalDexNo - 1] != ITEM_NONE;
+}
+
+bool8 GiveDexsanityItems(void)
+{
+    u16 i, species;
+    u8 index;
+    u8 bit;
+    u8 mask;
+
+    for (i = 0; i < NATIONAL_DEX_COUNT; i++)
+    {
+        index = i / 8;
+        bit = i % 8;
+        mask = 1 << bit;
+        if (sPokedexRewards[i] != ITEM_NONE &&
+            (gSaveBlock1Ptr->dexsanityFlags[index] & mask) == 0 &&
+            gSaveBlock2Ptr->pokedex.owned[index] & mask)
+        {
+            gSpecialVar_0x8000 = sPokedexRewards[i];
+            gSpecialVar_0x8003 = DEXSANITY_FLAGS_START + i;
+            gSaveBlock1Ptr->dexsanityFlags[index] |= mask;
+            return TRUE;
+        }
+    }
+
+    return FALSE;
 }

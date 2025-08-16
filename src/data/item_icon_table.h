@@ -461,8 +461,9 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_PROG_ROD]                = {gItemIcon_SuperRod, gItemIconPalette_SuperRod},
     // Ledge jump
     [ITEM_LEDGE_JUMP]              = {gItemIcon_Badge, gItemIconPalette_Badge},
+    // Pokédex
+    [ITEM_POKEDEX]                 = {gItemIcon_Badge, gItemIconPalette_Badge},
     // ????????
-    [ITEM_1AD]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_1AE]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_1AF]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_1B0]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},

@@ -248,13 +248,8 @@ PalletTown_ProfessorOaksLab_EventScript_ReceiveDexScene::
 	call_if_eq VAR_FACING, DIR_EAST, PalletTown_ProfessorOaksLab_EventScript_OakBringDexesOverEast
 	call_if_eq VAR_FACING, DIR_WEST, PalletTown_ProfessorOaksLab_EventScript_OakBringDexesOverWest
 	delay 10
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	playfanfare MUS_OBTAIN_KEY_ITEM
-	message PalletTown_ProfessorOaksLab_Text_ReceivedPokedexFromOak
-	waitmessage
-	waitfanfare
-	call EventScript_RestorePrevTextColor
-	special SetUnlockedPokedexFlags
+Archipelago_Target_NPC_Gift_FLAG_GOT_POKEDEX::
+	giveitem ITEM_POKEDEX, 1, FLAG_GOT_POKEDEX
 	msgbox PalletTown_ProfessorOaksLab_Text_OakCatchMonsForDataTakeThese
 Archipelago_Target_NPC_Gift_FLAG_GOT_FIRST_POKEBALLS::
 	giveitem ITEM_POKE_BALL, 1, FLAG_GOT_FIRST_POKEBALLS

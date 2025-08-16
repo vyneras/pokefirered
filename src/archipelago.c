@@ -204,7 +204,8 @@ bool8 IsItemUnique(u16 item)
            (item >= ITEM_COINS_10 && item <= ITEM_COINS_100) ||
            (item >= ITEM_PROG_PASS && item <= ITEM_PROG_ROD) ||
            item == ITEM_RUNNING_SHOES ||
-           item == ITEM_LEDGE_JUMP;
+           item == ITEM_LEDGE_JUMP ||
+           item == ITEM_POKEDEX;
 }
 
 void GiveStartingItems(void)

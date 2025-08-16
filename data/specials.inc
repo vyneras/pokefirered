@@ -149,7 +149,7 @@ gSpecials::
 	def_special NullFieldSpecial
 	def_special NullFieldSpecial  @ Mauville Gym specials
 	def_special NullFieldSpecial
-	def_special ShowFieldMessageStringVar4
+	def_special ShowFieldMessageStringVar5
 	def_special DrawWholeMapView
 	def_special GetPlayerXY
 	def_special NullFieldSpecial  @ Mauville/Petalburg Gym specials
@@ -512,4 +512,5 @@ gSpecials::
 	def_special ArchipelagoSpecial_WarpToStartingLocation
 	def_special ArchipelagoSpecial_SetRespawnToStartingLocation
 	def_special ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
+	def_special ArchipelagoSpecial_GiveDexsanityItem
 gSpecialsEnd::

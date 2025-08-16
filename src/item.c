@@ -443,6 +443,10 @@ bool8 AddUniqueBagItem(u16 itemId, u16 count)
         break;
     case ITEM_LEDGE_JUMP:
         FlagSet(FLAG_SYS_LEDGE_JUMP);
+        break;
+    case ITEM_POKEDEX:
+        FlagSet(FLAG_SYS_POKEDEX_GET);
+        break;
     default:
         break;
     }

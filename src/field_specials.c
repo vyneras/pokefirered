@@ -25,6 +25,7 @@
 #include "random.h"
 #include "mail_data.h"
 #include "help_system.h"
+#include "pokedex_screen.h"
 #include "pokemon_storage_system.h"
 #include "script_menu.h"
 #include "data.h"
@@ -122,7 +123,7 @@ u8 GetPlayerAvatarBike(void)
         return 0;
 }
 
-void ShowFieldMessageStringVar4(void)
+void ShowFieldMessageStringVar5(void)
 {
     ShowFieldMessage(gStringVar5);
 }
@@ -2561,7 +2562,8 @@ bool8 ArchipelagoSpecial_ShouldHandle(void)
 
 bool8 ArchipelagoSpecial_IsItemBadge(void)
 {
-    return gSpecialVar_0x8000 >= ITEM_BADGE_1 && gSpecialVar_0x8000 <= ITEM_BADGE_8;
+    return (gSpecialVar_0x8000 >= ITEM_BADGE_1 && gSpecialVar_0x8000 <= ITEM_BADGE_8) ||
+           gSpecialVar_0x8000 == ITEM_POKEDEX;
 }
 
 bool8 ArchipelagoSpecial_IsItemFlyUnlock(void)
@@ -2922,4 +2924,11 @@ void ArchipelagoSpecial_SetRespawnToStartingLocation(void)
 bool8 ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor(void)
 {
     return PlayerEnteredThroughBlockedDoor();
+}
+
+bool8 ArchipelagoSpecial_GiveDexsanityItem(void)
+{
+    if (FlagGet(FLAG_SYS_POKEDEX_GET))
+        return GiveDexsanityItems();
+    return FALSE;
 }

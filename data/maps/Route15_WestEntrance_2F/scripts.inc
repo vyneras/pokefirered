@@ -34,6 +34,7 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_EXP_SHARE_FROM_OAKS_AIDE::
 	call Route15_WestEntrance_2F_EventScript_GetAideRequestInfo
 	call Aide_EventScript_GiveIfSeenXMons
 	setvar VAR_0x8003, FLAG_HINT_ROUTE_15_OAKS_AIDE
+	goto_if_unset FLAG_SYS_POKEDEX_GET, Aide_EventScript_NoPokedex
 	goto_if_eq VAR_RESULT, NO, Aide_EventScript_DeclineCheckMons
 	setvar VAR_0x8004, 1
 	specialvar VAR_RESULT, GetPokedexCount

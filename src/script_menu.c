@@ -1016,7 +1016,7 @@ static void CreatePCMenuWindow(void)
         windowWidth = 14;
         break;
     }
-    if (FlagGet(FLAG_SYS_GAME_CLEAR))
+    if (FlagGet(FLAG_SYS_GAME_CLEAR) && FlagGet(FLAG_SYS_POKEDEX_GET))
     {
         numItems = 5;
         windowId = CreateWindowFromRect(0, 0, windowWidth, 10);
@@ -1025,22 +1025,33 @@ static void CreatePCMenuWindow(void)
         AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_HallOfFame_2, cursorWidth, 50, TEXT_SKIP_DRAW, NULL);
         AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_LogOff, cursorWidth, 66, TEXT_SKIP_DRAW, NULL);
     }
+    else if (FlagGet(FLAG_SYS_GAME_CLEAR))
+    {
+        numItems = 4;
+        windowId = CreateWindowFromRect(0, 0, windowWidth, 8);
+        SetStdWindowBorderStyle(windowId, FALSE);
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_HallOfFame_2, cursorWidth, 34, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_LogOff, cursorWidth, 50, TEXT_SKIP_DRAW, NULL);
+    }
+    else if (FlagGet(FLAG_SYS_POKEDEX_GET))
+    {
+        numItems = 4;
+        windowId = CreateWindowFromRect(0, 0, windowWidth, 8);
+        SetStdWindowBorderStyle(windowId, FALSE);
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_ProfOakSPc, cursorWidth, 34, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_LogOff, cursorWidth, 50, TEXT_SKIP_DRAW, NULL);
+    }
     else
     {
-        if (FlagGet(FLAG_SYS_POKEDEX_GET))
-            numItems = 4;
-        else
-            numItems = 3;
+        numItems = 3;
         windowId = CreateWindowFromRect(0, 0, windowWidth, numItems * 2);
         SetStdWindowBorderStyle(windowId, FALSE);
-        if (FlagGet(FLAG_SYS_POKEDEX_GET))
-            AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_ProfOakSPc, cursorWidth, 34, TEXT_SKIP_DRAW, NULL);
-        AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_LogOff, cursorWidth, 2 + 16 * (numItems - 1), TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_LogOff, cursorWidth, 34, TEXT_SKIP_DRAW, NULL);
     }
     if (FlagGet(FLAG_SYS_NOT_SOMEONES_PC))
-        AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_BillSPc, cursorWidth, 2 , TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_BillSPc, cursorWidth, 2, TEXT_SKIP_DRAW, NULL);
     else
-        AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_SomeoneSPc, cursorWidth, 2 , TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_SomeoneSPc, cursorWidth, 2, TEXT_SKIP_DRAW, NULL);
     StringExpandPlaceholders(gStringVar5, gText_SPc);
     Menu_PrintFormatIntlPlayerName(windowId, gStringVar5, cursorWidth, 18);
     Menu_InitCursor(windowId, FONT_NORMAL, 0, 2, 16, numItems, 0);

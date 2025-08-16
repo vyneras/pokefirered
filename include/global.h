@@ -795,7 +795,7 @@ struct SaveBlock1
     /*0x0680*/ struct ItemSlot bagPocket_PokeBalls[BAG_POKEBALLS_COUNT];
     /*0x06B4*/ struct ItemSlot bagPocket_TMHM[BAG_TMHM_COUNT];
     /*0x079C*/ struct ItemSlot bagPocket_Berries[BAG_BERRIES_COUNT];
-    /*0x0848*/ u8 seen1[DEX_FLAGS_NO];
+    /*0x0848*/ u8 dexsanityFlags[DEX_FLAGS_NO];
     /*0x087C*/ struct WarpData lastWarp;
     /*0x0884*/ u8 unused_882[4];
     /*0x0888*/ u16 trainerRematchStepCounter;
@@ -823,7 +823,7 @@ struct SaveBlock1
     /*0x3370*/ struct MysteryGiftSave mysteryGift;
     /*0x36DC*/ struct RamScript ramScript;
     /*0x3AC8*/ struct RecordMixingGift recordMixingGift; // unused
-    /*0x3AD8*/ u8 seen2[DEX_FLAGS_NO];
+    /*0x3AD8*/ u8 unused_3AD8[52];
     /*0x3B0C*/ u8 rivalName[PLAYER_NAME_LENGTH + 1];
     /*0x3B14*/ struct FameCheckerSaveData fameChecker[NUM_FAMECHECKER_PERSONS];
     /*0x3B54*/ u8 registeredTexts[UNION_ROOM_KB_ROW_COUNT][21];

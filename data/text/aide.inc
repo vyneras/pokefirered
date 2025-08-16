@@ -13,6 +13,17 @@ Aide_Text_HaventCaughtEnoughMonsForPlayerItem::
   .string "if you want {STR_VAR_2}'s\l"
   .string "{STR_VAR_3}.$"
 
+Aide_Text_NoPokedexComeBackForItem::
+  .string "…Oh. You don't have a POKéDEX.\p"
+  .string "When you get one come back\n"
+  .string "for the {STR_VAR_3}.$"
+
+Aide_Text_NoPokedexComeBackForPlayerItem::
+  .string "…Oh. You don't have a POKéDEX.\p"
+  .string "When you get one come back\n"
+  .string "for the {STR_VAR_2}'s\l"
+  .string "{STR_VAR_3}.$"
+
 Aide_Text_GetEnoughMonsComeBackForItem::
   .string "…Oh. I see.\p"
   .string "When you get {STR_VAR_1} kinds of POKéMON,\n"

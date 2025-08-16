@@ -709,7 +709,7 @@
 #define FLAG_GOT_SIX_PASS                                0x2AC
 #define FLAG_GOT_SEVEN_PASS                              0x2AD
 #define FLAG_GOT_LINK_CABLE                              0x2AE
-#define FLAG_0x2AF                                       0x2AF
+#define FLAG_GOT_POKEDEX                                 0x2AF
 #define FLAG_0x2BO                                       0x2B0
 #define FLAG_GOT_RUNNING_SHOES                           0x2B1
 #define FLAG_GAVE_SCANNER                                0x2B2
