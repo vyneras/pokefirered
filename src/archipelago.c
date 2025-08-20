@@ -96,6 +96,8 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .itemfinderRequired = FALSE,
     .flashRequired = FALSE,
     .fameCheckerRequired = FALSE,
+    .acrobaticBike = FALSE,
+    .bikeRequiresLedgeJump = TRUE,
 
     .oaksAideRequiredCounts = {
         [0] = 10, // Route 2

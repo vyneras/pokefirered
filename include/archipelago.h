@@ -71,34 +71,36 @@ struct ArchipelagoOptions
     /* 0x2E */ bool8 itemfinderRequired;
     /* 0x2F */ bool8 flashRequired;
     /* 0x30 */ bool8 fameCheckerRequired;
+    /* 0x31 */ bool8 acrobaticBike;
+    /* 0x32 */ bool8 bikeRequiresLedgeJump;
 
-    /* 0x31 */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
+    /* 0x33 */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
 
-    /* 0x36 */ bool8 reccuringHiddenItems;
-    /* 0x37 */ bool8 isTrainersanity;
-    /* 0x38 */ bool8 isDexsanity;
-    /* 0x39 */ bool8 extraKeyItems;
-    /* 0x3A */ bool8 kantoOnly;
-    /* 0x3B */ bool8 flyUnlocks;
-    /* 0x3C */ bool8 isFamesanity;
-    /* 0x3D */ bool8 gymKeys;
-    /* 0x3E */ bool8 isShopsanity;
+    /* 0x38 */ bool8 reccuringHiddenItems;
+    /* 0x39 */ bool8 isTrainersanity;
+    /* 0x3A */ bool8 isDexsanity;
+    /* 0x3B */ bool8 extraKeyItems;
+    /* 0x3C */ bool8 kantoOnly;
+    /* 0x3D */ bool8 flyUnlocks;
+    /* 0x3E */ bool8 isFamesanity;
+    /* 0x3F */ bool8 gymKeys;
+    /* 0x40 */ bool8 isShopsanity;
 
-    /* 0x3F */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
-    /* 0x40 */ u8 additionalDarkCaves; // Mt. Moon, Diglett's Cave, Victory Road
+    /* 0x41 */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
+    /* 0x42 */ u8 additionalDarkCaves; // Mt. Moon, Diglett's Cave, Victory Road
 
-    /* 0x41 */ bool8 passesSplit;
-    /* 0x42 */ bool8 cardKeysSplit;
-    /* 0x43 */ bool8 teasSplit;
+    /* 0x43 */ bool8 passesSplit;
+    /* 0x44 */ bool8 cardKeysSplit;
+    /* 0x45 */ bool8 teasSplit;
 
-    /* 0x44 */ u8 startingLocation;
-    /* 0x45 */ u8 freeFlyId;
-    /* 0x46 */ u8 townFreeFlyId;
-    /* 0x47 */ u16 resortGorgeousMon;
-    /* 0x49 */ u16 introSpecies;
-    /* 0x4B */ u16 pcItemId;
-    /* 0x4D */ bool8 remoteItems;
-    /* 0x4E */ bool8 randomized;
+    /* 0x46 */ u8 startingLocation;
+    /* 0x47 */ u8 freeFlyId;
+    /* 0x48 */ u8 townFreeFlyId;
+    /* 0x49 */ u16 resortGorgeousMon;
+    /* 0x4B */ u16 introSpecies;
+    /* 0x4D */ u16 pcItemId;
+    /* 0x4F */ bool8 remoteItems;
+    /* 0x50 */ bool8 randomized;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem

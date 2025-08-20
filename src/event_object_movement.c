@@ -8344,13 +8344,20 @@ static u8 GetReflectionTypeByMetatileBehavior(u32 behavior)
         return 0;
 }
 
-u8 GetLedgeJumpDirection(s16 x, s16 y, u8 direction)
+u8 GetLedgeJumpDirection(s16 x, s16 y, u8 direction, bool8 reverse)
 {
     static bool8 (*const ledgeBehaviorFuncs[])(u8) = {
         [DIR_SOUTH - 1] = MetatileBehavior_IsJumpSouth,
         [DIR_NORTH - 1] = MetatileBehavior_IsJumpNorth,
         [DIR_WEST - 1]  = MetatileBehavior_IsJumpWest,
         [DIR_EAST - 1]  = MetatileBehavior_IsJumpEast,
+    };
+
+    static bool8 (*const ledgeBehaviorReverseFuncs[])(u8) = {
+        [DIR_SOUTH - 1] = MetatileBehavior_IsJumpNorth,
+        [DIR_NORTH - 1] = MetatileBehavior_IsJumpSouth,
+        [DIR_WEST - 1]  = MetatileBehavior_IsJumpEast,
+        [DIR_EAST - 1]  = MetatileBehavior_IsJumpWest,
     };
 
     u8 behavior;
@@ -8364,7 +8371,8 @@ u8 GetLedgeJumpDirection(s16 x, s16 y, u8 direction)
     index--;
     behavior = MapGridGetMetatileBehaviorAt(x, y);
 
-    if (ledgeBehaviorFuncs[index](behavior) == TRUE)
+    if ((ledgeBehaviorFuncs[index](behavior) == TRUE && !reverse) ||
+        (ledgeBehaviorReverseFuncs[index](behavior) == TRUE && reverse))
     {
         s16 x2 = x;
         s16 y2 = y;

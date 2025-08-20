@@ -210,7 +210,7 @@ extern const struct OamData gObjectEventBaseOam_32x32;
 extern const u16 gFieldEffectObjectPic_CutGrass[];
 extern const u16 gFieldEffectPal_CutGrass[];
 extern const u8 gReflectionEffectPaletteMap[];
-u8 GetLedgeJumpDirection(s16 x, s16 y, u8 direction);
+u8 GetLedgeJumpDirection(s16 x, s16 y, u8 direction, bool8 reverse);
 u8 GetGlideMovementAction(u32 direction);
 u8 GetRideWaterCurrentMovementAction(u32 direction);
 u8 GetPlayerRunMovementAction(u32 direction);

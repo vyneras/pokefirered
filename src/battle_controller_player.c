@@ -1539,6 +1539,24 @@ static void MoveSelectionDisplayMoveDescription(void)
         moveFlags = AI_TypeCalc(move, gBattleMons[opponentId2].species, gBattleMons[opponentId2].ability);
         if (moveFlags & MOVE_RESULT_NO_EFFECT)
         {
+            StringCopy(effNum, cross);
+        }
+        else if (moveFlags & MOVE_RESULT_NOT_VERY_EFFECTIVE)
+        {
+            StringCopy(effNum, triangle);
+        }
+        else if(moveFlags & MOVE_RESULT_SUPER_EFFECTIVE)
+        {
+            StringCopy(effNum, circle);
+        }
+        else
+        {
+           StringCopy(effNum, dash);
+        }
+        StringAppend(effNum, slash);
+        moveFlags = AI_TypeCalc(move, gBattleMons[opponentId1].species, gBattleMons[opponentId1].ability);
+        if (moveFlags & MOVE_RESULT_NO_EFFECT)
+        {
             StringAppend(effNum, cross);
         }
         else if (moveFlags & MOVE_RESULT_NOT_VERY_EFFECTIVE)
@@ -1553,9 +1571,8 @@ static void MoveSelectionDisplayMoveDescription(void)
         {
            StringAppend(effNum, dash);
         }
-        StringAppend(effNum, slash);
     }
-    if (opponentId1 < gBattlersCount)
+    else if (opponentId1 < gBattlersCount)
     {
         moveFlags = AI_TypeCalc(move, gBattleMons[opponentId1].species, gBattleMons[opponentId1].ability);
         if (moveFlags & MOVE_RESULT_NO_EFFECT)
