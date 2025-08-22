@@ -316,8 +316,13 @@ bool8 PlayerEnteredThroughBlockedDoor(void)
         return TRUE;
     else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SIX_ISLAND_RUIN_VALLEY) &&
              gSaveBlock1Ptr->location.mapNum == MAP_NUM(SIX_ISLAND_RUIN_VALLEY) &&
-             gSaveBlock1Ptr->pos.x == 24 && gSaveBlock1Ptr->pos.x == 24 &&
+             gSaveBlock1Ptr->pos.x == 24 && gSaveBlock1Ptr->pos.y == 24 &&
              !FlagGet(FLAG_HIDE_RUIN_VALLEY_SCIENTIST))
+        return TRUE;
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE22_NORTH_ENTRANCE) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE22_NORTH_ENTRANCE) &&
+             gSaveBlock1Ptr->pos.x == 7 && gSaveBlock1Ptr->pos.y == 1 &&
+             VarGet(VAR_MAP_SCENE_ROUTE22_NORTH_ENTRANCE) != 1)
         return TRUE;
     return FALSE;
 }

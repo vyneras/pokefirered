@@ -206,6 +206,7 @@ void NewGameInitData(void)
     if (gArchipelagoOptions.openViridianCity) VarSet(VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1);
     if (!gArchipelagoOptions.route12Boulders) FlagSet(FLAG_HIDE_ROUTE_12_BOULDERS);
     if (!gArchipelagoOptions.blockPokemonTower) VarSet(VAR_MAP_SCENE_POKEMON_TOWER_1F, 1);
+    if (gArchipelagoOptions.blockPokemonTower) VarSet(VAR_MAP_SCENE_POKEMON_TOWER_6F, 1);
     if (gArchipelagoOptions.removeSaffronRockets)
     {
         FlagSet(FLAG_HIDE_SAFFRON_ROCKETS);

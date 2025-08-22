@@ -1,16 +1,5 @@
 Route5_SouthEntrance_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, Route5_SouthEntrance_OnTransition
 	.byte 0
-
-Route5_SouthEntrance_OnTransition::
-	getplayerxy VAR_0x8004, VAR_0x8005
-	goto_if_gt VAR_0x8005, 5, Route5_SouthEntrance_EnteredFromBottom
-	setvar VAR_TEMP_2, 0
-	end
-
-Route5_SouthEntrance_EnteredFromBottom::
-	setvar VAR_TEMP_2, 1
-	end
 
 Route5_SouthEntrance_EventScript_Guard::
 	msgbox Route5_SouthEntrance_Text_HiHowsItGoing, MSGBOX_NPC
@@ -44,7 +33,7 @@ Route5_SouthEntrance_EventScript_GuardTrigger::
 	goto_if_eq VAR_RESULT, TRUE, Route5_SouthEntrance_EventScript_GiveBlueTea
 	msgbox Route5_SouthEntrance_Text_ThirstyOnGuardDuty
 	closemessage
-	goto_if_eq VAR_TEMP_2, 1, Route5_SouthEntrance_EventScript_MovePlayerDown
+	goto_if_eq VAR_FACING, DIR_NORTH, Route5_SouthEntrance_EventScript_MovePlayerDown
 	applymovement OBJ_EVENT_ID_PLAYER, Route5_SouthEntrance_Movement_BlockPlayerEntryTop
 	waitmovement 0
 	releaseall

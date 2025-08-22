@@ -60,37 +60,49 @@ Route23_EventScript_LastGuardCantPass::
 	goto_if_eq VAR_RESULT, TRUE, Route23_EventScript_LastGuardCantPassGyms
 	goto_if_eq REQUIRED_BADGES_GYMS, 1, Route23_EventScript_LastGuardCantPassNoBadge
 	msgbox Text_OnlyPassWithXBadges
-	call_if_eq VAR_TEMP_2, 1, Route23_EventScript_ForcePlayerDown
+	goto_if_eq VAR_TEMP_2, 1, Route23_EventScript_ForcePlayerDown
 	release
 	end
 
 Route23_EventScript_LastGuardCantPassNoBadge::
 	msgbox Text_OnlyPassWithBadge
-	call_if_eq VAR_TEMP_2, 1, Route23_EventScript_ForcePlayerDown
+	goto_if_eq VAR_TEMP_2, 1, Route23_EventScript_ForcePlayerDown
 	release
 	end
 
 Route23_EventScript_LastGuardCantPassGyms::
 	goto_if_eq REQUIRED_BADGES_GYMS, 1, Route23_EventScript_LastGuardCantPassNoGym
 	msgbox Text_OnlyPassWithXGyms
-	call_if_eq VAR_TEMP_2, 1, Route23_EventScript_ForcePlayerDown
+	goto_if_eq VAR_TEMP_2, 1, Route23_EventScript_ForcePlayerDown
 	release
 	end
 
 Route23_EventScript_LastGuardCantPassNoGym::
 	msgbox Text_OnlyPassWithGym
-	call_if_eq VAR_TEMP_2, 1, Route23_EventScript_ForcePlayerDown
+	goto_if_eq VAR_TEMP_2, 1, Route23_EventScript_ForcePlayerDown
 	release
 	end
 
 Route23_EventScript_ForcePlayerDown::
 	closemessage
+	goto_if_eq VAR_FACING, DIR_SOUTH, Route23_EventScript_ForcePlayerUp
 	applymovement OBJ_EVENT_ID_PLAYER, Route23_Movement_ForcePlayerDown
 	waitmovement 0
-	return
+	release
+	end
+
+Route23_EventScript_ForcePlayerUp::
+	applymovement OBJ_EVENT_ID_PLAYER, Route23_Movement_ForcePlayerUp
+	waitmovement 0
+	release
+	end
 
 Route23_Movement_ForcePlayerDown::
 	walk_down
+	step_end
+
+Route23_Movement_ForcePlayerUp::
+	walk_up
 	step_end
 
 Route23_EventScript_Guard::

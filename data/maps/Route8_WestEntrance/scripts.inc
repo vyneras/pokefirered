@@ -1,16 +1,5 @@
 Route8_WestEntrance_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, Route8_WestEntrance_OnTransition
 	.byte 0
-
-Route8_WestEntrance_OnTransition::
-	getplayerxy VAR_0x8004, VAR_0x8005
-	goto_if_lt VAR_0x8004, 6, Route8_WestEntrance_EnteredFromLeft
-	setvar VAR_TEMP_2, 0
-	end
-
-Route8_WestEntrance_EnteredFromLeft::
-	setvar VAR_TEMP_2, 1
-	end
 
 Route8_WestEntrance_EventScript_Guard::
 	msgbox Route8_WestEntrance_Text_HiHowsItGoing, MSGBOX_NPC
@@ -44,7 +33,7 @@ Route8_WestEntrance_EventScript_GuardTrigger::
 	goto_if_eq VAR_RESULT, TRUE, Route8_WestEntrance_EventScript_GivePurpleTea
 	msgbox Route8_WestEntrance_Text_ThirstyOnGuardDuty
 	closemessage
-	goto_if_eq VAR_TEMP_2, 1, Route8_WestEntrance_EventScript_MovePlayerLeft
+	goto_if_eq VAR_FACING, DIR_EAST, Route8_WestEntrance_EventScript_MovePlayerLeft
 	applymovement OBJ_EVENT_ID_PLAYER, Route8_WestEntrance_Movement_BlockPlayerEntryRight
 	waitmovement 0
 	releaseall

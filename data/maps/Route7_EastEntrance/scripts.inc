@@ -1,16 +1,5 @@
 Route7_EastEntrance_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, Route7_EastEntrance_OnTransition
 	.byte 0
-
-Route7_EastEntrance_OnTransition::
-	getplayerxy VAR_0x8004, VAR_0x8005
-	goto_if_gt VAR_0x8004, 6, Route7_EastEntrance_EnteredFromRight
-	setvar VAR_TEMP_2, 0
-	end
-
-Route7_EastEntrance_EnteredFromRight::
-	setvar VAR_TEMP_2, 1
-	end
 
 Route7_EastEntrance_EventScript_Guard::
 	msgbox Route7_EastEntrance_Text_HiHowsItGoing, MSGBOX_NPC
@@ -44,7 +33,7 @@ Route7_EastEntrance_EventScript_GuardTrigger::
 	goto_if_eq VAR_RESULT, TRUE, Route7_EastEntrance_EventScript_GiveGreenTea
 	msgbox Route7_EastEntrance_Text_ThirstyOnGuardDuty
 	closemessage
-	goto_if_eq VAR_TEMP_2, 1, Route7_EastEntrance_EventScript_MovePlayerRight
+	goto_if_eq VAR_FACING, DIR_WEST, Route7_EastEntrance_EventScript_MovePlayerRight
 	applymovement OBJ_EVENT_ID_PLAYER, Route7_EastEntrance_Movement_BlockPlayerEntryLeft
 	waitmovement 0
 	releaseall

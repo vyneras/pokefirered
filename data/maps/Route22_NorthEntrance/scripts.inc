@@ -2,20 +2,50 @@
 .set REQUIRED_BADGES_GYMS, VAR_TEMP_1
 
 Route22_NorthEntrance_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route22_NorthEntrance_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route22_NorthEntrance_OnFrame
 	.byte 0
+
+Route22_NorthEntrance_OnTransition::
+	call_if_eq VAR_MAP_SCENE_ROUTE22_NORTH_ENTRANCE, 0, Route22_NorthEntrance_EventScript_BlockExit
+	end
+
+Route22_NorthEntrance_EventScript_BlockExit::
+	specialvar VAR_RESULT, ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
+	call_if_eq VAR_RESULT, TRUE, Route22_NorthEntrance_EventScript_GuardNotBlocking
+	call_if_eq VAR_RESULT, FALSE, Route22_NorthEntrance_EventScript_GuardBlocking
+	return
+
+Route22_NorthEntrance_EventScript_GuardNotBlocking::
+	setobjectxyperm LOCALID_BOULDER_BADGE_GUARD, 8, 2
+	setvar VAR_TEMP_2, 1
+	return
+
+Route22_NorthEntrance_EventScript_GuardBlocking::
+	setobjectxyperm LOCALID_BOULDER_BADGE_GUARD, 7, 2
+	return
+
+Route22_NorthEntrance_OnFrame::
+	map_script_2 VAR_TEMP_2, 1, Route22_NorthEntrance_EventScript_GuardMoveLeft
+	.2byte 0
+
+Route22_NorthEntrance_EventScript_GuardMoveLeft::
+	lockall
+	applymovement LOCALID_BOULDER_BADGE_GUARD, Route22_NorthEntrance_Movement_MoveLeft
+	waitmovement 0
+	setobjectxyperm LOCALID_BOULDER_BADGE_GUARD, 7, 2
+	setvar VAR_TEMP_2, 0
+	releaseall
+	end
+
+Route22_NorthEntrance_Movement_MoveLeft::
+	walk_left
+	face_down
+	step_end
 
 Route22_NorthEntrance_EventScript_Guard::
 	lock
 	faceplayer
-	setvar VAR_TEMP_2, 0
-	goto Route22_NorthEntrance_EventScript_GuardCheckBadgesGyms
-	end
-
-Route22_NorthEntrance_EventScript_GuardTrigger::
-	lockall
-	applymovement LOCALID_BOULDER_BADGE_GUARD, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	setvar VAR_TEMP_2, 1
 	goto Route22_NorthEntrance_EventScript_GuardCheckBadgesGyms
 	end
 
@@ -23,17 +53,34 @@ Route22_NorthEntrance_EventScript_GuardCheckBadgesGyms::
 	textcolor NPC_TEXT_COLOR_MALE
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanPassRoute22Gate
 	goto_if_eq VAR_RESULT, FALSE, Route22_NorthEntrance_EventScript_GuardCantPass
-	setvar VAR_MAP_SCENE_ROUTE22_NORTH_ENTRANCE, 1
 	specialvar VAR_RESULT, ArchipelagoSpecial_Route22RequiresGyms
 	goto_if_eq VAR_RESULT, TRUE, Route22_NorthEntrance_EventScript_GuardEnoughGyms
 	msgbox Text_OhThatsEnoughBadgesGoRightAhead
+	call Route22_NorthEntrance_GuardMoveRight
+	setvar VAR_MAP_SCENE_ROUTE22_NORTH_ENTRANCE, 1
 	release
 	end
 
 Route22_NorthEntrance_EventScript_GuardEnoughGyms::
 	msgbox Text_OhThatsEnoughGymsGoRightAhead
+	call Route22_NorthEntrance_GuardMoveRight
+	setvar VAR_MAP_SCENE_ROUTE22_NORTH_ENTRANCE, 1
 	release
 	end
+
+Route22_NorthEntrance_GuardMoveRight::
+	goto_if_eq VAR_MAP_SCENE_ROUTE22_NORTH_ENTRANCE, 1, EventScript_Return
+	goto_if_eq VAR_FACING, DIR_WEST, Route22_NorthEntrance_GuardMoveLeft2
+	applymovement LOCALID_BOULDER_BADGE_GUARD, Route22_NorthEntrance_Movement_MoveRight
+	waitmovement 0
+	setobjectxyperm LOCALID_BOULDER_BADGE_GUARD, 8, 2
+	return
+
+Route22_NorthEntrance_GuardMoveLeft2::
+	applymovement LOCALID_BOULDER_BADGE_GUARD, Route22_NorthEntrance_Movement_MoveLeft
+	waitmovement 0
+	setobjectxyperm LOCALID_BOULDER_BADGE_GUARD, 6, 2
+	return
 
 Route22_NorthEntrance_EventScript_GuardCantPass::
 	specialvar REQUIRED_BADGES_GYMS, ArchipelagoSpecial_GetRoute22RequiredCount
@@ -42,35 +89,26 @@ Route22_NorthEntrance_EventScript_GuardCantPass::
 	goto_if_eq VAR_RESULT, TRUE, Route22_NorthEntrance_EventScript_GuardCantPassGyms
 	goto_if_eq REQUIRED_BADGES_GYMS, 1, Route22_NorthEntrance_EventScript_GuardCantPassNoBadge
 	msgbox Text_OnlyPassWithXBadges
-	call_if_eq VAR_TEMP_2, 1, Route22_NorthEntrance_EventScript_ForcePlayerDown
 	release
 	end
 
 Route22_NorthEntrance_EventScript_GuardCantPassNoBadge::
 	msgbox Text_OnlyPassWithBadge
-	call_if_eq VAR_TEMP_2, 1, Route22_NorthEntrance_EventScript_ForcePlayerDown
 	release
 	end
 
 Route22_NorthEntrance_EventScript_GuardCantPassGyms::
 	goto_if_eq REQUIRED_BADGES_GYMS, 1, Route22_NorthEntrance_EventScript_GuardCantPassNoGym
 	msgbox Text_OnlyPassWithXGyms
-	call_if_eq VAR_TEMP_2, 1, Route22_NorthEntrance_EventScript_ForcePlayerDown
 	release
 	end
 
 Route22_NorthEntrance_EventScript_GuardCantPassNoGym::
 	msgbox Text_OnlyPassWithGym
-	call_if_eq VAR_TEMP_2, 1, Route22_NorthEntrance_EventScript_ForcePlayerDown
 	release
 	end
 
-Route22_NorthEntrance_EventScript_ForcePlayerDown::
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Route22_NorthEntrance_Movement_ForcePlayerDown
-	waitmovement 0
-	return
-
-Route22_NorthEntrance_Movement_ForcePlayerDown::
-	walk_down
+Route22_NorthEntrance_Movement_MoveRight::
+	walk_right
+	face_down
 	step_end

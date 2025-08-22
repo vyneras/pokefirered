@@ -11,13 +11,35 @@ PewterCity_MapScripts::
 	.byte 0
 
 PewterCity_OnTransition::
+	setvar VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F, 0
+	call_if_eq VAR_MAP_SCENE_PEWTER_CITY_GYM_GUIDE, 0, PewterCity_EventScript_CheckIfCanLeaveCity
+	call_if_eq VAR_MAP_SCENE_PEWTER_CITY_GYM_GUIDE, 1, PewterCity_EventScript_SetGiveFlyUnlock
+	call_if_set FLAG_DEFEATED_BROCK, PewterCity_EventScript_CheckRunningShoesGuyTrigger
+	end
+
+PewterCity_EventScript_CheckIfCanLeaveCity::
+	specialvar VAR_RESULT, ArchipelagoSpecial_CanLeavePewterCity
+	call_if_eq VAR_RESULT, TRUE, PewterCity_EventScript_SetCanLeaveCity
+	call_if_eq VAR_RESULT, FALSE, PewterCity_EventScript_CheckGiveFlyUnlock
+	return
+
+PewterCity_EventScript_SetCanLeaveCity::
+	setvar VAR_MAP_SCENE_PEWTER_CITY_GYM_GUIDE, 1
+	setflag FLAG_HIDE_PEWTER_CITY_GYM_GUIDE
+	call PewterCity_EventScript_SetGiveFlyUnlock
+	return
+
+PewterCity_EventScript_CheckGiveFlyUnlock::
+	getplayerxy VAR_0x8004, VAR_0x8005
+	goto_if_ge VAR_0x8004, 42, EventScript_Return
+	call PewterCity_EventScript_SetGiveFlyUnlock
+	return
+
+PewterCity_EventScript_SetGiveFlyUnlock::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, PewterCity_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, PewterCity_EventScript_SetWorldMapFlag
-	setvar VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F, 0
-	call_if_eq VAR_MAP_SCENE_PEWTER_CITY_GYM_GUIDE, 0, PewterCity_EventScript_CheckIfCanLeaveCity
-	call_if_set FLAG_DEFEATED_BROCK, PewterCity_EventScript_CheckRunningShoesGuyTrigger
-	end
+	return
 
 PewterCity_EventScript_SetGiveFlyUnlockItem::
 	goto_if_set FLAG_VISITED_PEWTER_CITY EventScript_Return
@@ -26,16 +48,6 @@ PewterCity_EventScript_SetGiveFlyUnlockItem::
 
 PewterCity_EventScript_SetWorldMapFlag::
 	setworldmapflag FLAG_WORLD_MAP_PEWTER_CITY
-	return
-
-PewterCity_EventScript_CheckIfCanLeaveCity::
-	specialvar VAR_RESULT, ArchipelagoSpecial_CanLeavePewterCity
-	call_if_eq VAR_RESULT, TRUE, PewterCity_EventScript_SetCanLeaveCity
-	return
-
-PewterCity_EventScript_SetCanLeaveCity::
-	setvar VAR_MAP_SCENE_PEWTER_CITY_GYM_GUIDE, 1
-	setflag FLAG_HIDE_PEWTER_CITY_GYM_GUIDE
 	return
 
 PewterCity_EventScript_CheckRunningShoesGuyTrigger::
@@ -130,7 +142,14 @@ PewterCity_EventScript_GymGuideTrigger::
 	call_if_eq VAR_RESULT, 2, PewterCity_EventScript_GymGuideDefeatAnyGym
 	call_if_eq VAR_RESULT, 3, PewterCity_EventScript_GymGuideNeedBoulderBadge
 	call_if_eq VAR_RESULT, 4, PewterCity_EventScript_GymGuideNeedAnyBadge
+	goto_if_eq VAR_FACING, DIR_WEST, PewterCity_EventScript_PlayerWalkRight
 	applymovement OBJ_EVENT_ID_PLAYER, PewterCity_Movement_PlayerWalkLeft
+	waitmovement 0
+	releaseall
+	end
+
+PewterCity_EventScript_PlayerWalkRight::
+	applymovement OBJ_EVENT_ID_PLAYER, PewterCity_Movement_PlayerWalkRight
 	waitmovement 0
 	releaseall
 	end
@@ -166,6 +185,10 @@ PewterCity_EventScript_GymGuideNeedAnyBadge::
 
 PewterCity_Movement_PlayerWalkLeft::
 	walk_left
+	step_end
+
+PewterCity_Movement_PlayerWalkRight::
+	walk_right
 	step_end
 
 PewterCity_EventScript_Lass::

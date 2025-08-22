@@ -4,8 +4,19 @@ PokemonTower_1F_MapScripts::
 
 PokemonTower_1F_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_POKEMON_TOWER_1F
-	setvar VAR_TEMP_0, 1
+	getplayerxy VAR_0x8004, VAR_0x8005
+	call_if_le VAR_0x8004, 11, PokemonTower_1F_SetNearEntrance
+	call_if_ge VAR_0x8004, 18, PokemonTower_1F_SetNearStairs
+	setvar VAR_TEMP_1, 1
 	end
+
+PokemonTower_1F_SetNearEntrance::
+	setvar VAR_TEMP_2, 0
+	return
+
+PokemonTower_1F_SetNearStairs::
+	setvar VAR_TEMP_2, 1
+	return
 
 PokemonTower_1F_EventScript_Channeler::
 	msgbox PokemonTower_1F_Text_SenseSpiritsUpToMischief, MSGBOX_NPC

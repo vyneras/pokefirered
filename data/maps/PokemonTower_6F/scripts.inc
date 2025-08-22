@@ -3,8 +3,19 @@ PokemonTower_6F_MapScripts::
 	.byte 0
 
 PokemonTower_6F_OnTransition::
-	setvar VAR_TEMP_0, 0
+	getplayerxy VAR_0x8004, VAR_0x8005
+	call_if_ge VAR_0x8004, 18, PokemonTower_6F_SetNearRightStairs
+	call_if_le VAR_0x8004, 11, PokemonTower_6F_SetNearLeftStairs
+	setvar VAR_TEMP_1, 0
 	end
+
+PokemonTower_6F_SetNearRightStairs::
+	setvar VAR_TEMP_2, 0
+	return
+
+PokemonTower_6F_SetNearLeftStairs::
+	setvar VAR_TEMP_2, 1
+	return
 
 PokemonTower_6F_EventScript_MarowakGhost::
 	lockall
@@ -17,8 +28,8 @@ Archipelago_Target_Static_Encounter_MAROWAK::
 	waitstate
 	special QuestLog_CutRecording
 	goto_if_eq VAR_RESULT, FALSE, PokemonTower_6F_EventScript_DefeatedMarowakGhost  @ VAR_RESULT set by CB2_EndMarowakBattle
-	call_if_eq VAR_TEMP_0, 0, PokemonTower_6F_EventScript_ForcePlayerUp
-	call_if_eq VAR_TEMP_0, 1, PokemonTower_6F_EventScript_ForcePlayerLeft
+	call_if_eq VAR_TEMP_1, 0, PokemonTower_6F_EventScript_ForcePlayerMoveUp6F
+	call_if_eq VAR_TEMP_1, 1, PokemonTower_6F_EventScript_ForcePlayerMoveLeft1F
 	releaseall
 	end
 
@@ -35,13 +46,43 @@ PokemonTower_6F_EventScript_DefeatedMarowakGhost::
 	releaseall
 	end
 
-PokemonTower_6F_EventScript_ForcePlayerUp::
+PokemonTower_6F_EventScript_ForcePlayerMoveUp6F::
+	goto_if_eq VAR_TEMP_2, 1, PokemonTower_6F_EventScript_ForcePlayerMoveDown6F
 	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerUp
 	waitmovement 0
 	return
 
-PokemonTower_6F_EventScript_ForcePlayerLeft::
+PokemonTower_6F_EventScript_ForcePlayerMoveDown6F::
+	goto_if_eq VAR_FACING, DIR_EAST, PokemonTower_6F_EventScript_ForcePlayerMoveLeft6F
+	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerDown
+	waitmovement 0
+	return
+
+PokemonTower_6F_EventScript_ForcePlayerMoveLeft6F::
 	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerLeft
+	waitmovement 0
+	return
+
+PokemonTower_6F_EventScript_ForcePlayerMoveLeft1F::
+	goto_if_eq VAR_TEMP_2, 1, PokemonTower_6F_EventScript_ForcePlayerMoveRight1F
+	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerLeft
+	waitmovement 0
+	return
+
+PokemonTower_6F_EventScript_ForcePlayerMoveRight1F::
+	goto_if_eq VAR_FACING, DIR_NORTH, PokemonTower_6F_EventScript_ForcePlayerMoveDown1F
+	goto_if_eq VAR_FACING, DIR_SOUTH, PokemonTower_6F_EventScript_ForcePlayerMoveUp1F
+	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerRight
+	waitmovement 0
+	return
+
+PokemonTower_6F_EventScript_ForcePlayerMoveDown1F::
+	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerDown
+	waitmovement 0
+	return
+
+PokemonTower_6F_EventScript_ForcePlayerMoveUp1F::
+	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerUp
 	waitmovement 0
 	return
 
@@ -49,8 +90,16 @@ PokemonTower_6F_Movement_ForcePlayerUp::
 	walk_up
 	step_end
 
+PokemonTower_6F_Movement_ForcePlayerDown::
+	walk_down
+	step_end
+
 PokemonTower_6F_Movement_ForcePlayerLeft::
 	walk_left
+	step_end
+
+PokemonTower_6F_Movement_ForcePlayerRight::
+	walk_right
 	step_end
 
 PokemonTower_6F_EventScript_Angelica::

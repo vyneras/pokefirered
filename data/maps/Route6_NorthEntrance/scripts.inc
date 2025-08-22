@@ -1,16 +1,5 @@
 Route6_NorthEntrance_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, Route6_NorthEntrance_OnTransition
 	.byte 0
-
-Route6_NorthEntrance_OnTransition::
-	getplayerxy VAR_0x8004, VAR_0x8005
-	goto_if_lt VAR_0x8005, 5, Route6_NorthEntrance_EnteredFromTop
-	setvar VAR_TEMP_2, 0
-	end
-
-Route6_NorthEntrance_EnteredFromTop::
-	setvar VAR_TEMP_2, 1
-	end
 
 Route6_NorthEntrance_EventScript_Guard::
 	msgbox Route6_NorthEntrance_Text_HiHowsItGoing, MSGBOX_NPC
@@ -44,7 +33,7 @@ Route6_NorthEntrance_EventScript_GuardTrigger::
 	goto_if_eq VAR_RESULT, TRUE, Route6_NorthEntrance_EventScript_GiveRedTea
 	msgbox Route6_NorthEntrance_Text_ThirstyOnGuardDuty
 	closemessage
-	goto_if_eq VAR_TEMP_2, 1, Route6_NorthEntrance_EventScript_MovePlayerUp
+	goto_if_eq VAR_FACING, DIR_SOUTH, Route6_NorthEntrance_EventScript_MovePlayerUp
 	applymovement OBJ_EVENT_ID_PLAYER, Route6_NorthEntrance_Movement_BlockPlayerEntryBottom
 	waitmovement 0
 	releaseall

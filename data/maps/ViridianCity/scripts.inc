@@ -276,13 +276,24 @@ ViridianCity_EventScript_RoadBlocked::
 	textcolor NPC_TEXT_COLOR_MALE
 	msgbox ViridianCity_Text_ThisIsPrivateProperty
 	closemessage
+	goto_if_eq VAR_FACING, DIR_SOUTH, ViridianCity_EventScript_RoadBlocked_WalkUp
 	applymovement OBJ_EVENT_ID_PLAYER, ViridianCity_Movement_WalkDown
+	waitmovement 0
+	releaseall
+	end
+
+ViridianCity_EventScript_RoadBlocked_WalkUp::
+	applymovement OBJ_EVENT_ID_PLAYER, ViridianCity_Movement_WalkUp
 	waitmovement 0
 	releaseall
 	end
 
 ViridianCity_Movement_WalkDown::
 	walk_down
+	step_end
+
+ViridianCity_Movement_WalkUp::
+	walk_up
 	step_end
 
 ViridianCity_EventScript_TutorialTriggerLeft::
