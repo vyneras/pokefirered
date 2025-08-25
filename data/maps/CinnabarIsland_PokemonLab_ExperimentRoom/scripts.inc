@@ -1,6 +1,8 @@
 .equ HELIX_FOSSIL, 1
 .equ DOME_FOSSIL,  2
 .equ OLD_AMBER,    3
+.equ LOCALID_SCIENTIST, 2
+.equ LOCALID_FOSSIL, 3
 
 CinnabarIsland_PokemonLab_ExperimentRoom_MapScripts::
 	.byte 0
@@ -317,3 +319,23 @@ CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_CheckRevivedDome::
 	goto_if_unset FLAG_REVIVED_DOME, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_SetResultFalse
 	setvar VAR_TEMP_1, TRUE
 	return
+
+CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_Fossil::
+	lock
+	applymovement LOCALID_SCIENTIST, Common_Movement_WalkInPlaceFasterDown
+	specialvar VAR_0x8003, ArchipelagoSpecial_GetFossilCount
+	buffernumberstring STR_VAR_1, VAR_0x8003
+	textcolor NPC_TEXT_COLOR_MALE
+	msgbox CinnabarIsland_PokemonLab_ExperimentRoom_Text_LeftThatHere
+	specialvar VAR_RESULT, ArchipelagoSpecial_HaveFossilCount
+	goto_if_eq VAR_RESULT, TRUE, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_TakeFossil
+	release
+	end
+
+CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_TakeFossil::
+	msgbox CinnabarIsland_PokemonLab_ExperimentRoom_Text_HaveEnough
+Archipelago_Target_NPC_Gift_FLAG_GOT_FOSSIL_FROM_CINNABAR::
+	giveitem ITEM_HELIX_FOSSIL, 1, FLAG_GOT_FOSSIL_FROM_CINNABAR
+	removeobject LOCALID_FOSSIL
+	release
+	end

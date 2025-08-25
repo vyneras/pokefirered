@@ -33,7 +33,7 @@ Route22_NorthEntrance_EventScript_GuardMoveLeft::
 	lockall
 	applymovement LOCALID_BOULDER_BADGE_GUARD, Route22_NorthEntrance_Movement_MoveLeft
 	waitmovement 0
-	setobjectxyperm LOCALID_BOULDER_BADGE_GUARD, 7, 2
+	copyobjectxytoperm LOCALID_BOULDER_BADGE_GUARD
 	setvar VAR_TEMP_2, 0
 	releaseall
 	end
@@ -73,13 +73,13 @@ Route22_NorthEntrance_GuardMoveRight::
 	goto_if_eq VAR_FACING, DIR_WEST, Route22_NorthEntrance_GuardMoveLeft2
 	applymovement LOCALID_BOULDER_BADGE_GUARD, Route22_NorthEntrance_Movement_MoveRight
 	waitmovement 0
-	setobjectxyperm LOCALID_BOULDER_BADGE_GUARD, 8, 2
+	copyobjectxytoperm LOCALID_BOULDER_BADGE_GUARD
 	return
 
 Route22_NorthEntrance_GuardMoveLeft2::
 	applymovement LOCALID_BOULDER_BADGE_GUARD, Route22_NorthEntrance_Movement_MoveLeft
 	waitmovement 0
-	setobjectxyperm LOCALID_BOULDER_BADGE_GUARD, 6, 2
+	copyobjectxytoperm LOCALID_BOULDER_BADGE_GUARD
 	return
 
 Route22_NorthEntrance_EventScript_GuardCantPass::

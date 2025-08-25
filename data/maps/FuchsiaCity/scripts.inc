@@ -10,8 +10,10 @@ FuchsiaCity_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, FuchsiaCity_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, FuchsiaCity_EventScript_SetWorldMapFlag
-	call_if_set FLAG_GOT_DOME_FOSSIL, FuchsiaCity_EventScript_SetOmanyteGfx
-	call_if_unset FLAG_GOT_DOME_FOSSIL, FuchsiaCity_EventScript_SetKabutoGfx
+	random 2
+	copyvar VAR_TEMP_2, VAR_RESULT
+	call_if_eq VAR_TEMP_2, 0, FuchsiaCity_EventScript_SetOmanyteGfx
+	call_if_eq VAR_TEMP_2, 1, FuchsiaCity_EventScript_SetKabutoGfx
 	end
 
 FuchsiaCity_EventScript_SetGiveFlyUnlockItem::
@@ -176,7 +178,7 @@ FuchsiaCity_EventScript_LaprasSign::
 
 FuchsiaCity_EventScript_FossilMonSign::
 	lockall
-	goto_if_set FLAG_GOT_DOME_FOSSIL, FuchsiaCity_EventScript_OmanyteSign
+	goto_if_eq VAR_TEMP_2, 0, FuchsiaCity_EventScript_OmanyteSign
 	setvar VAR_0x8004, SPECIES_KABUTO
 	special SetSeenMon
 	showmonpic SPECIES_KABUTO, 10, 3

@@ -29,7 +29,7 @@ Route10_EventScript_ScientistMoveLeft::
 	lockall
 	applymovement LOCALID_SCIENTIST, Route10_Movement_MoveLeft
 	waitmovement 0
-	setobjectxyperm LOCALID_SCIENTIST, 7, 41
+	copyobjectxytoperm LOCALID_SCIENTIST
 	setvar VAR_TEMP_1, 0
 	releaseall
 	end

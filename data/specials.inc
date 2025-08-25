@@ -513,4 +513,6 @@ gSpecials::
 	def_special ArchipelagoSpecial_SetRespawnToStartingLocation
 	def_special ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
 	def_special ArchipelagoSpecial_GiveDexsanityItem
+	def_special ArchipelagoSpecial_GetFossilCount
+	def_special ArchipelagoSpecial_HaveFossilCount
 gSpecialsEnd::

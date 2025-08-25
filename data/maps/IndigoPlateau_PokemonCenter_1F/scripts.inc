@@ -66,6 +66,7 @@ IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardMove::
 	closemessage
 	applymovement LOCALID_DOOR_GUARD, IndigoPlateau_PokemonCenter_1F_Movement_DoorGuardMovesAside
 	waitmovement 0
+	copyobjectxytoperm LOCALID_DOOR_GUARD
 	setvar GUARD_SHOULD_MOVE, 0
 	return
 

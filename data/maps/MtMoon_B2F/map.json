@@ -208,16 +208,34 @@
       "elevation": 3,
       "var": "VAR_MAP_SCENE_MT_MOON_B2F",
       "var_value": "0",
-      "script": "MtMoon_B2F_EventScript_MiguelTrigger"
+      "script": "MtMoon_B2F_EventScript_MiguelRightTrigger"
     },
     {
       "type": "trigger",
-      "x": 4,
+      "x": 10,
       "y": 6,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_MT_MOON_B2F",
       "var_value": "1",
-      "script": "MtMoon_B2F_EventScript_MiguelTrigger"
+      "script": "MtMoon_B2F_EventScript_MiguelLeftTriggerBottom"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 5,
+      "elevation": 3,
+      "var": "VAR_MAP_SCENE_MT_MOON_B2F",
+      "var_value": "1",
+      "script": "MtMoon_B2F_EventScript_MiguelLeftTriggerMid"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 4,
+      "elevation": 3,
+      "var": "VAR_MAP_SCENE_MT_MOON_B2F",
+      "var_value": "1",
+      "script": "MtMoon_B2F_EventScript_MiguelLeftTriggerTop"
     }
   ],
   "bg_events": [

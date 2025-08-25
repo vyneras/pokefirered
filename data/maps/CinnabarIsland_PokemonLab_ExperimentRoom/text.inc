@@ -64,3 +64,15 @@ CinnabarIsland_PokemonLab_ExperimentRoom_Text_YouComeAgain::
     .string "Aiyah!\n"
     .string "You come again!$"
 
+CinnabarIsland_PokemonLab_ExperimentRoom_Text_LeftThatHere::
+    .string "You interested in that?\p"
+    .string "Guy tried to sell it until I\n"
+    .string "told him it was worth very little.\p"
+    .string "You resurrect {STR_VAR_1} fossils and\n"
+    .string "I let you have it.$"
+
+CinnabarIsland_PokemonLab_ExperimentRoom_Text_HaveEnough::
+    .string "Oh!\p"
+    .string "You already resurrect {STR_VAR_1} fossil.\n"
+    .string "Take it then.$"
+

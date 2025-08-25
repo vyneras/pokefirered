@@ -99,7 +99,7 @@ CeruleanCity_EventScript_PolicemanMoveLeft::
 	lockall
 	applymovement LOCALID_POLICEMAN, CeruleanCity_Movement_MoveLeft
 	waitmovement 0
-	setobjectxyperm LOCALID_POLICEMAN, 30, 12
+	copyobjectxytoperm LOCALID_POLICEMAN
 	setvar VAR_TEMP_4, 0
 	releaseall
 	end
@@ -108,7 +108,7 @@ CeruleanCity_EventScript_GuardMoveLeft::
 	lockall
 	applymovement LOCALID_CAVE_GUARD, CeruleanCity_Movement_MoveLeft
 	waitmovement 0
-	setobjectxyperm LOCALID_CAVE_GUARD, 1, 13
+	copyobjectxytoperm LOCALID_CAVE_GUARD
 	setvar VAR_TEMP_5, 0
 	releaseall
 	end

@@ -32,7 +32,7 @@ SixIsland_RuinValley_EventScript_ScientistMoveLeft::
 	lockall
 	applymovement LOCALID_SCIENTIST, SixIsland_RuinValley_Movement_MoveLeft
 	waitmovement 0
-	setobjectxyperm LOCALID_SCIENTIST, 24, 25
+	copyobjectxytoperm LOCALID_SCIENTIST
 	setvar VAR_TEMP_1, 0
 	releaseall
 	end

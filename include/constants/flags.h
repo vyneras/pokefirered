@@ -164,7 +164,7 @@
 #define FLAG_HIDE_MOVE_MANIAC                              0x094
 #define FLAG_HIDE_RESORT_GORGEOUS_INSIDE_SELPHY            0x095
 #define FLAG_HIDE_SELPHYS_BUTLER                           0x096
-#define FLAG_0x097                                         0x097
+#define FLAG_HIDE_CINNABAR_FOSSIL                          0x097
 #define FLAG_0x098                                         0x098
 #define FLAG_HIDE_DEOXYS                                   0x099
 #define FLAG_HIDE_BIRTH_ISLAND_METEORITE                   0x09A
@@ -648,8 +648,8 @@
 #define FLAG_GOT_20_COINS_FROM_GAMBLER                   0x26F
 #define FLAG_GOT_20_COINS_FROM_GAMBLER_2                 0x270
 #define FLAG_GOT_BICYCLE                                 0x271
-#define FLAG_GOT_DOME_FOSSIL                             0x272
-#define FLAG_GOT_HELIX_FOSSIL                            0x273
+#define FLAG_GOT_FOSSIL_FROM_CINNABAR                    0x272
+#define FLAG_0x273                                       0x273
 #define FLAG_DID_ESPHERE_TRADE                           0x274
 #define FLAG_DID_TANGENY_TRADE                           0x275
 #define FLAG_DID_SEELOR_TRADE                            0x276

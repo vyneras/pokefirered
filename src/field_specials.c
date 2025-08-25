@@ -2932,3 +2932,21 @@ bool8 ArchipelagoSpecial_GiveDexsanityItem(void)
         return GiveDexsanityItems();
     return FALSE;
 }
+
+u8 ArchipelagoSpecial_GetFossilCount(void)
+{
+    return gArchipelagoOptions.cinnabarFossilCount;
+}
+
+bool8 ArchipelagoSpecial_HaveFossilCount(void)
+{
+    u8 count = 0;
+
+    if (FlagGet(FLAG_REVIVED_DOME))
+        count++;
+    if (FlagGet(FLAG_REVIVED_HELIX))
+        count++;
+    if (FlagGet(FLAG_REVIVED_AMBER))
+        count++;
+    return count >= gArchipelagoOptions.cinnabarFossilCount;
+}

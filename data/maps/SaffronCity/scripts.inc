@@ -62,7 +62,7 @@ SaffronCity_EventScript_DoorGuardGruntMoveLeft::
 	lockall
 	applymovement LOCALID_DOOR_GUARD_GRUNT, SaffronCity_Movement_MoveLeft
 	waitmovement 0
-	setobjectxyperm LOCALID_DOOR_GUARD_GRUNT, 33, 31
+	copyobjectxytoperm LOCALID_DOOR_GUARD_GRUNT
 	setvar VAR_TEMP_2, 0
 	releaseall
 	end
@@ -73,9 +73,9 @@ SaffronCity_EventScript_RocketGruntsMoveLeft::
 	applymovement LOCALID_ROCKET_GRUNT_2, SaffronCity_Movement_MoveLeft
 	applymovement LOCALID_ROCKET_GRUNT_3, SaffronCity_Movement_MoveLeft
 	waitmovement 0
-	setobjectxyperm LOCALID_ROCKET_GRUNT_1, 22, 15
-	setobjectxyperm LOCALID_ROCKET_GRUNT_2, 46, 13
-	setobjectxyperm LOCALID_ROCKET_GRUNT_3, 27, 22
+	copyobjectxytoperm LOCALID_ROCKET_GRUNT_1
+	copyobjectxytoperm LOCALID_ROCKET_GRUNT_2
+	copyobjectxytoperm LOCALID_ROCKET_GRUNT_3
 	setvar VAR_TEMP_3, 0
 	releaseall
 	end
