@@ -228,19 +228,30 @@ VermilionCity_EventScript_CheckTicket::
 VermilionCity_EventScript_DontHaveSSTicket::
 	msgbox VermilionCity_Text_DontHaveNeededSSTicket
 	closemessage
-	goto VermilionCity_EventScript_WalkUpPier
+	goto_if_eq VAR_FACING, DIR_SOUTH, VermilionCity_EventScript_WalkUpPier
+	goto VermilionCity_EventScript_WalkDownPier
 	end
 
 VermilionCity_EventScript_WalkUpPier::
-	closemessage
 	applymovement LOCALID_FERRY_SAILOR, Common_Movement_FaceOriginalDirection
 	applymovement OBJ_EVENT_ID_PLAYER, VermilionCity_Movement_WalkUp
 	waitmovement 0
 	releaseall
 	end
 
+VermilionCity_EventScript_WalkDownPier::
+	applymovement LOCALID_FERRY_SAILOR, Common_Movement_FaceOriginalDirection
+	applymovement OBJ_EVENT_ID_PLAYER, VermilionCity_Movement_WalkDown
+	waitmovement 0
+	releaseall
+	end
+
 VermilionCity_Movement_WalkUp::
 	walk_up
+	step_end
+
+VermilionCity_Movement_WalkDown::
+	walk_down
 	step_end
 
 VermilionCity_EventScript_Sailor::
