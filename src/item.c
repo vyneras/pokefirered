@@ -69,9 +69,6 @@ const u16 gPokemonCenterShopItems[] = {
     ITEM_X_ACCURACY,
     ITEM_GUARD_SPEC,
     ITEM_DIRE_HIT,
-    ITEM_LEMONADE,
-    ITEM_SODA_POP,
-    ITEM_FRESH_WATER,
     ITEM_NONE
 };
 
@@ -587,7 +584,7 @@ void SetPokemonCenterShopStartingFlags()
 
     if (FlagGet(FLAG_BETTER_SHOPS_ENABLED))
     {
-        while(gPokemonCenterShopItems[i] != ITEM_LEMONADE)
+        while(gPokemonCenterShopItems[i] != ITEM_NONE)
         {
             gSaveBlock2Ptr->centerShopItemFlags |= (1 << i);
             i++;
