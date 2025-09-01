@@ -9,7 +9,6 @@ TwoIsland_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, TwoIsland_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, TwoIsland_EventScript_SetWorldMapFlag
-	call TwoIsland_EventScript_SetShopState
 	end
 
 TwoIsland_EventScript_SetGiveFlyUnlockItem::
@@ -19,55 +18,6 @@ TwoIsland_EventScript_SetGiveFlyUnlockItem::
 
 TwoIsland_EventScript_SetWorldMapFlag::
 	setworldmapflag FLAG_WORLD_MAP_TWO_ISLAND
-	return
-
-TwoIsland_EventScript_SetShopState::
-	goto_if_set FLAG_SYS_GAME_CLEAR, TwoIsland_EventScript_SetShopStateAfterChampion
-	goto_if_set FLAG_RESCUED_LOSTELLE, TwoIsland_EventScript_SetShopStateAfterLostelleRescue
-	goto TwoIsland_EventScript_SetShopStateDefault
-	end
-
-TwoIsland_EventScript_SetShopStateAfterHoennLink::
-	goto_if_unset FLAG_TWO_ISLAND_SHOP_INTRODUCED, TwoIsland_EventScript_SetShopInitial
-	goto_if_unset FLAG_TWO_ISLAND_SHOP_EXPANDED_1, TwoIsland_EventScript_SetShopExpanded1
-	goto_if_unset FLAG_TWO_ISLAND_SHOP_EXPANDED_2, TwoIsland_EventScript_SetShopExpanded2
-	goto TwoIsland_EventScript_SetShopExpanded3
-	end
-
-TwoIsland_EventScript_SetShopStateAfterChampion::
-	goto_if_unset FLAG_TWO_ISLAND_SHOP_INTRODUCED, TwoIsland_EventScript_SetShopInitial
-	goto_if_unset FLAG_RESCUED_LOSTELLE, TwoIsland_EventScript_SetShopInitial
-	goto_if_unset FLAG_TWO_ISLAND_SHOP_EXPANDED_1, TwoIsland_EventScript_SetShopExpanded1
-	goto_if_set FLAG_SYS_CAN_LINK_WITH_RS, TwoIsland_EventScript_SetShopStateAfterHoennLink
-	goto TwoIsland_EventScript_SetShopExpanded2
-	end
-
-TwoIsland_EventScript_SetShopStateAfterLostelleRescue::
-	goto_if_unset FLAG_TWO_ISLAND_SHOP_INTRODUCED, TwoIsland_EventScript_SetShopInitial
-	goto TwoIsland_EventScript_SetShopExpanded1
-	end
-
-TwoIsland_EventScript_SetShopStateDefault::
-	goto TwoIsland_EventScript_SetShopInitial
-	end
-
-TwoIsland_EventScript_SetShopInitial::
-	setvar VAR_MAP_SCENE_TWO_ISLAND, 1
-	return
-
-TwoIsland_EventScript_SetShopExpanded1::
-	setvar VAR_MAP_SCENE_TWO_ISLAND, 2
-	clearflag FLAG_HIDE_TWO_ISLAND_WOMAN
-	return
-
-TwoIsland_EventScript_SetShopExpanded2::
-	setvar VAR_MAP_SCENE_TWO_ISLAND, 3
-	clearflag FLAG_HIDE_TWO_ISLAND_BEAUTY
-	return
-
-TwoIsland_EventScript_SetShopExpanded3::
-	setvar VAR_MAP_SCENE_TWO_ISLAND, 4
-	clearflag FLAG_HIDE_TWO_ISLAND_SUPER_NERD
 	return
 
 TwoIsland_OnFrame::
@@ -86,73 +36,9 @@ TwoIsland_EventScript_Clerk::
 	goto_if_questlog EventScript_ReleaseEnd
 	lock
 	faceplayer
-	goto_if_eq VAR_MAP_SCENE_TWO_ISLAND, 4, TwoIsland_EventScript_ClerkShopExpanded3
-	goto_if_eq VAR_MAP_SCENE_TWO_ISLAND, 3, TwoIsland_EventScript_ClerkShopExpanded2
-	goto_if_eq VAR_MAP_SCENE_TWO_ISLAND, 2, TwoIsland_EventScript_ClerkShopExpanded1
-	goto TwoIsland_EventScript_ClerkShopInitial
-	end
-
-TwoIsland_EventScript_ClerkShopExpanded3::
-	goto_if_set FLAG_TWO_ISLAND_SHOP_EXPANDED_3, TwoIsland_EventScript_ClerkShopSkipIntro
-	setflag FLAG_TWO_ISLAND_SHOP_EXPANDED_3
-	message TwoIsland_Text_BringingItemsFromDistantLands
-	waitmessage
-	goto TwoIsland_EventScript_ShopExpanded3
-	end
-
-TwoIsland_EventScript_ClerkShopExpanded2::
-	goto_if_set FLAG_TWO_ISLAND_SHOP_EXPANDED_2, TwoIsland_EventScript_ClerkShopSkipIntro
-	setflag FLAG_TWO_ISLAND_SHOP_EXPANDED_2
-	message TwoIsland_Text_HopeYouGiveItYourBest
-	waitmessage
-	goto TwoIsland_EventScript_ShopExpanded2
-	end
-
-TwoIsland_EventScript_ClerkShopExpanded1::
-	goto_if_set FLAG_TWO_ISLAND_SHOP_EXPANDED_1, TwoIsland_EventScript_ClerkShopSkipIntro
-	setflag FLAG_TWO_ISLAND_SHOP_EXPANDED_1
-	message TwoIsland_Text_AddedMerchandiseForLostelle
-	waitmessage
-	goto TwoIsland_EventScript_ShopExpanded1
-	end
-
-TwoIsland_EventScript_ClerkShopInitial::
-	goto_if_set FLAG_TWO_ISLAND_SHOP_INTRODUCED, TwoIsland_EventScript_ClerkShopSkipIntro
-	setflag FLAG_TWO_ISLAND_SHOP_INTRODUCED
-	message TwoIsland_Text_WelcomeToShopMerchandiseLimited
-	waitmessage
-	goto TwoIsland_EventScript_ShopInitial
-	end
-
-TwoIsland_EventScript_ClerkShopSkipIntro::
 	message Text_MayIHelpYou
 	waitmessage
-	goto_if_eq VAR_MAP_SCENE_TWO_ISLAND, 4, TwoIsland_EventScript_ShopExpanded3
-	goto_if_eq VAR_MAP_SCENE_TWO_ISLAND, 3, TwoIsland_EventScript_ShopExpanded2
-	goto_if_eq VAR_MAP_SCENE_TWO_ISLAND, 2, TwoIsland_EventScript_ShopExpanded1
-	goto TwoIsland_EventScript_ShopInitial
-	end
-
-TwoIsland_EventScript_ShopInitial::
-	pokemart SHOP_TWO_ISLAND_INITIAL
-	msgbox Text_PleaseComeAgain
-	release
-	end
-
-TwoIsland_EventScript_ShopExpanded1::
-	pokemart SHOP_TWO_ISLAND_EXPANDED_1
-	msgbox Text_PleaseComeAgain
-	release
-	end
-
-TwoIsland_EventScript_ShopExpanded2::
-	pokemart SHOP_TWO_ISLAND_EXPANDED_2
-	msgbox Text_PleaseComeAgain
-	release
-	end
-
-TwoIsland_EventScript_ShopExpanded3::
-	pokemart SHOP_TWO_ISLAND_EXPANDED_3
+	pokemart SHOP_TWO_ISLAND
 	msgbox Text_PleaseComeAgain
 	release
 	end

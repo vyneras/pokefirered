@@ -87,14 +87,6 @@ struct ShopData
     /*0x20*/ u8 shopId;
 };
 
-struct TwoIslandShopIndex
-{
-    s16 initialIndex;
-    s16 expanded1Index;
-    s16 expanded2Index;
-    s16 expanded3Index;
-};
-
 static EWRAM_DATA s16 sViewportObjectEvents[OBJECT_EVENTS_COUNT][4] = {0};
 static EWRAM_DATA struct ShopData sShopData = {0};
 static EWRAM_DATA u8 sShopMenuWindowId = 0;
@@ -228,339 +220,303 @@ static const struct BgTemplate sShopBuyMenuBgTemplates[4] =
 };
 
 static const struct ShopItem sBetterShop[] = {
-    {ITEM_POKE_BALL, 0, TRUE},
-    {ITEM_GREAT_BALL, 0, TRUE},
-    {ITEM_ULTRA_BALL, 0, TRUE},
-    {ITEM_POTION, 0, TRUE},
-    {ITEM_SUPER_POTION, 0, TRUE},
-    {ITEM_HYPER_POTION, 0, TRUE},
-    {ITEM_MAX_POTION, 0, TRUE},
-    {ITEM_FULL_RESTORE, 0, TRUE},
-    {ITEM_REVIVE, 0, TRUE},
-    {ITEM_ANTIDOTE, 0, TRUE},
-    {ITEM_PARALYZE_HEAL, 0, TRUE},
-    {ITEM_AWAKENING, 0, TRUE},
-    {ITEM_BURN_HEAL, 0, TRUE},
-    {ITEM_ICE_HEAL, 0, TRUE},
-    {ITEM_FULL_HEAL, 0, TRUE},
-    {ITEM_ESCAPE_ROPE, 0, TRUE},
-    {ITEM_REPEL, 0, TRUE},
-    {ITEM_SUPER_REPEL, 0, TRUE},
-    {ITEM_MAX_REPEL, 0, TRUE},
-    {ITEM_X_ATTACK, 0, TRUE},
-    {ITEM_X_DEFEND, 0, TRUE},
-    {ITEM_X_SPEED, 0, TRUE},
-    {ITEM_X_SPECIAL, 0, TRUE},
-    {ITEM_X_ACCURACY, 0, TRUE},
-    {ITEM_GUARD_SPEC, 0, TRUE},
-    {ITEM_DIRE_HIT, 0, TRUE},
+    {ITEM_POKE_BALL, 200, TRUE},
+    {ITEM_GREAT_BALL, 600, TRUE},
+    {ITEM_ULTRA_BALL, 1200, TRUE},
+    {ITEM_POTION, 300, TRUE},
+    {ITEM_SUPER_POTION, 700, TRUE},
+    {ITEM_HYPER_POTION, 1200, TRUE},
+    {ITEM_MAX_POTION, 2500, TRUE},
+    {ITEM_FULL_RESTORE, 3000, TRUE},
+    {ITEM_REVIVE, 1500, TRUE},
+    {ITEM_ANTIDOTE, 100, TRUE},
+    {ITEM_PARALYZE_HEAL, 200, TRUE},
+    {ITEM_AWAKENING, 250, TRUE},
+    {ITEM_BURN_HEAL, 250, TRUE},
+    {ITEM_ICE_HEAL, 250, TRUE},
+    {ITEM_FULL_HEAL, 600, TRUE},
+    {ITEM_ESCAPE_ROPE, 550, TRUE},
+    {ITEM_REPEL, 350, TRUE},
+    {ITEM_SUPER_REPEL, 500, TRUE},
+    {ITEM_MAX_REPEL, 700, TRUE},
+    {ITEM_X_ATTACK, 500, TRUE},
+    {ITEM_X_DEFEND, 550, TRUE},
+    {ITEM_X_SPEED, 350, TRUE},
+    {ITEM_X_SPECIAL, 350, TRUE},
+    {ITEM_X_ACCURACY, 950, TRUE},
+    {ITEM_GUARD_SPEC, 700, TRUE},
+    {ITEM_DIRE_HIT, 650, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sViridianShop[] = {
-    {ITEM_POKE_BALL, 0, TRUE},
-    {ITEM_POTION, 0, TRUE},
-    {ITEM_ANTIDOTE, 0, TRUE},
-    {ITEM_PARALYZE_HEAL, 0, TRUE},
+    {ITEM_POKE_BALL, 200, TRUE},
+    {ITEM_POTION, 300, TRUE},
+    {ITEM_ANTIDOTE, 100, TRUE},
+    {ITEM_PARALYZE_HEAL, 200, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sPewterShop[] = {
-    {ITEM_POKE_BALL, 0, TRUE},
-    {ITEM_POTION, 0, TRUE},
-    {ITEM_ANTIDOTE, 0, TRUE},
-    {ITEM_PARALYZE_HEAL, 0, TRUE},
-    {ITEM_AWAKENING, 0, TRUE},
-    {ITEM_BURN_HEAL, 0, TRUE},
-    {ITEM_ESCAPE_ROPE, 0, TRUE},
-    {ITEM_REPEL, 0, TRUE},
+    {ITEM_POKE_BALL, 200, TRUE},
+    {ITEM_POTION, 300, TRUE},
+    {ITEM_ANTIDOTE, 100, TRUE},
+    {ITEM_PARALYZE_HEAL, 200, TRUE},
+    {ITEM_AWAKENING, 250, TRUE},
+    {ITEM_BURN_HEAL, 250, TRUE},
+    {ITEM_ESCAPE_ROPE, 550, TRUE},
+    {ITEM_REPEL, 350, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sCeruleanShop[] = {
-    {ITEM_POKE_BALL, 0, TRUE},
-    {ITEM_POTION, 0, TRUE},
-    {ITEM_SUPER_POTION, 0, TRUE},
-    {ITEM_ANTIDOTE, 0, TRUE},
-    {ITEM_PARALYZE_HEAL, 0, TRUE},
-    {ITEM_AWAKENING, 0, TRUE},
-    {ITEM_BURN_HEAL, 0, TRUE},
-    {ITEM_ESCAPE_ROPE, 0, TRUE},
-    {ITEM_REPEL, 0, TRUE},
+    {ITEM_POKE_BALL, 200, TRUE},
+    {ITEM_POTION, 300, TRUE},
+    {ITEM_SUPER_POTION, 700, TRUE},
+    {ITEM_ANTIDOTE, 100, TRUE},
+    {ITEM_PARALYZE_HEAL, 200, TRUE},
+    {ITEM_AWAKENING, 250, TRUE},
+    {ITEM_BURN_HEAL, 250, TRUE},
+    {ITEM_ESCAPE_ROPE, 550, TRUE},
+    {ITEM_REPEL, 350, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sVermilionShop[] = {
-    {ITEM_POKE_BALL, 0, TRUE},
-    {ITEM_SUPER_POTION, 0, TRUE},
-    {ITEM_ANTIDOTE, 0, TRUE},
-    {ITEM_PARALYZE_HEAL, 0, TRUE},
-    {ITEM_AWAKENING, 0, TRUE},
-    {ITEM_ICE_HEAL, 0, TRUE},
-    {ITEM_REPEL, 0, TRUE},
+    {ITEM_POKE_BALL, 200, TRUE},
+    {ITEM_SUPER_POTION, 700, TRUE},
+    {ITEM_ANTIDOTE, 100, TRUE},
+    {ITEM_PARALYZE_HEAL, 200, TRUE},
+    {ITEM_AWAKENING, 250, TRUE},
+    {ITEM_ICE_HEAL, 250, TRUE},
+    {ITEM_REPEL, 350, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sLavenderShop[] = {
-    {ITEM_GREAT_BALL, 0, TRUE},
-    {ITEM_SUPER_POTION, 0, TRUE},
-    {ITEM_REVIVE, 0, TRUE},
-    {ITEM_ANTIDOTE, 0, TRUE},
-    {ITEM_PARALYZE_HEAL, 0, TRUE},
-    {ITEM_BURN_HEAL, 0, TRUE},
-    {ITEM_ICE_HEAL, 0, TRUE},
-    {ITEM_ESCAPE_ROPE, 0, TRUE},
-    {ITEM_SUPER_REPEL, 0, TRUE},
+    {ITEM_GREAT_BALL, 600, TRUE},
+    {ITEM_SUPER_POTION, 700, TRUE},
+    {ITEM_REVIVE, 1500, TRUE},
+    {ITEM_ANTIDOTE, 100, TRUE},
+    {ITEM_PARALYZE_HEAL, 200, TRUE},
+    {ITEM_BURN_HEAL, 250, TRUE},
+    {ITEM_ICE_HEAL, 250, TRUE},
+    {ITEM_ESCAPE_ROPE, 550, TRUE},
+    {ITEM_SUPER_REPEL, 500, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sCeladonDeptItemShop[] = {
-    {ITEM_GREAT_BALL, 0, TRUE},
-    {ITEM_SUPER_POTION, 0, TRUE},
-    {ITEM_REVIVE, 0, TRUE},
-    {ITEM_ANTIDOTE, 0, TRUE},
-    {ITEM_PARALYZE_HEAL, 0, TRUE},
-    {ITEM_AWAKENING, 0, TRUE},
-    {ITEM_BURN_HEAL, 0, TRUE},
-    {ITEM_ICE_HEAL, 0, TRUE},
-    {ITEM_SUPER_REPEL, 0, TRUE},
+    {ITEM_GREAT_BALL, 600, TRUE},
+    {ITEM_SUPER_POTION, 700, TRUE},
+    {ITEM_REVIVE, 1500, TRUE},
+    {ITEM_ANTIDOTE, 100, TRUE},
+    {ITEM_PARALYZE_HEAL, 200, TRUE},
+    {ITEM_AWAKENING, 250, TRUE},
+    {ITEM_BURN_HEAL, 250, TRUE},
+    {ITEM_ICE_HEAL, 250, TRUE},
+    {ITEM_SUPER_REPEL, 500, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sCeladonDeptTMShop[] = {
-    {ITEM_TM05, 0, TRUE},
-    {ITEM_TM15, 0, TRUE},
-    {ITEM_TM28, 0, TRUE},
-    {ITEM_TM31, 0, TRUE},
-    {ITEM_TM43, 0, TRUE},
-    {ITEM_TM45, 0, TRUE},
+    {ITEM_TM05, 1000, TRUE},
+    {ITEM_TM15, 7500, TRUE},
+    {ITEM_TM28, 2000, TRUE},
+    {ITEM_TM31, 3000, TRUE},
+    {ITEM_TM43, 3000, TRUE},
+    {ITEM_TM45, 3000, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sCeladonDeptEvoShop[] = {
-    {ITEM_POKE_DOLL, 0, TRUE},
-    {ITEM_RETRO_MAIL, 0, TRUE},
-    {ITEM_FIRE_STONE, 0, FALSE},
-    {ITEM_THUNDER_STONE, 0, FALSE},
-    {ITEM_WATER_STONE, 0, FALSE},
-    {ITEM_LEAF_STONE, 0, FALSE},
+    {ITEM_POKE_DOLL, 1000, TRUE},
+    {ITEM_RETRO_MAIL, 50, TRUE},
+    {ITEM_FIRE_STONE, 2100, FALSE},
+    {ITEM_THUNDER_STONE, 2100, FALSE},
+    {ITEM_WATER_STONE, 2100, FALSE},
+    {ITEM_LEAF_STONE, 2100, FALSE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sCeladonDeptHeldShop[] = {
-    {ITEM_KINGS_ROCK, 1000, TRUE},
-    {ITEM_METAL_COAT, 1000, TRUE},
-    {ITEM_DRAGON_SCALE, 1000, TRUE},
-    {ITEM_UP_GRADE, 1000, TRUE},
-    {ITEM_DEEP_SEA_SCALE, 1000, TRUE},
-    {ITEM_DEEP_SEA_TOOTH, 1000, TRUE},
-    {ITEM_HEART_SCALE, 1000, TRUE},
+    {ITEM_KINGS_ROCK, 2100, TRUE},
+    {ITEM_METAL_COAT, 2100, TRUE},
+    {ITEM_DRAGON_SCALE, 2100, TRUE},
+    {ITEM_UP_GRADE, 2100, TRUE},
+    {ITEM_DEEP_SEA_SCALE, 2100, TRUE},
+    {ITEM_DEEP_SEA_TOOTH, 2100, TRUE},
+    {ITEM_HEART_SCALE, 2100, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sCeladonDeptBattleShop[] = {
-    {ITEM_X_ATTACK, 0, TRUE},
-    {ITEM_X_DEFEND, 0, TRUE},
-    {ITEM_X_SPEED, 0, TRUE},
-    {ITEM_X_SPECIAL, 0, TRUE},
-    {ITEM_X_ACCURACY, 0, TRUE},
-    {ITEM_GUARD_SPEC, 0, TRUE},
-    {ITEM_DIRE_HIT, 0, TRUE},
+    {ITEM_X_ATTACK, 500, TRUE},
+    {ITEM_X_DEFEND, 550, TRUE},
+    {ITEM_X_SPEED, 350, TRUE},
+    {ITEM_X_SPECIAL, 350, TRUE},
+    {ITEM_X_ACCURACY, 950, TRUE},
+    {ITEM_GUARD_SPEC, 700, TRUE},
+    {ITEM_DIRE_HIT, 650, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sCeladonDeptVitaminShop[] = {
-    {ITEM_HP_UP, 0, TRUE},
-    {ITEM_PROTEIN, 0, TRUE},
-    {ITEM_IRON, 0, TRUE},
-    {ITEM_CALCIUM, 0, TRUE},
-    {ITEM_ZINC, 0, TRUE},
-    {ITEM_CARBOS, 0, TRUE},
+    {ITEM_HP_UP, 9800, TRUE},
+    {ITEM_PROTEIN, 9800, TRUE},
+    {ITEM_IRON, 9800, TRUE},
+    {ITEM_CALCIUM, 9800, TRUE},
+    {ITEM_ZINC, 9800, TRUE},
+    {ITEM_CARBOS, 9800, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sFuchsiaShop[] = {
-    {ITEM_GREAT_BALL, 0, TRUE},
-    {ITEM_ULTRA_BALL, 0, TRUE},
-    {ITEM_SUPER_POTION, 0, TRUE},
-    {ITEM_REVIVE, 0, TRUE},
-    {ITEM_FULL_HEAL, 0, TRUE},
-    {ITEM_MAX_REPEL, 0, TRUE},
+    {ITEM_GREAT_BALL, 600, TRUE},
+    {ITEM_ULTRA_BALL, 1200, TRUE},
+    {ITEM_SUPER_POTION, 700, TRUE},
+    {ITEM_REVIVE, 1500, TRUE},
+    {ITEM_FULL_HEAL, 600, TRUE},
+    {ITEM_MAX_REPEL, 700, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sSaffronShop[] = {
-    {ITEM_GREAT_BALL, 0, TRUE},
-    {ITEM_HYPER_POTION, 0, TRUE},
-    {ITEM_REVIVE, 0, TRUE},
-    {ITEM_FULL_HEAL, 0, TRUE},
-    {ITEM_ESCAPE_ROPE, 0, TRUE},
-    {ITEM_MAX_REPEL, 0, TRUE},
+    {ITEM_GREAT_BALL, 600, TRUE},
+    {ITEM_HYPER_POTION, 1200, TRUE},
+    {ITEM_REVIVE, 1500, TRUE},
+    {ITEM_FULL_HEAL, 600, TRUE},
+    {ITEM_ESCAPE_ROPE, 550, TRUE},
+    {ITEM_MAX_REPEL, 700, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sCinnabarShop[] = {
-    {ITEM_GREAT_BALL, 0, TRUE},
-    {ITEM_ULTRA_BALL, 0, TRUE},
-    {ITEM_HYPER_POTION, 0, TRUE},
-    {ITEM_REVIVE, 0, TRUE},
-    {ITEM_FULL_HEAL, 0, TRUE},
-    {ITEM_ESCAPE_ROPE, 0, TRUE},
-    {ITEM_MAX_REPEL, 0, TRUE},
+    {ITEM_GREAT_BALL, 600, TRUE},
+    {ITEM_ULTRA_BALL, 1200, TRUE},
+    {ITEM_HYPER_POTION, 1200, TRUE},
+    {ITEM_REVIVE, 1500, TRUE},
+    {ITEM_FULL_HEAL, 600, TRUE},
+    {ITEM_ESCAPE_ROPE, 550, TRUE},
+    {ITEM_MAX_REPEL, 700, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sIndigoShop[] = {
-    {ITEM_GREAT_BALL, 0, TRUE},
-    {ITEM_ULTRA_BALL, 0, TRUE},
-    {ITEM_MAX_POTION, 0, TRUE},
-    {ITEM_FULL_RESTORE, 0, TRUE},
-    {ITEM_REVIVE, 0, TRUE},
-    {ITEM_FULL_HEAL, 0, TRUE},
-    {ITEM_MAX_REPEL, 0, TRUE},
+    {ITEM_GREAT_BALL, 600, TRUE},
+    {ITEM_ULTRA_BALL, 1200, TRUE},
+    {ITEM_MAX_POTION, 2500, TRUE},
+    {ITEM_FULL_RESTORE, 3000, TRUE},
+    {ITEM_REVIVE, 1500, TRUE},
+    {ITEM_FULL_HEAL, 600, TRUE},
+    {ITEM_MAX_REPEL, 700, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
-static const struct ShopItem sTwoIslandShopInitial[] = {
-    {ITEM_GREAT_BALL, 0, TRUE},
-    {ITEM_FRESH_WATER, 0, TRUE},
-    {ITEM_NONE, 0, TRUE}
-};
-
-static const struct ShopItem sTwoIslandShopExpanded1[] = {
-    {ITEM_GREAT_BALL, 0, TRUE},
-    {ITEM_ULTRA_BALL, 0, TRUE},
-    {ITEM_SODA_POP, 0, TRUE},
-    {ITEM_FRESH_WATER, 0, TRUE},
-    {ITEM_NONE, 0, TRUE}
-};
-
-static const struct ShopItem sTwoIslandShopExpanded2[] = {
-    {ITEM_GREAT_BALL, 0, TRUE},
-    {ITEM_ULTRA_BALL, 0, TRUE},
-    {ITEM_LEMONADE, 0, TRUE},
-    {ITEM_SODA_POP, 0, TRUE},
-    {ITEM_FRESH_WATER, 0, TRUE},
-    {ITEM_MOOMOO_MILK, 0, TRUE},
-    {ITEM_NONE, 0, TRUE}
-};
-
-static const struct ShopItem sTwoIslandShopExpanded3[] = {
-    {ITEM_GREAT_BALL, 0, TRUE},
-    {ITEM_ULTRA_BALL, 0, TRUE},
-    {ITEM_TIMER_BALL, 0, TRUE},
-    {ITEM_REPEAT_BALL, 0, TRUE},
-    {ITEM_LEMONADE, 0, TRUE},
-    {ITEM_SODA_POP, 0, TRUE},
-    {ITEM_FRESH_WATER, 0, TRUE},
-    {ITEM_MOOMOO_MILK, 0, TRUE},
-    {ITEM_LAVA_COOKIE, 0, TRUE},
+static const struct ShopItem sTwoIslandShop[] = {
+    {ITEM_GREAT_BALL, 600, TRUE},
+    {ITEM_ULTRA_BALL, 1200, TRUE},
+    {ITEM_TIMER_BALL, 1000, TRUE},
+    {ITEM_REPEAT_BALL, 1000, TRUE},
+    {ITEM_LEMONADE, 350, TRUE},
+    {ITEM_SODA_POP, 300, TRUE},
+    {ITEM_FRESH_WATER, 200, TRUE},
+    {ITEM_MOOMOO_MILK, 500, TRUE},
+    {ITEM_LAVA_COOKIE, 200, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sThreeIslandShop[] = {
-    {ITEM_ULTRA_BALL, 0, TRUE},
-    {ITEM_HYPER_POTION, 0, TRUE},
-    {ITEM_REVIVE, 0, TRUE},
-    {ITEM_FULL_HEAL, 0, TRUE},
-    {ITEM_ESCAPE_ROPE, 0, TRUE},
-    {ITEM_MAX_REPEL, 0, TRUE},
+    {ITEM_ULTRA_BALL, 1200, TRUE},
+    {ITEM_HYPER_POTION, 1200, TRUE},
+    {ITEM_REVIVE, 1500, TRUE},
+    {ITEM_FULL_HEAL, 600, TRUE},
+    {ITEM_ESCAPE_ROPE, 550, TRUE},
+    {ITEM_MAX_REPEL, 700, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sFourIslandShop[] = {
-    {ITEM_ULTRA_BALL, 0, TRUE},
-    {ITEM_MAX_POTION, 0, TRUE},
-    {ITEM_FULL_RESTORE, 0, TRUE},
-    {ITEM_REVIVE, 0, TRUE},
-    {ITEM_ICE_HEAL, 0, TRUE},
-    {ITEM_FULL_HEAL, 0, TRUE},
-    {ITEM_ESCAPE_ROPE, 0, TRUE},
-    {ITEM_MAX_REPEL, 0, TRUE},
+    {ITEM_ULTRA_BALL, 1200, TRUE},
+    {ITEM_MAX_POTION, 2500, TRUE},
+    {ITEM_FULL_RESTORE, 3000, TRUE},
+    {ITEM_REVIVE, 1500, TRUE},
+    {ITEM_ICE_HEAL, 250, TRUE},
+    {ITEM_FULL_HEAL, 600, TRUE},
+    {ITEM_ESCAPE_ROPE, 550, TRUE},
+    {ITEM_MAX_REPEL, 700, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sSixIslandShop[] = {
-    {ITEM_ULTRA_BALL, 0, TRUE},
-    {ITEM_MAX_POTION, 0, TRUE},
-    {ITEM_FULL_RESTORE, 0, TRUE},
-    {ITEM_REVIVE, 0, TRUE},
-    {ITEM_FULL_HEAL, 0, TRUE},
-    {ITEM_ESCAPE_ROPE, 0, TRUE},
-    {ITEM_MAX_REPEL, 0, TRUE},
-    {ITEM_DREAM_MAIL, 0, TRUE},
+    {ITEM_ULTRA_BALL, 1200, TRUE},
+    {ITEM_MAX_POTION, 2500, TRUE},
+    {ITEM_FULL_RESTORE, 3000, TRUE},
+    {ITEM_REVIVE, 1500, TRUE},
+    {ITEM_FULL_HEAL, 600, TRUE},
+    {ITEM_ESCAPE_ROPE, 550, TRUE},
+    {ITEM_MAX_REPEL, 700, TRUE},
+    {ITEM_DREAM_MAIL, 50, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sSevenIslandShop[] = {
-    {ITEM_GREAT_BALL, 0, TRUE},
-    {ITEM_ULTRA_BALL, 0, TRUE},
-    {ITEM_HYPER_POTION, 0, TRUE},
-    {ITEM_MAX_POTION, 0, TRUE},
-    {ITEM_FULL_RESTORE, 0, TRUE},
-    {ITEM_REVIVE, 0, TRUE},
-    {ITEM_FULL_HEAL, 0, TRUE},
-    {ITEM_ESCAPE_ROPE, 0, TRUE},
-    {ITEM_MAX_REPEL, 0, TRUE},
+    {ITEM_GREAT_BALL, 600, TRUE},
+    {ITEM_ULTRA_BALL, 1200, TRUE},
+    {ITEM_HYPER_POTION, 1200, TRUE},
+    {ITEM_MAX_POTION, 2500, TRUE},
+    {ITEM_FULL_RESTORE, 3000, TRUE},
+    {ITEM_REVIVE, 1500, TRUE},
+    {ITEM_FULL_HEAL, 600, TRUE},
+    {ITEM_ESCAPE_ROPE, 550, TRUE},
+    {ITEM_MAX_REPEL, 700, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sTrainerTowerShop[] = {
-    {ITEM_GREAT_BALL, 0, TRUE},
-    {ITEM_ULTRA_BALL, 0, TRUE},
-    {ITEM_HYPER_POTION, 0, TRUE},
-    {ITEM_MAX_POTION, 0, TRUE},
-    {ITEM_FULL_RESTORE, 0, TRUE},
-    {ITEM_REVIVE, 0, TRUE},
-    {ITEM_FULL_HEAL, 0, TRUE},
-    {ITEM_ESCAPE_ROPE, 0, TRUE},
-    {ITEM_MAX_REPEL, 0, TRUE},
+    {ITEM_GREAT_BALL, 600, TRUE},
+    {ITEM_ULTRA_BALL, 1200, TRUE},
+    {ITEM_HYPER_POTION, 1200, TRUE},
+    {ITEM_MAX_POTION, 2500, TRUE},
+    {ITEM_FULL_RESTORE, 3000, TRUE},
+    {ITEM_REVIVE, 1500, TRUE},
+    {ITEM_FULL_HEAL, 600, TRUE},
+    {ITEM_ESCAPE_ROPE, 550, TRUE},
+    {ITEM_MAX_REPEL, 700, TRUE},
     {ITEM_NONE, 0, TRUE}
 };
 
 static const struct ShopItem sPokemonCenterShop[] = {
-    {ITEM_POKE_BALL, 0, TRUE},
-    {ITEM_GREAT_BALL, 0, TRUE},
-    {ITEM_ULTRA_BALL, 0, TRUE},
-    {ITEM_POTION, 0, TRUE},
-    {ITEM_SUPER_POTION, 0, TRUE},
-    {ITEM_HYPER_POTION, 0, TRUE},
-    {ITEM_MAX_POTION, 0, TRUE},
-    {ITEM_FULL_RESTORE, 0, TRUE},
-    {ITEM_REVIVE, 0, TRUE},
-    {ITEM_ANTIDOTE, 0, TRUE},
-    {ITEM_PARALYZE_HEAL, 0, TRUE},
-    {ITEM_AWAKENING, 0, TRUE},
-    {ITEM_BURN_HEAL, 0, TRUE},
-    {ITEM_ICE_HEAL, 0, TRUE},
-    {ITEM_FULL_HEAL, 0, TRUE},
-    {ITEM_ESCAPE_ROPE, 0, TRUE},
-    {ITEM_REPEL, 0, TRUE},
-    {ITEM_SUPER_REPEL, 0, TRUE},
-    {ITEM_MAX_REPEL, 0, TRUE},
-    {ITEM_X_ATTACK, 0, TRUE},
-    {ITEM_X_DEFEND, 0, TRUE},
-    {ITEM_X_SPEED, 0, TRUE},
-    {ITEM_X_SPECIAL, 0, TRUE},
-    {ITEM_X_ACCURACY, 0, TRUE},
-    {ITEM_GUARD_SPEC, 0, TRUE},
-    {ITEM_DIRE_HIT, 0, TRUE},
-    {ITEM_LEMONADE, 0, TRUE},
-    {ITEM_SODA_POP, 0, TRUE},
-    {ITEM_FRESH_WATER, 0, TRUE},
+    {ITEM_POKE_BALL, 200, TRUE},
+    {ITEM_GREAT_BALL, 600, TRUE},
+    {ITEM_ULTRA_BALL, 1200, TRUE},
+    {ITEM_POTION, 300, TRUE},
+    {ITEM_SUPER_POTION, 700, TRUE},
+    {ITEM_HYPER_POTION, 1200, TRUE},
+    {ITEM_MAX_POTION, 2500, TRUE},
+    {ITEM_FULL_RESTORE, 3000, TRUE},
+    {ITEM_REVIVE, 1500, TRUE},
+    {ITEM_ANTIDOTE, 100, TRUE},
+    {ITEM_PARALYZE_HEAL, 200, TRUE},
+    {ITEM_AWAKENING, 250, TRUE},
+    {ITEM_BURN_HEAL, 250, TRUE},
+    {ITEM_ICE_HEAL, 250, TRUE},
+    {ITEM_FULL_HEAL, 600, TRUE},
+    {ITEM_ESCAPE_ROPE, 550, TRUE},
+    {ITEM_REPEL, 350, TRUE},
+    {ITEM_SUPER_REPEL, 500, TRUE},
+    {ITEM_MAX_REPEL, 700, TRUE},
+    {ITEM_X_ATTACK, 500, TRUE},
+    {ITEM_X_DEFEND, 550, TRUE},
+    {ITEM_X_SPEED, 350, TRUE},
+    {ITEM_X_SPECIAL, 350, TRUE},
+    {ITEM_X_ACCURACY, 950, TRUE},
+    {ITEM_GUARD_SPEC, 700, TRUE},
+    {ITEM_DIRE_HIT, 650, TRUE},
+    {ITEM_LEMONADE, 350, TRUE},
+    {ITEM_SODA_POP, 300, TRUE},
+    {ITEM_FRESH_WATER, 200, TRUE},
     {ITEM_NONE, 0, TRUE}
-};
-
-static const struct TwoIslandShopIndex sTwoIslandShopIndexes[TWO_ISLAND_SHOP_ITEM_COUNT] = {
-    { 0,  0,  0, 0},
-    {-1,  1,  1, 1},
-    {-1, -1, -1, 2},
-    {-1, -1, -1, 3},
-    {-1, -1,  2, 4},
-    {-1,  2,  3, 5},
-    { 1,  3,  4, 6},
-    {-1, -1,  5, 7},
-    {-1, -1, -1, 8}
 };
 
 // Functions
@@ -636,14 +592,8 @@ static const struct ShopItem* GetShopItemsFromShopId(u8 shopId)
         return sCinnabarShop;
     case SHOP_INDIGO_PLATEAU:
         return sIndigoShop;
-    case SHOP_TWO_ISLAND_INITIAL:
-        return sTwoIslandShopInitial;
-    case SHOP_TWO_ISLAND_EXPANDED_1:
-        return sTwoIslandShopExpanded1;
-    case SHOP_TWO_ISLAND_EXPANDED_2:
-        return sTwoIslandShopExpanded2;
-    case SHOP_TWO_ISLAND_EXPANDED_3:
-        return sTwoIslandShopExpanded3;
+    case SHOP_TWO_ISLAND:
+        return sTwoIslandShop;
     case SHOP_THREE_ISLAND:
         return sThreeIslandShop;
     case SHOP_FOUR_ISLAND:
@@ -682,35 +632,6 @@ static u32 GetItemPrice(u16 index)
     if (sShopData.itemList[index].price == 0)
         return ItemId_GetPrice(sShopData.itemList[index].item);
     return sShopData.itemList[index].price;
-}
-
-static void SetTwoIslandShopFlags(s16 index)
-{
-    u8 arrayIndex;
-
-    for (arrayIndex = 0; arrayIndex < TWO_ISLAND_SHOP_ITEM_COUNT; arrayIndex++)
-    {
-        if (sShopData.shopId == SHOP_TWO_ISLAND_INITIAL && sTwoIslandShopIndexes[arrayIndex].initialIndex == index)
-            break;
-        else if (sShopData.shopId == SHOP_TWO_ISLAND_EXPANDED_1 && sTwoIslandShopIndexes[arrayIndex].expanded1Index == index)
-            break;
-        else if (sShopData.shopId == SHOP_TWO_ISLAND_EXPANDED_2 && sTwoIslandShopIndexes[arrayIndex].expanded2Index == index)
-            break;
-        else if (sShopData.shopId == SHOP_TWO_ISLAND_EXPANDED_3 && sTwoIslandShopIndexes[arrayIndex].expanded3Index == index)
-            break;
-    }
-
-    if (arrayIndex >= TWO_ISLAND_SHOP_ITEM_COUNT)
-        return;
-
-    if (sTwoIslandShopIndexes[arrayIndex].initialIndex != -1)
-        gSaveBlock2Ptr->shopItemFlags[SHOP_TWO_ISLAND_INITIAL - SHOPSANITY_FIRST_INDEX] |= (1 << sTwoIslandShopIndexes[arrayIndex].initialIndex);
-    if (sTwoIslandShopIndexes[arrayIndex].expanded1Index != -1)
-        gSaveBlock2Ptr->shopItemFlags[SHOP_TWO_ISLAND_EXPANDED_1 - SHOPSANITY_FIRST_INDEX] |= (1 << sTwoIslandShopIndexes[arrayIndex].expanded1Index);
-    if (sTwoIslandShopIndexes[arrayIndex].expanded2Index != -1)
-        gSaveBlock2Ptr->shopItemFlags[SHOP_TWO_ISLAND_EXPANDED_2 - SHOPSANITY_FIRST_INDEX] |= (1 << sTwoIslandShopIndexes[arrayIndex].expanded2Index);
-    if (sTwoIslandShopIndexes[arrayIndex].expanded3Index != -1)
-        gSaveBlock2Ptr->shopItemFlags[SHOP_TWO_ISLAND_EXPANDED_3 - SHOPSANITY_FIRST_INDEX] |= (1 << sTwoIslandShopIndexes[arrayIndex].expanded3Index);
 }
 
 static void SetShopMenuCallback(void (*callback)(void))
@@ -758,6 +679,8 @@ static void CB2_GoToSellMenu(void)
 
 static void Task_HandleShopMenuQuit(u8 taskId)
 {
+    if (sShopData.shopId >= SHOP_VIRIDIAN_CITY && sShopData.shopId <= SHOP_TRAINER_TOWER)
+        FlagSet(SHOP_HINT_FLAGS_START + sShopData.shopId - 1);
     ClearShopMenuWindow();
     RecordTransactionForQuestLog();
     DestroyTask(taskId);
@@ -1078,14 +1001,25 @@ bool8 GetSetItemBought(u16 index, u8 caseId)
         else
             return (gSaveBlock2Ptr->shopItemFlags[sShopData.shopId - SHOPSANITY_FIRST_INDEX] & mask) != 0;
     case FLAG_SET_BOUGHT:
-        if (sShopData.shopId >= SHOP_TWO_ISLAND_INITIAL && sShopData.shopId <= SHOP_TWO_ISLAND_EXPANDED_3)
-            SetTwoIslandShopFlags(index);
-        else
-            gSaveBlock2Ptr->shopItemFlags[sShopData.shopId - SHOPSANITY_FIRST_INDEX] |= mask;
+        gSaveBlock2Ptr->shopItemFlags[sShopData.shopId - SHOPSANITY_FIRST_INDEX] |= mask;
         return TRUE;
     }
 
     return FALSE;
+}
+
+bool8 IsTwoIslandShopItemAvailable(u16 index)
+{
+    if ((index == 1 || index == 5) &&
+        !FlagGet(FLAG_RESCUED_LOSTELLE))
+        return FALSE;
+    else if ((index == 4 || index == 7) &&
+             (!FlagGet(FLAG_RESCUED_LOSTELLE) || !FlagGet(FLAG_SYS_GAME_CLEAR)))
+        return FALSE;
+    else if ((index == 2 || index == 3 || index == 8) &&
+             (!FlagGet(FLAG_RESCUED_LOSTELLE) || !FlagGet(FLAG_SYS_GAME_CLEAR) || !FlagGet(FLAG_SYS_CAN_LINK_WITH_RS)))
+        return FALSE;
+    return TRUE;
 }
 
 static void BuyMenuPrintPriceInList(u8 windowId, u32 item, u8 y, u16 index)
@@ -1095,7 +1029,7 @@ static void BuyMenuPrintPriceInList(u8 windowId, u32 item, u8 y, u16 index)
 
     if (item != INDEX_CANCEL)
     {
-        if (GetSetItemBought(index, FLAG_GET_BOUGHT) && !sShopData.itemList[index].repeatable)
+        if (!sShopData.itemList[index].repeatable && GetSetItemBought(index, FLAG_GET_BOUGHT))
         {
             StringCopy(gStringVar1, gText_SoldOut);
             x = 8 - StringLength(gStringVar1);
@@ -1105,7 +1039,8 @@ static void BuyMenuPrintPriceInList(u8 windowId, u32 item, u8 y, u16 index)
             StringExpandPlaceholders(loc, gStringVar1);
             BuyMenuPrint(windowId, FONT_SMALL, gStringVar5, 0x5E, y, 0, 0, TEXT_SKIP_DRAW, 1);
         }
-        else if(!GetSetItemBought(index, FLAG_GET_BOUGHT) && sShopData.shopId == SHOP_POKEMON_CENTER)
+        else if((sShopData.shopId == SHOP_POKEMON_CENTER && !GetSetItemBought(index, FLAG_GET_BOUGHT)) ||
+                (sShopData.shopId == SHOP_TWO_ISLAND && !IsTwoIslandShopItemAvailable(index)))
         {
             StringCopy(gStringVar1, gText_NA);
             x = 3 - StringLength(gStringVar1);
@@ -1117,13 +1052,13 @@ static void BuyMenuPrintPriceInList(u8 windowId, u32 item, u8 y, u16 index)
         }
         else
         {
-            ConvertIntToDecimalStringN(gStringVar1, GetItemPrice(index), 0, 4);
-            x = 4 - StringLength(gStringVar1);
+            ConvertIntToDecimalStringN(gStringVar1, GetItemPrice(index), 0, 5);
+            x = 5 - StringLength(gStringVar1);
             loc = gStringVar5;
             while (x-- != 0)
                 *loc++ = 0;
             StringExpandPlaceholders(loc, gText_PokedollarVar1);
-            BuyMenuPrint(windowId, FONT_SMALL, gStringVar5, 0x69, y, 0, 0, TEXT_SKIP_DRAW, 1);
+            BuyMenuPrint(windowId, FONT_SMALL, gStringVar5, 0x64, y, 0, 0, TEXT_SKIP_DRAW, 1);
         }
     }
 }
@@ -1409,11 +1344,12 @@ static void Task_BuyMenu(u8 taskId)
             BuyMenuPrintCursor(tListTaskId, 2);
             RecolorItemDescriptionBox(1);
             sShopData.itemPrice = GetItemPrice(index);
-            if (GetSetItemBought(index, FLAG_GET_BOUGHT) && !sShopData.itemList[index].repeatable)
+            if (!sShopData.itemList[index].repeatable && GetSetItemBought(index, FLAG_GET_BOUGHT))
             {
                 BuyMenuDisplayMessage(taskId, gText_SorryWereOutOfThis, BuyMenuReturnToItemList);
             }
-            else if (!GetSetItemBought(index, FLAG_GET_BOUGHT) && sShopData.shopId == SHOP_POKEMON_CENTER)
+            else if((sShopData.shopId == SHOP_POKEMON_CENTER && !GetSetItemBought(index, FLAG_GET_BOUGHT)) ||
+                    (sShopData.shopId == SHOP_TWO_ISLAND && !IsTwoIslandShopItemAvailable(index)))
             {
                 BuyMenuDisplayMessage(taskId, gText_SorryDontSellYet, BuyMenuReturnToItemList);
             }
@@ -1592,8 +1528,6 @@ static void BuyMenuReturnToItemList(u8 taskId)
 
 static void ExitBuyMenu(u8 taskId)
 {
-	if (sShopData.shopId >= SHOP_VIRIDIAN_CITY && sShopData.shopId <= SHOP_TRAINER_TOWER)
-        FlagSet(SHOP_HINT_FLAGS_START + sShopData.shopId - 1);
     gFieldCallback = MapPostLoadHook_ReturnToShopMenu;
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     gTasks[taskId].func = Task_ExitBuyMenu;

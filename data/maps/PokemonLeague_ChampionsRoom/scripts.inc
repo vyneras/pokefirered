@@ -108,6 +108,7 @@ PokemonLeague_ChampionsRoom_EventScript_Battle::
 	settrainerflag TRAINER_CHAMPION_FIRST_CHARMANDER
 	settrainerflag TRAINER_CHAMPION_FIRST_SQUIRTLE
 	setflag FLAG_DEFEATED_CHAMP
+	clearflag FLAG_HIDE_TWO_ISLAND_BEAUTY
 	return
 
 PokemonLeague_ChampionsRoom_EventScript_Rematch::

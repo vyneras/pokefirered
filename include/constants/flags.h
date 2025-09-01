@@ -691,10 +691,10 @@
 #define FLAG_GOT_TM04_FROM_SABRINA                       0x29A
 #define FLAG_GOT_FAME_CHECKER                            0x29B
 #define FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE     0x29C
-#define FLAG_TWO_ISLAND_SHOP_INTRODUCED                  0x29D
-#define FLAG_TWO_ISLAND_SHOP_EXPANDED_1                  0x29E
-#define FLAG_TWO_ISLAND_SHOP_EXPANDED_2                  0x29F
-#define FLAG_TWO_ISLAND_SHOP_EXPANDED_3                  0x2A0
+#define FLAG_0x29D                                       0x29D
+#define FLAG_0x29E                                       0x29E
+#define FLAG_0x29F                                       0x29F
+#define FLAG_0x2A0                                       0x2A0
 #define FLAG_SEVII_DETOUR_FINISHED                       0x2A1
 #define FLAG_TALKED_ABOUT_RUBY                           0x2A2
 #define FLAG_RESCUED_LOSTELLE                            0x2A3
@@ -974,29 +974,29 @@
 #define FLAG_0x3B3               0x3B3
 #define FLAG_0x3B4               0x3B4
 #define FLAG_0x3B5               0x3B5
+#define FLAG_0x3B6               0x3B6
+#define FLAG_0x3B7               0x3B7
+#define FLAG_0x3B8               0x3B8
 
 // Hints
-#define SHOP_HINT_FLAGS_START                0x3B6
+#define SHOP_HINT_FLAGS_START                0x3B9
 
-#define FLAG_HINT_VIRIDIAN_SHOP              0x3B6
-#define FLAG_HINT_PEWTER_SHOP                0x3B7
-#define FLAG_HINT_CERULEAN_SHOP              0x3B8
-#define FLAG_HINT_VERMILION_SHOP             0x3B9
-#define FLAG_HINT_LAVENDER_SHOP              0x3BA
-#define FLAG_HINT_CELADON_ITEM_SHOP          0x3BB
-#define FLAG_HINT_CELADON_TM_SHOP            0x3BC
-#define FLAG_HINT_CELADON_EVO_SHOP           0x3BD
-#define FLAG_HINT_CELADON_HELD_SHOP          0x3BE
-#define FLAG_HINT_CELADON_BATTLE_SHOP        0x3BF
-#define FLAG_HINT_CELADON_VITAMIN_SHOP       0x3C0
-#define FLAG_HINT_FUCHSIA_SHOP               0x3C1
-#define FLAG_HINT_SAFFRON_SHOP               0x3C2
-#define FLAG_HINT_CINNABAR_SHOP              0x3C3
-#define FLAG_HINT_INDIGO_SHOP                0x3C4
-#define FLAG_HINT_TWO_ISLAND_INITIAL_SHOP    0x3C5
-#define FLAG_HINT_TWO_ISLAND_EXPANDED_1_SHOP 0x3C6
-#define FLAG_HINT_TWO_ISLAND_EXPANDED_2_SHOP 0x3C7
-#define FLAG_HINT_TWO_ISLAND_EXPANDED_3_SHOP 0x3C8
+#define FLAG_HINT_VIRIDIAN_SHOP              0x3B9
+#define FLAG_HINT_PEWTER_SHOP                0x3BA
+#define FLAG_HINT_CERULEAN_SHOP              0x3BB
+#define FLAG_HINT_VERMILION_SHOP             0x3BC
+#define FLAG_HINT_LAVENDER_SHOP              0x3BD
+#define FLAG_HINT_CELADON_ITEM_SHOP          0x3BE
+#define FLAG_HINT_CELADON_TM_SHOP            0x3BF
+#define FLAG_HINT_CELADON_EVO_SHOP           0x3C0
+#define FLAG_HINT_CELADON_HELD_SHOP          0x3C1
+#define FLAG_HINT_CELADON_BATTLE_SHOP        0x3C2
+#define FLAG_HINT_CELADON_VITAMIN_SHOP       0x3C3
+#define FLAG_HINT_FUCHSIA_SHOP               0x3C4
+#define FLAG_HINT_SAFFRON_SHOP               0x3C5
+#define FLAG_HINT_CINNABAR_SHOP              0x3C6
+#define FLAG_HINT_INDIGO_SHOP                0x3C7
+#define FLAG_HINT_TWO_ISLAND_SHOP            0x3C8
 #define FLAG_HINT_THREE_ISLAND_SHOP          0x3C9
 #define FLAG_HINT_FOUR_ISLAND_SHOP           0x3CA
 #define FLAG_HINT_SIX_ISLAND_SHOP            0x3CB
@@ -1539,18 +1539,6 @@
 #define DEXSANITY_FLAGS_END   (DEXSANITY_FLAGS_START + 386)
 
 #define SHOPSANITY_FLAGS_START 0x5200
-#define FLAG_TWO_ISLAND_SHOP_INITIAL_1 0x52F0
-#define FLAG_TWO_ISLAND_SHOP_INITIAL_2 0x52F1
-#define FLAG_TWO_ISLAND_SHOP_EXPANDED1_1 0x5300
-#define FLAG_TWO_ISLAND_SHOP_EXPANDED1_2 0x5301
-#define FLAG_TWO_ISLAND_SHOP_EXPANDED1_3 0x5302
-#define FLAG_TWO_ISLAND_SHOP_EXPANDED1_4 0x5303
-#define FLAG_TWO_ISLAND_SHOP_EXPANDED2_1 0x5310
-#define FLAG_TWO_ISLAND_SHOP_EXPANDED2_2 0x5311
-#define FLAG_TWO_ISLAND_SHOP_EXPANDED2_3 0x5312
-#define FLAG_TWO_ISLAND_SHOP_EXPANDED2_4 0x5313
-#define FLAG_TWO_ISLAND_SHOP_EXPANDED2_5 0x5314
-#define FLAG_TWO_ISLAND_SHOP_EXPANDED2_6 0x5315
 
 #define FAMESANITY_FLAGS_START 0x6000
 #define FLAG_FAME_CHECKER_DAISY_2 0x6008

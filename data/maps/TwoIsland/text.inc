@@ -10,35 +10,6 @@ TwoIsland_Text_DangerFastCurrent::
     .string "DANGER! FAST CURRENT!\n"
     .string "Fishing and surfing prohibited!$"
 
-TwoIsland_Text_WelcomeToShopMerchandiseLimited::
-    .string "Oh!\n"
-    .string "Hello, welcome to my shop!\p"
-    .string "We've only opened up recently.\p"
-    .string "Our merchandise is limited, but I\n"
-    .string "hope we can serve your needs.$"
-
-TwoIsland_Text_AddedMerchandiseForLostelle::
-    .string "I can't tell you how grateful I am\n"
-    .string "for your rescue of LOSTELLE.\p"
-    .string "Thanks to your feat, the people of\n"
-    .string "THREE ISLAND have changed their\l"
-    .string "attitudes about KANTO people.\p"
-    .string "And, I'm from KANTO, you see.\p"
-    .string "The people of THREE ISLAND\n"
-    .string "helped me add to my merchandise.$"
-
-TwoIsland_Text_HopeYouGiveItYourBest::
-    .string "Hi! I'm giving it my best here.\n"
-    .string "I hope you do too, {PLAYER}.$"
-
-TwoIsland_Text_BringingItemsFromDistantLands::
-    .string "Oh, hello, {PLAYER}!\n"
-    .string "Welcome!\p"
-    .string "I've started bringing in items from\n"
-    .string "distant lands.\p"
-    .string "I've got some rare items in, too.\n"
-    .string "Please have a look!$"
-
 TwoIsland_Text_FellowMovedFromCeladonCity::
     .string "That fellow there, he moved here\n"
     .string "from CELADON CITY.\p"

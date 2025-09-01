@@ -5,9 +5,6 @@ SilphCo_9F_Text_YouShouldTakeQuickNap::
 SilphCo_9F_Text_DontGiveUp::
     .string "Don't give up!$"
 
-SilphCo_9F_Text_ThankYouSoMuch::
-    .string "Thank you so much.$"
-
 SilphCo_9F_Text_Grunt1Intro::
     .string "Your POKéMON seem to adore you,\n"
     .string "kid!$"

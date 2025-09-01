@@ -359,21 +359,19 @@ const std::vector<ShopData> SHOP_DATA = {
     {"SHOP_CELADON_CITY_DEPT_ITEM", "sCeladonDeptItemShop", 9, 5},
     {"SHOP_CELADON_CITY_DEPT_TM", "sCeladonDeptTMShop", 6, 6},
     {"SHOP_CELADON_CITY_DEPT_EVO", "sCeladonDeptEvoShop", 6, 7},
+    {"SHOP_CELADON_CITY_DEPT_HELD", "sCeladonDeptHeldShop", 7, 8},
     {"SHOP_CELADON_CITY_DEPT_BATTLE", "sCeladonDeptBattleShop", 7, 9},
     {"SHOP_CELADON_CITY_DEPT_VITAMIN", "sCeladonDeptVitaminShop", 6, 10},
     {"SHOP_FUCHSIA_CITY", "sFuchsiaShop", 6, 11},
     {"SHOP_SAFFRON_CITY", "sSaffronShop", 6, 12},
     {"SHOP_CINNABAR_ISLAND", "sCinnabarShop", 7, 13},
     {"SHOP_INDIGO_PLATEAU", "sIndigoShop", 7, 14},
-    {"SHOP_TWO_ISLAND_INITIAL", "sTwoIslandShopInitial", 2, 15},
-    {"SHOP_TWO_ISLAND_EXPANDED1", "sTwoIslandShopExpanded1", 4, 16},
-    {"SHOP_TWO_ISLAND_EXPANDED2", "sTwoIslandShopExpanded2", 6, 17},
-    {"SHOP_TWO_ISLAND_EXPANDED3", "sTwoIslandShopExpanded3", 9, 18},
-    {"SHOP_THREE_ISLAND", "sThreeIslandShop", 6, 19},
-    {"SHOP_FOUR_ISLAND", "sFourIslandShop", 8, 20},
-    {"SHOP_SIX_ISLAND", "sSixIslandShop", 8, 21},
-    {"SHOP_SEVEN_ISLAND", "sSevenIslandShop", 9, 22},
-    {"SHOP_TRAINER_TOWER", "sTrainerTowerShop", 9, 23}
+    {"SHOP_TWO_ISLAND", "sTwoIslandShop", 9, 15},
+    {"SHOP_THREE_ISLAND", "sThreeIslandShop", 6, 16},
+    {"SHOP_FOUR_ISLAND", "sFourIslandShop", 8, 17},
+    {"SHOP_SIX_ISLAND", "sSixIslandShop", 8, 18},
+    {"SHOP_SEVEN_ISLAND", "sSevenIslandShop", 9, 19},
+    {"SHOP_TRAINER_TOWER", "sTrainerTowerShop", 9, 20}
 };
 
 const std::vector<std::string> STARTER_POKEMON_NAMES = {
@@ -502,6 +500,7 @@ int main (int argc, char *argv[])
     uint8_t damage_type_table[18];
     std::map<std::string, std::shared_ptr<MoveInfo>> moves;
     std::map<std::string, std::string> rom_names;
+    std::map<std::string, int> item_prices;
     uint32_t rom_checksum;
 
     std::map<int, std::string> trainer_names;
@@ -523,6 +522,16 @@ int main (int argc, char *argv[])
         if (iter.key().substr(0, 5) == "MOVE_")
         {
             move_names[iter.value()] = iter.key();
+        }
+    }
+
+    std::map<int, std::string> item_names;
+
+    for (auto iter = constants_json.begin(); iter != constants_json.end(); iter++)
+    {
+        if (iter.key().substr(0, 5) == "ITEM_")
+        {
+            item_names[iter.value()] = iter.key();
         }
     }
 
@@ -1741,6 +1750,21 @@ int main (int argc, char *argv[])
 
         }
 
+        // Read item prices
+        if (i == 0) // Only on first pass
+        {
+            for (size_t j = 0; j < constants_json["ITEMS_COUNT"]; j++)
+            {
+                uint16_t item_id, item_price;
+                uint32_t address = symbol_map["gItems"] - ROM_START + (j * 44);
+                rom.seekg(address + 14, rom.beg);
+                rom.read((char*)&(item_id), 2);
+                rom.seekg(address + 16, rom.beg);
+                rom.read((char*)&(item_price), 2);
+                item_prices[item_names[item_id]] = item_price;
+            }
+        }
+
         // Read ROM name
         char rom_name[32];
         rom.seekg(symbol_map["sGFRomHeader"] - ROM_START + 8, rom.beg);
@@ -1900,6 +1924,7 @@ int main (int argc, char *argv[])
         { "tmhm_moves", tmhm_moves },
         { "damage_type_table", damage_type_table },
         { "moves", moves_json },
+        { "item_prices", item_prices },
         { "constants", constants_json },
     };
 

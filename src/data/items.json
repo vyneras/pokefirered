@@ -19,7 +19,7 @@
     {
       "english": "MASTER BALL",
       "itemId": "ITEM_MASTER_BALL",
-      "price": 0,
+      "price": 5000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "The best BALL with the ultimate\\nperformance. It will catch any wild\\nPOKéMON without fail.",
@@ -83,7 +83,7 @@
     {
       "english": "SAFARI BALL",
       "itemId": "ITEM_SAFARI_BALL",
-      "price": 0,
+      "price": 600,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A special BALL that is used only in\\nthe SAFARI ZONE. It is finished in\\na camouflage pattern.",
@@ -1507,7 +1507,7 @@
     {
       "english": "MOON STONE",
       "itemId": "ITEM_MOON_STONE",
-      "price": 0,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A peculiar stone that makes certain\\nspecies of POKéMON evolve.\\nIt is as black as the night sky.",
@@ -1587,7 +1587,7 @@
     {
       "english": "LINK CABLE",
       "itemId": "ITEM_LINK_CABLE",
-      "price": 0,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "An intriguing cable used for\\nlinking unknown devices. It makes\\ncertain species of POKéMON evolve.",
@@ -1779,7 +1779,7 @@
     {
       "english": "HEART SCALE",
       "itemId": "ITEM_HEART_SCALE",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A pretty, heart-shaped scale that\\nis extremely rare. It glows faintly\\nin the colors of a rainbow.",
@@ -1795,7 +1795,7 @@
     {
       "english": "AP ITEM",
       "itemId": "ITEM_ARCHIPELAGO_PROGRESSION",
-      "price": 0,
+      "price": 2500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "An item from another world.",
@@ -1811,7 +1811,7 @@
     {
       "english": "10 COINS",
       "itemId": "ITEM_COINS_10",
-      "price": 0,
+      "price": 200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Coins that can be used at the\\nCELADON GAME CORNER.",
@@ -1827,7 +1827,7 @@
     {
       "english": "20 COINS",
       "itemId": "ITEM_COINS_20",
-      "price": 0,
+      "price": 400,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Coins that can be used at the\\nCELADON GAME CORNER.",
@@ -1843,7 +1843,7 @@
     {
       "english": "40 COINS",
       "itemId": "ITEM_COINS_40",
-      "price": 0,
+      "price": 800,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Coins that can be used at the\\nCELADON GAME CORNER.",
@@ -1859,7 +1859,7 @@
     {
       "english": "100 COINS",
       "itemId": "ITEM_COINS_100",
-      "price": 0,
+      "price": 2000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Coins that can be used at the\\nCELADON GAME CORNER.",
@@ -2867,7 +2867,7 @@
     {
       "english": "BRIGHT POWDER",
       "itemId": "ITEM_BRIGHT_POWDER",
-      "price": 10,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_EVASION_UP",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nIt casts a tricky glare that lowers\\nthe opponent's accuracy.",
@@ -2883,7 +2883,7 @@
     {
       "english": "WHITE HERB",
       "itemId": "ITEM_WHITE_HERB",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_RESTORE_STATS",
       "holdEffectParam": 0,
       "description_english": "An item to be held by a POKéMON.\\nIt restores any lowered stat in\\nbattle. It can be used only once.",
@@ -2931,7 +2931,7 @@
     {
       "english": "QUICK CLAW",
       "itemId": "ITEM_QUICK_CLAW",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_QUICK_CLAW",
       "holdEffectParam": 20,
       "description_english": "An item to be held by a POKéMON.\\nA light and sharp claw. The holder\\nmay be able to strike first.",
@@ -2947,7 +2947,7 @@
     {
       "english": "SOOTHE BELL",
       "itemId": "ITEM_SOOTHE_BELL",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_FRIENDSHIP_UP",
       "holdEffectParam": 0,
       "description_english": "An item to be held by a POKéMON.\\nA bell with a comforting chime that\\nmakes the holder calm and friendly.",
@@ -2963,7 +2963,7 @@
     {
       "english": "MENTAL HERB",
       "itemId": "ITEM_MENTAL_HERB",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_CURE_ATTRACT",
       "holdEffectParam": 0,
       "description_english": "An item to be held by a POKéMON.\\nIt snaps the holder out of\\ninfatuation. It can be used once.",
@@ -2979,7 +2979,7 @@
     {
       "english": "CHOICE BAND",
       "itemId": "ITEM_CHOICE_BAND",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_CHOICE_BAND",
       "holdEffectParam": 0,
       "description_english": "An item to be held by a POKéMON.\\nIt powers up one move, which\\nbecomes the only usable one.",
@@ -2995,7 +2995,7 @@
     {
       "english": "KING'S ROCK",
       "itemId": "ITEM_KINGS_ROCK",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_FLINCH",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nIt may cause the foe to flinch\\nupon taking damage.",
@@ -3011,7 +3011,7 @@
     {
       "english": "SILVER POWDER",
       "itemId": "ITEM_SILVER_POWDER",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_BUG_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA shiny silver powder that boosts\\nthe power of BUG-type moves.",
@@ -3027,7 +3027,7 @@
     {
       "english": "AMULET COIN",
       "itemId": "ITEM_AMULET_COIN",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_DOUBLE_PRIZE",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nIt doubles the battle money if the\\nholding POKéMON takes part.",
@@ -3043,7 +3043,7 @@
     {
       "english": "CLEANSE TAG",
       "itemId": "ITEM_CLEANSE_TAG",
-      "price": 200,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_REPEL",
       "holdEffectParam": 0,
       "description_english": "An item to be held by a POKéMON.\\nIt repels wild POKéMON if the\\nholder is first in the party.",
@@ -3059,7 +3059,7 @@
     {
       "english": "SOUL DEW",
       "itemId": "ITEM_SOUL_DEW",
-      "price": 200,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_SOUL_DEW",
       "holdEffectParam": 0,
       "description_english": "An orb to be held by a LATIOS or\\nLATIAS. It raises the SP. ATK\\nand SP. DEF stats.",
@@ -3075,7 +3075,7 @@
     {
       "english": "DEEPSEA TOOTH",
       "itemId": "ITEM_DEEP_SEA_TOOTH",
-      "price": 200,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_DEEP_SEA_TOOTH",
       "holdEffectParam": 0,
       "description_english": "An item to be held by a POKéMON.\\nA fang that gleams a sharp silver.\\nIt raises the SP. ATK stat.",
@@ -3091,7 +3091,7 @@
     {
       "english": "DEEPSEA SCALE",
       "itemId": "ITEM_DEEP_SEA_SCALE",
-      "price": 200,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_DEEP_SEA_SCALE",
       "holdEffectParam": 0,
       "description_english": "An item to be held by a POKéMON.\\nA scale that shines a faint pink.\\nIt raises the SP. DEF stat.",
@@ -3107,7 +3107,7 @@
     {
       "english": "SMOKE BALL",
       "itemId": "ITEM_SMOKE_BALL",
-      "price": 200,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_CAN_ALWAYS_RUN",
       "holdEffectParam": 0,
       "description_english": "An item to be held by a POKéMON.\\nThe holding POKéMON can flee from\\nany wild POKéMON for sure.",
@@ -3123,7 +3123,7 @@
     {
       "english": "EVERSTONE",
       "itemId": "ITEM_EVERSTONE",
-      "price": 200,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_PREVENT_EVOLVE",
       "holdEffectParam": 0,
       "description_english": "An item to be held by a POKéMON.\\nThe holding POKéMON is prevented\\nfrom evolving.",
@@ -3139,7 +3139,7 @@
     {
       "english": "FOCUS BAND",
       "itemId": "ITEM_FOCUS_BAND",
-      "price": 200,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_FOCUS_BAND",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nThe holding POKéMON may endure an\\nattack, leaving just 1 HP.",
@@ -3155,7 +3155,7 @@
     {
       "english": "LUCKY EGG",
       "itemId": "ITEM_LUCKY_EGG",
-      "price": 200,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_LUCKY_EGG",
       "holdEffectParam": 0,
       "description_english": "An item to be held by a POKéMON.\\nAn egg filled with happiness that\\nearns extra EXP. points in battle.",
@@ -3171,7 +3171,7 @@
     {
       "english": "SCOPE LENS",
       "itemId": "ITEM_SCOPE_LENS",
-      "price": 200,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_SCOPE_LENS",
       "holdEffectParam": 0,
       "description_english": "An item to be held by a POKéMON.\\nA lens that boosts the critical-hit\\nratio of the holding POKéMON.",
@@ -3187,7 +3187,7 @@
     {
       "english": "METAL COAT",
       "itemId": "ITEM_METAL_COAT",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_STEEL_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA special metallic film that boosts\\nthe power of STEEL-type moves.",
@@ -3203,7 +3203,7 @@
     {
       "english": "LEFTOVERS",
       "itemId": "ITEM_LEFTOVERS",
-      "price": 200,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_LEFTOVERS",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nThe holding POKéMON gradually\\nregains HP during battle.",
@@ -3235,7 +3235,7 @@
     {
       "english": "LIGHT BALL",
       "itemId": "ITEM_LIGHT_BALL",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_LIGHT_BALL",
       "holdEffectParam": 0,
       "description_english": "An orb to be held by a PIKACHU\\nthat raises the SP. ATK stat.\\nTouching it may cause a shock.",
@@ -3251,7 +3251,7 @@
     {
       "english": "SOFT SAND",
       "itemId": "ITEM_SOFT_SAND",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_GROUND_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA loose, silky sand that boosts the\\npower of GROUND-type moves.",
@@ -3267,7 +3267,7 @@
     {
       "english": "HARD STONE",
       "itemId": "ITEM_HARD_STONE",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_ROCK_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nAn unbreakable stone that boosts\\nthe power of ROCK-type moves.",
@@ -3283,7 +3283,7 @@
     {
       "english": "MIRACLE SEED",
       "itemId": "ITEM_MIRACLE_SEED",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_GRASS_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA seed imbued with life that boosts\\nthe power of GRASS-type moves.",
@@ -3299,7 +3299,7 @@
     {
       "english": "BLACK GLASSES",
       "itemId": "ITEM_BLACK_GLASSES",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_DARK_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA shady-looking pair of glasses\\nthat boosts DARK-type moves.",
@@ -3315,7 +3315,7 @@
     {
       "english": "BLACK BELT",
       "itemId": "ITEM_BLACK_BELT",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_FIGHTING_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA belt that boosts determination\\nand FIGHTING-type moves.",
@@ -3331,7 +3331,7 @@
     {
       "english": "MAGNET",
       "itemId": "ITEM_MAGNET",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_ELECTRIC_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA powerful magnet that boosts the\\npower of ELECTRIC-type moves.",
@@ -3347,7 +3347,7 @@
     {
       "english": "MYSTIC WATER",
       "itemId": "ITEM_MYSTIC_WATER",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_WATER_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA teardrop-shaped gem that boosts\\nthe power of WATER-type moves.",
@@ -3363,7 +3363,7 @@
     {
       "english": "SHARP BEAK",
       "itemId": "ITEM_SHARP_BEAK",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_FLYING_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA long, sharp beak that boosts the\\npower of FLYING-type moves.",
@@ -3379,7 +3379,7 @@
     {
       "english": "POISON BARB",
       "itemId": "ITEM_POISON_BARB",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_POISON_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA small, poisonous barb that boosts\\nthe power of POISON-type moves.",
@@ -3395,7 +3395,7 @@
     {
       "english": "NEVERMELT ICE",
       "itemId": "ITEM_NEVER_MELT_ICE",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_ICE_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA piece of ice that repels heat\\nand boosts ICE-type moves.",
@@ -3411,7 +3411,7 @@
     {
       "english": "SPELL TAG",
       "itemId": "ITEM_SPELL_TAG",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_GHOST_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA sinister, eerie tag that boosts\\nGHOST-type moves.",
@@ -3427,7 +3427,7 @@
     {
       "english": "TWISTED SPOON",
       "itemId": "ITEM_TWISTED_SPOON",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_PSYCHIC_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA spoon imbued with telekinetic\\npower boosts PSYCHIC-type moves.",
@@ -3443,7 +3443,7 @@
     {
       "english": "CHARCOAL",
       "itemId": "ITEM_CHARCOAL",
-      "price": 9800,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_FIRE_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA combustible fuel that boosts the\\npower of FIRE-type moves.",
@@ -3459,7 +3459,7 @@
     {
       "english": "DRAGON FANG",
       "itemId": "ITEM_DRAGON_FANG",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_DRAGON_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA hard and sharp fang that boosts\\nthe power of DRAGON-type moves.",
@@ -3475,7 +3475,7 @@
     {
       "english": "SILK SCARF",
       "itemId": "ITEM_SILK_SCARF",
-      "price": 100,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_NORMAL_POWER",
       "holdEffectParam": 10,
       "description_english": "An item to be held by a POKéMON.\\nA sumptuous scarf that boosts the\\npower of NORMAL-type moves.",
@@ -3507,7 +3507,7 @@
     {
       "english": "SHELL BELL",
       "itemId": "ITEM_SHELL_BELL",
-      "price": 200,
+      "price": 2100,
       "holdEffect": "HOLD_EFFECT_SHELL_BELL",
       "holdEffectParam": 8,
       "description_english": "An item to be held by a POKéMON.\\nThe holding POKéMON regains some\\nHP upon striking the foe.",
@@ -3555,7 +3555,7 @@
     {
       "english": "LUCKY PUNCH",
       "itemId": "ITEM_LUCKY_PUNCH",
-      "price": 10,
+      "price": 500,
       "holdEffect": "HOLD_EFFECT_LUCKY_PUNCH",
       "holdEffectParam": 0,
       "description_english": "A glove to be held by a CHANSEY.\\nIt raises CHANSEY's critical-hit\\nratio.",
@@ -3571,7 +3571,7 @@
     {
       "english": "METAL POWDER",
       "itemId": "ITEM_METAL_POWDER",
-      "price": 10,
+      "price": 500,
       "holdEffect": "HOLD_EFFECT_METAL_POWDER",
       "holdEffectParam": 0,
       "description_english": "A fine, hard powder to be held by\\na DITTO.\\nIt raises DITTO's DEFENSE stat.",
@@ -3603,7 +3603,7 @@
     {
       "english": "STICK",
       "itemId": "ITEM_STICK",
-      "price": 200,
+      "price": 500,
       "holdEffect": "HOLD_EFFECT_STICK",
       "holdEffectParam": 0,
       "description_english": "A stick of leek to be held by a\\nFARFETCH'D. It raises FARFETCH'D's\\ncritical-hit ratio.",
@@ -3715,7 +3715,7 @@
     {
       "english": "COIN CASE",
       "itemId": "ITEM_COIN_CASE",
-      "price": 0,
+      "price": 1200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A case for holding COINS obtained\\nat the GAME CORNER.\\nIt holds up to 9,999 COINS.",
@@ -3731,7 +3731,7 @@
     {
       "english": "ITEMFINDER",
       "itemId": "ITEM_ITEMFINDER",
-      "price": 0,
+      "price": 1500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A device used for finding items.\\nIf there is a hidden item nearby\\nwhen it is used, it emits a signal.",
@@ -3747,7 +3747,7 @@
     {
       "english": "OLD ROD",
       "itemId": "ITEM_OLD_ROD",
-      "price": 0,
+      "price": 500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "An old and beat-up fishing rod.\\nUse it by any body of water to \\nfish for wild POKéMON.",
@@ -3763,7 +3763,7 @@
     {
       "english": "GOOD ROD",
       "itemId": "ITEM_GOOD_ROD",
-      "price": 0,
+      "price": 1250,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A new, good-quality fishing rod.\\nUse it by any body of water to \\nfish for wild POKéMON.",
@@ -3779,7 +3779,7 @@
     {
       "english": "SUPER ROD",
       "itemId": "ITEM_SUPER_ROD",
-      "price": 0,
+      "price": 2000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "An awesome, high-tech fishing rod.\\nUse it by any body of water to fish\\nfor wild POKéMON.",
@@ -3795,7 +3795,7 @@
     {
       "english": "S.S. TICKET",
       "itemId": "ITEM_SS_TICKET",
-      "price": 0,
+      "price": 1800,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "The ticket required for sailing on\\nthe ferry S.S. ANNE.\\nIt has a drawing of a ship on it.",
@@ -3827,7 +3827,7 @@
     {
       "english": "RUNNING SHOES",
       "itemId": "ITEM_RUNNING_SHOES",
-      "price": 0,
+      "price": 500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Shoes created by the DEVON\\nCORPORATION. They use compressed\\nair to propel the wearer.",
@@ -3939,7 +3939,7 @@
     {
       "english": "LETTER",
       "itemId": "ITEM_LETTER",
-      "price": 0,
+      "price": 2400,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A letter that will grant you entry\\nto the POKéMON MANSION.",
@@ -4003,7 +4003,7 @@
     {
       "english": "SCANNER",
       "itemId": "ITEM_SCANNER",
-      "price": 0,
+      "price": 750,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A device used to search for\\nlife-forms in water.\\nIt looks too difficult to use.",
@@ -4035,7 +4035,7 @@
     {
       "english": "METEORITE",
       "itemId": "ITEM_METEORITE",
-      "price": 0,
+      "price": 1000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A meteorite that fell from space\\nonto MT. MOON long ago.\\nIt is very lumpy and hard.",
@@ -5029,7 +5029,7 @@
     {
       "english": "HM01",
       "itemId": "ITEM_HM01",
-      "price": 0,
+      "price": 3500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Attacks the foe with sharp blades\\nor claws. It can also cut down thin\\ntrees and grass outside of battle.",
@@ -5046,7 +5046,7 @@
     {
       "english": "HM02",
       "itemId": "ITEM_HM02",
-      "price": 0,
+      "price": 1500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "The user flies up on the first turn,\\nthen attacks next turn. It can be\\nused to fly to any known town.",
@@ -5063,7 +5063,7 @@
     {
       "english": "HM03",
       "itemId": "ITEM_HM03",
-      "price": 0,
+      "price": 4000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Creates a huge wave, then crashes\\nit down on the foe. It can be used\\nfor traveling on water.",
@@ -5080,7 +5080,7 @@
     {
       "english": "HM04",
       "itemId": "ITEM_HM04",
-      "price": 0,
+      "price": 3000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "The user builds enormous power,\\nthen slams the foe. It can be used\\nfor moving large, round boulders.",
@@ -5097,7 +5097,7 @@
     {
       "english": "HM05",
       "itemId": "ITEM_HM05",
-      "price": 0,
+      "price": 2000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Looses a powerful blast of light\\nthat reduces the foe's accuracy.\\nIt also lights up dark caves.",
@@ -5114,7 +5114,7 @@
     {
       "english": "HM06",
       "itemId": "ITEM_HM06",
-      "price": 0,
+      "price": 2000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Hits the foe with a rock-crushingly\\ntough attack. It can smash cracked\\nboulders.",
@@ -5131,7 +5131,7 @@
     {
       "english": "HM07",
       "itemId": "ITEM_HM07",
-      "price": 0,
+      "price": 2000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A powerful charge attack. It can\\nbe used for climbing a torrential\\nwaterfall.",
@@ -5148,7 +5148,7 @@
     {
       "english": "HM08",
       "itemId": "ITEM_HM08",
-      "price": 0,
+      "price": 2000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A 2-turn attack in which the user\\ndives underwater on the first turn,\\nthen strikes in the next turn.",
@@ -5485,7 +5485,7 @@
     {
       "english": "OAK'S PARCEL",
       "itemId": "ITEM_OAKS_PARCEL",
-      "price": 0,
+      "price": 800,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A parcel to be delivered to PROF.\\nOAK from VIRIDIAN CITY's POKéMON\\nMART.",
@@ -5501,7 +5501,7 @@
     {
       "english": "POK\u00e9 FLUTE",
       "itemId": "ITEM_POKE_FLUTE",
-      "price": 0,
+      "price": 1000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A flute that is said to instantly\\nawaken any POKéMON. It has a\\nlovely tone.",
@@ -5517,7 +5517,7 @@
     {
       "english": "SECRET KEY",
       "itemId": "ITEM_SECRET_KEY",
-      "price": 0,
+      "price": 500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "The key to CINNABAR ISLAND GYM's\\nfront door. It is colored red and\\ndecorated.",
@@ -5533,7 +5533,7 @@
     {
       "english": "BIKE VOUCHER",
       "itemId": "ITEM_BIKE_VOUCHER",
-      "price": 0,
+      "price": 400,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Take this voucher to the BIKE SHOP\\nin CERULEAN CITY and exchange it\\nfor a bicycle.",
@@ -5549,7 +5549,7 @@
     {
       "english": "GOLD TEETH",
       "itemId": "ITEM_GOLD_TEETH",
-      "price": 0,
+      "price": 400,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A set of false teeth lost by the\\nSAFARI ZONE'S WARDEN. It makes his\\nsmile sparkle.",
@@ -5565,7 +5565,7 @@
     {
       "english": "OLD AMBER",
       "itemId": "ITEM_OLD_AMBER",
-      "price": 0,
+      "price": 600,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A piece of amber that contains\\nthe genes of an ancient POKéMON.\\nIt is clear with a reddish tint.",
@@ -5581,7 +5581,7 @@
     {
       "english": "CARD KEY",
       "itemId": "ITEM_CARD_KEY",
-      "price": 0,
+      "price": 2000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A card-type key that unlocks doors\\nin SILPH CO.'s HEAD OFFICE in\\nSAFFRON CITY.",
@@ -5597,7 +5597,7 @@
     {
       "english": "LIFT KEY",
       "itemId": "ITEM_LIFT_KEY",
-      "price": 0,
+      "price": 600,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A key that operates the elevator\\nin TEAM ROCKET's HIDEOUT.\\nIt bears the TEAM ROCKET logo.",
@@ -5613,7 +5613,7 @@
     {
       "english": "HELIX FOSSIL",
       "itemId": "ITEM_HELIX_FOSSIL",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A fossil of an ancient, seafloor-\\ndwelling POKéMON. It appears to be\\npart of a seashell.",
@@ -5629,7 +5629,7 @@
     {
       "english": "DOME FOSSIL",
       "itemId": "ITEM_DOME_FOSSIL",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A fossil of an ancient, seafloor-\\ndwelling POKéMON. It appears to be\\npart of a shell.",
@@ -5645,7 +5645,7 @@
     {
       "english": "SILPH SCOPE",
       "itemId": "ITEM_SILPH_SCOPE",
-      "price": 0,
+      "price": 2500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A scope that makes unseeable\\nPOKéMON visible.\\nIt is made by SILPH CO.",
@@ -5661,7 +5661,7 @@
     {
       "english": "BICYCLE",
       "itemId": "ITEM_BICYCLE",
-      "price": 0,
+      "price": 1500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A folding bicycle that allows\\nfaster movement than the RUNNING\\nSHOES.",
@@ -5677,7 +5677,7 @@
     {
       "english": "TOWN MAP",
       "itemId": "ITEM_TOWN_MAP",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A very convenient map that can be\\nviewed anytime. It even shows your \\npresent location.",
@@ -5693,7 +5693,7 @@
     {
       "english": "VS SEEKER",
       "itemId": "ITEM_VS_SEEKER",
-      "price": 0,
+      "price": 900,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A device that indicates TRAINERS\\nwho want to battle. The battery\\ncharges while traveling.",
@@ -5709,7 +5709,7 @@
     {
       "english": "FAME CHECKER",
       "itemId": "ITEM_FAME_CHECKER",
-      "price": 0,
+      "price": 800,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A device that enables you to\\nrecall what you've heard and seen\\nabout famous people.",
@@ -5725,7 +5725,7 @@
     {
       "english": "TM CASE",
       "itemId": "ITEM_TM_CASE",
-      "price": 0,
+      "price": 3000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A case that holds TMs and HMs.\\nIt is attached to the BAG's\\ncompartment for important items.",
@@ -5741,7 +5741,7 @@
     {
       "english": "BERRY POUCH",
       "itemId": "ITEM_BERRY_POUCH",
-      "price": 0,
+      "price": 1500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A pouch for carrying BERRIES.\\nIt is attached to the BAG's\\ncompartment for important items.",
@@ -5757,7 +5757,7 @@
     {
       "english": "TEACHY TV",
       "itemId": "ITEM_TEACHY_TV",
-      "price": 0,
+      "price": 500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A television set that is tuned to\\na program with useful tips for\\nnovice TRAINERS.",
@@ -5773,7 +5773,7 @@
     {
       "english": "TRI-PASS",
       "itemId": "ITEM_TRI_PASS",
-      "price": 0,
+      "price": 3600,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A pass for ferries between ONE,\\nTWO, and THREE ISLAND.\\nIt has a drawing of three islands.",
@@ -5789,7 +5789,7 @@
     {
       "english": "RAINBOW PASS",
       "itemId": "ITEM_RAINBOW_PASS",
-      "price": 0,
+      "price": 4800,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A pass for ferries between\\nVERMILION and the SEVII ISLANDS.\\nIt features a drawing of a rainbow.",
@@ -5805,7 +5805,7 @@
     {
       "english": "TEA",
       "itemId": "ITEM_TEA",
-      "price": 0,
+      "price": 400,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "An aromatic tea prepared by an old\\nlady. It will slake even the worst\\nthirst.",
@@ -5821,7 +5821,7 @@
     {
       "english": "MYSTIC TICKET",
       "itemId": "ITEM_MYSTIC_TICKET",
-      "price": 0,
+      "price": 4000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A ticket required to board the ship\\nto NAVEL ROCK.\\nIt glows with a mystic light.",
@@ -5837,7 +5837,7 @@
     {
       "english": "AURORA TICKET",
       "itemId": "ITEM_AURORA_TICKET",
-      "price": 0,
+      "price": 4000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A ticket required to board the ship\\nto BIRTH ISLAND.\\nIt glows beautifully.",
@@ -5853,7 +5853,7 @@
     {
       "english": "POWDER JAR",
       "itemId": "ITEM_POWDER_JAR",
-      "price": 0,
+      "price": 600,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A jar for storing BERRY POWDER\\nmade using a BERRY CRUSHER.",
@@ -5869,7 +5869,7 @@
     {
       "english": "RUBY",
       "itemId": "ITEM_RUBY",
-      "price": 0,
+      "price": 3000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "An exquisitely beautiful gem that\\nhas a red glow.\\nIt symbolizes passion.",
@@ -5885,7 +5885,7 @@
     {
       "english": "SAPPHIRE",
       "itemId": "ITEM_SAPPHIRE",
-      "price": 0,
+      "price": 3000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "An exquisitely beautiful gem that\\nhas a blue glow.\\nIt symbolizes honesty.",
@@ -5901,7 +5901,7 @@
     {
       "english": "BOULDER BADGE",
       "itemId": "ITEM_BADGE_1",
-      "price": 0,
+      "price": 5000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A badge awarded for beating the\\nPEWTER GYM. It is a simple gray\\noctagon.",
@@ -5917,7 +5917,7 @@
     {
       "english": "CASCADE BADGE",
       "itemId": "ITEM_BADGE_2",
-      "price": 0,
+      "price": 5000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A badge awarded for beating the\\nCERULEAN GYM. It is in the shape of\\na light blue raindrop.",
@@ -5933,7 +5933,7 @@
     {
       "english": "THUNDER BADGE",
       "itemId": "ITEM_BADGE_3",
-      "price": 0,
+      "price": 5000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A badge awarded for beating the\\nVERMILION GYM. It is in the shape\\nof an eight-pointed gold star.",
@@ -5949,7 +5949,7 @@
     {
       "english": "RAINBOW BADGE",
       "itemId": "ITEM_BADGE_4",
-      "price": 0,
+      "price": 5000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A badge awarded for beating the\\nCELADON GYM. It is shaped like a\\nflower with rainbow colored petals.",
@@ -5965,7 +5965,7 @@
     {
       "english": "SOUL BADGE",
       "itemId": "ITEM_BADGE_5",
-      "price": 0,
+      "price": 5000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A badge awarded for beating the\\nFUCHSIA GYM. It is in the shape of\\na fuchsia heart.",
@@ -5981,7 +5981,7 @@
     {
       "english": "MARSH BADGE",
       "itemId": "ITEM_BADGE_6",
-      "price": 0,
+      "price": 5000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A badge awarded for beating the\\nSAFFRON GYM. It is two concentric\\ngolden circles.",
@@ -5997,7 +5997,7 @@
     {
       "english": "VOLCANO BADGE",
       "itemId": "ITEM_BADGE_7",
-      "price": 0,
+      "price": 5000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A badge awarded for beating the\\nCINNABAR GYM. It is red and shaped\\nlike a flame.",
@@ -6013,7 +6013,7 @@
     {
       "english": "EARTH BADGE",
       "itemId": "ITEM_BADGE_8",
-      "price": 0,
+      "price": 5000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A badge awarded for beating the\\nVIRIDIAN GYM. It is shaped like a\\nplant.",
@@ -6029,7 +6029,7 @@
     {
       "english": "FLY UNLOCK 1",
       "itemId": "ITEM_FLY_PALLET",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nPALLET TOWN.",
@@ -6045,7 +6045,7 @@
     {
       "english": "FLY UNLOCK 2",
       "itemId": "ITEM_FLY_VIRIDIAN",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nVIRIDIAN CITY.",
@@ -6061,7 +6061,7 @@
     {
       "english": "FLY UNLOCK 3",
       "itemId": "ITEM_FLY_PEWTER",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nPEWTER CITY.",
@@ -6077,7 +6077,7 @@
     {
       "english": "FLY UNLOCK 4",
       "itemId": "ITEM_FLY_CERULEAN",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nCERULEAN CITY.",
@@ -6093,7 +6093,7 @@
     {
       "english": "FLY UNLOCK 5",
       "itemId": "ITEM_FLY_LAVENDER",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nLAVENDER TOWN.",
@@ -6109,7 +6109,7 @@
     {
       "english": "FLY UNLOCK 6",
       "itemId": "ITEM_FLY_VERMILION",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nVERMILION CITY.",
@@ -6125,7 +6125,7 @@
     {
       "english": "FLY UNLOCK 7",
       "itemId": "ITEM_FLY_CELADON",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nCELADON CITY.",
@@ -6141,7 +6141,7 @@
     {
       "english": "FLY UNLOCK 8",
       "itemId": "ITEM_FLY_FUCHSIA",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nFUCHSIA CITY.",
@@ -6157,7 +6157,7 @@
     {
       "english": "FLY UNLOCK 9",
       "itemId": "ITEM_FLY_CINNABAR",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nCINNABAR ISLAND.",
@@ -6173,7 +6173,7 @@
     {
       "english": "FLY UNLOCK 10",
       "itemId": "ITEM_FLY_INDIGO",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nINDIGO PLATEAU.",
@@ -6189,7 +6189,7 @@
     {
       "english": "FLY UNLOCK 11",
       "itemId": "ITEM_FLY_SAFFRON",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nSAFFRON CITY.",
@@ -6205,7 +6205,7 @@
     {
       "english": "FLY UNLOCK 12",
       "itemId": "ITEM_FLY_ROUTE4",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nROUTE 4.",
@@ -6221,7 +6221,7 @@
     {
       "english": "FLY UNLOCK 13",
       "itemId": "ITEM_FLY_ROUTE10",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nROUTE 10.",
@@ -6237,7 +6237,7 @@
     {
       "english": "FLY UNLOCK 14",
       "itemId": "ITEM_FLY_ONE_ISLAND",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nONE ISLAND.",
@@ -6253,7 +6253,7 @@
     {
       "english": "FLY UNLOCK 15",
       "itemId": "ITEM_FLY_TWO_ISLAND",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nTWO ISLAND.",
@@ -6269,7 +6269,7 @@
     {
       "english": "FLY UNLOCK 16",
       "itemId": "ITEM_FLY_THREE_ISLAND",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nTHREE ISLAND.",
@@ -6285,7 +6285,7 @@
     {
       "english": "FLY UNLOCK 17",
       "itemId": "ITEM_FLY_FOUR_ISLAND",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nFOUR ISLAND.",
@@ -6301,7 +6301,7 @@
     {
       "english": "FLY UNLOCK 18",
       "itemId": "ITEM_FLY_FIVE_ISLAND",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nFIVE ISLAND.",
@@ -6317,7 +6317,7 @@
     {
       "english": "FLY UNLOCK 19",
       "itemId": "ITEM_FLY_SEVEN_ISLAND",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nSEVEN ISLAND.",
@@ -6333,7 +6333,7 @@
     {
       "english": "FLY UNLOCK 20",
       "itemId": "ITEM_FLY_SIX_ISLAND",
-      "price": 0,
+      "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Unlocks the ability to fly to\\nSIX ISLAND.",
@@ -6349,7 +6349,7 @@
     {
       "english": "HIDEOUT KEY",
       "itemId": "ITEM_HIDEOUT_KEY",
-      "price": 0,
+      "price": 2600,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A key that opens the entrance to\\nTEAM ROCKET's HIDEOUT.\\nIt bears the TEAM ROCKET logo.",
@@ -6365,7 +6365,7 @@
     {
       "english": "SAFARI PASS",
       "itemId": "ITEM_SAFARI_PASS",
-      "price": 0,
+      "price": 2200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A pass that lets you play the\\nSAFARI ZONE game.",
@@ -6381,7 +6381,7 @@
     {
       "english": "MACHINE PART",
       "itemId": "ITEM_MACHINE_PART",
-      "price": 0,
+      "price": 800,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "An important machine part for the\\nPOWER PLANT that was stolen.",
@@ -6397,7 +6397,7 @@
     {
       "english": "CARD KEY 2F",
       "itemId": "ITEM_CARD_KEY_2F",
-      "price": 0,
+      "price": 200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A card-type key that unlocks doors\\nin SILPH CO.'s HEAD OFFICE's 2nd\\nfloor in SAFFRON CITY.",
@@ -6413,7 +6413,7 @@
     {
       "english": "CARD KEY 3F",
       "itemId": "ITEM_CARD_KEY_3F",
-      "price": 0,
+      "price": 200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A card-type key that unlocks doors\\nin SILPH CO.'s HEAD OFFICE's 3rd\\nfloor in SAFFRON CITY.",
@@ -6429,7 +6429,7 @@
     {
       "english": "CARD KEY 4F",
       "itemId": "ITEM_CARD_KEY_4F",
-      "price": 0,
+      "price": 200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A card-type key that unlocks doors\\nin SILPH CO.'s HEAD OFFICE's 4th\\nfloor in SAFFRON CITY.",
@@ -6445,7 +6445,7 @@
     {
       "english": "CARD KEY 5F",
       "itemId": "ITEM_CARD_KEY_5F",
-      "price": 0,
+      "price": 200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A card-type key that unlocks doors\\nin SILPH CO.'s HEAD OFFICE's 5th\\nfloor in SAFFRON CITY.",
@@ -6461,7 +6461,7 @@
     {
       "english": "CARD KEY 6F",
       "itemId": "ITEM_CARD_KEY_6F",
-      "price": 0,
+      "price": 200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A card-type key that unlocks doors\\nin SILPH CO.'s HEAD OFFICE's 6th\\nfloor in SAFFRON CITY.",
@@ -6477,7 +6477,7 @@
     {
       "english": "CARD KEY 7F",
       "itemId": "ITEM_CARD_KEY_7F",
-      "price": 0,
+      "price": 200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A card-type key that unlocks doors\\nin SILPH CO.'s HEAD OFFICE's 7th\\nfloor in SAFFRON CITY.",
@@ -6493,7 +6493,7 @@
     {
       "english": "CARD KEY 8F",
       "itemId": "ITEM_CARD_KEY_8F",
-      "price": 0,
+      "price": 200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A card-type key that unlocks doors\\nin SILPH CO.'s HEAD OFFICE's 8th\\nfloor in SAFFRON CITY.",
@@ -6509,7 +6509,7 @@
     {
       "english": "CARD KEY 9F",
       "itemId": "ITEM_CARD_KEY_9F",
-      "price": 0,
+      "price": 200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A card-type key that unlocks doors\\nin SILPH CO.'s HEAD OFFICE's 9th\\nfloor in SAFFRON CITY.",
@@ -6525,7 +6525,7 @@
     {
       "english": "CARD KEY 10F",
       "itemId": "ITEM_CARD_KEY_10F",
-      "price": 0,
+      "price": 200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A card-type key that unlocks doors\\nin SILPH CO.'s HEAD OFFICE's 10th\\nfloor in SAFFRON CITY.",
@@ -6541,7 +6541,7 @@
     {
       "english": "CARD KEY 11F",
       "itemId": "ITEM_CARD_KEY_11F",
-      "price": 0,
+      "price": 200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A card-type key that unlocks doors\\nin SILPH CO.'s HEAD OFFICE's 11th\\nfloor in SAFFRON CITY.",
@@ -6557,7 +6557,7 @@
     {
       "english": "ONE PASS",
       "itemId": "ITEM_ONE_PASS",
-      "price": 0,
+      "price": 1200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A pass for the ferry between\\nVERMILION CITY and ONE ISLAND.",
@@ -6573,7 +6573,7 @@
     {
       "english": "TWO PASS",
       "itemId": "ITEM_TWO_PASS",
-      "price": 0,
+      "price": 1200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A pass for the ferry between\\nVERMILION CITY and TWO ISLAND.",
@@ -6589,7 +6589,7 @@
     {
       "english": "THREE PASS",
       "itemId": "ITEM_THREE_PASS",
-      "price": 0,
+      "price": 1200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A pass for the ferry between\\nVERMILION CITY and THREE ISLAND.",
@@ -6605,7 +6605,7 @@
     {
       "english": "FOUR PASS",
       "itemId": "ITEM_FOUR_PASS",
-      "price": 0,
+      "price": 1200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A pass for the ferry between\\nVERMILION CITY and FOUR ISLAND.",
@@ -6621,7 +6621,7 @@
     {
       "english": "FIVE PASS",
       "itemId": "ITEM_FIVE_PASS",
-      "price": 0,
+      "price": 1200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A pass for the ferry between\\nVERMILION CITY and FIVE ISLAND.",
@@ -6637,7 +6637,7 @@
     {
       "english": "SIX PASS",
       "itemId": "ITEM_SIX_PASS",
-      "price": 0,
+      "price": 1200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A pass for the ferry between\\nVERMILION CITY and SIX ISLAND.",
@@ -6653,7 +6653,7 @@
     {
       "english": "SEVEN PASS",
       "itemId": "ITEM_SEVEN_PASS",
-      "price": 0,
+      "price": 1200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A pass for the ferry between\\nVERMILION CITY and SEVEN ISLAND.",
@@ -6669,7 +6669,7 @@
     {
       "english": "GREEN TEA",
       "itemId": "ITEM_GREEN_TEA",
-      "price": 0,
+      "price": 100,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "An aromatic tea with a green hue.\\nIt will slake even the worst\\nthirst.",
@@ -6685,7 +6685,7 @@
     {
       "english": "BLUE TEA",
       "itemId": "ITEM_BLUE_TEA",
-      "price": 0,
+      "price": 100,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "An aromatic tea with a blue hue.\\nIt will slake even the worst\\nthirst.",
@@ -6701,7 +6701,7 @@
     {
       "english": "RED TEA",
       "itemId": "ITEM_RED_TEA",
-      "price": 0,
+      "price": 100,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "An aromatic tea with a red hue.\\nIt will slake even the worst\\nthirst.",
@@ -6717,7 +6717,7 @@
     {
       "english": "PURPLE TEA",
       "itemId": "ITEM_PURPLE_TEA",
-      "price": 0,
+      "price": 100,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "An aromatic tea with a purple hue.\\nIt will slake even the worst\\nthirst.",
@@ -6733,7 +6733,7 @@
     {
       "english": "PEWTER KEY",
       "itemId": "ITEM_PEWTER_KEY",
-      "price": 0,
+      "price": 500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "The key to PEWTER CITY GYM's\\nfront door. It is colored gray and\\ndecorated.",
@@ -6749,7 +6749,7 @@
     {
       "english": "CERULEAN KEY",
       "itemId": "ITEM_CERULEAN_KEY",
-      "price": 0,
+      "price": 500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "The key to CERULEAN CITY GYM's\\nfront door. It is colored blue and\\ndecorated.",
@@ -6765,7 +6765,7 @@
     {
       "english": "VERMILION KEY",
       "itemId": "ITEM_VERMILION_KEY",
-      "price": 0,
+      "price": 500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "The key to VERMILION CITY GYM's\\nfront door. It is colored yellow\\nand decorated.",
@@ -6781,7 +6781,7 @@
     {
       "english": "CELADON KEY",
       "itemId": "ITEM_CELADON_KEY",
-      "price": 0,
+      "price": 500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "The key to CELADON CITY GYM's\\nfront door. It is colored green and\\ndecorated.",
@@ -6797,7 +6797,7 @@
     {
       "english": "FUCHSIA KEY",
       "itemId": "ITEM_FUCHSIA_KEY",
-      "price": 0,
+      "price": 500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "The key to FUCHSIA CITY GYM's\\nfront door. It is colored purple\\nand decorated.",
@@ -6813,7 +6813,7 @@
     {
       "english": "SAFFRON KEY",
       "itemId": "ITEM_SAFFRON_KEY",
-      "price": 0,
+      "price": 500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "The key to SAFFRON CITY GYM's\\nfront door. It is colored pink and\\ndecorated.",
@@ -6829,7 +6829,7 @@
     {
       "english": "CINNABAR KEY",
       "itemId": "ITEM_CINNABAR_KEY",
-      "price": 0,
+      "price": 500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "The key to CINNABAR ISLAND GYM's\\nfront door. It is colored red and\\ndecorated.",
@@ -6845,7 +6845,7 @@
     {
       "english": "VIRIDIAN KEY",
       "itemId": "ITEM_VIRIDIAN_KEY",
-      "price": 0,
+      "price": 500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "The key to VIRIDIAN CITY GYM's\\nfront door. It is colored brown and\\ndecorated.",
@@ -6861,7 +6861,7 @@
     {
       "english": "PROG PASS",
       "itemId": "ITEM_PROG_PASS",
-      "price": 0,
+      "price": 1200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A progressive pass for the ferry\\nbetween VERMILION CITY and the\\nSEVII ISLANDS.",
@@ -6877,7 +6877,7 @@
     {
       "english": "PROG CARD KEY",
       "itemId": "ITEM_PROG_CARD_KEY",
-      "price": 0,
+      "price": 200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A progressive card-type key that\\nunlocks doors in SILPH CO.'s HEAD\\nOFFICE in SAFFRON CITY.",
@@ -6893,7 +6893,7 @@
     {
       "english": "PROG ROD",
       "itemId": "ITEM_PROG_ROD",
-      "price": 0,
+      "price": 1250,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A progressive fishing rod. Use it\\nby any body of water to fish for\\nwild POKéMON.",
@@ -6909,7 +6909,7 @@
     {
       "english": "LEDGE JUMP",
       "itemId": "ITEM_LEDGE_JUMP",
-      "price": 0,
+      "price": 1200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "Grants you the ability to jump\\ndown ledges.",
@@ -6925,7 +6925,7 @@
     {
       "english": "POKéDEX",
       "itemId": "ITEM_POKEDEX",
-      "price": 0,
+      "price": 3000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
       "description_english": "A device that records POKéMON secrets\\nupon meeting or catching them.",

@@ -362,8 +362,8 @@ struct SaveBlock2
     /*0xB00*/ struct PokemonJumpRecords pokeJump;
     /*0xB10*/ struct BerryPickingResults berryPick;
     /*0xB20*/ u16 shopItemFlags[SHOPSANITY_LAST_INDEX];
-    /*0XB50*/ u32 centerShopItemFlags;
-    /*0xB54*/ u8 filler_B54[0x3CC];
+    /*0XB4A*/ u32 centerShopItemFlags;
+    /*0xB4E*/ u8 filler_B4E[0x3D2];
     /*0xF20*/ u32 encryptionKey;
 }; // size: 0xF24
 

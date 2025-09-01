@@ -12,6 +12,7 @@ void CreateDecorationShop2Menu(u8 shopId);
 u8 GetMartFontId(void);
 void RecordItemTransaction(u8 taskId, u16 itemId, u16 quantity, u8 logEventId);
 bool8 GetSetItemBought(u16 index, u8 caseId);
+bool8 IsTwoIslandShopItemAvailable(u16 index);
 
 // buy_menu_helper
 void BuyMenuInitWindows(bool32 isSellingTM);

@@ -5376,9 +5376,13 @@ static void Cmd_hitanimation(void)
 
 static void Cmd_getmoneyreward(void)
 {
-    u32 i = 0;
+    u32 i;
     u32 moneyReward;
+    struct SpeciesInfo species;
+    u16 bstAverage = 0;
     u8 lastMonLevel = 0;
+    u8 bstMultiplier = 0;
+    u8 partySizeMultiplier = 0;
 
     const struct TrainerMonItemCustomMoves *party4; //This needs to be out here
 
@@ -5396,12 +5400,26 @@ static void Cmd_getmoneyreward(void)
                 {
                     const struct TrainerMonNoItemDefaultMoves *party1 = gTrainers[gTrainerBattleOpponent_A].party.NoItemDefaultMoves;
 
+                    for (i = 0; i < gTrainers[gTrainerBattleOpponent_A].partySize; i++)
+                    {
+                        species = gSpeciesInfo[party1[i].species];
+                        bstAverage += species.baseHP + species.baseAttack + species.baseDefense +
+                                      species.baseSpeed + species.baseSpAttack + species.baseSpDefense;
+                    }
+
                     lastMonLevel = party1[gTrainers[gTrainerBattleOpponent_A].partySize - 1].lvl;
                 }
                 break;
             case F_TRAINER_PARTY_CUSTOM_MOVESET:
                 {
                     const struct TrainerMonNoItemCustomMoves *party2 = gTrainers[gTrainerBattleOpponent_A].party.NoItemCustomMoves;
+
+                    for (i = 0; i < gTrainers[gTrainerBattleOpponent_A].partySize; i++)
+                    {
+                        species = gSpeciesInfo[party2[i].species];
+                        bstAverage += species.baseHP + species.baseAttack + species.baseDefense +
+                                      species.baseSpeed + species.baseSpAttack + species.baseSpDefense;
+                    }
 
                     lastMonLevel = party2[gTrainers[gTrainerBattleOpponent_A].partySize - 1].lvl;
                 }
@@ -5410,6 +5428,13 @@ static void Cmd_getmoneyreward(void)
                 {
                     const struct TrainerMonItemDefaultMoves *party3 = gTrainers[gTrainerBattleOpponent_A].party.ItemDefaultMoves;
 
+                    for (i = 0; i < gTrainers[gTrainerBattleOpponent_A].partySize; i++)
+                    {
+                        species = gSpeciesInfo[party3[i].species];
+                        bstAverage += species.baseHP + species.baseAttack + species.baseDefense +
+                                      species.baseSpeed + species.baseSpAttack + species.baseSpDefense;
+                    }
+
                     lastMonLevel = party3[gTrainers[gTrainerBattleOpponent_A].partySize - 1].lvl;
                 }
                 break;
@@ -5417,27 +5442,38 @@ static void Cmd_getmoneyreward(void)
                 {
                     party4 = gTrainers[gTrainerBattleOpponent_A].party.ItemCustomMoves;
 
+                    for (i = 0; i < gTrainers[gTrainerBattleOpponent_A].partySize; i++)
+                    {
+                        species = gSpeciesInfo[party4[i].species];
+                        bstAverage += species.baseHP + species.baseAttack + species.baseDefense +
+                                      species.baseSpeed + species.baseSpAttack + species.baseSpDefense;
+                    }
+
                     lastMonLevel = party4[gTrainers[gTrainerBattleOpponent_A].partySize - 1].lvl;
                 }
                 break;
             }
-            for (; gTrainerMoneyTable[i].classId != 0xFF; i++)
+            for (i = 0; gTrainerMoneyTable[i].classId != 0xFF; i++)
             {
                 if (gTrainerMoneyTable[i].classId == gTrainers[gTrainerBattleOpponent_A].trainerClass)
                     break;
             }
             party4 = gTrainers[gTrainerBattleOpponent_A].party.ItemCustomMoves; // Needed to Match. Has no effect.
-            moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * (gBattleTypeFlags & BATTLE_TYPE_DOUBLE ? 2 : 1) * gTrainerMoneyTable[i].value;
+            bstMultiplier = 100 + 50 * (bstAverage - (180 * gTrainers[gTrainerBattleOpponent_A].partySize)) / (500 * gTrainers[gTrainerBattleOpponent_A].partySize);
+            partySizeMultiplier = 100 + 5 * (gTrainers[gTrainerBattleOpponent_A].partySize - 1);
+            moneyReward = 5 * lastMonLevel * gBattleStruct->moneyMultiplier * (gBattleTypeFlags & BATTLE_TYPE_DOUBLE ? 2 : 1) *
+                          gTrainerMoneyTable[i].value * partySizeMultiplier * bstMultiplier / 10000;
         }
         AddMoney(&gSaveBlock1Ptr->money, moneyReward);
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_GRIND)
     {
-        u8 level = GetMonData(&gEnemyParty[0], MON_DATA_LEVEL);
-        u16 species = GetMonData(&gEnemyParty[0], MON_DATA_SPECIES);
-        u16 bst = gSpeciesInfo[species].baseHP + gSpeciesInfo[species].baseAttack + gSpeciesInfo[species].baseDefense +
-                  gSpeciesInfo[species].baseSpeed + gSpeciesInfo[species].baseSpAttack + gSpeciesInfo[species].baseSpDefense;
-        moneyReward = bst * level * gBattleStruct->moneyMultiplier / 25;
+        lastMonLevel = GetMonData(&gEnemyParty[0], MON_DATA_LEVEL);
+        species = gSpeciesInfo[GetMonData(&gEnemyParty[0], MON_DATA_SPECIES)];
+        bstAverage = species.baseHP + species.baseAttack + species.baseDefense +
+                         species.baseSpeed + species.baseSpAttack + species.baseSpDefense;
+        bstMultiplier = 100 + 100 * (bstAverage - 180) / 500;
+        moneyReward = 12 * lastMonLevel * bstMultiplier * gBattleStruct->moneyMultiplier / 100;
         AddMoney(&gSaveBlock1Ptr->money, moneyReward);
     }
     else
