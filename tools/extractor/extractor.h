@@ -102,6 +102,7 @@ class TrainerInfo {
     public:
         std::string name;
         std::vector<TrainerPokemonInfo> party;
+        uint8_t base_level;
         TrainerPokemonInfoType pokemon_data_type;
         std::map<std::string, uint32_t> address;
         std::map<std::string, uint32_t> party_address;
