@@ -326,8 +326,8 @@ struct SaveBlock2
     /*0x011*/ u8 playTimeSeconds;
     /*0x012*/ u8 playTimeVBlanks;
     /*0x013*/ u8 optionsWindowFrameType; // Specifies one of the 20 decorative borders for text boxes
-    /*0x014*/ u16 optionsTextSpeed:3; // OPTIONS_TEXT_SPEED_[SLOW/MID/FAST/INSTANT]
-              u16 optionsTurboA:1; // whether turbo A is enabled
+    /*0x014*/ u16 optionsTextSpeed:2; // OPTIONS_TEXT_SPEED_[SLOW/MID/FAST/INSTANT]
+              u16 optionsTurboA:2; // OPTIONS_TURBO_[OFF/A/B/AB]
               u16 optionsAutoRun:1; // whether auto run is enabled
               u16 optionsButtonMode:2; // OPTIONS_BUTTON_MODE_[HELP/LR/L_EQUALS_A]
               u16 optionsBattleScene:1; // whether battle animations are enabled

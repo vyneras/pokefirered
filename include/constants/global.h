@@ -119,6 +119,11 @@
 #define OPTIONS_ITEM_MESSAGES_PROGRESSION 1
 #define OPTIONS_ITEM_MESSAGES_NONE 2
 
+#define OPTIONS_TURBO_OFF 0
+#define OPTIONS_TURBO_A 1
+#define OPTIONS_TURBO_B 2
+#define OPTIONS_TURBO_AB 3
+
 #define DIR_NONE        0
 #define DIR_SOUTH       1
 #define DIR_NORTH       2

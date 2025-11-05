@@ -10,8 +10,8 @@
 struct ArchipelagoOptions
 {
     /* 0x00 */ u8 windowFrameType;
-    /* 0x01 */ u16 textSpeedOption:3; // 0 = Slow, 1 = Mid, 2 = Fast, 3 = Instant
-               u16 turboA:1;
+    /* 0x01 */ u16 textSpeedOption:2; // 0 = Slow, 1 = Mid, 2 = Fast, 3 = Instant
+               u16 turboA:2; // 0 = Off, 1 = A, 2 = B, 3 = AB
                u16 autoRun:1;
                u16 buttonMode:2; // 0 = Help, 1 = LR, 2 = L=A
                u16 battleScene:1;

@@ -35,6 +35,7 @@
 #include "field_effect.h"
 #include "fieldmap.h"
 #include "field_door.h"
+#include "text.h"
 #include "constants/event_objects.h"
 #include "constants/maps.h"
 #include "constants/sound.h"
@@ -1316,7 +1317,7 @@ static bool8 WaitForAorBPress(void)
         return TRUE;
     if (JOY_NEW(B_BUTTON))
         return TRUE;
-    if (gSaveBlock2Ptr->optionsTurboA && JOY_HELD_RAW(A_BUTTON))
+    if (TurboButtonHeld())
         return TRUE;
 
     if (ScriptContext_NextCommandEndsScript(sQuestLogScriptContextPtr) == TRUE)

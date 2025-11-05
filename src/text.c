@@ -559,7 +559,7 @@ bool16 TextPrinterWaitWithDownArrow(struct TextPrinter *textPrinter)
     else
     {
         TextPrinterDrawDownArrow(textPrinter);
-        if ((gSaveBlock2Ptr->optionsTurboA && JOY_HELD_RAW(A_BUTTON)) || JOY_NEW(A_BUTTON | B_BUTTON))
+        if (TurboButtonHeld() || JOY_NEW(A_BUTTON | B_BUTTON))
         {
             result = TRUE;
             PlaySE(SE_SELECT);
@@ -577,7 +577,7 @@ bool16 TextPrinterWait(struct TextPrinter *textPrinter)
     }
     else
     {
-        if ((gSaveBlock2Ptr->optionsTurboA && JOY_HELD_RAW(A_BUTTON)) || JOY_NEW(A_BUTTON | B_BUTTON))
+        if (TurboButtonHeld() || JOY_NEW(A_BUTTON | B_BUTTON))
         {
             result = TRUE;
             PlaySE(SE_SELECT);
@@ -1698,4 +1698,15 @@ static void DecompressGlyph_Bold(u16 glyphId)
     DecompressGlyphTile(glyphs + 0x80, (u16 *)(gGlyphInfo.pixels + 0x40));
     gGlyphInfo.width = 8;
     gGlyphInfo.height = 12;
+}
+
+bool8 TurboButtonHeld(void)
+{
+    if((gSaveBlock2Ptr->optionsTurboA == OPTIONS_TURBO_A || gSaveBlock2Ptr->optionsTurboA == OPTIONS_TURBO_AB) &&
+       JOY_HELD_RAW(A_BUTTON))
+        return TRUE;
+    else if((gSaveBlock2Ptr->optionsTurboA == OPTIONS_TURBO_B || gSaveBlock2Ptr->optionsTurboA == OPTIONS_TURBO_AB) &&
+            JOY_HELD_RAW(B_BUTTON))
+        return TRUE;
+    return FALSE;
 }

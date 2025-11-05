@@ -166,7 +166,7 @@ static const struct BgTemplate sOptionMenuBgTemplates[] =
 };
 
 static const u16 sOptionMenuPalette[] = INCBIN_U16("graphics/misc/option_menu.gbapal");
-static const u16 sOptionMenuItemCounts[MENUITEM_COUNT] = {4, 2, 2, 3, 10};
+static const u16 sOptionMenuItemCounts[MENUITEM_COUNT] = {4, 4, 2, 3, 10};
 static const u16 sOptionMenu2ItemCounts[MENUITEM_COUNT2] = {2, 2, 2, 7};
 static const u16 sOptionMenu3ItemCounts[MENUITEM_COUNT3] = {2, 2, 2, 2, 2};
 static const u16 sOptionMenu4ItemCounts[MENUITEM_COUNT4] = {2, 2, 2, 3};
@@ -174,7 +174,7 @@ static const u16 sOptionMenu4ItemCounts[MENUITEM_COUNT4] = {2, 2, 2, 3};
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
     [MENUITEM_TEXTSPEED]   = gText_TextSpeed,
-    [MENUITEM_TURBOA]      = gText_TurboA,
+    [MENUITEM_TURBOA]      = gText_TurboButton,
     [MENUITEM_AUTORUN]     = gText_AutoRun,
     [MENUITEM_BUTTONMODE]  = gText_ButtonMode,
     [MENUITEM_FRAMETYPE]   = gText_Frame
@@ -216,7 +216,9 @@ static const u8 *const sTextSpeedOptions[] =
 static const u8 *const sTurboAOptions[] =
 {
     gText_BattleSceneOff,
-    gText_BattleSceneOn
+    gText_TurboA,
+    gText_TurboB,
+    gText_TurboAB
 };
 
 static const u8 *const sAutoRunOptions[] =
@@ -789,10 +791,10 @@ static void BufferOptionMenuString(u8 selection)
             AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sTextSpeedOptions[sOptionMenuPtr->generalOptions[selection]]);
             break;
         case MENUITEM_TURBOA:
-            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sAutoRunOptions[sOptionMenuPtr->generalOptions[selection]]);
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sTurboAOptions[sOptionMenuPtr->generalOptions[selection]]);
             break;
         case MENUITEM_AUTORUN:
-            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sTurboAOptions[sOptionMenuPtr->generalOptions[selection]]);
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sAutoRunOptions[sOptionMenuPtr->generalOptions[selection]]);
             break;
         case MENUITEM_BUTTONMODE:
             AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sButtonTypeOptions[sOptionMenuPtr->generalOptions[selection]]);
