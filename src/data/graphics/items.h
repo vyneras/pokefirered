@@ -746,3 +746,30 @@ const u32 gItemIconPalette_Coins[] = INCBIN_U32("graphics/items/icon_palettes/co
 
 const u32 gItemIcon_RunningShoes[] = INCBIN_U32("graphics/items/icons/running_shoes.4bpp.lz");
 const u32 gItemIconPalette_RunningShoes[] = INCBIN_U32("graphics/items/icon_palettes/running_shoes.gbapal.lz");
+
+const u32 gItemIcon_Pokedex[] = INCBIN_U32("graphics/items/icons/pokedex.4bpp.lz");
+const u32 gItemIconPalette_Pokedex[] = INCBIN_U32("graphics/items/icon_palettes/pokedex.gbapal.lz");
+
+const u32 gItemIcon_BoulderBadge[] = INCBIN_U32("graphics/items/icons/boulder_badge.4bpp.lz");
+const u32 gItemIconPalette_BoulderBadge[] = INCBIN_U32("graphics/items/icon_palettes/boulder_badge.gbapal.lz");
+
+const u32 gItemIcon_CascadeBadge[] = INCBIN_U32("graphics/items/icons/cascade_badge.4bpp.lz");
+const u32 gItemIconPalette_CascadeBadge[] = INCBIN_U32("graphics/items/icon_palettes/cascade_badge.gbapal.lz");
+
+const u32 gItemIcon_ThunderBadge[] = INCBIN_U32("graphics/items/icons/thunder_badge.4bpp.lz");
+const u32 gItemIconPalette_ThunderBadge[] = INCBIN_U32("graphics/items/icon_palettes/thunder_badge.gbapal.lz");
+
+const u32 gItemIcon_RainbowBadge[] = INCBIN_U32("graphics/items/icons/rainbow_badge.4bpp.lz");
+const u32 gItemIconPalette_RainbowBadge[] = INCBIN_U32("graphics/items/icon_palettes/rainbow_badge.gbapal.lz");
+
+const u32 gItemIcon_SoulBadge[] = INCBIN_U32("graphics/items/icons/soul_badge.4bpp.lz");
+const u32 gItemIconPalette_SoulBadge[] = INCBIN_U32("graphics/items/icon_palettes/soul_badge.gbapal.lz");
+
+const u32 gItemIcon_MarshBadge[] = INCBIN_U32("graphics/items/icons/marsh_badge.4bpp.lz");
+const u32 gItemIconPalette_MarshBadge[] = INCBIN_U32("graphics/items/icon_palettes/marsh_badge.gbapal.lz");
+
+const u32 gItemIcon_VolcanoBadge[] = INCBIN_U32("graphics/items/icons/volcano_badge.4bpp.lz");
+const u32 gItemIconPalette_VolcanoBadge[] = INCBIN_U32("graphics/items/icon_palettes/volcano_badge.gbapal.lz");
+
+const u32 gItemIcon_EarthBadge[] = INCBIN_U32("graphics/items/icons/earth_badge.4bpp.lz");
+const u32 gItemIconPalette_EarthBadge[] = INCBIN_U32("graphics/items/icon_palettes/earth_badge.gbapal.lz");

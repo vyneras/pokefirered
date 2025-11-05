@@ -389,14 +389,14 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_RUBY]                    = {gItemIcon_Gem, gItemIconPalette_Ruby},
     [ITEM_SAPPHIRE]                = {gItemIcon_Gem, gItemIconPalette_Sapphire},
     // Badge items
-    [ITEM_BADGE_1]                 = {gItemIcon_Badge, gItemIconPalette_Badge},
-    [ITEM_BADGE_2]                 = {gItemIcon_Badge, gItemIconPalette_Badge},
-    [ITEM_BADGE_3]                 = {gItemIcon_Badge, gItemIconPalette_Badge},
-    [ITEM_BADGE_4]                 = {gItemIcon_Badge, gItemIconPalette_Badge},
-    [ITEM_BADGE_5]                 = {gItemIcon_Badge, gItemIconPalette_Badge},
-    [ITEM_BADGE_6]                 = {gItemIcon_Badge, gItemIconPalette_Badge},
-    [ITEM_BADGE_7]                 = {gItemIcon_Badge, gItemIconPalette_Badge},
-    [ITEM_BADGE_8]                 = {gItemIcon_Badge, gItemIconPalette_Badge},
+    [ITEM_BADGE_1]                 = {gItemIcon_BoulderBadge, gItemIconPalette_BoulderBadge},
+    [ITEM_BADGE_2]                 = {gItemIcon_CascadeBadge, gItemIconPalette_CascadeBadge},
+    [ITEM_BADGE_3]                 = {gItemIcon_ThunderBadge, gItemIconPalette_ThunderBadge},
+    [ITEM_BADGE_4]                 = {gItemIcon_RainbowBadge, gItemIconPalette_RainbowBadge},
+    [ITEM_BADGE_5]                 = {gItemIcon_SoulBadge, gItemIconPalette_SoulBadge},
+    [ITEM_BADGE_6]                 = {gItemIcon_MarshBadge, gItemIconPalette_MarshBadge},
+    [ITEM_BADGE_7]                 = {gItemIcon_VolcanoBadge, gItemIconPalette_VolcanoBadge},
+    [ITEM_BADGE_8]                 = {gItemIcon_EarthBadge, gItemIconPalette_EarthBadge},
     // Fly unlock items
     [ITEM_FLY_PALLET]               = {gItemIcon_FlyPoint, gItemIconPalette_FlyPoint},
     [ITEM_FLY_VIRIDIAN]             = {gItemIcon_FlyPoint, gItemIconPalette_FlyPoint},
@@ -462,7 +462,7 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     // Ledge jump
     [ITEM_LEDGE_JUMP]              = {gItemIcon_Badge, gItemIconPalette_Badge},
     // Pokédex
-    [ITEM_POKEDEX]                 = {gItemIcon_Badge, gItemIconPalette_Badge},
+    [ITEM_POKEDEX]                 = {gItemIcon_Pokedex, gItemIconPalette_Pokedex},
     // ????????
     [ITEM_1AE]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_1AF]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
