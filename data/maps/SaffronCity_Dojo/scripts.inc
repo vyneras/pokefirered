@@ -72,6 +72,8 @@ SaffronCity_Dojo_EventScript_ReceivedHitmonParty::
 	message SaffronCity_Dojo_Text_ReceivedMonFromKarateMaster
 	waitmessage
 	waitfanfare
+	specialvar VAR_RESULT, ArchipelagoSpecial_SkipNickname
+	goto_if_eq VAR_RESULT, TRUE, SaffronCity_Dojo_EventScript_EndGiveMon
 	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, SaffronCity_Dojo_EventScript_EndGiveMon
 	call EventScript_GetGiftMonPartySlot
@@ -85,6 +87,8 @@ SaffronCity_Dojo_EventScript_ReceivedHitmonPC::
 	message SaffronCity_Dojo_Text_ReceivedMonFromKarateMaster
 	waitmessage
 	waitfanfare
+	specialvar VAR_RESULT, ArchipelagoSpecial_SkipNickname
+	goto_if_eq VAR_RESULT, TRUE, SaffronCity_Dojo_EventScript_TransferredHitmonToPC
 	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, SaffronCity_Dojo_EventScript_TransferredHitmonToPC
 	call EventScript_NameReceivedBoxMon

@@ -62,6 +62,7 @@ static void Task_InitTeachyTvFromField(u8 taskId);
 static void Task_UseRepel(u8 taskId);
 static void RemoveUsedItem(void);
 static void Task_UsedBlackWhiteFlute(u8 taskId);
+static void Task_UsedExpShare(u8 taskId);
 static void ItemUseOnFieldCB_EscapeRope(u8 taskId);
 static void UseTownMapFromBag(void);
 static void Task_UseTownMapFromField(u8 taskId);
@@ -730,6 +731,33 @@ void FieldUseFunc_VsSeeker(u8 taskId)
     {
         sItemUseOnFieldCB = Task_VsSeeker_0;
         SetUpItemUseOnFieldCallback(taskId);
+    }
+}
+
+void FieldUseFunc_ExpShare(u8 taskId)
+{
+    if (FlagGet(FLAG_SYS_EXP_SHARE))
+    {
+        FlagClear(FLAG_SYS_EXP_SHARE);
+        StringExpandPlaceholders(gStringVar5, gText_TurnExpShareOff);
+        gTasks[taskId].func = Task_UsedExpShare;
+        gTasks[taskId].data[8] = 0;
+    }
+    else
+    {
+        FlagSet(FLAG_SYS_EXP_SHARE);
+        StringExpandPlaceholders(gStringVar5, gText_TurnExpShareOn);
+        gTasks[taskId].func = Task_UsedExpShare;
+        gTasks[taskId].data[8] = 0;
+    }
+}
+
+static void Task_UsedExpShare(u8 taskId)
+{
+    if (++gTasks[taskId].data[8] > 7)
+    {
+        PlaySE(SE_SWITCH);
+        DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar5, Task_ReturnToBagFromContextMenu);
     }
 }
 

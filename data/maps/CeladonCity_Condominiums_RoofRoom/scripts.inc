@@ -27,6 +27,8 @@ CeladonCity_Condominiums_RoofRoom_EventScript_GetEeveeParty::
 	message CeladonCity_Condominiums_RoofRoom_Text_ObtainedAnEevee
 	waitmessage
 	waitfanfare
+	specialvar VAR_RESULT, ArchipelagoSpecial_SkipNickname
+	goto_if_eq VAR_RESULT, TRUE, CeladonCity_Condominiums_RoofRoom_EventScript_SetGotEevee
 	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, CeladonCity_Condominiums_RoofRoom_EventScript_SetGotEevee
 	call EventScript_GetGiftMonPartySlot
@@ -40,6 +42,8 @@ CeladonCity_Condominiums_RoofRoom_EventScript_GetEeveePC::
 	message CeladonCity_Condominiums_RoofRoom_Text_ObtainedAnEevee
 	waitmessage
 	waitfanfare
+	specialvar VAR_RESULT, ArchipelagoSpecial_SkipNickname
+	goto_if_eq VAR_RESULT, TRUE, CeladonCity_Condominiums_RoofRoom_EventScript_TransferEeveeToPC
 	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, CeladonCity_Condominiums_RoofRoom_EventScript_TransferEeveeToPC
 	call EventScript_NameReceivedBoxMon

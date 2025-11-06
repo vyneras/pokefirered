@@ -264,6 +264,8 @@ CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_NicknameMonParty::
 	waitmessage
 	waitfanfare
 	setvar VAR_MAP_SCENE_CINNABAR_ISLAND_POKEMON_LAB_EXPERIMENT_ROOM_REVIVE_STATE, 0
+	specialvar VAR_RESULT, ArchipelagoSpecial_SkipNickname
+	goto_if_eq VAR_RESULT, TRUE, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_EndGiveMon
 	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_EndGiveMon
 	call EventScript_GetGiftMonPartySlot
@@ -278,6 +280,8 @@ CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_NicknameMonPC::
 	waitmessage
 	waitfanfare
 	setvar VAR_MAP_SCENE_CINNABAR_ISLAND_POKEMON_LAB_EXPERIMENT_ROOM_REVIVE_STATE, 0
+	specialvar VAR_RESULT, ArchipelagoSpecial_SkipNickname
+	goto_if_eq VAR_RESULT, TRUE, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_MonSentToPC
 	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_MonSentToPC
 	call EventScript_NameReceivedBoxMon

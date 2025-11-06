@@ -4288,6 +4288,8 @@ bool8 TryRunFromBattle(u8 battler)
 
         ++gBattleStruct->runTries;
     }
+    if (gSaveBlock2Ptr->optionsGuaranteedRun && GetBattlerSide(battler) == B_SIDE_PLAYER)
+    	effect++;
     if (effect != 0)
     {
         gCurrentTurnActionNumber = gBattlersCount;

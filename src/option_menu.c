@@ -36,6 +36,7 @@ enum
     MENUITEM_BATTLESTYLE,
     MENUITEM_SHOWEFFECTIVENESS,
     MENUITEM_EXPERIENCE,
+    MENUITEM_EXPERIENCE_DISTRIBUTION,
     MENUITEM_COUNT2
 };
 
@@ -52,8 +53,10 @@ enum
 enum
 {
     MENUITEM_GUARANTEEDCATCH = 0,
+    MENUITEM_GUARANTEEDRUN,
     MENUITEM_ENCOUNTERRATES,
     MENUITEM_BLINDTRAINERS,
+    MENUITEM_SKIPNICKNAMES,
     MENUITEM_ITEMMESSAGES,
     MENUITEM_COUNT4
 };
@@ -167,9 +170,9 @@ static const struct BgTemplate sOptionMenuBgTemplates[] =
 
 static const u16 sOptionMenuPalette[] = INCBIN_U16("graphics/misc/option_menu.gbapal");
 static const u16 sOptionMenuItemCounts[MENUITEM_COUNT] = {4, 4, 2, 3, 10};
-static const u16 sOptionMenu2ItemCounts[MENUITEM_COUNT2] = {2, 2, 2, 7};
+static const u16 sOptionMenu2ItemCounts[MENUITEM_COUNT2] = {2, 2, 2, 1001, 3};
 static const u16 sOptionMenu3ItemCounts[MENUITEM_COUNT3] = {2, 2, 2, 2, 2};
-static const u16 sOptionMenu4ItemCounts[MENUITEM_COUNT4] = {2, 2, 2, 3};
+static const u16 sOptionMenu4ItemCounts[MENUITEM_COUNT4] = {2, 2, 2, 2, 2, 3};
 
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
@@ -182,10 +185,11 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 
 static const u8 *const sOptionMenu2ItemsNames[MENUITEM_COUNT2] =
 {
-    [MENUITEM_BATTLESCENE]       = gText_BattleScene,
-    [MENUITEM_BATTLESTYLE]       = gText_BattleStyle,
-    [MENUITEM_SHOWEFFECTIVENESS] = gText_ShowEffectiveness,
-    [MENUITEM_EXPERIENCE]        = gText_Experience
+    [MENUITEM_BATTLESCENE]             = gText_BattleScene,
+    [MENUITEM_BATTLESTYLE]             = gText_BattleStyle,
+    [MENUITEM_SHOWEFFECTIVENESS]       = gText_ShowEffectiveness,
+    [MENUITEM_EXPERIENCE]              = gText_Experience,
+    [MENUITEM_EXPERIENCE_DISTRIBUTION] = gText_ExperienceDistribution
 };
 
 static const u8 *const sOptionMenu3ItemsNames[MENUITEM_COUNT3] =
@@ -200,8 +204,10 @@ static const u8 *const sOptionMenu3ItemsNames[MENUITEM_COUNT3] =
 static const u8 *const sOptionMenu4ItemsNames[MENUITEM_COUNT4] =
 {
     [MENUITEM_GUARANTEEDCATCH] = gText_GuaranteedCatch,
+    [MENUITEM_GUARANTEEDRUN]   = gText_GuaranteedRun,
     [MENUITEM_ENCOUNTERRATES]  = gText_EncounterRates,
     [MENUITEM_BLINDTRAINERS]   = gText_BlindTrainers,
+    [MENUITEM_SKIPNICKNAMES]   = gText_SkipNicknames,
     [MENUITEM_ITEMMESSAGES]    = gText_ItemMessages
 };
 
@@ -252,15 +258,11 @@ static const u8 *const sShowEffectivenessOptions[] =
     gText_BattleSceneOn
 };
 
-static const u8 *const sExperienceOptions[] =
+static const u8 *const sExperienceDistributionOptions[] =
 {
-    gText_ExperienceNone,
-    gText_ExperienceHalf,
-    gText_ExperienceNormal,
-    gText_ExperienceDouble,
-    gText_ExperienceTriple,
-    gText_ExperienceQuadruple,
-    gText_ExperienceCustom
+    gText_ExperienceDistributionGen3,
+    gText_ExperienceDistributionGen6,
+    gText_ExperienceDistributionGen8
 };
 
 static const u8 *const sSoundOptions[] =
@@ -299,6 +301,12 @@ static const u8 *const sGuaranteedCatchOptions[] =
     gText_BattleSceneOn
 };
 
+static const u8 *const sGuaranteedRunOptions[] =
+{
+    gText_BattleSceneOff,
+    gText_BattleSceneOn
+};
+
 static const u8 *const sEncounterRatesOptions[] =
 {
     gText_EncounterRatesVanilla,
@@ -311,11 +319,17 @@ static const u8 *const sBlindTrainersOptions[] =
     gText_BattleSceneOn
 };
 
+static const u8 *const sSkipNicknamesOptions[] =
+{
+    gText_BattleSceneOff,
+    gText_BattleSceneOn
+};
+
 static const u8 *const sItemMessagesOptions[] =
 {
     gText_ItemMessagesAll,
     gText_ItemMessagesProgression,
-    gText_ExperienceNone
+    gText_ItemMessagesNone
 };
 
 static const u8 sOptionMenuPageTextColor[] = {TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
@@ -358,14 +372,17 @@ void CB2_OptionsMenuFromStartMenu(void)
     sOptionMenuPtr->battleOptions[MENUITEM_BATTLESTYLE] = gSaveBlock2Ptr->optionsBattleStyle;
     sOptionMenuPtr->battleOptions[MENUITEM_SHOWEFFECTIVENESS] = gSaveBlock2Ptr->optionsShowEffectiveness;
     sOptionMenuPtr->battleOptions[MENUITEM_EXPERIENCE] = gSaveBlock2Ptr->optionsExpMultiplier;
+    sOptionMenuPtr->battleOptions[MENUITEM_EXPERIENCE_DISTRIBUTION] = gSaveBlock2Ptr->optionsExpDistribution;
     sOptionMenuPtr->soundOptions[MENUITEM_SOUND] = gSaveBlock2Ptr->optionsSound;
     sOptionMenuPtr->soundOptions[MENUITEM_LOWHPBEEP] = gSaveBlock2Ptr->optionsLowHPBeep;
     sOptionMenuPtr->soundOptions[MENUITEM_SKIPFANFARES] = gSaveBlock2Ptr->optionsSkipFanfares;
     sOptionMenuPtr->soundOptions[MENUITEM_BIKEMUSIC] = gSaveBlock2Ptr->optionsBikeMusic;
     sOptionMenuPtr->soundOptions[MENUITEM_SURFMUSIC] = gSaveBlock2Ptr->optionsSurfMusic;
     sOptionMenuPtr->qualityOptions[MENUITEM_GUARANTEEDCATCH] = gSaveBlock2Ptr->optionsGuaranteedCatch;
+    sOptionMenuPtr->qualityOptions[MENUITEM_GUARANTEEDRUN] = gSaveBlock2Ptr->optionsGuaranteedRun;
     sOptionMenuPtr->qualityOptions[MENUITEM_ENCOUNTERRATES] = gSaveBlock2Ptr->optionsNormalizeEncounterRates;
     sOptionMenuPtr->qualityOptions[MENUITEM_BLINDTRAINERS] = gSaveBlock2Ptr->optionsBlindTrainers;
+    sOptionMenuPtr->qualityOptions[MENUITEM_SKIPNICKNAMES] = gSaveBlock2Ptr->optionsSkipNicknames;
     sOptionMenuPtr->qualityOptions[MENUITEM_ITEMMESSAGES] = gSaveBlock2Ptr->optionsItemMessages;
     
     for (i = 0; i < MENUITEM_COUNT - 1; i++)
@@ -668,6 +685,8 @@ static u8 OptionMenu_ProcessInput(void)
             current = sOptionMenuPtr->battleOptions[sOptionMenuPtr->cursorPos];
             if (current == (sOptionMenu2ItemCounts[sOptionMenuPtr->cursorPos] - 1))
                 sOptionMenuPtr->battleOptions[sOptionMenuPtr->cursorPos] = 0;
+            else if (sOptionMenuPtr->cursorPos == MENUITEM_EXPERIENCE)
+                sOptionMenuPtr->battleOptions[sOptionMenuPtr->cursorPos] = current + 10;
             else
                 sOptionMenuPtr->battleOptions[sOptionMenuPtr->cursorPos] = current + 1;
             return 4;
@@ -705,8 +724,10 @@ static u8 OptionMenu_ProcessInput(void)
             current = sOptionMenuPtr->battleOptions[sOptionMenuPtr->cursorPos];
             if (current == 0)
                 sOptionMenuPtr->battleOptions[sOptionMenuPtr->cursorPos] = sOptionMenu2ItemCounts[sOptionMenuPtr->cursorPos] - 1;
+            else if (sOptionMenuPtr->cursorPos == MENUITEM_EXPERIENCE)
+                sOptionMenuPtr->battleOptions[sOptionMenuPtr->cursorPos] = current - 10;
             else
-               sOptionMenuPtr->battleOptions[sOptionMenuPtr->cursorPos] = current - 1;
+                sOptionMenuPtr->battleOptions[sOptionMenuPtr->cursorPos] = current - 1;
             return 4;
         case 3:
             current = sOptionMenuPtr->soundOptions[sOptionMenuPtr->cursorPos];
@@ -729,7 +750,7 @@ static u8 OptionMenu_ProcessInput(void)
         if (sOptionMenuPtr->cursorPos == MENUITEM_TEXTSPEED && sOptionMenuPtr->currentPage == 1)
             sOptionMenuPtr->cursorPos = MENUITEM_FRAMETYPE;
         else if (sOptionMenuPtr->cursorPos == MENUITEM_BATTLESCENE && sOptionMenuPtr->currentPage == 2)
-            sOptionMenuPtr->cursorPos = MENUITEM_EXPERIENCE;
+            sOptionMenuPtr->cursorPos = MENUITEM_EXPERIENCE_DISTRIBUTION;
         else if (sOptionMenuPtr->cursorPos == MENUITEM_SOUND && sOptionMenuPtr->currentPage == 3)
             sOptionMenuPtr->cursorPos = MENUITEM_SURFMUSIC;
         else if (sOptionMenuPtr->cursorPos == MENUITEM_GUARANTEEDCATCH && sOptionMenuPtr->currentPage == 4)
@@ -742,7 +763,7 @@ static u8 OptionMenu_ProcessInput(void)
     {
         if (sOptionMenuPtr->cursorPos == MENUITEM_FRAMETYPE && sOptionMenuPtr->currentPage == 1)
             sOptionMenuPtr->cursorPos = MENUITEM_TEXTSPEED;
-        else if (sOptionMenuPtr->cursorPos == MENUITEM_EXPERIENCE && sOptionMenuPtr->currentPage == 2)
+        else if (sOptionMenuPtr->cursorPos == MENUITEM_EXPERIENCE_DISTRIBUTION && sOptionMenuPtr->currentPage == 2)
             sOptionMenuPtr->cursorPos = MENUITEM_BATTLESCENE;
         else if (sOptionMenuPtr->cursorPos == MENUITEM_SURFMUSIC && sOptionMenuPtr->currentPage == 3)
             sOptionMenuPtr->cursorPos = MENUITEM_SOUND;
@@ -820,7 +841,13 @@ static void BufferOptionMenuString(u8 selection)
             AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sShowEffectivenessOptions[sOptionMenuPtr->battleOptions[selection]]);
             break;
         case MENUITEM_EXPERIENCE:
-            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sExperienceOptions[sOptionMenuPtr->battleOptions[selection]]);
+            ConvertIntToDecimalStringN(buf, sOptionMenuPtr->battleOptions[selection], 0, 4);
+            StringCopyN(str, buf, 5);
+            StringAppend(str, gText_Percent);
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, str);
+            break;
+        case MENUITEM_EXPERIENCE_DISTRIBUTION:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sExperienceDistributionOptions[sOptionMenuPtr->battleOptions[selection]]);
             break;
         default:
             break;
@@ -854,11 +881,17 @@ static void BufferOptionMenuString(u8 selection)
         case MENUITEM_GUARANTEEDCATCH:
             AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sGuaranteedCatchOptions[sOptionMenuPtr->qualityOptions[selection]]);
             break;
+        case MENUITEM_GUARANTEEDRUN:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sGuaranteedRunOptions[sOptionMenuPtr->qualityOptions[selection]]);
+            break;
         case MENUITEM_ENCOUNTERRATES:
             AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sEncounterRatesOptions[sOptionMenuPtr->qualityOptions[selection]]);
             break;
         case MENUITEM_BLINDTRAINERS:
             AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sBlindTrainersOptions[sOptionMenuPtr->qualityOptions[selection]]);
+            break;
+        case MENUITEM_SKIPNICKNAMES:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sSkipNicknamesOptions[sOptionMenuPtr->qualityOptions[selection]]);
             break;
         case MENUITEM_ITEMMESSAGES:
             AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sItemMessagesOptions[sOptionMenuPtr->qualityOptions[selection]]);
@@ -887,14 +920,17 @@ static void CloseAndSaveOptionMenu(u8 taskId)
     gSaveBlock2Ptr->optionsBattleStyle = sOptionMenuPtr->battleOptions[MENUITEM_BATTLESTYLE];
     gSaveBlock2Ptr->optionsShowEffectiveness = sOptionMenuPtr->battleOptions[MENUITEM_SHOWEFFECTIVENESS];
     gSaveBlock2Ptr->optionsExpMultiplier = sOptionMenuPtr->battleOptions[MENUITEM_EXPERIENCE];
+    gSaveBlock2Ptr->optionsExpDistribution = sOptionMenuPtr->battleOptions[MENUITEM_EXPERIENCE_DISTRIBUTION];
     gSaveBlock2Ptr->optionsSound = sOptionMenuPtr->soundOptions[MENUITEM_SOUND];
     gSaveBlock2Ptr->optionsLowHPBeep = sOptionMenuPtr->soundOptions[MENUITEM_LOWHPBEEP];
     gSaveBlock2Ptr->optionsSkipFanfares = sOptionMenuPtr->soundOptions[MENUITEM_SKIPFANFARES];
     gSaveBlock2Ptr->optionsBikeMusic = sOptionMenuPtr->soundOptions[MENUITEM_BIKEMUSIC];
     gSaveBlock2Ptr->optionsSurfMusic = sOptionMenuPtr->soundOptions[MENUITEM_SURFMUSIC];
     gSaveBlock2Ptr->optionsGuaranteedCatch = sOptionMenuPtr->qualityOptions[MENUITEM_GUARANTEEDCATCH];
+    gSaveBlock2Ptr->optionsGuaranteedRun = sOptionMenuPtr->qualityOptions[MENUITEM_GUARANTEEDRUN];
     gSaveBlock2Ptr->optionsNormalizeEncounterRates = sOptionMenuPtr->qualityOptions[MENUITEM_ENCOUNTERRATES];
     gSaveBlock2Ptr->optionsBlindTrainers = sOptionMenuPtr->qualityOptions[MENUITEM_BLINDTRAINERS];
+    gSaveBlock2Ptr->optionsSkipNicknames = sOptionMenuPtr->qualityOptions[MENUITEM_SKIPNICKNAMES];
     gSaveBlock2Ptr->optionsItemMessages = sOptionMenuPtr->qualityOptions[MENUITEM_ITEMMESSAGES];
     SetPokemonCryStereo(gSaveBlock2Ptr->optionsSound);
     FREE_AND_SET_NULL(sOptionMenuPtr);

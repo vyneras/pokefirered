@@ -515,4 +515,5 @@ gSpecials::
 	def_special ArchipelagoSpecial_GiveDexsanityItem
 	def_special ArchipelagoSpecial_GetFossilCount
 	def_special ArchipelagoSpecial_HaveFossilCount
+	def_special ArchipelagoSpecial_SkipNickname
 gSpecialsEnd::

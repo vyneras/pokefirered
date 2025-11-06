@@ -1617,7 +1617,7 @@ static void Task_OakSpeech_ConfirmStarter(u8 taskId)
             GetStarterSpeciesName(gStringVar1, gSaveBlock2Ptr->starterIndex);
             StringExpandPlaceholders(gStringVar5, gOakSpeech_Text_ConfirmStarter);
             OakSpeechPrintMessage(gStringVar5, sOakSpeechResources->textSpeed);
-            tNameNotConfirmed = FALSE;
+            tStarterNotConfirmed = FALSE;
             tTimer = 25;
         }
         else if (!IsTextPrinterActive(WIN_INTRO_TEXTBOX))

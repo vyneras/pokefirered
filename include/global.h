@@ -326,46 +326,49 @@ struct SaveBlock2
     /*0x011*/ u8 playTimeSeconds;
     /*0x012*/ u8 playTimeVBlanks;
     /*0x013*/ u8 optionsWindowFrameType; // Specifies one of the 20 decorative borders for text boxes
-    /*0x014*/ u16 optionsTextSpeed:2; // OPTIONS_TEXT_SPEED_[SLOW/MID/FAST/INSTANT]
+    /*0x014*/ u16 optionsExpMultiplier; // Species the exp multiplier from 0% - 1000%
+    /*0x016*/ u16 optionsTextSpeed:2; // OPTIONS_TEXT_SPEED_[SLOW/MID/FAST/INSTANT]
               u16 optionsTurboA:2; // OPTIONS_TURBO_[OFF/A/B/AB]
               u16 optionsAutoRun:1; // whether auto run is enabled
               u16 optionsButtonMode:2; // OPTIONS_BUTTON_MODE_[HELP/LR/L_EQUALS_A]
               u16 optionsBattleScene:1; // whether battle animations are enabled
               u16 optionsBattleStyle:1; // OPTIONS_BATTLE_STYLE_[SHIFT/SET]
               u16 optionsShowEffectiveness:1; // whether effectiveness should be shown in move detail panel
-              u16 optionsExpMultiplier:3; // OPTIONS_EXPERIENCE_[NONE/HALF/NORMAL/DOUBLE/TRIPLE/QUADRUPLE/CUSTOM]
+              u16 optionsExpDistribution:2; // OPTION_EXP_DISTRIBUTION_[GEN3/GEN6/GEN8]
               u16 optionsSound:1; // OPTIONS_SOUND_[MONO/STEREO]
               u16 optionsLowHPBeep:1; // whether the low HP beef is enabled
               u16 optionsSkipFanfares:1; // whether fanfares can be skipped by pressing B
-    /*0x016*/ u16 optionsBikeMusic:1; // whether the bike music is enabled
-              u16 optionsSurfMusic:1; // whether the surfing music is enabled
-              u16 optionsGuaranteedCatch:1; // wehter guaranteed catch is enabled
+              u16 optionsBikeMusic:1; // whether the bike music is enabled
+    /*0x018*/ u16 optionsSurfMusic:1; // whether the surfing music is enabled
+              u16 optionsGuaranteedCatch:1; // whether guaranteed catch is enabled
+              u16 optionsGuaranteedRun:1; // whether guaranteed run is enabled
               u16 optionsNormalizeEncounterRates:1; // whether encounter rates are normalized
               u16 optionsBlindTrainers:1; // whether trainers are blind
+              u16 optionsSkipNicknames:1; // whether pokemon nicknaming should be skipped
               u16 optionsItemMessages:2; // OPTIONS_ITEM_MESSAGES_[ALL/PROGRESSION/NONE]
               u16 regionMapZoom:1; // whether the map is zoomed in
-    /*0x018*/ struct Pokedex pokedex;
-    /*0x090*/ u8 progressivePassesCount;
-    /*0x091*/ u8 progressiveCardKeyCount;
-    /*0x092*/ u8 starterIndex;
-    /*0x093*/ u8 progressiveRod;
-    /*0x094*/ u8 filler_94[0x4];
-    /*0x098*/ struct Time localTimeOffset;
-    /*0x0A0*/ struct Time lastBerryTreeUpdate;
-    /*0x0A8*/ u32 gcnLinkFlags; // Read by Pokemon Colosseum/XD
-    /*0x0AC*/ bool8 unkFlag1; // Set TRUE, never read
-    /*0x0AD*/ bool8 unkFlag2; // Set FALSE, never read
-    /*0x0B0*/ struct BattleTowerData battleTower;
-    /*0x898*/ u16 mapView[0x100];
-    /*0xA98*/ struct LinkBattleRecords linkBattleRecords;
-    /*0xAF0*/ struct BerryCrush berryCrush;
-    /*0xB00*/ struct PokemonJumpRecords pokeJump;
-    /*0xB10*/ struct BerryPickingResults berryPick;
-    /*0xB20*/ u16 shopItemFlags[SHOPSANITY_LAST_INDEX];
-    /*0XB4A*/ u32 centerShopItemFlags;
-    /*0xB4E*/ u8 filler_B4E[0x3D2];
-    /*0xF20*/ u32 encryptionKey;
-}; // size: 0xF24
+    /*0x01A*/ struct Pokedex pokedex;
+    /*0x092*/ u8 progressivePassesCount;
+    /*0x093*/ u8 progressiveCardKeyCount;
+    /*0x094*/ u8 starterIndex;
+    /*0x095*/ u8 progressiveRod;
+    /*0x096*/ u8 filler_96[0x4];
+    /*0x09A*/ struct Time localTimeOffset;
+    /*0x0A2*/ struct Time lastBerryTreeUpdate;
+    /*0x0AA*/ u32 gcnLinkFlags; // Read by Pokemon Colosseum/XD
+    /*0x0AE*/ bool8 unkFlag1; // Set TRUE, never read
+    /*0x0AF*/ bool8 unkFlag2; // Set FALSE, never read
+    /*0x0B2*/ struct BattleTowerData battleTower;
+    /*0x89A*/ u16 mapView[0x100];
+    /*0xA9A*/ struct LinkBattleRecords linkBattleRecords;
+    /*0xAF2*/ struct BerryCrush berryCrush;
+    /*0xB02*/ struct PokemonJumpRecords pokeJump;
+    /*0xB12*/ struct BerryPickingResults berryPick;
+    /*0xB22*/ u16 shopItemFlags[SHOPSANITY_LAST_INDEX];
+    /*0XB4C*/ u32 centerShopItemFlags;
+    /*0xB50*/ u8 filler_B50[0x3D2];
+    /*0xF22*/ u32 encryptionKey;
+}; // size: 0xF26
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
 

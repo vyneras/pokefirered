@@ -143,6 +143,8 @@ SilphCo_7F_EventScript_ReceiveLaprasParty::
 	message SilphCo_7F_Text_ObtainedLaprasFromEmployee
 	waitmessage
 	waitfanfare
+	specialvar VAR_RESULT, ArchipelagoSpecial_SkipNickname
+	goto_if_eq VAR_RESULT, TRUE, SilphCo_7F_EventScript_EndReceiveLapras
 	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, SilphCo_7F_EventScript_EndReceiveLapras
 	call EventScript_GetGiftMonPartySlot
@@ -156,6 +158,8 @@ SilphCo_7F_EventScript_ReceiveLaprasPC::
 	message SilphCo_7F_Text_ObtainedLaprasFromEmployee
 	waitmessage
 	waitfanfare
+	specialvar VAR_RESULT, ArchipelagoSpecial_SkipNickname
+	goto_if_eq VAR_RESULT, TRUE, SilphCo_7F_EventScript_LaprasTransferredToPC
 	msgbox Text_GiveNicknameToThisMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, SilphCo_7F_EventScript_LaprasTransferredToPC
 	call EventScript_NameReceivedBoxMon

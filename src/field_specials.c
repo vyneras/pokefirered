@@ -2950,3 +2950,8 @@ bool8 ArchipelagoSpecial_HaveFossilCount(void)
         count++;
     return count >= gArchipelagoOptions.cinnabarFossilCount;
 }
+
+bool8 ArchipelagoSpecial_SkipNickname(void)
+{
+    return gSaveBlock2Ptr->optionsSkipNicknames;
+}

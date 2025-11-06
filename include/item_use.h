@@ -27,6 +27,7 @@ void FieldUseFunc_BlackWhiteFlute(u8 taskId);
 void FieldUseFunc_TownMap(u8 taskId);
 void FieldUseFunc_FameChecker(u8 taskId);
 void FieldUseFunc_VsSeeker(u8 taskId);
+void FieldUseFunc_ExpShare(u8 taskId);
 void BattleUseFunc_PokeBallEtc(u8 taskId);
 void BattleUseFunc_PokeFlute(u8 taskId);
 void BattleUseFunc_StatBooster(u8 taskId);

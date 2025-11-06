@@ -90,6 +90,18 @@ BattleScript_CaughtPokemonSkipNewDex::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_CaughtPokemonDone
 
+BattleScript_SuccessBallThrowSkipNickname::
+	jumpifhalfword CMP_EQUAL, gLastUsedItem, ITEM_SAFARI_BALL, BattleScript_SafariNoIncGameStatSkipNickname
+	incrementgamestat GAME_STAT_POKEMON_CAPTURES
+BattleScript_SafariNoIncGameStatSkipNickname::
+	printstring STRINGID_GOTCHAPKMNCAUGHT
+	trysetcaughtmondexflags BattleScript_CaughtPokemonSkipNickname
+	printstring STRINGID_PKMNDATAADDEDTODEX
+	waitstate
+	setbyte gBattleCommunication, 0
+	displaydexinfo
+	goto BattleScript_CaughtPokemonSkipNickname
+
 BattleScript_CaughtPokemonSkipNickname::
 	givecaughtmon
 BattleScript_CaughtPokemonDone::

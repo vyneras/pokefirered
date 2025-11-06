@@ -73,14 +73,17 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsBattleStyle = gArchipelagoOptions.battleStyle;
     gSaveBlock2Ptr->optionsShowEffectiveness = gArchipelagoOptions.showEffectiveness;
     gSaveBlock2Ptr->optionsExpMultiplier = gArchipelagoOptions.expMultiplier;
+    gSaveBlock2Ptr->optionsExpDistribution = gArchipelagoOptions.expDistribution;
     gSaveBlock2Ptr->optionsSound = gArchipelagoOptions.sound;
     gSaveBlock2Ptr->optionsLowHPBeep = gArchipelagoOptions.lowHPBeep;
     gSaveBlock2Ptr->optionsSkipFanfares = gArchipelagoOptions.skipFanfares;
     gSaveBlock2Ptr->optionsBikeMusic = gArchipelagoOptions.bikeMusic;
     gSaveBlock2Ptr->optionsSurfMusic = gArchipelagoOptions.surfMusic;
     gSaveBlock2Ptr->optionsGuaranteedCatch = gArchipelagoOptions.guaranteedCatch;
+    gSaveBlock2Ptr->optionsGuaranteedRun = gArchipelagoOptions.guaranteedRun;
     gSaveBlock2Ptr->optionsNormalizeEncounterRates = gArchipelagoOptions.normalizeEncounterRates;
     gSaveBlock2Ptr->optionsBlindTrainers = gArchipelagoOptions.blindTrainers;
+    gSaveBlock2Ptr->optionsSkipNicknames = gArchipelagoOptions.skipNicknames;
     gSaveBlock2Ptr->optionsItemMessages = gArchipelagoOptions.itemMessages;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
 }

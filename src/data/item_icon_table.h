@@ -200,7 +200,7 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_BRIGHT_POWDER]           = {gItemIcon_BrightPowder, gItemIconPalette_BrightPowder},
     [ITEM_WHITE_HERB]              = {gItemIcon_InBattleHerb, gItemIconPalette_WhiteHerb},
     [ITEM_MACHO_BRACE]             = {gItemIcon_MachoBrace, gItemIconPalette_MachoBrace},
-    [ITEM_EXP_SHARE]               = {gItemIcon_ExpShare, gItemIconPalette_ExpShare},
+    [ITEM_0B6]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_QUICK_CLAW]              = {gItemIcon_QuickClaw, gItemIconPalette_QuickClaw},
     [ITEM_SOOTHE_BELL]             = {gItemIcon_SootheBell, gItemIconPalette_SootheBell},
     [ITEM_MENTAL_HERB]             = {gItemIcon_InBattleHerb, gItemIconPalette_MentalHerb},
@@ -463,8 +463,9 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_LEDGE_JUMP]              = {gItemIcon_Badge, gItemIconPalette_Badge},
     // Pokédex
     [ITEM_POKEDEX]                 = {gItemIcon_Pokedex, gItemIconPalette_Pokedex},
+    // Exp. Share
+    [ITEM_EXP_SHARE]               = {gItemIcon_ExpShare, gItemIconPalette_ExpShare},
     // ????????
-    [ITEM_1AE]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_1AF]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_1B0]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_1B1]                     = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},

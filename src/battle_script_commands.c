@@ -3146,38 +3146,11 @@ static void Cmd_jumpiftype(void)
 
 static void Cmd_getexp(void)
 {
-    u16 item, expMultiplierNumerator, expMultiplierDenominator;
+    u16 item;
     s32 i; // also used as stringId
     u8 holdEffect;
     s32 sentIn;
-    s32 viaExpShare = 0;
     u16 *exp = &gBattleStruct->expValue;
-
-    expMultiplierDenominator = gArchipelagoOptions.expMultiplierDenominator;
-    switch (gSaveBlock2Ptr->optionsExpMultiplier)
-    {
-    case OPTIONS_EXPIERENCE_NONE:
-        expMultiplierNumerator = 0;
-        break;
-    case OPTIONS_EXPIERENCE_HALF:
-        expMultiplierNumerator = 50;
-        break;
-    case OPTIONS_EXPIERENCE_NORMAL:
-        expMultiplierNumerator = 100;
-        break;
-    case OPTIONS_EXPIERENCE_DOUBLE:
-        expMultiplierNumerator = 200;
-        break;
-    case OPTIONS_EXPIERENCE_TRIPLE:
-        expMultiplierNumerator = 300;
-        break;
-    case OPTIONS_EXPIERENCE_QUADRUPLE:
-        expMultiplierNumerator = 400;
-        break;
-    case OPTIONS_EXPIERENCE_CUSTOM:
-        expMultiplierNumerator = gArchipelagoOptions.expMultiplierNumerator;
-        break;
-    }
 
     gBattlerFainted = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
     sentIn = gSentPokesToOpponent[(gBattlerFainted & 2) >> 1];
@@ -3203,7 +3176,7 @@ static void Cmd_getexp(void)
     case 1: // calculate experience points to redistribute
         {
             u16 calculatedExp;
-            s32 viaSentIn;
+            s32 viaSentIn, viaExpShare;
 
             for (viaSentIn = 0, i = 0; i < PARTY_SIZE; i++)
             {
@@ -3211,29 +3184,42 @@ static void Cmd_getexp(void)
                     continue;
                 if (gBitTable[i] & sentIn)
                     viaSentIn++;
+                else
+                    viaExpShare++;
 
                 item = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
+            }
 
-                if (item == ITEM_ENIGMA_BERRY)
-                    holdEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;
+            calculatedExp = gSpeciesInfo[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7 * gSaveBlock2Ptr->optionsExpMultiplier / 100;
+
+            if (gSaveBlock2Ptr->optionsExpDistribution == OPTION_EXP_DISTRIBUTION_GEN3)
+            {
+                if (FlagGet(FLAG_SYS_EXP_SHARE))
+                {
+                    *exp = SAFE_DIV(calculatedExp, viaSentIn + viaExpShare);
+                    gExpShareExp = calculatedExp / (viaSentIn + viaExpShare);
+                }
                 else
-                    holdEffect = ItemId_GetHoldEffect(item);
-
-                if (holdEffect == HOLD_EFFECT_EXP_SHARE)
-                    viaExpShare++;
+                {
+                    *exp = SAFE_DIV(calculatedExp, viaSentIn);
+                    gExpShareExp = 0;
+                }
             }
-
-            calculatedExp = gSpeciesInfo[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7 * expMultiplierNumerator / expMultiplierDenominator;
-
-            if (viaExpShare) // at least one mon is getting exp via exp share
+            else if (gSaveBlock2Ptr->optionsExpDistribution == OPTION_EXP_DISTRIBUTION_GEN6)
             {
-                *exp = SAFE_DIV(calculatedExp / 2, viaSentIn);
-                gExpShareExp = calculatedExp / 2 / viaExpShare;
+                *exp = calculatedExp;
+                if (FlagGet(FLAG_SYS_EXP_SHARE))
+                    gExpShareExp = calculatedExp / 2;
+                else
+                    gExpShareExp = 0;
             }
-            else
+            else if (gSaveBlock2Ptr->optionsExpDistribution == OPTION_EXP_DISTRIBUTION_GEN8)
             {
-                *exp = SAFE_DIV(calculatedExp, viaSentIn);
-                gExpShareExp = 0;
+                *exp = calculatedExp;
+                if (FlagGet(FLAG_SYS_EXP_SHARE))
+                    gExpShareExp = calculatedExp;
+                else
+                    gExpShareExp = 0;
             }
 
             gBattleScripting.getexpState++;
@@ -3246,12 +3232,7 @@ static void Cmd_getexp(void)
         {
             item = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_HELD_ITEM);
 
-            if (item == ITEM_ENIGMA_BERRY)
-                holdEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;
-            else
-                holdEffect = ItemId_GetHoldEffect(item);
-
-            if (holdEffect != HOLD_EFFECT_EXP_SHARE && !(gBattleStruct->sentInPokes & 1))
+            if (!FlagGet(FLAG_SYS_EXP_SHARE) && !(gBattleStruct->sentInPokes & 1))
             {
                 *(&gBattleStruct->sentInPokes) >>= 1;
                 gBattleScripting.getexpState = 5;
@@ -3278,10 +3259,8 @@ static void Cmd_getexp(void)
                     if (gBattleStruct->sentInPokes & 1)
                         gBattleMoveDamage = *exp;
                     else
-                        gBattleMoveDamage = 0;
+                        gBattleMoveDamage = gExpShareExp;
 
-                    if (holdEffect == HOLD_EFFECT_EXP_SHARE)
-                        gBattleMoveDamage += gExpShareExp;
                     if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
                     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
@@ -9679,7 +9658,10 @@ static void Cmd_handleballthrow(void)
         {
             BtlController_EmitBallThrowAnim(BUFFER_A, BALL_3_SHAKES_SUCCESS);
             MarkBattlerForControllerExec(gActiveBattler);
-            gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
+            if (gSaveBlock2Ptr->optionsSkipNicknames)
+                gBattlescriptCurrInstr = BattleScript_SuccessBallThrowSkipNickname;
+            else
+                gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
             SetMonData(&gEnemyParty[gBattlerPartyIndexes[gBattlerTarget]], MON_DATA_POKEBALL, &gLastUsedItem);
 
             if (CalculatePlayerPartyCount() == PARTY_SIZE)
@@ -9704,7 +9686,10 @@ static void Cmd_handleballthrow(void)
 
             if (shakes == BALL_3_SHAKES_SUCCESS) // mon caught, copy of the code above
             {
-                gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
+                if (gSaveBlock2Ptr->optionsSkipNicknames)
+            	    gBattlescriptCurrInstr = BattleScript_SuccessBallThrowSkipNickname;
+                else
+                    gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
                 SetMonData(&gEnemyParty[gBattlerPartyIndexes[gBattlerTarget]], MON_DATA_POKEBALL, &gLastUsedItem);
 
                 if (CalculatePlayerPartyCount() == PARTY_SIZE)
