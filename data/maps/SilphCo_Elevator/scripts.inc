@@ -3,6 +3,8 @@ SilphCo_Elevator_MapScripts::
 
 SilphCo_Elevator_EventScript_FloorSelect::
 	lockall
+	specialvar VAR_RESULT, ArchipelagoSpecial_CanUseElevator
+	goto_if_eq VAR_RESULT, FALSE, SilphCo_Elevator_EventScript_EventScript_NeedKey
 	setvar VAR_0x8004, 1
 	call_if_unset FLAG_TEMP_2, EventScript_GetElevatorFloor
 	copyvar VAR_0x8005, VAR_ELEVATOR_FLOOR
@@ -141,3 +143,8 @@ SilphCo_Elevator_EventScript_MoveElevator::
 	waitstate
 	setflag FLAG_TEMP_2
 	return
+
+SilphCo_Elevator_EventScript_EventScript_NeedKey::
+	msgbox RocketHideout_Elevator_Text_AppearsToNeedAKey
+	releaseall
+	end

@@ -78,6 +78,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .victoryRoadRocks = FALSE,
     .earlyFameGossip = FALSE,
     .blockVermilionSailing = FALSE,
+    .allElevatorsLocked = FALSE,
 
     .giovanniRequiresGyms = FALSE,
     .giovanniRequiredCount = 7,
@@ -98,8 +99,8 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .itemfinderRequired = FALSE,
     .flashRequired = FALSE,
     .fameCheckerRequired = FALSE,
-    .acrobaticBike = FALSE,
     .bikeRequiresLedgeJump = TRUE,
+    .acrobaticBike = FALSE,
 
     .oaksAideRequiredCounts = {
         [0] = 10, // Route 2

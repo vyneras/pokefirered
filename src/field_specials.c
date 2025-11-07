@@ -2955,3 +2955,8 @@ bool8 ArchipelagoSpecial_SkipNickname(void)
 {
     return gSaveBlock2Ptr->optionsSkipNicknames;
 }
+
+bool8 ArchipelagoSpecial_CanUseElevator(void)
+{
+    return CheckBagHasItem(ITEM_LIFT_KEY, 1) || !gArchipelagoOptions.allElevatorsLocked;
+}
