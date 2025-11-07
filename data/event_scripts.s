@@ -919,6 +919,10 @@ Text_DoorIsLocked::
 Text_MonFlewAway::
 	.string "The {STR_VAR_1} flew away!$"
 
+Text_NeedBicycle::
+	.string "The terrain is too rough to travel\n"
+	.string "on foot. You'll need a BICYCLE.$"
+
 	.include "data/text/seagallop.inc"
 
 @ Call for legendary bird trio

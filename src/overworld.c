@@ -908,6 +908,7 @@ static void LoadMapFromWarp(bool32 unused)
     ChooseAmbientCrySpecies();
     if (isOutdoors || gMapHeader.mapType == MAP_TYPE_DUNGEON)
         FlagClear(FLAG_SYS_FLASH_ACTIVE);
+    FlagClear(FLAG_SYS_ON_CYCLING_ROAD);
     SetDefaultFlashLevel();
     Overworld_ClearSavedMusic();
     RunOnTransitionMapScript();

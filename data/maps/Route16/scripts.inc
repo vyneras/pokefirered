@@ -2,6 +2,7 @@ Route16_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, Route16_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, Route16_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Route16_OnWarp
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route16_OnFrame
 	.byte 0
 
 Route16_OnResume::
@@ -13,15 +14,28 @@ Route16_EventScript_RemoveSnorlax::
 	return
 
 Route16_OnTransition::
-	call_if_eq VAR_MAP_SCENE_ROUTE16, 1, Route16_OnTransitionCyclingRoad
+	specialvar VAR_RESULT, ArchipelagoSpecial_OnCyclingRoad
+	call_if_eq VAR_RESULT, FALSE, Route16_OnTransitionNotCyclingRoad
+	call_if_eq VAR_RESULT, TRUE, Route16_OnTransitionCyclingRoad
 	specialvar VAR_RESULT, ArchipelagoSpecial_Route16Modified
 	call_if_eq VAR_RESULT, TRUE, Route16_EventScript_SetAltLayout
 	call_if_eq VAR_RESULT, FALSE, Route16_EventScript_RemoveRock
 	call_if_unset FLAG_ROUTE_16_SNORLAX_IS_RECOVERING, Route16_EventScript_TryShowSnorlax
 	end
 
+Route16_OnTransitionNotCyclingRoad::
+	setvar VAR_MAP_SCENE_ROUTE16, 0
+	return
+
 Route16_OnTransitionCyclingRoad::
+	checkitem ITEM_BICYCLE
+	goto_if_eq VAR_RESULT, FALSE, Route16_SetNeedBicycle
 	setflag FLAG_SYS_ON_CYCLING_ROAD
+	setvar VAR_MAP_SCENE_ROUTE16, 1
+	return
+
+Route16_SetNeedBicycle::
+	setvar VAR_MAP_SCENE_ROUTE16, 2
 	return
 
 Route16_EventScript_SetAltLayout::
@@ -43,6 +57,18 @@ Route16_OnWarp::
 
 Route16_OnWarpCyclingRoad::
 	special ForcePlayerOntoBike
+	end
+
+Route16_OnFrame::
+	map_script_2 VAR_MAP_SCENE_ROUTE16, 2, Route16_NeedBicycle
+	.2byte 0
+
+Route16_NeedBicycle::
+	lockall
+	msgbox Text_NeedBicycle
+	closemessage
+	special ArchipelagoSpecial_UseLastWarp
+	releaseall
 	end
 
 Route16_EventScript_Snorlax::

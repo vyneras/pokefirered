@@ -2960,3 +2960,16 @@ bool8 ArchipelagoSpecial_CanUseElevator(void)
 {
     return CheckBagHasItem(ITEM_LIFT_KEY, 1) || !gArchipelagoOptions.allElevatorsLocked;
 }
+
+bool8 ArchipelagoSpecial_OnCyclingRoad(void)
+{
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE16) &&
+        gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE16) &&
+        gSaveBlock1Ptr->pos.x <= 20 && gSaveBlock1Ptr->pos.y >= 11)
+        return TRUE;
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE18) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE18) &&
+             gSaveBlock1Ptr->pos.x <= 41 && gSaveBlock1Ptr->pos.y <= 10)
+        return TRUE;
+    return FALSE;
+}

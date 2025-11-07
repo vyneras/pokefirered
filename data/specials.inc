@@ -517,4 +517,5 @@ gSpecials::
 	def_special ArchipelagoSpecial_HaveFossilCount
 	def_special ArchipelagoSpecial_SkipNickname
 	def_special ArchipelagoSpecial_CanUseElevator
+	def_special ArchipelagoSpecial_OnCyclingRoad
 gSpecialsEnd::
