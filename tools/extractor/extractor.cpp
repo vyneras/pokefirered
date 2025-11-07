@@ -241,7 +241,8 @@ const std::vector<ShopData> SHOP_DATA = {
     {"SHOP_FOUR_ISLAND", "sFourIslandShop", 8, 17},
     {"SHOP_SIX_ISLAND", "sSixIslandShop", 8, 18},
     {"SHOP_SEVEN_ISLAND", "sSevenIslandShop", 9, 19},
-    {"SHOP_TRAINER_TOWER", "sTrainerTowerShop", 9, 20}
+    {"SHOP_TRAINER_TOWER", "sTrainerTowerShop", 9, 20},
+    {"SHOP_CELADON_CITY_DEPT_VENDING_MACHINES", "sCeladonDeptVendingMachines", 3, 21}
 };
 
 const std::vector<std::string> STARTER_POKEMON_NAMES = {

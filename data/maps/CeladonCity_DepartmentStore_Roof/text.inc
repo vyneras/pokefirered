@@ -57,9 +57,9 @@ CeladonCity_DepartmentStore_Roof_Text_FloorSign::
     .string "ROOFTOP SQUARE:\n"
     .string "VENDING MACHINES$"
 
-CeladonCity_DepartmentStore_Roof_Text_VendingMachineWhatDoesItHave::
+CeladonCity_DepartmentStore_Roof_Text_VendingMachineWhatWouldYouLike::
     .string "A vending machine!\n"
-    .string "What does it have?$"
+    .string "What would you like to do?$"
 
 CeladonCity_DepartmentStore_Roof_Text_NotEnoughMoney::
     .string "Oops, not enough money!$"

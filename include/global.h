@@ -365,10 +365,10 @@ struct SaveBlock2
     /*0xB04*/ struct PokemonJumpRecords pokeJump;
     /*0xB14*/ struct BerryPickingResults berryPick;
     /*0xB24*/ u16 shopItemFlags[SHOPSANITY_LAST_INDEX];
-    /*0XB4E*/ u32 centerShopItemFlags;
-    /*0xB52*/ u8 filler_B52[0x3D2];
-    /*0xF24*/ u32 encryptionKey;
-}; // size: 0xF28
+    /*0XB50*/ u32 centerShopItemFlags;
+    /*0xB54*/ u8 filler_B52[0x3D2];
+    /*0xF26*/ u32 encryptionKey;
+}; // size: 0xF2A
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
 

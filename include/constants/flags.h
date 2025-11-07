@@ -649,7 +649,7 @@
 #define FLAG_GOT_20_COINS_FROM_GAMBLER_2                 0x270
 #define FLAG_GOT_BICYCLE                                 0x271
 #define FLAG_GOT_FOSSIL_FROM_CINNABAR                    0x272
-#define FLAG_0x273                                       0x273
+#define FLAG_PURCHASED_FRESH_WATER                       0x273
 #define FLAG_DID_ESPHERE_TRADE                           0x274
 #define FLAG_DID_TANGENY_TRADE                           0x275
 #define FLAG_DID_SEELOR_TRADE                            0x276
@@ -691,7 +691,7 @@
 #define FLAG_GOT_TM04_FROM_SABRINA                       0x29A
 #define FLAG_GOT_FAME_CHECKER                            0x29B
 #define FLAG_GOT_NET_BALL_FROM_ROUTE12_FISHING_HOUSE     0x29C
-#define FLAG_0x29D                                       0x29D
+#define FLAG_PURCHASED_SODA_POP                          0x29D
 #define FLAG_0x29E                                       0x29E
 #define FLAG_0x29F                                       0x29F
 #define FLAG_0x2A0                                       0x2A0

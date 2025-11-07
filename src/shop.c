@@ -162,7 +162,13 @@ static const struct MenuAction sShopMenuActions_BuySellQuit[] =
     {gText_ShopQuit, {.void_u8 = Task_HandleShopMenuQuit}}
 };
 
-static const struct YesNoFuncTable sShopMenuActions_BuyQuit[] =
+static const struct MenuAction sShopMenuActions_BuyQuit[] =
+{
+    {gText_ShopBuy, {.void_u8 = Task_HandleShopMenuBuy}},
+    {gText_ShopLeave, {.void_u8 = Task_HandleShopMenuQuit}}
+};
+
+static const struct YesNoFuncTable sShopMenuActions_BuyReturn[] =
 {
     BuyMenuTryMakePurchase,
     BuyMenuReturnToItemList
@@ -175,6 +181,17 @@ static const struct WindowTemplate sShopMenuWindowTemplate =
     .tilemapTop = 1,
     .width = 12,
     .height = 6,
+    .paletteNum = 15,
+    .baseBlock = 8
+};
+
+static const struct WindowTemplate sShopMenuSmallWindowTemplate =
+{
+    .bg = 0,
+    .tilemapLeft = 2,
+    .tilemapTop = 1,
+    .width = 12,
+    .height = 4,
     .paletteNum = 15,
     .baseBlock = 8
 };
@@ -486,6 +503,13 @@ static const struct ShopItem sTrainerTowerShop[] = {
     {ITEM_NONE, ITEM_NONE, 0, TRUE}
 };
 
+static const struct ShopItem sCeladonDeptVendingMachines[] = {
+    {ITEM_FRESH_WATER, ITEM_FRESH_WATER, 200, TRUE},
+    {ITEM_SODA_POP, ITEM_SODA_POP, 300, TRUE},
+    {ITEM_LEMONADE, ITEM_LEMONADE, 350, TRUE},
+    {ITEM_NONE, ITEM_NONE, 0, TRUE}
+};
+
 static const struct ShopItem sPokemonCenterShop[] = {
     {ITEM_POKE_BALL, ITEM_POKE_BALL, 200, TRUE},
     {ITEM_GREAT_BALL, ITEM_GREAT_BALL, 600, TRUE},
@@ -526,10 +550,20 @@ static u8 CreateShopMenu(u8 martType)
     else
         sShopData.fontId = FONT_FEMALE;
 
-    sShopMenuWindowId = AddWindow(&sShopMenuWindowTemplate);
-    SetStdWindowBorderStyle(sShopMenuWindowId, 0);
-    PrintTextArray(sShopMenuWindowId, FONT_NORMAL, GetMenuCursorDimensionByFont(FONT_NORMAL, 0), 2, 16, 3, sShopMenuActions_BuySellQuit);
-    Menu_InitCursor(sShopMenuWindowId, FONT_NORMAL, 0, 2, 16, 3, 0);
+    if (sShopData.shopId == SHOP_CELADON_CITY_DEPT_VENDING_MACHINES)
+    {
+        sShopMenuWindowId = AddWindow(&sShopMenuSmallWindowTemplate);
+        SetStdWindowBorderStyle(sShopMenuWindowId, 0);
+        PrintTextArray(sShopMenuWindowId, FONT_NORMAL, GetMenuCursorDimensionByFont(FONT_NORMAL, 0), 2, 16, 2, sShopMenuActions_BuyQuit);
+        Menu_InitCursor(sShopMenuWindowId, FONT_NORMAL, 0, 2, 16, 2, 0);
+    }
+    else
+    {
+        sShopMenuWindowId = AddWindow(&sShopMenuWindowTemplate);
+        SetStdWindowBorderStyle(sShopMenuWindowId, 0);
+        PrintTextArray(sShopMenuWindowId, FONT_NORMAL, GetMenuCursorDimensionByFont(FONT_NORMAL, 0), 2, 16, 3, sShopMenuActions_BuySellQuit);
+        Menu_InitCursor(sShopMenuWindowId, FONT_NORMAL, 0, 2, 16, 3, 0);
+    }
     PutWindowTilemap(sShopMenuWindowId);
     CopyWindowToVram(sShopMenuWindowId, COPYWIN_MAP);
     return CreateTask(Task_ShopMenu, 8);
@@ -537,7 +571,7 @@ static u8 CreateShopMenu(u8 martType)
 
 static u16 GetItem(u16 index)
 {
-    if (sShopData.shopId >= SHOP_VIRIDIAN_CITY && sShopData.shopId <= SHOP_TRAINER_TOWER &&
+    if (sShopData.shopId >= SHOPSANITY_FIRST_INDEX && sShopData.shopId <= SHOPSANITY_LAST_INDEX &&
         GetSetItemBought(index, FLAG_GET_BOUGHT) &&
         sShopData.itemList[index].repeatable)
     {
@@ -612,6 +646,8 @@ static const struct ShopItem* GetShopItemsFromShopId(u8 shopId)
         return sSevenIslandShop;
     case SHOP_TRAINER_TOWER:
         return sTrainerTowerShop;
+    case SHOP_CELADON_CITY_DEPT_VENDING_MACHINES:
+        return sCeladonDeptVendingMachines;
     case SHOP_POKEMON_CENTER:
         return sPokemonCenterShop;
     default:
@@ -658,7 +694,10 @@ static void Task_ShopMenu(u8 taskId)
         Task_HandleShopMenuQuit(taskId);
         break;
     default:
-        sShopMenuActions_BuySellQuit[Menu_GetCursorPos()].func.void_u8(taskId);
+        if (sShopData.shopId == SHOP_CELADON_CITY_DEPT_VENDING_MACHINES)
+            sShopMenuActions_BuyQuit[Menu_GetCursorPos()].func.void_u8(taskId);
+        else
+            sShopMenuActions_BuySellQuit[Menu_GetCursorPos()].func.void_u8(taskId);
         break;
     }
 }
@@ -685,7 +724,7 @@ static void CB2_GoToSellMenu(void)
 
 static void Task_HandleShopMenuQuit(u8 taskId)
 {
-    if (sShopData.shopId >= SHOP_VIRIDIAN_CITY && sShopData.shopId <= SHOP_TRAINER_TOWER)
+    if (sShopData.shopId >= SHOPSANITY_FIRST_INDEX && sShopData.shopId <= SHOPSANITY_LAST_INDEX)
         FlagSet(SHOP_HINT_FLAGS_START + sShopData.shopId - 1);
     ClearShopMenuWindow();
     RecordTransactionForQuestLog();
@@ -721,7 +760,10 @@ static void Task_ReturnToShopMenu(u8 taskId)
     if (IsWeatherNotFadingIn() != TRUE)
         return;
 
-    DisplayItemMessageOnField(taskId, GetMartFontId(), gText_AnythingElseICanHelp, ShowShopMenuAfterExitingBuyOrSellMenu);
+    if (sShopData.shopId == SHOP_CELADON_CITY_DEPT_VENDING_MACHINES)
+        DisplayItemMessageOnField(taskId, GetMartFontId(), gText_AnythingElseToDo, ShowShopMenuAfterExitingBuyOrSellMenu);
+    else
+        DisplayItemMessageOnField(taskId, GetMartFontId(), gText_AnythingElseICanHelp, ShowShopMenuAfterExitingBuyOrSellMenu);
 }
 
 static void ShowShopMenuAfterExitingBuyOrSellMenu(u8 taskId)
@@ -1459,7 +1501,7 @@ static void Task_BuyHowManyDialogueHandleInput(u8 taskId)
 
 static void CreateBuyMenuConfirmPurchaseWindow(u8 taskId)
 {
-    BuyMenuConfirmPurchase(taskId, sShopMenuActions_BuyQuit);
+    BuyMenuConfirmPurchase(taskId, sShopMenuActions_BuyReturn);
 }
 
 static void BuyMenuTryMakePurchase(u8 taskId)
@@ -1470,6 +1512,10 @@ static void BuyMenuTryMakePurchase(u8 taskId)
     PutWindowTilemap(4);
     if (AddBagItem(tItemId, tItemCount) == TRUE)
     {
+        if (tItemId == ITEM_FRESH_WATER)
+            FlagSet(FLAG_PURCHASED_FRESH_WATER);
+        if (tItemId == ITEM_SODA_POP)
+            FlagSet(FLAG_PURCHASED_SODA_POP);
         if (tItemId == ITEM_LEMONADE)
             FlagSet(FLAG_PURCHASED_LEMONADE);
 
