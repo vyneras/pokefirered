@@ -251,7 +251,6 @@ const std::vector<std::string> STARTER_POKEMON_NAMES = {
 };
 
 const std::vector<std::string> MISC_RAM_ADDRESSES = {
-    "CB2_Overworld",
     "gArchipelagoReceivedItem",
     "gMain",
     "gSaveBlock1Ptr",

@@ -11,6 +11,7 @@
 #include "overworld.h"
 #include "play_time.h"
 #include "intro.h"
+#include "shop.h"
 #include "battle_controllers.h"
 #include "scanline_effect.h"
 #include "save_failed_screen.h"
@@ -229,6 +230,10 @@ void SetMainCallback2(MainCallback callback)
 {
     gMain.callback2 = callback;
     gMain.state = 0;
+    if (callback == CB2_Overworld || callback == CB2_BuyMenu)
+        gMain.archipelagoSafeCallback = 1;
+    else
+        gMain.archipelagoSafeCallback = 0;
 }
 
 void StartTimer1(void)

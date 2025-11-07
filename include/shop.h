@@ -6,6 +6,8 @@
 
 #define INDEX_CANCEL -2
 
+void CB2_BuyMenu(void);
+
 void CreatePokemartMenu(u8 shopId);
 void CreateDecorationShop1Menu(u8 shopId);
 void CreateDecorationShop2Menu(u8 shopId);

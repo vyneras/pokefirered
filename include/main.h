@@ -35,13 +35,15 @@ struct Main
     /*0x034*/ bool16 watchedKeysPressed; // whether one of the watched keys was pressed
     /*0x036*/ u16 watchedKeysMask;       // bit mask for watched keys
 
-    /*0x038*/ struct OamData oamBuffer[128];
+    /*0x038*/ u8 archipelagoSafeCallback;
 
-    /*0x438*/ u8 state;
+    /*0x039*/ struct OamData oamBuffer[128];
 
-    /*0x439*/ u8 oamLoadDisabled:1;
-    /*0x439*/ u8 inBattle:1;
-    /*0x439*/ u8 field_439_x4:1;
+    /*0x439*/ u8 state;
+
+    /*0x43A*/ u8 oamLoadDisabled:1;
+    /*0x43A*/ u8 inBattle:1;
+    /*0x43A*/ u8 field_439_x4:1;
 };
 
 extern struct Main gMain;

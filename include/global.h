@@ -336,7 +336,7 @@ struct SaveBlock2
               u16 optionsShowEffectiveness:1; // whether effectiveness should be shown in move detail panel
               u16 optionsExpDistribution:2; // OPTION_EXP_DISTRIBUTION_[GEN3/GEN6/GEN8]
               u16 optionsSound:1; // OPTIONS_SOUND_[MONO/STEREO]
-              u16 optionsLowHPBeep:1; // whether the low HP beef is enabled
+              u16 optionsLowHPBeep:1; // whether the low HP beep is enabled
               u16 optionsSkipFanfares:1; // whether fanfares can be skipped by pressing B
               u16 optionsBikeMusic:1; // whether the bike music is enabled
     /*0x018*/ u16 optionsSurfMusic:1; // whether the surfing music is enabled
@@ -347,28 +347,28 @@ struct SaveBlock2
               u16 optionsSkipNicknames:1; // whether pokemon nicknaming should be skipped
               u16 optionsItemMessages:2; // OPTIONS_ITEM_MESSAGES_[ALL/PROGRESSION/NONE]
               u16 regionMapZoom:1; // whether the map is zoomed in
-    /*0x01A*/ struct Pokedex pokedex;
-    /*0x092*/ u8 progressivePassesCount;
-    /*0x093*/ u8 progressiveCardKeyCount;
-    /*0x094*/ u8 starterIndex;
-    /*0x095*/ u8 progressiveRod;
-    /*0x096*/ u8 filler_96[0x4];
-    /*0x09A*/ struct Time localTimeOffset;
-    /*0x0A2*/ struct Time lastBerryTreeUpdate;
-    /*0x0AA*/ u32 gcnLinkFlags; // Read by Pokemon Colosseum/XD
-    /*0x0AE*/ bool8 unkFlag1; // Set TRUE, never read
-    /*0x0AF*/ bool8 unkFlag2; // Set FALSE, never read
-    /*0x0B2*/ struct BattleTowerData battleTower;
-    /*0x89A*/ u16 mapView[0x100];
-    /*0xA9A*/ struct LinkBattleRecords linkBattleRecords;
-    /*0xAF2*/ struct BerryCrush berryCrush;
-    /*0xB02*/ struct PokemonJumpRecords pokeJump;
-    /*0xB12*/ struct BerryPickingResults berryPick;
-    /*0xB22*/ u16 shopItemFlags[SHOPSANITY_LAST_INDEX];
-    /*0XB4C*/ u32 centerShopItemFlags;
-    /*0xB50*/ u8 filler_B50[0x3D2];
-    /*0xF22*/ u32 encryptionKey;
-}; // size: 0xF26
+    /*0x01C*/ struct Pokedex pokedex;
+    /*0x094*/ u8 progressivePassesCount;
+    /*0x095*/ u8 progressiveCardKeyCount;
+    /*0x096*/ u8 starterIndex;
+    /*0x097*/ u8 progressiveRod;
+    /*0x098*/ u8 filler_98[0x4];
+    /*0x09C*/ struct Time localTimeOffset;
+    /*0x0A4*/ struct Time lastBerryTreeUpdate;
+    /*0x0AC*/ u32 gcnLinkFlags; // Read by Pokemon Colosseum/XD
+    /*0x0B0*/ bool8 unkFlag1; // Set TRUE, never read
+    /*0x0B1*/ bool8 unkFlag2; // Set FALSE, never read
+    /*0x0B4*/ struct BattleTowerData battleTower;
+    /*0x89C*/ u16 mapView[0x100];
+    /*0xA9C*/ struct LinkBattleRecords linkBattleRecords;
+    /*0xAF4*/ struct BerryCrush berryCrush;
+    /*0xB04*/ struct PokemonJumpRecords pokeJump;
+    /*0xB14*/ struct BerryPickingResults berryPick;
+    /*0xB24*/ u16 shopItemFlags[SHOPSANITY_LAST_INDEX];
+    /*0XB4E*/ u32 centerShopItemFlags;
+    /*0xB52*/ u8 filler_B52[0x3D2];
+    /*0xF24*/ u32 encryptionKey;
+}; // size: 0xF28
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
 

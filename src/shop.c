@@ -114,7 +114,6 @@ static void Task_GoToBuyOrSellMenu(u8 taskId);
 static void MapPostLoadHook_ReturnToShopMenu(void);
 static void Task_ReturnToShopMenu(u8 taskId);
 static void ShowShopMenuAfterExitingBuyOrSellMenu(u8 taskId);
-static void CB2_BuyMenu(void);
 static void VBlankCB_BuyMenu(void);
 static void CB2_InitBuyMenu(void);
 static bool8 InitShopData(void);
@@ -731,7 +730,7 @@ static void ShowShopMenuAfterExitingBuyOrSellMenu(u8 taskId)
     DestroyTask(taskId);
 }
 
-static void CB2_BuyMenu(void)
+void CB2_BuyMenu(void)
 {
     RunTasks();
     AnimateSprites();
