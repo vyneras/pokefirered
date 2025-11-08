@@ -459,8 +459,8 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_PROG_PASS]               = {gItemIcon_TriPass, gItemIconPalette_TriPass},
     [ITEM_PROG_CARD_KEY]           = {gItemIcon_CardKey, gItemIconPalette_CardKey},
     [ITEM_PROG_ROD]                = {gItemIcon_SuperRod, gItemIconPalette_SuperRod},
-    // Ledge jump
-    [ITEM_LEDGE_JUMP]              = {gItemIcon_Badge, gItemIconPalette_Badge},
+    // Jumping shoes
+    [ITEM_JUMPING_SHOES]              = {gItemIcon_Badge, gItemIconPalette_Badge},
     // Pokédex
     [ITEM_POKEDEX]                 = {gItemIcon_Pokedex, gItemIconPalette_Pokedex},
     // Exp. Share

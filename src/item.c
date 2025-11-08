@@ -438,7 +438,7 @@ bool8 AddUniqueBagItem(u16 itemId, u16 count)
     case ITEM_RUNNING_SHOES:
         FlagSet(FLAG_SYS_B_DASH);
         break;
-    case ITEM_LEDGE_JUMP:
+    case ITEM_JUMPING_SHOES:
         FlagSet(FLAG_SYS_LEDGE_JUMP);
         break;
     case ITEM_POKEDEX:

@@ -629,7 +629,7 @@ void UseLastWarp(void)
 
 void WarpToStartingLocation(void)
 {
-    SetLastHealLocationWarp(gArchipelagoOptions.startingLocation);
+    SetLastHealLocationWarp(gArchipelagoOptions.startingRespawn);
     SetWarpDestinationToHealLocation(gArchipelagoOptions.startingLocation);
     DoTeleport2Warp();
     ResetInitialPlayerAvatarState();

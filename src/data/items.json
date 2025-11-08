@@ -6907,12 +6907,12 @@
       "secondaryId": 0
     },
     {
-      "english": "LEDGE JUMP",
-      "itemId": "ITEM_LEDGE_JUMP",
+      "english": "JUMPING SHOES",
+      "itemId": "ITEM_JUMPING_SHOES",
       "price": 1200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
-      "description_english": "Grants you the ability to jump\\ndown ledges.",
+      "description_english": "Shoes created by the DEVON\\nCORPORATION. The built in springs\\nallow you to jump far distances.",
       "importance": 1,
       "registrability": 0,
       "pocket": "POCKET_KEY_ITEMS",

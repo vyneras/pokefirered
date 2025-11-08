@@ -655,11 +655,11 @@ static bool8 CanStopSurfing(s16 x, s16 y, u8 direction)
 static bool8 ShouldJumpLedge(s16 x, s16 y, u8 direction)
 {
     if (GetLedgeJumpDirection(x, y, direction, FALSE) != DIR_NONE &&
-        (FlagGet(FLAG_SYS_LEDGE_JUMP) || (!gArchipelagoOptions.bikeRequiresLedgeJump && TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE))))
+        (FlagGet(FLAG_SYS_LEDGE_JUMP) || (!gArchipelagoOptions.bikeRequiresJumpingShoes && TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE))))
         return TRUE;
     else if (GetLedgeJumpDirection(x, y, direction, TRUE) != DIR_NONE &&
              TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE) &&
-             (FlagGet(FLAG_SYS_LEDGE_JUMP) || !gArchipelagoOptions.bikeRequiresLedgeJump) &&
+             (FlagGet(FLAG_SYS_LEDGE_JUMP) || !gArchipelagoOptions.bikeRequiresJumpingShoes) &&
              gArchipelagoOptions.acrobaticBike)
         return TRUE;
     else

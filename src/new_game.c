@@ -101,7 +101,7 @@ static void ClearBattleTower(void)
 
 static void WarpToPlayersRoom(void)
 {
-    SetLastHealLocationWarp(gArchipelagoOptions.startingLocation);
+    SetLastHealLocationWarp(gArchipelagoOptions.startingRespawn);
     SetWarpDestinationToHealLocation(gArchipelagoOptions.startingLocation);
     WarpIntoMap();
 }
@@ -230,7 +230,7 @@ void NewGameInitData(void)
     {
         AddBagItem(ITEM_BERRY_POUCH, 1);
         AddBagItem(ITEM_TM_CASE, 1);
-        AddBagItem(ITEM_LEDGE_JUMP, 1);
+        AddBagItem(ITEM_JUMPING_SHOES, 1);
     }
 
     SetPokemonCenterShopStartingFlags();

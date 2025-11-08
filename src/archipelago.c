@@ -99,7 +99,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .itemfinderRequired = FALSE,
     .flashRequired = FALSE,
     .fameCheckerRequired = FALSE,
-    .bikeRequiresLedgeJump = TRUE,
+    .bikeRequiresJumpingShoes = TRUE,
     .acrobaticBike = FALSE,
 
     .oaksAideRequiredCounts = {
@@ -128,6 +128,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .teasSplit = FALSE,
 
     .startingLocation = SPAWN_PALLET_TOWN,
+    .startingRespawn = SPAWN_PALLET_TOWN,
     .freeFlyId = 0,
     .townFreeFlyId = 0,
     .resortGorgeousMon = 25,
@@ -209,7 +210,7 @@ bool8 IsItemUnique(u16 item)
            (item >= ITEM_COINS_10 && item <= ITEM_COINS_100) ||
            (item >= ITEM_PROG_PASS && item <= ITEM_PROG_ROD) ||
            item == ITEM_RUNNING_SHOES ||
-           item == ITEM_LEDGE_JUMP ||
+           item == ITEM_JUMPING_SHOES ||
            item == ITEM_POKEDEX;
 }
 

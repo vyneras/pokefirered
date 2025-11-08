@@ -74,7 +74,7 @@ struct ArchipelagoOptions
     /* 0x2E */ bool8 itemfinderRequired;
     /* 0x2F */ bool8 flashRequired;
     /* 0x30 */ bool8 fameCheckerRequired;
-    /* 0x31 */ bool8 bikeRequiresLedgeJump;
+    /* 0x31 */ bool8 bikeRequiresJumpingShoes;
     /* 0x32 */ bool8 acrobaticBike;
 
     /* 0x33 */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
@@ -97,13 +97,14 @@ struct ArchipelagoOptions
     /* 0x45 */ bool8 teasSplit;
 
     /* 0x46 */ u8 startingLocation;
-    /* 0x47 */ u8 freeFlyId;
-    /* 0x48 */ u8 townFreeFlyId;
-    /* 0x49 */ u16 resortGorgeousMon;
-    /* 0x4B */ u16 introSpecies;
-    /* 0x4D */ u16 pcItemId;
-    /* 0x4F */ bool8 remoteItems;
-    /* 0x50 */ bool8 randomized;
+    /* 0x47 */ u8 startingRespawn;
+    /* 0x48 */ u8 freeFlyId;
+    /* 0x49 */ u8 townFreeFlyId;
+    /* 0x4A */ u16 resortGorgeousMon;
+    /* 0x4C */ u16 introSpecies;
+    /* 0x4E */ u16 pcItemId;
+    /* 0x50 */ bool8 remoteItems;
+    /* 0x51 */ bool8 randomized;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem

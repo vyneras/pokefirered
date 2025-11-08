@@ -35,9 +35,6 @@ Text_ObtainedFlyUnlock::
 	.string "{PLAYER} can now fly to\n"
 	.string "{STR_VAR_2}!$"
 
-Text_ObtainedLedgeJump::
-	.string "{PLAYER} can now jump down ledges!$"
-
 Text_TooBadBagFull::
 	.string "Too bad!\n"
 	.string "The BAG is full…$"

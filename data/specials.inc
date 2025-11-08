@@ -458,7 +458,6 @@ gSpecials::
 	def_special ArchipelagoSpecial_IsItemBadge
 	def_special ArchipelagoSpecial_IsItemFlyUnlock
 	def_special ArchipelagoSpecial_IsItemCoins
-	def_special ArchipelagoSpecial_IsItemLedgeJump
 	def_special ArchipelagoSpecial_GetObjectScriptFlag
 	def_special ArchipelagoSpecial_PopReward
 	def_special ArchipelagoSpecial_ConsumeReceivedItem
@@ -510,7 +509,7 @@ gSpecials::
 	def_special ArchipelagoSpecial_FlashRequired
 	def_special ArchipelagoSpecial_CanOpenSilphDoor
 	def_special ArchipelagoSpecial_WarpToStartingLocation
-	def_special ArchipelagoSpecial_SetRespawnToStartingLocation
+	def_special ArchipelagoSpecial_SetRespawnToStartingRespawn
 	def_special ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
 	def_special ArchipelagoSpecial_GiveDexsanityItem
 	def_special ArchipelagoSpecial_GetFossilCount

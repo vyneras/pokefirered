@@ -38,7 +38,7 @@ PokemonLeague_HallOfFame_EventScript_EnterRoom::
 	delay 40
 	setvar VAR_TEMP_1, 1
 	call EventScript_SetDefeatedEliteFourFlagsVars
-	special ArchipelagoSpecial_SetRespawnToStartingLocation
+	special ArchipelagoSpecial_SetRespawnToStartingRespawn
 	fadescreenspeed FADE_TO_BLACK, 24
 	special EnterHallOfFame
 	waitstate
