@@ -1,4 +1,5 @@
 #include "global.h"
+#include "archipelago.h"
 #include "battle.h"
 #include "event_scripts.h"
 #include "overworld.h"
@@ -27,9 +28,12 @@ void ResetSafariZoneFlag(void)
 void EnterSafariMode(void)
 {
     IncrementGameStat(GAME_STAT_ENTERED_SAFARI_ZONE);
-    SetSafariZoneFlag();
-    gNumSafariBalls = 30;
-    gSafariZoneStepCounter = 60000;
+    if (!gArchipelagoOptions.internalEntrancesRandomized)
+    {
+		SetSafariZoneFlag();
+		gNumSafariBalls = 30;
+		gSafariZoneStepCounter = 60000;
+    }
 }
 
 void ExitSafariMode(void)

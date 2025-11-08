@@ -1,6 +1,16 @@
 FuchsiaCity_SafariZone_Entrance_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, FuchsiaCity_SafariZone_Entrance_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, FuchsiaCity_SafariZone_Entrance_OnFrame
 	.byte 0
+
+FuchsiaCity_SafariZone_Entrance_OnTransition::
+	getplayerxy VAR_0x8004, VAR_0x8005
+	call_if_ge VAR_0x8005, 3, FuchsiaCity_SafariZone_Entrance_EnternedFromBottom
+	end
+
+FuchsiaCity_SafariZone_Entrance_EnternedFromBottom::
+	setvar VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 0
+	return
 
 FuchsiaCity_SafariZone_Entrance_OnFrame::
 	map_script_2 VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 1, FuchsiaCity_SafariZone_Entrance_EventScript_ExitWarpIn

@@ -135,6 +135,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .introSpecies = SPECIES_NIDORAN_F,
     .pcItemId = ITEM_POTION,
     .remoteItems = FALSE,
+    .internalEntrancesRandomized = FALSE,
     .randomized = FALSE
 };
 

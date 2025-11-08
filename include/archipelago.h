@@ -3,7 +3,7 @@
 
 #include "global.h"
 
-#define PLAYER_NAME_BUFFER_SIZE 17 * 500
+#define PLAYER_NAME_BUFFER_SIZE 17 * 1000
 #define ITEM_NAME_BUFFER_SIZE 36 * 2000
 #define NAME_TABLE_BUFFER_SIZE (2 + 2 + 1) * 2000 // 2 bytes for location id, 2 bytes for item name offset, 1 byte for player name id
 
@@ -104,7 +104,8 @@ struct ArchipelagoOptions
     /* 0x4C */ u16 introSpecies;
     /* 0x4E */ u16 pcItemId;
     /* 0x50 */ bool8 remoteItems;
-    /* 0x51 */ bool8 randomized;
+    /* 0x51 */ bool8 internalEntrancesRandomized;
+    /* 0x52 */ bool8 randomized;
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem
