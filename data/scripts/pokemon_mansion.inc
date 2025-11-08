@@ -99,6 +99,7 @@ PokemonMansion_EventScript_PressSwitch_2F::
 	setmetatile 12,  7, METATILE_PokemonMansion_Barrier_Vertical_Mid, 1
 	setmetatile 12,  8, METATILE_PokemonMansion_Barrier_Vertical_Bottom, 1
 	setmetatile  2, 15, METATILE_PokemonMansion_Statue_RedEyes, 0
+	setmetatile  4,  6, METATILE_PokemonMansion_Statue_RedEyes, 0
 	return
 
 PokemonMansion_EventScript_ResetSwitch_2F::
@@ -119,6 +120,7 @@ PokemonMansion_EventScript_ResetSwitch_2F::
 	setmetatile 12,  7, METATILE_PokemonMansion_Floor, 0
 	setmetatile 12,  8, METATILE_PokemonMansion_Wall_EndCap, 0
 	setmetatile  2, 15, METATILE_PokemonMansion_Statue_BlackEyes, 0
+	setmetatile  4,  6, METATILE_PokemonMansion_Statue_BlackEyes, 0
 	return
 
 PokemonMansion_EventScript_PressSwitch_3F::
