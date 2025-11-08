@@ -218,6 +218,7 @@ gScriptCmdTable::
 	.4byte ScrCmd_setflagvar                     @ 0xd6
 	.4byte ScrCmd_buffertutormovename            @ 0xd7
 	.4byte ScrCmd_bufferuniqueitemname           @ 0xd8
+	.4byte ScrCmd_pokemartcoin                   @ 0xd9
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop

@@ -18,6 +18,14 @@ void SetCoins(u16 coinAmount)
     gSaveBlock1Ptr->coins = coinAmount ^ gSaveBlock2Ptr->encryptionKey;
 }
 
+bool8 IsEnoughCoins(u16 cost)
+{
+    if (GetCoins() >= cost)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 AddCoins(u16 toAdd)
 {
     u16 coins = GetCoins();
@@ -49,15 +57,31 @@ bool8 RemoveCoins(u16 toSub)
     return FALSE;
 }
 
-static void PrintCoinsString_Parameterized(u8 windowId, u32 coinAmount, u8 x, u8 y, u8 speed)
+void PrintCoinsString_Parameterized(u8 windowId, u32 coinAmount, u8 x, u8 y, u8 speed)
 {
     ConvertIntToDecimalStringN(gStringVar1, coinAmount, STR_CONV_MODE_RIGHT_ALIGN, 4);
     StringExpandPlaceholders(gStringVar5, gText_Coins);
     AddTextPrinterParameterized(windowId, FONT_SMALL, gStringVar5, x, y, speed, NULL);
 }
 
-// Unused
-static void ShowCoinsWindow_Parameterized(u8 windowId, u16 tileStart, u8 palette, u32 coinAmount)
+void PrintCoinAmount(u8 windowId, u8 x, u8 y, int amount, u8 speed)
+{
+    u8 *txtPtr;
+    s32 strLength;
+
+    ConvertIntToDecimalStringN(gStringVar1, amount, STR_CONV_MODE_LEFT_ALIGN, 6);
+
+    strLength = 6 - StringLength(gStringVar1);
+    txtPtr = gStringVar5;
+
+    while (strLength-- != 0)
+        *(txtPtr++) = 0;
+
+    StringExpandPlaceholders(txtPtr, gText_Coins);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, gStringVar5, x, y, speed, NULL);
+}
+
+void ShowCoinsWindow_Parameterized(u8 windowId, u16 tileStart, u8 palette, u32 coinAmount)
 {
     DrawStdFrameWithCustomTileAndPalette(windowId, FALSE, tileStart, palette);
     AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_Coins_2, 0, 0, 0xFF, 0);

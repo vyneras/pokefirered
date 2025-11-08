@@ -3,6 +3,7 @@
 #include "text.h"
 #include "window.h"
 #include "text_window.h"
+#include "coins.h"
 #include "money.h"
 #include "menu_helpers.h"
 #include "new_menu_helpers.h"
@@ -176,6 +177,11 @@ void BuyMenuInitWindows(bool32 isSellingTM)
 void BuyMenuDrawMoneyBox(void)
 {
     PrintMoneyAmountInMoneyBoxWithBorder(0, 0xA, 0xF, GetMoney(&gSaveBlock1Ptr->money));
+}
+
+void BuyMenuDrawCoinBox(void)
+{
+    ShowCoinsWindow_Parameterized(0, 0xA, 0xF, GetCoins());
 }
 
 void BuyMenuPrint(u8 windowId, u8 font, const u8 *text, u8 x, u8 y, u8 letterSpacing, u8 lineSpacing, u8 speed, u8 color)

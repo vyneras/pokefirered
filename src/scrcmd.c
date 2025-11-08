@@ -2316,3 +2316,12 @@ bool8 ScrCmd_bufferuniqueitemname(struct ScriptContext * ctx)
     CopyUniqueItemName(itemId, sScriptStringVars[stringVarIndex]);
     return FALSE;
 }
+
+bool8 ScrCmd_pokemartcoin(struct ScriptContext * ctx)
+{
+    u8 shopId = ScriptReadByte(ctx);
+
+    CreateCoinPokemartMenu(shopId);
+    ScriptContext_Stop();
+    return TRUE;
+}

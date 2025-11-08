@@ -1663,6 +1663,12 @@
 	.2byte \item
 	.endm
 
+    @ Opens the coin Pokemart system, using the specified shop ID.
+	.macro pokemartcoin shopId:req
+	.byte 0xd9
+	.byte \shopId
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req
