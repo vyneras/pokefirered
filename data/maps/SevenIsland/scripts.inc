@@ -57,7 +57,7 @@ SevenIsland_EventScript_AskForScanner::
 	end
 
 SevenIsland_EventScript_AcceptTrade::
-    textcolor NPC_TEXT_COLOR_NEUTRAL
+	textcolor NPC_TEXT_COLOR_NEUTRAL
 	playfanfare MUS_OBTAIN_TMHM
 	message SevenIsland_Text_HandedScanner
 	waitmessage

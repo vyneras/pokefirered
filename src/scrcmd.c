@@ -2270,7 +2270,7 @@ bool8 ScrCmd_bufferapitemstrings(struct ScriptContext *ctx)
     {
         if ((gArchipelagoNameTable[(i * 5) + 0] | (gArchipelagoNameTable[(i * 5) + 1] << 8)) == locationId)
         {
-            playerNameId = gArchipelagoNameTable[(i * 5) + 4];
+            playerNameId = gArchipelagoNameTable[(i * 5) + 4] | (gArchipelagoNameTable[(i * 5) + 5] << 8);
 
             if (playerNameId == 0)
                 gSpecialVar_Result = 2; // Self item

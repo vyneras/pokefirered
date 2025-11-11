@@ -460,7 +460,7 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_PROG_CARD_KEY]           = {gItemIcon_CardKey, gItemIconPalette_CardKey},
     [ITEM_PROG_ROD]                = {gItemIcon_SuperRod, gItemIconPalette_SuperRod},
     // Jumping shoes
-    [ITEM_JUMPING_SHOES]              = {gItemIcon_Badge, gItemIconPalette_Badge},
+    [ITEM_JUMPING_SHOES]           = {gItemIcon_JumpingShoes, gItemIconPalette_JumpingShoes},
     // Pokédex
     [ITEM_POKEDEX]                 = {gItemIcon_Pokedex, gItemIconPalette_Pokedex},
     // Exp. Share

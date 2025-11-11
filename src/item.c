@@ -1038,7 +1038,7 @@ const u8 * ItemId_GetAPItemDescription(u16 locationId)
     {
         if ((gArchipelagoNameTable[(i * 5) + 0] | (gArchipelagoNameTable[(i * 5) + 1] << 8)) == locationId)
         {
-            playerNameId = gArchipelagoNameTable[(i * 5) + 4];
+            playerNameId = gArchipelagoNameTable[(i * 5) + 4] | (gArchipelagoNameTable[(i * 5) + 5] << 8);
             itemNameOffset = gArchipelagoNameTable[(i * 5) + 2] | (gArchipelagoNameTable[(i * 5) + 3] << 8);
             if (playerNameId == 0)
             {
