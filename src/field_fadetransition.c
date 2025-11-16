@@ -324,6 +324,11 @@ bool8 PlayerEnteredThroughBlockedDoor(void)
              gSaveBlock1Ptr->pos.x == 7 && gSaveBlock1Ptr->pos.y == 1 &&
              VarGet(VAR_MAP_SCENE_ROUTE22_NORTH_ENTRANCE) != 1)
         return TRUE;
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MT_EMBER_EXTERIOR) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(MT_EMBER_EXTERIOR) &&
+             gSaveBlock1Ptr->pos.x == 42 && gSaveBlock1Ptr->pos.y == 39 &&
+             !FlagGet(FLAG_HIDE_MT_EMBER_EXTERIOR_ROCKETS))
+        return TRUE;
     return FALSE;
 }
 
