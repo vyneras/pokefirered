@@ -44,7 +44,7 @@ SaffronCity_EventScript_MoveRocketGrunts::
 	goto_if_eq VAR_RESULT, FALSE, EventScript_Return
 	setobjectxyperm LOCALID_ROCKET_GRUNT_1, 23, 15
 	setobjectxyperm LOCALID_ROCKET_GRUNT_2, 47, 13
-	setobjectxyperm LOCALID_ROCKET_GRUNT_3, 28, 22
+	setobjectxyperm LOCALID_ROCKET_GRUNT_3, 26, 22
 	setvar VAR_TEMP_3, 1
 	return
 
@@ -71,17 +71,22 @@ SaffronCity_EventScript_RocketGruntsMoveLeft::
 	lockall
 	applymovement LOCALID_ROCKET_GRUNT_1, SaffronCity_Movement_MoveLeft
 	applymovement LOCALID_ROCKET_GRUNT_2, SaffronCity_Movement_MoveLeft
-	applymovement LOCALID_ROCKET_GRUNT_3, SaffronCity_Movement_MoveLeft
+	applymovement LOCALID_ROCKET_GRUNT_3, SaffronCity_Movement_MoveRight
 	waitmovement 0
-	copyobjectxytoperm LOCALID_ROCKET_GRUNT_1
-	copyobjectxytoperm LOCALID_ROCKET_GRUNT_2
-	copyobjectxytoperm LOCALID_ROCKET_GRUNT_3
+	setobjectxyperm LOCALID_ROCKET_GRUNT_1, 22, 15
+	setobjectxyperm LOCALID_ROCKET_GRUNT_2, 46, 13
+	setobjectxyperm LOCALID_ROCKET_GRUNT_3, 27, 22
 	setvar VAR_TEMP_3, 0
 	releaseall
 	end
 
 SaffronCity_Movement_MoveLeft::
 	walk_left
+	face_down
+	step_end
+
+SaffronCity_Movement_MoveRight::
+	walk_right
 	face_down
 	step_end
 
