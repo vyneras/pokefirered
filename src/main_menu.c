@@ -13,6 +13,7 @@
 #include "quest_log.h"
 #include "mystery_gift_menu.h"
 #include "strings.h"
+#include "string_util.h"
 #include "title_screen.h"
 #include "help_system.h"
 #include "pokedex.h"
@@ -61,7 +62,9 @@ static void Task_ReturnToTileScreen(u8 taskId);
 static void MoveWindowByMenuTypeAndCursorPos(u8 menuType, u8 cursorPos);
 static bool8 HandleMenuInput(u8 taskId);
 static void PrintMessageOnWindow4(const u8 *str);
-static void PrintContinueStats(void);
+static void PrintNewGameStats(u8 taskId);
+static void PrintContinueStats(u8 taskId);
+static void PrintVersion(u8 taskId);
 static void PrintPlayerName(void);
 static void PrintPlayTime(void);
 static void PrintDexCount(void);
@@ -343,6 +346,7 @@ static void Task_PrintMainMenuText(u8 taskId)
         FillWindowPixelBuffer(MAIN_MENU_WINDOW_OPTION_ONLY, PIXEL_FILL(10));
         AddTextPrinterParameterized3(MAIN_MENU_WINDOW_NEWGAME_ONLY, FONT_NORMAL, 2, 2, sTextColor1, -1, gText_NewGame);
         AddTextPrinterParameterized3(MAIN_MENU_WINDOW_OPTION_ONLY, FONT_NORMAL, 2, 2, sTextColor1, -1, gText_Option);
+        PrintNewGameStats(taskId);
         MainMenu_DrawWindow(&sWindowTemplate[MAIN_MENU_WINDOW_NEWGAME_ONLY]);
         MainMenu_DrawWindow(&sWindowTemplate[MAIN_MENU_WINDOW_OPTION_ONLY]);
         PutWindowTilemap(MAIN_MENU_WINDOW_NEWGAME_ONLY);
@@ -357,7 +361,7 @@ static void Task_PrintMainMenuText(u8 taskId)
         AddTextPrinterParameterized3(MAIN_MENU_WINDOW_CONTINUE, FONT_NORMAL, 2, 2, sTextColor1, -1, gText_Continue);
         AddTextPrinterParameterized3(MAIN_MENU_WINDOW_NEWGAME, FONT_NORMAL, 2, 2, sTextColor1, -1, gText_NewGame);
         AddTextPrinterParameterized3(MAIN_MENU_WINDOW_OPTION, FONT_NORMAL, 2, 2, sTextColor1, -1, gText_Option);
-        PrintContinueStats();
+        PrintContinueStats(taskId);
         MainMenu_DrawWindow(&sWindowTemplate[MAIN_MENU_WINDOW_CONTINUE]);
         MainMenu_DrawWindow(&sWindowTemplate[MAIN_MENU_WINDOW_NEWGAME]);
         MainMenu_DrawWindow(&sWindowTemplate[MAIN_MENU_WINDOW_OPTION]);
@@ -585,12 +589,41 @@ static void PrintMessageOnWindow4(const u8 *str)
     SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(115, 157));
 }
 
-static void PrintContinueStats(void)
+static void PrintNewGameStats(u8 taskId)
 {
+    PrintVersion(taskId);
+}
+
+static void PrintContinueStats(u8 taskId)
+{
+    PrintVersion(taskId);
     PrintPlayerName();
     PrintDexCount();
     PrintPlayTime();
     PrintBadgeCount();
+}
+
+static void PrintVersion(u8 taskId)
+{
+    s32 i, x;
+    u8 version[VERSION_LENGTH + 1];
+    u8 *ptr;
+    ptr = version;
+    for (i = 0; i < VERSION_LENGTH; i++)
+        *ptr++ = gArchipelagoOptions.version[i];
+    *ptr = EOS;
+    x = 192 - StringLength(version) * 6;
+    DebugPrintf("X Pos: %d", x);
+    switch (gTasks[taskId].tMenuType)
+    {
+    case MAIN_MENU_NEWGAME:
+    default:
+        AddTextPrinterParameterized3(MAIN_MENU_WINDOW_NEWGAME_ONLY, FONT_NORMAL, x, 2, sTextColor2, -1, version);
+        break;
+    case MAIN_MENU_CONTINUE:
+        AddTextPrinterParameterized3(MAIN_MENU_WINDOW_CONTINUE, FONT_NORMAL, x, 2, sTextColor2, -1, version);
+        break;
+    }
 }
 
 static void PrintPlayerName(void)

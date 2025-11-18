@@ -136,7 +136,8 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .pcItemId = ITEM_POTION,
     .remoteItems = FALSE,
     .internalEntrancesRandomized = FALSE,
-    .randomized = FALSE
+    .randomized = FALSE,
+    .version = _("AP v1.0.0")
 };
 
 EWRAM_DATA struct ArchipelagoReceivedItem gArchipelagoReceivedItem = {0};

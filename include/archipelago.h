@@ -106,6 +106,7 @@ struct ArchipelagoOptions
     /* 0x50 */ bool8 remoteItems;
     /* 0x51 */ bool8 internalEntrancesRandomized;
     /* 0x52 */ bool8 randomized;
+    /* 0x53 */ u8 version[16];
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem
