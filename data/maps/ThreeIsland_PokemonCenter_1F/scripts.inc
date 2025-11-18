@@ -5,6 +5,7 @@ ThreeIsland_PokemonCenter_1F_MapScripts::
 
 ThreeIsland_PokemonCenter_1F_OnTransition::
 	setrespawn SPAWN_THREE_ISLAND
+	setteleport
 	end
 
 ThreeIsland_PokemonCenter_1F_EventScript_Nurse::

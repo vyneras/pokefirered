@@ -5,6 +5,7 @@ FuchsiaCity_PokemonCenter_1F_MapScripts::
 
 FuchsiaCity_PokemonCenter_1F_OnTransition::
 	setrespawn SPAWN_FUCHSIA_CITY
+	setteleport
 	end
 
 FuchsiaCity_PokemonCenter_1F_EventScript_Nurse::

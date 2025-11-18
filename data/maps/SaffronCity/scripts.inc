@@ -18,6 +18,7 @@ SaffronCity_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanEnterSilphCo
 	call_if_eq VAR_RESULT, FALSE, SaffronCity_EventScript_MoveDoorGuardGrunt
 	call_if_unset FLAG_HIDE_SAFFRON_ROCKETS, SaffronCity_EventScript_MoveRocketGrunts
+	setvar VAR_TELEPORT_LOCATION, SPAWN_SAFFRON_CITY
 	end
 
 SaffronCity_EventScript_SetGiveFlyUnlockItem::

@@ -5,6 +5,7 @@ VermilionCity_PokemonCenter_1F_MapScripts::
 
 VermilionCity_PokemonCenter_1F_OnTransition::
 	setrespawn SPAWN_VERMILION_CITY
+	setteleport
 	end
 
 VermilionCity_PokemonCenter_1F_EventScript_Nurse::

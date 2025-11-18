@@ -6,6 +6,7 @@ SixIsland_PokemonCenter_1F_MapScripts::
 
 SixIsland_PokemonCenter_1F_OnTransition::
 	setrespawn SPAWN_SIX_ISLAND
+	setteleport
 	end
 
 SixIsland_PokemonCenter_1F_OnFrame::

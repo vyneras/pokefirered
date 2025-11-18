@@ -7,6 +7,7 @@ CinnabarIsland_PokemonCenter_1F_MapScripts::
 
 CinnabarIsland_PokemonCenter_1F_OnTransition::
 	setrespawn SPAWN_CINNABAR_ISLAND
+	setteleport
 	end
 
 CinnabarIsland_PokemonCenter_1F_EventScript_Nurse::

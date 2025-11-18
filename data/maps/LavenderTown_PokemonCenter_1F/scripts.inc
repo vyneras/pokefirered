@@ -5,6 +5,7 @@ LavenderTown_PokemonCenter_1F_MapScripts::
 
 LavenderTown_PokemonCenter_1F_OnTransition::
 	setrespawn SPAWN_LAVENDER_TOWN
+	setteleport
 	end
 
 LavenderTown_PokemonCenter_1F_EventScript_Nurse::

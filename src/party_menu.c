@@ -3939,7 +3939,7 @@ static void CursorCB_FieldMove(u8 taskId)
                 ChooseMonForSoftboiled(taskId);
                 break;
             case FIELD_MOVE_TELEPORT:
-                mapHeader = Overworld_GetMapHeaderByGroupAndId(gSaveBlock1Ptr->lastHealLocation.mapGroup, gSaveBlock1Ptr->lastHealLocation.mapNum);
+                mapHeader = Overworld_GetMapHeaderByGroupAndId(gSaveBlock1Ptr->teleportLocation.mapGroup, gSaveBlock1Ptr->teleportLocation.mapNum);
                 GetMapNameGeneric(gStringVar1, mapHeader->regionMapSectionId);
                 StringExpandPlaceholders(gStringVar5, gText_ReturnToHealingSpot);
                 DisplayFieldMoveExitAreaMessage(taskId);

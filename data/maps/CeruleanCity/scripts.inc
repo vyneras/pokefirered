@@ -27,6 +27,7 @@ CeruleanCity_OnTransition::
 	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_RemoveSmashRock
 	specialvar VAR_RESULT, ArchipelagoSpecial_IsFamesanity
 	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_CheckRivalSetPosition
+	setvar VAR_TELEPORT_LOCATION, SPAWN_CERULEAN_CITY
 	end
 
 CeruleanCity_EventScript_RemoveCutTree::

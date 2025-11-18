@@ -9,6 +9,7 @@ SixIsland_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, SixIsland_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, SixIsland_EventScript_SetWorldMapFlag
+	setvar VAR_TELEPORT_LOCATION, SPAWN_SIX_ISLAND
 	end
 
 SixIsland_EventScript_SetGiveFlyUnlockItem::

@@ -15,7 +15,6 @@ CeruleanCity_Gym_EventScript_MistyDefeated::
 	setflag FLAG_DEFEATED_MISTY
 Archipelago_Target_Badge_2::
 	giveitem ITEM_BADGE_2, 1, FLAG_RECEIVED_BADGE_2
-	setrespawn SPAWN_CERULEAN_CITY
 	specialvar VAR_RESULT, ArchipelagoSpecial_AreTeasSplit
 	call_if_eq VAR_RESULT, TRUE, CeruleanCity_Gym_EventScript_ShowCeladonMisty
 	set_gym_trainers 2

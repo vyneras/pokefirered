@@ -13,6 +13,7 @@ Route10_PokemonCenter_1F_OnTransition::
 	call_if_eq VAR_RESULT, TRUE, Route10_PokemonCenter_1F_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, Route10_PokemonCenter_1F_EventScript_SetWorldMapFlag
 	setrespawn SPAWN_ROUTE10
+	setteleport
 	setvar VAR_0x8003, 1
 	specialvar REQUIRED_CAUGHT_MONS, ArchipelagoSpecial_GetProfessorOaksAideCount
 	end

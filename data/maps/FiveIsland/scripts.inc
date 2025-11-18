@@ -9,6 +9,7 @@ FiveIsland_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, FiveIsland_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, FiveIsland_EventScript_SetWorldMapFlag
+	setvar VAR_TELEPORT_LOCATION, SPAWN_FIVE_ISLAND
 	end
 
 FiveIsland_EventScript_SetGiveFlyUnlockItem::

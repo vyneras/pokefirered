@@ -13,6 +13,7 @@ Route4_PokemonCenter_1F_OnTransition::
 	call_if_eq VAR_RESULT, TRUE, Route4_PokemonCenter_1F_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, Route4_PokemonCenter_1F_EventScript_SetWorldMapFlag
 	setrespawn SPAWN_ROUTE4
+	setteleport
 	end
 
 Route4_PokemonCenter_1F_EventScript_SetGiveFlyUnlockItem::

@@ -102,6 +102,7 @@ static void ClearBattleTower(void)
 static void WarpToPlayersRoom(void)
 {
     SetLastHealLocationWarp(gArchipelagoOptions.startingRespawn);
+    SetTeleportLocationWarp(gArchipelagoOptions.startingLocation);
     SetWarpDestinationToHealLocation(gArchipelagoOptions.startingLocation);
     WarpIntoMap();
 }

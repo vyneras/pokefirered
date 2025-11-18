@@ -630,6 +630,7 @@ void UseLastWarp(void)
 void WarpToStartingLocation(void)
 {
     SetLastHealLocationWarp(gArchipelagoOptions.startingRespawn);
+    SetTeleportLocationWarp(gArchipelagoOptions.startingLocation);
     SetWarpDestinationToHealLocation(gArchipelagoOptions.startingLocation);
     DoTeleport2Warp();
     ResetInitialPlayerAvatarState();
@@ -715,6 +716,11 @@ void SetWarpDestinationToLastHealLocation(void)
     sWarpDestination = gSaveBlock1Ptr->lastHealLocation;
 }
 
+void SetWarpDestinationToTeleportLocation(void)
+{
+    sWarpDestination = gSaveBlock1Ptr->teleportLocation;
+}
+
 static void Overworld_SetWhiteoutRespawnPoint(void)
 {
     SetWhiteoutRespawnWarpAndHealerNpc(&sWarpDestination);
@@ -725,6 +731,13 @@ void SetLastHealLocationWarp(u8 healLocationId)
     const struct HealLocation *healLocation = GetHealLocation(healLocationId);
     if (healLocation)
         SetWarpData(&gSaveBlock1Ptr->lastHealLocation, healLocation->group, healLocation->map, -1, healLocation->x, healLocation->y);
+}
+
+void SetTeleportLocationWarp(u8 teleportLocationId)
+{
+    const struct HealLocation *teleportLocation = GetHealLocation(teleportLocationId);
+    if (teleportLocation)
+        SetWarpData(&gSaveBlock1Ptr->teleportLocation, teleportLocation->group, teleportLocation->map, -1, teleportLocation->x, teleportLocation->y);
 }
 
 void UpdateEscapeWarp(s16 x, s16 y)

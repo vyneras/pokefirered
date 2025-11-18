@@ -5,6 +5,7 @@ SaffronCity_PokemonCenter_1F_MapScripts::
 
 SaffronCity_PokemonCenter_1F_OnTransition::
 	setrespawn SPAWN_SAFFRON_CITY
+	setteleport
 	end
 
 SaffronCity_PokemonCenter_1F_EventScript_Nurse::

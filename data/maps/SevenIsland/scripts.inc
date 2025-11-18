@@ -9,6 +9,7 @@ SevenIsland_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, SevenIsland_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, SevenIsland_EventScript_SetWorldMapFlag
+	setvar VAR_TELEPORT_LOCATION, SPAWN_SEVEN_ISLAND
 	end
 
 SevenIsland_EventScript_SetGiveFlyUnlockItem::

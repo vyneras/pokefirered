@@ -5,6 +5,7 @@ CeladonCity_PokemonCenter_1F_MapScripts::
 
 CeladonCity_PokemonCenter_1F_OnTransition::
 	setrespawn SPAWN_CELADON_CITY
+	setteleport
 	end
 
 CeladonCity_PokemonCenter_1F_EventScript_Nurse::
