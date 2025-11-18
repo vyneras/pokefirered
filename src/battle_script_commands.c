@@ -3196,8 +3196,9 @@ static void Cmd_getexp(void)
             {
                 if (FlagGet(FLAG_SYS_EXP_SHARE))
                 {
-                    *exp = SAFE_DIV(calculatedExp, viaSentIn + viaExpShare);
-                    gExpShareExp = calculatedExp / (viaSentIn + viaExpShare);
+                    calculatedExp = calculatedExp / 2;
+                    *exp = SAFE_DIV(calculatedExp, viaSentIn);
+                    gExpShareExp = SAFE_DIV(calculatedExp, viaExpShare);
                 }
                 else
                 {
