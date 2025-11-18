@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "archipelago.h"
 #include "scanline_effect.h"
 #include "task.h"
 #include "save.h"
@@ -7,6 +8,7 @@
 #include "menu.h"
 #include "link.h"
 #include "oak_speech.h"
+#include "option_menu.h"
 #include "overworld.h"
 #include "quest_log.h"
 #include "mystery_gift_menu.h"
@@ -22,15 +24,16 @@ enum MainMenuType
 {
     MAIN_MENU_NEWGAME = 0,
     MAIN_MENU_CONTINUE,
-    MAIN_MENU_MYSTERYGIFT
+    MAIN_MENU_OPTION
 };
 
 enum MainMenuWindow
 {
     MAIN_MENU_WINDOW_NEWGAME_ONLY = 0,
+    MAIN_MENU_WINDOW_OPTION_ONLY,
     MAIN_MENU_WINDOW_CONTINUE,
     MAIN_MENU_WINDOW_NEWGAME,
-    MAIN_MENU_WINDOW_MYSTERYGIFT,
+    MAIN_MENU_WINDOW_OPTION,
     MAIN_MENU_WINDOW_ERROR,
     MAIN_MENU_WINDOW_COUNT
 };
@@ -81,6 +84,15 @@ static const struct WindowTemplate sWindowTemplate[] = {
         .paletteNum = 15,
         .baseBlock = 0x001
     },
+    [MAIN_MENU_WINDOW_OPTION_ONLY] = {
+        .bg = 0,
+        .tilemapLeft = 3,
+        .tilemapTop = 5,
+        .width = 24,
+        .height = 2,
+        .paletteNum = 15,
+        .baseBlock = 0x031
+    },
     [MAIN_MENU_WINDOW_CONTINUE] = {
         .bg = 0,
         .tilemapLeft = 3,
@@ -99,7 +111,7 @@ static const struct WindowTemplate sWindowTemplate[] = {
         .paletteNum = 15,
         .baseBlock = 0x0f1
     },
-    [MAIN_MENU_WINDOW_MYSTERYGIFT] = {
+    [MAIN_MENU_WINDOW_OPTION] = {
         .bg = 0,
         .tilemapLeft = 3,
         .tilemapTop = 17,
@@ -136,7 +148,7 @@ static const struct BgTemplate sBgTemplate[] = {
     }
 };
 
-static const u8 sMenuCursorYMax[] = { 0, 1, 2 };
+static const u8 sMenuCursorYMax[] = { 1, 2, 2 };
 
 static void CB2_MainMenu(void)
 {
@@ -233,14 +245,7 @@ static void Task_SetWin0BldRegsAndCheckSaveFile(u8 taskId)
         {
         case SAVE_STATUS_OK:
             LoadUserFrameToBg(0);
-            if (IsMysteryGiftEnabled() == TRUE)
-            {
-                gTasks[taskId].tMenuType = MAIN_MENU_MYSTERYGIFT;
-            }
-            else
-            {
-                gTasks[taskId].tMenuType = MAIN_MENU_CONTINUE;
-            }
+            gTasks[taskId].tMenuType = MAIN_MENU_CONTINUE;
             gTasks[taskId].func = Task_SetWin0BldRegsNoSaveFileCheck;
             break;
         case SAVE_STATUS_INVALID:
@@ -252,14 +257,6 @@ static void Task_SetWin0BldRegsAndCheckSaveFile(u8 taskId)
             SetStdFrame0OnBg(0);
             gTasks[taskId].tMenuType = MAIN_MENU_CONTINUE;
             PrintSaveErrorStatus(taskId, gText_SaveFileCorrupted);
-            if (IsMysteryGiftEnabled() == TRUE)
-            {
-                gTasks[taskId].tMenuType = MAIN_MENU_MYSTERYGIFT;
-            }
-            else
-            {
-                gTasks[taskId].tMenuType = MAIN_MENU_CONTINUE;
-            }
             break;
         case SAVE_STATUS_EMPTY:
         default:
@@ -295,10 +292,7 @@ static void Task_SaveErrorStatus_RunPrinterThenWaitButton(u8 taskId)
             ClearWindowTilemap(MAIN_MENU_WINDOW_ERROR);
             MainMenu_EraseWindow(&sWindowTemplate[MAIN_MENU_WINDOW_ERROR]);
             LoadUserFrameToBg(0);
-            if (gTasks[taskId].tMenuType == MAIN_MENU_NEWGAME)
-                gTasks[taskId].func = Task_SetWin0BldRegsNoSaveFileCheck;
-            else
-                gTasks[taskId].func = Task_PrintMainMenuText;
+            gTasks[taskId].func = Task_PrintMainMenuText;
         }
     }
 }
@@ -314,10 +308,7 @@ static void Task_SetWin0BldRegsNoSaveFileCheck(u8 taskId)
         SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG0 | BLDCNT_TGT1_BG1 | BLDCNT_TGT1_BG2 | BLDCNT_TGT1_BG3 | BLDCNT_TGT1_OBJ | BLDCNT_TGT1_BD | BLDCNT_EFFECT_DARKEN);
         SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(0, 0));
         SetGpuReg(REG_OFFSET_BLDY, 7);
-        if (gTasks[taskId].tMenuType == MAIN_MENU_NEWGAME)
-            gTasks[taskId].func = Task_ExecuteMainMenuSelection;
-        else
-            gTasks[taskId].func = Task_WaitFadeAndPrintMainMenuText;
+        gTasks[taskId].func = Task_WaitFadeAndPrintMainMenuText;
     }
 }
 
@@ -349,42 +340,33 @@ static void Task_PrintMainMenuText(u8 taskId)
     case MAIN_MENU_NEWGAME:
     default:
         FillWindowPixelBuffer(MAIN_MENU_WINDOW_NEWGAME_ONLY, PIXEL_FILL(10));
+        FillWindowPixelBuffer(MAIN_MENU_WINDOW_OPTION_ONLY, PIXEL_FILL(10));
         AddTextPrinterParameterized3(MAIN_MENU_WINDOW_NEWGAME_ONLY, FONT_NORMAL, 2, 2, sTextColor1, -1, gText_NewGame);
+        AddTextPrinterParameterized3(MAIN_MENU_WINDOW_OPTION_ONLY, FONT_NORMAL, 2, 2, sTextColor1, -1, gText_Option);
         MainMenu_DrawWindow(&sWindowTemplate[MAIN_MENU_WINDOW_NEWGAME_ONLY]);
+        MainMenu_DrawWindow(&sWindowTemplate[MAIN_MENU_WINDOW_OPTION_ONLY]);
         PutWindowTilemap(MAIN_MENU_WINDOW_NEWGAME_ONLY);
-        CopyWindowToVram(MAIN_MENU_WINDOW_NEWGAME_ONLY, COPYWIN_FULL);
+        PutWindowTilemap(MAIN_MENU_WINDOW_OPTION_ONLY);
+        CopyWindowToVram(MAIN_MENU_WINDOW_NEWGAME_ONLY, COPYWIN_GFX);
+        CopyWindowToVram(MAIN_MENU_WINDOW_OPTION_ONLY, COPYWIN_FULL);
         break;
     case MAIN_MENU_CONTINUE:
         FillWindowPixelBuffer(MAIN_MENU_WINDOW_CONTINUE, PIXEL_FILL(10));
         FillWindowPixelBuffer(MAIN_MENU_WINDOW_NEWGAME, PIXEL_FILL(10));
+        FillWindowPixelBuffer(MAIN_MENU_WINDOW_OPTION, PIXEL_FILL(10));
         AddTextPrinterParameterized3(MAIN_MENU_WINDOW_CONTINUE, FONT_NORMAL, 2, 2, sTextColor1, -1, gText_Continue);
         AddTextPrinterParameterized3(MAIN_MENU_WINDOW_NEWGAME, FONT_NORMAL, 2, 2, sTextColor1, -1, gText_NewGame);
+        AddTextPrinterParameterized3(MAIN_MENU_WINDOW_OPTION, FONT_NORMAL, 2, 2, sTextColor1, -1, gText_Option);
         PrintContinueStats();
         MainMenu_DrawWindow(&sWindowTemplate[MAIN_MENU_WINDOW_CONTINUE]);
         MainMenu_DrawWindow(&sWindowTemplate[MAIN_MENU_WINDOW_NEWGAME]);
+        MainMenu_DrawWindow(&sWindowTemplate[MAIN_MENU_WINDOW_OPTION]);
         PutWindowTilemap(MAIN_MENU_WINDOW_CONTINUE);
         PutWindowTilemap(MAIN_MENU_WINDOW_NEWGAME);
-        CopyWindowToVram(MAIN_MENU_WINDOW_CONTINUE, COPYWIN_GFX);
-        CopyWindowToVram(MAIN_MENU_WINDOW_NEWGAME, COPYWIN_FULL);
-        break;
-    case MAIN_MENU_MYSTERYGIFT:
-        FillWindowPixelBuffer(MAIN_MENU_WINDOW_CONTINUE, PIXEL_FILL(10));
-        FillWindowPixelBuffer(MAIN_MENU_WINDOW_NEWGAME, PIXEL_FILL(10));
-        FillWindowPixelBuffer(MAIN_MENU_WINDOW_MYSTERYGIFT, PIXEL_FILL(10));
-        AddTextPrinterParameterized3(MAIN_MENU_WINDOW_CONTINUE, FONT_NORMAL, 2, 2, sTextColor1, -1, gText_Continue);
-        AddTextPrinterParameterized3(MAIN_MENU_WINDOW_NEWGAME, FONT_NORMAL, 2, 2, sTextColor1, -1, gText_NewGame);
-        gTasks[taskId].tMGErrorType = 1;
-        AddTextPrinterParameterized3(MAIN_MENU_WINDOW_MYSTERYGIFT, FONT_NORMAL, 2, 2, sTextColor1, -1, gText_MysteryGift);
-        PrintContinueStats();
-        MainMenu_DrawWindow(&sWindowTemplate[MAIN_MENU_WINDOW_CONTINUE]);
-        MainMenu_DrawWindow(&sWindowTemplate[MAIN_MENU_WINDOW_NEWGAME]);
-        MainMenu_DrawWindow(&sWindowTemplate[MAIN_MENU_WINDOW_MYSTERYGIFT]);
-        PutWindowTilemap(MAIN_MENU_WINDOW_CONTINUE);
-        PutWindowTilemap(MAIN_MENU_WINDOW_NEWGAME);
-        PutWindowTilemap(MAIN_MENU_WINDOW_MYSTERYGIFT);
+        PutWindowTilemap(MAIN_MENU_WINDOW_OPTION);
         CopyWindowToVram(MAIN_MENU_WINDOW_CONTINUE, COPYWIN_GFX);
         CopyWindowToVram(MAIN_MENU_WINDOW_NEWGAME, COPYWIN_GFX);
-        CopyWindowToVram(MAIN_MENU_WINDOW_MYSTERYGIFT, COPYWIN_FULL);
+        CopyWindowToVram(MAIN_MENU_WINDOW_OPTION, COPYWIN_FULL);
         break;
     }
     gTasks[taskId].func = Task_WaitDma3AndFadeIn;
@@ -424,7 +406,16 @@ static void Task_ExecuteMainMenuSelection(u8 taskId)
         {
         default:
         case MAIN_MENU_NEWGAME:
-            menuAction = MAIN_MENU_NEWGAME;
+            switch (gTasks[taskId].tCursorPos)
+            {
+            default:
+            case 0:
+                menuAction = MAIN_MENU_NEWGAME;
+                break;
+            case 1:
+                menuAction = MAIN_MENU_OPTION;
+                break;
+            }
             break;
         case MAIN_MENU_CONTINUE:
             switch (gTasks[taskId].tCursorPos)
@@ -436,30 +427,8 @@ static void Task_ExecuteMainMenuSelection(u8 taskId)
             case 1:
                 menuAction = MAIN_MENU_NEWGAME;
                 break;
-            }
-            break;
-        case MAIN_MENU_MYSTERYGIFT:
-            switch (gTasks[taskId].tCursorPos)
-            {
-            default:
-            case 0:
-                menuAction = MAIN_MENU_CONTINUE;
-                break;
-            case 1:
-                menuAction = MAIN_MENU_NEWGAME;
-                break;
             case 2:
-                if (!IsWirelessAdapterConnected())
-                {
-                    SetStdFrame0OnBg(0);
-                    gTasks[taskId].func = Task_MysteryGiftError;
-                    BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
-                    return;
-                }
-                else
-                {
-                    menuAction = MAIN_MENU_MYSTERYGIFT;
-                }
+                menuAction = MAIN_MENU_OPTION;
                 break;
             }
             break;
@@ -480,9 +449,9 @@ static void Task_ExecuteMainMenuSelection(u8 taskId)
             FreeAllWindowBuffers();
             TryStartQuestLogPlayback(taskId);
             break;
-        case MAIN_MENU_MYSTERYGIFT:
-            SetMainCallback2(CB2_InitMysteryGift);
-            HelpSystem_Disable();
+        case MAIN_MENU_OPTION:
+            gMain.savedCallback = CB2_InitMainMenu;
+            SetMainCallback2(CB2_OptionsMenuFromStartMenu);
             FreeAllWindowBuffers();
             DestroyTask(taskId);
             break;
@@ -539,11 +508,20 @@ static void MoveWindowByMenuTypeAndCursorPos(u8 menuType, u8 cursorPos)
     {
     default:
     case MAIN_MENU_NEWGAME:
-        win0vTop = 0x00 << 8;
-        win0vBot = 0x20;
+        switch (cursorPos)
+        {
+        default:
+        case 0: // NEW GAME
+            win0vTop = 0x00 << 8;
+            win0vBot = 0x20;
+            break;
+        case 1: // OPTION
+            win0vTop = 0x20 << 8;
+            win0vBot = 0x40;
+            break;
+        }
         break;
     case MAIN_MENU_CONTINUE:
-    case MAIN_MENU_MYSTERYGIFT:
         switch (cursorPos)
         {
         default:

@@ -511,7 +511,7 @@ extern const u8 gText_SaveFileHasBeenDeleted[];
 extern const u8 gText_1MSubCircuitBoardNotInstalled[];
 extern const u8 gText_NewGame[];
 extern const u8 gText_Continue[];
-extern const u8 gText_MysteryGift[];
+extern const u8 gText_Option[];
 extern const u8 gText_WirelessNotConnected[];
 extern const u8 gText_MysteryGiftCantUse[];
 extern const u8 gText_Player[];
