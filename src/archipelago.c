@@ -93,6 +93,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .ceruleanCaveRequirement = 0,
     .ceruleanCaveRequiredCount = 8,
     .cinnabarFossilCount = 2,
+    .rematchRequiresGyms = TRUE,
 
     .startingMoney = 3000,
 

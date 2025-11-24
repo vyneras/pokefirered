@@ -83,7 +83,7 @@ CeruleanCity_EventScript_CheckRivalSetPosition::
 
 CeruleanCity_EventScript_RivalSetPosition::
 	clearflag FLAG_HIDE_CERULEAN_RIVAL
-	setobjectxyperm LOCALID_RIVAL, 23, 20
+	setobjectxyperm LOCALID_RIVAL, 24, 20
 	return
 
 CeruleanCity_OnLoad::

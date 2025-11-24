@@ -755,19 +755,19 @@ static void TryGetRematchTrainerIdGivenGameState(const u16 * trainerIdxs, u8 * r
              *rematchIdx_p = GetRematchTrainerIdGivenGameState(trainerIdxs, *rematchIdx_p);
         break;
      case 2:
-        if (!HasRequiredBadgesOrGyms(TRUE, 2))
+        if (!HasRequiredBadgesOrGyms(gArchipelagoOptions.rematchRequiresGyms, 2))
             *rematchIdx_p = GetRematchTrainerIdGivenGameState(trainerIdxs, *rematchIdx_p);
         break;
      case 3:
-        if (!HasRequiredBadgesOrGyms(TRUE, 4))
+        if (!HasRequiredBadgesOrGyms(gArchipelagoOptions.rematchRequiresGyms, 4))
             *rematchIdx_p = GetRematchTrainerIdGivenGameState(trainerIdxs, *rematchIdx_p);
         break;
      case 4:
-        if (!HasRequiredBadgesOrGyms(TRUE, 6))
+        if (!HasRequiredBadgesOrGyms(gArchipelagoOptions.rematchRequiresGyms, 6))
             *rematchIdx_p = GetRematchTrainerIdGivenGameState(trainerIdxs, *rematchIdx_p);
         break;
      case 5:
-        if (!HasRequiredBadgesOrGyms(TRUE, 8))
+        if (!HasRequiredBadgesOrGyms(gArchipelagoOptions.rematchRequiresGyms, 8))
             *rematchIdx_p = GetRematchTrainerIdGivenGameState(trainerIdxs, *rematchIdx_p);
         break;
     }

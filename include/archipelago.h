@@ -68,45 +68,46 @@ struct ArchipelagoOptions
     /* 0x27 */ u8 ceruleanCaveRequirement; // 0 = Vanilla, 1 = Become Champion, 2 = Restore Network Center, 3 = Badges, 4 = Gyms
     /* 0x28 */ u8 ceruleanCaveRequiredCount;
     /* 0x29 */ u8 cinnabarFossilCount;
+    /* 0x2A */ u8 rematchRequiresGyms;
 
-    /* 0x2A */ u32 startingMoney;
+    /* 0x2B */ u32 startingMoney;
 
-    /* 0x2E */ bool8 itemfinderRequired;
-    /* 0x2F */ bool8 flashRequired;
-    /* 0x30 */ bool8 fameCheckerRequired;
-    /* 0x31 */ bool8 bikeRequiresJumpingShoes;
-    /* 0x32 */ bool8 acrobaticBike;
+    /* 0x2F */ bool8 itemfinderRequired;
+    /* 0x30 */ bool8 flashRequired;
+    /* 0x31 */ bool8 fameCheckerRequired;
+    /* 0x32 */ bool8 bikeRequiresJumpingShoes;
+    /* 0x33 */ bool8 acrobaticBike;
 
-    /* 0x33 */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
+    /* 0x34 */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
 
-    /* 0x38 */ bool8 reccuringHiddenItems;
-    /* 0x39 */ bool8 isTrainersanity;
-    /* 0x3A */ bool8 isDexsanity;
-    /* 0x3B */ bool8 extraKeyItems;
-    /* 0x3C */ bool8 kantoOnly;
-    /* 0x3D */ bool8 flyUnlocks;
-    /* 0x3E */ bool8 isFamesanity;
-    /* 0x3F */ bool8 gymKeys;
-    /* 0x40 */ bool8 isShopsanity;
+    /* 0x39 */ bool8 reccuringHiddenItems;
+    /* 0x3A */ bool8 isTrainersanity;
+    /* 0x3B */ bool8 isDexsanity;
+    /* 0x3C */ bool8 extraKeyItems;
+    /* 0x3D */ bool8 kantoOnly;
+    /* 0x3E */ bool8 flyUnlocks;
+    /* 0x3F */ bool8 isFamesanity;
+    /* 0x40 */ bool8 gymKeys;
+    /* 0x41 */ bool8 isShopsanity;
 
-    /* 0x41 */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
-    /* 0x42 */ u8 additionalDarkCaves; // Mt. Moon, Diglett's Cave, Victory Road
+    /* 0x42 */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
+    /* 0x43 */ u8 additionalDarkCaves; // Mt. Moon, Diglett's Cave, Victory Road
 
-    /* 0x43 */ bool8 passesSplit;
-    /* 0x44 */ bool8 cardKeysSplit;
-    /* 0x45 */ bool8 teasSplit;
+    /* 0x44 */ bool8 passesSplit;
+    /* 0x45 */ bool8 cardKeysSplit;
+    /* 0x46 */ bool8 teasSplit;
 
-    /* 0x46 */ u8 startingLocation;
-    /* 0x47 */ u8 startingRespawn;
-    /* 0x48 */ u8 freeFlyId;
-    /* 0x49 */ u8 townFreeFlyId;
-    /* 0x4A */ u16 resortGorgeousMon;
-    /* 0x4C */ u16 introSpecies;
-    /* 0x4E */ u16 pcItemId;
-    /* 0x50 */ bool8 remoteItems;
-    /* 0x51 */ bool8 internalEntrancesRandomized;
-    /* 0x52 */ bool8 randomized;
-    /* 0x53 */ u8 version[16];
+    /* 0x47 */ u8 startingLocation;
+    /* 0x48 */ u8 startingRespawn;
+    /* 0x49 */ u8 freeFlyId;
+    /* 0x4A */ u8 townFreeFlyId;
+    /* 0x4B */ u16 resortGorgeousMon;
+    /* 0x4D */ u16 introSpecies;
+    /* 0x4F */ u16 pcItemId;
+    /* 0x51 */ bool8 remoteItems;
+    /* 0x52 */ bool8 internalEntrancesRandomized;
+    /* 0x53 */ bool8 randomized;
+    /* 0x54 */ u8 version[16];
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem
