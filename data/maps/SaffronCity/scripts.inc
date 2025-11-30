@@ -63,7 +63,7 @@ SaffronCity_EventScript_DoorGuardGruntMoveLeft::
 	lockall
 	applymovement LOCALID_DOOR_GUARD_GRUNT, SaffronCity_Movement_MoveLeft
 	waitmovement 0
-	copyobjectxytoperm LOCALID_DOOR_GUARD_GRUNT
+	setobjectxyperm LOCALID_DOOR_GUARD_GRUNT, 33, 31
 	setvar VAR_TEMP_2, 0
 	releaseall
 	end
