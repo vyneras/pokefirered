@@ -757,7 +757,7 @@ static void Task_UsedExpShare(u8 taskId)
     if (++gTasks[taskId].data[8] > 7)
     {
         PlaySE(SE_SWITCH);
-        DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar5, Task_ReturnToBagFromContextMenu);
+        DisplayItemMessageInCurrentContext(taskId, gTasks[taskId].data[3], FONT_NORMAL, gStringVar5);
     }
 }
 
