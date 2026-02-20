@@ -4629,7 +4629,7 @@
         {
           "map": "MAP_CERULEAN_CAVE_2F",
           "base_label": "sCeruleanCave2F_LeafGreen",
-          "map_name": "CERULEAN CAVE 1F",
+          "map_name": "CERULEAN CAVE 2F",
           "land_mons": {
             "encounter_rate": 7,
             "mons": [

@@ -2266,23 +2266,23 @@ bool8 ScrCmd_bufferapitemstrings(struct ScriptContext *ctx)
     u16 locationId = VarGet(ScriptReadHalfword(ctx));
     u16 defaultItemId = VarGet(ScriptReadHalfword(ctx));
 
-    for (i = 0; i < NAME_TABLE_BUFFER_SIZE / 5; i++)
+    for (i = 0; i < NAME_TABLE_BUFFER_SIZE / 6; i++)
     {
-        if ((gArchipelagoNameTable[(i * 5) + 0] | (gArchipelagoNameTable[(i * 5) + 1] << 8)) == locationId)
+        if ((gArchipelagoNameTable[(i * 6) + 0] | (gArchipelagoNameTable[(i * 6) + 1] << 8)) == locationId)
         {
-            playerNameId = gArchipelagoNameTable[(i * 5) + 4] | (gArchipelagoNameTable[(i * 5) + 5] << 8);
+            playerNameId = gArchipelagoNameTable[(i * 6) + 4] | (gArchipelagoNameTable[(i * 6) + 5] << 8);
 
             if (playerNameId == 0)
                 gSpecialVar_Result = 2; // Self item
             else
             	gSpecialVar_Result = 1; // Foreign item
 
-            itemNameOffset = gArchipelagoNameTable[(i * 5) + 2] | (gArchipelagoNameTable[(i * 5) + 3] << 8);
+            itemNameOffset = gArchipelagoNameTable[(i * 6) + 2] | (gArchipelagoNameTable[(i * 6) + 3] << 8);
             StringCopy(sScriptStringVars[stringVarIndexA], gArchipelagoPlayerNames + (playerNameId * 17));
             StringCopy(sScriptStringVars[stringVarIndexB], gArchipelagoItemNames + itemNameOffset);
             return FALSE;
         }
-        else if ((gArchipelagoNameTable[(i * 5) + 0] | (gArchipelagoNameTable[(i * 5) + 1] << 8)) > locationId)
+        else if ((gArchipelagoNameTable[(i * 6) + 0] | (gArchipelagoNameTable[(i * 6) + 1] << 8)) > locationId)
         {
             break;
         }

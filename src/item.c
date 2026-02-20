@@ -1034,12 +1034,12 @@ const u8 * ItemId_GetAPItemDescription(u16 locationId)
     u8 newline[] = _("'s\n");
     u8 period[] = _(".");
 
-    for (i = 0; i < NAME_TABLE_BUFFER_SIZE / 5; i++)
+    for (i = 0; i < NAME_TABLE_BUFFER_SIZE / 6; i++)
     {
-        if ((gArchipelagoNameTable[(i * 5) + 0] | (gArchipelagoNameTable[(i * 5) + 1] << 8)) == locationId)
+        if ((gArchipelagoNameTable[(i * 6) + 0] | (gArchipelagoNameTable[(i * 6) + 1] << 8)) == locationId)
         {
-            playerNameId = gArchipelagoNameTable[(i * 5) + 4] | (gArchipelagoNameTable[(i * 5) + 5] << 8);
-            itemNameOffset = gArchipelagoNameTable[(i * 5) + 2] | (gArchipelagoNameTable[(i * 5) + 3] << 8);
+            playerNameId = gArchipelagoNameTable[(i * 6) + 4] | (gArchipelagoNameTable[(i * 6) + 5] << 8);
+            itemNameOffset = gArchipelagoNameTable[(i * 6) + 2] | (gArchipelagoNameTable[(i * 6) + 3] << 8);
             if (playerNameId == 0)
             {
             	StringCopy(gStringVar5, gText_APItemDescriptionSelf);
@@ -1054,7 +1054,7 @@ const u8 * ItemId_GetAPItemDescription(u16 locationId)
             StringAppend(gStringVar5, period);
             return gStringVar5;
         }
-        else if ((gArchipelagoNameTable[(i * 5) + 0] | (gArchipelagoNameTable[(i * 5) + 1] << 8)) > locationId)
+        else if ((gArchipelagoNameTable[(i * 6) + 0] | (gArchipelagoNameTable[(i * 6) + 1] << 8)) > locationId)
         {
             break;
         }
