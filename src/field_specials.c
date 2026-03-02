@@ -2831,7 +2831,12 @@ bool8 ArchipelagoSpecial_GymKeys(void)
 
 bool8 ArchipelagoSpecial_UseBetterShops(void)
 {
-    return !gArchipelagoOptions.isShopsanity && FlagGet(FLAG_BETTER_SHOPS_ENABLED);
+    return !gArchipelagoOptions.isShopsanity && gArchipelagoOptions.betterShops;
+}
+
+bool8 ArchipelagoSpecial_CheaperCoins(void)
+{
+    return gArchipelagoOptions.cheaperCoins;
 }
 
 bool8 ArchipelagoSpecial_SetFameCheckerFlag(void)

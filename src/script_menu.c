@@ -162,10 +162,12 @@ static const struct MenuAction sMultichoiceList_DomeAmber[] = {
     { gOtherText_Exit }
 };
 
-static const struct MenuAction sMultichoiceList_CeladonVendingMachine[] = {
-    { gText_FreshWater_200 },
-    { gText_SodaPop_300 },
-    { gText_Lemonade_350 },
+static const struct MenuAction sMultichoiceList_GameCornerCheapCoinPurchaseCounter[] = {
+    { gText_100Coins_200 },
+    { gText_500Coins_1000 },
+    { gText_1500Coins_3000 },
+    { gText_3000Coins_6000 },
+    { gText_5000Coins_10000 },
     { gOtherText_Exit }
 };
 
@@ -190,8 +192,9 @@ static const struct MenuAction sMultichoiceList_GameCornerBattleItemPrizes[] = {
 static const struct MenuAction sMultichoiceList_GameCornerCoinPurchaseCounter[] = {
     { gText_100Coins_2000 },
     { gText_500Coins_10000 },
-    { gText_1000Coins_20000 },
     { gText_1500Coins_30000 },
+    { gText_3000Coins_60000 },
+    { gText_5000Coins_100000 },
     { gOtherText_Exit }
 };
 
@@ -538,7 +541,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] = {
     [MULTICHOICE_AMBER]                                      = MULTICHOICE(sMultichoiceList_Amber),
     [MULTICHOICE_HELIX_AMBER]                                = MULTICHOICE(sMultichoiceList_HelixAmber),
     [MULTICHOICE_DOME_AMBER]                                 = MULTICHOICE(sMultichoiceList_DomeAmber),
-    [MULTICHOICE_CELADON_VENDING_MACHINE]                    = MULTICHOICE(sMultichoiceList_CeladonVendingMachine),
+    [MULTICHOICE_GAME_CORNER_CHEAP_COIN_PURCHASE_COUNTER]    = MULTICHOICE(sMultichoiceList_GameCornerCheapCoinPurchaseCounter),
     [MULTICHOICE_GAME_CORNER_COIN_PURCHASE_COUNTER]          = MULTICHOICE(sMultichoiceList_GameCornerCoinPurchaseCounter),
     [MULTICHOICE_EXCELLENT_NOT_SO_BAD]                       = MULTICHOICE(sMultichoiceList_Excellent_NotSoBad),
     [MULTICHOICE_RIGHT_LEFT]                                 = MULTICHOICE(sMultichoiceList_RightLeft),

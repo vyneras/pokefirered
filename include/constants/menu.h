@@ -30,7 +30,7 @@
 #define MULTICHOICE_AMBER                                      23
 #define MULTICHOICE_HELIX_AMBER                                24
 #define MULTICHOICE_DOME_AMBER                                 25
-#define MULTICHOICE_CELADON_VENDING_MACHINE                    26
+#define MULTICHOICE_GAME_CORNER_CHEAP_COIN_PURCHASE_COUNTER    26
 #define MULTICHOICE_GAME_CORNER_COIN_PURCHASE_COUNTER          27
 #define MULTICHOICE_EXCELLENT_NOT_SO_BAD                       28
 #define MULTICHOICE_RIGHT_LEFT                                 29

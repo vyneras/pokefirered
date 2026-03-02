@@ -342,7 +342,7 @@ struct SaveBlock2
     /*0x018*/ u16 optionsSurfMusic:1; // whether the surfing music is enabled
               u16 optionsGuaranteedCatch:1; // whether guaranteed catch is enabled
               u16 optionsGuaranteedRun:1; // whether guaranteed run is enabled
-              u16 optionsNormalizeEncounterRates:1; // whether encounter rates are normalized
+              u16 optionsEncounterRates:1; // whether encounter rates are normalized
               u16 optionsBlindTrainers:1; // whether trainers are blind
               u16 optionsSkipNicknames:1; // whether pokemon nicknaming should be skipped
               u16 optionsItemMessages:2; // OPTIONS_ITEM_MESSAGES_[ALL/PROGRESSION/NONE]

@@ -501,6 +501,7 @@ gSpecials::
 	def_special ArchipelagoSpecial_IsFamesanity
 	def_special ArchipelagoSpecial_GymKeys
 	def_special ArchipelagoSpecial_UseBetterShops
+	def_special ArchipelagoSpecial_CheaperCoins
 	def_special ArchipelagoSpecial_SetFameCheckerFlag
 	def_special ArchipelagoSpecial_ArePassesSplit
 	def_special ArchipelagoSpecial_AreCardKeysSplit

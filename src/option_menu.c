@@ -380,7 +380,7 @@ void CB2_OptionsMenuFromStartMenu(void)
     sOptionMenuPtr->soundOptions[MENUITEM_SURFMUSIC] = gSaveBlock2Ptr->optionsSurfMusic;
     sOptionMenuPtr->qualityOptions[MENUITEM_GUARANTEEDCATCH] = gSaveBlock2Ptr->optionsGuaranteedCatch;
     sOptionMenuPtr->qualityOptions[MENUITEM_GUARANTEEDRUN] = gSaveBlock2Ptr->optionsGuaranteedRun;
-    sOptionMenuPtr->qualityOptions[MENUITEM_ENCOUNTERRATES] = gSaveBlock2Ptr->optionsNormalizeEncounterRates;
+    sOptionMenuPtr->qualityOptions[MENUITEM_ENCOUNTERRATES] = gSaveBlock2Ptr->optionsEncounterRates;
     sOptionMenuPtr->qualityOptions[MENUITEM_BLINDTRAINERS] = gSaveBlock2Ptr->optionsBlindTrainers;
     sOptionMenuPtr->qualityOptions[MENUITEM_SKIPNICKNAMES] = gSaveBlock2Ptr->optionsSkipNicknames;
     sOptionMenuPtr->qualityOptions[MENUITEM_ITEMMESSAGES] = gSaveBlock2Ptr->optionsItemMessages;
@@ -928,7 +928,7 @@ static void CloseAndSaveOptionMenu(u8 taskId)
     gSaveBlock2Ptr->optionsSurfMusic = sOptionMenuPtr->soundOptions[MENUITEM_SURFMUSIC];
     gSaveBlock2Ptr->optionsGuaranteedCatch = sOptionMenuPtr->qualityOptions[MENUITEM_GUARANTEEDCATCH];
     gSaveBlock2Ptr->optionsGuaranteedRun = sOptionMenuPtr->qualityOptions[MENUITEM_GUARANTEEDRUN];
-    gSaveBlock2Ptr->optionsNormalizeEncounterRates = sOptionMenuPtr->qualityOptions[MENUITEM_ENCOUNTERRATES];
+    gSaveBlock2Ptr->optionsEncounterRates = sOptionMenuPtr->qualityOptions[MENUITEM_ENCOUNTERRATES];
     gSaveBlock2Ptr->optionsBlindTrainers = sOptionMenuPtr->qualityOptions[MENUITEM_BLINDTRAINERS];
     gSaveBlock2Ptr->optionsSkipNicknames = sOptionMenuPtr->qualityOptions[MENUITEM_SKIPNICKNAMES];
     gSaveBlock2Ptr->optionsItemMessages = sOptionMenuPtr->qualityOptions[MENUITEM_ITEMMESSAGES];

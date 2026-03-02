@@ -613,7 +613,6 @@ static void PrintVersion(u8 taskId)
         *ptr++ = gArchipelagoOptions.version[i];
     *ptr = EOS;
     x = 192 - StringLength(version) * 6;
-    DebugPrintf("X Pos: %d", x);
     switch (gTasks[taskId].tMenuType)
     {
     case MAIN_MENU_NEWGAME:

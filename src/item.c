@@ -582,7 +582,7 @@ void SetPokemonCenterShopStartingFlags()
 {
     u8 i = 0;
 
-    if (FlagGet(FLAG_BETTER_SHOPS_ENABLED))
+    if (gArchipelagoOptions.betterShops)
     {
         while(gPokemonCenterShopItems[i] != ITEM_NONE)
         {

@@ -26,88 +26,89 @@ struct ArchipelagoOptions
     /* 0x05 */ u16 surfMusic:1;
                u16 guaranteedCatch:1;
                u16 guaranteedRun:1;
-               u16 normalizeEncounterRates:1;
+               u16 encounterRates:1;
                u16 blindTrainers:1;
                u16 skipNicknames:1;
                u16 itemMessages:2; // 0 = Show All, 1 = Show Progression Only, 2 = Show None
-    /* 0x06 */ bool8 betterShopsEnabled;
-    /* 0x07 */ bool8 reusableTms;
-    /* 0x08 */ bool8 unlockSeenDexInfo;
-    /* 0x09 */ bool8 physicalSpecialSplit;
+    /* 0x06 */ bool8 betterShops;
+    /* 0x07 */ bool8 cheaperCoins;
+    /* 0x08 */ bool8 reusableTms;
+    /* 0x09 */ bool8 unlockSeenDexInfo;
+    /* 0x0A */ bool8 physicalSpecialSplit;
 
-    /* 0x0A */ bool8 openViridianCity;
-    /* 0x0B */ u8 route3Requirement; // 0 = Open, 1 = Defeat Brock, 2 = Defeat Any Gym Leader, 3 = Boulder Badge, 4 = Any Badge
-    /* 0x0C */ bool8 openCeruleanCity;
-    /* 0x0D */ bool8 modifyRoute2;
-    /* 0x0E */ bool8 modifyRoute9;
-    /* 0x0F */ bool8 blockUndergroundTunnels;
-    /* 0x10 */ bool8 route12Boulders;
-    /* 0x11 */ bool8 modifyRoute10;
-    /* 0x12 */ bool8 modifyRoute12;
-    /* 0x13 */ bool8 modifyRoute16;
-    /* 0x14 */ bool8 openSilphCo;
-    /* 0x15 */ bool8 removeSaffronRockets;
-    /* 0x16 */ bool8 modifyRoute23;
-    /* 0x17 */ bool8 route23Trees;
-    /* 0x18 */ bool8 blockPokemonTower;
-    /* 0x19 */ bool8 victoryRoadRocks;
-    /* 0x1A */ bool8 earlyFameGossip;
-    /* 0x1B */ bool8 blockVermilionSailing;
-    /* 0x1C */ bool8 allElevatorsLocked;
+    /* 0x0B */ bool8 openViridianCity;
+    /* 0x0C */ u8 route3Requirement; // 0 = Open, 1 = Defeat Brock, 2 = Defeat Any Gym Leader, 3 = Boulder Badge, 4 = Any Badge
+    /* 0x0D */ bool8 openCeruleanCity;
+    /* 0x0E */ bool8 modifyRoute2;
+    /* 0x0F */ bool8 modifyRoute9;
+    /* 0x10 */ bool8 blockUndergroundTunnels;
+    /* 0x11 */ bool8 route12Boulders;
+    /* 0x12 */ bool8 modifyRoute10;
+    /* 0x13 */ bool8 modifyRoute12;
+    /* 0x14 */ bool8 modifyRoute16;
+    /* 0x15 */ bool8 openSilphCo;
+    /* 0x16 */ bool8 removeSaffronRockets;
+    /* 0x17 */ bool8 modifyRoute23;
+    /* 0x18 */ bool8 route23Trees;
+    /* 0x19 */ bool8 blockPokemonTower;
+    /* 0x1A */ bool8 victoryRoadRocks;
+    /* 0x1B */ bool8 earlyFameGossip;
+    /* 0x1C */ bool8 blockVermilionSailing;
+    /* 0x1D */ bool8 allElevatorsLocked;
 
-    /* 0x1D */ bool8 giovanniRequiresGyms;
-    /* 0x1E */ u8 giovanniRequiredCount;
-    /* 0x1F */ bool8 route22GateRequiresGyms;
-    /* 0x20 */ u8 route22GateRequiredCount;
-    /* 0x21 */ bool8 route23GuardRequiresGyms;
-    /* 0x22 */ u8 route23GuardRequiredCount;
-    /* 0x23 */ bool8 eliteFourRequiresGyms;
-    /* 0x24 */ u8 eliteFourRequiredCount;
-    /* 0x25 */ bool8 eliteFourRematchRequiresGyms;
-    /* 0x26 */ u8 eliteFourRematchRequiredCount;
-    /* 0x27 */ u8 ceruleanCaveRequirement; // 0 = Vanilla, 1 = Become Champion, 2 = Restore Network Center, 3 = Badges, 4 = Gyms
-    /* 0x28 */ u8 ceruleanCaveRequiredCount;
-    /* 0x29 */ u8 cinnabarFossilCount;
-    /* 0x2A */ u8 rematchRequiresGyms;
+    /* 0x1E */ bool8 giovanniRequiresGyms;
+    /* 0x1F */ u8 giovanniRequiredCount;
+    /* 0x20 */ bool8 route22GateRequiresGyms;
+    /* 0x21 */ u8 route22GateRequiredCount;
+    /* 0x22 */ bool8 route23GuardRequiresGyms;
+    /* 0x23 */ u8 route23GuardRequiredCount;
+    /* 0x24 */ bool8 eliteFourRequiresGyms;
+    /* 0x25 */ u8 eliteFourRequiredCount;
+    /* 0x26 */ bool8 eliteFourRematchRequiresGyms;
+    /* 0x27 */ u8 eliteFourRematchRequiredCount;
+    /* 0x28 */ u8 ceruleanCaveRequirement; // 0 = Vanilla, 1 = Become Champion, 2 = Restore Network Center, 3 = Badges, 4 = Gyms
+    /* 0x29 */ u8 ceruleanCaveRequiredCount;
+    /* 0x2A */ u8 cinnabarFossilCount;
+    /* 0x2B */ u8 rematchRequiresGyms;
 
-    /* 0x2B */ u32 startingMoney;
+    /* 0x2C */ u32 startingMoney;
 
-    /* 0x2F */ bool8 itemfinderRequired;
-    /* 0x30 */ bool8 flashRequired;
-    /* 0x31 */ bool8 fameCheckerRequired;
-    /* 0x32 */ bool8 bikeRequiresJumpingShoes;
-    /* 0x33 */ bool8 acrobaticBike;
+    /* 0x30 */ bool8 itemfinderRequired;
+    /* 0x31 */ bool8 flashRequired;
+    /* 0x32 */ bool8 fameCheckerRequired;
+    /* 0x33 */ bool8 bikeRequiresJumpingShoes;
+    /* 0x34 */ bool8 acrobaticBike;
 
-    /* 0x34 */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
+    /* 0x35 */ u8 oaksAideRequiredCounts[5]; // Route 2, Route 10, Route 11, Route 16, Route 15
 
-    /* 0x39 */ bool8 reccuringHiddenItems;
-    /* 0x3A */ bool8 isTrainersanity;
-    /* 0x3B */ bool8 isDexsanity;
-    /* 0x3C */ bool8 extraKeyItems;
-    /* 0x3D */ bool8 kantoOnly;
-    /* 0x3E */ bool8 flyUnlocks;
-    /* 0x3F */ bool8 isFamesanity;
-    /* 0x40 */ bool8 gymKeys;
-    /* 0x41 */ bool8 isShopsanity;
+    /* 0x3A */ bool8 reccuringHiddenItems;
+    /* 0x3B */ bool8 isTrainersanity;
+    /* 0x3C */ bool8 isDexsanity;
+    /* 0x3D */ bool8 extraKeyItems;
+    /* 0x3E */ bool8 kantoOnly;
+    /* 0x3F */ bool8 flyUnlocks;
+    /* 0x40 */ bool8 isFamesanity;
+    /* 0x41 */ bool8 gymKeys;
+    /* 0x42 */ bool8 isShopsanity;
 
-    /* 0x42 */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
-    /* 0x43 */ u8 additionalDarkCaves; // Mt. Moon, Diglett's Cave, Victory Road
+    /* 0x43 */ u8 removeBadgeRequirement; // Flash, Cut, Fly, Strength, Surf, Rock Smash, Waterfall
+    /* 0x44 */ u8 additionalDarkCaves; // Mt. Moon, Diglett's Cave, Victory Road
 
-    /* 0x44 */ bool8 passesSplit;
-    /* 0x45 */ bool8 cardKeysSplit;
-    /* 0x46 */ bool8 teasSplit;
+    /* 0x45 */ bool8 passesSplit;
+    /* 0x46 */ bool8 cardKeysSplit;
+    /* 0x47 */ bool8 teasSplit;
 
-    /* 0x47 */ u8 startingLocation;
-    /* 0x48 */ u8 startingRespawn;
-    /* 0x49 */ u8 freeFlyId;
-    /* 0x4A */ u8 townFreeFlyId;
-    /* 0x4B */ u16 resortGorgeousMon;
-    /* 0x4D */ u16 introSpecies;
-    /* 0x4F */ u16 pcItemId;
-    /* 0x51 */ bool8 remoteItems;
-    /* 0x52 */ bool8 internalEntrancesRandomized;
-    /* 0x53 */ bool8 randomized;
-    /* 0x54 */ u8 version[16];
+    /* 0x48 */ u8 startingLocation;
+    /* 0x49 */ u8 startingRespawn;
+    /* 0x4A */ u8 freeFlyId;
+    /* 0x4B */ u8 townFreeFlyId;
+    /* 0x4C */ u16 resortGorgeousMon;
+    /* 0x4E */ u16 introSpecies;
+    /* 0x50 */ u16 pcItemId;
+    /* 0x52 */ bool8 remoteItems;
+    /* 0x53 */ bool8 internalEntrancesRandomized;
+    /* 0x54 */ bool8 randomized;
+    /* 0x55 */ u8 version[16];
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem

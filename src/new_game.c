@@ -81,7 +81,7 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsSurfMusic = gArchipelagoOptions.surfMusic;
     gSaveBlock2Ptr->optionsGuaranteedCatch = gArchipelagoOptions.guaranteedCatch;
     gSaveBlock2Ptr->optionsGuaranteedRun = gArchipelagoOptions.guaranteedRun;
-    gSaveBlock2Ptr->optionsNormalizeEncounterRates = gArchipelagoOptions.normalizeEncounterRates;
+    gSaveBlock2Ptr->optionsEncounterRates = gArchipelagoOptions.encounterRates;
     gSaveBlock2Ptr->optionsBlindTrainers = gArchipelagoOptions.blindTrainers;
     gSaveBlock2Ptr->optionsSkipNicknames = gArchipelagoOptions.skipNicknames;
     gSaveBlock2Ptr->optionsItemMessages = gArchipelagoOptions.itemMessages;
@@ -206,7 +206,6 @@ void NewGameInitData(void)
 
     if (gArchipelagoOptions.unlockSeenDexInfo) UnlockAllSeenDexInfo();
     if (!gArchipelagoOptions.reccuringHiddenItems) SetAllRenewableItemFlags();
-    if (gArchipelagoOptions.betterShopsEnabled) FlagSet(FLAG_BETTER_SHOPS_ENABLED);
     if (gArchipelagoOptions.openViridianCity) VarSet(VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1);
     if (!gArchipelagoOptions.route12Boulders) FlagSet(FLAG_HIDE_ROUTE_12_BOULDERS);
     if (!gArchipelagoOptions.blockPokemonTower) VarSet(VAR_MAP_SCENE_POKEMON_TOWER_1F, 1);

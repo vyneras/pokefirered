@@ -79,7 +79,7 @@ static u8 ChooseWildMonIndex_Land(void)
 {
     u8 rand = Random() % ENCOUNTER_CHANCE_LAND_MONS_TOTAL;
 
-    if (gSaveBlock2Ptr->optionsNormalizeEncounterRates)
+    if (gSaveBlock2Ptr->optionsEncounterRates)
     {
         if (rand < NORMALIZED_LAND_ENCOUNTER(0))
             return 0;
@@ -139,7 +139,7 @@ static u8 ChooseWildMonIndex_WaterRock(void)
 {
     u8 rand = Random() % ENCOUNTER_CHANCE_WATER_MONS_TOTAL;
 
-    if (gSaveBlock2Ptr->optionsNormalizeEncounterRates)
+    if (gSaveBlock2Ptr->optionsEncounterRates)
     {
         if (rand < NORMALIZED_WATER_ENCOUNTER(0))
             return 0;
@@ -176,7 +176,7 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
     switch (rod)
     {
     case OLD_ROD:
-        if (gSaveBlock2Ptr->optionsNormalizeEncounterRates)
+        if (gSaveBlock2Ptr->optionsEncounterRates)
         {
             if (rand < NORMALIZED_OLD_ROD_ENCOUNTER(0))
                 wildMonIndex = 0;
@@ -192,7 +192,7 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
         }
         break;
     case GOOD_ROD:
-        if (gSaveBlock2Ptr->optionsNormalizeEncounterRates)
+        if (gSaveBlock2Ptr->optionsEncounterRates)
         {
             if (rand < NORMALIZED_GOOD_ROD_ENCOUNTER(2))
                 wildMonIndex = 2;
@@ -212,7 +212,7 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
         }
         break;
     case SUPER_ROD:
-        if (gSaveBlock2Ptr->optionsNormalizeEncounterRates)
+        if (gSaveBlock2Ptr->optionsEncounterRates)
         {
             if (rand < NORMALIZED_SUPER_ROD_ENCOUNTER(5))
                 wildMonIndex = 5;
