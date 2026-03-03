@@ -52,6 +52,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .guaranteedCatch = 0,
     .guaranteedRun = 0,
     .encounterRates = 0,
+    .encounterMode = 0,
     .blindTrainers = 0,
     .skipNicknames = 0,
     .itemMessages = 1,

@@ -343,6 +343,7 @@ struct SaveBlock2
               u16 optionsGuaranteedCatch:1; // whether guaranteed catch is enabled
               u16 optionsGuaranteedRun:1; // whether guaranteed run is enabled
               u16 optionsEncounterRates:1; // whether encounter rates are normalized
+              u16 optionsEncounterMode:2; // OPTION_ENCOUNTER_MODE_[RANDOM/BOOST/ROTATE]
               u16 optionsBlindTrainers:1; // whether trainers are blind
               u16 optionsSkipNicknames:1; // whether pokemon nicknaming should be skipped
               u16 optionsItemMessages:2; // OPTIONS_ITEM_MESSAGES_[ALL/PROGRESSION/NONE]
@@ -365,8 +366,13 @@ struct SaveBlock2
     /*0xB04*/ struct PokemonJumpRecords pokeJump;
     /*0xB14*/ struct BerryPickingResults berryPick;
     /*0xB24*/ u16 shopItemFlags[SHOPSANITY_LAST_INDEX];
-    /*0XB54*/ u32 centerShopItemFlags;
-    /*0xB58*/ u8 filler_B58[0x3D2];
+    /*0xB54*/ u32 centerShopItemFlags;
+    /*0xB58*/ u8 landEncounterSlot;
+    /*0xB59*/ u8 waterEncounterSlot;
+    /*0xB5A*/ u8 oldRodEncounterSlot;
+    /*0xB5B*/ u8 goodRodEncounterSlot;
+    /*0xB5C*/ u8 superRodEncounterSlot;
+    /*0xB5D*/ u8 filler_B58[0x3CD];
     /*0xF2A*/ u32 encryptionKey;
 }; // size: 0xF2E
 
@@ -801,7 +807,7 @@ struct SaveBlock1
     /*0x0848*/ u8 dexsanityFlags[DEX_FLAGS_NO];
     /*0x087C*/ struct WarpData lastWarp;
     /*0x0884*/ bool8 dexsanityItemsGiven;
-    /*0x0885*/ u8 unused_884[3];
+    /*0x0885*/ u8 unused_884[0x3];
     /*0x0888*/ u16 trainerRematchStepCounter;
     /*0x088A*/ u8 ALIGNED(2) trainerRematches[MAX_REMATCH_ENTRIES];
     /*0x08F0*/ struct ObjectEvent objectEvents[OBJECT_EVENTS_COUNT];
@@ -827,7 +833,7 @@ struct SaveBlock1
     /*0x3370*/ struct MysteryGiftSave mysteryGift;
     /*0x36DC*/ struct RamScript ramScript;
     /*0x3AC8*/ struct RecordMixingGift recordMixingGift; // unused
-    /*0x3AD8*/ u8 unused_3AD8[52];
+    /*0x3AD8*/ u8 unused_3AD8[0x34];
     /*0x3B0C*/ u8 rivalName[PLAYER_NAME_LENGTH + 1];
     /*0x3B14*/ struct FameCheckerSaveData fameChecker[NUM_FAMECHECKER_PERSONS];
     /*0x3B54*/ u8 registeredTexts[UNION_ROOM_KB_ROW_COUNT][21];

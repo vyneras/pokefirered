@@ -55,6 +55,7 @@ enum
     MENUITEM_GUARANTEEDCATCH = 0,
     MENUITEM_GUARANTEEDRUN,
     MENUITEM_ENCOUNTERRATES,
+    MENUITEM_ENCOUNTERMODE,
     MENUITEM_BLINDTRAINERS,
     MENUITEM_SKIPNICKNAMES,
     MENUITEM_ITEMMESSAGES,
@@ -172,7 +173,7 @@ static const u16 sOptionMenuPalette[] = INCBIN_U16("graphics/misc/option_menu.gb
 static const u16 sOptionMenuItemCounts[MENUITEM_COUNT] = {4, 4, 2, 3, 10};
 static const u16 sOptionMenu2ItemCounts[MENUITEM_COUNT2] = {2, 2, 2, 1001, 3};
 static const u16 sOptionMenu3ItemCounts[MENUITEM_COUNT3] = {2, 2, 2, 2, 2};
-static const u16 sOptionMenu4ItemCounts[MENUITEM_COUNT4] = {2, 2, 2, 2, 2, 3};
+static const u16 sOptionMenu4ItemCounts[MENUITEM_COUNT4] = {2, 2, 2, 3, 2, 2, 3};
 
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
@@ -206,6 +207,7 @@ static const u8 *const sOptionMenu4ItemsNames[MENUITEM_COUNT4] =
     [MENUITEM_GUARANTEEDCATCH] = gText_GuaranteedCatch,
     [MENUITEM_GUARANTEEDRUN]   = gText_GuaranteedRun,
     [MENUITEM_ENCOUNTERRATES]  = gText_EncounterRates,
+    [MENUITEM_ENCOUNTERMODE]   = gText_EncounterMode,
     [MENUITEM_BLINDTRAINERS]   = gText_BlindTrainers,
     [MENUITEM_SKIPNICKNAMES]   = gText_SkipNicknames,
     [MENUITEM_ITEMMESSAGES]    = gText_ItemMessages
@@ -313,6 +315,13 @@ static const u8 *const sEncounterRatesOptions[] =
     gText_EncounterRatesNormalized
 };
 
+static const u8 *const sEncounterModeOptions[] =
+{
+    gText_EncounterModeRandom,
+    gText_EncounterModeBoost,
+    gText_EncounterModeRotate
+};
+
 static const u8 *const sBlindTrainersOptions[] =
 {
     gText_BattleSceneOff,
@@ -381,6 +390,7 @@ void CB2_OptionsMenuFromStartMenu(void)
     sOptionMenuPtr->qualityOptions[MENUITEM_GUARANTEEDCATCH] = gSaveBlock2Ptr->optionsGuaranteedCatch;
     sOptionMenuPtr->qualityOptions[MENUITEM_GUARANTEEDRUN] = gSaveBlock2Ptr->optionsGuaranteedRun;
     sOptionMenuPtr->qualityOptions[MENUITEM_ENCOUNTERRATES] = gSaveBlock2Ptr->optionsEncounterRates;
+    sOptionMenuPtr->qualityOptions[MENUITEM_ENCOUNTERMODE] = gSaveBlock2Ptr->optionsEncounterMode;
     sOptionMenuPtr->qualityOptions[MENUITEM_BLINDTRAINERS] = gSaveBlock2Ptr->optionsBlindTrainers;
     sOptionMenuPtr->qualityOptions[MENUITEM_SKIPNICKNAMES] = gSaveBlock2Ptr->optionsSkipNicknames;
     sOptionMenuPtr->qualityOptions[MENUITEM_ITEMMESSAGES] = gSaveBlock2Ptr->optionsItemMessages;
@@ -887,6 +897,9 @@ static void BufferOptionMenuString(u8 selection)
         case MENUITEM_ENCOUNTERRATES:
             AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sEncounterRatesOptions[sOptionMenuPtr->qualityOptions[selection]]);
             break;
+        case MENUITEM_ENCOUNTERMODE:
+            AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sEncounterModeOptions[sOptionMenuPtr->qualityOptions[selection]]);
+            break;
         case MENUITEM_BLINDTRAINERS:
             AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sBlindTrainersOptions[sOptionMenuPtr->qualityOptions[selection]]);
             break;
@@ -929,6 +942,7 @@ static void CloseAndSaveOptionMenu(u8 taskId)
     gSaveBlock2Ptr->optionsGuaranteedCatch = sOptionMenuPtr->qualityOptions[MENUITEM_GUARANTEEDCATCH];
     gSaveBlock2Ptr->optionsGuaranteedRun = sOptionMenuPtr->qualityOptions[MENUITEM_GUARANTEEDRUN];
     gSaveBlock2Ptr->optionsEncounterRates = sOptionMenuPtr->qualityOptions[MENUITEM_ENCOUNTERRATES];
+    gSaveBlock2Ptr->optionsEncounterMode = sOptionMenuPtr->qualityOptions[MENUITEM_ENCOUNTERMODE];
     gSaveBlock2Ptr->optionsBlindTrainers = sOptionMenuPtr->qualityOptions[MENUITEM_BLINDTRAINERS];
     gSaveBlock2Ptr->optionsSkipNicknames = sOptionMenuPtr->qualityOptions[MENUITEM_SKIPNICKNAMES];
     gSaveBlock2Ptr->optionsItemMessages = sOptionMenuPtr->qualityOptions[MENUITEM_ITEMMESSAGES];

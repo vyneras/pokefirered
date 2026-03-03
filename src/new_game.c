@@ -82,6 +82,7 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsGuaranteedCatch = gArchipelagoOptions.guaranteedCatch;
     gSaveBlock2Ptr->optionsGuaranteedRun = gArchipelagoOptions.guaranteedRun;
     gSaveBlock2Ptr->optionsEncounterRates = gArchipelagoOptions.encounterRates;
+    gSaveBlock2Ptr->optionsEncounterMode = gArchipelagoOptions.encounterMode;
     gSaveBlock2Ptr->optionsBlindTrainers = gArchipelagoOptions.blindTrainers;
     gSaveBlock2Ptr->optionsSkipNicknames = gArchipelagoOptions.skipNicknames;
     gSaveBlock2Ptr->optionsItemMessages = gArchipelagoOptions.itemMessages;
@@ -142,6 +143,11 @@ void NewGameInitData(void)
     gSaveBlock2Ptr->progressivePassesCount = 0;
     gSaveBlock2Ptr->progressiveCardKeyCount = 0;
     gSaveBlock2Ptr->progressiveRod = 0;
+    gSaveBlock2Ptr->landEncounterSlot = 0;
+    gSaveBlock2Ptr->waterEncounterSlot = 0;
+    gSaveBlock2Ptr->oldRodEncounterSlot = 0;
+    gSaveBlock2Ptr->goodRodEncounterSlot = 0;
+    gSaveBlock2Ptr->superRodEncounterSlot = 0;
     gSaveBlock2Ptr->specialSaveWarpFlags = 0;
     gSaveBlock2Ptr->gcnLinkFlags = 0;
     gSaveBlock2Ptr->unkFlag1 = TRUE;

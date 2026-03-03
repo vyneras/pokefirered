@@ -79,6 +79,14 @@ static u8 ChooseWildMonIndex_Land(void)
 {
     u8 rand = Random() % ENCOUNTER_CHANCE_LAND_MONS_TOTAL;
 
+    if (gSaveBlock2Ptr->optionsEncounterMode == OPTION_ENCOUNTER_MODE_ROTATE)
+    {
+        gSaveBlock2Ptr->landEncounterSlot++;
+        if (gSaveBlock2Ptr->landEncounterSlot >= 12)
+            gSaveBlock2Ptr->landEncounterSlot = 0;
+        return gSaveBlock2Ptr->landEncounterSlot;
+    }
+
     if (gSaveBlock2Ptr->optionsEncounterRates)
     {
         if (rand < NORMALIZED_LAND_ENCOUNTER(0))
@@ -139,6 +147,14 @@ static u8 ChooseWildMonIndex_WaterRock(void)
 {
     u8 rand = Random() % ENCOUNTER_CHANCE_WATER_MONS_TOTAL;
 
+    if (gSaveBlock2Ptr->optionsEncounterMode == OPTION_ENCOUNTER_MODE_ROTATE)
+    {
+        gSaveBlock2Ptr->waterEncounterSlot++;
+        if (gSaveBlock2Ptr->waterEncounterSlot >= 5)
+            gSaveBlock2Ptr->waterEncounterSlot = 0;
+        return gSaveBlock2Ptr->waterEncounterSlot;
+    }
+
     if (gSaveBlock2Ptr->optionsEncounterRates)
     {
         if (rand < NORMALIZED_WATER_ENCOUNTER(0))
@@ -176,6 +192,14 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
     switch (rod)
     {
     case OLD_ROD:
+        if (gSaveBlock2Ptr->optionsEncounterMode == OPTION_ENCOUNTER_MODE_ROTATE)
+        {
+            gSaveBlock2Ptr->oldRodEncounterSlot++;
+            if (gSaveBlock2Ptr->oldRodEncounterSlot >= 2)
+                gSaveBlock2Ptr->oldRodEncounterSlot = 0;
+            return gSaveBlock2Ptr->oldRodEncounterSlot;
+        }
+
         if (gSaveBlock2Ptr->optionsEncounterRates)
         {
             if (rand < NORMALIZED_OLD_ROD_ENCOUNTER(0))
@@ -192,6 +216,14 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
         }
         break;
     case GOOD_ROD:
+        if (gSaveBlock2Ptr->optionsEncounterMode == OPTION_ENCOUNTER_MODE_ROTATE)
+        {
+            gSaveBlock2Ptr->goodRodEncounterSlot++;
+            if (gSaveBlock2Ptr->goodRodEncounterSlot >= 5)
+                gSaveBlock2Ptr->goodRodEncounterSlot = 2;
+            return gSaveBlock2Ptr->goodRodEncounterSlot;
+        }
+
         if (gSaveBlock2Ptr->optionsEncounterRates)
         {
             if (rand < NORMALIZED_GOOD_ROD_ENCOUNTER(2))
@@ -212,6 +244,14 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
         }
         break;
     case SUPER_ROD:
+        if (gSaveBlock2Ptr->optionsEncounterMode == OPTION_ENCOUNTER_MODE_ROTATE)
+        {
+            gSaveBlock2Ptr->superRodEncounterSlot++;
+            if (gSaveBlock2Ptr->superRodEncounterSlot >= 10)
+                gSaveBlock2Ptr->superRodEncounterSlot = 5;
+            return gSaveBlock2Ptr->superRodEncounterSlot;
+        }
+
         if (gSaveBlock2Ptr->optionsEncounterRates)
         {
             if (rand < NORMALIZED_SUPER_ROD_ENCOUNTER(5))
@@ -352,17 +392,41 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo * info, u8 area, u8
 {
     u8 slot = 0;
     u8 level;
-    switch (area)
+    u8 i;
+    if (gSaveBlock2Ptr->optionsEncounterMode == OPTION_ENCOUNTER_MODE_BOOST)
     {
-    case WILD_AREA_LAND:
-        slot = ChooseWildMonIndex_Land();
-        break;
-    case WILD_AREA_WATER:
-        slot = ChooseWildMonIndex_WaterRock();
-        break;
-    case WILD_AREA_ROCKS:
-        slot = ChooseWildMonIndex_WaterRock();
-        break;
+        for (i = 0; i < 4; i++)
+        {
+            switch (area)
+            {
+            case WILD_AREA_LAND:
+                slot = ChooseWildMonIndex_Land();
+                break;
+            case WILD_AREA_WATER:
+                slot = ChooseWildMonIndex_WaterRock();
+                break;
+            case WILD_AREA_ROCKS:
+                slot = ChooseWildMonIndex_WaterRock();
+                break;
+            }
+            if (!DexScreen_GetSetPokedexFlag(info->wildPokemon[slot].species, FLAG_GET_CAUGHT, TRUE))
+                break;
+        }
+    }
+    else
+    {
+        switch (area)
+        {
+        case WILD_AREA_LAND:
+            slot = ChooseWildMonIndex_Land();
+            break;
+        case WILD_AREA_WATER:
+            slot = ChooseWildMonIndex_WaterRock();
+            break;
+        case WILD_AREA_ROCKS:
+            slot = ChooseWildMonIndex_WaterRock();
+            break;
+        }
     }
     level = ChooseWildMonLevel(&info->wildPokemon[slot]);
     if (flags == WILD_CHECK_REPEL && !IsWildLevelAllowedByRepel(level))
@@ -375,8 +439,23 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo * info, u8 area, u8
 
 static u16 GenerateFishingEncounter(const struct WildPokemonInfo * info, u8 rod)
 {
-    u8 slot = ChooseWildMonIndex_Fishing(rod);
-    u8 level = ChooseWildMonLevel(&info->wildPokemon[slot]);
+    u8 slot = 0;
+    u8 i;
+    u8 level;
+    if (gSaveBlock2Ptr->optionsEncounterMode == OPTION_ENCOUNTER_MODE_BOOST)
+    {
+        for (i = 0; i < 4; i++)
+        {
+            slot = ChooseWildMonIndex_Fishing(rod);
+            if (!DexScreen_GetSetPokedexFlag(info->wildPokemon[slot].species, FLAG_GET_CAUGHT, TRUE))
+                break;
+        }
+    }
+    else
+    {
+        slot = ChooseWildMonIndex_Fishing(rod);
+    }
+    level = ChooseWildMonLevel(&info->wildPokemon[slot]);
     GenerateWildMon(info->wildPokemon[slot].species, level, slot);
     return info->wildPokemon[slot].species;
 }
