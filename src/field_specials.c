@@ -2635,7 +2635,7 @@ bool8 ArchipelagoSpecial_Route2Modified(void)
 
 bool8 ArchipelagoSpecial_BlockTunnels(void)
 {
-    return gArchipelagoOptions.blockUndergroundTunnels;
+    return gArchipelagoOptions.blockTunnels;
 }
 
 bool8 ArchipelagoSpecial_Route9Modified(void)
@@ -2956,9 +2956,14 @@ bool8 ArchipelagoSpecial_SkipNickname(void)
     return gSaveBlock2Ptr->optionsSkipNicknames;
 }
 
-bool8 ArchipelagoSpecial_CanUseElevator(void)
+bool8 ArchipelagoSpecial_ElevatorLocked(void)
 {
-    return CheckBagHasItem(ITEM_LIFT_KEY, 1) || !gArchipelagoOptions.allElevatorsLocked;
+    return !CheckBagHasItem(ITEM_LIFT_KEY, 1) && gArchipelagoOptions.elevatorsState == 1;
+}
+
+bool8 ArchipelagoSpecial_ElevatorDisabled(void)
+{
+	return gArchipelagoOptions.elevatorsState == 2;
 }
 
 bool8 ArchipelagoSpecial_OnCyclingRoad(void)

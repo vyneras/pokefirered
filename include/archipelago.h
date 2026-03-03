@@ -41,7 +41,7 @@ struct ArchipelagoOptions
     /* 0x0D */ bool8 openCeruleanCity;
     /* 0x0E */ bool8 modifyRoute2;
     /* 0x0F */ bool8 modifyRoute9;
-    /* 0x10 */ bool8 blockUndergroundTunnels;
+    /* 0x10 */ bool8 blockTunnels;
     /* 0x11 */ bool8 route12Boulders;
     /* 0x12 */ bool8 modifyRoute10;
     /* 0x13 */ bool8 modifyRoute12;
@@ -53,8 +53,8 @@ struct ArchipelagoOptions
     /* 0x19 */ bool8 blockPokemonTower;
     /* 0x1A */ bool8 victoryRoadRocks;
     /* 0x1B */ bool8 earlyFameGossip;
-    /* 0x1C */ bool8 blockVermilionSailing;
-    /* 0x1D */ bool8 allElevatorsLocked;
+    /* 0x1C */ bool8 blockSailing;
+    /* 0x1D */ u8 elevatorsState; // 0 = Open, 1 = Locked, 2 = Disabled
 
     /* 0x1E */ bool8 giovanniRequiresGyms;
     /* 0x1F */ u8 giovanniRequiredCount;

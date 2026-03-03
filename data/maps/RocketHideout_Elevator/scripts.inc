@@ -85,6 +85,6 @@ RocketHideout_Elevator_EventScript_MoveElevator::
 	return
 
 RocketHideout_Elevator_EventScript_NeedKey::
-	msgbox RocketHideout_Elevator_Text_AppearsToNeedAKey
+	msgbox Elevator_Text_AppearsToNeedAKey
 	releaseall
 	end

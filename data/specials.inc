@@ -516,6 +516,7 @@ gSpecials::
 	def_special ArchipelagoSpecial_GetFossilCount
 	def_special ArchipelagoSpecial_HaveFossilCount
 	def_special ArchipelagoSpecial_SkipNickname
-	def_special ArchipelagoSpecial_CanUseElevator
+	def_special ArchipelagoSpecial_ElevatorLocked
+	def_special ArchipelagoSpecial_ElevatorDisabled
 	def_special ArchipelagoSpecial_OnCyclingRoad
 gSpecialsEnd::

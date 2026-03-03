@@ -1281,7 +1281,7 @@ void DrawSeagallopDestinationMenu(void)
     // Sets the destinations that are available and returns how many there are
     numItemsTotal = 0;
 
-    if ((CheckBagHasItem(ITEM_SS_TICKET, 1) || !gArchipelagoOptions.blockVermilionSailing) &&
+    if ((CheckBagHasItem(ITEM_SS_TICKET, 1) || !gArchipelagoOptions.blockSailing) &&
         gSpecialVar_0x8004 != SEAGALLOP_VERMILION_CITY)
     {
         seagallopDestinations[numItemsTotal++] = SEAGALLOP_VERMILION_CITY;

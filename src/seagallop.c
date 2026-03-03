@@ -500,13 +500,13 @@ bool8 HasSeagallopPass(void)
     if (originId == SEAGALLOP_NAVEL_ROCK ||
         originId == SEAGALLOP_BIRTH_ISLAND)
         {
-            return CheckBagHasItem(ITEM_SS_TICKET, 1) || !gArchipelagoOptions.blockVermilionSailing;
+            return CheckBagHasItem(ITEM_SS_TICKET, 1) || !gArchipelagoOptions.blockSailing;
         }
 
     if (gArchipelagoOptions.kantoOnly)
         return FALSE;
 
-    return (originId != SEAGALLOP_VERMILION_CITY && (CheckBagHasItem(ITEM_SS_TICKET, 1) || !gArchipelagoOptions.blockVermilionSailing)) ||
+    return (originId != SEAGALLOP_VERMILION_CITY && (CheckBagHasItem(ITEM_SS_TICKET, 1) || !gArchipelagoOptions.blockSailing)) ||
            (originId != SEAGALLOP_ONE_ISLAND && (CheckBagHasItem(ITEM_TRI_PASS, 1) || CheckBagHasItem(ITEM_ONE_PASS, 1))) ||
            (originId != SEAGALLOP_TWO_ISLAND && (CheckBagHasItem(ITEM_TRI_PASS, 1) || CheckBagHasItem(ITEM_TWO_PASS, 1))) ||
            (originId != SEAGALLOP_THREE_ISLAND && (CheckBagHasItem(ITEM_TRI_PASS, 1) || CheckBagHasItem(ITEM_THREE_PASS, 1))) ||

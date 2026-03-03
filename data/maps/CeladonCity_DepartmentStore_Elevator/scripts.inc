@@ -3,8 +3,10 @@ CeladonCity_DepartmentStore_Elevator_MapScripts::
 
 CeladonCity_DepartmentStore_Elevator_EventScript_FloorSelect::
 	lockall
-	specialvar VAR_RESULT, ArchipelagoSpecial_CanUseElevator
-	goto_if_eq VAR_RESULT, FALSE, CeladonCity_DepartmentStore_Elevator_EventScript_NeedKey
+	specialvar VAR_RESULT, ArchipelagoSpecial_ElevatorDisabled
+	goto_if_eq VAR_RESULT, TRUE, CeladonCity_DepartmentStore_Elevator_EventScript_ElevatorDisabled
+	specialvar VAR_RESULT, ArchipelagoSpecial_ElevatorLocked
+	goto_if_eq VAR_RESULT, TRUE, CeladonCity_DepartmentStore_Elevator_EventScript_ElevatorLocked
 	setvar VAR_0x8004, 3
 	call_if_unset FLAG_TEMP_2, EventScript_GetElevatorFloor
 	copyvar VAR_0x8005, VAR_ELEVATOR_FLOOR
@@ -116,7 +118,12 @@ CeladonCity_DepartmentStore_Elevator_EventScript_MoveElevator::
 	setflag FLAG_TEMP_2
 	return
 
-CeladonCity_DepartmentStore_Elevator_EventScript_NeedKey::
-	msgbox RocketHideout_Elevator_Text_AppearsToNeedAKey
+CeladonCity_DepartmentStore_Elevator_EventScript_ElevatorDisabled::
+	msgbox Elevator_Text_AppearsBroken
+	releaseall
+	end
+
+CeladonCity_DepartmentStore_Elevator_EventScript_ElevatorLocked::
+	msgbox Elevator_Text_AppearsToNeedAKey
 	releaseall
 	end
