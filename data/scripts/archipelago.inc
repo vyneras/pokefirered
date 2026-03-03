@@ -62,3 +62,14 @@ ArchipelagoScript_GoHome::
 	special ArchipelagoSpecial_WarpToStartingLocation
 	goto EventScript_ResetEliteFourEnd
 	end
+
+ArchieplagoScript_PokedexObtained::
+	specialvar VAR_RESULT, ArchipelagoSpecial_GiveDexsanityItem
+	goto_if_eq VAR_RESULT, TRUE, ArchieplagoScript_GiveDexsanityItem
+	releaseall
+	end
+
+ArchieplagoScript_GiveDexsanityItem::
+	giveitem VAR_0x8000, 1, VAR_0x8003
+	goto ArchieplagoScript_PokedexObtained
+	end

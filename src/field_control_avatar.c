@@ -336,6 +336,9 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         if (Archipelago_CheckDeathLinkStatus() == TRUE)
             return TRUE;
 
+        if (Archipelago_CheckGiveDexsanity() == TRUE)
+        	return TRUE;
+
         if (Archipelago_CheckQueuedRewards() == TRUE)
             return TRUE;
 
@@ -1237,7 +1240,7 @@ int SetCableClubWarp(void)
     return 0;
 }
 
-bool8 Archipelago_CheckQueuedRewards()
+bool8 Archipelago_CheckQueuedRewards(void)
 {
     if (gSaveBlock1Ptr->rewardQueue[0].itemId != ITEM_NONE)
     {
@@ -1247,7 +1250,7 @@ bool8 Archipelago_CheckQueuedRewards()
     return FALSE;
 }
 
-bool8 Archipelago_CheckReceivedItem()
+bool8 Archipelago_CheckReceivedItem(void)
 {
     if (gArchipelagoReceivedItem.isFilled == TRUE) {
         if ((gSaveBlock2Ptr->optionsItemMessages == OPTIONS_ITEM_MESSAGES_ALL) ||
@@ -1260,7 +1263,7 @@ bool8 Archipelago_CheckReceivedItem()
     return FALSE;
 }
 
-bool8 Archipelago_CheckDeathLinkStatus()
+bool8 Archipelago_CheckDeathLinkStatus(void)
 {
     u8 i;
     bool8 hasUsableMon = FALSE;
@@ -1277,6 +1280,17 @@ bool8 Archipelago_CheckDeathLinkStatus()
     if (hasUsableMon && gArchipelagoDeathLinkReceived)
     {
         ScriptContext_SetupScript(EventScript_FieldWhiteOut);
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 Archipelago_CheckGiveDexsanity(void)
+{
+    if (!gSaveBlock1Ptr->dexsanityItemsGiven && FlagGet(FLAG_SYS_POKEDEX_GET))
+    {
+        ScriptContext_SetupScript(ArchieplagoScript_PokedexObtained);
+        gSaveBlock1Ptr->dexsanityItemsGiven = TRUE;
         return TRUE;
     }
     return FALSE;

@@ -1274,5 +1274,6 @@ extern const u8 ArchipelagoScript_ReceiveReward[];
 extern const u8 ArchipelagoScript_ReceiveRemoteItem[];
 extern const u8 ArchipelagoScript_ReceiveRemoteItemSilent[];
 extern const u8 ArchipelagoScript_GoHome[];
+extern const u8 ArchieplagoScript_PokedexObtained[];
 
 #endif //GUARD_EVENT_SCRIPTS_H

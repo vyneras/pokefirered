@@ -234,6 +234,9 @@ void NewGameInitData(void)
     }
 
     SetPokemonCenterShopStartingFlags();
+
+    if (FlagGet(FLAG_SYS_POKEDEX_GET))
+    	gSaveBlock1Ptr->dexsanityItemsGiven = TRUE;
 }
 
 static void ResetMiniGamesResults(void)

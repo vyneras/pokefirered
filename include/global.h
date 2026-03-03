@@ -800,7 +800,8 @@ struct SaveBlock1
     /*0x079C*/ struct ItemSlot bagPocket_Berries[BAG_BERRIES_COUNT];
     /*0x0848*/ u8 dexsanityFlags[DEX_FLAGS_NO];
     /*0x087C*/ struct WarpData lastWarp;
-    /*0x0884*/ u8 unused_882[4];
+    /*0x0884*/ bool8 dexsanityItemsGiven;
+    /*0x0885*/ u8 unused_884[3];
     /*0x0888*/ u16 trainerRematchStepCounter;
     /*0x088A*/ u8 ALIGNED(2) trainerRematches[MAX_REMATCH_ENTRIES];
     /*0x08F0*/ struct ObjectEvent objectEvents[OBJECT_EVENTS_COUNT];
