@@ -2259,7 +2259,7 @@ bool8 ScrCmd_bufferapitemstrings(struct ScriptContext *ctx)
 {
     u16 i;
     u16 itemNameOffset;
-    u8 playerNameId;
+    u16 playerNameId;
 
     u8 stringVarIndexA = ScriptReadByte(ctx);
     u8 stringVarIndexB = ScriptReadByte(ctx);

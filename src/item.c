@@ -1030,7 +1030,7 @@ const u8 * ItemId_GetAPItemDescription(u16 locationId)
 {
     u16 i;
     u16 itemNameOffset;
-    u8 playerNameId;
+    u16 playerNameId;
     u8 newline[] = _("'s\n");
     u8 period[] = _(".");
 
