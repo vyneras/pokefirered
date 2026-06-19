@@ -519,4 +519,5 @@ gSpecials::
 	def_special ArchipelagoSpecial_ElevatorLocked
 	def_special ArchipelagoSpecial_ElevatorDisabled
 	def_special ArchipelagoSpecial_OnCyclingRoad
+	def_special ArchipelagoSpecial_GetStarterSpecies
 gSpecialsEnd::

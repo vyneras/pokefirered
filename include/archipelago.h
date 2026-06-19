@@ -108,8 +108,9 @@ struct ArchipelagoOptions
     /* 0x51 */ u16 pcItemId;
     /* 0x53 */ bool8 remoteItems;
     /* 0x54 */ bool8 internalEntrancesRandomized;
-    /* 0x55 */ bool8 randomized;
-    /* 0x56 */ u8 version[16];
+    /* 0x55 */ bool8 skipIntro;
+    /* 0x56 */ bool8 randomized;
+    /* 0x57 */ u8 version[16];
 } __attribute__((packed));
 
 struct ArchipelagoReceivedItem
@@ -119,8 +120,6 @@ struct ArchipelagoReceivedItem
     bool8 isFilled;              // Whether there is an item in this struct that has not been consumed
     bool8 isProgression;         // Whether a message is progression (for filtering messages)
 };
-
-
 
 struct ArchipelagoInfo
 {

@@ -1,3 +1,31 @@
+PalletTown_ProfessorOaksLab_Text_RivalGrampsIsntAround::
+    .string "{RIVAL}: What, it's only {PLAYER}?\n"
+    .string "Gramps isn't around.$"
+
+PalletTown_ProfessorOaksLab_Text_RivalFedUpWithWaiting::
+    .string "{RIVAL}: Gramps!\n"
+    .string "I'm fed up with waiting!$"
+
+PalletTown_ProfessorOaksLab_Text_RivalNoFairWhatAboutMe::
+    .string "{RIVAL}: Hey! Gramps! No fair!\n"
+    .string "What about me?$"
+
+PalletTown_ProfessorOaksLab_Text_RivalGoChoosePlayer::
+    .string "{RIVAL}: Heh, I don't need to be\n"
+    .string "greedy like you. I'm mature!\p"
+    .string "Go ahead and choose, {PLAYER}!$"
+
+PalletTown_ProfessorOaksLab_Text_RivalIllTakeThisOneThen::
+    .string "{RIVAL}: I'll take this one, then!$"
+
+PalletTown_ProfessorOaksLab_Text_RivalReceivedMonFromOak::
+    .string "{RIVAL} received the {STR_VAR_1}\n"
+    .string "from PROF. OAK!$"
+
+PalletTown_ProfessorOaksLab_Text_RivalMyMonLooksTougher::
+    .string "{RIVAL}: My POKéMON looks a lot\n"
+    .string "tougher than yours.$"
+
 PalletTown_ProfessorOaksLab_Text_RivalLetsCheckOutMons::
     .string "{RIVAL}: {PLAYER}!\n"
     .string "Let's check out our POKéMON!\p"
@@ -97,6 +125,12 @@ PalletTown_ProfessorOaksLab_Text_OakThisMonIsEnergetic::
 PalletTown_ProfessorOaksLab_Text_ReceivedMonFromOak::
     .string "{PLAYER} received the {STR_VAR_1}\n"
     .string "from PROF. OAK!$"
+
+PalletTown_ProfessorOaksLab_Text_OakCanReachNextTownWithMon::
+    .string "OAK: If a wild POKéMON appears,\n"
+    .string "your POKéMON can battle it.\p"
+    .string "With it at your side, you should be\n"
+    .string "able to reach the next town.$"
 
 PalletTown_ProfessorOaksLab_Text_OakBattleMonForItToGrow::
     .string "OAK: {PLAYER}, raise your young\n"

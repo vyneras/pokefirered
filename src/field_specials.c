@@ -2978,3 +2978,8 @@ bool8 ArchipelagoSpecial_OnCyclingRoad(void)
         return TRUE;
     return FALSE;
 }
+
+u16 ArchipelagoSpecial_GetStarterSpecies(void)
+{
+	return GetStarterSpeciesById(gSpecialVar_0x8003);
+}

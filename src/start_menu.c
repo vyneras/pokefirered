@@ -45,7 +45,7 @@ enum StartMenuOption
     STARTMENU_PLAYER,
     STARTMENU_SAVE,
     STARTMENU_OPTION,
-    STARTMENU_EXIT,
+    STARTMENU_GO_HOME,
     STARTMENU_RETIRE,
     STARTMENU_PLAYER2,
     MAX_STARTMENU_ITEMS
@@ -221,18 +221,22 @@ static void SetUpStartMenu_NormalField(void)
     AppendToStartMenuItems(STARTMENU_PLAYER);
     AppendToStartMenuItems(STARTMENU_SAVE);
     AppendToStartMenuItems(STARTMENU_OPTION);
-    AppendToStartMenuItems(STARTMENU_EXIT);
+    if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
+    	AppendToStartMenuItems(STARTMENU_GO_HOME);
 }
 
 static void SetUpStartMenu_SafariZone(void)
 {
     AppendToStartMenuItems(STARTMENU_RETIRE);
-    AppendToStartMenuItems(STARTMENU_POKEDEX);
-    AppendToStartMenuItems(STARTMENU_POKEMON);
+    if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
+    	AppendToStartMenuItems(STARTMENU_POKEDEX);
+    if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
+    	AppendToStartMenuItems(STARTMENU_POKEMON);
     AppendToStartMenuItems(STARTMENU_BAG);
     AppendToStartMenuItems(STARTMENU_PLAYER);
     AppendToStartMenuItems(STARTMENU_OPTION);
-    AppendToStartMenuItems(STARTMENU_EXIT);
+    if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
+    	AppendToStartMenuItems(STARTMENU_GO_HOME);
 }
 
 static void SetUpStartMenu_Link(void)
@@ -241,7 +245,7 @@ static void SetUpStartMenu_Link(void)
     AppendToStartMenuItems(STARTMENU_BAG);
     AppendToStartMenuItems(STARTMENU_PLAYER2);
     AppendToStartMenuItems(STARTMENU_OPTION);
-    AppendToStartMenuItems(STARTMENU_EXIT);
+    AppendToStartMenuItems(STARTMENU_GO_HOME);
 }
 
 static void SetUpStartMenu_UnionRoom(void)
@@ -250,7 +254,7 @@ static void SetUpStartMenu_UnionRoom(void)
     AppendToStartMenuItems(STARTMENU_BAG);
     AppendToStartMenuItems(STARTMENU_PLAYER);
     AppendToStartMenuItems(STARTMENU_OPTION);
-    AppendToStartMenuItems(STARTMENU_EXIT);
+    AppendToStartMenuItems(STARTMENU_GO_HOME);
 }
 
 static void DrawSafariZoneStatsWindow(void)
@@ -549,8 +553,8 @@ static bool8 StartMenuGoHomeCallback(void)
 {
     DestroyHelpMessageWindow_();
     CloseStartMenu();
-    RunScriptImmediately(ArchipelagoScript_GoHome);
-    Overworld_ResetStateAfterGoHome();
+	RunScriptImmediately(ArchipelagoScript_GoHome);
+	Overworld_ResetStateAfterGoHome();
     return TRUE;
 }
 

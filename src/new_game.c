@@ -104,7 +104,10 @@ static void WarpToPlayersRoom(void)
 {
     SetLastHealLocationWarp(gArchipelagoOptions.startingRespawn);
     SetTeleportLocationWarp(gArchipelagoOptions.startingLocation);
-    SetWarpDestinationToHealLocation(gArchipelagoOptions.startingLocation);
+    if (gArchipelagoOptions.skipIntro)
+    	SetWarpDestinationToHealLocation(gArchipelagoOptions.startingLocation);
+    else
+        SetWarpDestination(MAP_GROUP(PALLET_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(PALLET_TOWN_PLAYERS_HOUSE_2F), -1, 6, 6);
     WarpIntoMap();
 }
 
@@ -184,27 +187,34 @@ void NewGameInitData(void)
 
     FlagSet(FLAG_SYS_SEVII_MAP_123);
     FlagSet(FLAG_SYS_SEVII_MAP_4567);
-    FlagSet(FLAG_SYS_POKEMON_GET);
     GiveStartingItems();
-    VarSet(VAR_STARTER_MON, gSaveBlock2Ptr->starterIndex);
-    ScriptGiveMon(GetStarterSpecies(), 5, 0, 0, 0, 0);
 
-    switch (VarGet(VAR_STARTER_MON))
+    if (gArchipelagoOptions.skipIntro)
     {
-    case 0:
-        FlagSet(FLAG_HIDE_BULBASAUR_BALL);
-        FlagSet(FLAG_HIDE_CHARMANDER_BALL);
-        break;
-    case 1:
-        FlagSet(FLAG_HIDE_SQUIRTLE_BALL);
-        FlagSet(FLAG_HIDE_BULBASAUR_BALL);
-        break;
-    case 2:
-        FlagSet(FLAG_HIDE_CHARMANDER_BALL);
-        FlagSet(FLAG_HIDE_SQUIRTLE_BALL);
-        break;
-    default:
-        break;
+        FlagSet(FLAG_SYS_POKEMON_GET);
+        FlagClear(FLAG_HIDE_OAK_IN_HIS_LAB);
+        VarSet(VAR_STARTER_MON, gSaveBlock2Ptr->starterIndex);
+        VarSet(VAR_MAP_SCENE_PALLET_TOWN_OAK, 1);
+        VarSet(VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 3);
+		ScriptGiveMon(GetStarterSpecies(), 5, 0, 0, 0, 0);
+
+		switch (VarGet(VAR_STARTER_MON))
+		{
+		case 0:
+			FlagSet(FLAG_HIDE_BULBASAUR_BALL);
+			FlagSet(FLAG_HIDE_CHARMANDER_BALL);
+			break;
+		case 1:
+			FlagSet(FLAG_HIDE_SQUIRTLE_BALL);
+			FlagSet(FLAG_HIDE_BULBASAUR_BALL);
+			break;
+		case 2:
+			FlagSet(FLAG_HIDE_CHARMANDER_BALL);
+			FlagSet(FLAG_HIDE_SQUIRTLE_BALL);
+			break;
+		default:
+			break;
+		}
     }
 
     SetFlyMapFlag(gArchipelagoOptions.freeFlyId);

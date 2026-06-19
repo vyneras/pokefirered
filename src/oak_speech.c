@@ -1718,7 +1718,10 @@ static void Task_OakSpeech_ReshowPlayersPic(u8 taskId)
             gSpriteCoordOffsetX = 0;
             ChangeBgX(2, 0, BG_COORD_SET);
             CreateFadeOutTask(taskId, 2);
-            gTasks[taskId].func = Task_OakSpeech_AskStarterPokemon;
+            if (gArchipelagoOptions.skipIntro)
+            	gTasks[taskId].func = Task_OakSpeech_AskStarterPokemon;
+            else
+            	gTasks[taskId].func = Task_OakSpeech_LetsGo;
         }
     }
 }
