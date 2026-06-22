@@ -535,6 +535,7 @@ int main (int argc, char *argv[])
         if (pc_item != nullptr)
         {
             pc_item->address[GAME_REVISION_MAP[i]] = symbol_map["gNewGamePCItems"] - ROM_START;
+            pc_item->graphic_address[GAME_REVISION_MAP[i]] = 0;
         }
         else
         {
@@ -542,6 +543,7 @@ int main (int argc, char *argv[])
             pc_item->name = "PC_ITEM_POTION";
             pc_item->flag = constants_json["FLAG_GOT_PC_POTION"];
             pc_item->address[GAME_REVISION_MAP[i]] = symbol_map["gNewGamePCItems"] - ROM_START;
+            pc_item->graphic_address[GAME_REVISION_MAP[i]] = 0;
             rom.seekg(pc_item->address[GAME_REVISION_MAP[i]], std::ios::beg);
             rom.read((char*)&(pc_item->default_item), 2);
             npc_gifts[pc_item->name] = pc_item;
@@ -557,6 +559,7 @@ int main (int argc, char *argv[])
                 if (npc_gift != nullptr)
                 {
                     npc_gift->address[GAME_REVISION_MAP[i]] = address + 3 - ROM_START;
+                    npc_gift->graphic_address[GAME_REVISION_MAP[i]] = 0;
                 }
                 else
                 {
@@ -564,6 +567,7 @@ int main (int argc, char *argv[])
                     npc_gift->name = "NPC_GIFT_" + symbol.substr(33);
                     npc_gift->flag = constants_json[symbol.substr(28)];
                     npc_gift->address[GAME_REVISION_MAP[i]] = address + 3 - ROM_START;
+                    npc_gift->graphic_address[GAME_REVISION_MAP[i]] = 0;
                     rom.seekg(npc_gift->address[GAME_REVISION_MAP[i]], std::ios::beg);
                     rom.read((char*)&(npc_gift->default_item), 2);
                     npc_gifts[npc_gift->name] = npc_gift;
@@ -581,6 +585,7 @@ int main (int argc, char *argv[])
                 if (fly_unlock != nullptr)
                 {
                     fly_unlock->address[GAME_REVISION_MAP[i]] = address + 3 - ROM_START;
+                    fly_unlock->graphic_address[GAME_REVISION_MAP[i]] = 0;
                 }
                 else
                 {
@@ -588,6 +593,7 @@ int main (int argc, char *argv[])
                     fly_unlock->name = "FLY_UNLOCK_" + symbol.substr(35);
                     fly_unlock->flag = constants_json[symbol.substr(30)];
                     fly_unlock->address[GAME_REVISION_MAP[i]] = address + 3 - ROM_START;
+                    fly_unlock->graphic_address[GAME_REVISION_MAP[i]] = 0;
                     rom.seekg(fly_unlock->address[GAME_REVISION_MAP[i]], std::ios::beg);
                     rom.read((char*)&(fly_unlock->default_item), 2);
                     fly_unlocks[fly_unlock->name] = fly_unlock;
@@ -605,6 +611,7 @@ int main (int argc, char *argv[])
                 if (badge != nullptr)
                 {
                     badge->address[GAME_REVISION_MAP[i]] = address + 3 - ROM_START;
+                    badge->graphic_address[GAME_REVISION_MAP[i]] = 0;
                 }
                 else
                 {
@@ -612,6 +619,7 @@ int main (int argc, char *argv[])
                     badge->name = "BADGE_" + symbol.substr(25);
                     badge->flag = constants_json["FLAG_RECEIVED_BADGE_" + symbol.substr(25)];
                     badge->address[GAME_REVISION_MAP[i]] = address + 3 - ROM_START;
+                    badge->graphic_address[GAME_REVISION_MAP[i]] = 0;
                     rom.seekg(badge->address[GAME_REVISION_MAP[i]], std::ios::beg);
                     rom.read((char*)&(badge->default_item), 2);
                     badges[badge->name] = badge;
@@ -631,6 +639,7 @@ int main (int argc, char *argv[])
                 {
                     auto index = (j * 6) + k;
                     famechecker_reward->address[GAME_REVISION_MAP[i]] = symbol_map["sFameCheckerRewards"] + (index * 2) - ROM_START;
+                    famechecker_reward->graphic_address[GAME_REVISION_MAP[i]] = 0;
                 }
                 else
                 {
@@ -639,6 +648,7 @@ int main (int argc, char *argv[])
                     famechecker_reward->name = FAME_CHECKER_PEOPLE[j] + "_" + num;
                     famechecker_reward->flag = FAMESANITY_FLAGS_START + index;
                     famechecker_reward->address[GAME_REVISION_MAP[i]] = symbol_map["sFameCheckerRewards"] + (index * 2) - ROM_START;
+                    famechecker_reward->graphic_address[GAME_REVISION_MAP[i]] = 0;
                     famechecker_reward->default_item = constants_json["ITEM_NONE"];
                     famechecker_rewards[famechecker_reward->name] = famechecker_reward;
                 }
@@ -660,6 +670,7 @@ int main (int argc, char *argv[])
             if (dex_reward != nullptr)
             {
                 dex_reward->address[GAME_REVISION_MAP[i]] = symbol_map["sPokedexRewards"] + (j * 2) - ROM_START;
+                dex_reward->graphic_address[GAME_REVISION_MAP[i]] = 0;
             }
             else
             {
@@ -667,6 +678,7 @@ int main (int argc, char *argv[])
                 dex_reward->name = "POKEDEX_REWARD_" + padded_dex_number;
                 dex_reward->flag = DEXSANITY_FLAGS_START + j;
                 dex_reward->address[GAME_REVISION_MAP[i]] = symbol_map["sPokedexRewards"] + (j * 2) - ROM_START;
+                dex_reward->graphic_address[GAME_REVISION_MAP[i]] = 0;
                 dex_reward->default_item = constants_json["ITEM_NONE"];
                 dex_rewards[dex_reward->name] = dex_reward;
             }
@@ -686,6 +698,7 @@ int main (int argc, char *argv[])
                 if (shop_item != nullptr)
                 {
                     shop_item->address[GAME_REVISION_MAP[i]] = symbol_map[address_name] + (k * 8) - ROM_START;
+                    shop_item->graphic_address[GAME_REVISION_MAP[i]] = 0;
                 }
                 else
                 {
@@ -693,6 +706,7 @@ int main (int argc, char *argv[])
                     shop_item->name = shop_name + "_" + std::to_string(k + 1);
                     shop_item->flag = flag_start + k;
                     shop_item->address[GAME_REVISION_MAP[i]] = symbol_map[address_name] + (k * 8) - ROM_START;
+                    shop_item->graphic_address[GAME_REVISION_MAP[i]] = 0;
                     rom.seekg(shop_item->address[GAME_REVISION_MAP[i]], std::ios::beg);
                     rom.read((char*)&(shop_item->default_item), 2);
                     shop_items[shop_item->name] = shop_item;
@@ -834,6 +848,7 @@ int main (int argc, char *argv[])
             if (trainer_reward != nullptr)
             {
                 trainer_reward->address[GAME_REVISION_MAP[i]] = symbol_map["sTrainerRewards"] + (trainer_id * 2) - ROM_START;
+                trainer_reward->graphic_address[GAME_REVISION_MAP[i]] = 0;
             }
             else
             {
@@ -843,6 +858,7 @@ int main (int argc, char *argv[])
                 trainer_reward->flag = trainer_id + (uint16_t)constants_json["TRAINER_FLAGS_START"];
                 trainer_reward->default_item = constants_json["ITEM_NONE"];
                 trainer_reward->address[GAME_REVISION_MAP[i]] = symbol_map["sTrainerRewards"] + (trainer_id * 2) - ROM_START;
+                trainer_reward->graphic_address[GAME_REVISION_MAP[i]] = 0;
 
                 trainer_rewards[trainer_reward->name] = trainer_reward;
             }
@@ -1023,6 +1039,7 @@ int main (int argc, char *argv[])
                             if (item != nullptr)
                             {
                                 item->address[GAME_REVISION_MAP[i]] = symbol_map[event_json["script"]] + 3 - ROM_START;
+                                item->graphic_address[GAME_REVISION_MAP[i]] = symbol_map["Archipelago_Target_Item_" + flag_name] + 1 - ROM_START;
                             }
                             else
                             {
@@ -1030,6 +1047,7 @@ int main (int argc, char *argv[])
                                 item->flag = constants_json[flag_name];
                                 item->name = flag_name.substr(5);
                                 item->address[GAME_REVISION_MAP[i]] = symbol_map[event_json["script"]] + 3 - ROM_START;
+                                item->graphic_address[GAME_REVISION_MAP[i]] = symbol_map["Archipelago_Target_Item_" + flag_name] + 1 - ROM_START;
                                 rom.seekg(item->address[GAME_REVISION_MAP[i]], rom.beg);
                                 rom.read((char*)&(item->default_item), 2);
                                 ball_items[item->name] = item;
@@ -1049,6 +1067,7 @@ int main (int argc, char *argv[])
                         if (item != nullptr)
                         {
                             item->address[GAME_REVISION_MAP[i]] = symbol_map["Archipelago_Target_Hidden_Item_" + flag_name] + 8 - ROM_START;
+                            item->graphic_address[GAME_REVISION_MAP[i]] = 0;
                         }
                         else
                         {
@@ -1056,6 +1075,7 @@ int main (int argc, char *argv[])
                             item->flag = constants_json[flag_name];
                             item->name = flag_name.substr(5);
                             item->address[GAME_REVISION_MAP[i]] = symbol_map["Archipelago_Target_Hidden_Item_" + flag_name] + 8 - ROM_START;
+                            item->graphic_address[GAME_REVISION_MAP[i]] = 0;
                             item->default_item = constants_json[event_json["item"].get<std::string>()];
                             hidden_items[item->name] = item;
                         }
@@ -1897,6 +1917,7 @@ json LocationInfo::to_json ()
     return {
         { "flag", this->flag },
         { "address", this->address },
+        { "graphic_address", this->graphic_address },
         { "default_item", this->default_item }
     };
 }

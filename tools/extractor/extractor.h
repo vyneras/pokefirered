@@ -16,6 +16,7 @@ class LocationInfo {
         std::string name;
         uint16_t flag;
         std::map<std::string, uint32_t> address;
+        std::map<std::string, uint32_t> graphic_address;
         uint16_t default_item;
 
         nlohmann::json to_json ();

@@ -207,9 +207,12 @@ string generate_map_events_text(Json map_data) {
         for (unsigned int i = 0; i < map_data["object_events"].array_items().size(); i++) {
             auto obj_event = map_data["object_events"].array_items()[i];
             string type = json_to_string(obj_event, "type", true);
+            string flag = json_to_string(obj_event, "flag", true);
 
             // If no type field is present, assume it's a regular object event.
             if (type == "" || type == "object") {
+            	if (flag.substr(0, 9) == "FLAG_ITEM")
+            		text << "Archipelago_Target_Item_" << json_to_string(obj_event, "flag") << "::\n";
                 text << "\tobject_event " << i + 1 << ", "
                      << json_to_string(obj_event, "graphics_id") << ", "
                      << json_to_string(obj_event, "x") << ", "
