@@ -5,7 +5,6 @@ FourIsland_PokemonCenter_1F_MapScripts::
 
 FourIsland_PokemonCenter_1F_OnTransition::
 	setrespawn SPAWN_FOUR_ISLAND
-	setteleport
 	end
 
 FourIsland_PokemonCenter_1F_EventScript_Nurse::

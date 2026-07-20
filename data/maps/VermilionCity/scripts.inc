@@ -14,7 +14,6 @@ VermilionCity_OnTransition::
 	call_if_eq VAR_RESULT, FALSE, VermilionCity_EventScript_SetWorldMapFlag
 	call_if_set FLAG_TALKED_TO_OAKS_AIDE_IN_VERMILION, VermilionCity_EventScript_HideOaksAide
 	call_if_set FLAG_DEFEATED_BLAINE, VermilionCity_ClearCinnabarIslandBillFlag
-	setvar VAR_TELEPORT_LOCATION, SPAWN_VERMILION_CITY
 	end
 
 VermilionCity_EventScript_SetGiveFlyUnlockItem::

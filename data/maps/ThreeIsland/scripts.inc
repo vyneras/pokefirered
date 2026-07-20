@@ -20,7 +20,6 @@ ThreeIsland_OnTransition::
 	call_if_eq VAR_RESULT, TRUE, ThreeIsland_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, ThreeIsland_EventScript_SetWorldMapFlag
 	call_if_eq VAR_MAP_SCENE_THREE_ISLAND, 2, ThreeIsland_EventScript_SetAntiBikersMovementAfterBikers
-	setvar VAR_TELEPORT_LOCATION, SPAWN_THREE_ISLAND
 	end
 
 ThreeIsland_EventScript_SetGiveFlyUnlockItem::

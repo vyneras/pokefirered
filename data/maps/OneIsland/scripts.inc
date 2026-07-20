@@ -9,7 +9,6 @@ OneIsland_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, OneIsland_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, OneIsland_EventScript_SetWorldMapFlag
-	setvar VAR_TELEPORT_LOCATION, SPAWN_ONE_ISLAND
 	end
 
 OneIsland_EventScript_SetGiveFlyUnlockItem::

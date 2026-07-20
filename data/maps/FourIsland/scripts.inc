@@ -12,7 +12,6 @@ FourIsland_OnTransition::
 	call_if_eq VAR_RESULT, TRUE, FourIsland_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, FourIsland_EventScript_SetWorldMapFlag
 	call FourIsland_EventScript_TrySetDayCareManPos
-	setvar VAR_TELEPORT_LOCATION, SPAWN_FOUR_ISLAND
 	end
 
 FourIsland_EventScript_SetGiveFlyUnlockItem::

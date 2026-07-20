@@ -9,7 +9,6 @@ LavenderTown_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, LavenderTown_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, LavenderTown_EventScript_SetWorldMapFlag
-	setvar VAR_TELEPORT_LOCATION, SPAWN_LAVENDER_TOWN
 	end
 
 LavenderTown_EventScript_SetGiveFlyUnlockItem::

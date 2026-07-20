@@ -9,7 +9,6 @@ IndigoPlateau_PokemonCenter_1F_MapScripts::
 
 IndigoPlateau_PokemonCenter_1F_OnTransition::
 	setrespawn SPAWN_INDIGO_PLATEAU
-	setteleport
 	setvar GUARD_SHOULD_MOVE, 0
 	call_if_set FLAG_SYS_GAME_CLEAR, IndigoPlateau_PokemonCenter_1F_BlockDoorEliteFourRematch
 	call_if_unset FLAG_SYS_GAME_CLEAR, IndigoPlateau_PokemonCenter_1F_BlockDoorEliteFour

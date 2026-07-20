@@ -396,9 +396,10 @@ const std::map<std::string, uint32_t> ARCHIPELAGO_OPTION_OFFSETS = {
 	{"pcItemId", 0x51},
 	{"remoteItems", 0x53},
 	{"internalEntrancesRandomized", 0x54},
-	{"skipIntro", 0x55},
-	{"randomized", 0x56},
-	{"version", 0x57}
+	{"pokemonCenterEntrancesRandomized", 0x55},
+	{"skipIntro", 0x56},
+	{"randomized", 0x57},
+	{"version", 0x58}
 };
 
 int main (int argc, char *argv[])

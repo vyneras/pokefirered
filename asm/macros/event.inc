@@ -1669,11 +1669,6 @@
 	.byte \shopId
 	.endm
 
-	@ Sets which town the player will go to when using teleport
-	.macro setteleport
-	.byte 0xda
-	.endm
-
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req

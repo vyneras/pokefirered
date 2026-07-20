@@ -9,6 +9,9 @@ static void SetWhiteoutRespawnHealerNpcAsLastTalked(u32 healLocationIdx);
 // Arrays described here because porymap will overrwrite the below data file
 
 // sSpawnPoints
+// This array defines the starting location points.
+
+// sFlyPoints
 // This array defines the fly points for unlocked spawns.
 
 // sWhiteoutRespawnHealCenterMapIdxs
@@ -62,7 +65,7 @@ const struct HealLocation * GetFlyLocation(u32 idx)
 {
     if (idx == 0)
         return NULL;
-    if (idx > NELEMS(sSpawnPoints))
+    if (idx > NELEMS(sFlyPoints))
         return NULL;
     return &sFlyPoints[idx - 1];
 }
@@ -116,6 +119,37 @@ void SetWhiteoutRespawnWarpAndHealerNpc(struct WarpData * warp)
             warp->y = 4;
         }
         SetWhiteoutRespawnHealerNpcAsLastTalked(healLocationIdx);
+    }
+}
+
+void SetTeleportRespawnWarp(struct WarpData * warp)
+{
+    u32 healLocationIdx;
+
+    healLocationIdx = GetHealLocationIndexFromMapGroupAndNum(gSaveBlock1Ptr->teleportLocation.mapGroup, gSaveBlock1Ptr->teleportLocation.mapNum);
+    warp->mapGroup = sWhiteoutRespawnHealCenterMapIdxs[healLocationIdx - 1][0];
+    warp->mapNum = sWhiteoutRespawnHealCenterMapIdxs[healLocationIdx - 1][1];
+    warp->warpId = 0xFF;
+
+    if (sWhiteoutRespawnHealCenterMapIdxs[healLocationIdx - 1][0] == MAP_GROUP(PALLET_TOWN_PLAYERS_HOUSE_1F) && sWhiteoutRespawnHealCenterMapIdxs[healLocationIdx - 1][1] == MAP_NUM(PALLET_TOWN_PLAYERS_HOUSE_1F))
+    {
+        warp->x = 8;
+        warp->y = 5;
+    }
+    else if (sWhiteoutRespawnHealCenterMapIdxs[healLocationIdx - 1][0] == MAP_GROUP(INDIGO_PLATEAU_POKEMON_CENTER_1F) && sWhiteoutRespawnHealCenterMapIdxs[healLocationIdx - 1][1] == MAP_NUM(INDIGO_PLATEAU_POKEMON_CENTER_1F))
+    {
+        warp->x = 13;
+        warp->y = 12;
+    }
+    else if (sWhiteoutRespawnHealCenterMapIdxs[healLocationIdx - 1][0] == MAP_GROUP(ONE_ISLAND_POKEMON_CENTER_1F) && sWhiteoutRespawnHealCenterMapIdxs[healLocationIdx - 1][1] == MAP_NUM(ONE_ISLAND_POKEMON_CENTER_1F))
+    {
+        warp->x = 5;
+        warp->y = 4;
+    }
+    else
+    {
+        warp->x = 7;
+        warp->y = 4;
     }
 }
 

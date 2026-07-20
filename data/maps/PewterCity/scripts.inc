@@ -15,7 +15,6 @@ PewterCity_OnTransition::
 	call_if_eq VAR_MAP_SCENE_PEWTER_CITY_GYM_GUIDE, 0, PewterCity_EventScript_CheckIfCanLeaveCity
 	call_if_eq VAR_MAP_SCENE_PEWTER_CITY_GYM_GUIDE, 1, PewterCity_EventScript_SetGiveFlyUnlock
 	call_if_set FLAG_DEFEATED_BROCK, PewterCity_EventScript_CheckRunningShoesGuyTrigger
-	setvar VAR_TELEPORT_LOCATION, SPAWN_PEWTER_CITY
 	end
 
 PewterCity_EventScript_CheckIfCanLeaveCity::

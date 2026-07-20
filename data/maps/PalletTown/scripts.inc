@@ -13,7 +13,6 @@ PalletTown_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, PalletTown_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, PalletTown_EventScript_SetWorldMapFlag
-	setvar VAR_TELEPORT_LOCATION, SPAWN_PALLET_TOWN
 	end
 
 PalletTown_EventScript_SetGiveFlyUnlockItem::

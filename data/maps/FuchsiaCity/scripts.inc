@@ -14,7 +14,6 @@ FuchsiaCity_OnTransition::
 	copyvar VAR_TEMP_2, VAR_RESULT
 	call_if_eq VAR_TEMP_2, 0, FuchsiaCity_EventScript_SetOmanyteGfx
 	call_if_eq VAR_TEMP_2, 1, FuchsiaCity_EventScript_SetKabutoGfx
-	setvar VAR_TELEPORT_LOCATION, SPAWN_FUCHSIA_CITY
 	end
 
 FuchsiaCity_EventScript_SetGiveFlyUnlockItem::

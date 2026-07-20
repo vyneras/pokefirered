@@ -630,7 +630,7 @@ void UseLastWarp(void)
 void WarpToStartingLocation(void)
 {
     SetLastHealLocationWarp(gArchipelagoOptions.startingRespawn);
-    SetTeleportLocationWarp(gArchipelagoOptions.startingLocation);
+    SetTeleportLocationWarp(gArchipelagoOptions.startingRespawn);
     SetWarpDestinationToHealLocation(gArchipelagoOptions.startingLocation);
     DoTeleport2Warp();
     ResetInitialPlayerAvatarState();
@@ -718,7 +718,14 @@ void SetWarpDestinationToLastHealLocation(void)
 
 void SetWarpDestinationToTeleportLocation(void)
 {
-    sWarpDestination = gSaveBlock1Ptr->teleportLocation;
+    if (gArchipelagoOptions.pokemonCenterEntrancesRandomized)
+    {
+        SetTeleportRespawnWarp(&sWarpDestination);
+    }
+    else
+    {
+        sWarpDestination = gSaveBlock1Ptr->teleportLocation;
+    }
 }
 
 static void Overworld_SetWhiteoutRespawnPoint(void)

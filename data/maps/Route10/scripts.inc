@@ -10,7 +10,6 @@ Route10_OnTransition::
 	call_if_eq VAR_RESULT, TRUE, Route10_EventScript_SetAltLayout
 	specialvar VAR_RESULT, ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
 	call_if_eq VAR_RESULT, TRUE, Route10_EventScript_DontBlockPowerPlant
-	setvar VAR_TELEPORT_LOCATION, SPAWN_ROUTE10
 	end
 
 Route10_EventScript_SetAltLayout::

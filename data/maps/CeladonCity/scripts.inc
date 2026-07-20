@@ -15,7 +15,6 @@ CeladonCity_OnTransition::
 	call_if_eq VAR_RESULT, FALSE, CeladonCity_EventScript_SetWorldMapFlag
 	specialvar VAR_RESULT, ArchipelagoSpecial_BlockTunnels
 	call_if_eq VAR_RESULT, FALSE, CeladonCity_EventScript_RemoveSmashRocks
-	setvar VAR_TELEPORT_LOCATION, SPAWN_CELADON_CITY
 	end
 
 CeladonCity_EventScript_RemoveSmashRocks::

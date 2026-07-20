@@ -14,7 +14,6 @@ CinnabarIsland_OnTransition::
 	call_if_eq VAR_RESULT, FALSE, CinnabarIsland_EventScript_SetWorldMapFlag
 	specialvar VAR_RESULT ArchipelagoSpecial_ExtraKeyItems
 	call_if_eq VAR_RESULT, TRUE, CinnabarIsland_EventScript_CheckBlockMansion
-	setvar VAR_TELEPORT_LOCATION, SPAWN_CINNABAR_ISLAND
 	end
 
 CinnabarIsland_EventScript_SetGiveFlyUnlockItem::

@@ -139,6 +139,7 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .pcItemId = ITEM_POTION,
     .remoteItems = FALSE,
     .internalEntrancesRandomized = FALSE,
+    .pokemonCenterEntrancesRandomized = FALSE,
     .skipIntro = FALSE,
     .randomized = FALSE,
     .version = _("AP DEV")

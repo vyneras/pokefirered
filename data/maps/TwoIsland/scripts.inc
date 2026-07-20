@@ -9,7 +9,6 @@ TwoIsland_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, TwoIsland_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, TwoIsland_EventScript_SetWorldMapFlag
-	setvar VAR_TELEPORT_LOCATION, SPAWN_TWO_ISLAND
 	end
 
 TwoIsland_EventScript_SetGiveFlyUnlockItem::

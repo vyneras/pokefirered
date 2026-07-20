@@ -2325,11 +2325,3 @@ bool8 ScrCmd_pokemartcoin(struct ScriptContext * ctx)
     ScriptContext_Stop();
     return TRUE;
 }
-
-bool8 ScrCmd_setteleport(struct ScriptContext * ctx)
-{
-    u8 teleportLocationId = VarGet(VAR_TELEPORT_LOCATION);
-
-    SetTeleportLocationWarp(teleportLocationId);
-    return FALSE;
-}
