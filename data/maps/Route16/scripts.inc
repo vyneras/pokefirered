@@ -17,7 +17,7 @@ Route16_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_OnCyclingRoad
 	call_if_eq VAR_RESULT, FALSE, Route16_OnTransitionNotCyclingRoad
 	call_if_eq VAR_RESULT, TRUE, Route16_OnTransitionCyclingRoad
-	specialvar VAR_RESULT, ArchipelagoSpecial_Route16Modified
+	specialvar VAR_RESULT, ArchipelagoSpecial_Route16Rock
 	call_if_eq VAR_RESULT, TRUE, Route16_EventScript_SetAltLayout
 	call_if_eq VAR_RESULT, FALSE, Route16_EventScript_RemoveRock
 	call_if_unset FLAG_ROUTE_16_SNORLAX_IS_RECOVERING, Route16_EventScript_TryShowSnorlax

@@ -3,7 +3,7 @@ Route6_MapScripts::
 	.byte 0
 
 Route6_OnTransition::
-	specialvar VAR_RESULT, ArchipelagoSpecial_BlockTunnels
+	specialvar VAR_RESULT, ArchipelagoSpecial_BlockUndergroundPaths
 	call_if_eq VAR_RESULT, FALSE, Route6_EventScript_RemoveSmashRocks
 	end
 

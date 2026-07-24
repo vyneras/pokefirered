@@ -13,7 +13,7 @@ CeladonCity_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, CeladonCity_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, CeladonCity_EventScript_SetWorldMapFlag
-	specialvar VAR_RESULT, ArchipelagoSpecial_BlockTunnels
+	specialvar VAR_RESULT, ArchipelagoSpecial_BlockUndergroundPaths
 	call_if_eq VAR_RESULT, FALSE, CeladonCity_EventScript_RemoveSmashRocks
 	end
 

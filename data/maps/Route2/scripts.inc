@@ -3,9 +3,9 @@ Route2_MapScripts::
 	.byte 0
 
 Route2_OnTransition::
-	specialvar VAR_RESULT, ArchipelagoSpecial_Route2Modified
-	call_if_eq VAR_RESULT, TRUE, Route2_EventScript_RemoveCutTree
-	call_if_eq VAR_RESULT, FALSE, Route2_EventScript_RemoveSmashRock
+	specialvar VAR_RESULT, ArchipelagoSpecial_DiglettsCaveRoadblock
+	call_if_eq VAR_RESULT, 1, Route2_EventScript_RemoveCutTree
+	call_if_eq VAR_RESULT, 0, Route2_EventScript_RemoveSmashRock
 	end
 
 Route2_EventScript_RemoveCutTree::

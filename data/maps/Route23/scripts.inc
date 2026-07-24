@@ -6,7 +6,7 @@ Route23_MapScripts::
 	.byte 0
 
 Route23_OnTransition::
-	specialvar VAR_RESULT, ArchipelagoSpecial_Route23Modified
+	specialvar VAR_RESULT, ArchipelagoSpecial_Route23Waterfall
 	call_if_eq VAR_RESULT, TRUE, Route23_EventScript_SetAltLayout
 	specialvar VAR_RESULT, ArchipelagoSpecial_Route23Trees
 	call_if_eq VAR_RESULT, FALSE, Route23_EventScript_RemoveTrees

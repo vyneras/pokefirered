@@ -2628,34 +2628,34 @@ bool8 ArchipelagoSpecial_CanLeaveCeruleanCity(void)
     return CanLeaveCeruleanCity();
 }
 
-bool8 ArchipelagoSpecial_Route2Modified(void)
+bool8 ArchipelagoSpecial_DiglettsCaveRoadblock(void)
 {
-    return gArchipelagoOptions.modifyRoute2;
+    return gArchipelagoOptions.diglettsCaveRoadblock;
 }
 
-bool8 ArchipelagoSpecial_BlockTunnels(void)
+bool8 ArchipelagoSpecial_BlockUndergroundPaths(void)
 {
-    return gArchipelagoOptions.blockTunnels;
+    return gArchipelagoOptions.blockUndergroundPaths;
 }
 
-bool8 ArchipelagoSpecial_Route9Modified(void)
+bool8 ArchipelagoSpecial_Route9Roadblock(void)
 {
-    return gArchipelagoOptions.modifyRoute9;
+    return gArchipelagoOptions.route9Roadblock;
 }
 
-bool8 ArchipelagoSpecial_Route10Modified(void)
+bool8 ArchipelagoSpecial_Route10Waterfall(void)
 {
-    return gArchipelagoOptions.modifyRoute10;
+    return gArchipelagoOptions.route10Waterfall;
 }
 
-bool8 ArchipelagoSpecial_Route12Modified(void)
+bool8 ArchipelagoSpecial_Route12Rocks(void)
 {
-    return gArchipelagoOptions.modifyRoute12;
+    return gArchipelagoOptions.route12Rocks;
 }
 
-bool8 ArchipelagoSpecial_Route16Modified(void)
+bool8 ArchipelagoSpecial_Route16Rock(void)
 {
-    return gArchipelagoOptions.modifyRoute16;
+    return gArchipelagoOptions.route16Rock;
 }
 
 bool8 ArchipelagoSpecial_CanEnterSilphCo(void)
@@ -2668,9 +2668,9 @@ bool8 ArchipelagoSpecial_Route23Trees(void)
     return gArchipelagoOptions.route23Trees;
 }
 
-bool8 ArchipelagoSpecial_Route23Modified(void)
+bool8 ArchipelagoSpecial_Route23Waterfall(void)
 {
-    return gArchipelagoOptions.modifyRoute23;
+    return gArchipelagoOptions.route23Waterfall;
 }
 
 bool8 ArchipelagoSpecial_VictoryRoadRocks(void)

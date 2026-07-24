@@ -22,9 +22,9 @@ CeruleanCity_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_CanLeaveCeruleanCity
 	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_BlockExits
 	call CeruleanCity_EventScript_CheckRemoveGuard
-	specialvar VAR_RESULT, ArchipelagoSpecial_Route9Modified
-	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_RemoveCutTree
-	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_RemoveSmashRock
+	specialvar VAR_RESULT, ArchipelagoSpecial_Route9Roadblock
+	call_if_eq VAR_RESULT, 1, CeruleanCity_EventScript_RemoveCutTree
+	call_if_eq VAR_RESULT, 0, CeruleanCity_EventScript_RemoveSmashRock
 	specialvar VAR_RESULT, ArchipelagoSpecial_IsFamesanity
 	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_CheckRivalSetPosition
 	end

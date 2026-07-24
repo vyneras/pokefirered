@@ -6,7 +6,7 @@ Route10_MapScripts::
 	.byte 0
 
 Route10_OnTransition::
-	specialvar VAR_RESULT, ArchipelagoSpecial_Route10Modified
+	specialvar VAR_RESULT, ArchipelagoSpecial_Route10Waterfall
 	call_if_eq VAR_RESULT, TRUE, Route10_EventScript_SetAltLayout
 	specialvar VAR_RESULT, ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
 	call_if_eq VAR_RESULT, TRUE, Route10_EventScript_DontBlockPowerPlant

@@ -40,16 +40,16 @@ struct ArchipelagoOptions
     /* 0x0C */ bool8 openViridianCity;
     /* 0x0D */ u8 route3Requirement; // 0 = Open, 1 = Defeat Brock, 2 = Defeat Any Gym Leader, 3 = Boulder Badge, 4 = Any Badge
     /* 0x0E */ bool8 openCeruleanCity;
-    /* 0x0F */ bool8 modifyRoute2;
-    /* 0x10 */ bool8 modifyRoute9;
-    /* 0x11 */ bool8 blockTunnels;
+    /* 0x0F */ u8 diglettsCaveRoadblock; // 0 = Vanilla, 1 = Smashable Rock
+    /* 0x10 */ u8 route9Roadblock; // 0 = Vanilla, 1 = Smashable Rock
+    /* 0x11 */ bool8 blockUndergroundPaths;
     /* 0x12 */ bool8 route12Boulders;
-    /* 0x13 */ bool8 modifyRoute10;
-    /* 0x14 */ bool8 modifyRoute12;
-    /* 0x15 */ bool8 modifyRoute16;
+    /* 0x13 */ bool8 route10Waterfall;
+    /* 0x14 */ bool8 route12Rocks;
+    /* 0x15 */ bool8 route16Rock;
     /* 0x16 */ bool8 openSilphCo;
     /* 0x17 */ bool8 removeSaffronRockets;
-    /* 0x18 */ bool8 modifyRoute23;
+    /* 0x18 */ bool8 route23Waterfall;
     /* 0x19 */ bool8 route23Trees;
     /* 0x1A */ bool8 blockPokemonTower;
     /* 0x1B */ bool8 victoryRoadRocks;

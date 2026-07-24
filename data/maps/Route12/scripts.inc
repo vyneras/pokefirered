@@ -12,7 +12,7 @@ Route12_EventScript_TryRemoveSnorlax::
 	return
 
 Route12_OnTransition::
-	specialvar VAR_RESULT, ArchipelagoSpecial_Route12Modified
+	specialvar VAR_RESULT, ArchipelagoSpecial_Route12Rocks
 	call_if_eq VAR_RESULT, TRUE, Route12_EventScript_SetAltLayout
 	call_if_unset FLAG_ROUTE_12_SNORLAX_IS_RECOVERING, Route12_EventScript_TryShowSnorlax
 	end
