@@ -2068,6 +2068,7 @@ bool8 ScrCmd_setrespawn(struct ScriptContext * ctx)
     u16 healLocationId = VarGet(ScriptReadHalfword(ctx));
 
     SetLastHealLocationWarp(healLocationId);
+    SetTeleportLocationWarp(healLocationId);
     return FALSE;
 }
 
