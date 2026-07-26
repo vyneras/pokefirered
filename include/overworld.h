@@ -191,6 +191,8 @@ void UpdateEscapeWarp(s16 x, s16 y);
 bool8 SetDiveWarpEmerge(u16 x, u16 y);
 bool8 SetDiveWarpDive(u16 x, u16 y);
 void Overworld_ResetStateAfterGoHome(void);
+bool8 IsTeleportDestination(void);
+bool8 IsFallDestination(void);
 
 extern u16 *gBGTilemapBuffers1;
 extern u16 *gBGTilemapBuffers2;

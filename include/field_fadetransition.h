@@ -3,6 +3,7 @@
 
 #include "global.h"
 
+void SetFieldCallbackForDestWarp(void);
 void FieldCB_RushInjuredPokemonToCenter(void);
 void DoWarp(void);
 void DoDiveWarp(void);
@@ -26,7 +27,6 @@ void DoStairWarp(u16 metatileBehavior, u16 delay);
 void DoEscalatorWarp(u8 a0);
 void DoLavaridgeGymB1FWarp(void);
 void DoLavaridgeGym1FWarp(void);
-void DoTeleportWarp(void);
 void DoUnionRoomWarp(void);
 void FieldCB_ReturnToFieldWirelessLink(void);
 void FieldCB_ReturnToFieldCableLink(void);

@@ -591,6 +591,16 @@ bool32 FieldFadeTransitionBackgroundEffectIsFinished(void)
         return FALSE;
 }
 
+void SetFieldCallbackForDestWarp(void)
+{
+    if (IsFallDestination())
+        gFieldCallback = FieldCB_FallWarpExit;
+    else if (IsTeleportDestination())
+        gFieldCallback = FieldCB_TeleportWarpIn;
+    else
+        gFieldCallback = FieldCB_DefaultWarpExit;
+}
+
 void DoWarp(void)
 {
     LockPlayerFieldControls();
@@ -598,7 +608,7 @@ void DoWarp(void)
     WarpFadeOutScreen();
     PlayRainStoppingSoundEffect();
     PlaySE(SE_EXIT);
-    gFieldCallback = FieldCB_DefaultWarpExit;
+    SetFieldCallbackForDestWarp();
     CreateTask(Task_Teleport2Warp, 10);
 }
 
@@ -617,13 +627,14 @@ void DoStairWarp(u16 metatileBehavior, u16 delay)
     u8 taskId = CreateTask(Task_StairWarp, 10);
     gTasks[taskId].data[1] = metatileBehavior;
     gTasks[taskId].data[15] = delay;
+    SetFieldCallbackForDestWarp();
     Task_StairWarp(taskId);
 }
 
 void DoDoorWarp(void)
 {
     LockPlayerFieldControls();
-    gFieldCallback = FieldCB_DefaultWarpExit;
+    SetFieldCallbackForDestWarp();
     CreateTask(Task_DoorWarp, 10);
 }
 
@@ -644,7 +655,7 @@ void DoUnionRoomWarp(void)
 void DoFallWarp(void)
 {
     DoDiveWarp();
-    gFieldCallback = FieldCB_FallWarpExit;
+    SetFieldCallbackForDestWarp();
 }
 
 void DoEscalatorWarp(u8 metatileBehavior)
@@ -670,7 +681,7 @@ void DoTeleportWarp(void)
     LockPlayerFieldControls();
     TryFadeOutOldMapMusic();
     CreateTask(Task_TeleportWarp, 10);
-    gFieldCallback = FieldCB_TeleportWarpIn;
+    SetFieldCallbackForDestWarp();
 }
 
 static void DoPortholeWarp(void) // Unused
@@ -894,7 +905,6 @@ static void Task_StairWarp(u8 taskId)
             data[0]++;
         break;
     default:
-        gFieldCallback = FieldCB_DefaultWarpExit;
         WarpIntoMap();
         SetMainCallback2(CB2_LoadMap);
         DestroyTask(taskId);

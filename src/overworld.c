@@ -3702,3 +3702,163 @@ static void SpriteCB_LinkPlayer(struct Sprite *sprite)
         sprite->data[7]++;
     }
 }
+
+bool8 IsTeleportDestination(void)
+{
+    if (sWarpDestination.mapGroup == MAP_GROUP(SILPH_CO_2F) &&
+        sWarpDestination.mapNum == MAP_NUM(SILPH_CO_2F))
+    {
+        if (sWarpDestination.warpId == 1 || sWarpDestination.warpId == 2 || sWarpDestination.warpId == 4 ||
+            sWarpDestination.warpId == 5)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SILPH_CO_3F) &&
+             sWarpDestination.mapNum == MAP_NUM(SILPH_CO_3F))
+    {
+        if (sWarpDestination.warpId == 1 || sWarpDestination.warpId == 2 || sWarpDestination.warpId == 4 ||
+            sWarpDestination.warpId == 5 || sWarpDestination.warpId == 6 || sWarpDestination.warpId == 7 ||
+            sWarpDestination.warpId == 8)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SILPH_CO_4F) &&
+             sWarpDestination.mapNum == MAP_NUM(SILPH_CO_4F))
+    {
+        if (sWarpDestination.warpId == 1 || sWarpDestination.warpId == 3 || sWarpDestination.warpId == 4 ||
+            sWarpDestination.warpId == 5)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SILPH_CO_5F) &&
+             sWarpDestination.mapNum == MAP_NUM(SILPH_CO_5F))
+    {
+        if (sWarpDestination.warpId == 1 || sWarpDestination.warpId == 3 || sWarpDestination.warpId == 4 ||
+            sWarpDestination.warpId == 5)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SILPH_CO_6F) &&
+             sWarpDestination.mapNum == MAP_NUM(SILPH_CO_6F))
+    {
+        if (sWarpDestination.warpId == 1 || sWarpDestination.warpId == 3)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SILPH_CO_7F) &&
+             sWarpDestination.mapNum == MAP_NUM(SILPH_CO_7F))
+    {
+        if (sWarpDestination.warpId == 1 || sWarpDestination.warpId == 2 || sWarpDestination.warpId == 4)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SILPH_CO_8F) &&
+             sWarpDestination.mapNum == MAP_NUM(SILPH_CO_8F))
+    {
+        if (sWarpDestination.warpId == 1 || sWarpDestination.warpId == 2 || sWarpDestination.warpId == 4 ||
+            sWarpDestination.warpId == 5)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SILPH_CO_9F) &&
+             sWarpDestination.mapNum == MAP_NUM(SILPH_CO_9F))
+    {
+        if (sWarpDestination.warpId == 1 || sWarpDestination.warpId == 2)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SILPH_CO_10F) &&
+             sWarpDestination.mapNum == MAP_NUM(SILPH_CO_10F))
+    {
+        if (sWarpDestination.warpId == 1 || sWarpDestination.warpId == 2 || sWarpDestination.warpId == 4)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SILPH_CO_11F) &&
+             sWarpDestination.mapNum == MAP_NUM(SILPH_CO_11F))
+    {
+        if (sWarpDestination.warpId == 1)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SAFFRON_CITY_GYM) &&
+             sWarpDestination.mapNum == MAP_NUM(SAFFRON_CITY_GYM))
+    {
+        if (sWarpDestination.warpId >= 1 && sWarpDestination.warpId <= 30)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 IsFallDestination(void)
+{
+    if (sWarpDestination.mapGroup == MAP_GROUP(SEAFOAM_ISLANDS_B1F) &&
+        sWarpDestination.mapNum == MAP_NUM(SEAFOAM_ISLANDS_B1F))
+    {
+        if (sWarpDestination.warpId == 9 || sWarpDestination.warpId == 10)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SEAFOAM_ISLANDS_B2F) &&
+             sWarpDestination.mapNum == MAP_NUM(SEAFOAM_ISLANDS_B2F))
+    {
+        if (sWarpDestination.warpId == 7 || sWarpDestination.warpId == 8)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SEAFOAM_ISLANDS_B3F) &&
+             sWarpDestination.mapNum == MAP_NUM(SEAFOAM_ISLANDS_B3F))
+    {
+        if (sWarpDestination.warpId == 5 || sWarpDestination.warpId == 6)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SEAFOAM_ISLANDS_B4F) &&
+             sWarpDestination.mapNum == MAP_NUM(SEAFOAM_ISLANDS_B4F))
+    {
+        if (sWarpDestination.warpId == 2 || sWarpDestination.warpId == 3)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(POKEMON_MANSION_1F) &&
+             sWarpDestination.mapNum == MAP_NUM(POKEMON_MANSION_1F))
+    {
+        if (sWarpDestination.warpId == 4 || sWarpDestination.warpId == 5 || sWarpDestination.warpId == 6)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(POKEMON_MANSION_2F) &&
+             sWarpDestination.mapNum == MAP_NUM(POKEMON_MANSION_2F))
+    {
+        if (sWarpDestination.warpId == 4 || sWarpDestination.warpId == 5)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(VICTORY_ROAD_2F) &&
+             sWarpDestination.mapNum == MAP_NUM(VICTORY_ROAD_2F))
+    {
+        if (sWarpDestination.warpId == 6)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SIX_ISLAND_DOTTED_HOLE_1F) &&
+             sWarpDestination.mapNum == MAP_NUM(SIX_ISLAND_DOTTED_HOLE_1F))
+    {
+        if (sWarpDestination.warpId == 3)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SIX_ISLAND_DOTTED_HOLE_B1F) &&
+             sWarpDestination.mapNum == MAP_NUM(SIX_ISLAND_DOTTED_HOLE_B1F))
+    {
+        if (sWarpDestination.warpId == 0)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SIX_ISLAND_DOTTED_HOLE_B2F) &&
+             sWarpDestination.mapNum == MAP_NUM(SIX_ISLAND_DOTTED_HOLE_B2F))
+    {
+        if (sWarpDestination.warpId == 0)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SIX_ISLAND_DOTTED_HOLE_B3F) &&
+             sWarpDestination.mapNum == MAP_NUM(SIX_ISLAND_DOTTED_HOLE_B3F))
+    {
+        if (sWarpDestination.warpId == 0)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SIX_ISLAND_DOTTED_HOLE_B4F) &&
+             sWarpDestination.mapNum == MAP_NUM(SIX_ISLAND_DOTTED_HOLE_B4F))
+    {
+        if (sWarpDestination.warpId == 0)
+            return TRUE;
+    }
+    else if (sWarpDestination.mapGroup == MAP_GROUP(SIX_ISLAND_DOTTED_HOLE_SAPPHIRE_ROOM) &&
+             sWarpDestination.mapNum == MAP_NUM(SIX_ISLAND_DOTTED_HOLE_SAPPHIRE_ROOM))
+    {
+        if (sWarpDestination.warpId == 1)
+            return TRUE;
+    }
+    return FALSE;
+}
