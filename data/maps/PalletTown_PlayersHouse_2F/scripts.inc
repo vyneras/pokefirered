@@ -1,6 +1,23 @@
 PalletTown_PlayersHouse_2F_MapScripts::
 	.byte 0
 
+PalletTown_PlayersHouse_2F_OnTransition::
+	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_PLAYERS_HOUSE_2F, 0, PalletTown_PlayersHouse_2F_EventScript_SetRespawn
+	end
+
+PalletTown_PlayersHouse_2F_EventScript_SetRespawn::
+	setrespawn HEAL_LOCATION_PALLET_TOWN
+	return
+
+PalletTown_PlayersHouse_2F_OnWarp::
+	map_script_2 VAR_MAP_SCENE_PALLET_TOWN_PLAYERS_HOUSE_2F, 0, PalletTown_PlayersHouse_2F_FirstWarpIn
+	.2byte 0
+
+PalletTown_PlayersHouse_2F_FirstWarpIn::
+	turnobject LOCALID_PLAYER, DIR_NORTH
+	setvar VAR_MAP_SCENE_PALLET_TOWN_PLAYERS_HOUSE_2F, 1
+	end
+
 PalletTown_PlayersHouse_2F_EventScript_NES::
 	msgbox PalletTown_PlayersHouse_2F_Text_PlayedWithNES, MSGBOX_SIGN
 	end

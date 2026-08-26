@@ -1,12 +1,10 @@
-.set LOCALID_BILL, 7
-
 CinnabarIsland_PokemonCenter_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, CinnabarIsland_PokemonCenter_1F_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
 	.byte 0
 
 CinnabarIsland_PokemonCenter_1F_OnTransition::
-	setrespawn SPAWN_CINNABAR_ISLAND
+	setrespawn HEAL_LOCATION_CINNABAR_ISLAND
 	end
 
 CinnabarIsland_PokemonCenter_1F_EventScript_Nurse::
@@ -44,7 +42,7 @@ CinnabarIsland_PokemonCenter_1F_EventScript_Bill::
 	call_if_eq VAR_FACING, DIR_SOUTH, CinnabarIsland_PokemonCenter_1F_EventScript_ExitWithBillSouth
 	call_if_eq VAR_FACING, DIR_EAST, CinnabarIsland_PokemonCenter_1F_EventScript_ExitWithBillEast
 	call_if_eq VAR_FACING, DIR_WEST, CinnabarIsland_PokemonCenter_1F_EventScript_ExitWithBillWest
-	removeobject LOCALID_BILL
+	removeobject LOCALID_CINNABAR_POKEMON_CENTER_BILL
 	warp MAP_ONE_ISLAND_POKEMON_CENTER_1F, 9, 9
 	waitstate
 	release
@@ -68,27 +66,27 @@ CinnabarIsland_PokemonCenter_1F_EventScript_BillGoToVermilionCity::
 	call_if_eq VAR_FACING, DIR_SOUTH, CinnabarIsland_PokemonCenter_1F_EventScript_ExitWithBillSouth
 	call_if_eq VAR_FACING, DIR_EAST, CinnabarIsland_PokemonCenter_1F_EventScript_ExitWithBillEast
 	call_if_eq VAR_FACING, DIR_WEST, CinnabarIsland_PokemonCenter_1F_EventScript_ExitWithBillWest
-	removeobject LOCALID_BILL
+	removeobject LOCALID_CINNABAR_POKEMON_CENTER_BILL
 	warp MAP_VERMILION_CITY, 23, 32
 	waitstate
 	release
 	end
 
 CinnabarIsland_PokemonCenter_1F_EventScript_ExitWithBillSouth::
-	applymovement LOCALID_BILL, CinnabarIsland_PokemonCenter_1F_Movement_BillExit
-	applymovement OBJ_EVENT_ID_PLAYER, CinnabarIsland_PokemonCenter_1F_Movement_PlayerExitSouth
+	applymovement LOCALID_CINNABAR_POKEMON_CENTER_BILL, CinnabarIsland_PokemonCenter_1F_Movement_BillExit
+	applymovement LOCALID_PLAYER, CinnabarIsland_PokemonCenter_1F_Movement_PlayerExitSouth
 	waitmovement 0
 	return
 
 CinnabarIsland_PokemonCenter_1F_EventScript_ExitWithBillEast::
-	applymovement LOCALID_BILL, CinnabarIsland_PokemonCenter_1F_Movement_BillExitEast
-	applymovement OBJ_EVENT_ID_PLAYER, CinnabarIsland_PokemonCenter_1F_Movement_PlayerExitEast
+	applymovement LOCALID_CINNABAR_POKEMON_CENTER_BILL, CinnabarIsland_PokemonCenter_1F_Movement_BillExitEast
+	applymovement LOCALID_PLAYER, CinnabarIsland_PokemonCenter_1F_Movement_PlayerExitEast
 	waitmovement 0
 	return
 
 CinnabarIsland_PokemonCenter_1F_EventScript_ExitWithBillWest::
-	applymovement LOCALID_BILL, CinnabarIsland_PokemonCenter_1F_Movement_BillExit
-	applymovement OBJ_EVENT_ID_PLAYER, CinnabarIsland_PokemonCenter_1F_Movement_PlayerExitWest
+	applymovement LOCALID_CINNABAR_POKEMON_CENTER_BILL, CinnabarIsland_PokemonCenter_1F_Movement_BillExit
+	applymovement LOCALID_PLAYER, CinnabarIsland_PokemonCenter_1F_Movement_PlayerExitWest
 	waitmovement 0
 	return
 

@@ -1,8 +1,3 @@
-.set LOCALID_ROCKET_GRUNT_1, 1
-.set LOCALID_ROCKET_GRUNT_2, 3
-.set LOCALID_ROCKET_GRUNT_3, 4
-.set LOCALID_DOOR_GUARD_GRUNT, 6
-
 .equ GIVE_FLY_UNLOCK, VAR_TEMP_1
 
 SaffronCity_MapScripts::
@@ -32,7 +27,7 @@ SaffronCity_EventScript_SetWorldMapFlag::
 SaffronCity_EventScript_MoveDoorGuardGrunt::
 	specialvar VAR_RESULT, ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
 	goto_if_eq VAR_RESULT, TRUE, SaffronCity_EventScript_DontMoveDoorGuardGrunt
-	setobjectxyperm LOCALID_DOOR_GUARD_GRUNT, 33, 31
+	setobjectxyperm LOCALID_SAFFRON_DOOR_GUARD_GRUNT, 33, 31
 	return
 
 SaffronCity_EventScript_DontMoveDoorGuardGrunt::
@@ -42,9 +37,9 @@ SaffronCity_EventScript_DontMoveDoorGuardGrunt::
 SaffronCity_EventScript_MoveRocketGrunts::
 	specialvar VAR_RESULT, ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
 	goto_if_eq VAR_RESULT, FALSE, EventScript_Return
-	setobjectxyperm LOCALID_ROCKET_GRUNT_1, 23, 15
-	setobjectxyperm LOCALID_ROCKET_GRUNT_2, 47, 13
-	setobjectxyperm LOCALID_ROCKET_GRUNT_3, 26, 22
+	setobjectxyperm LOCALID_SAFFRON_GRUNT1, 23, 15
+	setobjectxyperm LOCALID_SAFFRON_GRUNT2, 47, 13
+	setobjectxyperm LOCALID_SAFFRON_GRUNT3, 26, 22
 	setvar VAR_TEMP_3, 1
 	return
 
@@ -60,22 +55,22 @@ SaffronCity_OnFrame::
 
 SaffronCity_EventScript_DoorGuardGruntMoveLeft::
 	lockall
-	applymovement LOCALID_DOOR_GUARD_GRUNT, SaffronCity_Movement_MoveLeft
+	applymovement LOCALID_SAFFRON_DOOR_GUARD_GRUNT, SaffronCity_Movement_MoveLeft
 	waitmovement 0
-	setobjectxyperm LOCALID_DOOR_GUARD_GRUNT, 33, 31
+	setobjectxyperm LOCALID_SAFFRON_DOOR_GUARD_GRUNT, 33, 31
 	setvar VAR_TEMP_2, 0
 	releaseall
 	end
 
 SaffronCity_EventScript_RocketGruntsMoveLeft::
 	lockall
-	applymovement LOCALID_ROCKET_GRUNT_1, SaffronCity_Movement_MoveLeft
-	applymovement LOCALID_ROCKET_GRUNT_2, SaffronCity_Movement_MoveLeft
-	applymovement LOCALID_ROCKET_GRUNT_3, SaffronCity_Movement_MoveRight
+	applymovement LOCALID_SAFFRON_GRUNT1, SaffronCity_Movement_MoveLeft
+	applymovement LOCALID_SAFFRON_GRUNT2, SaffronCity_Movement_MoveLeft
+	applymovement LOCALID_SAFFRON_GRUNT3, SaffronCity_Movement_MoveRight
 	waitmovement 0
-	setobjectxyperm LOCALID_ROCKET_GRUNT_1, 22, 15
-	setobjectxyperm LOCALID_ROCKET_GRUNT_2, 46, 13
-	setobjectxyperm LOCALID_ROCKET_GRUNT_3, 27, 22
+	setobjectxyperm LOCALID_SAFFRON_GRUNT1, 22, 15
+	setobjectxyperm LOCALID_SAFFRON_GRUNT2, 46, 13
+	setobjectxyperm LOCALID_SAFFRON_GRUNT3, 27, 22
 	setvar VAR_TEMP_3, 0
 	releaseall
 	end
@@ -159,7 +154,7 @@ SaffronCity_EventScript_RocketGrunt7::
 SaffronCity_EventScript_DoorGuardGrunt::
 	lock
 	goto_if_set FLAG_RESCUED_MR_FUJI, SaffronCity_EventScript_DoorGuardAsleep
-	applymovement LOCALID_DOOR_GUARD_GRUNT, Common_Movement_FacePlayer
+	applymovement LOCALID_SAFFRON_DOOR_GUARD_GRUNT, Common_Movement_FacePlayer
 	waitmovement 0
 	msgbox SaffronCity_Text_ImASecurityGuard
 	release

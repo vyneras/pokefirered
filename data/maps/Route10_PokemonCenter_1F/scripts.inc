@@ -1,5 +1,4 @@
-.set REQUIRED_CAUGHT_MONS, VAR_TEMP_1
-
+.equ REQUIRED_CAUGHT_MONS, VAR_TEMP_1
 .equ GIVE_FLY_UNLOCK, VAR_TEMP_2
 
 Route10_PokemonCenter_1F_MapScripts::
@@ -12,7 +11,7 @@ Route10_PokemonCenter_1F_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, Route10_PokemonCenter_1F_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, Route10_PokemonCenter_1F_EventScript_SetWorldMapFlag
-	setrespawn SPAWN_ROUTE10
+	setrespawn HEAL_LOCATION_ROUTE10
 	setvar VAR_0x8003, 1
 	specialvar REQUIRED_CAUGHT_MONS, ArchipelagoSpecial_GetProfessorOaksAideCount
 	end

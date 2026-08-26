@@ -1,5 +1,3 @@
-.set LOCALID_CAPTAIN, 1
-
 SSAnne_CaptainsOffice_MapScripts::
 	.byte 0
 
@@ -14,7 +12,7 @@ SSAnne_CaptainsOffice_EventScript_Captain::
 	waitfanfare
 	call EventScript_RestorePrevTextColor
 	delay 50
-	applymovement LOCALID_CAPTAIN, Common_Movement_FacePlayer
+	applymovement LOCALID_SS_ANNE_CAPTAIN, Common_Movement_FacePlayer
 	waitmovement 0
 	msgbox SSAnne_CaptainsOffice_Text_ThankYouHaveHMForCut
 Archipelago_Target_NPC_Gift_FLAG_GOT_HM01::
@@ -24,7 +22,7 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_HM01::
 	end
 
 SSAnne_CaptainsOffice_EventScript_AlreadyGotCut::
-	applymovement LOCALID_CAPTAIN, Common_Movement_FacePlayer
+	applymovement LOCALID_SS_ANNE_CAPTAIN, Common_Movement_FacePlayer
 	waitmovement 0
 	msgbox SSAnne_CaptainsOffice_Text_SSAnneWillSetSailSoon
 	release

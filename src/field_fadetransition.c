@@ -210,6 +210,9 @@ static void Task_ReturnToFieldRecordMixing(u8 taskId)
     switch (task->data[0])
     {
     case 0:
+#if REVISION >= 0xA
+        if (!IsLinkTaskFinished()) break;
+#endif
         SetLinkStandbyCallback();
         task->data[0]++;
         break;
@@ -281,51 +284,51 @@ static void SetUpWarpExitTask(bool8 playerNotMoving)
 
 bool8 PlayerEnteredThroughBlockedDoor(void)
 {
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(CERULEAN_CITY) &&
-        gSaveBlock1Ptr->location.mapNum == MAP_NUM(CERULEAN_CITY) &&
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_CERULEAN_CITY) &&
+        gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_CERULEAN_CITY) &&
         gSaveBlock1Ptr->pos.x == 30 && gSaveBlock1Ptr->pos.y == 11 &&
         !CanLeaveCeruleanCity())
         return TRUE;
-    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(CERULEAN_CITY) &&
-             gSaveBlock1Ptr->location.mapNum == MAP_NUM(CERULEAN_CITY) &&
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_CERULEAN_CITY) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_CERULEAN_CITY) &&
              gSaveBlock1Ptr->pos.x == 1 && gSaveBlock1Ptr->pos.y == 12 &&
              !CanEnterCeruleanCave())
         return TRUE;
-    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SAFFRON_CITY) &&
-             gSaveBlock1Ptr->location.mapNum == MAP_NUM(SAFFRON_CITY) &&
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_SAFFRON_CITY) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SAFFRON_CITY) &&
              ((gSaveBlock1Ptr->pos.x == 22 && gSaveBlock1Ptr->pos.y == 14) ||
               (gSaveBlock1Ptr->pos.x == 46 && gSaveBlock1Ptr->pos.y == 12) ||
               (gSaveBlock1Ptr->pos.x == 27 && gSaveBlock1Ptr->pos.y == 21)) &&
              !FlagGet(FLAG_HIDE_SAFFRON_ROCKETS))
         return TRUE;
-    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SAFFRON_CITY) &&
-             gSaveBlock1Ptr->location.mapNum == MAP_NUM(SAFFRON_CITY) &&
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_SAFFRON_CITY) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SAFFRON_CITY) &&
              gSaveBlock1Ptr->pos.x == 33 && gSaveBlock1Ptr->pos.y == 30 &&
              !CanEnterSilphCo())
         return TRUE;
-    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(CINNABAR_ISLAND) &&
-             gSaveBlock1Ptr->location.mapNum == MAP_NUM(CINNABAR_ISLAND) &&
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_CINNABAR_ISLAND) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_CINNABAR_ISLAND) &&
              gSaveBlock1Ptr->pos.x == 8 && gSaveBlock1Ptr->pos.y == 3 &&
              !FlagGet(FLAG_SHOWED_LETTER) &&
              !FlagGet(FLAG_HIDE_CINNABAR_ISLAND_POILCEMAN))
         return TRUE;
-    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE10) &&
-             gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE10) &&
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE10) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE10) &&
              gSaveBlock1Ptr->pos.x == 7 && gSaveBlock1Ptr->pos.y == 40 &&
              !FlagGet(FLAG_HIDE_ROUTE_10_SCIENTIST))
         return TRUE;
-    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SIX_ISLAND_RUIN_VALLEY) &&
-             gSaveBlock1Ptr->location.mapNum == MAP_NUM(SIX_ISLAND_RUIN_VALLEY) &&
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_SIX_ISLAND_RUIN_VALLEY) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SIX_ISLAND_RUIN_VALLEY) &&
              gSaveBlock1Ptr->pos.x == 24 && gSaveBlock1Ptr->pos.y == 24 &&
              !FlagGet(FLAG_HIDE_RUIN_VALLEY_SCIENTIST))
         return TRUE;
-    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE22_NORTH_ENTRANCE) &&
-             gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE22_NORTH_ENTRANCE) &&
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE22_NORTH_ENTRANCE) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE22_NORTH_ENTRANCE) &&
              gSaveBlock1Ptr->pos.x == 7 && gSaveBlock1Ptr->pos.y == 1 &&
              VarGet(VAR_MAP_SCENE_ROUTE22_NORTH_ENTRANCE) != 1)
         return TRUE;
-    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MT_EMBER_EXTERIOR) &&
-             gSaveBlock1Ptr->location.mapNum == MAP_NUM(MT_EMBER_EXTERIOR) &&
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_MT_EMBER_EXTERIOR) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_MT_EMBER_EXTERIOR) &&
              gSaveBlock1Ptr->pos.x == 42 && gSaveBlock1Ptr->pos.y == 39 &&
              !FlagGet(FLAG_HIDE_MT_EMBER_EXTERIOR_ROCKETS))
         return TRUE;
@@ -408,9 +411,9 @@ static void Task_ExitDoor(u8 taskId)
             PlayerGetDestCoords(&task->data[12], &task->data[13]);
             SetPlayerVisibility(TRUE);
             if (PlayerEnteredThroughBlockedDoor())
-            	ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0)], MOVEMENT_ACTION_WALK_NORMAL_DOWN_2);
+            	ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0)], MOVEMENT_ACTION_WALK_NORMAL_DOWN_2);
             else
-            	ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0)], MOVEMENT_ACTION_WALK_NORMAL_DOWN);
+            	ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0)], MOVEMENT_ACTION_WALK_NORMAL_DOWN);
             task->data[0] = 8;
         }
         break;
@@ -425,7 +428,7 @@ static void Task_ExitDoor(u8 taskId)
     case 9:
         if (FieldFadeTransitionBackgroundEffectIsFinished() && walkrun_is_standing_still() && !FieldIsDoorAnimationRunning() && !FuncIsActiveTask(Task_BarnDoorWipe))
         {
-            ObjectEventClearHeldMovementIfFinished(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0)]);
+            ObjectEventClearHeldMovementIfFinished(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0)]);
             task->data[0] = 4;
         }
         break;
@@ -434,7 +437,7 @@ static void Task_ExitDoor(u8 taskId)
         if (FieldFadeTransitionBackgroundEffectIsFinished())
         {
             SetPlayerVisibility(TRUE);
-            ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0)], MOVEMENT_ACTION_WALK_NORMAL_DOWN);
+            ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0)], MOVEMENT_ACTION_WALK_NORMAL_DOWN);
             task->data[0] = 2;
         }
         break;
@@ -442,7 +445,7 @@ static void Task_ExitDoor(u8 taskId)
         if (walkrun_is_standing_still())
         {
             task->data[1] = FieldAnimateDoorClose(*x, *y);
-            ObjectEventClearHeldMovementIfFinished(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0)]);
+            ObjectEventClearHeldMovementIfFinished(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0)]);
             task->data[0] = 3;
         }
         break;
@@ -477,9 +480,9 @@ static void Task_ExitNonAnimDoor(u8 taskId)
         {
             SetPlayerVisibility(TRUE);
             if (PlayerEnteredThroughBlockedDoor())
-                ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0)], MOVEMENT_ACTION_WALK_NORMAL_DOWN_2);
+                ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0)], MOVEMENT_ACTION_WALK_NORMAL_DOWN_2);
             else
-                ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0)], GetWalkNormalMovementAction(GetPlayerFacingDirection()));
+                ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0)], GetWalkNormalMovementAction(GetPlayerFacingDirection()));
             task->data[0] = 2;
         }
         break;
@@ -827,8 +830,8 @@ static void Task_DoorWarp(u8 taskId)
     case 1:
         if (task->data[1] < 0 || gTasks[task->data[1]].isActive != TRUE)
         {
-            ObjectEventClearHeldMovementIfActive(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0)]);
-            ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0)], MOVEMENT_ACTION_WALK_NORMAL_UP);
+            ObjectEventClearHeldMovementIfActive(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0)]);
+            ObjectEventSetHeldMovement(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0)], MOVEMENT_ACTION_WALK_NORMAL_UP);
             task->data[0] = 2;
         }
         break;
@@ -836,7 +839,7 @@ static void Task_DoorWarp(u8 taskId)
         if (walkrun_is_standing_still())
         {
             task->data[1] = FieldAnimateDoorClose(*xp, *yp - 1);
-            ObjectEventClearHeldMovementIfFinished(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0)]);
+            ObjectEventClearHeldMovementIfFinished(&gObjectEvents[GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0)]);
             SetPlayerVisibility(FALSE);
             task->data[0] = 3;
         }

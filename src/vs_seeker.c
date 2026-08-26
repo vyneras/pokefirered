@@ -34,6 +34,8 @@
 #define MAX_REMATCH_PARTIES 6
 #define SKIP 0xFFFF
 
+#define NO_REMATCH_LOCALID LOCALID_PLAYER
+
 enum
 {
    VSSEEKER_NOT_CHARGED,
@@ -337,7 +339,7 @@ static const struct RematchData sRematches[] = {
    { {TRAINER_RUIN_MANIAC_BRANDON, TRAINER_RUIN_MANIAC_BRANDON} },
    { {TRAINER_RUIN_MANIAC_BENJAMIN, TRAINER_RUIN_MANIAC_BENJAMIN} },
    { {TRAINER_PAINTER_EDNA, TRAINER_PAINTER_EDNA} },
-   { {TRAINER_GENTLEMAN_CLIFFORD, TRAINER_GENTLEMAN_CLIFFORD} },
+   { {TRAINER_GENTLEMAN_CLIFFORD, TRAINER_GENTLEMAN_CLIFFORD} }
 };
 
 static const u8 sMovementScript_Wait48[] = {
@@ -603,12 +605,12 @@ static void GatherNearbyTrainerInfo(void)
             vsSeekerObjectIdx++;
         }
     }
-    sVsSeeker->trainerInfo[vsSeekerObjectIdx].localId = 0xFF;
+    sVsSeeker->trainerInfo[vsSeekerObjectIdx].localId = NO_REMATCH_LOCALID;
 }
 
 static void Task_VsSeeker_3(u8 taskId)
 {
-    if (ScriptMovement_IsObjectMovementFinished(0xFF, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup))
+    if (ScriptMovement_IsObjectMovementFinished(NO_REMATCH_LOCALID, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup))
     {
         if (sVsSeeker->responseCode == VSSEEKER_RESPONSE_NO_RESPONSE)
         {
@@ -632,7 +634,7 @@ static u8 CanUseVsSeeker(void)
     u8 vsSeekerChargeSteps = gSaveBlock1Ptr->trainerRematchStepCounter;
     if (vsSeekerChargeSteps == 100)
     {
-        if (GetRematchableTrainerLocalId() == 0xFF)
+        if (GetRematchableTrainerLocalId() == NO_REMATCH_LOCALID)
             return VSSEEKER_NO_ONE_IN_RANGE;
         else
             return VSSEEKER_CAN_USE;
@@ -653,7 +655,7 @@ static u8 GetVsSeekerResponseInArea(const struct RematchData * vsSeekerData)
     u8 response = 0;
     s32 vsSeekerIdx = 0;
 
-    while (sVsSeeker->trainerInfo[vsSeekerIdx].localId != 0xFF)
+    while (sVsSeeker->trainerInfo[vsSeekerIdx].localId != NO_REMATCH_LOCALID)
     {
         if (IsTrainerVisibleOnScreen(&sVsSeeker->trainerInfo[vsSeekerIdx]) == TRUE)
         {
@@ -732,7 +734,11 @@ void ClearRematchStateByTrainerId(void)
 
                 TryGetObjectEventIdByLocalIdAndMap(objectEventTemplates[i].localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, &objEventId);
                 objectEvent = &gObjectEvents[objEventId];
+                #if __STDC_VERSION__ < 202311L
                 GetRandomFaceDirectionMovementType(&objectEventTemplates[i]); // You are using this function incorrectly.  Please consult the manual.
+                #else
+                GetRandomFaceDirectionMovementType();
+                #endif
                 OverrideMovementTypeForObjectEvent(objectEvent, sFaceDirectionMovementTypeByFacingDirection[objectEvent->facingDirection]);
                 gSaveBlock1Ptr->trainerRematches[objectEventTemplates[i].localId] = 0;
                 if (gSelectedObjectEvent == objEventId)
@@ -913,7 +919,7 @@ static u8 GetRunningBehaviorFromGraphicsId(u8 graphicsId)
         case OBJ_EVENT_GFX_BUG_CATCHER:
         case OBJ_EVENT_GFX_LASS:
         case OBJ_EVENT_GFX_WOMAN_1:
-        case OBJ_EVENT_GFX_BATTLE_GIRL:
+        case OBJ_EVENT_GFX_CRUSH_GIRL:
         case OBJ_EVENT_GFX_MAN:
         case OBJ_EVENT_GFX_ROCKER:
         case OBJ_EVENT_GFX_WOMAN_2:
@@ -926,7 +932,7 @@ static u8 GetRunningBehaviorFromGraphicsId(u8 graphicsId)
         case OBJ_EVENT_GFX_COOLTRAINER_F:
         case OBJ_EVENT_GFX_SWIMMER_M_LAND:
         case OBJ_EVENT_GFX_SWIMMER_F_LAND:
-        case OBJ_EVENT_GFX_BLACKBELT:
+        case OBJ_EVENT_GFX_BLACK_BELT:
         case OBJ_EVENT_GFX_HIKER:
         case OBJ_EVENT_GFX_SAILOR:
             return MOVEMENT_TYPE_RAISE_HAND_AND_JUMP;
@@ -1038,7 +1044,7 @@ static u8 GetRematchableTrainerLocalId(void)
     u8 idx;
     u8 i;
 
-    for (i = 0; sVsSeeker->trainerInfo[i].localId != 0xFF; i++)
+    for (i = 0; sVsSeeker->trainerInfo[i].localId != NO_REMATCH_LOCALID; i++)
     {
         if (IsTrainerVisibleOnScreen(&sVsSeeker->trainerInfo[i]) == 1)
         {
@@ -1047,7 +1053,7 @@ static u8 GetRematchableTrainerLocalId(void)
         }
     }
 
-    return 0xFF;
+    return NO_REMATCH_LOCALID;
 }
 
 static void StartTrainerObjectMovementScript(struct VsSeekerTrainerInfo * trainerInfo, const u8 * script)
@@ -1086,7 +1092,7 @@ static void StartAllRespondantIdleMovements(void)
 
     for (i = 0; i < sVsSeeker->numRematchableTrainers; i++)
     {
-        for (j = 0; sVsSeeker->trainerInfo[j].localId != 0xFF; j++)
+        for (j = 0; sVsSeeker->trainerInfo[j].localId != NO_REMATCH_LOCALID; j++)
         {
             if (sVsSeeker->trainerInfo[j].trainerIdx == sVsSeeker->trainerIdxArray[i])
             {

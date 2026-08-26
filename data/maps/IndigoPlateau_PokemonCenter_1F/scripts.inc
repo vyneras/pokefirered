@@ -1,6 +1,5 @@
-.set LOCALID_DOOR_GUARD, 4
-.set GUARD_SHOULD_MOVE, VAR_TEMP_1
-.set REQUIRED_BADGES_GYMS, VAR_TEMP_2
+.equ GUARD_SHOULD_MOVE, VAR_TEMP_1
+.equ REQUIRED_BADGES_GYMS, VAR_TEMP_2
 
 IndigoPlateau_PokemonCenter_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, IndigoPlateau_PokemonCenter_1F_OnTransition
@@ -8,7 +7,7 @@ IndigoPlateau_PokemonCenter_1F_MapScripts::
 	.byte 0
 
 IndigoPlateau_PokemonCenter_1F_OnTransition::
-	setrespawn SPAWN_INDIGO_PLATEAU
+	setrespawn HEAL_LOCATION_INDIGO_PLATEAU
 	setvar GUARD_SHOULD_MOVE, 0
 	call_if_set FLAG_SYS_GAME_CLEAR, IndigoPlateau_PokemonCenter_1F_BlockDoorEliteFourRematch
 	call_if_unset FLAG_SYS_GAME_CLEAR, IndigoPlateau_PokemonCenter_1F_BlockDoorEliteFour
@@ -25,7 +24,7 @@ IndigoPlateau_PokemonCenter_1F_BlockDoorEliteFour::
 	return
 
 IndigoPlateau_PokemonCenter_1F_EventScript_BlockDoor::
-	setobjectxyperm LOCALID_DOOR_GUARD, 4, 2
+	setobjectxyperm LOCALID_LEAGUE_DOOR_GUARD, 4, 2
 	setvar GUARD_SHOULD_MOVE, 1
 	return
 
@@ -64,9 +63,9 @@ IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardGoodLuck::
 
 IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuardMove::
 	closemessage
-	applymovement LOCALID_DOOR_GUARD, IndigoPlateau_PokemonCenter_1F_Movement_DoorGuardMovesAside
+	applymovement LOCALID_LEAGUE_DOOR_GUARD, IndigoPlateau_PokemonCenter_1F_Movement_DoorGuardMovesAside
 	waitmovement 0
-	copyobjectxytoperm LOCALID_DOOR_GUARD
+	copyobjectxytoperm LOCALID_LEAGUE_DOOR_GUARD
 	setvar GUARD_SHOULD_MOVE, 0
 	return
 

@@ -1,5 +1,3 @@
-.equ LOCALID_ROCKET, 1
-
 Route24_MapScripts::
 	.byte 0
 
@@ -32,7 +30,7 @@ Route24_EventScript_RocketTrigger::
 	textcolor NPC_TEXT_COLOR_MALE
 	call_if_eq VAR_TEMP_1, 0, Route24_EventScript_RocketApproachPlayer
 	call_if_eq VAR_TEMP_1, 1, Route24_EventScript_RocketMotionToPlayer
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	call Route24_EventScript_BattleRocket
 	releaseall
@@ -44,7 +42,7 @@ Route24_EventScript_BattleRocket::
 	waitmessage
 	playbgm MUS_ENCOUNTER_ROCKET, 0
 	waitbuttonpress
-	setvar VAR_LAST_TALKED, LOCALID_ROCKET
+	setvar VAR_LAST_TALKED, LOCALID_ROUTE24_ROCKET
 	trainerbattle_no_intro TRAINER_TEAM_ROCKET_GRUNT_6, Route24_Text_RocketDefeat
 	msgbox Route24_Text_YoudBecomeTopRocketLeader
 	msgbox Route24_Text_HereTakeThis
@@ -54,17 +52,17 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_NUGGET_FROM_ROCKET_GRUNT::
 	return
 
 Route24_EventScript_RocketApproachPlayer::
-	applymovement LOCALID_ROCKET, Route24_Movement_RocketApproachPlayer
+	applymovement LOCALID_ROUTE24_ROCKET, Route24_Movement_RocketApproachPlayer
 	waitmovement 0
 	return
 
 Route24_EventScript_RocketMotionToPlayer::
-	applymovement LOCALID_ROCKET, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_ROUTE24_ROCKET, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	return
 
 Route24_EventScript_RocketWalkBackToPos::
-	applymovement LOCALID_ROCKET, Route24_Movement_RocketWalkBackToPos
+	applymovement LOCALID_ROUTE24_ROCKET, Route24_Movement_RocketWalkBackToPos
 	waitmovement 0
 	return
 

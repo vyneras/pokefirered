@@ -194,6 +194,10 @@ void Overworld_ResetStateAfterGoHome(void);
 bool8 IsTeleportDestination(void);
 bool8 IsFallDestination(void);
 
+#if REVISION >= 0xA
+void ClearFieldCallback(void);
+#endif
+
 extern u16 *gBGTilemapBuffers1;
 extern u16 *gBGTilemapBuffers2;
 extern u16 *gBGTilemapBuffers3;

@@ -5,7 +5,7 @@ SixIsland_PokemonCenter_1F_MapScripts::
 	.byte 0
 
 SixIsland_PokemonCenter_1F_OnTransition::
-	setrespawn SPAWN_SIX_ISLAND
+	setrespawn HEAL_LOCATION_SIX_ISLAND
 	end
 
 SixIsland_PokemonCenter_1F_OnFrame::

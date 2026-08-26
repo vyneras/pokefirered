@@ -1,5 +1,3 @@
-.set LOCALID_POLICEMAN, 3
-
 .equ GIVE_FLY_UNLOCK, VAR_TEMP_1
 
 CinnabarIsland_MapScripts::
@@ -32,11 +30,11 @@ CinnabarIsland_EventScript_CheckBlockMansion::
 CinnabarIsland_EventScript_BlockMansion::
 	specialvar VAR_RESULT, ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
 	goto_if_eq VAR_RESULT, TRUE, CinnabarIsland_EventScript_DontBlockMansion
-	setobjectxyperm LOCALID_POLICEMAN, 8, 4
+	setobjectxyperm LOCALID_CINNABAR_POLICEMAN, 8, 4
 	return
 
 CinnabarIsland_EventScript_DontBlockMansion::
-	setobjectxyperm LOCALID_POLICEMAN, 7, 4
+	setobjectxyperm LOCALID_CINNABAR_POLICEMAN, 7, 4
 	setvar VAR_TEMP_2, 1
 	return
 
@@ -52,9 +50,9 @@ CinnabarIsland_OnFrame::
 
 CinnabarIsland_EventScript_PolicemanMoveRight::
 	lockall
-	applymovement LOCALID_POLICEMAN, CinnabarIsland_Movement_MoveRight
+	applymovement LOCALID_CINNABAR_POLICEMAN, CinnabarIsland_Movement_MoveRight
 	waitmovement 0
-	copyobjectxytoperm LOCALID_POLICEMAN
+	copyobjectxytoperm LOCALID_CINNABAR_POLICEMAN
 	setvar VAR_TEMP_2, 0
 	releaseall
 	end
@@ -160,16 +158,16 @@ CinnabarIsland_EventScript_PolicemanFoundLetter::
 	msgbox CinnabarIsland_Text_YouCanHeadIn
 	closemessage
 	goto_if_eq VAR_FACING, DIR_EAST, CinnabarIsland_EventScript_PolicemanMoveEast
-	applymovement LOCALID_POLICEMAN, CinnabarIsland_Movement_PolicemanMoveWest
+	applymovement LOCALID_CINNABAR_POLICEMAN, CinnabarIsland_Movement_PolicemanMoveWest
 	waitmovement 0
-	copyobjectxytoperm LOCALID_POLICEMAN
+	copyobjectxytoperm LOCALID_CINNABAR_POLICEMAN
 	release
 	end
 
 CinnabarIsland_EventScript_PolicemanMoveEast::
-	applymovement LOCALID_POLICEMAN, CinnabarIsland_Movement_PolicemanMoveEast
+	applymovement LOCALID_CINNABAR_POLICEMAN, CinnabarIsland_Movement_PolicemanMoveEast
 	waitmovement 0
-	copyobjectxytoperm LOCALID_POLICEMAN
+	copyobjectxytoperm LOCALID_CINNABAR_POLICEMAN
 	release
 	end
 

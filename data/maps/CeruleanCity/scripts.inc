@@ -1,12 +1,4 @@
-.set LOCALID_POLICEMAN, 1
-.set LOCALID_GRUNT,     2
-.set LOCALID_SLOWBRO,   5
-.set LOCALID_LASS,      6
-.set LOCALID_RIVAL,     8
-.set LOCALID_WOMAN,     11
-.set LOCALID_CAVE_GUARD, 12
-.set REQUIRED_BADGES_GYMS, VAR_TEMP_2
-
+.equ REQUIRED_BADGES_GYMS, VAR_TEMP_2
 .equ GIVE_FLY_UNLOCK, VAR_TEMP_3
 
 CeruleanCity_MapScripts::
@@ -50,17 +42,17 @@ CeruleanCity_EventScript_BlockExits::
 	specialvar VAR_RESULT, ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
 	call_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_PolicemanNotBlocking
 	call_if_eq VAR_RESULT, FALSE, CeruleanCity_EventScript_PolicemanBlocking
-	setobjectxyperm LOCALID_SLOWBRO, 26, 31
-	setobjectxyperm LOCALID_LASS, 27, 31
+	setobjectxyperm LOCALID_CERULEAN_SLOWBRO, 26, 31
+	setobjectxyperm LOCALID_CERULEAN_LASS, 27, 31
 	return
 
 CeruleanCity_EventScript_PolicemanNotBlocking::
-	setobjectxyperm LOCALID_POLICEMAN, 31, 12
+	setobjectxyperm LOCALID_CERULEAN_POLICEMAN, 31, 12
 	setvar VAR_TEMP_4, 1
 	return
 
 CeruleanCity_EventScript_PolicemanBlocking::
-	setobjectxyperm LOCALID_POLICEMAN, 30, 12
+	setobjectxyperm LOCALID_CERULEAN_POLICEMAN, 30, 12
 	return
 
 CeruleanCity_EventScript_CheckRemoveGuard::
@@ -68,7 +60,7 @@ CeruleanCity_EventScript_CheckRemoveGuard::
 	goto_if_eq VAR_RESULT, TRUE, CeruleanCity_EventScript_RemoveGuard
 	specialvar VAR_RESULT, ArchipelagoSpecial_PlayerEnteredThroughBlockedDoor
 	goto_if_eq VAR_RESULT, FALSE, EventScript_Return
-	setobjectxyperm LOCALID_CAVE_GUARD, 2, 13
+	setobjectxyperm LOCALID_CERULEAN_CAVE_GUARD, 2, 13
 	setvar VAR_TEMP_5, 1
 	return
 
@@ -82,7 +74,7 @@ CeruleanCity_EventScript_CheckRivalSetPosition::
 
 CeruleanCity_EventScript_RivalSetPosition::
 	clearflag FLAG_HIDE_CERULEAN_RIVAL
-	setobjectxyperm LOCALID_RIVAL, 24, 20
+	setobjectxyperm LOCALID_CERULEAN_RIVAL, 24, 20
 	return
 
 CeruleanCity_OnLoad::
@@ -97,18 +89,18 @@ CeruleanCity_OnFrame::
 
 CeruleanCity_EventScript_PolicemanMoveLeft::
 	lockall
-	applymovement LOCALID_POLICEMAN, CeruleanCity_Movement_MoveLeft
+	applymovement LOCALID_CERULEAN_POLICEMAN, CeruleanCity_Movement_MoveLeft
 	waitmovement 0
-	copyobjectxytoperm LOCALID_POLICEMAN
+	copyobjectxytoperm LOCALID_CERULEAN_POLICEMAN
 	setvar VAR_TEMP_4, 0
 	releaseall
 	end
 
 CeruleanCity_EventScript_GuardMoveLeft::
 	lockall
-	applymovement LOCALID_CAVE_GUARD, CeruleanCity_Movement_MoveLeft
+	applymovement LOCALID_CERULEAN_CAVE_GUARD, CeruleanCity_Movement_MoveLeft
 	waitmovement 0
-	copyobjectxytoperm LOCALID_CAVE_GUARD
+	copyobjectxytoperm LOCALID_CERULEAN_CAVE_GUARD
 	setvar VAR_TEMP_5, 0
 	releaseall
 	end
@@ -165,25 +157,25 @@ CeruleanCity_EventScript_RivalTriggerLeft::
 CeruleanCity_EventScript_RivalTriggerMid::
 	lockall
 	setvar VAR_TEMP_1, 1
-	setobjectxyperm LOCALID_RIVAL, 23, 0
+	setobjectxyperm LOCALID_CERULEAN_RIVAL, 23, 0
 	goto CeruleanCity_EventScript_Rival
 	end
 
 CeruleanCity_EventScript_RivalTriggerRight::
 	lockall
 	setvar VAR_TEMP_1, 2
-	setobjectxyperm LOCALID_RIVAL, 24, 0
+	setobjectxyperm LOCALID_CERULEAN_RIVAL, 24, 0
 	goto CeruleanCity_EventScript_Rival
 	end
 
 CeruleanCity_EventScript_Rival::
 	textcolor NPC_TEXT_COLOR_MALE
 	playbgm MUS_ENCOUNTER_RIVAL, 0
-	addobject LOCALID_RIVAL
-	applymovement LOCALID_RIVAL, CeruleanCity_Movement_RivalEnter
+	addobject LOCALID_CERULEAN_RIVAL
+	applymovement LOCALID_CERULEAN_RIVAL, CeruleanCity_Movement_RivalEnter
 	waitmovement 0
 	msgbox CeruleanCity_Text_RivalIntro
-	setvar VAR_LAST_TALKED, LOCALID_RIVAL
+	setvar VAR_LAST_TALKED, LOCALID_CERULEAN_RIVAL
 	call_if_eq VAR_STARTER_MON, 2, CeruleanCity_EventScript_RivalSquirtle
 	call_if_eq VAR_STARTER_MON, 1, CeruleanCity_EventScript_RivalBulbasaur
 	call_if_eq VAR_STARTER_MON, 0, CeruleanCity_EventScript_RivalCharmander
@@ -203,10 +195,10 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_FAME_CHECKER::
 	giveitem ITEM_FAME_CHECKER, 1, FLAG_GOT_FAME_CHECKER
 	msgbox CeruleanCity_Text_ExplainFameCheckerSmellYa
 	closemessage
-	applymovement LOCALID_RIVAL, CeruleanCity_Movement_RivalExit
+	applymovement LOCALID_CERULEAN_RIVAL, CeruleanCity_Movement_RivalExit
 	waitmovement 0
 	fadedefaultbgm
-	removeobject LOCALID_RIVAL
+	removeobject LOCALID_CERULEAN_RIVAL
 	releaseall
 	end
 
@@ -235,14 +227,14 @@ CeruleanCity_EventScript_RivalCharmander::
 	return
 
 CeruleanCity_EventScript_RivalStartExit::
-	applymovement OBJ_EVENT_ID_PLAYER, CeruleanCity_Movement_PlayerWatchRivalExit
-	applymovement LOCALID_RIVAL, CeruleanCity_Movement_RivalStartExit
+	applymovement LOCALID_PLAYER, CeruleanCity_Movement_PlayerWatchRivalExit
+	applymovement LOCALID_CERULEAN_RIVAL, CeruleanCity_Movement_RivalStartExit
 	waitmovement 0
 	return
 
 CeruleanCity_EventScript_RivalStartExitRight::
-	applymovement OBJ_EVENT_ID_PLAYER, CeruleanCity_Movement_PlayerWatchRivalExitRight
-	applymovement LOCALID_RIVAL, CeruleanCity_Movement_RivalStartExitRight
+	applymovement LOCALID_PLAYER, CeruleanCity_Movement_PlayerWatchRivalExitRight
+	applymovement LOCALID_CERULEAN_RIVAL, CeruleanCity_Movement_RivalStartExitRight
 	waitmovement 0
 	return
 
@@ -338,7 +330,7 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_TM28_FROM_ROCKET::
 	msgbox CeruleanCity_Text_BetterGetMovingBye
 	closemessage
 	fadescreen FADE_TO_BLACK
-	removeobject LOCALID_GRUNT
+	removeobject LOCALID_CERULEAN_GRUNT
 	fadescreen FADE_FROM_BLACK
 	release
 	end
@@ -346,9 +338,9 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_TM28_FROM_ROCKET::
 CeruleanCity_EventScript_GruntTriggerTop::
 	lockall
 	setvar VAR_TEMP_1, 0
-	applymovement LOCALID_GRUNT, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_CERULEAN_GRUNT, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	goto CeruleanCity_EventScript_GruntTrigger
 	end
@@ -356,9 +348,9 @@ CeruleanCity_EventScript_GruntTriggerTop::
 CeruleanCity_EventScript_GruntTriggerBottom::
 	lockall
 	setvar VAR_TEMP_1, 1
-	applymovement LOCALID_GRUNT, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_CERULEAN_GRUNT, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	goto CeruleanCity_EventScript_GruntTrigger
 	end
@@ -366,7 +358,7 @@ CeruleanCity_EventScript_GruntTriggerBottom::
 CeruleanCity_EventScript_GruntTrigger::
 	textcolor NPC_TEXT_COLOR_MALE
 	msgbox CeruleanCity_Text_GruntIntro
-	setvar VAR_LAST_TALKED, LOCALID_GRUNT
+	setvar VAR_LAST_TALKED, LOCALID_CERULEAN_GRUNT
 	trainerbattle_no_intro TRAINER_TEAM_ROCKET_GRUNT_5, CeruleanCity_Text_GruntDefeat
 	setvar VAR_MAP_SCENE_CERULEAN_CITY_ROCKET, 1
 	goto CeruleanCity_EventScript_GruntDefeated
@@ -377,7 +369,7 @@ CeruleanCity_EventScript_Policeman::
 	faceplayer
 	msgbox CeruleanCity_Text_PeopleHereWereRobbed
 	closemessage
-	applymovement LOCALID_POLICEMAN, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_CERULEAN_POLICEMAN, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
@@ -422,28 +414,28 @@ CeruleanCity_EventScript_CeruleanCaveGuardLeave::
 	msgbox CeruleanCity_Text_HaveWhatItTakes
 	fadescreen FADE_TO_BLACK
 	closemessage
-	removeobject LOCALID_CAVE_GUARD
+	removeobject LOCALID_CERULEAN_CAVE_GUARD
 	fadescreen FADE_FROM_BLACK
 	release
 	end
 
 CeruleanCity_EventScript_CeruleanCaveGuardChampAndNetwork::
 	msgbox CeruleanCity_Text_BecomeChampAndFixNetwork
-	applymovement LOCALID_CAVE_GUARD, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_CERULEAN_CAVE_GUARD, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
 
 CeruleanCity_EventScript_CeruleanCaveGuardChamp::
 	msgbox CeruleanCity_Text_BecomeChamp
-	applymovement LOCALID_CAVE_GUARD, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_CERULEAN_CAVE_GUARD, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
 
 CeruleanCity_EventScript_CeruleanCaveGuardNetwork::
 	msgbox CeruleanCity_Text_FixNetwork
-	applymovement LOCALID_CAVE_GUARD, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_CERULEAN_CAVE_GUARD, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
@@ -453,14 +445,14 @@ CeruleanCity_EventScript_CeruleanCaveGuardBadges::
 	buffernumberstring STR_VAR_1, REQUIRED_BADGES_GYMS
 	goto_if_eq REQUIRED_BADGES_GYMS, 1, CeruleanCity_EventScript_CeruleanCaveGuardBadge
 	msgbox CeruleanCity_Text_Badges
-	applymovement LOCALID_CAVE_GUARD, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_CERULEAN_CAVE_GUARD, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
 
 CeruleanCity_EventScript_CeruleanCaveGuardBadge::
 	msgbox CeruleanCity_Text_Badge
-	applymovement LOCALID_CAVE_GUARD, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_CERULEAN_CAVE_GUARD, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
@@ -470,14 +462,14 @@ CeruleanCity_EventScript_CeruleanCaveGuardGyms::
 	buffernumberstring STR_VAR_1, REQUIRED_BADGES_GYMS
 	goto_if_eq REQUIRED_BADGES_GYMS, 1, CeruleanCity_EventScript_CeruleanCaveGuardGym
 	msgbox CeruleanCity_Text_Gyms
-	applymovement LOCALID_CAVE_GUARD, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_CERULEAN_CAVE_GUARD, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
 
 CeruleanCity_EventScript_CeruleanCaveGuardGym::
 	msgbox CeruleanCity_Text_Gym
-	applymovement LOCALID_CAVE_GUARD, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_CERULEAN_CAVE_GUARD, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
@@ -487,7 +479,7 @@ CeruleanCity_EventScript_Woman::
 	faceplayer
 	msgbox CeruleanCity_Text_WantBrightRedBicycle
 	closemessage
-	applymovement LOCALID_WOMAN, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_CERULEAN_WOMAN, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
@@ -502,7 +494,7 @@ CeruleanCity_EventScript_Lass::
 	waitmessage
 	delay 40
 	playse SE_PIN
-	applymovement LOCALID_SLOWBRO, Common_Movement_QuestionMark
+	applymovement LOCALID_CERULEAN_SLOWBRO, Common_Movement_QuestionMark
 	waitmovement 0
 	delay 30
 	call_if_eq VAR_0x8008, 0, CeruleanCity_EventScript_SlowbroFailed1

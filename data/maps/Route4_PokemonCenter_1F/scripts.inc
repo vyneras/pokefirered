@@ -12,7 +12,7 @@ Route4_PokemonCenter_1F_OnTransition::
 	specialvar VAR_RESULT, ArchipelagoSpecial_FlyUnlocks
 	call_if_eq VAR_RESULT, TRUE, Route4_PokemonCenter_1F_EventScript_SetGiveFlyUnlockItem
 	call_if_eq VAR_RESULT, FALSE, Route4_PokemonCenter_1F_EventScript_SetWorldMapFlag
-	setrespawn SPAWN_ROUTE4
+	setrespawn HEAL_LOCATION_ROUTE4
 	end
 
 Route4_PokemonCenter_1F_EventScript_SetGiveFlyUnlockItem::

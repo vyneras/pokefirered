@@ -1,7 +1,3 @@
-.equ LOCALID_GIOVANNI,    1
-.equ LOCALID_SILPH_SCOPE, 2
-.equ LOCALID_LIFT_KEY,    4
-
 .equ NUM_DOOR_GRUNTS_DEFEATED, VAR_TEMP_1
 
 RocketHideout_B4F_MapScripts::
@@ -49,7 +45,7 @@ RocketHideout_B4F_EventScript_GiovanniFameChecker::
 	end
 
 RocketHideout_B4F_EventScript_RemoveGiovanni::
-	removeobject LOCALID_GIOVANNI
+	removeobject LOCALID_HIDEOUT_GIOVANNI
 	return
 
 RocketHideout_B4F_EventScript_TryHideMiscKantoRockets::

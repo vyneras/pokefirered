@@ -1,6 +1,3 @@
-.equ LOCALID_BILL,  2
-.equ LOCALID_CELIO, 3
-
 OneIsland_PokemonCenter_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, OneIsland_PokemonCenter_1F_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
@@ -28,7 +25,7 @@ OneIsland_PokemonCenter_1F_EventScript_SetNetworkMachineOn::
 	return
 
 OneIsland_PokemonCenter_1F_OnTransition::
-	setrespawn SPAWN_ONE_ISLAND
+	setrespawn HEAL_LOCATION_ONE_ISLAND
 	call_if_eq VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 3, OneIsland_PokemonCenter_1F_EventScript_CheckClearedWarehouse
 	call_if_eq VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 1, OneIsland_PokemonCenter_1F_EventScript_CheckBillHasLeft
 	call_if_eq VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 0, OneIsland_PokemonCenter_1F_EventScript_SetBillCelioFirstMeetingPos
@@ -42,8 +39,8 @@ OneIsland_PokemonCenter_1F_ClearCinnabarIslandBillFlag::
 	return
 
 OneIsland_PokemonCenter_1F_EventScript_SetBillCelioFirstMeetingPos::
-	setobjectxyperm LOCALID_BILL, 9, 8
-	setobjectmovementtype LOCALID_BILL, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_ONE_ISLAND_POKEMON_CENTER_BILL, 9, 8
+	setobjectmovementtype LOCALID_ONE_ISLAND_POKEMON_CENTER_BILL, MOVEMENT_TYPE_FACE_UP
 	setobjectxyperm LOCALID_CELIO, 15, 6
 	setobjectmovementtype LOCALID_CELIO, MOVEMENT_TYPE_FACE_UP
 	return
@@ -72,9 +69,11 @@ OneIsland_PokemonCenter_1F_OnFrame::
 OneIsland_PokemonCenter_1F_EventScript_MeetCelioScene::
 	lockall
 	textcolor NPC_TEXT_COLOR_MALE
-	call OneIsland_PokemonCenter_1F_EventScript_WalkToCelioFromEntrance
+	applymovement LOCALID_PLAYER, OneIsland_PokemonCenter_1F_Movement_PlayerWalkToCelio
+	applymovement LOCALID_ONE_ISLAND_POKEMON_CENTER_BILL, OneIsland_PokemonCenter_1F_Movement_BillWalkToCelio
+	waitmovement 0
 	msgbox OneIsland_PokemonCenter_1F_Text_BillHeyThereCelio
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	playse SE_PIN
 	applymovement LOCALID_CELIO, Common_Movement_ExclamationMark
@@ -85,13 +84,13 @@ OneIsland_PokemonCenter_1F_EventScript_MeetCelioScene::
 	waitmovement 0
 	msgbox OneIsland_PokemonCenter_1F_Text_CelioCantBelieveYouCameOut
 	msgbox OneIsland_PokemonCenter_1F_Text_BillHowsYourResearchComing
-	applymovement LOCALID_BILL, Common_Movement_WalkInPlaceFasterDown
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_ONE_ISLAND_POKEMON_CENTER_BILL, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox OneIsland_PokemonCenter_1F_Text_ThisIsMyBuddyCelio
-	applymovement LOCALID_BILL, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_ONE_ISLAND_POKEMON_CENTER_BILL, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	call_if_set FLAG_SYS_GAME_CLEAR, OneIsland_PokemonCenter_1F_EventScript_IntroducePlayerChamp
 	call_if_unset FLAG_SYS_GAME_CLEAR, OneIsland_PokemonCenter_1F_EventScript_IntroducePlayerNotChamp
@@ -103,12 +102,12 @@ OneIsland_PokemonCenter_1F_EventScript_MeetCelioScene::
 	waitmovement 0
 	msgbox OneIsland_PokemonCenter_1F_Text_CelioPCsCantLinkWithYours
 	closemessage
-	applymovement LOCALID_BILL, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_ONE_ISLAND_POKEMON_CENTER_BILL, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox OneIsland_PokemonCenter_1F_Text_BillLetMeHelpYou
-	applymovement LOCALID_BILL, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_ONE_ISLAND_POKEMON_CENTER_BILL, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox OneIsland_PokemonCenter_1F_Text_CanYouDeliverThisMeteoritePlayer
 Archipelago_Target_NPC_Gift_FLAG_GOT_METEORITE::
@@ -122,19 +121,13 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_TRI_PASS::
 	call OneIsland_PokemonCenter_1F_EventScript_ReceiveTownMapPage
 	msgbox OneIsland_PokemonCenter_1F_Text_BillCatchYouLater
 	closemessage
-	applymovement LOCALID_BILL, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_ONE_ISLAND_POKEMON_CENTER_BILL, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	applymovement LOCALID_CELIO, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 1
 	releaseall
 	end
-
-OneIsland_PokemonCenter_1F_EventScript_WalkToCelioFromEntrance::
-	applymovement LOCALID_BILL, OneIsland_PokemonCenter_1F_Movement_BillWalkToCelioFromEntrance
-	applymovement OBJ_EVENT_ID_PLAYER, OneIsland_PokemonCenter_1F_Movement_PlayerWalkToCelioFromEntrance
-	waitmovement 0
-	return
 
 OneIsland_PokemonCenter_1F_EventScript_IntroducePlayerChamp::
 	msgbox OneIsland_PokemonCenter_1F_Text_PlayerIsReigningPokemonChamp
@@ -153,7 +146,7 @@ OneIsland_PokemonCenter_1F_EventScript_ReceiveTownMapPage::
 	call EventScript_RestorePrevTextColor
 	return
 
-OneIsland_PokemonCenter_1F_Movement_PlayerWalkToCelioFromEntrance::
+OneIsland_PokemonCenter_1F_Movement_PlayerWalkToCelio::
 	walk_up
 	walk_up
 	walk_right
@@ -164,7 +157,7 @@ OneIsland_PokemonCenter_1F_Movement_PlayerWalkToCelioFromEntrance::
 	walk_in_place_faster_up
 	step_end
 
-OneIsland_PokemonCenter_1F_Movement_BillWalkToCelioFromEntrance::
+OneIsland_PokemonCenter_1F_Movement_BillWalkToCelio::
 	walk_up
 	walk_right
 	walk_right
@@ -285,7 +278,7 @@ OneIsland_PokemonCenter_1F_EventScript_GiveCelioSapphire::
 	special SetPostgameFlags
 	setflag FLAG_SYS_CAN_LINK_WITH_RS
 	setflag FLAG_HIDE_LORELEI_IN_HER_HOUSE
-	clearflag FLAG_HIDE_TWO_ISLAND_SUPER_NERD
+	clearflag FLAG_HIDE_TWO_ISLAND_POKE_MANIAC
 	setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 5
 	special InitRoamer
 	release
@@ -406,15 +399,15 @@ OneIsland_PokemonCenter_1F_EventScript_Hiker::
 	msgbox OneIsland_PokemonCenter_1F_Text_EnormousVolcanoOnIsland, MSGBOX_NPC
 	end
 
-OneIsland_PokemonCenter_1F_EventScript_BattleGirl::
+OneIsland_PokemonCenter_1F_EventScript_CrushGirl::
 	lock
 	faceplayer
-	goto_if_set FLAG_SYS_CAN_LINK_WITH_RS, OneIsland_PokemonCenter_1F_EventScript_BattleGirlHoennLinked
+	goto_if_set FLAG_SYS_CAN_LINK_WITH_RS, OneIsland_PokemonCenter_1F_EventScript_CrushGirlHoennLinked
 	msgbox OneIsland_PokemonCenter_1F_Text_WishICouldTradeWithBoyfriend
 	release
 	end
 
-OneIsland_PokemonCenter_1F_EventScript_BattleGirlHoennLinked::
+OneIsland_PokemonCenter_1F_EventScript_CrushGirlHoennLinked::
 	msgbox OneIsland_PokemonCenter_1F_Text_TradedWithFarAwayBoyfriend
 	release
 	end

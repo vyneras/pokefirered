@@ -1,5 +1,3 @@
-.equ LOCALID_DAYCARE_MAN, 1
-
 .equ GIVE_FLY_UNLOCK, VAR_TEMP_1
 
 FourIsland_MapScripts::
@@ -25,7 +23,7 @@ FourIsland_EventScript_SetWorldMapFlag::
 
 FourIsland_EventScript_TrySetDayCareManPos::
 	goto_if_unset FLAG_PENDING_DAYCARE_EGG, FourIsland_EventScript_EndSetDayCareManPos
-	setobjectxyperm LOCALID_DAYCARE_MAN, 16, 14
+	setobjectxyperm LOCALID_FOUR_ISLAND_DAYCARE_MAN, 16, 14
 FourIsland_EventScript_EndSetDayCareManPos::
 	return
 

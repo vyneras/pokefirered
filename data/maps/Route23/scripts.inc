@@ -1,5 +1,4 @@
-.set LOCALID_EARTH_BADGE_GUARD,   7
-.set REQUIRED_BADGES_GYMS, VAR_TEMP_1
+.equ REQUIRED_BADGES_GYMS, VAR_TEMP_1
 
 Route23_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route23_OnTransition
@@ -86,13 +85,13 @@ Route23_EventScript_LastGuardCantPassNoGym::
 Route23_EventScript_ForcePlayerDown::
 	closemessage
 	goto_if_eq VAR_FACING, DIR_SOUTH, Route23_EventScript_ForcePlayerUp
-	applymovement OBJ_EVENT_ID_PLAYER, Route23_Movement_ForcePlayerDown
+	applymovement LOCALID_PLAYER, Route23_Movement_ForcePlayerDown
 	waitmovement 0
 	release
 	end
 
 Route23_EventScript_ForcePlayerUp::
-	applymovement OBJ_EVENT_ID_PLAYER, Route23_Movement_ForcePlayerUp
+	applymovement LOCALID_PLAYER, Route23_Movement_ForcePlayerUp
 	waitmovement 0
 	release
 	end

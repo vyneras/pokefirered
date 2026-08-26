@@ -1,5 +1,3 @@
-.set LOCALID_SCIENTIST, 1
-
 SixIsland_RuinValley_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, SixIsland_RuinValley_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, SixIsland_RuinValley_OnLoad
@@ -45,10 +43,10 @@ SixIsland_RuinValley_Movement_MoveLeft::
 SixIsland_RuinValley_EventScript_Scientist::
 	lock
 	msgbox SixIsland_RuinValley_Text_CantFigureOutHowToGetInside
-	applymovement LOCALID_SCIENTIST, Common_Movement_FacePlayer
+	applymovement LOCALID_RUIN_VALLEY_SCIENTIST, Common_Movement_FacePlayer
 	waitmovement 0
 	msgbox SixIsland_RuinValley_Text_IFoundThisPlace
-	applymovement LOCALID_SCIENTIST, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_RUIN_VALLEY_SCIENTIST, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end

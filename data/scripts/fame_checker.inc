@@ -184,7 +184,7 @@ SixIsland_Mart_EventScript_OldWoman::
 	release
 	end
 
-SaffronCity_EventScript_BattleGirl::
+SaffronCity_EventScript_CrushGirl::
 	lock
 	faceplayer
 	famechecker FAMECHECKER_LANCE, 2

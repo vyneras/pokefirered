@@ -25,7 +25,7 @@ Route5_SouthEntrance_EventScript_GuardTriggerRight::
 
 Route5_SouthEntrance_EventScript_GuardTrigger::
 	textcolor NPC_TEXT_COLOR_MALE
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	checkitem ITEM_TEA
 	goto_if_eq VAR_RESULT, TRUE, Route5_SouthEntrance_EventScript_GiveTea
@@ -34,7 +34,7 @@ Route5_SouthEntrance_EventScript_GuardTrigger::
 	msgbox Route5_SouthEntrance_Text_ThirstyOnGuardDuty
 	closemessage
 	goto_if_eq VAR_FACING, DIR_NORTH, Route5_SouthEntrance_EventScript_MovePlayerDown
-	applymovement OBJ_EVENT_ID_PLAYER, Route5_SouthEntrance_Movement_BlockPlayerEntryTop
+	applymovement LOCALID_PLAYER, Route5_SouthEntrance_Movement_BlockPlayerEntryTop
 	waitmovement 0
 	releaseall
 	end
@@ -67,23 +67,23 @@ Route5_SouthEntrance_EventScript_GiveBlueTea::
 	end
 
 Route5_SouthEntrance_EventScript_MovePlayerDown::
-	applymovement OBJ_EVENT_ID_PLAYER, Route5_SouthEntrance_Movement_BlockPlayerEntryBottom
+	applymovement LOCALID_PLAYER, Route5_SouthEntrance_Movement_BlockPlayerEntryBottom
 	waitmovement 0
 	releaseall
 	end
 
 Route5_SouthEntrance_EventScript_WalkToGuardLeft::
-	applymovement OBJ_EVENT_ID_PLAYER, Route5_SouthEntrance_Movement_WalkToGuardLeft
+	applymovement LOCALID_PLAYER, Route5_SouthEntrance_Movement_WalkToGuardLeft
 	waitmovement 0
 	return
 
 Route5_SouthEntrance_EventScript_WalkToGuardMid::
-	applymovement OBJ_EVENT_ID_PLAYER, Route5_SouthEntrance_Movement_WalkToGuardMid
+	applymovement LOCALID_PLAYER, Route5_SouthEntrance_Movement_WalkToGuardMid
 	waitmovement 0
 	return
 
 Route5_SouthEntrance_EventScript_WalkToGuardRight::
-	applymovement OBJ_EVENT_ID_PLAYER, Route5_SouthEntrance_Movement_WalkToGuardRight
+	applymovement LOCALID_PLAYER, Route5_SouthEntrance_Movement_WalkToGuardRight
 	waitmovement 0
 	return
 

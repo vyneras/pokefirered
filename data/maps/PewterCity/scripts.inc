@@ -1,7 +1,3 @@
-.equ LOCALID_MUSEUM_GUIDE, 2
-.equ LOCALID_GYM_GUIDE,    5
-.equ LOCALID_AIDE,         7
-
 .equ GIVE_FLY_UNLOCK, VAR_TEMP_2
 
 PewterCity_MapScripts::
@@ -128,11 +124,11 @@ PewterCity_EventScript_GymGuideTriggerBottom::
 	end
 
 PewterCity_EventScript_GymGuideTrigger::
-	applymovement LOCALID_GYM_GUIDE Common_Movement_ExclamationMark
+	applymovement LOCALID_PEWTER_GYM_GUIDE Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_GYM_GUIDE Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_PEWTER_GYM_GUIDE Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_PLAYER Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	call PewterCity_EventScript_CheckIfCanLeaveCity
 	goto_if_eq VAR_MAP_SCENE_PEWTER_CITY_GYM_GUIDE, 1, PewterCity_EventScript_GymGuideLeave
@@ -143,13 +139,13 @@ PewterCity_EventScript_GymGuideTrigger::
 	call_if_eq VAR_RESULT, 3, PewterCity_EventScript_GymGuideNeedBoulderBadge
 	call_if_eq VAR_RESULT, 4, PewterCity_EventScript_GymGuideNeedAnyBadge
 	goto_if_eq VAR_FACING, DIR_WEST, PewterCity_EventScript_PlayerWalkRight
-	applymovement OBJ_EVENT_ID_PLAYER, PewterCity_Movement_PlayerWalkLeft
+	applymovement LOCALID_PLAYER, PewterCity_Movement_PlayerWalkLeft
 	waitmovement 0
 	releaseall
 	end
 
 PewterCity_EventScript_PlayerWalkRight::
-	applymovement OBJ_EVENT_ID_PLAYER, PewterCity_Movement_PlayerWalkRight
+	applymovement LOCALID_PLAYER, PewterCity_Movement_PlayerWalkRight
 	waitmovement 0
 	releaseall
 	end
@@ -158,7 +154,7 @@ PewterCity_EventScript_GymGuideLeave::
 	msgbox PewterCity_Text_CanGoThisWay
 	fadescreen FADE_TO_BLACK
 	closemessage
-	removeobject LOCALID_GYM_GUIDE
+	removeobject LOCALID_PEWTER_GYM_GUIDE
 	fadescreen FADE_FROM_BLACK
 	releaseall
 	end
@@ -211,35 +207,35 @@ PewterCity_EventScript_MuseumGuide::
 	msgbox PewterCity_Text_ThisIsTheMuseum
 	closemessage
 	delay 10
-	applymovement LOCALID_MUSEUM_GUIDE, PewterCity_Movement_MuseumGuideExit
+	applymovement LOCALID_PEWTER_MUSEUM_GUIDE, PewterCity_Movement_MuseumGuideExit
 	waitmovement 0
 	fadedefaultbgm
-	removeobject LOCALID_MUSEUM_GUIDE
+	removeobject LOCALID_PEWTER_MUSEUM_GUIDE
 	clearflag FLAG_HIDE_PEWTER_MUSEUM_GUIDE
 	release
 	end
 
 PewterCity_EventScript_LeadToMuseumNorth::
-	applymovement LOCALID_MUSEUM_GUIDE, PewterCity_Movement_GuideWalkToMuseumNorth
-	applymovement OBJ_EVENT_ID_PLAYER, PewterCity_Movement_PlayerWalkToMuseumNorth
+	applymovement LOCALID_PEWTER_MUSEUM_GUIDE, PewterCity_Movement_GuideWalkToMuseumNorth
+	applymovement LOCALID_PLAYER, PewterCity_Movement_PlayerWalkToMuseumNorth
 	waitmovement 0
 	return
 
 PewterCity_EventScript_LeadToMuseumSouth::
-	applymovement LOCALID_MUSEUM_GUIDE, PewterCity_Movement_GuideWalkToMuseumSouth
-	applymovement OBJ_EVENT_ID_PLAYER, PewterCity_Movement_PlayerWalkToMuseumSouth
+	applymovement LOCALID_PEWTER_MUSEUM_GUIDE, PewterCity_Movement_GuideWalkToMuseumSouth
+	applymovement LOCALID_PLAYER, PewterCity_Movement_PlayerWalkToMuseumSouth
 	waitmovement 0
 	return
 
 PewterCity_EventScript_LeadToMuseumWest::
-	applymovement LOCALID_MUSEUM_GUIDE, PewterCity_Movement_GuideWalkToMuseumWest
-	applymovement OBJ_EVENT_ID_PLAYER, PewterCity_Movement_PlayerWalkToMuseumWest
+	applymovement LOCALID_PEWTER_MUSEUM_GUIDE, PewterCity_Movement_GuideWalkToMuseumWest
+	applymovement LOCALID_PLAYER, PewterCity_Movement_PlayerWalkToMuseumWest
 	waitmovement 0
 	return
 
 PewterCity_EventScript_LeadToMuseumEast::
-	applymovement LOCALID_MUSEUM_GUIDE, PewterCity_Movement_GuideWalkToMuseumEast
-	applymovement OBJ_EVENT_ID_PLAYER, PewterCity_Movement_PlayerWalkToMuseumEast
+	applymovement LOCALID_PEWTER_MUSEUM_GUIDE, PewterCity_Movement_GuideWalkToMuseumEast
+	applymovement LOCALID_PLAYER, PewterCity_Movement_PlayerWalkToMuseumEast
 	waitmovement 0
 	return
 
@@ -454,9 +450,9 @@ PewterCity_EventScript_AideGiveRunningShoes::
 	call_if_eq VAR_TEMP_1, 3, PewterCity_EventScript_AideNoticePlayer
 	waitse
 	playse SE_PIN
-	applymovement LOCALID_AIDE, Common_Movement_ExclamationMark
+	applymovement LOCALID_PEWTER_AIDE, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_AIDE, Common_Movement_Delay48
+	applymovement LOCALID_PEWTER_AIDE, Common_Movement_Delay48
 	waitmovement 0
 	msgbox PewterCity_Text_OhPlayer
 	call_if_eq VAR_TEMP_1, 0, PewterCity_EventScript_AideApproachPlayer0
@@ -476,12 +472,12 @@ Archipelago_Target_NPC_Gift_FLAG_GOT_RUNNING_SHOES::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox PewterCity_Text_RunningShoesLetterFromMom
 	closemessage
-	removeobject LOCALID_AIDE
+	removeobject LOCALID_PEWTER_AIDE
 	setvar VAR_MAP_SCENE_PEWTER_CITY_OAKS_AIDE, 2
 	return
 
 PewterCity_EventScript_AideNoticePlayer::
-	applymovement LOCALID_AIDE, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_PEWTER_AIDE, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	return
 
@@ -493,43 +489,43 @@ PewterCity_EventScript_AideApproachPlayer0::
 
 PewterCity_EventScript_AideApproachPlayer1::
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	return
 
 PewterCity_EventScript_AideApproachPlayer2::
 	closemessage
-	applymovement LOCALID_AIDE, PewterCity_Movement_AideApproachPlayerMid
+	applymovement LOCALID_PEWTER_AIDE, PewterCity_Movement_AideApproachPlayerMid
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	return
 
 PewterCity_EventScript_AideApproachPlayer3::
 	closemessage
-	applymovement LOCALID_AIDE, PewterCity_Movement_AideApproachPlayerBottom
+	applymovement LOCALID_PEWTER_AIDE, PewterCity_Movement_AideApproachPlayerBottom
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	return
 
 PewterCity_EventScript_AideExit0::
-	applymovement LOCALID_AIDE, PewterCity_Movement_AideExit0
+	applymovement LOCALID_PEWTER_AIDE, PewterCity_Movement_AideExit0
 	waitmovement 0
 	return
 
 PewterCity_EventScript_AideExit1::
-	applymovement LOCALID_AIDE, PewterCity_Movement_AideExit1
+	applymovement LOCALID_PEWTER_AIDE, PewterCity_Movement_AideExit1
 	waitmovement 0
 	return
 
 PewterCity_EventScript_AideExit2::
-	applymovement LOCALID_AIDE, PewterCity_Movement_AideExit2
+	applymovement LOCALID_PEWTER_AIDE, PewterCity_Movement_AideExit2
 	waitmovement 0
 	return
 
 PewterCity_EventScript_AideExit3::
-	applymovement LOCALID_AIDE, PewterCity_Movement_AideExit3
+	applymovement LOCALID_PEWTER_AIDE, PewterCity_Movement_AideExit3
 	waitmovement 0
 	return
 

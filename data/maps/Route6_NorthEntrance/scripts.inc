@@ -25,7 +25,7 @@ Route6_NorthEntrance_EventScript_GuardTriggerRight::
 
 Route6_NorthEntrance_EventScript_GuardTrigger::
 	textcolor NPC_TEXT_COLOR_MALE
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	checkitem ITEM_TEA
 	goto_if_eq VAR_RESULT, TRUE, Route6_NorthEntrance_EventScript_GiveTea
@@ -34,7 +34,7 @@ Route6_NorthEntrance_EventScript_GuardTrigger::
 	msgbox Route6_NorthEntrance_Text_ThirstyOnGuardDuty
 	closemessage
 	goto_if_eq VAR_FACING, DIR_SOUTH, Route6_NorthEntrance_EventScript_MovePlayerUp
-	applymovement OBJ_EVENT_ID_PLAYER, Route6_NorthEntrance_Movement_BlockPlayerEntryBottom
+	applymovement LOCALID_PLAYER, Route6_NorthEntrance_Movement_BlockPlayerEntryBottom
 	waitmovement 0
 	releaseall
 	end
@@ -67,23 +67,23 @@ Route6_NorthEntrance_EventScript_GiveRedTea::
 	end
 
 Route6_NorthEntrance_EventScript_MovePlayerUp::
-	applymovement OBJ_EVENT_ID_PLAYER, Route6_NorthEntrance_Movement_BlockPlayerEntryTop
+	applymovement LOCALID_PLAYER, Route6_NorthEntrance_Movement_BlockPlayerEntryTop
 	waitmovement 0
 	releaseall
 	end
 
 Route6_NorthEntrance_EventScript_WalkToGuardLeft::
-	applymovement OBJ_EVENT_ID_PLAYER, Route6_NorthEntrance_Movement_WalkToGuardLeft
+	applymovement LOCALID_PLAYER, Route6_NorthEntrance_Movement_WalkToGuardLeft
 	waitmovement 0
 	return
 
 Route6_NorthEntrance_EventScript_WalkToGuardMid::
-	applymovement OBJ_EVENT_ID_PLAYER, Route6_NorthEntrance_Movement_WalkToGuardMid
+	applymovement LOCALID_PLAYER, Route6_NorthEntrance_Movement_WalkToGuardMid
 	waitmovement 0
 	return
 
 Route6_NorthEntrance_EventScript_WalkToGuardRight::
-	applymovement OBJ_EVENT_ID_PLAYER, Route6_NorthEntrance_Movement_WalkToGuardRight
+	applymovement LOCALID_PLAYER, Route6_NorthEntrance_Movement_WalkToGuardRight
 	waitmovement 0
 	return
 

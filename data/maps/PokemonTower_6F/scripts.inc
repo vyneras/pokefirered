@@ -48,41 +48,41 @@ PokemonTower_6F_EventScript_DefeatedMarowakGhost::
 
 PokemonTower_6F_EventScript_ForcePlayerMoveUp6F::
 	goto_if_eq VAR_TEMP_2, 1, PokemonTower_6F_EventScript_ForcePlayerMoveDown6F
-	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerUp
+	applymovement LOCALID_PLAYER, PokemonTower_6F_Movement_ForcePlayerUp
 	waitmovement 0
 	return
 
 PokemonTower_6F_EventScript_ForcePlayerMoveDown6F::
 	goto_if_eq VAR_FACING, DIR_EAST, PokemonTower_6F_EventScript_ForcePlayerMoveLeft6F
-	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerDown
+	applymovement LOCALID_PLAYER, PokemonTower_6F_Movement_ForcePlayerDown
 	waitmovement 0
 	return
 
 PokemonTower_6F_EventScript_ForcePlayerMoveLeft6F::
-	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerLeft
+	applymovement LOCALID_PLAYER, PokemonTower_6F_Movement_ForcePlayerLeft
 	waitmovement 0
 	return
 
 PokemonTower_6F_EventScript_ForcePlayerMoveLeft1F::
 	goto_if_eq VAR_TEMP_2, 1, PokemonTower_6F_EventScript_ForcePlayerMoveRight1F
-	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerLeft
+	applymovement LOCALID_PLAYER, PokemonTower_6F_Movement_ForcePlayerLeft
 	waitmovement 0
 	return
 
 PokemonTower_6F_EventScript_ForcePlayerMoveRight1F::
 	goto_if_eq VAR_FACING, DIR_NORTH, PokemonTower_6F_EventScript_ForcePlayerMoveDown1F
 	goto_if_eq VAR_FACING, DIR_SOUTH, PokemonTower_6F_EventScript_ForcePlayerMoveUp1F
-	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerRight
+	applymovement LOCALID_PLAYER, PokemonTower_6F_Movement_ForcePlayerRight
 	waitmovement 0
 	return
 
 PokemonTower_6F_EventScript_ForcePlayerMoveDown1F::
-	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerDown
+	applymovement LOCALID_PLAYER, PokemonTower_6F_Movement_ForcePlayerDown
 	waitmovement 0
 	return
 
 PokemonTower_6F_EventScript_ForcePlayerMoveUp1F::
-	applymovement OBJ_EVENT_ID_PLAYER, PokemonTower_6F_Movement_ForcePlayerUp
+	applymovement LOCALID_PLAYER, PokemonTower_6F_Movement_ForcePlayerUp
 	waitmovement 0
 	return
 

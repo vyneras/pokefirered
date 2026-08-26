@@ -1,10 +1,3 @@
-.set LOCALID_QUINN, 1
-.set LOCALID_AVERY, 3
-.set LOCALID_RAMON, 4
-.set LOCALID_DEREK, 5
-.set LOCALID_DUSTY, 6
-.set LOCALID_ZAC,   7
-
 CinnabarIsland_Gym_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, CinnabarIsland_Gym_OnLoad
 	.byte 0
@@ -203,13 +196,13 @@ CinnabarIsland_Gym_EventScript_GymStatuePostVictory::
 	releaseall
 	end
 
-CinnabarIsland_Gym_EventScript_Quz1Left::
+CinnabarIsland_Gym_EventScript_Quiz1Left::
 	lockall
 	setvar VAR_TEMP_1, 0
 	goto CinnabarIsland_Gym_EventScript_Quiz1
 	end
 
-CinnabarIsland_Gym_EventScript_Quz1Right::
+CinnabarIsland_Gym_EventScript_Quiz1Right::
 	lockall
 	setvar VAR_TEMP_1, 1
 	goto CinnabarIsland_Gym_EventScript_Quiz1
@@ -273,13 +266,13 @@ CinnabarIsland_Gym_EventScript_BattleQuinn::
 	end
 
 CinnabarIsland_Gym_EventScript_QuinnApproachLeft::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	applymovement LOCALID_QUINN, CinnabarIsland_Gym_Movement_QuinnApproachLeft
 	waitmovement 0
 	return
 
 CinnabarIsland_Gym_EventScript_QuinnApproachRight::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	applymovement LOCALID_QUINN, CinnabarIsland_Gym_Movement_QuinnApproachRight
 	waitmovement 0
 	return
@@ -345,13 +338,13 @@ CinnabarIsland_Gym_EventScript_BattleAvery::
 	end
 
 CinnabarIsland_Gym_EventScript_AveryApproachLeft::
-	applymovement OBJ_EVENT_ID_PLAYER, CinnabarIsland_Gym_Movement_PlayerFaceAvery
+	applymovement LOCALID_PLAYER, CinnabarIsland_Gym_Movement_PlayerFaceAvery
 	applymovement LOCALID_AVERY, CinnabarIsland_Gym_Movement_AveryApproachLeft
 	waitmovement 0
 	return
 
 CinnabarIsland_Gym_EventScript_AveryApproachRight::
-	applymovement OBJ_EVENT_ID_PLAYER, CinnabarIsland_Gym_Movement_PlayerFaceAvery
+	applymovement LOCALID_PLAYER, CinnabarIsland_Gym_Movement_PlayerFaceAvery
 	applymovement LOCALID_AVERY, CinnabarIsland_Gym_Movement_AveryApproachRight
 	waitmovement 0
 	return
@@ -426,13 +419,13 @@ CinnabarIsland_Gym_EventScript_BattleRamon::
 	end
 
 CinnabarIsland_Gym_EventScript_RamonApproachLeft::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	applymovement LOCALID_RAMON, CinnabarIsland_Gym_Movement_RamonApproachLeft
 	waitmovement 0
 	return
 
 CinnabarIsland_Gym_EventScript_RamonApproachRight::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	applymovement LOCALID_RAMON, CinnabarIsland_Gym_Movement_RamonApproachRight
 	waitmovement 0
 	return
@@ -498,13 +491,13 @@ CinnabarIsland_Gym_EventScript_BattleDerek::
 	end
 
 CinnabarIsland_Gym_EventScript_DerekApproachLeft::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	applymovement LOCALID_DEREK, CinnabarIsland_Gym_Movement_DerekApproachLeft
 	waitmovement 0
 	return
 
 CinnabarIsland_Gym_EventScript_DerekApproachRight::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	applymovement LOCALID_DEREK, CinnabarIsland_Gym_Movement_DerekApproachRight
 	waitmovement 0
 	return
@@ -570,13 +563,13 @@ CinnabarIsland_Gym_EventScript_BattleDusty::
 	end
 
 CinnabarIsland_Gym_EventScript_DustyApproachLeft::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	applymovement LOCALID_DUSTY, CinnabarIsland_Gym_Movement_DustyApproachLeft
 	waitmovement 0
 	return
 
 CinnabarIsland_Gym_EventScript_DustyApproachRight::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	applymovement LOCALID_DUSTY, CinnabarIsland_Gym_Movement_DustyApproachRight
 	waitmovement 0
 	return
@@ -642,13 +635,13 @@ CinnabarIsland_Gym_EventScript_BattleZac::
 	end
 
 CinnabarIsland_Gym_EventScript_ZacApproachLeft::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	applymovement LOCALID_ZAC, CinnabarIsland_Gym_Movement_ZacApproachLeft
 	waitmovement 0
 	return
 
 CinnabarIsland_Gym_EventScript_ZacApproachRight::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	applymovement LOCALID_ZAC, CinnabarIsland_Gym_Movement_ZacApproachRight
 	waitmovement 0
 	return

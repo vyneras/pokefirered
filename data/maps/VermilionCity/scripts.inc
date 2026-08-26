@@ -1,5 +1,3 @@
-.equ LOCALID_FERRY_SAILOR, 6
-
 .equ GIVE_FLY_UNLOCK, VAR_TEMP_1
 
 VermilionCity_MapScripts::
@@ -214,8 +212,8 @@ VermilionCity_EventScript_CheckTicketRight::
 
 VermilionCity_EventScript_CheckTicket::
 	textcolor NPC_TEXT_COLOR_MALE
-	applymovement LOCALID_FERRY_SAILOR, Common_Movement_WalkInPlaceFasterLeft
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_VERMILION_FERRY_SAILOR, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	msgbox VermilionCity_Text_DoYouHaveATicket
 	checkitem ITEM_SS_TICKET
@@ -233,15 +231,15 @@ VermilionCity_EventScript_DontHaveSSTicket::
 	end
 
 VermilionCity_EventScript_WalkUpPier::
-	applymovement LOCALID_FERRY_SAILOR, Common_Movement_FaceOriginalDirection
-	applymovement OBJ_EVENT_ID_PLAYER, VermilionCity_Movement_WalkUp
+	applymovement LOCALID_VERMILION_FERRY_SAILOR, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_PLAYER, VermilionCity_Movement_WalkUp
 	waitmovement 0
 	releaseall
 	end
 
 VermilionCity_EventScript_WalkDownPier::
-	applymovement LOCALID_FERRY_SAILOR, Common_Movement_FaceOriginalDirection
-	applymovement OBJ_EVENT_ID_PLAYER, VermilionCity_Movement_WalkDown
+	applymovement LOCALID_VERMILION_FERRY_SAILOR, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_PLAYER, VermilionCity_Movement_WalkDown
 	waitmovement 0
 	releaseall
 	end

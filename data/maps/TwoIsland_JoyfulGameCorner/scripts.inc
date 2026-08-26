@@ -1,7 +1,3 @@
-.equ LOCALID_DADDY,    1
-.equ LOCALID_BIKER,    2
-.equ LOCALID_LOSTELLE, 3
-
 TwoIsland_JoyfulGameCorner_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, TwoIsland_JoyfulGameCorner_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, TwoIsland_JoyfulGameCorner_OnWarp
@@ -14,9 +10,9 @@ TwoIsland_JoyfulGameCorner_OnTransition::
 	end
 
 TwoIsland_JoyfulGameCorner_EventScript_SetLostelleReturnedPos::
-	setobjectxyperm LOCALID_DADDY, 6, 2
-	setobjectmovementtype LOCALID_DADDY, MOVEMENT_TYPE_FACE_DOWN
-	setobjectmovementtype LOCALID_LOSTELLE, MOVEMENT_TYPE_LOOK_AROUND
+	setobjectxyperm LOCALID_JOYFUL_GAME_CORNER_DADDY, 6, 2
+	setobjectmovementtype LOCALID_JOYFUL_GAME_CORNER_DADDY, MOVEMENT_TYPE_FACE_DOWN
+	setobjectmovementtype LOCALID_JOYFUL_GAME_CORNER_LOSTELLE, MOVEMENT_TYPE_LOOK_AROUND
 	setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 3
 	return
 
@@ -26,7 +22,7 @@ TwoIsland_JoyfulGameCorner_OnWarp::
 	.2byte 0
 
 TwoIsland_JoyfulGameCorner_EventScript_TurnPlayerNorth::
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	turnobject LOCALID_PLAYER, DIR_NORTH
 	end
 
 TwoIsland_JoyfulGameCorner_OnFrame::
@@ -42,7 +38,7 @@ TwoIsland_JoyfulGameCorner_EventScript_FoundLostelleScene::
 	special BufferBigGuyOrBigGirlString
 	msgbox TwoIsland_JoyfulGameCorner_Text_LostelleItsOkayDaddy
 	closemessage
-	applymovement LOCALID_LOSTELLE, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_JOYFUL_GAME_CORNER_LOSTELLE, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER, 2
 	releaseall

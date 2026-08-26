@@ -1,8 +1,4 @@
-.set LOCALID_OLD_MAN,      3
-.set LOCALID_TUTORIAL_MAN, 4
-.set LOCALID_WOMAN,        5
-.set REQUIRED_BADGES_GYMS, VAR_TEMP_1
-
+.equ REQUIRED_BADGES_GYMS, VAR_TEMP_1
 .equ GIVE_FLY_UNLOCK, VAR_TEMP_2
 
 ViridianCity_MapScripts::
@@ -166,7 +162,7 @@ ViridianCity_EventScript_OldManGymClosed::
 	goto_if_eq REQUIRED_BADGES_GYMS, 1, ViridianCity_EventScript_OldManGymClosedNoBadge
 	msgbox ViridianCity_Text_OnlyOpenWithXBadges
 	closemessage
-	applymovement LOCALID_OLD_MAN, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_VIRIDIAN_OLD_MAN, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
@@ -174,7 +170,7 @@ ViridianCity_EventScript_OldManGymClosed::
 ViridianCity_EventScript_OldManGymClosedNoBadge::
 	msgbox ViridianCity_Text_OnlyOpenWithBadge
 	closemessage
-	applymovement LOCALID_OLD_MAN, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_VIRIDIAN_OLD_MAN, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
@@ -183,7 +179,7 @@ ViridianCity_EventScript_OldManGymClosedGyms::
 	goto_if_eq REQUIRED_BADGES_GYMS, 1, ViridianCity_EventScript_OldManGymClosedNoGym
 	msgbox ViridianCity_Text_OnlyOpenWithXGyms
 	closemessage
-	applymovement LOCALID_OLD_MAN, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_VIRIDIAN_OLD_MAN, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
@@ -191,7 +187,7 @@ ViridianCity_EventScript_OldManGymClosedGyms::
 ViridianCity_EventScript_OldManGymClosedNoGym::
 	msgbox ViridianCity_Text_OnlyOpenWithGym
 	closemessage
-	applymovement LOCALID_OLD_MAN, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_VIRIDIAN_OLD_MAN, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
@@ -262,7 +258,7 @@ ViridianCity_EventScript_Woman::
 ViridianCity_EventScript_WomanRoadBlocked::
 	msgbox ViridianCity_Text_GrandpaHasntHadCoffeeYet
 	closemessage
-	applymovement LOCALID_WOMAN, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_VIRIDIAN_WOMAN, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
@@ -277,13 +273,13 @@ ViridianCity_EventScript_RoadBlocked::
 	msgbox ViridianCity_Text_ThisIsPrivateProperty
 	closemessage
 	goto_if_eq VAR_FACING, DIR_SOUTH, ViridianCity_EventScript_RoadBlocked_WalkUp
-	applymovement OBJ_EVENT_ID_PLAYER, ViridianCity_Movement_WalkDown
+	applymovement LOCALID_PLAYER, ViridianCity_Movement_WalkDown
 	waitmovement 0
 	releaseall
 	end
 
 ViridianCity_EventScript_RoadBlocked_WalkUp::
-	applymovement OBJ_EVENT_ID_PLAYER, ViridianCity_Movement_WalkUp
+	applymovement LOCALID_PLAYER, ViridianCity_Movement_WalkUp
 	waitmovement 0
 	releaseall
 	end
@@ -301,7 +297,7 @@ ViridianCity_EventScript_TutorialTriggerLeft::
 	textcolor NPC_TEXT_COLOR_MALE
 	applymovement LOCALID_TUTORIAL_MAN, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	call ViridianCity_EventScript_DoTutorialBattle
 	release
@@ -312,7 +308,7 @@ ViridianCity_EventScript_TutorialTriggerRight::
 	textcolor NPC_TEXT_COLOR_MALE
 	applymovement LOCALID_TUTORIAL_MAN, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	call ViridianCity_EventScript_DoTutorialBattle
 	release
