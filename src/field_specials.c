@@ -2777,6 +2777,11 @@ bool8 ArchipelagoSpecial_CanEnterCeruleanCave(void)
     return CanEnterCeruleanCave();
 }
 
+bool8 ArchipelagoSpecial_CheckReusableTms(void)
+{
+    return gArchipelagoOptions.reusableTms;
+}
+
 bool8 ArchipelagoSpecial_CanUseHmOutsideBattle(void)
 {
     return CanUseHmOutsideBattle(gSpecialVar_0x8003);
@@ -2968,12 +2973,12 @@ bool8 ArchipelagoSpecial_ElevatorDisabled(void)
 
 bool8 ArchipelagoSpecial_OnCyclingRoad(void)
 {
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE16) &&
-        gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE16) &&
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE16) &&
+        gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE16) &&
         gSaveBlock1Ptr->pos.x <= 20 && gSaveBlock1Ptr->pos.y >= 11)
         return TRUE;
-    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE18) &&
-             gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE18) &&
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE18) &&
+             gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE18) &&
              gSaveBlock1Ptr->pos.x <= 41 && gSaveBlock1Ptr->pos.y <= 10)
         return TRUE;
     return FALSE;

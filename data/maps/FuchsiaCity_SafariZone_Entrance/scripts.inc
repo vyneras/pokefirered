@@ -129,7 +129,7 @@ FuchsiaCity_SafariZone_Entrance_EventScript_CheckForPass::
 FuchsiaCity_SafariZone_Entrance_EventScript_NoPass::
 	msgbox FuchsiaCity_SafariZone_Entrance_Text_NoPass
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, FuchsiaCity_SafariZone_Entrance_Movement_ForceBack
+	applymovement LOCALID_PLAYER, FuchsiaCity_SafariZone_Entrance_Movement_ForceBack
 	waitmovement 0
 	releaseall
 	end

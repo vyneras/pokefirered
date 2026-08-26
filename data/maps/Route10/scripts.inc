@@ -1,5 +1,3 @@
-.set LOCALID_SCIENTIST, 7
-
 Route10_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route10_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route10_OnFrame
@@ -17,7 +15,7 @@ Route10_EventScript_SetAltLayout::
 	return
 
 Route10_EventScript_DontBlockPowerPlant::
-	setobjectxyperm LOCALID_SCIENTIST, 8, 41
+	setobjectxyperm LOCALID_ROUTE10_SCIENTIST, 8, 41
 	setvar VAR_TEMP_1, 1
 	return
 
@@ -27,9 +25,9 @@ Route10_OnFrame::
 
 Route10_EventScript_ScientistMoveLeft::
 	lockall
-	applymovement LOCALID_SCIENTIST, Route10_Movement_MoveLeft
+	applymovement LOCALID_ROUTE10_SCIENTIST, Route10_Movement_MoveLeft
 	waitmovement 0
-	copyobjectxytoperm LOCALID_SCIENTIST
+	copyobjectxytoperm LOCALID_ROUTE10_SCIENTIST
 	setvar VAR_TEMP_1, 0
 	releaseall
 	end
@@ -72,10 +70,10 @@ Route10_EventScript_ScientistGiveMachinePart::
 	closemessage
 	msgbox Route10_Text_GetBackToWork
 	closemessage
-	applymovement LOCALID_SCIENTIST, Route10_Movement_ScientistExit
+	applymovement LOCALID_ROUTE10_SCIENTIST, Route10_Movement_ScientistExit
 	waitmovement 0
 	playse SE_EXIT
-	removeobject LOCALID_SCIENTIST
+	removeobject LOCALID_ROUTE10_SCIENTIST
 	release
 	end
 

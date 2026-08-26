@@ -130,8 +130,8 @@ const struct ArchipelagoOptions gArchipelagoOptions = {
     .cardKeysSplit = FALSE,
     .teasSplit = FALSE,
 
-    .startingLocation = SPAWN_PALLET_TOWN,
-    .startingRespawn = SPAWN_PALLET_TOWN,
+    .startingLocation = HEAL_LOCATION_PALLET_TOWN,
+    .startingRespawn = HEAL_LOCATION_PALLET_TOWN,
     .freeFlyId = 0,
     .townFreeFlyId = 0,
     .resortGorgeousMon = 25,
@@ -160,11 +160,6 @@ const struct ArchipelagoInfo gArchipelagoInfo = {
 
 EWRAM_DATA u8 gArchipelagoDeathLinkReceived = FALSE;
 EWRAM_DATA u8 gArchipelagoDeathLinkSent = FALSE;
-
-bool8 ArchipelagoSpecial_CheckReusableTms(void)
-{
-    return gArchipelagoOptions.reusableTms;
-}
 
 bool8 CanUseHmOutsideBattle(u8 fieldMove)
 {

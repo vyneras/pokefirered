@@ -21,8 +21,8 @@ FiveIsland_LostCave_Room10_OnTransition::
 	end
 
 FiveIsland_LostCave_Room10_EventScript_MoveSelphy::
-	setobjectxyperm LOCALID_SELPHY, 8, 5
-	setobjectmovementtype LOCALID_SELPHY, MOVEMENT_TYPE_FACE_LEFT
+	setobjectxyperm LOCALID_LOST_CAVE_SELPHY, 8, 5
+	setobjectmovementtype LOCALID_LOST_CAVE_SELPHY, MOVEMENT_TYPE_FACE_LEFT
 	return
 
 FiveIsland_LostCave_Room10_EventScript_FindSelphyScene::
@@ -41,7 +41,7 @@ FiveIsland_LostCave_Room10_EventScript_FindSelphyScene::
 	goto_if_eq VAR_RESULT, YES, FiveIsland_LostCave_Room10_EventScript_WarpToResortGorgeous
 	msgbox FiveIsland_LostCave_Room10_Text_StillThingsToDo
 	closemessage
-	applymovement LOCALID_SELPHY, FiveIsland_LostCave_Room10_Movement_SelphyWalkAway
+	applymovement LOCALID_LOST_CAVE_SELPHY, FiveIsland_LostCave_Room10_Movement_SelphyWalkAway
 	waitmovement 0
 	releaseall
 	end

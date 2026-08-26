@@ -9,7 +9,7 @@ ViridianCity_Gym_OnTransition::
 
 ViridianCity_Gym_EventScript_SpawnGiovanni::
 	clearflag FLAG_HIDE_VIRIDIAN_GIOVANNI
-	addobject LOCALID_GIOVANNI
+	addobject LOCALID_VIRIDIAN_GIOVANNI
 	return
 
 ViridianCity_Gym_EventScript_Giovanni::

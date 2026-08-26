@@ -12,8 +12,8 @@ MtEmber_Exterior_OnTransition::
 	end
 
 MtEmber_Exterior_RocketsNotBlocking::
-	setobjectxyperm LOCALID_GRUNT1, 40, 41
-	setobjectxyperm LOCALID_GRUNT2, 41, 41
+	setobjectxyperm LOCALID_MT_EMBER_GRUNT1, 40, 41
+	setobjectxyperm LOCALID_MT_EMBER_GRUNT2, 41, 41
 	setvar VAR_TEMP_1, 1
 	return
 
@@ -38,21 +38,21 @@ MtEmber_Exterior_EventScript_RocketsBlockCave::
 	lockall
 	call_if_eq VAR_MAP_SCENE_MT_EMBER_EXTERIOR, 2, MtEmber_Exterior_EventScript_MoveRocketsFaceDown
 	call_if_ne VAR_MAP_SCENE_MT_EMBER_EXTERIOR, 2, MtEmber_Exterior_EventScript_MoveRocketsFaceOriginal
-	copyobjectxytoperm LOCALID_GRUNT1
-	copyobjectxytoperm LOCALID_GRUNT2
+	copyobjectxytoperm LOCALID_MT_EMBER_GRUNT1
+	copyobjectxytoperm LOCALID_MT_EMBER_GRUNT2
 	setvar VAR_TEMP_1, 0
 	releaseall
 	end
 
 MtEmber_Exterior_EventScript_MoveRocketsFaceDown::
-	applymovement LOCALID_GRUNT2, MtEmber_Exterior_Movement_BlockCaveFaceDown2
-	applymovement LOCALID_GRUNT1, MtEmber_Exterior_Movement_BlockCaveFaceDown1
+	applymovement LOCALID_MT_EMBER_GRUNT2, MtEmber_Exterior_Movement_BlockCaveFaceDown2
+	applymovement LOCALID_MT_EMBER_GRUNT1, MtEmber_Exterior_Movement_BlockCaveFaceDown1
 	waitmovement 0
 	return
 
 MtEmber_Exterior_EventScript_MoveRocketsFaceOriginal::
-	applymovement LOCALID_GRUNT2, MtEmber_Exterior_Movement_BlockCaveFaceOriginal2
-	applymovement LOCALID_GRUNT1, MtEmber_Exterior_Movement_BlockCaveFaceOriginal1
+	applymovement LOCALID_MT_EMBER_GRUNT2, MtEmber_Exterior_Movement_BlockCaveFaceOriginal2
+	applymovement LOCALID_MT_EMBER_GRUNT1, MtEmber_Exterior_Movement_BlockCaveFaceOriginal1
 	waitmovement 0
 	return
 

@@ -241,17 +241,17 @@ void GetSpeciesPokedexAreaInfo(u16 species, struct EncounterAreaInfo * areaInfo)
     alteringCaveNum = 0;
     if (alteringCaveNum >= NUM_ALTERING_CAVE_TABLES)
         alteringCaveNum = 0;
-    for (i = 0; gWildMonHeaders[i].mapGroup != MAP_GROUP(UNDEFINED); i++)
+    for (i = 0; gWildMonHeaders[i].mapGroup != MAP_GROUP(MAP_UNDEFINED); i++)
     {
-        if (gWildMonHeaders[i].mapGroup == MAP_GROUP(SIX_ISLAND_ALTERING_CAVE) &&
-            gWildMonHeaders[i].mapNum == MAP_NUM(SIX_ISLAND_ALTERING_CAVE))
+        if (gWildMonHeaders[i].mapGroup == MAP_GROUP(MAP_SIX_ISLAND_ALTERING_CAVE) &&
+            gWildMonHeaders[i].mapNum == MAP_NUM(MAP_SIX_ISLAND_ALTERING_CAVE))
         {
             alteringCaveCount++;
             if (alteringCaveNum != alteringCaveCount - 1)
                 continue;
         }
-        if (gWildMonHeaders[i].mapGroup == MAP_GROUP(ROUTE21_SOUTH) &&
-            gWildMonHeaders[i].mapNum == MAP_NUM(ROUTE21_SOUTH))
+        if (gWildMonHeaders[i].mapGroup == MAP_GROUP(MAP_ROUTE21_SOUTH) &&
+            gWildMonHeaders[i].mapNum == MAP_NUM(MAP_ROUTE21_SOUTH))
             continue;
         if (IsSpeciesInEncounterTable(gWildMonHeaders[i].landMonsInfo, species, LAND_WILD_COUNT))
         {
