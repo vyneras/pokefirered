@@ -7,6 +7,8 @@ const path = require('path')
 const parseFile = async (filePath, startingDict = {}) => {
   let lines = await fs.promises.readFile(path.join(filePath), 'utf-8')
   lines = lines.split('\n')
+  let readingEnum = false
+  let enumCount = 0
 
   const output = {
     ...startingDict
@@ -30,6 +32,23 @@ const parseFile = async (filePath, startingDict = {}) => {
       }
 
       output[macroName] = result
+    }
+
+    if (readingEnum) {
+      if (line.includes("}")) {
+        readingEnum = false
+      }
+      else if (line.includes("{")) {
+      }
+      else {
+        output[line.replace(',', '').trim()] = enumCount
+        enumCount++
+      }
+    }
+
+    if (line.includes("enum")) {
+      readingEnum = true
+      enumCount = 0
     }
   })
 

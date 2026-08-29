@@ -285,7 +285,7 @@ const std::vector<std::string> MISC_ROM_ADDRESSES = {
     "sInGameTrades",
     "sFlashLevelToRadius",
     "gRandomizedSoundTable",
-    "sFlyPoints",
+    "sFlyLocations",
     "sRegionMapSections_Kanto",
     "sRegionMapSections_Sevii123",
     "sRegionMapSections_Sevii45",
